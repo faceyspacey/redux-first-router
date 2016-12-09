@@ -2,8 +2,9 @@
   "name": "pure-redux-router",
   "version": "1.0.0",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./"
+    "build": "babel ./src --out-dir ./dist"
   },
   "repository": {
     "type": "git",
