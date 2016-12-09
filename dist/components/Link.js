@@ -30,7 +30,7 @@ function Link(_ref) {
       dispatch = _ref.dispatch,
       props = _objectWithoutProperties(_ref, ['href', 'children', 'onPress', 'down', 'shouldDispatch', 'target', 'dispatch']);
 
-  var handler = handlePress.bind(null, onPress, shouldDispatch, target, dispatch);
+  var handler = handlePress.bind(null, href, onPress, shouldDispatch, target, dispatch);
 
   return _react2.default.createElement(
     'a',
@@ -48,7 +48,7 @@ function Link(_ref) {
 exports.default = (0, _reactRedux.connect)()(Link);
 
 
-function handlePress(onPress, shouldDispatch, target, dispatch, e) {
+function handlePress(href, onPress, shouldDispatch, target, dispatch, e) {
   if (target !== '_blank') {
     e.preventDefault();
   }

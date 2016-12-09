@@ -13,7 +13,7 @@ function Link({
   dispatch, 
   ...props
 }) {
-  let handler = handlePress.bind(null, onPress, shouldDispatch, target, dispatch);
+  let handler = handlePress.bind(null, href, onPress, shouldDispatch, target, dispatch);
 
   return (
     <a 
@@ -33,23 +33,23 @@ export default connect()(Link)
 
 
 
-function handlePress(onPress, shouldDispatch, target, dispatch, e) {
-    if(target !== '_blank') {
-      e.preventDefault();
-    }
-    
-    let shouldGo = true;
-
-    if(onPress) {
-      shouldGo = onPress(e); //onPress can return false to prevent dispatch
-      shouldGo = typeof shouldGo === 'undefined' ? true : shouldGo;
-    }
-
-    if(shouldGo && shouldDispatch && target !== '_blank') {
-      dispatch(go(href));
-    }
-  }
-
-  function preventDefault(e) {
+function handlePress(href, onPress, shouldDispatch, target, dispatch, e) {
+  if(target !== '_blank') {
     e.preventDefault();
   }
+  
+  let shouldGo = true;
+
+  if(onPress) {
+    shouldGo = onPress(e); //onPress can return false to prevent dispatch
+    shouldGo = typeof shouldGo === 'undefined' ? true : shouldGo;
+  }
+
+  if(shouldGo && shouldDispatch && target !== '_blank') {
+    dispatch(go(href));
+  }
+}
+
+function preventDefault(e) {
+  e.preventDefault();
+}
