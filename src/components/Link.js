@@ -29,7 +29,7 @@ function Link({
   );
 }
 
-export default connect()(Link)
+export const Link = connect()(Link)
 
 
 
