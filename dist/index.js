@@ -51,6 +51,8 @@ var _Link = require('./components/Link');
 Object.defineProperty(exports, 'Link', {
   enumerable: true,
   get: function get() {
-    return _Link.Link;
+    return _interopRequireDefault(_Link).default;
   }
 });
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
