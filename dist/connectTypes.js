@@ -13,19 +13,19 @@ var _pathToRegexp = require('path-to-regexp');
 
 var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 
-var _formatParams2 = require('./utils/formatParams');
+var _formatParams2 = require('./pure-utils/formatParams');
 
 var _formatParams3 = _interopRequireDefault(_formatParams2);
 
-var _parsePath2 = require('./utils/parsePath');
+var _parsePath2 = require('./pure-utils/parsePath');
 
 var _parsePath3 = _interopRequireDefault(_parsePath2);
 
-var _nestAction = require('./utils/nestAction');
+var _nestAction = require('./pure-utils/nestAction');
 
 var _nestAction2 = _interopRequireDefault(_nestAction);
 
-var _routesDictToArray = require('./utils/routesDictToArray');
+var _routesDictToArray = require('./pure-utils/routesDictToArray');
 
 var _routesDictToArray2 = _interopRequireDefault(_routesDictToArray);
 
@@ -33,7 +33,17 @@ var _actionCreators = require('./actionCreators');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** REDUCER + MIDDLEWARE + ENHANCER MAIN EXPORT: */
+/** PRIMARY EXPORT: `connectTypes(routes: object, history: history, options: object)`
+ *  `connectTypes` returns: `{reducer, middleware, enhancer}` 
+ * 
+ *  Internally it is powered by listening of location-aware dispatches 
+ *  through the middleware as well as through listening to `window.location` history changes
+ * 
+ *  note: if you're wondering, the following function when called returns functions
+ *  in a closure that provide access to variables in a private
+ *  "per instance" fashion in order to be used in SSR without leaking
+ *  state between SSR requests :).
+*/
 
 function connectTypes() {
   var routes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -158,7 +168,7 @@ function connectTypes() {
     }
 
     //call once at start to populate location reducer 
-    //and if ready dispatch entrance route type
+    //and, on `ready`, dispatches the `type` of the location reducer state
     onUpdateState(dispatch, state);
     prevState = state;
   }
@@ -264,14 +274,6 @@ function connectTypes() {
     return action;
   }
 
-  //NOTE: ROUTES and ROUTE_NAMES put in for purity/testability, and only pathname is expected to be provided
-  exportedGo = function exportedGo(pathname) {
-    var routes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ROUTES;
-    var routeNames = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ROUTE_NAMES;
-
-    return (0, _parsePath3.default)(pathname, routes, routeNames); //prepareAction will eventually be called after client dispatches and middleware resolves it
-  };
-
   var prev = null;
 
   function prepareAction(pathname, receivedAction) {
@@ -279,6 +281,14 @@ function connectTypes() {
     prev = _extends({}, action.location.current);
     return action;
   }
+
+  //NOTE: ROUTES and ROUTE_NAMES put in for purity/testability, and only pathname is expected to be provided
+  exportedGo = function exportedGo(pathname) {
+    var routes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ROUTES;
+    var routeNames = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ROUTE_NAMES;
+
+    return (0, _parsePath3.default)(pathname, routes, routeNames); //prepareAction will eventually be called after client dispatches and middleware resolves it
+  };
 
   return {
     reducer: locationReducer,
@@ -288,11 +298,17 @@ function connectTypes() {
 }
 
 /** SIDE EFFECT:
- *  won't affect SSR [unless you simulate clicking links server side, and dont do that, use redux actions]) 
- *  client code needs a simple go to path function (also used by exported Link component above)
+ *  Client code needs a simple go to path function. `exportedGo` gets replaced with a function aware of private instance variables.
+ *  NOTE: it's also used by https://github.com/celebvidy/pure-redux-router-link 's `<Link /> component.
+ *  NOTE: it will not harm SSR (unless you simulate clicking links server side--and dont do that, dispatch actions instead).
 */
 
-var exportedGo = void 0;
+var exportedGo = function exportedGo() {
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn('\n      you are calling \'go\' before pure-redux-router is initialized. \n      Find a way to not do that so you don\'t miss your initial dispatches :)\n    ');
+  }
+};
+
 function go(pathname) {
   return exportedGo(pathname);
 }

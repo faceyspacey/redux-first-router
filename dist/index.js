@@ -12,12 +12,6 @@ Object.defineProperty(exports, 'connectTypes', {
     return _connectTypes.connectTypes;
   }
 });
-Object.defineProperty(exports, 'go', {
-  enumerable: true,
-  get: function get() {
-    return _connectTypes.go;
-  }
-});
 
 var _actionCreators = require('./actionCreators');
 
@@ -45,14 +39,9 @@ Object.defineProperty(exports, 'initThunk', {
     return _actionCreators.initThunk;
   }
 });
-
-var _Link = require('./components/Link');
-
-Object.defineProperty(exports, 'Link', {
+Object.defineProperty(exports, 'go', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_Link).default;
+    return _actionCreators.go;
   }
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

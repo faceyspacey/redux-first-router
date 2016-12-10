@@ -1,3 +1,9 @@
-export { connectTypes, go } from './connectTypes'
-export { INIT, NOT_FOUND, init, initThunk } from './actionCreators'
-export { default as Link } from './components/Link'
+export { connectTypes } from './connectTypes'
+
+export { 
+  INIT, 
+  NOT_FOUND, 
+  init, 
+  initThunk, 
+  go 
+} from './actionCreators'
