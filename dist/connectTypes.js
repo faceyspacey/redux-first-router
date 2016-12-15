@@ -126,10 +126,18 @@ function connectTypes() {
           }
         } else if (action.type === _actionCreators.INIT) {
           action = initAction(action.payload.pathname);
-        } else if (ROUTES_DICT[action.type] && !action.location) {
-          //browser back/forward button usage will dispatch with locations and dont need to be re-handled
-          action = middlewareAction(action, ROUTES_DICT[action.type], store.getState().location);
         }
+
+        // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
+        else if (action.type === _actionCreators.NOT_FOUND && !action.location) {
+            var pathname = store.getState().location;
+            action = prepareAction(pathname, { type: _actionCreators.NOT_FOUND, payload: action.payload || {} });
+          }
+
+          // browser back/forward button usage will dispatch with locations and dont need to be re-handled
+          else if (ROUTES_DICT[action.type] && !action.location) {
+              action = middlewareAction(action, ROUTES_DICT[action.type], store.getState().location);
+            }
 
         return next(action);
       };

@@ -4,7 +4,8 @@
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./dist"
+    "build": "babel ./src --out-dir ./dist",
+    "publish": "npm run build && git commit -a -m 'build' && git push"
   },
   "repository": {
     "type": "git",

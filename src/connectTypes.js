@@ -95,10 +95,19 @@ export function connectTypes(routes={}, history, options) {
           console.warn(`AddressBar: location update did not dispatch as your action has an error.`)
         }
       }
+
       else if(action.type === INIT) {
         action = initAction(action.payload.pathname)
       }
-      else if(ROUTES_DICT[action.type] && !action.location) { //browser back/forward button usage will dispatch with locations and dont need to be re-handled
+      
+      // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
+      else if(action.type === NOT_FOUND && !action.location) {
+        let pathname = store.getState().location;
+        action = prepareAction(pathname, {type: NOT_FOUND, payload: action.payload || {}})
+      }
+
+      // browser back/forward button usage will dispatch with locations and dont need to be re-handled
+      else if(ROUTES_DICT[action.type] && !action.location) { 
         action = middlewareAction(action, ROUTES_DICT[action.type], store.getState().location)
       }
 
