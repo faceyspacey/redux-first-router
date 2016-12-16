@@ -3,6 +3,7 @@ import pathToRegexp from 'path-to-regexp'
 import formatParams from './pure-utils/formatParams'
 import parsePath from './pure-utils/parsePath'
 import nestAction from './pure-utils/nestAction'
+import isLocationAction from './pure-utils/isLocationAction'
 import routesDictToArray from './pure-utils/routesDictToArray'
 
 import { INIT, NOT_FOUND } from './actionCreators'
@@ -30,12 +31,13 @@ export function connectTypes(routes={}, history, options) {
     }
   }
   
-  const HISTORY = history                                    //history object created via createBrowserHistory or createMemoryHistory (using history package) passed to createLocationReducer(routes, history)
-  const ROUTES_DICT = routes                                 //{HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
-  const ROUTE_NAMES = Object.keys(ROUTES_DICT)               //['HOME', 'INFO', 'ETC']
-  const ROUTES = routesDictToArray(ROUTE_NAMES, ROUTES_DICT) //['/home', '/info/:param/', '/etc/:etc']
+  const HISTORY = history                                    // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesDict, history)
+  const ROUTES_DICT = routes                                 // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
+  const ROUTE_NAMES = Object.keys(ROUTES_DICT)               // ['HOME', 'INFO', 'ETC']
+  const ROUTES = routesDictToArray(ROUTE_NAMES, ROUTES_DICT) // ['/home', '/info/:param/', '/etc/:etc']
+  
+  const {type, payload} = parsePath(history.location.pathname, ROUTES, ROUTE_NAMES)
 
-  let {type, payload} = parsePath(history.location.pathname, ROUTES, ROUTE_NAMES)
   let currentPathname
   let initialized = false
 
@@ -49,7 +51,7 @@ export function connectTypes(routes={}, history, options) {
       payload: null,
     },
     history: typeof window !== 'undefined' ? history : undefined,
-    hydrated: typeof window !== 'undefined' ? false : true,
+    hydrated: typeof window !== 'undefined' ? false : true, // hydrated can only be set on the server
   }
 
   const {
@@ -65,19 +67,19 @@ export function connectTypes(routes={}, history, options) {
   function locationReducer(state=INITIAL_LOCATION_STATE, action) {
     if(ROUTES_DICT[action.type] || action.type === NOT_FOUND) {
       state = {
-        pathname: action.location.current.pathname,
+        pathname: action.meta.location.current.pathname,
         type: action.type,
-        payload: action.payload || {}, //provide payload so reducers can optionally slice location state and get initial params from URL without the init action dispatched
-        prev: action.location.prev || state.prev,
+        payload: action.payload,
+        prev: action.meta.location.prev || state.prev,
         history: state.history,
         hydrated: typeof window !== 'undefined' ? undefined : true,
       }
 
-      if(action.location.load) {
+      if(action.meta.location.load) {
         state.load = true
       }
 
-      if(action.location.backNext) {
+      if(action.meta.location.backNext) {
         state.backNext = true
       }
     }
@@ -88,11 +90,11 @@ export function connectTypes(routes={}, history, options) {
 
   /** MIDDLEWARE */
 
-  function addressBarMiddleware(store) {
+  function middleware(store) {
     return next => action => {
-      if(action.error) {
+      if(action.error && isLocationAction(action)) {
         if(process.env.NODE_ENV !== 'production') {
-          console.warn(`AddressBar: location update did not dispatch as your action has an error.`)
+          console.warn(`pure-redux-router: location update did not dispatch as your action has an error.`)
         }
       }
 
@@ -101,13 +103,13 @@ export function connectTypes(routes={}, history, options) {
       }
       
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
-      else if(action.type === NOT_FOUND && !action.location) {
-        let pathname = store.getState().location;
-        action = prepareAction(pathname, {type: NOT_FOUND, payload: action.payload || {}})
+      else if(action.type === NOT_FOUND && !isLocationAction(action)) {
+        let {pathname} = store.getState().location;
+        action = prepareAction(pathname, {type: NOT_FOUND, payload: action.payload})
       }
 
       // browser back/forward button usage will dispatch with locations and dont need to be re-handled
-      else if(ROUTES_DICT[action.type] && !action.location) { 
+      else if(ROUTES_DICT[action.type] && !isLocationAction(action)) { 
         action = middlewareAction(action, ROUTES_DICT[action.type], store.getState().location)
       }
 
@@ -240,13 +242,13 @@ export function connectTypes(routes={}, history, options) {
     initialized = true //only after initialized will new history locations be pushed on to the address bar
 
     let action = updateAction(pathname)
-    action.location.load = true
+    action.meta.location.load = true
     return action
   }
 
   function backNextAction(pathname) {
     let action = updateAction(pathname)
-    action.location.backNext = true
+    action.meta.location.backNext = true
     return action
   }
 
@@ -254,7 +256,7 @@ export function connectTypes(routes={}, history, options) {
 
   function prepareAction(pathname, receivedAction) {
     let action = nestAction(pathname, receivedAction, prev)
-    prev = {...action.location.current}
+    prev = {...action.meta.location.current}
     return action
   }
 
@@ -265,7 +267,7 @@ export function connectTypes(routes={}, history, options) {
 
   return {
     reducer: locationReducer,
-    middleware: addressBarMiddleware,
+    middleware,
     enhancer,
   }
 }

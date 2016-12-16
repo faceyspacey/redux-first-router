@@ -3,17 +3,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = nestAction;
 function nestAction(pathname, receivedAction, prev) {
   var type = receivedAction.type,
       payload = receivedAction.payload,
       meta = receivedAction.meta;
 
-
-  return {
-    type: type,
-    payload: payload,
-    meta: meta,
+  meta = _extends({}, meta, {
     location: {
       current: {
         pathname: pathname,
@@ -22,5 +21,11 @@ function nestAction(pathname, receivedAction, prev) {
       },
       prev: prev
     }
+  });
+
+  return {
+    type: type,
+    payload: payload,
+    meta: meta
   };
 }

@@ -25,6 +25,10 @@ var _nestAction = require('./pure-utils/nestAction');
 
 var _nestAction2 = _interopRequireDefault(_nestAction);
 
+var _isLocationAction = require('./pure-utils/isLocationAction');
+
+var _isLocationAction2 = _interopRequireDefault(_isLocationAction);
+
 var _routesDictToArray = require('./pure-utils/routesDictToArray');
 
 var _routesDictToArray2 = _interopRequireDefault(_routesDictToArray);
@@ -56,10 +60,10 @@ function connectTypes() {
     }
   }
 
-  var HISTORY = history; //history object created via createBrowserHistory or createMemoryHistory (using history package) passed to createLocationReducer(routes, history)
-  var ROUTES_DICT = routes; //{HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
-  var ROUTE_NAMES = Object.keys(ROUTES_DICT); //['HOME', 'INFO', 'ETC']
-  var ROUTES = (0, _routesDictToArray2.default)(ROUTE_NAMES, ROUTES_DICT); //['/home', '/info/:param/', '/etc/:etc']
+  var HISTORY = history; // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesDict, history)
+  var ROUTES_DICT = routes; // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
+  var ROUTE_NAMES = Object.keys(ROUTES_DICT); // ['HOME', 'INFO', 'ETC']
+  var ROUTES = (0, _routesDictToArray2.default)(ROUTE_NAMES, ROUTES_DICT); // ['/home', '/info/:param/', '/etc/:etc']
 
   var _parsePath = (0, _parsePath3.default)(history.location.pathname, ROUTES, ROUTE_NAMES),
       type = _parsePath.type,
@@ -78,8 +82,7 @@ function connectTypes() {
       payload: null
     },
     history: typeof window !== 'undefined' ? history : undefined,
-    hydrated: typeof window !== 'undefined' ? false : true
-  };
+    hydrated: typeof window !== 'undefined' ? false : true };
 
   var onBackNext = options.onBackNext,
       _options$location = options.location,
@@ -95,19 +98,19 @@ function connectTypes() {
 
     if (ROUTES_DICT[action.type] || action.type === _actionCreators.NOT_FOUND) {
       state = {
-        pathname: action.location.current.pathname,
+        pathname: action.meta.location.current.pathname,
         type: action.type,
-        payload: action.payload || {}, //provide payload so reducers can optionally slice location state and get initial params from URL without the init action dispatched
-        prev: action.location.prev || state.prev,
+        payload: action.payload,
+        prev: action.meta.location.prev || state.prev,
         history: state.history,
         hydrated: typeof window !== 'undefined' ? undefined : true
       };
 
-      if (action.location.load) {
+      if (action.meta.location.load) {
         state.load = true;
       }
 
-      if (action.location.backNext) {
+      if (action.meta.location.backNext) {
         state.backNext = true;
       }
     }
@@ -117,25 +120,26 @@ function connectTypes() {
 
   /** MIDDLEWARE */
 
-  function addressBarMiddleware(store) {
+  function middleware(store) {
     return function (next) {
       return function (action) {
-        if (action.error) {
+        if (action.error && (0, _isLocationAction2.default)(action)) {
           if (process.env.NODE_ENV !== 'production') {
-            console.warn('AddressBar: location update did not dispatch as your action has an error.');
+            console.warn('pure-redux-router: location update did not dispatch as your action has an error.');
           }
         } else if (action.type === _actionCreators.INIT) {
           action = initAction(action.payload.pathname);
         }
 
         // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
-        else if (action.type === _actionCreators.NOT_FOUND && !action.location) {
-            var pathname = store.getState().location;
-            action = prepareAction(pathname, { type: _actionCreators.NOT_FOUND, payload: action.payload || {} });
+        else if (action.type === _actionCreators.NOT_FOUND && !(0, _isLocationAction2.default)(action)) {
+            var pathname = store.getState().location.pathname;
+
+            action = prepareAction(pathname, { type: _actionCreators.NOT_FOUND, payload: action.payload });
           }
 
           // browser back/forward button usage will dispatch with locations and dont need to be re-handled
-          else if (ROUTES_DICT[action.type] && !action.location) {
+          else if (ROUTES_DICT[action.type] && !(0, _isLocationAction2.default)(action)) {
               action = middlewareAction(action, ROUTES_DICT[action.type], store.getState().location);
             }
 
@@ -272,13 +276,13 @@ function connectTypes() {
     initialized = true; //only after initialized will new history locations be pushed on to the address bar
 
     var action = updateAction(pathname);
-    action.location.load = true;
+    action.meta.location.load = true;
     return action;
   }
 
   function backNextAction(pathname) {
     var action = updateAction(pathname);
-    action.location.backNext = true;
+    action.meta.location.backNext = true;
     return action;
   }
 
@@ -286,7 +290,7 @@ function connectTypes() {
 
   function prepareAction(pathname, receivedAction) {
     var action = (0, _nestAction2.default)(pathname, receivedAction, prev);
-    prev = _extends({}, action.location.current);
+    prev = _extends({}, action.meta.location.current);
     return action;
   }
 
@@ -300,7 +304,7 @@ function connectTypes() {
 
   return {
     reducer: locationReducer,
-    middleware: addressBarMiddleware,
+    middleware: middleware,
     enhancer: enhancer
   };
 }
