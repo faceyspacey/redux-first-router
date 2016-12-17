@@ -50,7 +50,6 @@ export default function connectTypes(routes={}, history, options={}) {
       type: null,
       payload: null,
     },
-    history: typeof window !== 'undefined' ? history : undefined,
   }
 
   const {
@@ -69,7 +68,6 @@ export default function connectTypes(routes={}, history, options={}) {
         type: action.type,
         payload: action.payload || {},
         prev: action.meta.location.prev || state.prev,
-        history: state.history,
       }
 
       if(action.meta.location.load) {

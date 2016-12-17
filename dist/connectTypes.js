@@ -77,8 +77,7 @@ function connectTypes() {
       pathname: null,
       type: null,
       payload: null
-    },
-    history: typeof window !== 'undefined' ? history : undefined
+    }
   };
 
   var onBackNext = options.onBackNext,
@@ -97,8 +96,7 @@ function connectTypes() {
         pathname: action.meta.location.current.pathname,
         type: action.type,
         payload: action.payload || {},
-        prev: action.meta.location.prev || state.prev,
-        history: state.history
+        prev: action.meta.location.prev || state.prev
       };
 
       if (action.meta.location.load) {

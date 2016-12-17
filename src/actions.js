@@ -1,4 +1,4 @@
-export const NOT_FOUND = '@@address-bar/NOT_FOUND'
+export const NOT_FOUND = '@@pure-redux-router/NOT_FOUND'
 
 /** PRIMARY/SOLE NAVIGATION ACTION CREATOR 
  *  note: on web most of the time you want to use a link component that embeds an `<a />` element

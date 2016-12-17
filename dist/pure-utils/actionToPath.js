@@ -15,8 +15,8 @@ var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function actionToPath(action, routesDict) {
-  if ((typeof payload === 'undefined' ? 'undefined' : _typeof(payload)) !== 'object') {
-    throw new Error('payload-not-object', '\n      \'pure-redux-router\' expects the payloads of all connected types\n      to be keyed objects in order to match payload keys to path segments. \n      The payload you provided was: `' + payload + '`\n    ');
+  if (_typeof(action.payload) !== 'object') {
+    throw new Error('payload-not-object', '\n      \'pure-redux-router\' expects the payloads of all connected types\n      to be keyed objects in order to match payload keys to path segments. \n      The payload you provided was: `' + action.payload + '`\n    ');
   }
 
   var route = routesDict[action.type];

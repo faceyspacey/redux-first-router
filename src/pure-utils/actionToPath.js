@@ -2,11 +2,11 @@ import pathToRegexp from 'path-to-regexp'
 
 
 export default function actionToPath(action, routesDict) {
-  if(typeof payload !== 'object') {
+  if(typeof action.payload !== 'object') {
     throw new Error('payload-not-object', `
       'pure-redux-router' expects the payloads of all connected types
       to be keyed objects in order to match payload keys to path segments. 
-      The payload you provided was: \`${payload}\`
+      The payload you provided was: \`${action.payload}\`
     `)
   }
 
