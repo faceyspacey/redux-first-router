@@ -19,7 +19,7 @@ import { NOT_FOUND } from './actions'
  *  state between SSR requests :).
 */
 
-export default function connectTypes(routes={}, history, options) {
+export default function connectTypes(routes={}, history, options={}) {
   if(process.env.NODE_ENV !== 'production') {
     if(!history) {
       throw new Error('invalid-history-argument', `Using the 'history' package on NPM, please provide 
@@ -101,7 +101,7 @@ export default function connectTypes(routes={}, history, options) {
         action = _prepareAction(pathname, {type: NOT_FOUND, payload: action.payload || {}})
       }
 
-      // browser back/forward button usage will dispatch with locations and dont need to be re-handled
+      // dispatched action matches a connected type and is not already handled by `handleHistoryChanges`
       else if(ROUTES_DICT[action.type] && !isLocationAction(action)) { 
         action = createMiddlewareAction(action, ROUTES_DICT, store.getState().location)
       }
@@ -114,6 +114,7 @@ export default function connectTypes(routes={}, history, options) {
       return nextAction
     }
   }
+
 
   /** ENHANCER */
 
@@ -196,7 +197,7 @@ export default function connectTypes(routes={}, history, options) {
   }
 
 
-  /* INTERNAL UTILITY FUNCTIONS (THE USE OUR ENCLOSED STATE) **/
+  /* INTERNAL UTILITY FUNCTIONS (THEY RELY ON OUR ENCLOSED STATE) **/
 
   let prev = null
 
@@ -211,7 +212,7 @@ export default function connectTypes(routes={}, history, options) {
   }
 
 
-  //** OUR GLORIOUS RETURN: reducer, middleware and enhancer */
+  //** OUR GLORIOUS RETURN TRIUMVIRATE: reducer, middleware and enhancer */
 
   return {
     reducer: locationReducer,

@@ -48,7 +48,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function connectTypes() {
   var routes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var history = arguments[1];
-  var options = arguments[2];
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   if (process.env.NODE_ENV !== 'production') {
     if (!history) {
@@ -131,7 +131,7 @@ function connectTypes() {
             action = _prepareAction(pathname, { type: _actions.NOT_FOUND, payload: action.payload || {} });
           }
 
-          // browser back/forward button usage will dispatch with locations and dont need to be re-handled
+          // dispatched action matches a connected type and is not already handled by `handleHistoryChanges`
           else if (ROUTES_DICT[action.type] && !(0, _isLocationAction2.default)(action)) {
               action = createMiddlewareAction(action, ROUTES_DICT, store.getState().location);
             }
@@ -224,7 +224,7 @@ function connectTypes() {
     return action;
   }
 
-  /* INTERNAL UTILITY FUNCTIONS (THE USE OUR ENCLOSED STATE) **/
+  /* INTERNAL UTILITY FUNCTIONS (THEY RELY ON OUR ENCLOSED STATE) **/
 
   var prev = null;
 
@@ -241,7 +241,7 @@ function connectTypes() {
     return (0, _pathToAction3.default)(pathname, routes, routeNames); // only pathname arg expected in client code
   };
 
-  //** OUR GLORIOUS RETURN: reducer, middleware and enhancer */
+  //** OUR GLORIOUS RETURN TRIUMVIRATE: reducer, middleware and enhancer */
 
   return {
     reducer: locationReducer,
