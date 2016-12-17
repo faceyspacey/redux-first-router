@@ -263,11 +263,5 @@ function connectTypes() {
 var _exportedGo = void 0;
 
 function go(pathname) {
-  if (typeof _exportedGo === 'undefined') {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn('\n        you are calling \'go\' before pure-redux-router has connected your types to paths. \n        Find a way to not do that so you don\'t miss your initial dispatches :)\n      ');
-    }
-  }
-
-  return exportedGo(pathname);
+  return _exportedGo(pathname);
 }

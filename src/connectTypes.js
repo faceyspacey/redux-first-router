@@ -238,14 +238,5 @@ export default function connectTypes(routes={}, history, options={}) {
 let _exportedGo;
 
 export function go(pathname) {
-  if(typeof _exportedGo === 'undefined') {
-    if(process.env.NODE_ENV !== 'production') {
-      console.warn(`
-        you are calling 'go' before pure-redux-router has connected your types to paths. 
-        Find a way to not do that so you don't miss your initial dispatches :)
-      `)
-    }
-  }
-
-  return exportedGo(pathname);
+  return _exportedGo(pathname);
 }
