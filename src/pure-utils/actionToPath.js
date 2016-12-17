@@ -6,12 +6,12 @@ export default function actionToPath(action, routesDict) {
   let path = typeof route === 'object' ? route.path : route
   let params = typeof route === 'object' ? _parseParams(route, action.payload) : action.payload
 
-  return pathToRegexp.compile(path)(params)
+  return pathToRegexp.compile(path)(params || {})
 }
 
 
 //eg: {route: '/page/:param'}
-function _parseParams(route, params) {
+function _parseParams(route, params={}) {
   if(route.capitalizedWords === true) {
     params = Object.keys(params).reduce((sluggifedParams, key) => {
       if(typeof params[key] === 'string') {

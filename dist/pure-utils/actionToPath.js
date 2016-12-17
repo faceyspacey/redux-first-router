@@ -19,11 +19,13 @@ function actionToPath(action, routesDict) {
   var path = (typeof route === 'undefined' ? 'undefined' : _typeof(route)) === 'object' ? route.path : route;
   var params = (typeof route === 'undefined' ? 'undefined' : _typeof(route)) === 'object' ? _parseParams(route, action.payload) : action.payload;
 
-  return _pathToRegexp2.default.compile(path)(params);
+  return _pathToRegexp2.default.compile(path)(params || {});
 }
 
 //eg: {route: '/page/:param'}
-function _parseParams(route, params) {
+function _parseParams(route) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
   if (route.capitalizedWords === true) {
     params = Object.keys(params).reduce(function (sluggifedParams, key) {
       if (typeof params[key] === 'string') {

@@ -1,6 +1,6 @@
 {
   "name": "pure-redux-router",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "scripts": {

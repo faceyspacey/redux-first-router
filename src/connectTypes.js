@@ -126,10 +126,8 @@ export default function connectTypes(routes={}, history, options={}) {
       let location = state[locationKey]
 
       if(!location || !location.pathname) {
-        throw new Error(`
-          [pure-redux-router] you must provide the key of the location reducer state 
-          and properly assigned the location reducer to that key.
-        `)
+        throw new Error(`[pure-redux-router] you must provide the key of the location reducer state 
+          and properly assigned the location reducer to that key.`)
       }
 
       let dispatch = store.dispatch.bind(store)
@@ -176,14 +174,6 @@ export default function connectTypes(routes={}, history, options={}) {
   /** ACTION CREATORS: */
 
   function createMiddlewareAction(action, routesDict, location) {
-    if(typeof action.payload !== 'object') {
-      throw new Error(`
-        [pure-redux-router] the payloads of all connected types must
-        be keyed objects in order to match payload keys to path segments. 
-        The payload you provided was: \`${action.payload}\`
-      `)
-    }
-
     try {
       let pathname = actionToPath(action, routesDict)
       return _prepareAction(pathname, action) 

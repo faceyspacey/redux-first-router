@@ -40,9 +40,11 @@ function pathToAction(path, routes, routeNames) {
         var value = match[index + 1]; //item at index 0 is the overall match, whereas those after correspond to the key's index
 
         value = !isNaN(value) ? parseFloat(value) : value; //make sure pure numbers aren't passed to reducers as strings
+
         value = capitalizedWords && typeof value === 'string' ? value.replace(/-/g, ' ').replace(/\b\w/g, function (l) {
           return l.toUpperCase();
         }) : value; // 'my-category' -> 'My Category' 
+
         value = fromPath ? fromPath(value) : value;
 
         params[key.name] = value;
