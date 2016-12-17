@@ -1,9 +1,6 @@
-export { connectTypes } from './connectTypes'
+export { default as connectTypes } from './connectTypes'
 
 export { 
-  INIT, 
   NOT_FOUND, 
-  init, 
-  initThunk, 
   go 
-} from './actionCreators'
+} from './actions'

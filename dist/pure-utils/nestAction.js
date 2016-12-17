@@ -12,6 +12,7 @@ function nestAction(pathname, receivedAction, prev) {
       payload = receivedAction.payload,
       meta = receivedAction.meta;
 
+
   meta = _extends({}, meta, {
     location: {
       current: {

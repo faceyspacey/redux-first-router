@@ -1,5 +1,6 @@
 export default function nestAction(pathname, receivedAction, prev) {
-  let {type, payload, meta} = receivedAction;
+  let {type, payload, meta} = receivedAction
+  
   meta = {
     ...meta,
     location: {
@@ -10,11 +11,11 @@ export default function nestAction(pathname, receivedAction, prev) {
       },
       prev,
     }
-  };
+  }
 
   return {
     type, 
     payload,
     meta, 
-  };
+  }
 }

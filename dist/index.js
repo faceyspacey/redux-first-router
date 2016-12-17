@@ -9,39 +9,23 @@ var _connectTypes = require('./connectTypes');
 Object.defineProperty(exports, 'connectTypes', {
   enumerable: true,
   get: function get() {
-    return _connectTypes.connectTypes;
+    return _interopRequireDefault(_connectTypes).default;
   }
 });
 
-var _actionCreators = require('./actionCreators');
+var _actions = require('./actions');
 
-Object.defineProperty(exports, 'INIT', {
-  enumerable: true,
-  get: function get() {
-    return _actionCreators.INIT;
-  }
-});
 Object.defineProperty(exports, 'NOT_FOUND', {
   enumerable: true,
   get: function get() {
-    return _actionCreators.NOT_FOUND;
-  }
-});
-Object.defineProperty(exports, 'init', {
-  enumerable: true,
-  get: function get() {
-    return _actionCreators.init;
-  }
-});
-Object.defineProperty(exports, 'initThunk', {
-  enumerable: true,
-  get: function get() {
-    return _actionCreators.initThunk;
+    return _actions.NOT_FOUND;
   }
 });
 Object.defineProperty(exports, 'go', {
   enumerable: true,
   get: function get() {
-    return _actionCreators.go;
+    return _actions.go;
   }
 });
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

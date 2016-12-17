@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-exports.default = parsePath;
+exports.default = pathToAction;
 
 var _pathToRegexp = require('path-to-regexp');
 
@@ -16,7 +16,7 @@ var _actionCreators = require('../actionCreators');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function parsePath(pathname, routes, routeNames) {
+function pathToAction(path, routes, routeNames) {
   var i = 0;
   var match = void 0;
   var keys = [];
@@ -25,7 +25,7 @@ function parsePath(pathname, routes, routeNames) {
     keys.length = 0; //empty the array and start over
     var routePath = routes[i].path || routes[i]; //route may be an object containing a route or a route string itself
     var reg = (0, _pathToRegexp2.default)(routePath, keys);
-    match = reg.exec(pathname);
+    match = reg.exec(path);
     i++;
   }
 
