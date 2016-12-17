@@ -12,7 +12,7 @@ var _pathToRegexp = require('path-to-regexp');
 
 var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 
-var _actionCreators = require('../actionCreators');
+var _actions = require('../actions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59,6 +59,6 @@ function pathToAction(path, routes, routeNames) {
   } else {
     //This will basically will only end up being called if the developer is manually calling history.push().
     //Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
-    return { type: _actionCreators.NOT_FOUND, payload: {} };
+    return { type: _actions.NOT_FOUND, payload: {} };
   }
 }

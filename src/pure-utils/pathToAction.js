@@ -1,5 +1,5 @@
 import pathToRegexp from 'path-to-regexp'
-import { NOT_FOUND } from '../actionCreators'
+import { NOT_FOUND } from '../actions'
 
 
 export default function pathToAction(path, routes, routeNames) {
