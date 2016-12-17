@@ -22,10 +22,12 @@ import { NOT_FOUND } from './actions'
 export default function connectTypes(routes={}, history, options={}) {
   if(process.env.NODE_ENV !== 'production') {
     if(!history) {
-      throw new Error('invalid-history-argument', `Using the 'history' package on NPM, please provide 
-        a history object as a second parameter. The history object will be the return of 
+      throw new Error(`
+        [pure-redux-rouer] invalid \`history\` agument. Using the 'history' package on NPM, 
+        please provide a \`history\` object as a second parameter. The object will be the return of 
         createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
-        See: https://github.com/mjackson/history`)
+        See: https://github.com/mjackson/history`
+      )
     }
   }
   
@@ -124,8 +126,8 @@ export default function connectTypes(routes={}, history, options={}) {
       let location = state[locationKey]
 
       if(!location || !location.pathname) {
-        throw new Error('no-location-reducer', `
-          You must provide the key of the location reducer state 
+        throw new Error(`
+          [pure-redux-router] you must provide the key of the location reducer state 
           and properly assigned the location reducer to that key.
         `)
       }
@@ -174,6 +176,14 @@ export default function connectTypes(routes={}, history, options={}) {
   /** ACTION CREATORS: */
 
   function createMiddlewareAction(action, routesDict, location) {
+    if(typeof action.payload !== 'object') {
+      throw new Error(`
+        [pure-redux-router] the payloads of all connected types must
+        be keyed objects in order to match payload keys to path segments. 
+        The payload you provided was: \`${action.payload}\`
+      `)
+    }
+
     try {
       let pathname = actionToPath(action, routesDict)
       return _prepareAction(pathname, action) 

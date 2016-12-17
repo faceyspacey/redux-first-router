@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 exports.default = connectTypes;
 exports.go = go;
 
@@ -52,7 +54,7 @@ function connectTypes() {
 
   if (process.env.NODE_ENV !== 'production') {
     if (!history) {
-      throw new Error('invalid-history-argument', 'Using the \'history\' package on NPM, please provide \n        a history object as a second parameter. The history object will be the return of \n        createBrowserHistory() (or in React Native or Node: createMemoryHistory()).\n        See: https://github.com/mjackson/history');
+      throw new Error('\n        [pure-redux-rouer] invalid `history` agument. Using the \'history\' package on NPM, \n        please provide a `history` object as a second parameter. The object will be the return of \n        createBrowserHistory() (or in React Native or Node: createMemoryHistory()).\n        See: https://github.com/mjackson/history');
     }
   }
 
@@ -154,7 +156,7 @@ function connectTypes() {
       var location = state[locationKey];
 
       if (!location || !location.pathname) {
-        throw new Error('no-location-reducer', '\n          You must provide the key of the location reducer state \n          and properly assigned the location reducer to that key.\n        ');
+        throw new Error('\n          [pure-redux-router] you must provide the key of the location reducer state \n          and properly assigned the location reducer to that key.\n        ');
       }
 
       var dispatch = store.dispatch.bind(store);
@@ -199,6 +201,10 @@ function connectTypes() {
   /** ACTION CREATORS: */
 
   function createMiddlewareAction(action, routesDict, location) {
+    if (_typeof(action.payload) !== 'object') {
+      throw new Error('\n        [pure-redux-router] the payloads of all connected types must\n        be keyed objects in order to match payload keys to path segments. \n        The payload you provided was: `' + action.payload + '`\n      ');
+    }
+
     try {
       var pathname = (0, _actionToPath2.default)(action, routesDict);
       return _prepareAction(pathname, action);
