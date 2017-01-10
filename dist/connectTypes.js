@@ -52,13 +52,13 @@ function connectTypes() {
 
   if (process.env.NODE_ENV !== 'production') {
     if (!history) {
-      throw new Error('\n        [pure-redux-rouer] invalid `history` agument. Using the \'history\' package on NPM, \n        please provide a `history` object as a second parameter. The object will be the return of \n        createBrowserHistory() (or in React Native or Node: createMemoryHistory()).\n        See: https://github.com/mjackson/history');
+      throw new Error('\n        [pure-redux-rouer] invalid `history` agument. Using the \'history\' package on NPM, \n        please provide a `history` object as a second parameter. The object will be the \n        return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).\n        See: https://github.com/mjackson/history');
     }
   }
 
-  /** INTERNAL CLOSURE STATE (PER INSTANCE FOR SSR!) */
+  /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
 
-  var currentPathname = history.location.pathname; // very important: used for determining address bar changes
+  var currentPathname = history.location.pathname; // very important: used for comparison to determine address bar changes
 
   var HISTORY = history; // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesDict, history)
   var ROUTES_DICT = routes; // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
@@ -154,7 +154,7 @@ function connectTypes() {
       var location = state[locationKey];
 
       if (!location || !location.pathname) {
-        throw new Error('[pure-redux-router] you must provide the key of the location reducer state \n          and properly assigned the location reducer to that key.');
+        throw new Error('[pure-redux-router] you must provide the key of the location \n          reducer state and properly assigned the location reducer to that key.');
       }
 
       var dispatch = store.dispatch.bind(store);
@@ -167,7 +167,7 @@ function connectTypes() {
     };
   }
 
-  /** ADDRESS BAR + BROWSER BACK/NEXT BUTTON HANDLING */
+  /** ADDRESS BAR + BROWSER BACK/NEXT HANDLING */
 
   function handleHistoryChanges(dispatch, location) {
     // insure middleware hasn't already handled location change
@@ -186,8 +186,11 @@ function connectTypes() {
     if (location.pathname !== currentPathname) {
       currentPathname = location.pathname;
       HISTORY.push({ pathname: currentPathname });
-      changePageTitle(nextState[titleKey]);
     }
+
+    // needs to be called even if pathname does not change since handleHistoryChanges will have 
+    // already set the pathname, but not the title since it didn't have access to nextState[titleKey]
+    changePageTitle(nextState[titleKey]);
   }
 
   function changePageTitle(title) {
@@ -203,8 +206,8 @@ function connectTypes() {
       var pathname = (0, _actionToPath2.default)(action, routesDict);
       return _prepareAction(pathname, action);
     } catch (e) {
-      //developer dispatched an invalid type + payload
-      //preserve previous pathname to keep app stable for future correct actions that depend on it
+      // developer dispatched an invalid type + payload
+      // preserve previous pathname to keep app stable for future correct actions that depend on it
       var _pathname = location && location.pathname || null;
       var _payload = action.payload || {};
       return _prepareAction(_pathname, { type: _actions.NOT_FOUND, payload: _payload });

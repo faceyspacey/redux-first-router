@@ -24,17 +24,17 @@ export default function connectTypes(routes={}, history, options={}) {
     if(!history) {
       throw new Error(`
         [pure-redux-rouer] invalid \`history\` agument. Using the 'history' package on NPM, 
-        please provide a \`history\` object as a second parameter. The object will be the return of 
-        createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
+        please provide a \`history\` object as a second parameter. The object will be the 
+        return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
         See: https://github.com/mjackson/history`
       )
     }
   }
   
 
-  /** INTERNAL CLOSURE STATE (PER INSTANCE FOR SSR!) */
+  /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
 
-  let currentPathname = history.location.pathname             // very important: used for determining address bar changes
+  let currentPathname = history.location.pathname             // very important: used for comparison to determine address bar changes
 
   const HISTORY = history                                     // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesDict, history)
   const ROUTES_DICT = routes                                  // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
@@ -97,7 +97,7 @@ export default function connectTypes(routes={}, history, options={}) {
       
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
       else if(action.type === NOT_FOUND && !isLocationAction(action)) {
-        let {pathname} = store.getState().location
+        const {pathname} = store.getState().location
         action = _prepareAction(pathname, {type: NOT_FOUND, payload: action.payload || {}})
       }
 
@@ -106,8 +106,8 @@ export default function connectTypes(routes={}, history, options={}) {
         action = createMiddlewareAction(action, ROUTES_DICT, store.getState().location)
       }
 
-      let nextAction = next(action)
-      let nextState = store.getState()
+      const nextAction = next(action)
+      const nextState = store.getState()
 
       changeAddressBar(nextState) 
 
@@ -120,20 +120,20 @@ export default function connectTypes(routes={}, history, options={}) {
 
   function enhancer(createStore) {
     return (reducer, preloadedState, enhancer) => {
-      let store = createStore(reducer, preloadedState, enhancer)
+      const store = createStore(reducer, preloadedState, enhancer)
       
-      let state = store.getState()
-      let location = state[locationKey]
+      const state = store.getState()
+      const location = state[locationKey]
 
       if(!location || !location.pathname) {
-        throw new Error(`[pure-redux-router] you must provide the key of the location reducer state 
-          and properly assigned the location reducer to that key.`)
+        throw new Error(`[pure-redux-router] you must provide the key of the location 
+          reducer state and properly assigned the location reducer to that key.`)
       }
 
-      let dispatch = store.dispatch.bind(store)
+      const dispatch = store.dispatch.bind(store)
       HISTORY.listen(handleHistoryChanges.bind(null, dispatch))
       
-      let firstAction = createHistoryAction(currentPathname, 'load')
+      const firstAction = createHistoryAction(currentPathname, 'load')
       store.dispatch(firstAction)
 
       return store
@@ -141,7 +141,7 @@ export default function connectTypes(routes={}, history, options={}) {
   }
 
 
-  /** ADDRESS BAR + BROWSER BACK/NEXT BUTTON HANDLING */
+  /** ADDRESS BAR + BROWSER BACK/NEXT HANDLING */
 
   function handleHistoryChanges(dispatch, location) {
     // insure middleware hasn't already handled location change
@@ -149,19 +149,22 @@ export default function connectTypes(routes={}, history, options={}) {
       onBackNext && onBackNext(location)
       currentPathname = location.pathname
 
-      let action = createHistoryAction(currentPathname)
+      const action = createHistoryAction(currentPathname)
       dispatch(action) // dispatch route type + payload as it changes via back/next buttons usage
     } 
   }
 
   function changeAddressBar(nextState) {
-    let location = nextState[locationKey]
+    const location = nextState[locationKey]
 
     if(location.pathname !== currentPathname) {
       currentPathname = location.pathname
       HISTORY.push({pathname: currentPathname})
-      changePageTitle(nextState[titleKey])
     }
+		
+		// needs to be called even if pathname does not change since handleHistoryChanges will have 
+		// already set the pathname, but not the title since it didn't have access to nextState[titleKey]
+		changePageTitle(nextState[titleKey]) 
   }
 
   function changePageTitle(title) {
@@ -175,14 +178,14 @@ export default function connectTypes(routes={}, history, options={}) {
 
   function createMiddlewareAction(action, routesDict, location) {
     try {
-      let pathname = actionToPath(action, routesDict)
+      const pathname = actionToPath(action, routesDict)
       return _prepareAction(pathname, action) 
     }
     catch(e) {
-      //developer dispatched an invalid type + payload
-      //preserve previous pathname to keep app stable for future correct actions that depend on it
-      let pathname = location && location.pathname || null 
-      let payload = action.payload || {};
+      // developer dispatched an invalid type + payload
+      // preserve previous pathname to keep app stable for future correct actions that depend on it
+      const pathname = location && location.pathname || null 
+      const payload = action.payload || {}
       return _prepareAction(pathname, {type: NOT_FOUND, payload})
     }
   }
@@ -200,7 +203,7 @@ export default function connectTypes(routes={}, history, options={}) {
   let prev = null
 
   function _prepareAction(pathname, receivedAction) {
-    let action = nestAction(pathname, receivedAction, prev)
+    const action = nestAction(pathname, receivedAction, prev)
     prev = {...action.meta.location.current}
     return action
   }
@@ -225,8 +228,8 @@ export default function connectTypes(routes={}, history, options={}) {
  *  NOTE: it will not harm SSR (unless you simulate clicking links server side--and dont do that, dispatch actions instead).
 */
 
-let _exportedGo;
+let _exportedGo
 
 export function go(pathname) {
-  return _exportedGo(pathname);
+  return _exportedGo(pathname)
 }
