@@ -1,3 +1,6 @@
-export default function(action) {
-  return action.meta && action.meta.location
-}
+// @flow
+import type { Action } from '../flow-types'
+
+
+export default (action: Action): boolean =>
+  !!(action.meta && action.meta.location)

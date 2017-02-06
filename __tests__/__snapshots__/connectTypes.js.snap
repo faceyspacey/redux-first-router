@@ -1,0 +1,11 @@
+exports[`isLocationAction isLocationAction 123 1`] = `
+Object {
+  "d": 8,
+}
+`;
+
+exports[`isLocationAction isLocationAction snap 1`] = `
+Object {
+  "d": 3,
+}
+`;
