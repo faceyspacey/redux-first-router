@@ -1,21 +1,28 @@
-export default function nestAction(pathname, receivedAction, prev) {
-  let {type, payload, meta} = receivedAction
-  
-  meta = {
-    ...meta,
-    location: {
-      current: {
-        pathname,
-        type, 
-        payload,
-      },
-      prev,
-    }
-  }
+// @flow
+
+import type { Action, Location } from '../flow-types'
+
+
+export default function nestAction(
+  pathname: string,
+  receivedAction: Action,
+  prev: Location,
+): Action {
+  const { type, payload, meta } = receivedAction
 
   return {
-    type, 
+    type,
     payload,
-    meta, 
+    meta: {
+      ...meta,
+      location: {
+        current: {
+          pathname,
+          type,
+          payload,
+        },
+        prev,
+      },
+    },
   }
 }

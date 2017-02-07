@@ -33,7 +33,7 @@ module.exports = (wallaby) => {
       const conf = require('./package.json').jest
       wallaby.testFramework.configure(conf)
     },
-    runAllTestsInAffectedTestFile: true,
+    //runAllTestsInAffectedTestFile: true,
     // runAllTestsInAffectedTestGroup: true,
     debug: false,
   }

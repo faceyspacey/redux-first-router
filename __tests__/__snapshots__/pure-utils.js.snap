@@ -1,11 +1,55 @@
-exports[`isLocationAction isLocationAction 123 1`] = `
+exports[`test nestAction 1`] = `
 Object {
-  "d": 4,
+  "meta": Object {
+    "info": "something",
+    "location": Object {
+      "current": Object {
+        "pathname": "path",
+        "payload": Object {
+          "bar": "baz",
+        },
+        "type": "FOO",
+      },
+      "prev": Object {
+        "pathname": "previous",
+        "payload": Object {
+          "bla": "prev",
+        },
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "bar": "baz",
+  },
+  "type": "FOO",
 }
 `;
 
-exports[`isLocationAction isLocationAction snap 1`] = `
+exports[`test nestAction(pathname, action, location) 1`] = `
 Object {
-  "d": 2,
+  "meta": Object {
+    "info": "something",
+    "location": Object {
+      "current": Object {
+        "pathname": "path",
+        "payload": Object {
+          "bar": "baz",
+        },
+        "type": "FOO",
+      },
+      "prev": Object {
+        "pathname": "previous",
+        "payload": Object {
+          "bla": "prev",
+        },
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "bar": "baz",
+  },
+  "type": "FOO",
 }
 `;

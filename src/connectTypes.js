@@ -2,35 +2,35 @@ import actionToPath from './pure-utils/actionToPath'
 import pathToAction from './pure-utils/pathToAction'
 import nestAction from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
-import routesDictToArray from './pure-utils/routesDictToArray'
+import objectValues from './pure-utils/objectValues'
 
 import { NOT_FOUND } from './actions'
 
 
 /** PRIMARY EXPORT: `connectTypes(routes: object, history: history, options: object)`
- *  `connectTypes` returns: `{reducer, middleware, enhancer}` 
- * 
- *  Internally it is powered by listening of location-aware dispatches 
+ *  `connectTypes` returns: `{reducer, middleware, enhancer}`
+ *
+ *  Internally it is powered by listening of location-aware dispatches
  *  through the middleware as well as through listening to `window.location` history changes
- * 
+ *
  *  note: if you're wondering, the following function when called returns functions
  *  in a closure that provide access to variables in a private
  *  "per instance" fashion in order to be used in SSR without leaking
  *  state between SSR requests :).
 */
 
-export default function connectTypes(routes={}, history, options={}) {
-  if(process.env.NODE_ENV !== 'production') {
-    if(!history) {
+export default function connectTypes(routes = {}, history, options = {}) {
+  if (process.env.NODE_ENV !== 'production') {
+    if (!history) {
       throw new Error(`
-        [pure-redux-rouer] invalid \`history\` agument. Using the 'history' package on NPM, 
-        please provide a \`history\` object as a second parameter. The object will be the 
+        [pure-redux-rouer] invalid \`history\` agument. Using the 'history' package on NPM,
+        please provide a \`history\` object as a second parameter. The object will be the
         return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
-        See: https://github.com/mjackson/history`
+        See: https://github.com/mjackson/history`,
       )
     }
   }
-  
+
 
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
 
@@ -39,15 +39,15 @@ export default function connectTypes(routes={}, history, options={}) {
   const HISTORY = history                                     // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesDict, history)
   const ROUTES_DICT = routes                                  // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
   const ROUTE_NAMES = Object.keys(ROUTES_DICT)                // ['HOME', 'INFO', 'ETC']
-  const ROUTES = routesDictToArray(ROUTE_NAMES, ROUTES_DICT)  // ['/home', '/info/:param/', '/etc/:etc']
-  
-  const {type, payload} = pathToAction(currentPathname, ROUTES, ROUTE_NAMES)
+  const ROUTES = objectValues(ROUTES_DICT)                    // ['/home', '/info/:param/', '/etc/:etc']
+
+  const { type, payload } = pathToAction(currentPathname, ROUTES, ROUTE_NAMES)
 
   const INITIAL_LOCATION_STATE = {
     pathname: currentPathname,
     type,
     payload,
-    prev: {                     
+    prev: {
       pathname: null,
       type: null,
       payload: null,
@@ -55,16 +55,16 @@ export default function connectTypes(routes={}, history, options={}) {
   }
 
   const {
-    onBackNext, 
-    location: locationKey='location',
+    onBackNext,
+    location: locationKey = 'location',
     title: titleKey,
   } = options
 
 
   /** LOCATION REDUCER: */
 
-  function locationReducer(state=INITIAL_LOCATION_STATE, action) {
-    if(ROUTES_DICT[action.type] || action.type === NOT_FOUND) {
+  function locationReducer(state = INITIAL_LOCATION_STATE, action) {
+    if (ROUTES_DICT[action.type] || action.type === NOT_FOUND) {
       state = {
         pathname: action.meta.location.current.pathname,
         type: action.type,
@@ -72,11 +72,11 @@ export default function connectTypes(routes={}, history, options={}) {
         prev: action.meta.location.prev || state.prev,
       }
 
-      if(action.meta.location.load) {
+      if (action.meta.location.load) {
         state.load = true
       }
 
-      if(action.meta.location.backNext) {
+      if (action.meta.location.backNext) {
         state.backNext = true
       }
     }
@@ -88,28 +88,28 @@ export default function connectTypes(routes={}, history, options={}) {
   /** MIDDLEWARE */
 
   function middleware(store) {
-    return next => action => {
-      if(action.error && isLocationAction(action)) {
-        if(process.env.NODE_ENV !== 'production') {
-          console.warn(`pure-redux-router: location update did not dispatch as your action has an error.`)
+    return next => (action) => {
+      if (action.error && isLocationAction(action)) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn('pure-redux-router: location update did not dispatch as your action has an error.')
         }
       }
-      
+
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
-      else if(action.type === NOT_FOUND && !isLocationAction(action)) {
-        const {pathname} = store.getState().location
-        action = _prepareAction(pathname, {type: NOT_FOUND, payload: action.payload || {}})
+      else if (action.type === NOT_FOUND && !isLocationAction(action)) {
+        const { pathname } = store.getState().location
+        action = _prepareAction(pathname, { type: NOT_FOUND, payload: action.payload || {} })
       }
 
       // dispatched action matches a connected type and is not already handled by `handleHistoryChanges`
-      else if(ROUTES_DICT[action.type] && !isLocationAction(action)) { 
+      else if (ROUTES_DICT[action.type] && !isLocationAction(action)) {
         action = createMiddlewareAction(action, ROUTES_DICT, store.getState().location)
       }
 
       const nextAction = next(action)
       const nextState = store.getState()
 
-      changeAddressBar(nextState) 
+      changeAddressBar(nextState)
 
       return nextAction
     }
@@ -121,18 +121,18 @@ export default function connectTypes(routes={}, history, options={}) {
   function enhancer(createStore) {
     return (reducer, preloadedState, enhancer) => {
       const store = createStore(reducer, preloadedState, enhancer)
-      
+
       const state = store.getState()
       const location = state[locationKey]
 
-      if(!location || !location.pathname) {
-        throw new Error(`[pure-redux-router] you must provide the key of the location 
+      if (!location || !location.pathname) {
+        throw new Error(`[pure-redux-router] you must provide the key of the location
           reducer state and properly assigned the location reducer to that key.`)
       }
 
       const dispatch = store.dispatch.bind(store)
       HISTORY.listen(handleHistoryChanges.bind(null, dispatch))
-      
+
       const firstAction = createHistoryAction(currentPathname, 'load')
       store.dispatch(firstAction)
 
@@ -145,52 +145,55 @@ export default function connectTypes(routes={}, history, options={}) {
 
   function handleHistoryChanges(dispatch, location) {
     // insure middleware hasn't already handled location change
-    if(location.pathname !== currentPathname) { 
-      onBackNext && onBackNext(location)
+    if (location.pathname !== currentPathname) {
+      if (typeof onBackNext === 'function') {
+        onBackNext(location)
+      }
+
       currentPathname = location.pathname
 
       const action = createHistoryAction(currentPathname)
       dispatch(action) // dispatch route type + payload as it changes via back/next buttons usage
-    } 
+    }
   }
 
   function changeAddressBar(nextState) {
     const location = nextState[locationKey]
 
-    if(location.pathname !== currentPathname) {
+    if (location.pathname !== currentPathname) {
       currentPathname = location.pathname
-      HISTORY.push({pathname: currentPathname})
+      HISTORY.push({ pathname: currentPathname })
     }
-		
-		// needs to be called even if pathname does not change since handleHistoryChanges will have 
-		// already set the pathname, but not the title since it didn't have access to nextState[titleKey]
-		changePageTitle(nextState[titleKey]) 
+
+    // needs to be called even if pathname does not change since handleHistoryChanges will have
+    // already set the pathname, but not the title since it didn't have access to nextState[titleKey]
+    changePageTitle(nextState[titleKey])
   }
 
   function changePageTitle(title) {
-    if(typeof window !== 'undefined' && typeof title === 'string') {
+    if (typeof window !== 'undefined' && typeof title === 'string') {
       document.title = title
     }
   }
 
-  
+
   /** ACTION CREATORS: */
 
   function createMiddlewareAction(action, routesDict, location) {
     try {
       const pathname = actionToPath(action, routesDict)
-      return _prepareAction(pathname, action) 
+      return _prepareAction(pathname, action)
     }
-    catch(e) {
+    catch (e) {
       // developer dispatched an invalid type + payload
       // preserve previous pathname to keep app stable for future correct actions that depend on it
-      const pathname = location && location.pathname || null 
+      const pathname = (location && location.pathname) || null
       const payload = action.payload || {}
-      return _prepareAction(pathname, {type: NOT_FOUND, payload})
+      return _prepareAction(pathname, { type: NOT_FOUND, payload })
     }
   }
 
-  function createHistoryAction(pathname, kind='backNext', routes=ROUTES, routeNames=ROUTE_NAMES) {
+  function createHistoryAction(pathname, kind = 'backNext', routes = ROUTES, routeNames = ROUTE_NAMES) {
     let action = pathToAction(pathname, routes, routeNames)
     action = _prepareAction(pathname, action)
     action.meta.location[kind] = true
@@ -204,16 +207,15 @@ export default function connectTypes(routes={}, history, options={}) {
 
   function _prepareAction(pathname, receivedAction) {
     const action = nestAction(pathname, receivedAction, prev)
-    prev = {...action.meta.location.current}
+    prev = { ...action.meta.location.current }
     return action
   }
 
-  _exportedGo = function(pathname, routes=ROUTES, routeNames=ROUTE_NAMES) { 
-    return pathToAction(pathname, routes, routeNames) // only pathname arg expected in client code
-  }
+  _exportedGo = (pathname, routes = ROUTES, routeNames = ROUTE_NAMES) =>
+    pathToAction(pathname, routes, routeNames) // only pathname arg expected in client code
 
 
-  //** OUR GLORIOUS RETURN TRIUMVIRATE: reducer, middleware and enhancer */
+  //* * OUR GLORIOUS RETURN TRIUMVIRATE: reducer, middleware and enhancer */
 
   return {
     reducer: locationReducer,
@@ -230,6 +232,5 @@ export default function connectTypes(routes={}, history, options={}) {
 
 let _exportedGo
 
-export function go(pathname) {
-  return _exportedGo(pathname)
-}
+export const go = (pathname: string) =>
+  _exportedGo(pathname)

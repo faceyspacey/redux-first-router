@@ -48,5 +48,8 @@
     "moduleFileExtensions": [
       "js"
     ]
+  },
+  "dependencies": {
+    "path-to-regexp": "^1.7.0"
   }
 }
