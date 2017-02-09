@@ -1,21 +1,24 @@
 // @flow
 
-type RouteObject = {
+export type RouteString = string
+
+export type RouteObject = {
   path: string,
   capitalizedWords?: boolean,
-  toPath?: (param: string) => string,
-  fromPath?: (path: string) => string,
+  toPath?: (param: string, key?: string) => string,
+  fromPath?: (path: string, key?: string) => string,
 }
 
-export type Route = string | RouteObject
+export type Route = RouteString | RouteObject
 
-export type Routes = {
+export type RoutesMap = {
   [key: string]: Route,
 }
 
-export type RouteValues = Array<Route>
+export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
+export type Params = Object // eslint-disable-line flowtype/no-weak-types
 export type Payload = Object // eslint-disable-line flowtype/no-weak-types
 
 export type LocationState = {
@@ -38,7 +41,7 @@ export type Meta = {
     current: Location,
     prev: Location,
     load?: true,
-    bacNext?: true,
+    backNext?: true,
   },
 }
 
@@ -51,4 +54,16 @@ export type Action = {
 export type PlainAction = {
   type: string,
   payload: Payload,
+  meta?: Object, // eslint-disable-line flowtype/no-weak-types
 }
+
+export type Listener = ({ pathname: string }) => void
+export type Listen = (Listener) => void
+export type Push = ({ pathname: string }) => void
+
+export type History = {
+  listen: Listen,
+  push: Push,
+}
+
+export type Document = Object // eslint-disable-line flowtype/no-weak-types

@@ -1,0 +1,188 @@
+exports[`createHistoryAction when pathname changes push new pathname on to addressbar 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": true,
+      "current": Object {
+        "pathname": "/info/foo",
+        "payload": Object {
+          "param": "foo",
+        },
+        "type": "INFO_PARAM",
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "/prev",
+        "payload": Object {},
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "param": "foo",
+  },
+  "type": "INFO_PARAM",
+}
+`;
+
+exports[`test createHistoryAction 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": true,
+      "current": Object {
+        "pathname": "/info/foo",
+        "payload": Object {
+          "param": "foo",
+        },
+        "type": "INFO_PARAM",
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "/prev",
+        "payload": Object {},
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "param": "foo",
+  },
+  "type": "INFO_PARAM",
+}
+`;
+
+exports[`test createHistoryAction() - returns action created when history/address_bar chanages 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": true,
+      "current": Object {
+        "pathname": "/info/foo",
+        "payload": Object {
+          "param": "foo",
+        },
+        "type": "INFO_PARAM",
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "/prev",
+        "payload": Object {},
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "param": "foo",
+  },
+  "type": "INFO_PARAM",
+}
+`;
+
+exports[`test createMiddlewareAction (action not matched to any routePath) 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": undefined,
+      "current": Object {
+        "pathname": "/prev",
+        "payload": Object {
+          "someKey": "foo",
+        },
+        "type": "@@pure-redux-router/NOT_FOUND",
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "/prev",
+        "payload": Object {},
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "someKey": "foo",
+  },
+  "type": "@@pure-redux-router/NOT_FOUND",
+}
+`;
+
+exports[`test createMiddlewareAction 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": undefined,
+      "current": Object {
+        "pathname": "/info/foo",
+        "payload": Object {
+          "param": "foo",
+        },
+        "type": "INFO_PARAM",
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "/prev",
+        "payload": Object {},
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "param": "foo",
+  },
+  "type": "INFO_PARAM",
+}
+`;
+
+exports[`test createMiddlewareAction() - [action not matched to any routePath] 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": undefined,
+      "current": Object {
+        "pathname": "/prev",
+        "payload": Object {
+          "someKey": "foo",
+        },
+        "type": "@@pure-redux-router/NOT_FOUND",
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "/prev",
+        "payload": Object {},
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "someKey": "foo",
+  },
+  "type": "@@pure-redux-router/NOT_FOUND",
+}
+`;
+
+exports[`test createMiddlewareAction() - returns action created when middleware detects connected/matched action.type 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": undefined,
+      "current": Object {
+        "pathname": "/info/foo",
+        "payload": Object {
+          "param": "foo",
+        },
+        "type": "INFO_PARAM",
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "/prev",
+        "payload": Object {},
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "param": "foo",
+  },
+  "type": "INFO_PARAM",
+}
+`;

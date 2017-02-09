@@ -1,14 +1,14 @@
 // @flow
+import type { Action, Location, PlainAction } from '../flow-types'
 
-import type { Action, Location } from '../flow-types'
 
-
-export default function nestAction(
+export default (
   pathname: string,
-  receivedAction: Action,
+  receivedAction: PlainAction,
   prev: Location,
-): Action {
-  const { type, payload, meta } = receivedAction
+  kind?: string,
+): Action => {
+  const { type, payload = {}, meta } = receivedAction
 
   return {
     type,
@@ -22,6 +22,8 @@ export default function nestAction(
           payload,
         },
         prev,
+        load: kind === 'load' ? true : undefined,
+        backNext: kind === 'backNext' ? true : undefined,
       },
     },
   }

@@ -1,36 +1,9 @@
-exports[`test nestAction 1`] = `
-Object {
-  "meta": Object {
-    "info": "something",
-    "location": Object {
-      "current": Object {
-        "pathname": "path",
-        "payload": Object {
-          "bar": "baz",
-        },
-        "type": "FOO",
-      },
-      "prev": Object {
-        "pathname": "previous",
-        "payload": Object {
-          "bla": "prev",
-        },
-        "type": "PREV",
-      },
-    },
-  },
-  "payload": Object {
-    "bar": "baz",
-  },
-  "type": "FOO",
-}
-`;
-
 exports[`test nestAction(pathname, action, location) 1`] = `
 Object {
   "meta": Object {
     "info": "something",
     "location": Object {
+      "backNext": undefined,
       "current": Object {
         "pathname": "path",
         "payload": Object {
@@ -38,6 +11,7 @@ Object {
         },
         "type": "FOO",
       },
+      "load": undefined,
       "prev": Object {
         "pathname": "previous",
         "payload": Object {

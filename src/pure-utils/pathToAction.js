@@ -1,11 +1,14 @@
 // @flow
-
 import pathToRegexp from 'path-to-regexp'
 import { NOT_FOUND } from '../actions'
-import type { RouteValues, RouteNames, PlainAction as Action } from '../flow-types'
+import type { Routes, RouteNames, PlainAction as Action } from '../flow-types'
 
 
-export default function pathToAction(path: string, routes: RouteValues, routeNames: RouteNames): Action {
+export default (
+  path: string,
+  routes: Routes,
+  routeNames: RouteNames,
+): Action => {
   let i = 0
   let match
   const keys = []
@@ -20,30 +23,35 @@ export default function pathToAction(path: string, routes: RouteValues, routeNam
 
   if (match) {
     i--
-    const route = routeNames[i]
-    const capitalizedWords = routes[i] && routes[i].capitalizedWords
+
+    const capitalizedWords = typeof routes[i] === 'object' && routes[i].capitalizedWords
     const fromPath = routes[i] && typeof routes[i].fromPath === 'function' && routes[i].fromPath
+    const type = routeNames[i]
 
-    const params = keys.reduce((params, key, index) => {
-      let value = match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
+    const payload = keys.reduce((payload, key, index) => {
+      let value = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
 
-      value = !isNaN(value) ? parseFloat(value) : value // make sure pure numbers aren't passed to reducers as strings
+      value = !isNaN(value)
+        ? parseFloat(value) // make sure pure numbers aren't passed to reducers as strings
+        : value
 
       value = capitalizedWords && typeof value === 'string'
         ? value.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
         : value
 
-      value = fromPath ? fromPath(value, key.name) : value
+      value = fromPath && typeof value === 'string'
+        ? fromPath(value, key.name)
+        : value
 
-      params[key.name] = value
+      payload[key.name] = value
 
-      return params
+      return payload
     }, {})
 
-    return { type: route, payload: params }
+    return { type, payload }
   }
 
-    // This will basically will only end up being called if the developer is manually calling history.push().
-    // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
+  // This will basically will only end up being called if the developer is manually calling history.push().
+  // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
   return { type: NOT_FOUND, payload: {} }
 }

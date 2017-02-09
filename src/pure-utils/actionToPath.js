@@ -1,35 +1,37 @@
+// @flow
 import pathToRegexp from 'path-to-regexp'
+import type {
+  RouteObject,
+  Payload,
+  Params,
+  RoutesMap,
+  PlainAction as Action,
+} from '../flow-types'
 
 
-export default function actionToPath(action, routesDict) {
-  const route = routesDict[action.type]
+export default (action: Action, routesMap: RoutesMap): string => {
+  const route = routesMap[action.type]
   const path = typeof route === 'object' ? route.path : route
-  const params = typeof route === 'object' ? _parseParams(route, action.payload) : action.payload
+  const params = typeof route === 'object' ? _payloadToParams(route, action.payload) : action.payload
 
   return pathToRegexp.compile(path)(params || {})
 }
 
 
-// eg: {route: '/page/:param'}
-function _parseParams(route, params = {}) {
-  if (route.capitalizedWords === true) {
-    params = Object.keys(params).reduce((sluggifedParams, key) => {
-      if (typeof params[key] === 'string') {
-        sluggifedParams[key] = params[key].replace(/ /g, '-').toLowerCase()
-      }
-      else if (typeof params[key] === 'number') {
-        sluggifedParams[key] = params[key]
-      }
-
-      return sluggifedParams
-    }, {})
-  }
-  else if (typeof route.toPath === 'function') {
-    params = Object.keys(params).reduce((sluggifedParams, key) => {
+const _payloadToParams = (route: RouteObject, params: Payload = {}): Params =>
+  Object.keys(params).reduce((sluggifedParams, key) => {
+    if (typeof params[key] === 'number') {
+      sluggifedParams[key] = params[key]
+    }
+    else if (route.capitalizedWords === true) {
+      sluggifedParams[key] = params[key].replace(/ /g, '-').toLowerCase()
+    }
+    else if (typeof route.toPath === 'function') {
       sluggifedParams[key] = route.toPath(params[key], key)
-      return sluggifedParams
-    }, {})
-  }
+    }
+    else {
+      sluggifedParams[key] = params[key]
+    }
 
-  return params
-}
+    return sluggifedParams
+  }, {})

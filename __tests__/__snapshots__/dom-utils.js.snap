@@ -1,0 +1,7 @@
+exports[`changeAddressBar sd66f 1`] = `1`;
+
+exports[`changeAddressBar sd66ff 1`] = `2`;
+
+exports[`changeAddressBar when pathname changes push new pathname on to addressbar 1`] = `2`;
+
+exports[`changeAddressBar when pathname does not change, do not push pathname on to address bar 1`] = `5`;

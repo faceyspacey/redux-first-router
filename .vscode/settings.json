@@ -1,0 +1,8 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "javascript.validate.enable" : false,
+  "flow.pathToFlow": "flow",
+  "flow.stopFlowOnExit": true,
+  "flow.enabled": true,
+  "flow.useNPMPackagedFlow": true
+}

@@ -1,7 +1,6 @@
 // @flow
+import type { RoutesMap, Routes } from '../flow-types'
 
-import type { Routes, Route } from '../flow-types'
 
-
-export default (routes: Routes): Array<Route> =>
+export default (routes: RoutesMap): Routes =>
   Object.keys(routes).map(key => routes[key])

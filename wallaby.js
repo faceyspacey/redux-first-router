@@ -16,6 +16,7 @@ module.exports = (wallaby) => {
       { pattern: 'src/**/*.js', load: false },
       { pattern: 'package.json', load: false },
       { pattern: '__tests__/**/*.snap', load: false },
+      { pattern: '__test-helpers__/**/*.js', load: false },
     ],
 
     tests: ['__tests__/**/*.js'],
@@ -33,7 +34,7 @@ module.exports = (wallaby) => {
       const conf = require('./package.json').jest
       wallaby.testFramework.configure(conf)
     },
-    //runAllTestsInAffectedTestFile: true,
+    // runAllTestsInAffectedTestFile: true,
     // runAllTestsInAffectedTestGroup: true,
     debug: false,
   }

@@ -6,4 +6,4 @@ export const NOT_FOUND = '@@pure-redux-router/NOT_FOUND'
  *  https://github.com/celebvidy/pure-redux-router-link
 */
 
-export { go } from './connectTypes'
+export { go, back } from './connectTypes'
