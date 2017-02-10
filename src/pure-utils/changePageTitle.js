@@ -1,4 +1,7 @@
-// @flow
+// @no-flow
+// `CONFIG` global currently causes flow errors in user code
+// see: http://stackoverflow.com/questions/42154415/in-flow-npm-packages-whats-the-proper-way-to-suppress-issues-so-user-apps-don
+
 import type { Document } from '../flow-types'
 
 
@@ -12,10 +15,8 @@ export default (doc: Document, title: string): ?string => {
 
 
 export const getDocument = (): Document => {
-  // $FlowGlobal
-  const isSSRTest = process.env.NODE_ENV === 'test' // $FlowGlobal
-    && typeof CONFIG !== 'undefined'
-    && CONFIG.isSSR
+  const isSSRTest = process.env.NODE_ENV === 'test'
+    && typeof CONFIG !== 'undefined' && CONFIG.isSSR
 
   return typeof document !== 'undefined' && !isSSRTest
     ? document

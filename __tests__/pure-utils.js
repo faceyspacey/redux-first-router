@@ -3,7 +3,6 @@ import objectValues from '../src/pure-utils/objectValues'
 import nestAction from '../src/pure-utils/nestAction'
 import pathToAction from '../src/pure-utils/pathToAction'
 import actionToPath from '../src/pure-utils/actionToPath'
-import shouldChangeAddressBar from '../src/pure-utils/shouldChangeAddressBar'
 import changePageTitle from '../src/pure-utils/changePageTitle'
 
 import { NOT_FOUND } from '../src/actions'
@@ -199,29 +198,6 @@ describe('actionToPath(action, routesMap)', () => {
 
     performMatch = () => actionToPath({ type: 'INFO' }, routesMap)
     expect(performMatch).not.toThrowError()
-  })
-})
-
-
-describe('shouldChangeAddressBar()', () => {
-  it('when pathname changes push new pathname on to addressbar', () => {
-    const locationState = { pathname: 'foo' }
-    const currentPathname = 'bar'
-
-    const ret = shouldChangeAddressBar(locationState, currentPathname)
-
-    console.log(ret)
-    expect(ret).toEqual(true)
-  })
-
-  it('when pathname does not change, do not push pathname on to address bar', () => {
-    const locationState = { pathname: 'foo' }
-    const currentPathname = 'foo'
-
-    const ret = shouldChangeAddressBar(locationState, currentPathname)
-
-    console.log(ret)
-    expect(ret).toEqual(false)
   })
 })
 

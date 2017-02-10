@@ -1,4 +1,4 @@
-exports[`enhancer -> _handleBrowserBackNext() dispatches action matching pathname when history location changes 1`] = `
+exports[`enhancer -> _historyAttemptDispatchAction() dispatches action matching pathname when history location changes 1`] = `
 Object {
   "meta": Object {
     "location": Object {

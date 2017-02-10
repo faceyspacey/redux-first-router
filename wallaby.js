@@ -19,6 +19,10 @@ module.exports = wallaby => {
       { pattern: '__test-helpers__/**/*.js', load: false },
     ],
 
+    filesWithNoCoverageCalculated: [
+      '__test-helpers__/**/*.js',
+    ],
+
     tests: ['__tests__/**/*.js'],
 
     env: {

@@ -160,24 +160,24 @@ describe('middleware', () => {
 })
 
 
-describe('middleware -> _possiblyChangeAddressBar()', () => {
+describe('middleware -> _middlewareAttemptChangeUrl()', () => {
   it('when pathname changes push new pathname on to addressbar', () => {
-    const { _possiblyChangeAddressBar } = setup('/')
+    const { _middlewareAttemptChangeUrl } = setup('/')
     const locationState = { pathname: '/foo' }
     const history = []
 
-    _possiblyChangeAddressBar(locationState, history)
+    _middlewareAttemptChangeUrl(locationState, history)
 
     console.log(history)
     expect(history).toEqual([{ pathname: '/foo' }])
   })
 
   it('when pathname does not change, do not push pathname on to address bar', () => {
-    const { _possiblyChangeAddressBar } = setup('/foo')
+    const { _middlewareAttemptChangeUrl } = setup('/foo')
     const locationState = { pathname: '/foo' }
     const history = []
 
-    _possiblyChangeAddressBar(locationState, history)
+    _middlewareAttemptChangeUrl(locationState, history)
 
     console.log(history)
     expect(history).toEqual([])
@@ -288,13 +288,13 @@ describe('enhancer', () => {
 })
 
 
-describe('enhancer -> _handleBrowserBackNext()', () => {
+describe('enhancer -> _historyAttemptDispatchAction()', () => {
   it('dispatches action matching pathname when history location changes', () => {
     const dispatch = jest.fn()
     const historyLocation = { pathname: '/second/foo' }
-    const { _handleBrowserBackNext } = setup()
+    const { _historyAttemptDispatchAction } = setup()
 
-    _handleBrowserBackNext(dispatch, historyLocation)
+    _historyAttemptDispatchAction(dispatch, historyLocation)
 
     const action = dispatch.mock.calls[0][0]
     console.log(action)
@@ -309,10 +309,10 @@ describe('enhancer -> _handleBrowserBackNext()', () => {
   it('does not dispatch if pathname is the same (i.e. was handled by middleware already)', () => {
     const dispatch = jest.fn()
     const historyLocation = { pathname: '/second/foo' }
-    const { _handleBrowserBackNext } = setup()
+    const { _historyAttemptDispatchAction } = setup()
 
-    _handleBrowserBackNext(jest.fn(), historyLocation)
-    _handleBrowserBackNext(dispatch, historyLocation)
+    _historyAttemptDispatchAction(jest.fn(), historyLocation)
+    _historyAttemptDispatchAction(dispatch, historyLocation)
 
     // insure multiple dispatches are prevented for the same action/pathname
     // so that middleware and history listener don't double dispatch
@@ -324,9 +324,9 @@ describe('enhancer -> _handleBrowserBackNext()', () => {
     const dispatch = jest.fn()
     const historyLocation = { pathname: '/second/foo' }
     const onBackNext = jest.fn()
-    const { _handleBrowserBackNext } = setup('/', { onBackNext })
+    const { _historyAttemptDispatchAction } = setup('/', { onBackNext })
 
-    _handleBrowserBackNext(dispatch, historyLocation)
+    _historyAttemptDispatchAction(dispatch, historyLocation)
 
     const args = onBackNext.mock.calls[0][0]
     console.log(args)

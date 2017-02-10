@@ -5,9 +5,7 @@ import pathToAction from './pure-utils/pathToAction'
 import nestAction from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
 import objectValues from './pure-utils/objectValues'
-
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
-import shouldChangeAddressBar from './pure-utils/shouldChangeAddressBar'
 
 import createHistoryAction from './action-creators/createHistoryAction'
 import createMiddlewareAction from './action-creators/createMiddlewareAction'
@@ -139,7 +137,7 @@ export default (
 
     // THE MAGIC: dispatched action matches a connected type, so we generate a location-aware action and also
     // as a result update location reducer state. (ALSO NOTE: we check if the received action `isLocationAction`
-    // to prevent double dispatches coinciding with browser history changes within `_handleBrowserBackNext`)
+    // to prevent double dispatches coinciding with browser history changes within `_historyAttemptDispatchAction`)
     else if (ROUTES_MAP[action.type] && !isLocationAction(action)) {
       action = createMiddlewareAction(action, ROUTES_MAP, prevLocation)
       prevLocation = action.meta.location.current
@@ -150,7 +148,7 @@ export default (
 
     // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
     // between BROWSER back/forward button usage vs middleware-generated actions
-    _possiblyChangeAddressBar(nextState[locationKey], HISTORY)
+    _middlewareAttemptChangeUrl(nextState[locationKey], HISTORY)
     changePageTitle(windowDocument, nextState[titleKey])
 
     return nextAction
@@ -175,9 +173,9 @@ export default (
     }
 
     const dispatch = store.dispatch.bind(store)
-    HISTORY.listen(_handleBrowserBackNext.bind(null, dispatch))
+    HISTORY.listen(_historyAttemptDispatchAction.bind(null, dispatch))
 
-    // dispatch the first location-aware action
+    // dispatch the first location-aware action so initial app state is based on the url on load
     const action = createHistoryAction(currentPathname, ROUTES, ROUTE_NAMES, prevLocation, 'load')
     prevLocation = action.meta.location.current
     store.dispatch(action)
@@ -188,28 +186,30 @@ export default (
 
   /* INTERNAL UTILITY FUNCTIONS (THEY ARE IN THIS FILE BECAUSE THEY RELY ON OUR ENCLOSED STATE) **/
 
-  const _handleBrowserBackNext = (dispatch: Dispatch<*>, location: HistoryLocation) => {
-    if (location.pathname !== currentPathname) { // insure middleware hasn't already handled location change
+  const _historyAttemptDispatchAction = (dispatch: Dispatch<*>, location: HistoryLocation) => {
+    if (location.pathname !== currentPathname) {      // IMPORTANT: insure middleware hasn't already handled location change
       if (typeof onBackNext === 'function') {
         onBackNext(location)
       }
 
+      // THE MAGIC: parse the address bar path into a matched action
       const action = createHistoryAction(location.pathname, ROUTES, ROUTE_NAMES, prevLocation, 'backNext')
 
       prevLocation = action.meta.location.current
-      currentPathname = location.pathname
+      currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
 
-      dispatch(action) // dispatch route type + payload as it changes via back/next buttons usage
+      dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
     }
   }
 
-  const _possiblyChangeAddressBar = (locationState: LocationState, history: History) => {
-    if (shouldChangeAddressBar(locationState, currentPathname)) {
-      currentPathname = locationState.pathname
-      history.push({ pathname: currentPathname })
+  const _middlewareAttemptChangeUrl = (locationState: LocationState, history: History) => {
+    if (locationState.pathname !== currentPathname) { // IMPORTANT: nsure history hasn't already handled location change
+      currentPathname = locationState.pathname        // IMPORTANT: must happen before history.push() (to prevent double handling)
+      history.push({ pathname: currentPathname })     // change address bar corresponding to matched actions from middleware
     }
   }
 
+  // solely for use by exported `go` function in client code (see below)
   _exportedGo = (pathname: string) =>
     pathToAction(pathname, ROUTES, ROUTE_NAMES) // only pathname arg expected in client code
 
@@ -224,8 +224,8 @@ export default (
     enhancer,
 
     // returned only for tests (not for use in application code)
-    _possiblyChangeAddressBar,
-    _handleBrowserBackNext,
+    _middlewareAttemptChangeUrl,
+    _historyAttemptDispatchAction,
     _exportedGo,
     windowDocument,
     history,
