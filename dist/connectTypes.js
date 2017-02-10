@@ -21,13 +21,13 @@ var _objectValues = require('./pure-utils/objectValues');
 
 var _objectValues2 = _interopRequireDefault(_objectValues);
 
-var _changePageTitle = require('./dom-utils/changePageTitle');
+var _changePageTitle = require('./pure-utils/changePageTitle');
 
 var _changePageTitle2 = _interopRequireDefault(_changePageTitle);
 
-var _changeAddressBar = require('./dom-utils/changeAddressBar');
+var _shouldChangeAddressBar = require('./pure-utils/shouldChangeAddressBar');
 
-var _changeAddressBar2 = _interopRequireDefault(_changeAddressBar);
+var _shouldChangeAddressBar2 = _interopRequireDefault(_shouldChangeAddressBar);
 
 var _createHistoryAction = require('./action-creators/createHistoryAction');
 
@@ -165,7 +165,7 @@ exports.default = function (history) {
 
         // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
         // between BROWSER back/forward button usage vs middleware-generated actions
-        currentPathname = (0, _changeAddressBar2.default)(nextState[locationKey], currentPathname, HISTORY);
+        _possiblyChangeAddressBar(nextState[locationKey], HISTORY);
         (0, _changePageTitle2.default)(windowDocument, nextState[titleKey]);
 
         return nextAction;
@@ -220,6 +220,13 @@ exports.default = function (history) {
     }
   };
 
+  var _possiblyChangeAddressBar = function _possiblyChangeAddressBar(locationState, history) {
+    if ((0, _shouldChangeAddressBar2.default)(locationState, currentPathname)) {
+      currentPathname = locationState.pathname;
+      history.push({ pathname: currentPathname });
+    }
+  };
+
   _exportedGo = function _exportedGo(pathname) {
     return (0, _pathToAction3.default)(pathname, ROUTES, ROUTE_NAMES);
   }; // only pathname arg expected in client code
@@ -234,6 +241,7 @@ exports.default = function (history) {
     enhancer: enhancer,
 
     // returned only for tests (not for use in application code)
+    _possiblyChangeAddressBar: _possiblyChangeAddressBar,
     _handleBrowserBackNext: _handleBrowserBackNext,
     _exportedGo: _exportedGo,
     windowDocument: windowDocument,

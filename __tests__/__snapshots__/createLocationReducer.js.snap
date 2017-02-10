@@ -14,20 +14,3 @@ Object {
   "type": "SECOND",
 }
 `;
-
-exports[`test createLocationReducer() 1`] = `
-Object {
-  "backNext": true,
-  "load": true,
-  "pathname": "/second/bar",
-  "payload": Object {
-    "param": "bar",
-  },
-  "prev": Object {
-    "pathname": "/first",
-    "payload": Object {},
-    "type": "FIRST",
-  },
-  "type": "SECOND",
-}
-`;

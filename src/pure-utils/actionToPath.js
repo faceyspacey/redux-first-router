@@ -20,17 +20,19 @@ export default (action: Action, routesMap: RoutesMap): string => {
 
 const _payloadToParams = (route: RouteObject, params: Payload = {}): Params =>
   Object.keys(params).reduce((sluggifedParams, key) => {
-    if (typeof params[key] === 'number') {
-      sluggifedParams[key] = params[key]
-    }
-    else if (route.capitalizedWords === true) {
-      sluggifedParams[key] = params[key].replace(/ /g, '-').toLowerCase()
-    }
-    else if (typeof route.toPath === 'function') {
-      sluggifedParams[key] = route.toPath(params[key], key)
-    }
-    else {
-      sluggifedParams[key] = params[key]
+    if (typeof params[key] !== 'undefined') {
+      if (typeof params[key] === 'number') {
+        sluggifedParams[key] = params[key]
+      }
+      else if (route.capitalizedWords === true) {
+        sluggifedParams[key] = params[key].replace(/ /g, '-').toLowerCase()
+      }
+      else if (typeof route.toPath === 'function') {
+        sluggifedParams[key] = route.toPath(params[key], key)
+      }
+      else if (typeof params[key] === 'string') {
+        sluggifedParams[key] = params[key]
+      }
     }
 
     return sluggifedParams
