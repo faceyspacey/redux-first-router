@@ -12,7 +12,8 @@ export default (doc: Document, title: string): ?string => {
 
 
 export const getDocument = (): Document => {
-  const isSSRTest = process.env.NODE_ENV === 'test'
+  // $FlowGlobal
+  const isSSRTest = process.env.NODE_ENV === 'test' // $FlowGlobal
     && typeof CONFIG !== 'undefined'
     && CONFIG.isSSR
 

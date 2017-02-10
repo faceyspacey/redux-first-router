@@ -1,4 +1,4 @@
-module.exports = (wallaby) => {
+module.exports = wallaby => {
   // Babel, jest-cli and some other modules are located under
   // react-scripts/node_modules, so need to let node.js know about it
   const path = require('path')
