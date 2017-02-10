@@ -1,10 +1,12 @@
 {
   "name": "pure-redux-router",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    ".flowconfig",
+    "flowInterface.js"
   ],
   "scripts": {
     "push": "git add --all && git commit -a -m 'build' && git push",
