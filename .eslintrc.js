@@ -888,7 +888,7 @@ module.exports = {
     // require parens in arrow function arguments
     // http://eslint.org/docs/rules/arrow-parens
     'arrow-parens': ['error', 'as-needed', {
-      requireForBlockBody: true,
+      requireForBlockBody: false,
     }],
 
     // require space before/after arrow function's arrow

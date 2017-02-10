@@ -1,14 +1,16 @@
 {
   "name": "pure-redux-router",
-  "version": "1.0.11",
+  "version": "1.0.14",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "scripts": {
     "push": "git add --all && git commit -a -m 'build' && git push",
+    "prepublish": "npm run clean && npm run build && npm run flow-copy",
     "build": "babel src -d dist",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "clean": "rimraf dist && mkdir dist"
   },
   "repository": {
     "type": "git",
@@ -38,11 +40,12 @@
     "flow-copy-source": "^1.1.0",
     "history": "^4.5.1",
     "jest": "^18.1.0",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "rimraf": "^2.5.4"
   },
   "peerDependencies": {
     "history": "^4.3.0",
-    "redux": "3.x"
+    "redux": "^3.x"
   },
   "jest": {
     "verbose": true,

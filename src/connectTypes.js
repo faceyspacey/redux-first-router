@@ -1,3 +1,6 @@
+// @flow
+import type { Dispatch, Store, Middleware, StoreEnhancer } from 'redux'
+
 import pathToAction from './pure-utils/pathToAction'
 import nestAction from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
@@ -12,7 +15,18 @@ import createMiddlewareAction from './action-creators/createMiddlewareAction'
 import createLocationReducer, { getInitialState } from './createLocationReducer'
 import { NOT_FOUND } from './actions'
 
-import type { LocationState } from './flow-types'
+import type {
+  RoutesMap,
+  Routes,
+  RouteNames,
+  Options,
+  PlainAction,
+  Location,
+  LocationState,
+  History,
+  HistoryLocation,
+  Document,
+} from './flow-types'
 
 
 /** PRIMARY EXPORT - `connectTypes(history, routeMap, options)`:
@@ -57,7 +71,11 @@ import type { LocationState } from './flow-types'
  *  near-pure utility functions.
 */
 
-export default (history, routes = {}, options = {}) => {
+export default (
+  history: History,
+  routesMap: RoutesMap = {},
+  options: Options = {},
+) => {
   if (process.env.NODE_ENV !== 'production') {
     if (!history) {
       throw new Error(`
@@ -72,22 +90,26 @@ export default (history, routes = {}, options = {}) => {
 
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
 
-  let currentPathname = history.location.pathname             // very important: used for comparison to determine address bar changes
-  let prevLocation = { pathname: '', type: '', payload: {} }  // provides previous location state in location reducer
+  let currentPathname: string = history.location.pathname     // very important: used for comparison to determine address bar changes
+  let prevLocation: Location = {                              // provides previous location state in location reducer
+    pathname: '',
+    type: '',
+    payload: {},
+  }
 
-  const HISTORY = history                                     // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesDict, history)
-  const ROUTES_MAP = routes                                   // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
-  const ROUTE_NAMES = Object.keys(ROUTES_MAP)                 // ['HOME', 'INFO', 'ETC']
-  const ROUTES = objectValues(ROUTES_MAP)                     // ['/home', '/info/:param/', '/etc/:etc']
-  const windowDocument = getDocument()                        // get plain object for window.document if server side
+  const HISTORY: History = history                            // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesMap, history)
+  const ROUTES_MAP: RoutesMap = routesMap                     // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
+  const ROUTE_NAMES: RouteNames = Object.keys(ROUTES_MAP)     // ['HOME', 'INFO', 'ETC']
+  const ROUTES: Routes = objectValues(ROUTES_MAP)             // ['/home', '/info/:param/', '/etc/:etc']
+  const windowDocument: Document = getDocument()              // get plain object for window.document if server side
 
   const {
     onBackNext,
     location: locationKey = 'location',
     title: titleKey = 'title',
-  } = options
+  }: Options = options
 
-  const { type, payload } = pathToAction(currentPathname, ROUTES, ROUTE_NAMES)
+  const { type, payload }: PlainAction = pathToAction(currentPathname, ROUTES, ROUTE_NAMES)
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload)
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, ROUTES_MAP)
 
@@ -99,7 +121,7 @@ export default (history, routes = {}, options = {}) => {
    *      avoiding collisions with simultaneous browser history changes
   */
 
-  const middleware = store => next => (action) => {
+  const middleware: Middleware<*, *> = store => next => action => {
     if (action.error && isLocationAction(action)) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn('pure-redux-router: location update did not dispatch as your action has an error.')
@@ -141,7 +163,7 @@ export default (history, routes = {}, options = {}) => {
    *  2)  on load of the app dispatches an action corresponding to the initial url
   */
 
-  const enhancer = createStore => (reducer, preloadedState, enhancer) => {
+  const enhancer: StoreEnhancer<*, *> = createStore => (reducer, preloadedState, enhancer): Store<*, *> => {
     const store = createStore(reducer, preloadedState, enhancer)
 
     const state = store.getState()
@@ -166,7 +188,7 @@ export default (history, routes = {}, options = {}) => {
 
   /* INTERNAL UTILITY FUNCTIONS (THEY ARE IN THIS FILE BECAUSE THEY RELY ON OUR ENCLOSED STATE) **/
 
-  const _handleBrowserBackNext = (dispatch, location) => {
+  const _handleBrowserBackNext = (dispatch: Dispatch<*>, location: HistoryLocation) => {
     if (location.pathname !== currentPathname) { // insure middleware hasn't already handled location change
       if (typeof onBackNext === 'function') {
         onBackNext(location)

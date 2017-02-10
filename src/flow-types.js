@@ -18,6 +18,12 @@ export type RoutesMap = {
 export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
+export type Options = {
+  onBackNext?: (HistoryLocation) => void,
+  title?: string,
+  location?: string,
+}
+
 export type Params = Object // eslint-disable-line flowtype/no-weak-types
 export type Payload = Object // eslint-disable-line flowtype/no-weak-types
 
@@ -54,16 +60,25 @@ export type Action = {
 export type PlainAction = {
   type: string,
   payload: Payload,
-  meta?: Object, // eslint-disable-line flowtype/no-weak-types
+  meta?: Meta, // eslint-disable-line flowtype/no-weak-types
 }
 
 export type Listener = ({ pathname: string }) => void
 export type Listen = (Listener) => void
 export type Push = ({ pathname: string }) => void
+export type GoBack = () => void
 
 export type History = {
   listen: Listen,
   push: Push,
+  goBack: GoBack,
+  location: {
+    pathname: string,
+  },
+}
+
+export type HistoryLocation = {
+  pathname: string,
 }
 
 export type Document = Object // eslint-disable-line flowtype/no-weak-types

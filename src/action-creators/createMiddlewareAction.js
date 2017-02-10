@@ -1,12 +1,12 @@
 // @flow
-import type { PlainAction, RoutesMap, Location, Action } from '../flow-types'
+import type { RoutesMap, Location, Action } from '../flow-types'
 import actionToPath from '../pure-utils/actionToPath'
 import nestAction from '../pure-utils/nestAction'
 import { NOT_FOUND } from '../actions'
 
 
 export default (
-  action: PlainAction,
+  action: Object, // eslint-disable-line flowtype/no-weak-types
   routesMap: RoutesMap,
   prevLocation: Location,
 ): Action => {

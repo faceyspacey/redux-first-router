@@ -27,5 +27,11 @@ Object.defineProperty(exports, 'go', {
     return _actions.go;
   }
 });
+Object.defineProperty(exports, 'back', {
+  enumerable: true,
+  get: function get() {
+    return _actions.back;
+  }
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
