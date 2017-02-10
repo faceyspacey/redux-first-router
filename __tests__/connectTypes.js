@@ -59,6 +59,7 @@ describe('middleware', () => {
         prev: { pathname: '', type: '', payload: {} },
         load: undefined,
         backNext: undefined,
+        routesMap: { FIRST: '/first', SECOND: '/second/:param' },
       },
       title: 'title: SECOND',
     })

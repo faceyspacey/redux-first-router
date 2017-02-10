@@ -77,7 +77,7 @@ export default (
   if (process.env.NODE_ENV !== 'production') {
     if (!history) {
       throw new Error(`
-        [pure-redux-rouer] invalid \`history\` agument. Using the 'history' package on NPM,
+        [pure-redux-router] invalid \`history\` agument. Using the 'history' package on NPM,
         please provide a \`history\` object as a second parameter. The object will be the
         return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
         See: https://github.com/mjackson/history`,
@@ -108,7 +108,7 @@ export default (
   }: Options = options
 
   const { type, payload }: PlainAction = pathToAction(currentPathname, ROUTES, ROUTE_NAMES)
-  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload)
+  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, ROUTES_MAP)
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, ROUTES_MAP)
 
 

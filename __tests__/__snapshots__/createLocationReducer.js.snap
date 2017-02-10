@@ -11,6 +11,10 @@ Object {
     "payload": Object {},
     "type": "FIRST",
   },
+  "routesMap": Object {
+    "FIRST": "/first/",
+    "SECOND": "/second/:param",
+  },
   "type": "SECOND",
 }
 `;

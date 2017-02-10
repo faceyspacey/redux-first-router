@@ -18,6 +18,7 @@ export default (
       prev: action.meta.location.prev,
       load: action.meta.location.load,
       backNext: action.meta.location.backNext,
+      routesMap,
     }
   }
 
@@ -29,6 +30,7 @@ export const getInitialState = (
   currentPathname: string,
   type: string,
   payload: Payload,
+  routesMap: RoutesMap,
 ): LocationState => ({
   pathname: currentPathname,
   type,
@@ -40,5 +42,6 @@ export const getInitialState = (
   },
   load: undefined,
   backNext: undefined,
+  routesMap,
 })
 

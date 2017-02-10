@@ -116,6 +116,10 @@ Object {
       "payload": Object {},
       "type": "",
     },
+    "routesMap": Object {
+      "FIRST": "/first",
+      "SECOND": "/second/:param",
+    },
     "type": "SECOND",
   },
   "title": "title: SECOND",
@@ -157,6 +161,10 @@ Object {
     "pathname": "/first",
     "payload": Object {},
     "type": "FIRST",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
   },
   "type": "SECOND",
 }
