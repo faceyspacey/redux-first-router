@@ -6,8 +6,8 @@ import nestAction from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
 import objectValues from './pure-utils/objectValues'
 
-import changePageTitle, { getDocument } from './dom-utils/changePageTitle'
-import changeAddressBar from './dom-utils/changeAddressBar'
+import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
+import shouldChangeAddressBar from './pure-utils/shouldChangeAddressBar'
 
 import createHistoryAction from './action-creators/createHistoryAction'
 import createMiddlewareAction from './action-creators/createMiddlewareAction'
@@ -150,7 +150,7 @@ export default (
 
     // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
     // between BROWSER back/forward button usage vs middleware-generated actions
-    currentPathname = changeAddressBar(nextState[locationKey], currentPathname, HISTORY)
+    _possiblyChangeAddressBar(nextState[locationKey], HISTORY)
     changePageTitle(windowDocument, nextState[titleKey])
 
     return nextAction
@@ -203,6 +203,13 @@ export default (
     }
   }
 
+  const _possiblyChangeAddressBar = (locationState: LocationState, history: History) => {
+    if (shouldChangeAddressBar(locationState, currentPathname)) {
+      currentPathname = locationState.pathname
+      history.push({ pathname: currentPathname })
+    }
+  }
+
   _exportedGo = (pathname: string) =>
     pathToAction(pathname, ROUTES, ROUTE_NAMES) // only pathname arg expected in client code
 
@@ -217,6 +224,7 @@ export default (
     enhancer,
 
     // returned only for tests (not for use in application code)
+    _possiblyChangeAddressBar,
     _handleBrowserBackNext,
     _exportedGo,
     windowDocument,

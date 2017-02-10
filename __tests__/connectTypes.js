@@ -160,6 +160,31 @@ describe('middleware', () => {
 })
 
 
+describe('middleware -> _possiblyChangeAddressBar()', () => {
+  it('when pathname changes push new pathname on to addressbar', () => {
+    const { _possiblyChangeAddressBar } = setup('/')
+    const locationState = { pathname: '/foo' }
+    const history = []
+
+    _possiblyChangeAddressBar(locationState, history)
+
+    console.log(history)
+    expect(history).toEqual([{ pathname: '/foo' }])
+  })
+
+  it('when pathname does not change, do not push pathname on to address bar', () => {
+    const { _possiblyChangeAddressBar } = setup('/foo')
+    const locationState = { pathname: '/foo' }
+    const history = []
+
+    _possiblyChangeAddressBar(locationState, history)
+
+    console.log(history)
+    expect(history).toEqual([])
+  })
+})
+
+
 describe('enhancer', () => {
   it('dispatches location-aware action when store is first created so app is location aware on load', () => {
     const { enhancer, reducer: locationReducer } = setup('/first')
@@ -263,7 +288,7 @@ describe('enhancer', () => {
 })
 
 
-describe('enhancer -> _handleBrowserBackNext', () => {
+describe('enhancer -> _handleBrowserBackNext()', () => {
   it('dispatches action matching pathname when history location changes', () => {
     const dispatch = jest.fn()
     const historyLocation = { pathname: '/second/foo' }
