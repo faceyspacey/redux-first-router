@@ -127,7 +127,7 @@ export default (
 
     // THE MAGIC: dispatched action matches a connected type, so we generate a location-aware action and also
     // as a result update location reducer state.
-    else if (routesMap[action.type]) {
+    else if (routesMap[action.type] && !isLocationAction(action)) {
       action = createMiddlewareAction(action, routesMap, prevLocation)
       prevLocation = action.meta.location.current
     }
