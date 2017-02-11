@@ -1,16 +1,15 @@
 // @flow
-import type { Routes, RouteNames, Location, Action } from '../flow-types'
+import type { RoutesMap, Location, Action } from '../flow-types'
 import pathToAction from '../pure-utils/pathToAction'
 import nestAction from '../pure-utils/nestAction'
 
 
 export default (
   pathname: string,
-  routes: Routes,
-  routeNames: RouteNames,
+  routesMap: RoutesMap,
   prevLocation: Location,
   kind: string,
 ): Action => {
-  const action = pathToAction(pathname, routes, routeNames)
+  const action = pathToAction(pathname, routesMap)
   return nestAction(pathname, action, prevLocation, kind)
 }

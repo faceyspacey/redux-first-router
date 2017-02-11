@@ -58,19 +58,23 @@ it('nestAction(pathname, action, location)', () => {
 
 describe('pathToAction(path, routes, routeNames)', () => {
   it('parse path into action using routePath without /:param segment', () => {
-    const routes = ['/info', '/info/:param/']
-    const routeNames = ['INFO', 'INFO_PARAM']
+    const routesMap = {
+      INFO: '/info',
+      INFO_PARAM: '/info/:param',
+    }
 
-    const action = pathToAction('/info', routes, routeNames)
+    const action = pathToAction('/info', routesMap)
     expect(action).toEqual({ type: 'INFO', payload: {} })
     console.log(action)
   })
 
   it('parse path into action using routePath with /:param segment', () => {
-    const routes = ['/info', '/info/:param/']
-    const routeNames = ['INFO', 'INFO_PARAM']
+    const routesMap = {
+      INFO: '/info',
+      INFO_PARAM: '/info/:param',
+    }
 
-    const action = pathToAction('/info/foo', routes, routeNames)
+    const action = pathToAction('/info/foo', routesMap)
     expect(action).toEqual({ type: 'INFO_PARAM', payload: { param: 'foo' } })
     console.log(action)
   })

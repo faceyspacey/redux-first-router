@@ -5,12 +5,14 @@ import { NOT_FOUND } from '../src/actions'
 
 it('createHistoryAction() - returns action created when history/address_bar chanages', () => {
   const pathname = '/info/foo'
-  const routes = ['/info', '/info/:param/']
-  const routeNames = ['INFO', 'INFO_PARAM']
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
   const kind = 'backNext'
+  const routesMap = {
+    INFO: '/info',
+    INFO_PARAM: '/info/:param',
+  }
 
-  const action = createHistoryAction(pathname, routes, routeNames, prevLocation, kind)
+  const action = createHistoryAction(pathname, routesMap, prevLocation, kind)
 
   console.log(action)
   console.log(action.meta.location)

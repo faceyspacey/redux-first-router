@@ -1,14 +1,17 @@
 // @flow
 import pathToRegexp from 'path-to-regexp'
 import { NOT_FOUND } from '../actions'
-import type { Routes, RouteNames, PlainAction as Action } from '../flow-types'
+import objectValues from './objectValues'
+import type { RoutesMap, PlainAction as Action } from '../flow-types'
 
 
 export default (
   path: string,
-  routes: Routes,
-  routeNames: RouteNames,
+  routesMap: RoutesMap,
 ): Action => {
+  const routes = objectValues(routesMap)
+  const routeTypes = Object.keys(routesMap)
+
   let i = 0
   let match
   const keys = []
@@ -26,7 +29,7 @@ export default (
 
     const capitalizedWords = typeof routes[i] === 'object' && routes[i].capitalizedWords
     const fromPath = routes[i] && typeof routes[i].fromPath === 'function' && routes[i].fromPath
-    const type = routeNames[i]
+    const type = routeTypes[i]
 
     const payload = keys.reduce((payload, key, index) => {
       let value = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index

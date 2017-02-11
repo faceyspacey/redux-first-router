@@ -4,7 +4,6 @@ import type { Dispatch, Store, Middleware, StoreEnhancer } from 'redux'
 import pathToAction from './pure-utils/pathToAction'
 import nestAction from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
-import objectValues from './pure-utils/objectValues'
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
 
 import createHistoryAction from './action-creators/createHistoryAction'
@@ -15,8 +14,6 @@ import { NOT_FOUND } from './actions'
 
 import type {
   RoutesMap,
-  Routes,
-  RouteNames,
   Options,
   PlainAction,
   Location,
@@ -97,8 +94,6 @@ export default (
 
   const HISTORY: History = history                            // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesMap, history)
   const ROUTES_MAP: RoutesMap = routesMap                     // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
-  const ROUTE_NAMES: RouteNames = Object.keys(ROUTES_MAP)     // ['HOME', 'INFO', 'ETC']
-  const ROUTES: Routes = objectValues(ROUTES_MAP)             // ['/home', '/info/:param/', '/etc/:etc']
   const windowDocument: Document = getDocument()              // get plain object for window.document if server side
 
   const {
@@ -107,7 +102,7 @@ export default (
     title: titleKey = 'title',
   }: Options = options
 
-  const { type, payload }: PlainAction = pathToAction(currentPathname, ROUTES, ROUTE_NAMES)
+  const { type, payload }: PlainAction = pathToAction(currentPathname, ROUTES_MAP)
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, ROUTES_MAP)
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, ROUTES_MAP)
@@ -176,7 +171,7 @@ export default (
     HISTORY.listen(_historyAttemptDispatchAction.bind(null, dispatch))
 
     // dispatch the first location-aware action so initial app state is based on the url on load
-    const action = createHistoryAction(currentPathname, ROUTES, ROUTE_NAMES, prevLocation, 'load')
+    const action = createHistoryAction(currentPathname, ROUTES_MAP, prevLocation, 'load')
     prevLocation = action.meta.location.current
     store.dispatch(action)
 
@@ -191,7 +186,7 @@ export default (
       currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
 
       // THE MAGIC: parse the address bar path into a matched action
-      const action = createHistoryAction(location.pathname, ROUTES, ROUTE_NAMES, prevLocation, 'backNext')
+      const action = createHistoryAction(location.pathname, ROUTES_MAP, prevLocation, 'backNext')
       prevLocation = action.meta.location.current
       dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
 
@@ -210,7 +205,7 @@ export default (
 
   // solely for use by exported `go` function in client code (see below)
   _exportedGo = (pathname: string) =>
-    pathToAction(pathname, ROUTES, ROUTE_NAMES) // only pathname arg expected in client code
+    pathToAction(pathname, ROUTES_MAP) // only pathname arg expected in client code
 
   _history = HISTORY
 
