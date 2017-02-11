@@ -109,6 +109,7 @@ export default (
 
   const { type, payload }: PlainAction = pathToAction(currentPathname, ROUTES, ROUTE_NAMES)
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, ROUTES_MAP)
+
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, ROUTES_MAP)
 
 
@@ -163,7 +164,6 @@ export default (
 
   const enhancer: StoreEnhancer<*, *> = createStore => (reducer, preloadedState, enhancer): Store<*, *> => {
     const store = createStore(reducer, preloadedState, enhancer)
-
     const state = store.getState()
     const location = state[locationKey]
 
@@ -188,22 +188,21 @@ export default (
 
   const _historyAttemptDispatchAction = (dispatch: Dispatch<*>, location: HistoryLocation) => {
     if (location.pathname !== currentPathname) {      // IMPORTANT: insure middleware hasn't already handled location change
-      if (typeof onBackNext === 'function') {
-        onBackNext(location)
-      }
+      currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
 
       // THE MAGIC: parse the address bar path into a matched action
       const action = createHistoryAction(location.pathname, ROUTES, ROUTE_NAMES, prevLocation, 'backNext')
-
       prevLocation = action.meta.location.current
-      currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
-
       dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
+
+      if (typeof onBackNext === 'function') {
+        onBackNext(location)
+      }
     }
   }
 
   const _middlewareAttemptChangeUrl = (locationState: LocationState, history: History) => {
-    if (locationState.pathname !== currentPathname) { // IMPORTANT: nsure history hasn't already handled location change
+    if (locationState.pathname !== currentPathname) { // IMPORTANT: insure history hasn't already handled location change
       currentPathname = locationState.pathname        // IMPORTANT: must happen before history.push() (to prevent double handling)
       history.push({ pathname: currentPathname })     // change address bar corresponding to matched actions from middleware
     }

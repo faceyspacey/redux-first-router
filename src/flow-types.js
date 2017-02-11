@@ -34,6 +34,7 @@ export type LocationState = {
   prev: Location,
   load?: true,
   backNext?: true,
+  routesMap: RoutesMap,
 }
 
 export type Location = {

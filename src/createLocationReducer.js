@@ -22,6 +22,10 @@ export default (
     }
   }
 
+  // insure complete routesMap with routes containing functions makes it
+  // past hydration from server where JSON.stringify() on the server removes functions
+  state.routesMap = routesMap
+
   return state
 }
 
