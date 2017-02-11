@@ -26,8 +26,8 @@ import type {
 
 /** PRIMARY EXPORT - `connectTypes(history, routeMap, options)`:
  *
- *  PURPOSE: to sync actions to the address bar and vice versa,
- *  using the pairing of action types to express-style routePaths bi-directionally.
+ *  PURPOSE: to provide set-it-forget-it syncing of actions to the address bar and vice
+ *  versa, using the pairing of action types to express-style routePaths bi-directionally.
  *
  *  EXAMPLE:
  *  with routeMap `{ FOO: '/foo/:paramName' }`,
@@ -37,21 +37,21 @@ import type {
  *
  *  AND
  *
- *  `{ type: 'FOO', payload: { paramName: 'bar' } }`
+ *  action `{ type: 'FOO', payload: { paramName: 'bar' } }`
  *  becomes: pathname '/foo/bar'
  *
  *
- *  HOW: Firstly, the middleware listens to received actions and then converts them to
- *  pathnames it applies to the address bar. It also formats the action to be location-aware,
- *  primarily by including a matching pathname, which the location reducer listens to, and
- *  which user reducers can also make use of.
+ *  HOW: Firstly, the middleware listens to received actions and then converts them to the
+ *  pathnames it applies to the address bar (via `history.push({ pathname })`. It also formats
+ *  the action to be location-aware, primarily by including a matching pathname, which the
+ *  location reducer listens to, and which user reducers can also make use of.
  *
  *  However, user reducers typically only need to  be concerned with the type
  *  and payload like they are accustomed to. That's the whole purpose of this package.
  *  The idea is by matching action types to routePaths, it's set it and forget it!
  *
  *  Secondly, a history listener listens to URL changes and dispatches actions with
- *  types and payloads that match the pathname. Hurray!
+ *  types and payloads that match the pathname. Hurray! Browse back/next buttons now work!
  *
  *  Both the history listener and middleware are made to not get into each other's way, i.e.
  *  avoiding double dispatching and double address bar changes.
@@ -71,29 +71,28 @@ export default (
   routesMap: RoutesMap = {},
   options: Options = {},
 ) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (!history) {
-      throw new Error(`
-        [pure-redux-router] invalid \`history\` agument. Using the 'history' package on NPM,
-        please provide a \`history\` object as a second parameter. The object will be the
-        return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
-        See: https://github.com/mjackson/history`,
-      )
-    }
+  if (process.env.NODE_ENV !== 'production' && !history) {
+    throw new Error(`
+      [pure-redux-router] invalid \`history\` agument. Using the 'history' package on NPM,
+      please provide a \`history\` object as a second parameter. The object will be the
+      return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
+      See: https://github.com/mjackson/history`,
+    )
   }
 
 
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
-
   let currentPathname: string = history.location.pathname     // very important: used for comparison to determine address bar changes
-  let prevLocation: Location = {                              // provides previous location state in location reducer
+  let prevLocation: Location = {                              // maintains previous location state in location reducer
     pathname: '',
     type: '',
     payload: {},
   }
 
-  const HISTORY: History = history                            // history object created via createBrowserHistory or createMemoryHistory (using history package) passed to connectTypes(routesMap, history)
-  const ROUTES_MAP: RoutesMap = routesMap                     // {HOME: '/home', INFO: '/info/:param'} -- our route "constants" defined by our user (typically in configureStore.js)
+  const { type, payload }: PlainAction = pathToAction(currentPathname, routesMap)
+  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, routesMap)
+  const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
+
   const windowDocument: Document = getDocument()              // get plain object for window.document if server side
 
   const {
@@ -101,11 +100,6 @@ export default (
     location: locationKey = 'location',
     title: titleKey = 'title',
   }: Options = options
-
-  const { type, payload }: PlainAction = pathToAction(currentPathname, ROUTES_MAP)
-  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, ROUTES_MAP)
-
-  const reducer = createLocationReducer(INITIAL_LOCATION_STATE, ROUTES_MAP)
 
 
   /** MIDDLEWARE
@@ -132,10 +126,9 @@ export default (
     }
 
     // THE MAGIC: dispatched action matches a connected type, so we generate a location-aware action and also
-    // as a result update location reducer state. (ALSO NOTE: we check if the received action `isLocationAction`
-    // to prevent double dispatches coinciding with browser history changes within `_historyAttemptDispatchAction`)
-    else if (ROUTES_MAP[action.type] && !isLocationAction(action)) {
-      action = createMiddlewareAction(action, ROUTES_MAP, prevLocation)
+    // as a result update location reducer state.
+    else if (routesMap[action.type]) {
+      action = createMiddlewareAction(action, routesMap, prevLocation)
       prevLocation = action.meta.location.current
     }
 
@@ -144,7 +137,7 @@ export default (
 
     // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
     // between BROWSER back/forward button usage vs middleware-generated actions
-    _middlewareAttemptChangeUrl(nextState[locationKey], HISTORY)
+    _middlewareAttemptChangeUrl(nextState[locationKey], history)
     changePageTitle(windowDocument, nextState[titleKey])
 
     return nextAction
@@ -168,10 +161,10 @@ export default (
     }
 
     const dispatch = store.dispatch.bind(store)
-    HISTORY.listen(_historyAttemptDispatchAction.bind(null, dispatch))
+    history.listen(_historyAttemptDispatchAction.bind(null, dispatch))
 
     // dispatch the first location-aware action so initial app state is based on the url on load
-    const action = createHistoryAction(currentPathname, ROUTES_MAP, prevLocation, 'load')
+    const action = createHistoryAction(currentPathname, routesMap, prevLocation, 'load')
     prevLocation = action.meta.location.current
     store.dispatch(action)
 
@@ -186,7 +179,7 @@ export default (
       currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
 
       // THE MAGIC: parse the address bar path into a matched action
-      const action = createHistoryAction(location.pathname, ROUTES_MAP, prevLocation, 'backNext')
+      const action = createHistoryAction(location.pathname, routesMap, prevLocation, 'backNext')
       prevLocation = action.meta.location.current
       dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
 
@@ -205,9 +198,9 @@ export default (
 
   // solely for use by exported `go` function in client code (see below)
   _exportedGo = (pathname: string) =>
-    pathToAction(pathname, ROUTES_MAP) // only pathname arg expected in client code
+    pathToAction(pathname, routesMap) // only pathname arg expected in client code
 
-  _history = HISTORY
+  _history = history
 
 
   /* RETURN TRIUMVERATE */
@@ -226,13 +219,15 @@ export default (
   }
 }
 
-/** SIDE EFFECT:
- *  Client code needs a simple go to path action creator.
- *  `exportedGo` gets replaced with a function aware of private instance variables.
- *  NOTE: it's primarily for use by https://github.com/celebvidy/pure-redux-router-link 's `<Link /> component.
+/** SIDE EFFECTS:
+ *  Client code needs a simple `go` to path action creator and `back` function because it's convenient for
+ *  prototyping. It will not harm SSR, so long as you don't use it server side. So that means DO NOT
+ *  simulate clicking links server side--and dont do that, dispatch actions to setup state instead.
  *
- *  NOTE: it will not harm SSR, so long as you don't use it server side. So that means DO NOT
- *  simulate clicking links server side--and dont do that, dispatch actions instead).
+ *  THE IDIOMATIC WAY: instead use https://github.com/celebvidy/pure-redux-router-link 's `<Link />`
+ *  component to generate SEO friendly urls. As its `href` prop, you pass it a path, array of path
+ *  segments or action, and internally it will use `connectTypes` to change the address bar and
+ *  dispatch the correct final action from middleware.
 */
 
 let _exportedGo
@@ -242,11 +237,9 @@ export const go = (pathname: string) =>
   _exportedGo(pathname)
 
 
-/** SIDE EFFECT:
- *  it's only recommended you use `back` when prototyping--it's better to use the above mentioned <Link />
- *  component to generate SEO friendly urls with hrefs pointing to the previous URL. You can
- *  use your redux state to determine the previous URL. The location reducer will also contain the info.
- *  But if you must, this is here for convenience and it basically simulates the user pressing the browser
+/** NOTE: The better way to accomplish a back button is to use your redux state to determine
+ *  the previous URL. The location reducer will also contain relevant info. But if you must,
+ *  this is here for convenience and it basically simulates the user pressing the browser
  *  back button, which of course the system picks up and parses into an action.
  */
 

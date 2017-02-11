@@ -1,6 +1,7 @@
 // @no-flow
 // `CONFIG` global currently causes flow errors in user code
 // see: http://stackoverflow.com/questions/42154415/in-flow-npm-packages-whats-the-proper-way-to-suppress-issues-so-user-apps-don
+// NOTE: and yes, this isn't pure, but it's the only utility that isn't and it's close enough
 
 import type { Document } from '../flow-types'
 
