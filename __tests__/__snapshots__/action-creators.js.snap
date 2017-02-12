@@ -1,4 +1,4 @@
-exports[`test createHistoryAction() - returns action created when history/address_bar chanages 1`] = `
+exports[`test historyCreateAction() - returns action created when history/address_bar chanages 1`] = `
 Object {
   "meta": Object {
     "location": Object {
@@ -25,7 +25,7 @@ Object {
 }
 `;
 
-exports[`test createMiddlewareAction() - [action not matched to any routePath] 1`] = `
+exports[`test middlewareCreateAction() - [action not matched to any routePath] 1`] = `
 Object {
   "meta": Object {
     "location": Object {
@@ -52,7 +52,7 @@ Object {
 }
 `;
 
-exports[`test createMiddlewareAction() - returns action created when middleware detects connected/matched action.type 1`] = `
+exports[`test middlewareCreateAction() - returns action created when middleware detects connected/matched action.type 1`] = `
 Object {
   "meta": Object {
     "location": Object {

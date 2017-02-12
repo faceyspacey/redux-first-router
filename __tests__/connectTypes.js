@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 
 import setup from '../__test-helpers__/setup'
+import setupThunk from '../__test-helpers__/setupThunk'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
 import connectTypes from '../src/connectTypes'
@@ -286,6 +287,25 @@ describe('enhancer', () => {
     const createEnhancer = () => enhancer(createStore)(reducer)
     expect(createEnhancer).toThrowError()
   })
+
+  it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', () => {
+    const { enhancer, reducer: locationReducer } = setup('/first')
+
+    const createStore = (reducer /* , initialState, enhancer */) => ({ // eslint-disable-line arrow-parens
+      dispatch: jest.fn(),
+      getState: () => reducer(),
+    })
+
+    const reducer = (state = {}, action = {}) => ({
+      location: locationReducer(state.location, action),
+    })
+
+    const preloadedState = { location: {} }
+    enhancer(createStore)(reducer, preloadedState)
+
+    console.log(preloadedState)
+    expect(preloadedState.location.routesMap).toBeDefined()
+  })
 })
 
 
@@ -336,17 +356,118 @@ describe('enhancer -> _historyAttemptDispatchAction()', () => {
 })
 
 
-it('reducer EXISTS and works (see __tests__/createLocationReducer for all its tests)', () => {
-  const { reducer } = setup()
-  const {
-    action,
-    expectState,
-  } = reducerParameters('SECOND', '/second/bar')
+describe('thunk', () => {
+  it('middleware:attemptCallRouteThunk DOES calls thunk if locationState.load && !locationState.hasSSR', () => {
+    const thunk = jest.fn()
+    setupThunk('/second/bar', thunk)
 
-  const state = reducer(undefined, action)
+    console.log(thunk.mock.calls[0])
 
-  console.log(state)
-  expectState(state)
+    expect(thunk.mock.calls).not.toEqual([])
+    expect(thunk.mock.calls.length).toEqual(1)
+    expect(thunk.mock.calls[0].length).toEqual(2)
+  })
+
+  it('middleware:attemptCallRouteThunk does NOT call thunk if locationState.load && locationState.hasSSR', () => {
+    const thunk = jest.fn()
+
+    global.window.SSRtest = true
+    const { store } = setupThunk('/second/bar', thunk)
+    delete global.window.SSRtest
+
+    console.log(store.getState())
+    console.log(thunk.mock.calls)
+
+    expect(thunk.mock.calls).toEqual([])
+  })
+
+  it('middleware:attemptCallRouteThunk DOES call thunk if !locationState.load', () => {
+    const thunk = jest.fn()
+    const { store } = setupThunk('/first', thunk)
+
+    const action = { type: 'SECOND', payload: { param: 'bar' } }
+    store.dispatch(action)
+
+    console.log(store.getState())
+    console.log(thunk.mock.calls[0])
+
+    expect(thunk.mock.calls).not.toEqual([])
+    expect(thunk.mock.calls[0].length).toEqual(2)
+  })
+
+  it('attemptCallRouteThunk calls thunk with same `dispatch` argument as in middleware chain', () => {
+    const thunk = jest.fn((dispatch, getState) => {
+      const action = { type: 'THIRD', payload: { param: 'hurray' } }
+      dispatch(action)
+
+      return getState()
+    })
+
+    const { store } = setupThunk('/first', thunk)
+
+    // thunk will be called
+    const action = { type: 'SECOND', payload: { param: 'bar' } }
+    store.dispatch(action)
+
+    const { location } = store.getState()
+    console.log(location)
+
+    // expect state matched that was dispatched in thunk
+    expect(location.type).toEqual('THIRD')
+    expect(location.pathname).toEqual('/third/hurray')
+  })
+
+  it('simulate server side manual usage of thunk via `await connectTypes().thunk` (to be used when: locationState.load && locationState.hasSSR)', async () => {
+    const thunk = jest.fn(async (dispatch, getState) => {
+      const action = { type: 'THIRD', payload: { param: 'hurray' } }
+      dispatch(action)
+
+      return await getState()
+    })
+
+    global.window.SSRtest = true
+    const { store, thunk: ssrThunk } = setupThunk('/second/bar', thunk)
+    delete global.window.SSRtest
+
+    // verify thunk has not been called yet
+    const { location } = store.getState()
+    console.log(location)
+    expect(location.pathname).toEqual('/second/bar')
+
+    // verify our manual calling of thunk via `await` has been called to simulate server side usage
+    const state = await ssrThunk(store)
+    console.log(state)
+
+    expect(state.location.pathname).toEqual('/third/hurray')
+    expect(state.location.type).toEqual('THIRD')
+  })
+
+  it('verify server side call of `await connectTypes().thunk` returns a promise even if route does not have a thunk', async () => {
+    global.window.SSRtest = true
+    const { store, thunk: ssrThunk } = setupThunk('/first')
+    delete global.window.SSRtest
+
+    // promise resolving to undefined returned
+    const ret = await ssrThunk(store)
+    console.log(ret)
+    expect(ret).not.toBeDefined()
+  })
+})
+
+
+describe('reducer', () => {
+  it('reducer EXISTS and works (see __tests__/createLocationReducer for all its tests)', () => {
+    const { reducer } = setup()
+    const {
+      action,
+      expectState,
+    } = reducerParameters('SECOND', '/second/bar')
+
+    const state = reducer(undefined, action)
+
+    console.log(state)
+    expectState(state)
+  })
 })
 
 

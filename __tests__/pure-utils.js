@@ -1,4 +1,5 @@
 import isLocationAction from '../src/pure-utils/isLocationAction'
+import isServer from '../src/pure-utils/isServer'
 import objectValues from '../src/pure-utils/objectValues'
 import nestAction from '../src/pure-utils/nestAction'
 import pathToAction from '../src/pure-utils/pathToAction'
@@ -16,15 +17,22 @@ it('isLocationAction(action) if has meta.location object', () => {
   expect(ret).toBeTruthy()
 })
 
+it('isServer()', () => {
+  expect(isServer()).toEqual(false)
 
-it('objectValues(routes) converts dictionary of routes to an array of routes without the action type keys', () => {
-  const routes = {
+  global.window.SSRtest = true
+  expect(isServer()).toEqual(true)
+  delete global.window.SSRtest
+})
+
+it('objectValues(routesMap) converts map of routes to an array of routes without the action type keys', () => {
+  const routesMap = {
     ACTION_TYPE: '/foo/:bar',
     ACTION_TYPE_2: { path: '/path/:baz/', capitalizedWords: true },
   }
 
-  const ret = objectValues(routes)
-  expect(ret).toEqual([routes.ACTION_TYPE, routes.ACTION_TYPE_2])
+  const ret = objectValues(routesMap)
+  expect(ret).toEqual([routesMap.ACTION_TYPE, routesMap.ACTION_TYPE_2])
   console.log(ret)
 })
 
@@ -56,7 +64,7 @@ it('nestAction(pathname, action, location)', () => {
 })
 
 
-describe('pathToAction(path, routes, routeNames)', () => {
+describe('pathToAction(path, routesMap)', () => {
   it('parse path into action using routePath without /:param segment', () => {
     const routesMap = {
       INFO: '/info',
@@ -81,30 +89,33 @@ describe('pathToAction(path, routes, routeNames)', () => {
 
   it('parse path (/info/foo-bar) into action using route object containing capitalizedWords: true: payload: { param: "Foo Bar" }', () => {
     const path = '/info/foo-bar'
-    const routes = [{ path: '/info/:param/', capitalizedWords: true }]
-    const routeNames = ['INFO']
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/', capitalizedWords: true },
+    }
 
-    const action = pathToAction(path, routes, routeNames)
+    const action = pathToAction(path, routesMap)
     expect(action.payload.param).toEqual('Foo Bar')
     console.log(action)
   })
 
   it('parse path into action using route object containing fromPath() function', () => {
     const path = '/info/foo-bar'
-    const routes = [{ path: '/info/:param/', fromPath: (segment, key) => (`${segment} ${key}`).replace('-', ' ').toUpperCase() }]
-    const routeNames = ['INFO']
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/', fromPath: (segment, key) => (`${segment} ${key}`).replace('-', ' ').toUpperCase() },
+    }
 
-    const action = pathToAction(path, routes, routeNames)
+    const action = pathToAction(path, routesMap)
     expect(action.payload.param).toEqual('FOO BAR PARAM')
     console.log(action)
   })
 
   it('parse path containing number param into action with payload value set as integer instead of string', () => {
     const path = '/info/69'
-    const routes = ['/info/:param/']
-    const routeNames = ['INFO']
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/' },
+    }
 
-    const action = pathToAction(path, routes, routeNames)
+    const action = pathToAction(path, routesMap)
     expect(typeof action.payload.param).toEqual('number')
     expect(action.payload.param).toEqual(69)
     console.log(action)
@@ -112,10 +123,11 @@ describe('pathToAction(path, routes, routeNames)', () => {
 
   it('parsed path not found and return NOT_FOUND action.type: "@@pure-redux-router/NOT_FOUND"', () => {
     const path = '/info/foo/bar'
-    const routes = ['/info/:param/']
-    const routeNames = ['INFO']
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/' },
+    }
 
-    const action = pathToAction(path, routes, routeNames)
+    const action = pathToAction(path, routesMap)
     expect(action.type).toEqual(NOT_FOUND)
     console.log(action)
   })

@@ -1,18 +1,22 @@
 // @flow
-import type { Dispatch, Store, Middleware, StoreEnhancer } from 'redux'
+import type { Store, Middleware, StoreEnhancer } from 'redux'
 
 import pathToAction from './pure-utils/pathToAction'
 import nestAction from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
+import isServer from './pure-utils/isServer'
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
+import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
+import createThunk from './pure-utils/createThunk'
 
-import createHistoryAction from './action-creators/createHistoryAction'
-import createMiddlewareAction from './action-creators/createMiddlewareAction'
+import historyCreateAction from './action-creators/historyCreateAction'
+import middlewareCreateAction from './action-creators/middlewareCreateAction'
 
 import createLocationReducer, { getInitialState } from './createLocationReducer'
 import { NOT_FOUND } from './actions'
 
 import type {
+  Dispatch,
   RoutesMap,
   Options,
   PlainAction,
@@ -89,17 +93,19 @@ export default (
     payload: {},
   }
 
-  const { type, payload }: PlainAction = pathToAction(currentPathname, routesMap)
-  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, routesMap)
-  const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
-
-  const windowDocument: Document = getDocument()              // get plain object for window.document if server side
-
   const {
     onBackNext,
     location: locationKey = 'location',
     title: titleKey = 'title',
   }: Options = options
+
+  const { type, payload }: PlainAction = pathToAction(currentPathname, routesMap)
+  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, routesMap)
+
+  const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
+  const thunk = createThunk(routesMap, locationKey)
+
+  const windowDocument: Document = getDocument()              // get plain object for window.document if server side
 
 
   /** MIDDLEWARE
@@ -110,6 +116,8 @@ export default (
   */
 
   const middleware: Middleware<*, *> = store => next => action => {
+    const route = routesMap[action.type]
+
     if (action.error && isLocationAction(action)) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn('pure-redux-router: location update did not dispatch as your action has an error.')
@@ -125,10 +133,10 @@ export default (
       prevLocation = action.meta.location.current
     }
 
-    // THE MAGIC: dispatched action matches a connected type, so we generate a location-aware action and also
-    // as a result update location reducer state.
-    else if (routesMap[action.type] && !isLocationAction(action)) {
-      action = createMiddlewareAction(action, routesMap, prevLocation)
+    // THE MAGIC: dispatched action matches a connected type, so we generate a
+    // location-aware action and also as a result update location reducer state.
+    else if (route && !isLocationAction(action)) {
+      action = middlewareCreateAction(action, routesMap, prevLocation)
       prevLocation = action.meta.location.current
     }
 
@@ -139,6 +147,11 @@ export default (
     // between BROWSER back/forward button usage vs middleware-generated actions
     _middlewareAttemptChangeUrl(nextState[locationKey], history)
     changePageTitle(windowDocument, nextState[titleKey])
+
+    if (typeof route === 'object') {
+      const dispatch = middleware(store)(next) // re-create this function's position in the middleware chain
+      attemptCallRouteThunk(dispatch, store.getState, route)
+    }
 
     return nextAction
   }
@@ -151,6 +164,12 @@ export default (
   */
 
   const enhancer: StoreEnhancer<*, *> = createStore => (reducer, preloadedState, enhancer): Store<*, *> => {
+    // routesMap stored in location reducer will be stringified as it goes from the server to client
+    // and as a result functions in route objects will be removed--here's how we insure we bring them back
+    if (typeof window !== 'undefined' && preloadedState && preloadedState[locationKey]) {
+      preloadedState[locationKey].routesMap = routesMap
+    }
+
     const store = createStore(reducer, preloadedState, enhancer)
     const state = store.getState()
     const location = state[locationKey]
@@ -164,9 +183,11 @@ export default (
     history.listen(_historyAttemptDispatchAction.bind(null, dispatch))
 
     // dispatch the first location-aware action so initial app state is based on the url on load
-    const action = createHistoryAction(currentPathname, routesMap, prevLocation, 'load')
-    prevLocation = action.meta.location.current
-    store.dispatch(action)
+    if (!location.hasSSR || isServer()) { // only dispatch on client before SSR is setup, which passes state on to the client
+      const action = historyCreateAction(currentPathname, routesMap, prevLocation, 'load')
+      prevLocation = action.meta.location.current
+      store.dispatch(action)
+    }
 
     return store
   }
@@ -174,12 +195,12 @@ export default (
 
   /* INTERNAL UTILITY FUNCTIONS (THEY ARE IN THIS FILE BECAUSE THEY RELY ON OUR ENCLOSED STATE) **/
 
-  const _historyAttemptDispatchAction = (dispatch: Dispatch<*>, location: HistoryLocation) => {
+  const _historyAttemptDispatchAction = (dispatch: Dispatch, location: HistoryLocation) => {
     if (location.pathname !== currentPathname) {      // IMPORTANT: insure middleware hasn't already handled location change
       currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
 
       // THE MAGIC: parse the address bar path into a matched action
-      const action = createHistoryAction(location.pathname, routesMap, prevLocation, 'backNext')
+      const action = historyCreateAction(location.pathname, routesMap, prevLocation, 'backNext')
       prevLocation = action.meta.location.current
       dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
 
@@ -203,12 +224,13 @@ export default (
   _history = history
 
 
-  /* RETURN TRIUMVERATE */
+  /* RETURN  */
 
   return {
     reducer,
     middleware,
     enhancer,
+    thunk,
 
     // returned only for tests (not for use in application code)
     _middlewareAttemptChangeUrl,

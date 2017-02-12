@@ -1,6 +1,7 @@
 exports[`test createLocationReducer() - maintains address bar pathname state and current + previous matched location-aware actions 1`] = `
 Object {
   "backNext": true,
+  "hasSSR": undefined,
   "load": true,
   "pathname": "/second/bar",
   "payload": Object {

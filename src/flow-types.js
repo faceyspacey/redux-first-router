@@ -1,5 +1,8 @@
 // @flow
+import type { Dispatch as ReduxDispatch } from 'redux'
 
+export type Dispatch = ReduxDispatch<*>
+export type GetState = () => Object // eslint-disable-line flowtype/no-weak-types
 export type RouteString = string
 
 export type RouteObject = {
@@ -7,6 +10,7 @@ export type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
+  thunk?: (dispatch: Dispatch, getState: GetState) => void,
 }
 
 export type Route = RouteString | RouteObject
@@ -35,6 +39,7 @@ export type LocationState = {
   load?: true,
   backNext?: true,
   routesMap: RoutesMap,
+  hasSSR?: boolean,
 }
 
 export type Location = {

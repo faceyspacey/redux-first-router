@@ -75,6 +75,28 @@ Object {
 }
 `;
 
+exports[`fodo reducer EXISTS and works (see __tests__/createLocationReducer for all its tests) 1`] = `
+Object {
+  "backNext": true,
+  "hasSSR": true,
+  "load": true,
+  "pathname": "/second/bar",
+  "payload": Object {
+    "param": "bar",
+  },
+  "prev": Object {
+    "pathname": "/first",
+    "payload": Object {},
+    "type": "FIRST",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+  },
+  "type": "SECOND",
+}
+`;
+
 exports[`middleware dispatches location-aware action, changes address bar + document.title 1`] = `
 Object {
   "meta": Object {
@@ -106,6 +128,7 @@ exports[`middleware dispatches location-aware action, changes address bar + docu
 Object {
   "location": Object {
     "backNext": undefined,
+    "hasSSR": undefined,
     "load": undefined,
     "pathname": "/second/bar",
     "payload": Object {
@@ -149,9 +172,10 @@ Object {
 }
 `;
 
-exports[`test reducer EXISTS and works (see __tests__/createLocationReducer for all its tests) 1`] = `
+exports[`reducer reducer EXISTS and works (see __tests__/createLocationReducer for all its tests) 1`] = `
 Object {
   "backNext": true,
+  "hasSSR": true,
   "load": true,
   "pathname": "/second/bar",
   "payload": Object {
@@ -167,5 +191,267 @@ Object {
     "SECOND": "/second/:param",
   },
   "type": "SECOND",
+}
+`;
+
+exports[`test reducer EXISTS and works (see __tests__/createLocationReducer for all its tests) 1`] = `
+Object {
+  "backNext": true,
+  "hasSSR": undefined,
+  "load": true,
+  "pathname": "/second/bar",
+  "payload": Object {
+    "param": "bar",
+  },
+  "prev": Object {
+    "pathname": "/first",
+    "payload": Object {},
+    "type": "FIRST",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with correct dispatch and getState arguments 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with dispatch and getState arguments 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with same \`dispatch argument as in middleware chain 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with same \`dispatch\` argument as in middleware chain 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with same dispatch and getState arguments 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with same dispatch argument  1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with same dispatch argument as in middleware c 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`thunk attemptCallRouteThunk calls thunk with same dispatch argument as in middleware chain 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": true,
+  "load": undefined,
+  "pathname": "/third/hurray",
+  "payload": Object {
+    "param": "hurray",
+  },
+  "prev": Object {
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second/:param",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third/:param",
+    },
+  },
+  "type": "THIRD",
 }
 `;

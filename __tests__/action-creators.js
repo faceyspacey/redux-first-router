@@ -1,9 +1,9 @@
-import createHistoryAction from '../src/action-creators/createHistoryAction'
-import createMiddlewareAction from '../src/action-creators/createMiddlewareAction'
+import historyCreateAction from '../src/action-creators/historyCreateAction'
+import middlewareCreateAction from '../src/action-creators/middlewareCreateAction'
 import { NOT_FOUND } from '../src/actions'
 
 
-it('createHistoryAction() - returns action created when history/address_bar chanages', () => {
+it('historyCreateAction() - returns action created when history/address_bar chanages', () => {
   const pathname = '/info/foo'
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
   const kind = 'backNext'
@@ -12,7 +12,7 @@ it('createHistoryAction() - returns action created when history/address_bar chan
     INFO_PARAM: '/info/:param',
   }
 
-  const action = createHistoryAction(pathname, routesMap, prevLocation, kind)
+  const action = historyCreateAction(pathname, routesMap, prevLocation, kind)
 
   console.log(action)
   console.log(action.meta.location)
@@ -33,7 +33,7 @@ it('createHistoryAction() - returns action created when history/address_bar chan
 })
 
 
-it('createMiddlewareAction() - returns action created when middleware detects connected/matched action.type', () => {
+it('middlewareCreateAction() - returns action created when middleware detects connected/matched action.type', () => {
   const receivedAction = { type: 'INFO_PARAM', payload: { param: 'foo' } }
   const routesMap = {
     INFO: '/info',
@@ -42,7 +42,7 @@ it('createMiddlewareAction() - returns action created when middleware detects co
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
   const locationState = { pathname: '/prev' }
 
-  const action = createMiddlewareAction(receivedAction, routesMap, prevLocation, locationState)
+  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, locationState)
 
   console.log(action)
   console.log(action.meta.location)
@@ -63,7 +63,7 @@ it('createMiddlewareAction() - returns action created when middleware detects co
 })
 
 
-it('createMiddlewareAction() - [action not matched to any routePath]', () => {
+it('middlewareCreateAction() - [action not matched to any routePath]', () => {
   const receivedAction = { type: 'BLA', payload: { someKey: 'foo' } }
   const routesMap = {
     INFO: '/info',
@@ -72,7 +72,7 @@ it('createMiddlewareAction() - [action not matched to any routePath]', () => {
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
   const locationState = { pathname: '/prev' }
 
-  const action = createMiddlewareAction(receivedAction, routesMap, prevLocation, locationState)
+  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, locationState)
 
   console.log(action)
   console.log(action.meta.location)

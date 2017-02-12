@@ -1,5 +1,6 @@
 // @flow
 import { NOT_FOUND } from './actions'
+import isServer from './pure-utils/isServer'
 import type { LocationState, RoutesMap, Action, Payload } from './flow-types'
 
 
@@ -18,13 +19,10 @@ export default (
       prev: action.meta.location.prev,
       load: action.meta.location.load,
       backNext: action.meta.location.backNext,
+      hasSSR: state.hasSSR,
       routesMap,
     }
   }
-
-  // insure complete routesMap with routes containing functions makes it
-  // past hydration from server where JSON.stringify() on the server removes functions
-  state.routesMap = routesMap
 
   return state
 }
@@ -46,6 +44,7 @@ export const getInitialState = (
   },
   load: undefined,
   backNext: undefined,
+  hasSSR: isServer() ? true : undefined,
   routesMap,
 })
 
