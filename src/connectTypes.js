@@ -246,7 +246,7 @@ export default (
  *  prototyping. It will not harm SSR, so long as you don't use it server side. So that means DO NOT
  *  simulate clicking links server side--and dont do that, dispatch actions to setup state instead.
  *
- *  THE IDIOMATIC WAY: instead use https://github.com/celebvidy/pure-redux-router-link 's `<Link />`
+ *  THE IDIOMATIC WAY: instead use https://github.com/faceyspacey/pure-redux-router-link 's `<Link />`
  *  component to generate SEO friendly urls. As its `href` prop, you pass it a path, array of path
  *  segments or action, and internally it will use `connectTypes` to change the address bar and
  *  dispatch the correct final action from middleware.
