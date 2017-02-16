@@ -89,7 +89,7 @@ const render = (req, res) => {
     USER: { path: '/user/:slug', thunk: userActionCreator() }, // returns thunk from prev example
   }
 
-  const { reducer, middleware, enhancer, thunk } = connectTypes(history, routesMap)
+  const { reducer, middleware, enhancer, thunk } = connectTypes(history, routesMap) // notice `thunk`
   const rootReducer = combineReducers({ location: reducer })
   const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
 
