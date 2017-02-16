@@ -422,7 +422,7 @@ describe('thunk', () => {
       const action = { type: 'THIRD', payload: { param: 'hurray' } }
       dispatch(action)
 
-      return await getState()
+      return await Promise.resolve(getState()) // not really needed, but it's important we are testing what a thunk returning a promise looks like
     })
 
     global.window.SSRtest = true
@@ -440,6 +440,7 @@ describe('thunk', () => {
 
     expect(state.location.pathname).toEqual('/third/hurray')
     expect(state.location.type).toEqual('THIRD')
+    expect(state).toEqual(store.getState())
   })
 
   it('verify server side call of `await connectTypes().thunk` returns a promise even if route does not have a thunk', async () => {
