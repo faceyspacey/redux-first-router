@@ -88,7 +88,7 @@ it('middlewareCreateAction() - [action not matched to any routePath]', () => {
 
 /**
 export default (
-  action: PlainAction,
+  action: ReceivedAction,
   routesMap: RoutesMap,
   prevLocation: Location,
   location: LocationState,

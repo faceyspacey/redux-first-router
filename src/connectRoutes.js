@@ -19,7 +19,7 @@ import type {
   Dispatch,
   RoutesMap,
   Options,
-  PlainAction,
+  ReceivedAction,
   Location,
   LocationState,
   History,
@@ -99,7 +99,7 @@ export default (
     title: titleKey = 'title',
   }: Options = options
 
-  const { type, payload }: PlainAction = pathToAction(currentPathname, routesMap)
+  const { type, payload }: ReceivedAction = pathToAction(currentPathname, routesMap)
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, routesMap)
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)

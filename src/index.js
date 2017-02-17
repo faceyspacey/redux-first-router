@@ -23,7 +23,7 @@ export type {
   Location,
   Meta,
   Action,
-  PlainAction,
+  ReceivedAction,
   Listener,
   Listen,
   Push,

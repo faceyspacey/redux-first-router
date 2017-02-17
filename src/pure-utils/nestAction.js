@@ -1,10 +1,10 @@
 // @flow
-import type { Action, Location, PlainAction } from '../flow-types'
+import type { Action, Location, ReceivedAction } from '../flow-types'
 
 
 export default (
   pathname: string,
-  receivedAction: PlainAction,
+  receivedAction: ReceivedAction,
   prev: Location,
   kind?: string,
 ): Action => {

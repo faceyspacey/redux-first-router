@@ -63,7 +63,7 @@ export type Action = {
   meta: Meta,
 }
 
-export type PlainAction = {
+export type ReceivedAction = {
   type: string,
   payload: Payload,
   meta?: Meta, // eslint-disable-line flowtype/no-weak-types

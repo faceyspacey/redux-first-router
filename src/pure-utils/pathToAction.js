@@ -2,7 +2,7 @@
 import pathToRegexp from 'path-to-regexp'
 import { NOT_FOUND } from '../index'
 import objectValues from './objectValues'
-import type { RoutesMap, PlainAction as Action } from '../flow-types'
+import type { RoutesMap, ReceivedAction as Action } from '../flow-types'
 
 
 export default (
