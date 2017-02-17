@@ -12,8 +12,8 @@ import createThunk from './pure-utils/createThunk'
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
 
-import createLocationReducer, { getInitialState } from './createLocationReducer'
-import { NOT_FOUND } from './actions'
+import createLocationReducer, { getInitialState } from './reducer/createLocationReducer'
+import { NOT_FOUND } from './index'
 
 import type {
   Dispatch,
@@ -28,7 +28,7 @@ import type {
 } from './flow-types'
 
 
-/** PRIMARY EXPORT - `connectTypes(history, routeMap, options)`:
+/** PRIMARY EXPORT - `connectRoutes(history, routeMap, options)`:
  *
  *  PURPOSE: to provide set-it-forget-it syncing of actions to the address bar and vice
  *  versa, using the pairing of action types to express-style routePaths bi-directionally.
@@ -61,7 +61,7 @@ import type {
  *  avoiding double dispatching and double address bar changes.
  *
  *
- *  VERY IMPORTANT NOTE ON SSR: if you're wondering, `connectTypes()` when called returns
+ *  VERY IMPORTANT NOTE ON SSR: if you're wondering, `connectRoutes()` when called returns
  *  functions in a closure that provide access to variables in a private
  *  "per instance" fashion in order to be used in SSR without leaking
  *  state between SSR requests :).
@@ -161,7 +161,7 @@ export default (
    *  1)  dispatches actions with types and payload extracted from the URL pattern
    *      when the browser history changes
    *  2)  on load of the app dispatches an action corresponding to the initial url
-  */
+   */
 
   const enhancer: StoreEnhancer<*, *> = createStore => (reducer, preloadedState, enhancer): Store<*, *> => {
     // routesMap stored in location reducer will be stringified as it goes from the server to client
@@ -248,7 +248,7 @@ export default (
  *
  *  THE IDIOMATIC WAY: instead use https://github.com/faceyspacey/pure-redux-router-link 's `<Link />`
  *  component to generate SEO friendly urls. As its `href` prop, you pass it a path, array of path
- *  segments or action, and internally it will use `connectTypes` to change the address bar and
+ *  segments or action, and internally it will use `connectRoutes` to change the address bar and
  *  dispatch the correct final action from middleware.
 */
 

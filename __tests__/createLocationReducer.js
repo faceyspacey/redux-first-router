@@ -1,5 +1,5 @@
-import createLocationReducer from '../src/createLocationReducer'
-import { NOT_FOUND } from '../src/actions'
+import createLocationReducer from '../src/reducer/createLocationReducer'
+import { NOT_FOUND } from '../src/index'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
 

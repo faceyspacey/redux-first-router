@@ -1,7 +1,7 @@
 // @flow
-import { NOT_FOUND } from './actions'
-import isServer from './pure-utils/isServer'
-import type { LocationState, RoutesMap, Action, Payload } from './flow-types'
+import { NOT_FOUND } from '../index'
+import isServer from '../pure-utils/isServer'
+import type { LocationState, RoutesMap, Action, Payload } from '../flow-types'
 
 
 export default (

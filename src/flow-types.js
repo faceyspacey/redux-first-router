@@ -39,7 +39,7 @@ export type LocationState = {
   load?: true,
   backNext?: true,
   routesMap: RoutesMap,
-  hasSSR?: boolean,
+  hasSSR?: true,
 }
 
 export type Location = {

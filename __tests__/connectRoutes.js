@@ -4,8 +4,8 @@ import setup from '../__test-helpers__/setup'
 import setupThunk from '../__test-helpers__/setupThunk'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
-import connectTypes from '../src/connectTypes'
-import { NOT_FOUND } from '../src/actions'
+import connectRoutes from '../src/connectRoutes'
+import { NOT_FOUND } from '../src/index'
 
 
 describe('middleware', () => {
@@ -18,7 +18,7 @@ describe('middleware', () => {
       title: `title: ${action.type}`,
     })
 
-    const store = createStore(reducer, undefined, middlewares)
+    const store = createStore(reducer, middlewares)
 
     console.log(store.getState())
 
@@ -77,7 +77,7 @@ describe('middleware', () => {
       title: action.type,
     })
 
-    const store = createStore(reducer, undefined, middlewares)
+    const store = createStore(reducer, middlewares)
 
     console.log(history.location)
     console.log(store.getState())
@@ -117,7 +117,7 @@ describe('middleware', () => {
       title: action.type,
     })
 
-    const store = createStore(reducer, undefined, middlewares)
+    const store = createStore(reducer, middlewares)
     const action = store.dispatch({ type: NOT_FOUND })
 
     console.log(action)
@@ -150,7 +150,7 @@ describe('middleware', () => {
     })
 
     console.warn = jest.fn()
-    const store = createStore(reducer, undefined, middlewares)
+    const store = createStore(reducer, middlewares)
     const receivedAction = { error: true, type: 'FOO', meta: { location: {} } }
     const action = store.dispatch(receivedAction)
     const warnArg = console.warn.mock.calls[0][0]
@@ -417,7 +417,7 @@ describe('thunk', () => {
     expect(location.pathname).toEqual('/third/hurray')
   })
 
-  it('simulate server side manual usage of thunk via `await connectTypes().thunk` (to be used when: locationState.load && locationState.hasSSR)', async () => {
+  it('simulate server side manual usage of thunk via `await connectRoutes().thunk` (to be used when: locationState.load && locationState.hasSSR)', async () => {
     const thunk = jest.fn(async (dispatch, getState) => {
       const action = { type: 'THIRD', payload: { param: 'hurray' } }
       dispatch(action)
@@ -443,7 +443,7 @@ describe('thunk', () => {
     expect(state).toEqual(store.getState())
   })
 
-  it('verify server side call of `await connectTypes().thunk` returns a promise even if route does not have a thunk', async () => {
+  it('verify server side call of `await connectRoutes().thunk` returns a promise even if route does not have a thunk', async () => {
     global.window.SSRtest = true
     const { store, thunk: ssrThunk } = setupThunk('/first')
     delete global.window.SSRtest
@@ -481,6 +481,6 @@ it('_exportedGo EXISTS and works (see __tests__/clientOnlyApi for `go` function)
 })
 
 
-it('connectTypes(undefined): throw error if no history provided', () => {
-  expect(() => connectTypes()).toThrowError()
+it('connectRoutes(undefined): throw error if no history provided', () => {
+  expect(() => connectRoutes()).toThrowError()
 })

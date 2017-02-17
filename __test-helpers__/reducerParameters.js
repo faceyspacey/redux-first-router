@@ -1,4 +1,4 @@
-import { getInitialState } from '../src/createLocationReducer'
+import { getInitialState } from '../src/reducer/createLocationReducer'
 
 
 export default (type, pathname) => { // eslint-disable-line import/prefer-default-export

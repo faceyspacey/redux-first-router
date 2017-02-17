@@ -1,3 +1,14 @@
+export {
+  default as connectRoutes,
+  go,
+  back,
+} from './connectRoutes'
+
+export const NOT_FOUND = '@@pure-redux-router/NOT_FOUND'
+
+export { default as actionToPath } from './pure-utils/actionToPath'
+export { default as pathToAction } from './pure-utils/pathToAction'
+
 export type {
   RouteString,
   RouteObject,
@@ -22,12 +33,3 @@ export type {
   Document,
  } from './flow-types'
 
-export { default as connectTypes } from './connectTypes'
-export { default as actionToPath } from './pure-utils/actionToPath'
-export { default as pathToAction } from './pure-utils/pathToAction'
-
-export {
-  NOT_FOUND,
-  go,
-  back,
-} from './actions'

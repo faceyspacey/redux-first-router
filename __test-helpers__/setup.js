@@ -1,5 +1,5 @@
 import createHistory from 'history/createMemoryHistory'
-import connectTypes from '../src/connectTypes'
+import connectRoutes from '../src/connectRoutes'
 
 
 export default (path = '/', options = { title: 'title', location: 'location' }) => {
@@ -14,5 +14,5 @@ export default (path = '/', options = { title: 'title', location: 'location' }) 
     keyLength: 6,
   })
 
-  return connectTypes(history, routesMap, options)
+  return connectRoutes(history, routesMap, options)
 }

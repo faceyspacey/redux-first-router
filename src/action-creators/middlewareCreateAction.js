@@ -2,7 +2,7 @@
 import type { RoutesMap, Location, Action } from '../flow-types'
 import actionToPath from '../pure-utils/actionToPath'
 import nestAction from '../pure-utils/nestAction'
-import { NOT_FOUND } from '../actions'
+import { NOT_FOUND } from '../index'
 
 
 export default (

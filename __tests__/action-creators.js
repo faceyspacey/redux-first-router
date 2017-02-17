@@ -1,6 +1,6 @@
 import historyCreateAction from '../src/action-creators/historyCreateAction'
 import middlewareCreateAction from '../src/action-creators/middlewareCreateAction'
-import { NOT_FOUND } from '../src/actions'
+import { NOT_FOUND } from '../src/index'
 
 
 it('historyCreateAction() - returns action created when history/address_bar chanages', () => {

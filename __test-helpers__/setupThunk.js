@@ -1,30 +1,28 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import createHistory from 'history/createMemoryHistory'
-import connectTypes from '../src/connectTypes'
+import connectRoutes from '../src/connectRoutes'
 
 
-export default (path = '/', thunk) => {
+export default (path = '/', thunkArg) => {
   const routesMap = {
     FIRST: '/first',
-    SECOND: { path: '/second/:param', thunk },
+    SECOND: { path: '/second/:param', thunk: thunkArg },
     THIRD: { path: '/third/:param' },
   }
 
   const history = createHistory({
     initialEntries: [path],
-    initialIndex: 0,
-    keyLength: 6,
   })
 
-  const { middleware, enhancer, thunk: ssrThunk, reducer: locationReducer } = connectTypes(history, routesMap)
+  const { middleware, enhancer, thunk, reducer } = connectRoutes(history, routesMap)
+
+  const rootReducer = combineReducers({
+    location: reducer,
+  })
 
   const middlewares = applyMiddleware(middleware)
 
-  const reducer = (state = {}, action = {}) => ({
-    location: locationReducer(state.location, action),
-  })
+  const store = createStore(rootReducer, compose(enhancer, middlewares))
 
-  const store = createStore(reducer, undefined, compose(enhancer, middlewares))
-
-  return { store, thunk: ssrThunk }
+  return { store, thunk }
 }

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 
 import setup from '../__test-helpers__/setup'
-import { go, back } from '../src/connectTypes'
+import { go, back } from '../src/connectRoutes'
 
 
 it('go: verify client-only `go` function returns location-aware action using enclosed state', () => {

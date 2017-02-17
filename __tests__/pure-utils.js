@@ -6,7 +6,7 @@ import pathToAction from '../src/pure-utils/pathToAction'
 import actionToPath from '../src/pure-utils/actionToPath'
 import changePageTitle from '../src/pure-utils/changePageTitle'
 
-import { NOT_FOUND } from '../src/actions'
+import { NOT_FOUND } from '../src/index'
 
 
 it('isLocationAction(action) if has meta.location object', () => {
