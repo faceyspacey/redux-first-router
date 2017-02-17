@@ -11,7 +11,7 @@ const render = (req, res) => {
   })
 
   const routesMap = {
-    USER: { path: '/user/:slug', thunk: userActionCreator() }, // returns thunk from prev example
+    USER: { path: '/user/:slug', thunk: userActionCreator() }, // returns thunk from readme example
   }
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) // notice `thunk`

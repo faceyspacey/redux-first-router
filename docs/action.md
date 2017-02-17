@@ -1,5 +1,7 @@
 # Flux Standard Actions (FSA)
-One of the goals of **Pure Redux Router** is to *NOT* alter your actions and be 100% *flux standard action*-compliant.
+One of the goals of **Pure Redux Router** is to *NOT* alter your actions and be 100% *flux standard action*-compliant. That allows
+for automatic support for packages such as `redux-actions`. 
+
 So simply put, to do that, we stuffed all the info our middleware, reducer, etc, needs in the `meta` key of your actions.
 
 Without further ado, let's take a look at what your actions look like--here's our pure utility function, `nestAction()`, used to format 
@@ -19,9 +21,12 @@ const nestAction = (
   const { type, payload = {}, meta } = receivedAction
 
   return {
-    type,
-    payload,
-    meta: {
+    type,     // this will remain exactly what you dispatched
+    payload,  // this will remain exactly what you dispatched
+
+              // no additional keys!
+
+    meta: {   // all routing information crammed into the meta key
       ...meta,
       location: {
         current: {
@@ -39,7 +44,7 @@ const nestAction = (
 ```
 
 So in short, we take a more basic action you dispatch (or that the address-bar listening enhancer dispatches) and assign 
-all the location-related information we have to its meta key.
+all the location-related information we have to its `meta` key.
 
 ## Flow Type
 For an even clearer sense of what is on the `meta` key of your *flux standard actions*, here's its ***Flow*** type:
@@ -66,3 +71,9 @@ type Location = {
   payload: Object,
 }
 ```
+
+## Conclusion
+You will rarely need to inspect the `meta` key. It's primarily for use by our `location` reducer. However, a common
+use for it is to use the `load` and `backNext` keys (especially the `load`) to make some determinations in your
+reducers. You can also use the `prev` route to do things like declaratively trigger fancy animations in your
+components when you know which direction the user is moving in a funnel/sequence of pages. 
