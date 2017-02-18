@@ -1,4 +1,4 @@
-# Brief: Pure Redux Router
+# Brief:
 
 ![pure-redux-router flow chart](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/pure-redux-router-flow.png)
 
