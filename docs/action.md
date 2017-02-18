@@ -76,4 +76,4 @@ type Location = {
 You will rarely need to inspect the `meta` key. It's primarily for use by our `location` reducer. However, a common
 use for it is to use the `load` and `backNext` keys (especially the `load`) to make some determinations in your
 reducers. You can also use the `prev` route to do things like declaratively trigger fancy animations in your
-components when you know which direction the user is moving in a funnel/sequence of pages. 
+components because it will indicate which direction the user is moving in a funnel/sequence of pages. 
