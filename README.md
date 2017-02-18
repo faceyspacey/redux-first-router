@@ -49,7 +49,7 @@ component updates *are* a problem, particularly in the browser (React Native is 
 get in the way of optimizing animations.
 
 
-## Usage
+## The Gist
 It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
 
 ```javascript
