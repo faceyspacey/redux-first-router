@@ -21,7 +21,7 @@ part is that once you set it up there's virtually nothing left to do. It's truly
 
 ## Installation
 
-Install `pure-redux-router` and its peer dependency `history`:
+Install `pure-redux-router` and its peer dependency `history` plus our `<Link />` package:
 
 ```bash
 yarn install history pure-redux-router pure-redux-router-link
