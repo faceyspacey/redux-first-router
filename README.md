@@ -34,8 +34,8 @@ To think solely in terms of *"state"* and NOT routes, paths, route matching comp
 
 That means having the address bar update in response to actions and ***bi-directionally*** 
 having actions dispatched in response to address bar changes, such as via the browser
-back/forward buttons. The "bi-directional" aspect is embodied in diagram above where the first arrow
-points both ways--dispatching actions changes the address bar, and changes to
+back/forward buttons. The "bi-directional" aspect is embodied in the diagram above where the first arrow
+points both ways--dispatching actions changes the address bar, *and* changes to
 the address bar dispatches actions.
 
 In addition, here are some key obstacles **Pure Redux Router** seeks to *avoid*:
@@ -76,6 +76,7 @@ const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
+And here's how you'd embed SEO-friendly links in your app:
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
