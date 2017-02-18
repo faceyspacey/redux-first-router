@@ -144,7 +144,7 @@ const routesMap = {
 
 
 ## routesMap (with thunk)
-Well, we left out one final configuration key available to you if you use a route object for your paths: *a thunk*.
+We left out one final configuration key available to you: *a thunk*.
 After the dispatch of a matching action, a thunk (if provided) will be called, allowing you to extract path parameters from the location reducer state and make asyncronous requests to get needed data:
 ```javascript
 
