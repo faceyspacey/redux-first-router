@@ -50,7 +50,7 @@ get in the way of optimizing animations.
 
 
 ## Usage
-It's pretty much *set-and-forget-it*, so here's the most work you'll ever do! :+1:
+It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
 
 ```javascript
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -64,7 +64,7 @@ const routesMap = {
   USER: '/user/:id',
 }
 
-const { reducer, middleware, enhancer } = connectRoutes(history, routesMap)
+const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, we provide 3 redux aspects
 
 // and you already know how the story ends:
 
