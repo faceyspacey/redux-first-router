@@ -1,6 +1,6 @@
 # Brief
 
-![pure-redux-router flow chart](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/pure-redux-router-flow.png)
+![pure-redux-router flow chart](https://raw.githubusercontent.com/faceyspacey/pure-redux-router/master/docs/pure-redux-router-flow.png)
 
 At face value, the goal of **Pure Redux Router** is to think of your app in *states*--which, thanks to tools like Redux and React itself,
 so many of us have found effective--NOT *routes*; and of course while keeping the address bar in sync.
