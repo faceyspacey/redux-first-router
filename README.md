@@ -113,7 +113,7 @@ const routesMap = {
 
 
 ## routesMap (with thunk)
-We left out one other configuration key available to you if you use a *route object* instead of a path string: *a thunk*.
+We left out one other configuration key available to you if you use--instead of a path string--a route object: *a thunk*.
 After the dispatch of a matching action, a thunk (if provided) will be called, allowing you to extract path parameters from the location reducer state and make asyncronous requests to get needed data:
 ```javascript
 
@@ -135,3 +135,64 @@ const routesMap = {
 | ----------------------- |:---:| ----------:|
 | /user/steve-jobs        | <-> | { type: 'CATEGORY', payload: { slug: 'steve-jobs' } } |
 | n/a                     | n/a | { type: 'USER_FOUND', payload: { user: { name: 'Steve Jobs', slug: 'steve-jobs' } } } |
+
+
+## FAQ
+
+What about query strings and hashes?
+> Intentionally we have chosen to solely support paths since they are best for SEO and keep the API minimal. 
+You are free to use query strings to request data in your thunks.
+
+What if I don't want to use the *thunk* feature, can I use other ways of requesting the data?
+> Of course. In fact we recommend strategies that totally avoid thunks, such as [Apoll's GraphQL client](https://github.com/apollographql/apollo-client).
+Think of the `thunk` feature as a fallback or for simpler apps. 
+
+Ok, but what's another way without using the *thunk* feature or Apollo?
+>A common, but naive strategy, is to request data in `componentDidMount`. The problem with that is that you can't generate all
+the state required to render your app without first rendering your app at least once. That means additional work on your part as well as cycles
+on the server. It's also means you don't get Redux's highly useful time-traveling tools. If that's where you're at in how you get things
+done, that's fine--but we recommend leveling up to a "dispatch to get state" strategy, as that will provide way more predictability, which is
+especially useful when it comes to testing. When it comes to server side rendering there is no better option. We recommend looking at our 
+[server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md) to see the
+recommended approach. You will ultimately be doing the same as what that article describes if you're using something like Apollo as well.
+
+The middleware dispatches thunks asyncronously with no way for me to *await* them, how can I wait for asyncronously received data on the server?
+> Please the [server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md). In short,
+thunks are not dispatched from the middleware on the server, but `connectRoutes` also returns `thunk` function which you can await on, and
+it will retreive any data corresponding to the current route! We think our solution is slick and sensible.
+
+The server has no `window` or `history`, how can I get that on the server?
+> The [history](https://github.com/ReactTraining/history) package provides a `createMemoryHistory()` function just for this scenario.
+It essentially generates a fake `history` object based on the `request.path` packages like *express* will give you. It's painless. Check it out!
+
+Does this work with React Native?
+> Yes, just like server side rendering, you can use the `history` package's `createMemoryHistory()` function. It's perfect for React Native's `Linking` API and push notifications in general. In fact, 
+if you built your React Native app already and are just starting to deal with deep-linking and push notifications, **Pure Redux Router**
+is perfectly suited to be tacked on in final stages with very few changes.
+
+Ok, but there's gotta be a catch--what changes should I expect to make if I start using **Pure Redux Router**?
+> Primarily it will force you to consolidate the actions you use in your reducers. Whereas before you might have had
+several actions to trigger the same state, you will now centralize on a smaller number of actions that each correspond 
+to a specific URL path. Your actions will become more "page-like", i.e. geared towards triggering page/URL transitions. 
+That said, you absolutely don't need to have a URL for every action. In our apps, we don't. Just the actions that lead
+to the biggest visual changes in the page that we want search engines to pick up.
+
+And what about actually getting links on the page for search engines to see?
+> Use [pure-redux-router-link](http://github.com/faceyspacey/pure-redux-router-link). This package has been built in a modular way,
+which is why that's not in here. *pure-redux-router-link's* `<Link />` component is simple. Review its code. Perhaps you want to make your own.
+All it does is take an `href`, pass that along to **Pure Redux Router** and call `event.preventDefault()` to prevent the browser
+from reloading the page as it visits the new URL. The net result is you have `<a>` tags on your page for *Google* to pick up.
+
+Why no route matching components like *React Router*?
+> Because they are unnecessary when the combination of action and reducers lead to a better defined set of states, not to mention
+more singular. By "singular" we mean that you don't have to think in terms of both redux state *AND* address bar paths. You just think
+in terms of *state*. It makes your life simpler. It makes your code cleaner and easier to understand. It gives you the best control
+React + Redux has to offer when it comes to optimizing rendering for animations. 
+
+What about all the code splitting features stuff Next.js has to offer?
+> They certainly crush it when it comes to code splitting. There's no doubt about it. But check out their Redux example
+where it seems to have a different `store` per page. That's greatly complicates how you will use Redux. If your app is 
+very page-like, great--but we think the whole purpose of tools like React and Redux is to build *"apps"* not *pages*. 
+The hallmark of an app is seamless animated transitions where you forget you're on a specific page. You need full
+control of rendering to do that at the highest level. `shouldComponentUpdate` will be your best friend. Everything else
+gets in the way.
