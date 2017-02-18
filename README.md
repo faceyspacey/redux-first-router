@@ -147,8 +147,8 @@ What if I don't want to use the *thunk* feature, can I use other ways of request
 > Of course. In fact we recommend strategies that totally avoid thunks, such as [Apoll's GraphQL client](https://github.com/apollographql/apollo-client).
 Think of the `thunk` feature as a fallback or for simpler apps. 
 
-Ok, but what's another way without using the *thunk* feature or Apollo?
->A common, but naive strategy, is to request data in `componentDidMount`. The problem with that is that you can't generate all
+Ok, but what if I request my data in `componentDidMount`?
+>This works great for that, but it's a naive strategy. The problem with `componentDidMount` is that you can't generate all
 the state required to render your app without first rendering your app at least once. That means additional work on your part as well as cycles
 on the server. It's also means you don't get Redux's highly useful time-traveling tools. If that's where you're at in how you get things
 done, that's fine--but we recommend leveling up to a "dispatch to get state" strategy, as that will provide way more predictability, which is
