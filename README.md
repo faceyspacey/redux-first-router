@@ -189,16 +189,16 @@ Think of the `thunk` feature as a fallback or for simpler apps.
 Ok, but what if I request my data in `componentDidMount`?
 >This works great for that, but it's a naive strategy. The problem with `componentDidMount` is that you can't generate all
 the state required to render your app without first rendering your app at least once. That means additional work on your part as well as cycles
-on the server. It's also means you don't get Redux's highly useful time-traveling tools. If that's where you're at in how you get things
-done, that's fine--but we recommend leveling up to a "dispatch to get state" strategy, as that will provide way more predictability, which is
+on the server. It's also makes Redux's highly useful time-traveling tools *unreliable*. If that's where you're at in how you get things
+done, that's fine--but we recommend leveling up to a "dispatch to get state" strategy (rather than a "get state on render" approach), as that will provide way more predictability, which is
 especially useful when it comes to testing. When it comes to server side rendering there is no better option. We recommend looking at our 
 [server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md) to see the
-recommended approach. You will ultimately be doing the same as what that article describes if you're using something like Apollo as well.
+recommended approach.
 
 The middleware dispatches thunks asyncronously with no way for me to *await* them, how can I wait for asyncronously received data on the server?
 > Please visit the [server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md). In short,
-thunks are not dispatched from the middleware on the server, but `connectRoutes`, in addition to `middleware`, `enhancer` and `reducer`, returns a `thunk` 
-function which you can await on, and it will retreive any data corresponding to the current route! We think our solution is slick and sensible.
+thunks are not dispatched from the middleware on the server, but `connectRoutes`, returns a `thunk` in addition to `middleware`, `enhancer` and `reducer`,
+which you can await on, and it will retreive any data corresponding to the current route! We think our solution is slick and sensible.
 
 The server has no `window` or `history`, how can I get that on the server?
 > The [history](https://github.com/ReactTraining/history) package provides a `createMemoryHistory()` function just for this scenario.
