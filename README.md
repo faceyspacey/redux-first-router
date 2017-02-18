@@ -225,10 +225,11 @@ more singular. By "singular" we mean that you don't have to think in terms of bo
 in terms of *state*. It makes your life simpler. It makes your code cleaner and easier to understand. It gives you the best control
 React + Redux has to offer when it comes to optimizing rendering for animations. 
 
-What about all the code splitting features stuff Next.js has to offer?
+What about all the code splitting features Next.js has to offer?
 > They certainly crush it when it comes to code splitting. There's no doubt about it. But check out their Redux example
 where it seems to have a different `store` per page. That's greatly complicates how you will use Redux. If your app is 
 very page-like, great--but we think the whole purpose of tools like React and Redux is to build *"apps"* not *pages*. 
 The hallmark of an app is seamless animated transitions where you forget you're on a specific page. You need full
 control of rendering to do that at the highest level. `shouldComponentUpdate`, pure functions and [reselect](https://github.com/reactjs/reselect)
-will be your best friend. Everything else gets in the way.
+will be your best friend. Everything else gets in the way. And of course **Pure Redux Router** stays out of the way.
+Straightup, let us know if you think we nailed it or what we're missing. Feel free to use github issues.
