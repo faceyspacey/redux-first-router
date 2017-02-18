@@ -142,7 +142,7 @@ const routesMap = {
 * [location reducer](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/reducer.md)
 * [the route object](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/routeObject.md)
 * [server side rendering](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md)
-* [connectRoutes](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/connectRoutes.md)
+* [connectRoutes (there is a third options parameter you should check out)](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/connectRoutes.md)
 
 ## FAQ
 
