@@ -66,7 +66,7 @@ const history = createHistory()
 // THE WORK:
 const routesMap = { 
   HOME: '/home',      // action <-> url path
-  USER: '/user/:id',  // :id is dynamic
+  USER: '/user/:id',  // :id is a dynamic segment
 }
 
 const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
