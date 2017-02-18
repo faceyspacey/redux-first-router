@@ -141,7 +141,7 @@ const routesMap = {
 
 
 ## routesMap (with thunk)
-We left out one other configuration key available to you if you use--instead of a path string--a route object: *a thunk*.
+We left out one other configuration key available to you if you use a route object for your paths: *a thunk*.
 After the dispatch of a matching action, a thunk (if provided) will be called, allowing you to extract path parameters from the location reducer state and make asyncronous requests to get needed data:
 ```javascript
 
@@ -163,6 +163,8 @@ const routesMap = {
 | ----------------------- |:---:| ----------:|
 | /user/steve-jobs        | <-> | { type: 'CATEGORY', payload: { slug: 'steve-jobs' } } |
 | n/a                     | n/a | { type: 'USER_FOUND', payload: { user: { name: 'Steve Jobs', slug: 'steve-jobs' } } } |
+
+That's all folks! :+1:
 
 
 ## More Docs (they are short easy reads) 
