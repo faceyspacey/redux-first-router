@@ -87,7 +87,7 @@ import Link from 'pure-redux-router-link'
 import store from './configureStore'
 
 const App = () =>
-  <Link href="/user/1234">User 1234</Link>
+  <Link href="/user/1234">User 1234</Link> // when clicked dispatches action that updates location state
 
 ReactDOM.render(
   <Provider store={store}>
