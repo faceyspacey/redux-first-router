@@ -105,8 +105,9 @@ a very modular way, which is why the `<Link />` component is in a separate packa
 and you're free to make your own. Basically it passes the `href` on to **Pure Redux Router** and calls
 `event.preventDefault()` to stop page reloads. It also can take an action object as a prop, which it will transform
 into a URL for you! The package is obvious enough once you get the hang of what's going on here--check it
-out when you're ready: [pure-redux-router-link](http://github.com/faceyspacey/pure-redux-router-link). We
-don't offer route matching components like *React Router*--that's what state is for! See our FAQ below.
+out when you're ready: [pure-redux-router-link](http://github.com/faceyspacey/pure-redux-router-link). And if 
+you're wondering, we don't offer route matching components like *React Router*--that's what state is for! 
+See our FAQ below.
 
 ## routesMap
 
