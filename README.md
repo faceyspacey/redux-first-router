@@ -78,7 +78,7 @@ const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
-And here's how you'd embed SEO-friendly links in your app:
+And here's how you'd embed SEO/Redux-friendly links in your app:
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
