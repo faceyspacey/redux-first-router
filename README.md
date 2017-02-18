@@ -1,4 +1,4 @@
-# pure-redux-router
+# Brief: Pure Redux Router
 
 At face value, the goal of **Pure Redux Router** is to think of your app in *states*--which, thanks to tools like Redux and React itself,
 so many of us have found effective--NOT *routes*; and of course while keeping the address bar in sync.
@@ -7,8 +7,9 @@ The thinking behind this package has been: "if we were to dream up a 'Redux-firs
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
 "inversion of control" scenarios that makes a challenging problem *simple* when coming at it from a different angle.
 
-The desired effect it will have on you will be: "Wow, this is an obvious and simple solution to a long standing problem. 
-I'm not sure why this hasn't been done yet. This is the correct way to do this. Forget 'React Router' if your app is Redux-heavy."
+The desired effect to have on you is: "Wow, this is an obvious and simple solution to a long standing problem. 
+I'm not sure why this hasn't been done yet. This is the correct way to do this. Forget 'React Router' if your app 
+is Redux-heavy. Redux states always had all we need to render our app."
 
 That said and before we get started, there is some *prior art*, and you should [check them out](../docs/prior-art). **Pure Redux Router**
 isn't the first stab at something like this, but we feel it is the most complete, tested and *spot on* solution. We have reviewed
@@ -38,8 +39,8 @@ In addition, here are some key obstacles **Pure Redux Router** seeks to *avoid*:
 * the added complexity of 2 forms of state: redux state vs. routing state
 * large API surface areas  of packages/frameworks
 like `react-router` and `next.js`
-* workarounds that such large (*likely "leaky"*) abstractions inevitably require to achieve a professional app
-* as low level as possible strategies to deal with animations. Animations coinciding with React 
+* workarounds that such large *(likely "leaky")* abstractions inevitably require to achieve a professional app
+* strategies as low level as possible to deal with animations. Animations coinciding with React 
 component updates *are* a problem, particularly in the browser (React Native is better). 
 "Jank" is common. Techniques  like `shouldComponentUpdate` are a must; routing frameworks 
 get in the way of optimizing animations.
