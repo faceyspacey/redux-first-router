@@ -194,5 +194,5 @@ What about all the code splitting features stuff Next.js has to offer?
 where it seems to have a different `store` per page. That's greatly complicates how you will use Redux. If your app is 
 very page-like, great--but we think the whole purpose of tools like React and Redux is to build *"apps"* not *pages*. 
 The hallmark of an app is seamless animated transitions where you forget you're on a specific page. You need full
-control of rendering to do that at the highest level. `shouldComponentUpdate` will be your best friend. Everything else
-gets in the way.
+control of rendering to do that at the highest level. `shouldComponentUpdate`, pure functions and [reselect](https://github.com/reactjs/reselect)
+will be your best friend. Everything else gets in the way.
