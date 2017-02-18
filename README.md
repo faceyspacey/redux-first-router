@@ -64,7 +64,7 @@ const routesMap = {
   USER: '/user/:id',
 }
 
-const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, we provide 3 redux aspects
+const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
 
 // and you already know how the story ends:
 
