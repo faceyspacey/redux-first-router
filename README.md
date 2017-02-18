@@ -157,9 +157,9 @@ especially useful when it comes to testing. When it comes to server side renderi
 recommended approach. You will ultimately be doing the same as what that article describes if you're using something like Apollo as well.
 
 The middleware dispatches thunks asyncronously with no way for me to *await* them, how can I wait for asyncronously received data on the server?
-> Please the [server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md). In short,
-thunks are not dispatched from the middleware on the server, but `connectRoutes` also returns `thunk` function which you can await on, and
-it will retreive any data corresponding to the current route! We think our solution is slick and sensible.
+> Please visit the [server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md). In short,
+thunks are not dispatched from the middleware on the server, but `connectRoutes` in additoin to `middleware`, `enhancer`, etc returns a `thunk` 
+function which you can await on, and it will retreive any data corresponding to the current route! We think our solution is slick and sensible.
 
 The server has no `window` or `history`, how can I get that on the server?
 > The [history](https://github.com/ReactTraining/history) package provides a `createMemoryHistory()` function just for this scenario.
