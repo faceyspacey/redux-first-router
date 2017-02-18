@@ -99,7 +99,7 @@ ReactDOM.render(
 
 Based on the above `routesMap` the following actions will be dispatched when the
 corresponding URL is visited, and conversely those URLs will appear in the address bar
-when actions with the matching `type` and *at minimum* the required parameters are provided
+when actions with the matching `type` and parameters are provided
 as keys in the payload object:
 
 | URL                | <-> | ACTION     |
@@ -107,6 +107,7 @@ as keys in the payload object:
 | /home              | <-> | { type: 'HOME' } |
 | /user/1234         | <-> | { type: 'USER', payload: { id: 1234 } } |
 
+*note: if you have more keys in your payload that is fine--so long as you have the minimum required keys to populate the path*
 
 Lastly, we haven't mentioned `pure-redux-router-link`yet--**Pure Redux Router** is purposely built in
 a very modular way, which is why the `<Link />` component is in a separate package. It's extremely simple
