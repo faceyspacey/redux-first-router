@@ -125,7 +125,7 @@ Here's the complete (and very minimal easy to remember) set of configuration opt
 
 ```javascript
 const routesMap = {
-  HOME: '/home',
+  HOME: '/home', // plain path strings or route objects can be used
   CATEGORY: { path: '/category/:cat', capitalizedWords: true },
   USER: { 
     path: '/user/:cat/:name',
