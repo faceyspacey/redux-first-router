@@ -9,13 +9,14 @@ The thinking behind this package has been: "if we were to dream up a 'Redux-firs
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
 "inversion of control" scenarios that makes a challenging problem *simple* when coming at it from a different angle.
 
-The desired effect to have on you is: "Wow, this is an obvious and simple solution to a long standing problem. 
+The desired effect to have on you is: 
+> "Wow, this is an obvious and simple solution to a long standing problem. 
 I'm not sure why this hasn't been done yet. This is the correct way to do this. Forget 'React Router' if your app 
 is Redux-heavy. Redux states always had all we need to render our app."
 
 That said and before we get started, there is some *prior art*, and you should [check them out](../docs/prior-art). **Pure Redux Router**
-isn't the first stab at something like this, but we feel it is the most complete, tested and *spot on* solution. We have reviewed
-what came before, stripped what was unnecessary, added what was needed, and generally focused on getting the core right. The best
+isn't the first stab at something like this, but--aside this path being pre-validated--we feel it is the most complete, tested and *spot on* solution. 
+We have reviewed what came before, stripped what was unnecessary, added what was needed, and generally focused on getting the core right. The best
 part is that once you set it up there's virtually nothing left to do. It's truly "set it and forget it." Let's get started.
 
 ## Installation
@@ -33,7 +34,9 @@ To think solely in terms of *"state"* and NOT routes, paths, route matching comp
 
 That means having the address bar update in response to actions and ***bi-directionally*** 
 having actions dispatched in response to address bar changes, such as via the browser
-back/forward buttons.
+back/forward buttons. The "bi-directional" aspect is embodied in diagram above where the first arrow
+points both ways--dispatching actions changes the address bar, and changes to
+the address bar dispatches actions.
 
 In addition, here are some key obstacles **Pure Redux Router** seeks to *avoid*:
 
@@ -72,14 +75,24 @@ const rootReducer = combineReducers({ location: reducer })
 const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
-*pay attention to `routesMap`*
+
+Based on the above `routesMap` the following actions will be dispatched when the
+corresponding URL is visited, and conversely those URLs will appear in the address bar
+when actions with the matching `type` and *at minimum* the required parameters are provided
+as keys in the payload object:
+
+| URL                | <-> | ACTION     |
+| ------------------ |:---:| ----------:|
+| /home              | <-> | { type: 'HOME' } |
+| /user/1234         | <-> | { type: 'USER', payload: { id: 1234 } } |
 
 
 ## routesMap
 
-Match action types to express style dynamic paths, with a few frills.
-```javascript
+The `routesMap` object allows you to match action types to express style dynamic paths, with a few frills.
+Here's the complete (and very minimal easy to remember) set of configuration options available to you:
 
+```javascript
 const routesMap = {
   HOME: '/home',
   CATEGORY: { path: '/category/:cat', capitalizedWords: true },
@@ -89,17 +102,18 @@ const routesMap = {
     toPath: value => value.toLowerCase().replace(/ /g, '-'),
   },
 }
-
-/** URL                     <->   ACTION 
- *  /home                   <->   { type: 'HOME' }
- *  /category/java-script   <->   { type: 'CATEGORY', payload: { cat: 'Java Script' } }
- *  /user/elm/bill-gates    <->   { type: 'USER', payload: { cat: 'ELM', name: 'BILL GATES' } }
- */
 ```
 *note: the signature of `fromPath` and `toPath` offers a little more, e.g: `(pathSegment, key) => value`. Visit [routesMap docs](http://github.com/faceyspacey/pure-redux-router/docs/routesMap) for a bit more info when the time comes.*
 
+| URL                     | <-> | ACTION     |
+| ----------------------- |:---:| ----------:|
+| /home                   | <-> | { type: 'HOME' } |
+| /category/java-script   | <-> | { type: 'CATEGORY', payload: { cat: 'Java Script' } } |
+| //user/elm/bill-gates   | <-> | { type: 'USER', payload: { cat: 'ELM', name: 'BILL GATES' } } |
+
 
 ## routesMap (with thunk)
+We left out one other configuration key available to you if you use a *route object* instead of a path string: *a thunk*.
 After the dispatch of a matching action, a thunk (if provided) will be called, allowing you to extract path parameters from the location reducer state and make asyncronous requests to get needed data:
 ```javascript
 
@@ -114,9 +128,10 @@ const userThunk = async (dispatch, getState) => {
 const routesMap = {
   USER: { path: '/user/:slug', thunk: userThunk  },
 }
-
-/** URL                <->   ACTION 
- *  /user/steve-jobs   <->   { type: 'USER', payload: { slug: 'steve-jobs' } }
- */
 ```
 *Visit [locationReducer docs](http://github.com/faceyspacey/pure-redux-router/docs/locationReducer) to see what state is contained in the location reducer.*
+
+| URL                     | <-> | ACTION     |
+| ----------------------- |:---:| ----------:|
+| /user/steve-jobs        | <-> | { type: 'CATEGORY', payload: { slug: 'steve-jobs' } } |
+| n/a                     | n/a | { type: 'USER_FOUND', payload: { user: { name: 'Steve Jobs', slug: 'steve-jobs' } } } |
