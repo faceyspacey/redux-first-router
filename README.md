@@ -80,13 +80,17 @@ const store = createStore(rootReducer, compose(enhancer, middlewares))
 import { Provider } from 'react-redux'
 import Link from 'pure-redux-router-link'
 import store from './configureStore'
+import ReactDOM from 'react-dom'
 
 const App = () =>
   <Link href="/user/1234">User 1234</Link>
 
-<Provider store={store}>
-  <App />
-</Provider>
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('react-root')
+)
 ```
 
 Based on the above `routesMap` the following actions will be dispatched when the
