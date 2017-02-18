@@ -138,7 +138,7 @@ const routesMap = {
 
 
 ## More Docs (they are short easy reads) 
-* [action.meta (the `meta` key is how our system communicates)](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/action.md)
+* [action.meta (the `meta` key is how our system communicates, and our action maintains its status as an "FSA")](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/action.md)
 * [location reducer shape](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/reducer.md)
 * [server side rendering](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md)
 * [connectRoutes (there is a third `options` parameter you should check out)](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/connectRoutes.md)
