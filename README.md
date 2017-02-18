@@ -160,7 +160,7 @@ const routesMap = {
   USER: { path: '/user/:slug', thunk: userThunk  },
 }
 ```
-*Visit the [location reducer docs](http://github.com/faceyspacey/pure-redux-router/docs/locationReducer) to see the shape of the location reducer.*
+*Visit the [location reducer docs](http://github.com/faceyspacey/pure-redux-router/docs/locationReducer) to see its shape*
 
 | URL                     | <-> | ACTION     |
 | ----------------------- |:---:| ----------:|
