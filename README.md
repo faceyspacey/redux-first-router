@@ -101,9 +101,9 @@ as keys in the payload object:
 
 
 Lastly, we haven't mentioned `pure-redux-router-link`yet--**Pure Redux Router** is purposely built in
-a very modular way, which is the `<Link />` component is in a separate package. It's extremely simple
+a very modular way, which is why the `<Link />` component is in a separate package. It's extremely simple
 and you're free to make your own. Basically it passes the `href` on to **Pure Redux Router** and calls
-`event.preventDefault()` to stop page reloads. It also takes an action as a prop, which it will transform
+`event.preventDefault()` to stop page reloads. It also can take an action object as a prop, which it will transform
 into a URL for you! The package is obvious enough once you get the hang of what's going on here--check it
 out when you're ready: [pure-redux-router-link](http://github.com/faceyspacey/pure-redux-router-link).
 
