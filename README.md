@@ -194,7 +194,7 @@ recommended approach. You will ultimately be doing the same as what that article
 
 The middleware dispatches thunks asyncronously with no way for me to *await* them, how can I wait for asyncronously received data on the server?
 > Please visit the [server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md). In short,
-thunks are not dispatched from the middleware on the server, but `connectRoutes` in additoin to `middleware`, `enhancer`, etc returns a `thunk` 
+thunks are not dispatched from the middleware on the server, but `connectRoutes`, in addition to `middleware`, `enhancer` and `reducer`, returns a `thunk` 
 function which you can await on, and it will retreive any data corresponding to the current route! We think our solution is slick and sensible.
 
 The server has no `window` or `history`, how can I get that on the server?
@@ -225,7 +225,7 @@ more singular. By "singular" we mean that you don't have to think in terms of bo
 in terms of *state*. It makes your life simpler. It makes your code cleaner and easier to understand. It gives you the best control
 React + Redux has to offer when it comes to optimizing rendering for animations. 
 
-What about all the code splitting features Next.js has to offer?
+What about all the code splitting features *Next.js* has to offer?
 > They certainly crush it when it comes to code splitting. There's no doubt about it. But check out their Redux example
 where it seems to have a different `store` per page. That's greatly complicates how you will use Redux. If your app is 
 very page-like, great--but we think the whole purpose of tools like React and Redux is to build *"apps"* not *pages*. 
@@ -233,3 +233,11 @@ The hallmark of an app is seamless animated transitions where you forget you're 
 control of rendering to do that at the highest level. `shouldComponentUpdate`, pure functions and [reselect](https://github.com/reactjs/reselect)
 will be your best friend. Everything else gets in the way. And of course **Pure Redux Router** stays out of the way.
 Straightup, let us know if you think we nailed it or what we're missing. Feel free to use github issues.
+
+Gee, I've never seen a Redux middleware/enhancer tool return so many things to use for configuring the store???
+>Part of what **Pure Redux Router** does so well (and one of its considerations from the start) is server side rendering. All these
+aspects depend on state unique to each visit/request. The returned `middleware`, `enhancer, `reducer` and `thunk` functions share
+enclosed state (i.e. within a "closure") in a *per instance* fashion. Most of the code is written as pure utility functions
+and we are very proud about that. But what's not is returned to you in a way that will insure state is not shared between
+requests on the server. In short, we have spared no expense to get this package as tight as possible. Watch the video below to get an 
+idea of how the system works and its overall simplicity:
