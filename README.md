@@ -236,7 +236,7 @@ Straightup, let us know if you think we nailed it or what we're missing. Feel fr
 
 Gee, I've never seen a Redux middleware/enhancer tool return so many things to use for configuring the store???
 >Part of what **Pure Redux Router** does so well (and one of its considerations from the start) is server side rendering. All these
-aspects depend on state unique to each visit/request. The returned `middleware`, `enhancer, `reducer` and `thunk` functions share
+aspects depend on state unique to each visit/request. The returned `middleware`, `enhancer`, `reducer` and `thunk` functions share
 enclosed state (i.e. within a "closure") in a *per instance* fashion. Most of the code is written as pure utility functions
 and we are very proud about that. But what's not is returned to you in a way that will insure state is not shared between
 requests on the server. In short, we have spared no expense to get this package as tight as possible. Watch the video below to get an 
