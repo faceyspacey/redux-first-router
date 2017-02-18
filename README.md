@@ -21,7 +21,7 @@ part is that once you set it up there's virtually nothing left to do. It's truly
 
 ## Installation
 
-Install `pure-redux-router` and its peer dependency `history` plus our `<Link />` package:
+Install `pure-redux-router` and its peer dependency `history` plus our small `<Link />` package:
 
 ```bash
 yarn install history pure-redux-router pure-redux-router-link
@@ -137,7 +137,7 @@ const routesMap = {
 | ----------------------- |:---:| ----------:|
 | /home                   | <-> | { type: 'HOME' } |
 | /category/java-script   | <-> | { type: 'CATEGORY', payload: { cat: 'Java Script' } } |
-| //user/elm/bill-gates   | <-> | { type: 'USER', payload: { cat: 'ELM', name: 'BILL GATES' } } |
+| /user/elm/bill-gates   | <-> | { type: 'USER', payload: { cat: 'ELM', name: 'BILL GATES' } } |
 
 
 ## routesMap (with thunk)
@@ -220,7 +220,7 @@ All it does is take an `href`, pass that along to **Pure Redux Router** and call
 from reloading the page as it visits the new URL. The net result is you have `<a>` tags on your page for *Google* to pick up.
 
 Why no route matching components like *React Router*?
-> Because they are unnecessary when the combination of action and reducers lead to a better defined set of states, not to mention
+> Because they are unnecessary when the combination of actions and reducers lead to both a wider variety and better defined set of states, not to mention
 more singular. By "singular" we mean that you don't have to think in terms of both redux state *AND* address bar paths. You just think
 in terms of *state*. It makes your life simpler. It makes your code cleaner and easier to understand. It gives you the best control
 React + Redux has to offer when it comes to optimizing rendering for animations. 
@@ -231,7 +231,7 @@ where it seems to have a different `store` per page. That's greatly complicates 
 very page-like, great--but we think the whole purpose of tools like React and Redux is to build *"apps"* not *pages*. 
 The hallmark of an app is seamless animated transitions where you forget you're on a specific page. You need full
 control of rendering to do that at the highest level. `shouldComponentUpdate`, pure functions and [reselect](https://github.com/reactjs/reselect)
-will be your best friend. Everything else gets in the way. And of course **Pure Redux Router** stays out of the way.
+become be your best friends. Everything else gets in the way. And of course **Pure Redux Router** stays out of the way.
 Straightup, let us know if you think we nailed it or what we're missing. Feel free to use github issues.
 
 Gee, I've never seen a Redux middleware/enhancer tool return so many things to use for configuring the store???
