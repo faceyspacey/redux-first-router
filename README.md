@@ -33,12 +33,13 @@ back/forward buttons.
 
 In addition, here are some key obstacles **Pure Redux Router** seeks to *avoid*:
 
+* having render from any state that doesn't come from redux
 * cluttering component code with route-oriented components
 * the added complexity of 2 forms of state: redux state vs. routing state
 * large API surface areas  of packages/frameworks
 like `react-router` and `next.js`
 * workarounds that such large abstractions inevitably require to achieve a professional app
-* as low level as possible tools to deal with animations. Animations coinciding with React 
+* as low level as possible strategies to deal with animations. Animations coinciding with React 
 component updates *are* a problem, particularly in the browser (React Native is better). 
 "Jank" is common. Techniques  like `shouldComponentUpdate` are a must; routing frameworks 
 get in the way of optimizing animations.
