@@ -77,10 +77,11 @@ const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
 ```javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import Link from 'pure-redux-router-link'
 import store from './configureStore'
-import ReactDOM from 'react-dom'
 
 const App = () =>
   <Link href="/user/1234">User 1234</Link>
