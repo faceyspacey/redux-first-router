@@ -24,7 +24,7 @@ part is that once you set it up there's virtually nothing left to do. It's truly
 Install `pure-redux-router` and its peer dependency `history`:
 
 ```bash
-yarn install pure-redux-router history
+yarn install history pure-redux-router pure-redux-router-link
 ```
 
 ## Motivation
@@ -76,6 +76,19 @@ const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
+```javascript
+import { Provider } from 'react-redux'
+import Link from 'pure-redux-router-link'
+import Store from './configureStore'
+
+const App = () =>
+  <Link href="/user/1234">User 1234</Link>
+
+<Provider store={store}>
+  <App />
+</Provider>
+```
+
 Based on the above `routesMap` the following actions will be dispatched when the
 corresponding URL is visited, and conversely those URLs will appear in the address bar
 when actions with the matching `type` and *at minimum* the required parameters are provided
@@ -86,6 +99,13 @@ as keys in the payload object:
 | /home              | <-> | { type: 'HOME' } |
 | /user/1234         | <-> | { type: 'USER', payload: { id: 1234 } } |
 
+
+Lastly, we haven't mentioned `pure-redux-router-link`yet--**Pure Redux Router** is purposely built in
+a very modular way, which is the `<Link />` component is in a separate package. It's extremely simple
+and you're free to make your own. Basically it passes the `href` on to **Pure Redux Router** and calls
+`event.preventDefault()` to stop page reloads. It also takes an action as a prop, which it will transform
+into a URL for you! The package is obvious enough once you get the hang of what's going on here--check it
+out when you're ready: [pure-redux-router-link](http://github.com/faceyspacey/pure-redux-router-link).
 
 ## routesMap
 
