@@ -171,7 +171,7 @@ const routesMap = {
   },
 }
 ```
-*note: the signature of `fromPath` and `toPath` offers a little more, e.g: `(pathSegment, key) => value`. Visit [routesMap docs](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/connectRoutes.md#routesmap) for a bit more info when the time comes.*
+*note: the signature of `fromPath` and `toPath` offers a little more, e.g: `(pathSegment, key) => value`. Visit [routesMap docs](./docs/connectRoutes.md#routesmap) for a bit more info when the time comes.*
 
 | URL                     | <-> | ACTION     |
 | ----------------------- |:---:| ----------:|
@@ -197,7 +197,7 @@ const routesMap = {
   USER: { path: '/user/:slug', thunk: userThunk  },
 }
 ```
-*note: visit the [location reducer docs](http://github.com/faceyspacey/pure-redux-router/docs/locationReducer) to see its shape*
+*note: visit the [location reducer docs](./docs/locationReducer) to see its shape*
 
 | URL                     | <-> | ACTION     |
 | ----------------------- |:---:| ----------:|
@@ -208,10 +208,10 @@ That's all folks! :+1:
 
 
 ## More Docs (they are short easy reads) 
-* [action.meta (the `meta` key is how our system communicates & how our action maintains its status as an "FSA")](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/action.md)
-* [location reducer shape](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/reducer.md)
-* [server side rendering](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md)
-* [connectRoutes (there is a third `options` parameter you should check out)](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/connectRoutes.md)
+* [action.meta (the `meta` key is how our system communicates & how our action maintains its status as an "FSA")](./docs/action.md)
+* [location reducer shape](./docs/reducer.md)
+* [server side rendering](./docs/server-rendering.md)
+* [connectRoutes (there is a third `options` parameter you should check out)](./docs/connectRoutes.md)
 
 ## FAQ
 
@@ -229,11 +229,11 @@ the state required to render your app without first rendering your app at least 
 on the server. It's also makes Redux's highly useful time-traveling tools *unreliable*. If that's where you're at in how you get things
 done, that's fine--but we recommend leveling up to a "dispatch to get state" strategy (rather than a "get state on render" approach), as that will provide way more predictability, which is
 especially useful when it comes to testing. When it comes to server side rendering there is no better option. We recommend looking at our 
-[server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md) to see the
+[server side rendering doc](./docs/server-rendering.md) to see the
 recommended approach.
 
 The middleware dispatches thunks asyncronously with no way for me to *await* them, how can I wait for asyncronously received data on the server?
-> Please visit the [server side rendering doc](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md). In short,
+> Please visit the [server side rendering doc](./docs/server-rendering.md). In short,
 thunks are not dispatched from the middleware on the server, but `connectRoutes`, returns a `thunk` in addition to `middleware`, `enhancer` and `reducer`,
 which you can await on, and it will retreive any data corresponding to the current route! We think our solution is slick and sensible.
 

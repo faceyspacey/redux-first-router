@@ -77,7 +77,7 @@ const { middleware, enhancer, reducer } = connectRoutes(history)
 
 ## RoutesMap
 
-The `routesMap` was pretty much covered in the [readme](https://github.com/faceyspacey/pure-redux-router), but to be thorough,
+The `routesMap` was pretty much covered in the [readme](../README.MD), but to be thorough,
 we'll explain it in depth, as well as describe the missing details about the `toPath` and `fromPath` functions. Here's its 
 *Flow type*:
 
@@ -113,7 +113,7 @@ detects a matching route. However to properly manage server side rendering, ther
 server side rendering is detected, it will not be called because it will be assumed to have been handled on the server and the 
 `initialState` on the client hydrated from that. 2) on the server, on first load, it also WILL NOT be called because it is expected
 to be handled manually in order to allow you to syncronously `await` its result before sending your HTML to the client. See the
-[server side rendering](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md) docs.
+[server side rendering](./docs/server-rendering.md) doc.
 
 
 ## Options
