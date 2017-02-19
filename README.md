@@ -130,7 +130,7 @@ ReactDOM.render(
 is the last one won't get the benefits of SEO--i.e. an `<a>` tag with a matching `href` won't be embedded in the page. What this means is
 you can take an existing app and get the benefit of syncing your address bar without changing your code! The workflow we recommend is to
 first do that and then, once you're comfortable, to use our `<Link />` component to indicate your intentions to Google. Lastly, we recommend
-using `actions` as `hrefs` since it doesn't marry you to a given URL structure--you can always change it in one place later (the `routesMap` object)!
+using `actions` as `hrefs` since it doesn't marry you to a given URL structure--you can always change it in one place later (the `routesMap` object)!*
 
 Based on the above `routesMap` the following actions will be dispatched when the
 corresponding URL is visited, and conversely those URLs will appear in the address bar
