@@ -99,19 +99,25 @@ import { Provider, connect } from 'react-redux'
 import Link from 'pure-redux-router-link'
 import store from './configureStore'
 
-const App = ({ userId }) =>
+const App = ({ userId, onClick }) =>
   <div>
     {!userId  
       ? <div>
           <h1>HOME</h1>
           <Link href="/user/1234">User 1234</Link> // both dispatches action that updates location state
           <Link href={{ type: 'USER', payload: { id: 6789 } }}>User 6789</Link> // + changes address bar
+          <span onClick={onClick}>User 5</span>
         </div>
       : <h1>USER: {userId}</h1> // press the browser BACK button to go HOME :)
     }
   </div>
 
-const AppContainer = connect(({ userId }) => ({ userId }))(App)
+const mapStateToProps = ({ userId }) => ({ userId })
+const mapDispatchToProps = (dispatch) => ({
+  onClick: () => dispatch({ type: 'USER', payload: { id: 5 } })
+})
+
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
 
 ReactDOM.render(
   <Provider store={store}>
@@ -120,11 +126,11 @@ ReactDOM.render(
   document.getElementById('react-root')
 )
 ```
-*note: For existing apps, instead of using `<Link />`, the above `App` component could just as easily `onClick` manually dispatch an action 
-of `USER` type with an `id` in the payload as it already does and achieve the same result. That means you can sync the address bar without changing 
-your code. That's the perfect first step. The next step is using the shown `<Link />` component so these 
-intentions are visible as `<a>` tags in your page for search engines to pick up. You can both pass a path and an action as the `href` prop to `<Link>`. 
-Using an action keeps your app redux-focused plus allows you to change URL names in one place within your `routesMap`!*
+*note: all three clickable elements/links above will change the address bar while dispatching the corresponding `USER` action. The only difference
+is the last one won't get the benefits of SEO--i.e. an `<a>` tag with a matching `href` won't be embedded in the page. What this means is
+you can take an existing app and get the benefit of syncing your address bar without changing your code! The workflow we recommend is to
+first do that and then, once you're comfortable, to use our `<Link />` component to indicate your intentions to Google. Lastly, we recommend
+using `actions` as `hrefs` since it doesn't marry you to a given URL structure--you can always change it in one place later (the `routesMap` object)!
 
 Based on the above `routesMap` the following actions will be dispatched when the
 corresponding URL is visited, and conversely those URLs will appear in the address bar
