@@ -141,6 +141,8 @@ as keys in the payload object:
 | ------------------ |:---:| ----------:|
 | /home              | <-> | { type: 'HOME' } |
 | /user/1234         | <-> | { type: 'USER', payload: { id: 1234 } } |
+| /user/6789         | <-> | { type: 'USER', payload: { id: 6789 } } |
+| /user/5            | <-> | { type: 'USER', payload: { id: 6 } } |
 
 *note: if you have more keys in your payload that is fine--so long as you have the minimum required keys to populate the path*
 
