@@ -106,7 +106,7 @@ const App = ({ userId, onClick }) =>
           <h1>HOME</h1>
           <Link href="/user/1234">User 1234</Link> // both dispatches action that updates location state
           <Link href={{ type: 'USER', payload: { id: 6789 } }}>User 6789</Link> // + changes address bar
-          <span onClick={onClick}>User 5</span>
+          <span onClick={onClick}>User 5</span>   // does same thing without SEO benefits
         </div>
       : <h1>USER: {userId}</h1> // press the browser BACK button to go HOME :)
     }
