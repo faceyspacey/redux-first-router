@@ -121,7 +121,7 @@ ReactDOM.render(
 ```
 *note: For existing apps, instead of using `<Link />`, the above `App` component could just as easily manually dispatch an action 
 of `USER` type with an `id` in the payload as it already does and achieve the same result. That means you can sync the address bar without changing 
-your code. That's the perfect first step. The next step after that is using the shown `<Link />` component so these 
+your code. That's the perfect first step. The next step is using the shown `<Link />` component so these 
 intentions are visible as `<a>` tags in your page for search engines to pick up.*
 
 Based on the above `routesMap` the following actions will be dispatched when the
