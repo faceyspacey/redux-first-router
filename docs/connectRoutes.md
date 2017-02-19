@@ -95,8 +95,8 @@ type RouteObject = {
 }
 ```
 
-*note: one very important thing to note about the resulting dispathced actions is that the payload is expected to always be an object.
-When using **Pure Redux Router**, do not dispatch payloads that are primitives such as `number` or `string`.*
+*note: one very important thing to note about the resulting dispatched actions is that the payload is expected to always be an object.
+When using* **Pure Redux Router**, *do not dispatch payloads that are primitives such as `number` or `string`.*
 
 Features:
 * **route as a string** is simply path to match to an action type without any transformations
