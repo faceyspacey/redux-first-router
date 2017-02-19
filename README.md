@@ -56,10 +56,23 @@ get in the way of optimizing animations.
 
 ## The Gist
 It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
+```javascript
+export const userIdReducer = (state = null, action = {}) => {
+  switch(action.type) {
+    case 'HOME':
+      return null
+    case 'USER':
+      return action.payload.id
+    default: 
+      return state
+  }
+}
+```
 
 ```javascript
 import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createBrowserHistory'
+import userIdReducer from './reducers/userIdReducer'
 
 const history = createHistory()
 
@@ -73,7 +86,7 @@ const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // y
 
 // and you already know how the story ends:
 
-const rootReducer = combineReducers({ location: reducer })
+const rootReducer = combineReducers({ location: reducer: userId: userIdReducer })
 const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
@@ -82,16 +95,26 @@ And here's how you'd embed SEO/Redux-friendly links in your app:
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import { Provider, connect } from 'react-redux'
 import Link from 'pure-redux-router-link'
 import store from './configureStore'
 
-const App = () =>
-  <Link href="/user/1234">User 1234</Link> // when clicked dispatches action that updates location state
+const App = ({ userId }) =>
+  <div>
+    {!userId  
+      ? <div>
+          <span>HOME</span>
+          <Link href="/user/1234">User 1234</Link> // when clicked dispatches action that updates location state
+        </div>
+      : <span>USER: {userId}</span>
+    }
+  </div>
+
+const AppContainer = connect(({ userId }) => ({ userId }))(App)
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>,
   document.getElementById('react-root')
 )
@@ -202,7 +225,7 @@ which you can await on, and it will retreive any data corresponding to the curre
 
 The server has no `window` or `history`, how can I get that on the server?
 > The [history](https://github.com/ReactTraining/history) package provides a `createMemoryHistory()` function just for this scenario.
-It essentially generates a fake `history` object based on the `request.path` packages like *express* will give you. It's painless. Check it out!
+It essentially generates a fake `history` object based on the `request.path` *express* (or similar packages) will give you. It's painless. Check it out!
 
 Does this work with React Native?
 > Yes, just like server side rendering, you can use the `history` package's `createMemoryHistory()` function. It's perfect for React Native's `Linking` API and push notifications in general. In fact, 
@@ -224,7 +247,7 @@ from reloading the page as it visits the new URL. The net result is you have `<a
 
 Why no route matching components like *React Router*?
 > Because they are unnecessary when the combination of actions and reducers lead to both a wider variety and better defined set of states, not to mention
-more singular. By "singular" we mean that you don't have to think in terms of both redux state *AND* address bar paths. You just think
+more singular. By "singular" we mean that you don't have to think in terms of *both* redux state *AND* address bar paths. You just think
 in terms of *state*. It makes your life simpler. It makes your code cleaner and easier to understand. It gives you the best control
 React + Redux has to offer when it comes to optimizing rendering for animations. 
 
