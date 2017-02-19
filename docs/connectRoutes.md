@@ -5,9 +5,14 @@ a pairing of *action types* and dynamic express style route paths. If you use ou
 its `href` prop, you can change the URLs you use here any time without having to change your application code. 
 
 In general, once you set this up, the only "work" you should expect to do in your component code is diligent use of the `<Link />` component
-to specify what actions/URLs will be dispatched in markup written to the page, as opposed to in event handlers and thunks. It's
-a simple discpline and minor inversion of control you will have to exercise over how you currently do things with the `mapDispatchToProps`
-argument to `react-redux`'s `connect` function. It's not that you can't still use `mapDispatchToProps`--you just won't want to
+to specify what actions/URLs will be dispatched, and perhaps more importantly what markup will be written to the page. You can get the same
+effect of the address bar changing just by dispatching actions bound as event handlers like you usually do, but that doesn't get you
+`<a>` tags embedded in the page for search engines to pick up. 
+
+To get the benefits of SEO, the changes to your workflow are minor. It's an inversion of control where you now specify actions in your components
+rather than `mapDispatchToProps` handlers. Once you get used to it, it will take very little discpline to make this your new way of operating.
+
+Lastly, it's not that you can't still use `mapDispatchToProps`--you just won't want to
 in order to get SEO benefits for actions that you want to change the address bar (and allow the user to *back/next` through using the 
 browser buttons).
 
