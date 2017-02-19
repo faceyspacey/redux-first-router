@@ -53,7 +53,7 @@ const history = createHistory({ initialEntries: [request.path] })
 const { middleware, enhancer, reducer } = connectRoutes(history)
 ```
 
-See the widely used [history](https://github.com/ReactTraining/history) on github. The idea is simply that you can use
+See the widely used [history package](https://github.com/ReactTraining/history) on github. The idea is simply that you can use
 both interchangeably depending on if you're in the browser or an environment that does not have `window` or `window.history` such as the 
 server, React Native or tests (note: Jest does have a fake functioning `window` object, so in Jest tests, you should
 use `createMemoryHistory` to keep tests isolated).
@@ -64,7 +64,9 @@ you want to trick **Pure Redux Router** into thinking the app is starting on wha
 the `Linking` API like this:
 
 ```javascript
+import createHistory from 'history/createMemoryHistory'
 import { Linking } from 'react-native'
+
 const url = await Linking.getInitialURL()
 const path = path = url.substr(url.indexOf('.com') + 4) // assuming you're using Universal Links
 const history = createHistory({ initialEntries: [path] })
@@ -92,6 +94,9 @@ type RouteObject = {
   thunk?: (dispatch: Function, getState: Function) => Promise<any>,
 }
 ```
+
+*note: one very important thing to note about the resulting dispathced actions is that the payload is expected to always be an object.
+When using **Pure Redux Router**, do not dispatch payloads that are primitives such as `number` or `string`.*
 
 Features:
 * **route as a string** is simply path to match to an action type without any transformations
