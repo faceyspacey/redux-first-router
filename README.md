@@ -16,7 +16,7 @@ is Redux-heavy. Redux states always had all we need to render our app."
 
 It's a bold statement. We know. You be the judge of that. We're anxious to here what you think in the [Issues](https://github.com/faceyspacey/pure-redux-router/issues).
 
-That all said and before we get started, there is some *prior art*, and you should [check them out](../docs/prior-art.md). **Pure Redux Router**
+That all said and before we get started, there is some *prior art*, and you should [check them out](./docs/prior-art.md). **Pure Redux Router**
 isn't the first stab at something like this, but--aside from this path being pre-validated--we feel it is the most complete, tested and *spot on* solution. 
 We have reviewed what came before, stripped what was unnecessary, added what was needed, and generally focused on getting the ***developer experience*** right. The best
 part is that once you set it up there's virtually nothing left to do. It's truly "set it and forget it." Let's get started.
