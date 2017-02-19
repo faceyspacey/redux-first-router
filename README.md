@@ -126,7 +126,7 @@ ReactDOM.render(
   document.getElementById('react-root')
 )
 ```
-*note: all three clickable elements/links above will change the address bar while dispatching the corresponding `USER` action. The only difference
+*note: ALL THREE clickable elements/links above will change the address bar while dispatching the corresponding `USER` action. The only difference
 is the last one won't get the benefits of SEO--i.e. an `<a>` tag with a matching `href` won't be embedded in the page. What this means is
 you can take an existing app and get the benefit of syncing your address bar without changing your code! The workflow we recommend is to
 first do that and then, once you're comfortable, to use our `<Link />` component to indicate your intentions to Google. Lastly, we recommend

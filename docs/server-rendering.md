@@ -1,11 +1,11 @@
 ## Server Side Rendering (using thunk)
-Ok, this is the biggest example here, but given what it does, it's extremely concise and sensible. Since the middleware handles the actions it receives asyncronously, on the server you simply await the result of a possible matching thunk:
+Ok, this is the biggest example here, but given what it does, we think it's extremely concise and sensible. Since the middleware handles the actions it receives asyncronously, on the server you simply await the result of a possible matching thunk:
 ```javascript
 import express from 'express'
 import createHistory from 'history/createMemoryHistory'
 import userActionCreator from '../actions/user'
 
-const render = (req, res) => {
+const render = async (req, res) => {
    const history = createHistory({
     initialEntries: [req.path], // match initial route to express path
   })
@@ -19,7 +19,7 @@ const render = (req, res) => {
   const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
 
   // perhaps request and dispatch some app-wide state as well, e.g:
-  // await Promise.all([ store.dispatch(myThunkA), store.dispatch(myThunkB) ])
+  // await Promise.all([ store.dispatch(myThunkA), store.dispatch(myThunkB) ]) // uses thunk middleware
   
   await thunk(store) // THE WORK: if there is a thunk for current route, it will be awaited here
   

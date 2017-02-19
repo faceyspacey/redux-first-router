@@ -2,7 +2,7 @@
 One of the goals of **Pure Redux Router** is to *NOT* alter your actions and be 100% *flux standard action*-compliant. That allows
 for automatic support for packages such as `redux-actions`. 
 
-So simply put, to do that, we stuffed all the info our middleware, reducer, etc, needs in the `meta` key of your actions.
+So simply put, to do that, we stuffed all the info our middleware, reducer, etc, depends on in the `meta` key of your actions.
 
 Without further ado, let's take a look at what your actions look like--here's our pure utility function, `nestAction()`, used to format 
 and nest your actions:
@@ -75,5 +75,6 @@ type Location = {
 ## Conclusion
 You will rarely need to inspect the `meta` key. It's primarily for use by our `location` reducer. However, a common
 use for it is to use the `load` and `backNext` keys (especially the `load`) to make some determinations in your
-reducers. You can also use the `prev` route to do things like declaratively trigger fancy animations in your
-components because it will indicate which direction the user is moving in a funnel/sequence of pages. 
+reducers. `backNext` simply indicates the browser back/next buttons were used. You can also use the `prev` route to 
+do things like declaratively trigger fancy animations in your components because it will indicate which direction 
+the user is moving in a funnel/sequence of pages. 
