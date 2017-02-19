@@ -57,19 +57,6 @@ get in the way of optimizing animations.
 ## The Gist
 It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
 ```javascript
-export const userIdReducer = (state = null, action = {}) => {
-  switch(action.type) {
-    case 'HOME':
-      return null
-    case 'USER':
-      return action.payload.id
-    default: 
-      return state
-  }
-}
-```
-
-```javascript
 import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createBrowserHistory'
 import userIdReducer from './reducers/userIdReducer'
@@ -89,6 +76,19 @@ const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // y
 const rootReducer = combineReducers({ location: reducer: userId: userIdReducer })
 const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
+```
+
+```javascript
+export const userIdReducer = (state = null, action = {}) => {
+  switch(action.type) {
+    case 'HOME':
+      return null
+    case 'USER':
+      return action.payload.id
+    default: 
+      return state
+  }
+}
 ```
 
 And here's how you'd embed SEO/Redux-friendly links in your app:
