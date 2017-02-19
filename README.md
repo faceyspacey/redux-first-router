@@ -107,7 +107,7 @@ const App = ({ userId }) =>
           <Link href="/user/1234">User 1234</Link> // both dispatches action that updates location state
           <Link href={{ type: 'USER', payload: { id: 6789 } }}>User 6789</Link> // + changes address bar
         </div>
-      : <h1>USER: {userId}</h1>
+      : <h1>USER: {userId}</h1> // press the browser BACK button to go HOME :)
     }
   </div>
 
@@ -123,7 +123,7 @@ ReactDOM.render(
 *note: For existing apps, instead of using `<Link />`, the above `App` component could just as easily `onClick` manually dispatch an action 
 of `USER` type with an `id` in the payload as it already does and achieve the same result. That means you can sync the address bar without changing 
 your code. That's the perfect first step. The next step is using the shown `<Link />` component so these 
-intentions are visible as `<a>` tags in your page for search engines to pick up. You can both pass a path and an action as the href prop to `<Link>`. 
+intentions are visible as `<a>` tags in your page for search engines to pick up. You can both pass a path and an action as the `href` prop to `<Link>`. 
 Using an action keeps your app redux-focused plus allows you to change URL names in one place within your `routesMap`!*
 
 Based on the above `routesMap` the following actions will be dispatched when the
