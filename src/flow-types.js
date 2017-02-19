@@ -10,7 +10,7 @@ export type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => void,
+  thunk?: (dispatch: Dispatch, getState: GetState) => Promise<any>, // eslint-disable-line flowtype/no-weak-types
 }
 
 export type Route = RouteString | RouteObject

@@ -88,6 +88,6 @@ type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Function, getState: Function) => void,
+  thunk?: (dispatch: Function, getState: Function) => Promise<any>,
 }
 ```
