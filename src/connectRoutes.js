@@ -205,7 +205,7 @@ export default (
       dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
 
       if (typeof onBackNext === 'function') {
-        onBackNext(location)
+        onBackNext(action, location)
       }
     }
   }

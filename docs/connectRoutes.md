@@ -14,7 +14,9 @@ rather than `mapDispatchToProps` handlers. Once you get used to it, it will take
 
 Lastly, it's not that you can't still use `mapDispatchToProps`--you just won't want to
 in order to get SEO benefits for actions that you want to change the address bar (and allow the user to *back/next` through using the 
-browser buttons).
+browser buttons). To learn more about how to create links, check out our [<Link /> component](https://github.com/faceyspacey/pure-redux-router-link).
+
+Let's now examine our `connectRoutes` function more deeply:
 
 ## Signature
 ```javascript
@@ -30,18 +32,25 @@ connectRoutes(
 }
 ```
 
+The only parameter `connectRoutes` expects is the `history` object. You won't get much for that, but it won't break your redux store.
+The second parameter is your all-important `routesMap`. And the third is a small set of `options` in a map that you can provide.
+
+Let's dive into each.
 
 ## History
 The `history` object is the return of the *history* package's `createBrowserHistory` or `createMemoryHistory` function:
 
 ```
 import createHistory from 'history/createBrowserHistory'
-const history = createHistory()
+const history = createHistory() // notice no parameters are needed in the browser
+const { middleware, enhancer, reducer } = connectRoutes(history)
+
 ```
 *or:*
 ```
 import createHistory from 'history/createMemoryHistory'
 const history = createHistory({ initialEntries: [request.path] })
+const { middleware, enhancer, reducer } = connectRoutes(history)
 ```
 
 See the widely used [history](https://github.com/ReactTraining/history) on github. The idea is simply that you can use
@@ -58,18 +67,15 @@ the `Linking` API like this:
 import { Linking } from 'react-native'
 const path = await Linking.getInitialURL()
 const history = createHistory({ initialEntries: [path] })
+const { middleware, enhancer, reducer } = connectRoutes(history)
 ```
 
-## Options
-```javascript
-type Options = {
-  location?: string, // default: 'location'
-  title?: string,    // default: 'title'
-  onBackNext?: Function,
-}
-```
 
 ## RoutesMap
+
+The `routesMap` was pretty much covered in the [readme](https://github.com/faceyspacey/pure-redux-router), but to be thorough,
+we'll explain it in depth, as well as describe the missing details about the `toPath` and `fromPath` functions. Here's its 
+*Flow type*:
 
 ```javascript
 type RoutesMap = {
@@ -101,3 +107,25 @@ server side rendering is detected, it will not be called because it will be assu
 `initialState` on the client hydrated from that. 2) on the server, on first load, it also WILL NOT be called because it is expected
 to be handled manually in order to allow you to syncronously `await` its result before sending your HTML to the client. See the
 [server side rendering](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/server-rendering.md) docs.
+
+
+## Options
+Lastly, let's talk about the `options` you can provide. There are 3. Here's its flow type:
+
+```javascript
+type Options = {
+  location?: string, // default: 'location'
+  title?: string,    // default: 'title'
+  onBackNext?: (HistoryLocation, Action) => void,
+}
+```
+
+The `location` lets you specify what key **Pure Redux Router** should expect its reducer to be attached to in your Redux state stree. The `title`
+is similarly the name of the state key for your page title. If it's provided, **Pure Redux Router** will change your page 
+title for you, e.g. `document.title = 'foo'`. We'll change your page title even if action types not in your `routesMap` are dispatched.
+Use it however you want, knowing that when its value changes, so will your page title.
+
+`onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed 2 arguments:
+the `action` dispatched as a result of the URL changing and the value of `history.location`. It's one of the few frills this package
+offers. *Fun Fact: we originally added it because we wanted to play a click a sound when the user presses those buttons, similar to
+the experience when the user pressed buttons on the page.* Perhaps you will find it useful too. 

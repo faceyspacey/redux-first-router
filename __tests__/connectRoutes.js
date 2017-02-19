@@ -349,9 +349,15 @@ describe('enhancer -> _historyAttemptDispatchAction()', () => {
 
     _historyAttemptDispatchAction(dispatch, historyLocation)
 
-    const args = onBackNext.mock.calls[0][0]
-    console.log(args)
-    expect(args).toEqual(historyLocation)
+    const args = onBackNext.mock.calls[0]
+    const action = args[0]
+    const histLocation = args[1]
+
+    console.log(action)
+    console.log(histLocation)
+
+    expect(action.meta.location.current.pathname).toEqual('/second/foo')
+    expect(histLocation.pathname).toEqual('/second/foo')
   })
 })
 
