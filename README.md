@@ -104,7 +104,8 @@ const App = ({ userId }) =>
     {!userId  
       ? <div>
           <h1>HOME</h1>
-          <Link href="/user/1234">User 1234</Link> // dispatches action that updates location state
+          <Link href="/user/1234">User 1234</Link>   // both dispatches action that updates location state
+          <Link href={{ type: 'USER', payload: { id: 6789 } }}>User 6789</Link> // and changes address bar
         </div>
       : <h1>USER: {userId}</h1>
     }
