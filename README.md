@@ -119,7 +119,7 @@ ReactDOM.render(
   document.getElementById('react-root')
 )
 ```
-*note: the above App component could just as easily manually dispatch an action of `USER` type with an `id` in the payload 
+*note: instead of using `<Link />` the above App component could just as easily manually dispatch an action of `USER` type with an `id` in the payload 
 and achieve the same result. That means you can sync the address bar without changing your code. That's the perfect first 
 step to take. The next step after that is using the `<Link />` component so these intentions are visible as `<a>` tags
 in your page for search engines to pick up.*
