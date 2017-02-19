@@ -171,7 +171,7 @@ const routesMap = {
   },
 }
 ```
-*note: the signature of `fromPath` and `toPath` offers a little more, e.g: `(pathSegment, key) => value`. Visit [routesMap docs](http://github.com/faceyspacey/pure-redux-router/docs/routesMap) for a bit more info when the time comes.*
+*note: the signature of `fromPath` and `toPath` offers a little more, e.g: `(pathSegment, key) => value`. Visit [routesMap docs](https://github.com/faceyspacey/pure-redux-router/blob/master/docs/connectRoutes.md#routesmap) for a bit more info when the time comes.*
 
 | URL                     | <-> | ACTION     |
 | ----------------------- |:---:| ----------:|
