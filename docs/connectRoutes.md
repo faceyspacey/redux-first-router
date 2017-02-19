@@ -77,7 +77,7 @@ const { middleware, enhancer, reducer } = connectRoutes(history)
 
 ## RoutesMap
 
-The `routesMap` was pretty much covered in the [readme](../), but to be thorough,
+The `routesMap` was pretty much covered in the [readme](../README.md), but to be thorough,
 we'll explain it in depth, as well as describe the missing details about the `toPath` and `fromPath` functions. Here's its 
 *Flow type*:
 
