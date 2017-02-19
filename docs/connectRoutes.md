@@ -14,7 +14,7 @@ rather than `mapDispatchToProps` handlers. Once you get used to it, it will take
 
 Lastly, it's not that you can't still use `mapDispatchToProps`--you just won't want to
 in order to get SEO benefits for actions that you want to change the address bar (and allow the user to *back/next` through using the 
-browser buttons). To learn more about how to create links, check out our [<Link /> component](https://github.com/faceyspacey/pure-redux-router-link).
+browser buttons). To learn more about how to create links, check out our [Link component](https://github.com/faceyspacey/pure-redux-router-link).
 
 Let's now examine our `connectRoutes` function more deeply:
 
