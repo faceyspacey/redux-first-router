@@ -123,7 +123,7 @@ ReactDOM.render(
 of `USER` type with an `id` in the payload as it already does and achieve the same result. That means you can sync the address bar without changing 
 your code. That's the perfect first step. The next step is using the shown `<Link />` component so these 
 intentions are visible as `<a>` tags in your page for search engines to pick up. You can also pass an action as a prop to `<Link>` instead of
-of a path, which keeps your app redux-focused!*
+of a path, which keeps your app redux-focused and allows you to change URL names in one place!*
 
 Based on the above `routesMap` the following actions will be dispatched when the
 corresponding URL is visited, and conversely those URLs will appear in the address bar
