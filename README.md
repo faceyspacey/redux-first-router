@@ -91,7 +91,7 @@ export const userIdReducer = (state = null, action = {}) => {
 }
 ```
 
-And here's how you'd embed SEO/Redux-friendly links in your app:
+And here's how you'd embed SEO/Redux-friendly links in your app, while making use the triggered state:
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -119,7 +119,7 @@ ReactDOM.render(
   document.getElementById('react-root')
 )
 ```
-*note: For existing apps, instead of using `<Link />` the above App component could just as easily manually dispatch an action 
+*note: For existing apps, instead of using `<Link />`, the above `App` component could just as easily manually dispatch an action 
 of `USER` type with an `id` in the payload as it already does and achieve the same result. That means you can sync the address bar without changing 
 your code. That's the perfect first step to take. The next step after that is using the shown `<Link />` component so these 
 intentions are visible as `<a>` tags in your page for search engines to pick up.*
