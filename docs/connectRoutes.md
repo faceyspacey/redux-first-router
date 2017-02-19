@@ -65,8 +65,10 @@ the `Linking` API like this:
 
 ```javascript
 import { Linking } from 'react-native'
-const path = await Linking.getInitialURL()
+const url = await Linking.getInitialURL()
+const path = path = url.substr(url.indexOf('.com') + 4) // assuming you're using Universal Links
 const history = createHistory({ initialEntries: [path] })
+
 const { middleware, enhancer, reducer } = connectRoutes(history)
 ```
 
