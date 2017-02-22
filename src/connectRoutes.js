@@ -242,7 +242,7 @@ export default (
 }
 
 /** SIDE EFFECTS:
- *  Client code needs a simple `go` to path action creator and `back` function because it's convenient for
+ *  Client code needs a simple `go` to path action creator and `back` + `next` functions because it's convenient for
  *  prototyping. It will not harm SSR, so long as you don't use it server side. So that means DO NOT
  *  simulate clicking links server side--and dont do that, dispatch actions to setup state instead.
  *
@@ -267,3 +267,6 @@ export const go = (pathname: string) =>
 
 export const back = () =>
   _history.goBack()
+
+export const next = () =>
+  _history.goForward()

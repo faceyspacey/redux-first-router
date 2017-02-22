@@ -465,15 +465,11 @@ describe('thunk', () => {
 describe('reducer', () => {
   it('reducer EXISTS and works (see __tests__/createLocationReducer for all its tests)', () => {
     const { reducer } = setup()
-    const {
-      action,
-      expectState,
-    } = reducerParameters('SECOND', '/second/bar')
+    const { action } = reducerParameters('SECOND', '/second/bar')
 
     const state = reducer(undefined, action)
 
-    console.log(state)
-    expectState(state)
+    expect(state.pathname).toEqual('/second/bar')
   })
 })
 

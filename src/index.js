@@ -2,6 +2,7 @@ export {
   default as connectRoutes,
   go,
   back,
+  next,
 } from './connectRoutes'
 
 export const NOT_FOUND = '@@pure-redux-router/NOT_FOUND'

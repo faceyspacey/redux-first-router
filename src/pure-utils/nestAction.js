@@ -13,6 +13,7 @@ export default (
   const { type, payload = {}, meta } = receivedAction
   const shouldPushEntry = isMiddleware && history.entries[history.index].pathname !== pathname
 
+  // insure if the user went back in the history that we erase previous future entries
   const entries = shouldPushEntry
     ? history.entries.slice(0, history.index + 1).map(entry => entry.pathname)
     : history.entries.map(entry => entry.pathname)
