@@ -10,6 +10,13 @@ Object {
         },
         "type": "SECOND",
       },
+      "history": Object {
+        "entries": Array [
+          "/",
+        ],
+        "index": 0,
+        "length": 1,
+      },
       "load": undefined,
       "prev": Object {
         "pathname": "",
@@ -35,6 +42,13 @@ Object {
         "payload": Object {},
         "type": "FIRST",
       },
+      "history": Object {
+        "entries": Array [
+          "/first",
+        ],
+        "index": 0,
+        "length": 1,
+      },
       "load": true,
       "prev": Object {
         "pathname": "",
@@ -59,6 +73,14 @@ Object {
           "param": "bar",
         },
         "type": "SECOND",
+      },
+      "history": Object {
+        "entries": Array [
+          "/first",
+          "/second/bar",
+        ],
+        "index": 1,
+        "length": 2,
       },
       "load": undefined,
       "prev": Object {
@@ -87,6 +109,14 @@ Object {
         },
         "type": "SECOND",
       },
+      "history": Object {
+        "entries": Array [
+          "/",
+          "/second/bar",
+        ],
+        "index": 1,
+        "length": 2,
+      },
       "load": undefined,
       "prev": Object {
         "pathname": "",
@@ -107,6 +137,14 @@ Object {
   "location": Object {
     "backNext": undefined,
     "hasSSR": undefined,
+    "history": Object {
+      "entries": Array [
+        "/",
+        "/second/bar",
+      ],
+      "index": 1,
+      "length": 2,
+    },
     "load": undefined,
     "pathname": "/second/bar",
     "payload": Object {
@@ -137,6 +175,13 @@ Object {
         "payload": Object {},
         "type": "@@pure-redux-router/NOT_FOUND",
       },
+      "history": Object {
+        "entries": Array [
+          "/",
+        ],
+        "index": 0,
+        "length": 1,
+      },
       "load": undefined,
       "prev": Object {
         "pathname": "",
@@ -153,7 +198,14 @@ Object {
 exports[`reducer reducer EXISTS and works (see __tests__/createLocationReducer for all its tests) 1`] = `
 Object {
   "backNext": true,
-  "hasSSR": true,
+  "hasSSR": undefined,
+  "history": Object {
+    "entries": Array [
+      "/second/bar",
+    ],
+    "index": 0,
+    "length": 1,
+  },
   "load": true,
   "pathname": "/second/bar",
   "payload": Object {

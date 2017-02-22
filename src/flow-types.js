@@ -23,7 +23,7 @@ export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
 export type Options = {
-  onBackNext?: (HistoryLocation) => void,
+  onBackNext?: (Action, HistoryLocation) => void,
   title?: string,
   location?: string,
 }
@@ -38,6 +38,7 @@ export type LocationState = {
   prev: Location,
   load?: true,
   backNext?: true,
+  history: HistoryData,
   routesMap: RoutesMap,
   hasSSR?: true,
 }
@@ -54,7 +55,14 @@ export type Meta = {
     prev: Location,
     load?: true,
     backNext?: true,
+    history: HistoryData,
   },
+}
+
+export type HistoryData = {
+  entries: Array<string>,
+  index: number,
+  length: number,
 }
 
 export type Action = {
@@ -73,11 +81,18 @@ export type Listener = ({ pathname: string }) => void
 export type Listen = (Listener) => void
 export type Push = ({ pathname: string }) => void
 export type GoBack = () => void
+export type GoForward = () => void
+export type Go = (number) => void
 
 export type History = {
   listen: Listen,
   push: Push,
   goBack: GoBack,
+  goForward: GoForward,
+  go: Go,
+  entries: Array<{ pathname: string }>,
+  index: number,
+  length: number,
   location: {
     pathname: string,
   },

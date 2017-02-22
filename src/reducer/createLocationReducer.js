@@ -1,7 +1,7 @@
 // @flow
 import { NOT_FOUND } from '../index'
 import isServer from '../pure-utils/isServer'
-import type { LocationState, RoutesMap, Action, Payload } from '../flow-types'
+import type { LocationState, RoutesMap, Action, Payload, History } from '../flow-types'
 
 
 export default (
@@ -11,7 +11,8 @@ export default (
   state: LocationState = initialState,
   action: Action,
 ): LocationState => {
-  if (routesMap[action.type] || action.type === NOT_FOUND) {
+  if ((routesMap[action.type] || action.type === NOT_FOUND)
+      && (action.meta.location.current.pathname !== state.pathname || action.meta.location.load)) {
     return {
       pathname: action.meta.location.current.pathname,
       type: action.type,
@@ -19,6 +20,7 @@ export default (
       prev: action.meta.location.prev,
       load: action.meta.location.load,
       backNext: action.meta.location.backNext,
+      history: action.meta.location.history,
       hasSSR: state.hasSSR,
       routesMap,
     }
@@ -33,6 +35,7 @@ export const getInitialState = (
   type: string,
   payload: Payload,
   routesMap: RoutesMap,
+  history: History,
 ): LocationState => ({
   pathname: currentPathname,
   type,
@@ -44,6 +47,11 @@ export const getInitialState = (
   },
   load: undefined,
   backNext: undefined,
+  history: {
+    entries: history.entries.map(entry => entry.pathname),
+    index: history.index,
+    length: history.length,
+  },
   hasSSR: isServer() ? true : undefined,
   routesMap,
 })

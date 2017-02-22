@@ -10,6 +10,13 @@ Object {
         },
         "type": "INFO_PARAM",
       },
+      "history": Object {
+        "entries": Array [
+          "/",
+        ],
+        "index": 0,
+        "length": 1,
+      },
       "load": undefined,
       "prev": Object {
         "pathname": "/prev",
@@ -37,6 +44,14 @@ Object {
         },
         "type": "@@pure-redux-router/NOT_FOUND",
       },
+      "history": Object {
+        "entries": Array [
+          "/",
+          "/prev",
+        ],
+        "index": 1,
+        "length": 2,
+      },
       "load": undefined,
       "prev": Object {
         "pathname": "/prev",
@@ -63,6 +78,14 @@ Object {
           "param": "foo",
         },
         "type": "INFO_PARAM",
+      },
+      "history": Object {
+        "entries": Array [
+          "/",
+          "/info/foo",
+        ],
+        "index": 1,
+        "length": 2,
       },
       "load": undefined,
       "prev": Object {

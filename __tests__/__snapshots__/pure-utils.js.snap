@@ -5,11 +5,19 @@ Object {
     "location": Object {
       "backNext": undefined,
       "current": Object {
-        "pathname": "path",
+        "pathname": "/path",
         "payload": Object {
           "bar": "baz",
         },
         "type": "FOO",
+      },
+      "history": Object {
+        "entries": Array [
+          "/",
+          "/path",
+        ],
+        "index": 1,
+        "length": 2,
       },
       "load": undefined,
       "prev": Object {

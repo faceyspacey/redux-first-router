@@ -100,7 +100,7 @@ export default (
   }: Options = options
 
   const { type, payload }: ReceivedAction = pathToAction(currentPathname, routesMap)
-  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, routesMap)
+  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, routesMap, history)
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
   const thunk = createThunk(routesMap, locationKey)
@@ -129,14 +129,14 @@ export default (
       const { pathname } = store.getState().location
       const { payload } = action
 
-      action = nestAction(pathname, { type: NOT_FOUND, payload }, prevLocation)
+      action = nestAction(pathname, { type: NOT_FOUND, payload }, prevLocation, history, true)
       prevLocation = action.meta.location.current
     }
 
     // THE MAGIC: dispatched action matches a connected type, so we generate a
     // location-aware action and also as a result update location reducer state.
     else if (route && !isLocationAction(action)) {
-      action = middlewareCreateAction(action, routesMap, prevLocation)
+      action = middlewareCreateAction(action, routesMap, prevLocation, history)
       prevLocation = action.meta.location.current
     }
 
@@ -184,7 +184,7 @@ export default (
 
     // dispatch the first location-aware action so initial app state is based on the url on load
     if (!location.hasSSR || isServer()) { // only dispatch on client before SSR is setup, which passes state on to the client
-      const action = historyCreateAction(currentPathname, routesMap, prevLocation, 'load')
+      const action = historyCreateAction(currentPathname, routesMap, prevLocation, history, 'load')
       prevLocation = action.meta.location.current
       store.dispatch(action)
     }
@@ -200,7 +200,7 @@ export default (
       currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
 
       // THE MAGIC: parse the address bar path into a matched action
-      const action = historyCreateAction(location.pathname, routesMap, prevLocation, 'backNext')
+      const action = historyCreateAction(location.pathname, routesMap, prevLocation, history, 'backNext')
       prevLocation = action.meta.location.current
       dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
 

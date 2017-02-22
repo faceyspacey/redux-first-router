@@ -1,9 +1,12 @@
+import { createMemoryHistory } from 'history'
+
 import historyCreateAction from '../src/action-creators/historyCreateAction'
 import middlewareCreateAction from '../src/action-creators/middlewareCreateAction'
 import { NOT_FOUND } from '../src/index'
 
 
 it('historyCreateAction() - returns action created when history/address_bar chanages', () => {
+  const history = createMemoryHistory()
   const pathname = '/info/foo'
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
   const kind = 'backNext'
@@ -12,7 +15,7 @@ it('historyCreateAction() - returns action created when history/address_bar chan
     INFO_PARAM: '/info/:param',
   }
 
-  const action = historyCreateAction(pathname, routesMap, prevLocation, kind)
+  const action = historyCreateAction(pathname, routesMap, prevLocation, history, kind)
 
   console.log(action)
   console.log(action.meta.location)
@@ -34,15 +37,15 @@ it('historyCreateAction() - returns action created when history/address_bar chan
 
 
 it('middlewareCreateAction() - returns action created when middleware detects connected/matched action.type', () => {
+  const history = createMemoryHistory()
   const receivedAction = { type: 'INFO_PARAM', payload: { param: 'foo' } }
   const routesMap = {
     INFO: '/info',
     INFO_PARAM: '/info/:param',
   }
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
-  const locationState = { pathname: '/prev' }
 
-  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, locationState)
+  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, history)
 
   console.log(action)
   console.log(action.meta.location)
@@ -64,15 +67,15 @@ it('middlewareCreateAction() - returns action created when middleware detects co
 
 
 it('middlewareCreateAction() - [action not matched to any routePath]', () => {
+  const history = createMemoryHistory()
   const receivedAction = { type: 'BLA', payload: { someKey: 'foo' } }
   const routesMap = {
     INFO: '/info',
     INFO_PARAM: '/info/:param',
   }
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
-  const locationState = { pathname: '/prev' }
 
-  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, locationState)
+  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, history)
 
   console.log(action)
   console.log(action.meta.location)
@@ -85,25 +88,3 @@ it('middlewareCreateAction() - [action not matched to any routePath]', () => {
 
   expect(action).toMatchSnapshot()
 })
-
-/**
-export default (
-  action: ReceivedAction,
-  routesMap: RoutesMap,
-  prevLocation: Location,
-  location: LocationState,
-): Action => {
-  try {
-    const pathname = actionToPath(action, routesMap)
-    return nestAction(pathname, action, prevLocation)
-  }
-  catch (e) {
-    // developer dispatched an invalid type + payload
-    // preserve previous pathname to keep app stable for future correct actions that depend on it
-    const pathname = (location && location.pathname) || null
-    const payload = action.payload || {}
-    return nestAction(pathname, { type: NOT_FOUND, payload }, prevLocation)
-  }
-}
-
- */

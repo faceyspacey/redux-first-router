@@ -1562,7 +1562,7 @@ module.exports = {
     'space-in-parens': ['error', 'never'],
 
     // require spaces around operators
-    'space-infix-ops': 'error',
+    'space-infix-ops': 0,
 
     // Require or disallow spaces before/after unary operators
     // http://eslint.org/docs/rules/space-unary-ops

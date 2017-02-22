@@ -2,6 +2,13 @@ exports[`test createLocationReducer() - maintains address bar pathname state and
 Object {
   "backNext": true,
   "hasSSR": undefined,
+  "history": Object {
+    "entries": Array [
+      "/second/bar",
+    ],
+    "index": 0,
+    "length": 1,
+  },
   "load": true,
   "pathname": "/second/bar",
   "payload": Object {

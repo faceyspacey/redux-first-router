@@ -1,3 +1,5 @@
+import { createMemoryHistory } from 'history'
+
 import isLocationAction from '../src/pure-utils/isLocationAction'
 import isServer from '../src/pure-utils/isServer'
 import objectValues from '../src/pure-utils/objectValues'
@@ -38,12 +40,15 @@ it('objectValues(routesMap) converts map of routes to an array of routes without
 
 
 it('nestAction(pathname, action, location)', () => {
-  const pathname = 'path'
+  const history = createMemoryHistory()
+  const pathname = '/path'
   const receivedAction = { type: 'FOO', payload: { bar: 'baz' }, meta: { info: 'something' } }
   const location = { pathname: 'previous', type: 'PREV', payload: { bla: 'prev' } }
-  let action = nestAction(pathname, receivedAction, location)
 
-  expect(action).toMatchSnapshot()
+  let action = nestAction(pathname, receivedAction, location, history, true)
+
+  console.log(action)
+  console.log(action.meta.location)
 
   expect(action.type).toEqual('FOO')
   expect(action.payload).toEqual({ bar: 'baz' })
@@ -55,12 +60,26 @@ it('nestAction(pathname, action, location)', () => {
   expect(action.meta).toMatchObject(receivedAction.meta)
   expect(action.meta.location.current.pathname).toEqual(pathname)
 
-  console.log(action)
-  console.log(action.meta.location)
+  // isMiddleware (marked by `true` argument above indicates to push new path on entries)
+  expect(action.meta.location.history).toEqual({
+    index: 1,
+    length: 2,
+    entries: ['/', '/path'],
+  })
+
+  expect(action).toMatchSnapshot()
 
   expect(action.meta.location.load).not.toBeDefined()
-  action = nestAction(pathname, receivedAction, location, 'load')
+  action = nestAction(pathname, receivedAction, location, history, false, 'load')
   expect(action.meta.location.load).toEqual(true)
+
+  // check that new paths are not pushed if pathname is the same
+  action = nestAction('/', receivedAction, location, history, true)
+  expect(action.meta.location.history).toEqual({
+    index: 0,
+    length: 1,
+    entries: ['/'],
+  })
 })
 
 

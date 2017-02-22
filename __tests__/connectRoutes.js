@@ -37,7 +37,7 @@ describe('middleware', () => {
     console.log(action.meta)
     console.log(store.getState())
 
-    expect(action).toEqual({
+    expect(action).toMatchObject({
       type: 'SECOND',
       payload,
       meta: {
@@ -52,7 +52,7 @@ describe('middleware', () => {
 
     expect(document.title).toEqual('title: SECOND')
     expect(history.location.pathname).toEqual('/second/bar')
-    expect(store.getState()).toEqual({
+    expect(store.getState()).toMatchObject({
       location: {
         pathname: '/second/bar',
         type: 'SECOND',
