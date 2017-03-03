@@ -133,14 +133,14 @@ type Options = {
 * **title** - The `title` is similarly the name of the state key for your page title. If it's provided, **Pure Redux Router** will change your page 
 title for you when the route changes, e.g. `document.title = 'foo'`.
 
+* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed 2 arguments:
+the `action` dispatched as a result of the URL changing and the value of `history.location`. It's one of the few frills this package
+offers. *Fun Fact: we originally added it because we wanted to play a click a sound when the user presses those buttons, similar to
+the experience when the user pressed buttons on the page.* Perhaps you will find it useful too. 
+
 * **onChange** - `onChange` is a simple function that will be called whenever the routes change. It's passed your standard `dispatch` and `getState` arguments
 like a thunk. It can be used to, for example, scroll to the top of the page. In the future, we may provide a simple boolean option to do that. PRs welcome. Here's how you do it for now:
 
 ```javascript
 onChange: () => document.body.scrollTop = document.documentElement.scrollTop = 0
 ```
-
-* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed 2 arguments:
-the `action` dispatched as a result of the URL changing and the value of `history.location`. It's one of the few frills this package
-offers. *Fun Fact: we originally added it because we wanted to play a click a sound when the user presses those buttons, similar to
-the experience when the user pressed buttons on the page.* Perhaps you will find it useful too. 
