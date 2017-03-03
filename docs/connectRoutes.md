@@ -142,7 +142,7 @@ offers. *Fun Fact: we originally added it because we wanted to play a click a so
 the experience when the user pressed buttons on the page.* Perhaps you will find it useful too. 
 
 * **onChange** - `onChange` is a simple function that will be called whenever the routes change. It's passed your standard `dispatch` and `getState` arguments
-like a thunk. It can be used to, for example, customize scroll position, eg:
+like a thunk. It can be used to, for example, customize scroll position:
 
 ```javascript
 onChange: () => typeof window !== 'undefined' && window.scrollTo(0, 100)
