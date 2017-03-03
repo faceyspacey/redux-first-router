@@ -134,13 +134,11 @@ type Options = {
 title for you when the route changes, e.g. `document.title = 'foo'`.
 
 * **onChange** - `onChange` is a simple function that will be called whenever the routes change. It's passed your standard `dispatch` and `getState` arguments
-like a thunk. It can be used to, for example, scroll to the top of the page, e.g:
+like a thunk. It can be used to, for example, scroll to the top of the page. In the future, we may provide a simple boolean option to do that. PRs welcome. Here's how you do it for now:
 
 ```javascript
 onChange: () => document.body.scrollTop = document.documentElement.scrollTop = 0
 ```
-
-In the future, we may provide a simple boolean option to do that. PRs welcome.
 
 * **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed 2 arguments:
 the `action` dispatched as a result of the URL changing and the value of `history.location`. It's one of the few frills this package
