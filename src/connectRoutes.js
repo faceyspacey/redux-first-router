@@ -98,6 +98,7 @@ export default (
     onBackNext,
     location: locationKey = 'location',
     title: titleKey = 'title',
+    scrollTop = false,
   }: Options = options
 
   const { type, payload }: ReceivedAction = pathToAction(currentPathname, routesMap)
@@ -159,6 +160,10 @@ export default (
 
       if (onChange) {
         onChange(dispatch, store.getState)
+      }
+
+      if (scrollTop && typeof window !== 'undefined') {
+        window.scrollTo(0, 0)
       }
     }
 

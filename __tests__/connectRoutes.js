@@ -173,10 +173,24 @@ describe('middleware', () => {
     const store = createStore(rootReducer, middlewares)
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
 
-    console.log(store.getState())
-    console.log(onChange.mock.calls)
-
     expect(onChange).toHaveBeenCalled()
+  })
+
+  it('scrolls to top on route change when options.scrollTop === true', () => {
+    const scrollTo = jest.fn()
+    window.scrollTo = scrollTo
+    const { middleware, reducer } = setup('/first', { scrollTop: true })
+    const middlewares = applyMiddleware(middleware)
+
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
+      title: action.type,
+    })
+
+    const store = createStore(rootReducer, middlewares)
+    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+
+    expect(scrollTo).toHaveBeenCalled()
   })
 })
 

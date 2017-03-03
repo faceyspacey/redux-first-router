@@ -27,6 +27,7 @@ export type Options = {
   onBackNext?: (Action, HistoryLocation) => void,
   title?: string,
   location?: string,
+  scrollTop?: boolean,
 }
 
 export type Params = Object // eslint-disable-line flowtype/no-weak-types

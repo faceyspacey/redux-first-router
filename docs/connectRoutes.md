@@ -117,21 +117,24 @@ to be handled manually in order to allow you to syncronously `await` its result 
 
 
 ## Options
-Lastly, let's talk about the `options` you can provide. There are 4. Here's its flow type:
+Lastly, let's talk about the `options` you can provide. There are 5. Here's its flow type:
 
 ```javascript
 type Options = {
   location?: string, // default: 'location'
   title?: string,    // default: 'title'
+  scrollTop?: boolean,
   onChange?: (Dispatch, GetState) => void,
   onBackNext?: (HistoryLocation, Action) => void,
 }
 ```
 
-* **location** - The `location` lets you specify what key **Pure Redux Router** should expect its reducer to be attached to in your Redux state stree. 
+* **location** - the `location` lets you specify what key **Pure Redux Router** should expect its reducer to be attached to in your Redux state stree. 
 
-* **title** - The `title` is similarly the name of the state key for your page title. If it's provided, **Pure Redux Router** will change your page 
+* **title** - the `title` is similarly the name of the state key for your page title. If it's provided, **Pure Redux Router** will change your page 
 title for you when the route changes, e.g. `document.title = 'foo'`.
+
+* **scrollTop** - the `scrollTop` option calls `window.scrollTo(0, 0)` on route changes so the user starts each page at the top.
 
 * **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed 2 arguments:
 the `action` dispatched as a result of the URL changing and the value of `history.location`. It's one of the few frills this package
@@ -139,8 +142,8 @@ offers. *Fun Fact: we originally added it because we wanted to play a click a so
 the experience when the user pressed buttons on the page.* Perhaps you will find it useful too. 
 
 * **onChange** - `onChange` is a simple function that will be called whenever the routes change. It's passed your standard `dispatch` and `getState` arguments
-like a thunk. It can be used to, for example, scroll to the top of the page. In the future, we may provide a simple boolean option to do that. PRs welcome. Here's how you do it for now:
+like a thunk. It can be used to, for example, customize scroll position, eg:
 
 ```javascript
-onChange: () => typeof window !== 'undefined' && window.scrollTo(0, 0)
+onChange: () => typeof window !== 'undefined' && window.scrollTo(0, 100)
 ```
