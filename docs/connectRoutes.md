@@ -117,7 +117,7 @@ to be handled manually in order to allow you to syncronously `await` its result 
 
 
 ## Options
-Lastly, let's talk about the `options` you can provide. There are 3. Here's its flow type:
+Lastly, let's talk about the `options` you can provide. There are 4. Here's its flow type:
 
 ```javascript
 type Options = {
