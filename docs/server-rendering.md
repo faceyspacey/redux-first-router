@@ -3,6 +3,7 @@ Ok, this is the biggest example here, but given what it does, we think it's extr
 ```javascript
 import express from 'express'
 import createHistory from 'history/createMemoryHistory'
+import { connectRoutes, NOT_FOUND } from 'pure-redux-router'
 import userActionCreator from '../actions/user'
 
 const render = async (req, res) => {
@@ -23,6 +24,11 @@ const render = async (req, res) => {
   
   await thunk(store) // THE WORK: if there is a thunk for current route, it will be awaited here
   
+  // the idiomatic way to handle routes not found :)
+  if (store.getState().location.type === NOT_FOUND) {
+    return res.redirect(302, '/') // no 404 page needed yet
+  }
+
   const state = JSON.stringify(store.getState())
   
   const html = ReactDOM.renderToString(<Provider store={store}><App state={state} /></Provider>)

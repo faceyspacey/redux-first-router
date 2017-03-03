@@ -57,6 +57,7 @@ get in the way of optimizing animations.
 ## The Gist
 It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
 ```javascript
+import { connectRoutes } from 'pure-redux-router'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createBrowserHistory'
 import userIdReducer from './reducers/userIdReducer'
@@ -214,6 +215,11 @@ That's all folks! :+1:
 * [connectRoutes (there is a third `options` parameter you should check out)](./docs/connectRoutes.md)
 
 ## FAQ
+
+What about if the URL is not found?
+> If the path is not found, or if actions fail to be converted to paths, our `NOT_FOUND` action type will be dispatched. You can apply it
+as a case in your reducer's switch statements. Here's where you get it: `import { NOT_FOUND } from 'pure-redux-router'`. We have strong
+idiomatic way to deal with it in server side rendering--check it out: [server side rendering](./docs/server-rendering.md).
 
 What about query strings and hashes?
 > Intentionally we have chosen to solely support paths since they are best for SEO and keep the API minimal. 

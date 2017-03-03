@@ -65,7 +65,7 @@ it('back: verify client-only `back` and `next` functions call `history.goBack/go
 
 
 it('verify window.document is not used server side', () => {
-  CONFIG.isSSR = true
+  window.isSSR = true
 
   const { middleware, windowDocument, reducer: locationReducer } = setup()
   const middlewares = applyMiddleware(middleware)
@@ -85,5 +85,5 @@ it('verify window.document is not used server side', () => {
   expect(windowDocument.title).toEqual('title: FIRST') // fake document object used instead
   expect(document.title).toEqual('')
 
-  CONFIG.isSSR = false
+  delete CONFIG.isSSR
 })

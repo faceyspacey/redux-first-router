@@ -199,20 +199,23 @@ describe('middleware -> _middlewareAttemptChangeUrl()', () => {
   it('when pathname changes push new pathname on to addressbar', () => {
     const { _middlewareAttemptChangeUrl } = setup('/')
     const locationState = { pathname: '/foo' }
+    const title = 'FOO'
     const history = []
 
-    _middlewareAttemptChangeUrl(locationState, history)
+    _middlewareAttemptChangeUrl(locationState, title, history)
 
     console.log(history)
     expect(history).toEqual(['/foo'])
+    expect(document.title).toEqual('FOO')
   })
 
   it('when pathname does not change, do not push pathname on to address bar', () => {
     const { _middlewareAttemptChangeUrl } = setup('/foo')
     const locationState = { pathname: '/foo' }
+    const title = 'FOO'
     const history = []
 
-    _middlewareAttemptChangeUrl(locationState, history)
+    _middlewareAttemptChangeUrl(locationState, title, history)
 
     console.log(history)
     expect(history).toEqual([])

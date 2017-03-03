@@ -64,6 +64,7 @@ you want to trick **Pure Redux Router** into thinking the app is starting on wha
 the `Linking` API like this:
 
 ```javascript
+import { connectRoutes } from 'pure-redux-router'
 import createHistory from 'history/createMemoryHistory'
 import { Linking } from 'react-native'
 

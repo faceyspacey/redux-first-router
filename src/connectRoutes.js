@@ -18,6 +18,7 @@ import { NOT_FOUND } from './index'
 import type {
   Dispatch,
   RoutesMap,
+  Route,
   Options,
   ReceivedAction,
   Location,
@@ -143,37 +144,41 @@ export default (
     }
 
     const nextAction = next(action)
-    const nextState = store.getState()
 
     // perform various actions if a route was matched and its corresponding action dispatched:
     if (route) {
-      // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
-      // between BROWSER back/forward button usage vs middleware-generated actions
-      _middlewareAttemptChangeUrl(nextState[locationKey], history)
-      changePageTitle(windowDocument, nextState[titleKey])
-
-      const dispatch = middleware(store)(next) // re-create this function's position in the middleware chain
-
-      if (typeof route === 'object') {
-        attemptCallRouteThunk(dispatch, store.getState, route)
-      }
-
-      if (onChange) {
-        onChange(dispatch, store.getState)
-      }
-
-      if (scrollTop && typeof window !== 'undefined') {
-        window.scrollTo(0, 0)
-      }
+      _afterRouteChange(store, next, route)
     }
 
     return nextAction
   }
 
-  const _middlewareAttemptChangeUrl = (locationState: LocationState, history: History) => {
+  const _afterRouteChange = (store: Object, next: Dispatch, route: Route) => { // eslint-disable-line flowtype/no-weak-types
+    const nextState = store.getState()
+    const dispatch = middleware(store)(next) // re-create this function's position in the middleware chain
+
+    // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
+    // between BROWSER back/forward button usage vs middleware-generated actions
+    _middlewareAttemptChangeUrl(nextState[locationKey], nextState[titleKey], history)
+
+    if (typeof route === 'object') {
+      attemptCallRouteThunk(dispatch, store.getState, route)
+    }
+
+    if (onChange) {
+      onChange(dispatch, store.getState)
+    }
+
+    if (scrollTop && typeof window !== 'undefined') {
+      window.scrollTo(0, 0)
+    }
+  }
+
+  const _middlewareAttemptChangeUrl = (locationState: LocationState, title: ?string, history: History) => {
     if (locationState.pathname !== currentPathname) { // IMPORTANT: insure history hasn't already handled location change
       currentPathname = locationState.pathname        // IMPORTANT: must happen before history.push() (to prevent double handling)
       history.push(currentPathname)                   // change address bar corresponding to matched actions from middleware
+      changePageTitle(windowDocument, title)
     }
   }
 
