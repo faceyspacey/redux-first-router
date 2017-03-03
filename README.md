@@ -73,19 +73,22 @@ const routesMap = {
 const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
 
 // and you already know how the story ends:
-
 const rootReducer = combineReducers({ location: reducer: userId: userIdReducer })
 const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
 ```javascript
+import { NOT_FOUND } from 'pure-redux-router'
+
 export const userIdReducer = (state = null, action = {}) => {
   switch(action.type) {
     case 'HOME':
       return null
     case 'USER':
       return action.payload.id
+    case NOT_FOUND:
+      return null
     default: 
       return state
   }
