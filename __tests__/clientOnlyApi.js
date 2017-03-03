@@ -1,33 +1,45 @@
 import { createStore, applyMiddleware } from 'redux'
 
 import setup from '../__test-helpers__/setup'
-import { go, back } from '../src/connectRoutes'
+import { push, back, next } from '../src/connectRoutes'
 
 
-it('go: verify client-only `go` function returns location-aware action using enclosed state', () => {
-  const { _exportedGo } = setup()
-  const action = go('/second/bar')
-
-  console.log(action)
-
-  expect(action).toEqual({ type: 'SECOND', payload: { param: 'bar' } })
-  expect(action).toEqual(_exportedGo('/second/bar'))
-})
-
-
-it('back: verify client-only `back` function calls `history.goBack()` using history from enclosed state', () => {
-  const { history, enhancer, reducer: locationReducer } = setup('/first')
+it('push: verify client-only `push` function calls `history.push()` using history from enclosed state', () => {
+  const { enhancer, reducer } = setup('/first')
 
   const createStore = (reducer /* , initialState, enhancer */) => ({ // eslint-disable-line arrow-parens
     dispatch: jest.fn(),
     getState: () => reducer(),
   })
 
-  const reducer = (state = {}, action = {}) => ({
-    location: locationReducer(state.location, action),
+  const rootReducer = (state = {}, action = {}) => ({
+    location: reducer(state.location, action),
   })
 
-  const store = enhancer(createStore)(reducer)
+  const store = enhancer(createStore)(rootReducer)
+
+  push('/second/bar')
+  const action = store.dispatch.mock.calls[1][0]
+
+  console.log(action)
+  expect(action.type).toEqual('SECOND')
+  expect(action.meta.location.current.pathname).toEqual('/second/bar')
+})
+
+
+it('back: verify client-only `back` and `next` functions call `history.goBack/goForward()` using history from enclosed state', () => {
+  const { history, enhancer, reducer } = setup('/first')
+
+  const createStore = (reducer /* , initialState, enhancer */) => ({ // eslint-disable-line arrow-parens
+    dispatch: jest.fn(),
+    getState: () => reducer(),
+  })
+
+  const rootReducer = (state = {}, action = {}) => ({
+    location: reducer(state.location, action),
+  })
+
+  const store = enhancer(createStore)(rootReducer)
 
   history.push('/second/bar')
   let action = store.dispatch.mock.calls[1][0]
@@ -42,6 +54,13 @@ it('back: verify client-only `back` function calls `history.goBack()` using hist
   console.log(action)
   expect(action.type).toEqual('FIRST')
   expect(action.meta.location.current.pathname).toEqual('/first')
+
+  next() // THIS IS WHAT WE ARE VERIFYING
+  action = store.dispatch.mock.calls[3][0]
+
+  console.log(action)
+  expect(action.type).toEqual('SECOND')
+  expect(action.meta.location.current.pathname).toEqual('/second/bar')
 })
 
 

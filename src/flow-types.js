@@ -10,7 +10,7 @@ export type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => Promise<any>, // eslint-disable-line flowtype/no-weak-types
+  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>, // eslint-disable-line flowtype/no-weak-types
 }
 
 export type Route = RouteString | RouteObject
@@ -23,6 +23,7 @@ export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
 export type Options = {
+  onChange?: (dispatch: Dispatch, getState: GetState) => void, // eslint-disable-line flowtype/no-weak-types
   onBackNext?: (Action, HistoryLocation) => void,
   title?: string,
   location?: string,
@@ -79,7 +80,7 @@ export type ReceivedAction = {
 
 export type Listener = ({ pathname: string }) => void
 export type Listen = (Listener) => void
-export type Push = ({ pathname: string }) => void
+export type Push = (pathname: string) => void
 export type GoBack = () => void
 export type GoForward = () => void
 export type Go = (number) => void

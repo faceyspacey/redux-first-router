@@ -26,7 +26,7 @@ part is that once you set it up there's virtually nothing left to do. It's truly
 Install `pure-redux-router` and its peer dependency `history` plus our small `<Link />` package:
 
 ```bash
-yarn install history pure-redux-router pure-redux-router-link
+yarn add history pure-redux-router pure-redux-router-link
 ```
 
 ## Motivation

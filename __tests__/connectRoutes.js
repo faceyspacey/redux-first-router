@@ -159,6 +159,25 @@ describe('middleware', () => {
     console.log(action)
     expect(action).toEqual(receivedAction)
   })
+
+  it('calls onChange handler on route change', () => {
+    const onChange = jest.fn()
+    const { middleware, reducer } = setup('/first', { onChange })
+    const middlewares = applyMiddleware(middleware)
+
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
+      title: action.type,
+    })
+
+    const store = createStore(rootReducer, middlewares)
+    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+
+    console.log(store.getState())
+    console.log(onChange.mock.calls)
+
+    expect(onChange).toHaveBeenCalled()
+  })
 })
 
 
@@ -171,7 +190,7 @@ describe('middleware -> _middlewareAttemptChangeUrl()', () => {
     _middlewareAttemptChangeUrl(locationState, history)
 
     console.log(history)
-    expect(history).toEqual([{ pathname: '/foo' }])
+    expect(history).toEqual(['/foo'])
   })
 
   it('when pathname does not change, do not push pathname on to address bar', () => {
@@ -341,7 +360,7 @@ describe('enhancer -> _historyAttemptDispatchAction()', () => {
     expect(dispatch.mock.calls).toEqual([])
   })
 
-  it('calls onBackNext handler with location object on path change', () => {
+  it('calls onBackNext handler with action + location arguments on path change', () => {
     const dispatch = jest.fn()
     const historyLocation = { pathname: '/second/foo' }
     const onBackNext = jest.fn()
@@ -472,16 +491,6 @@ describe('reducer', () => {
     expect(state.pathname).toEqual('/second/bar')
   })
 })
-
-
-it('_exportedGo EXISTS and works (see __tests__/clientOnlyApi for `go` function)', () => {
-  const { _exportedGo } = setup()
-  const action = _exportedGo('/first')
-
-  console.log(action)
-  expect(action).toEqual({ type: 'FIRST', payload: {} })
-})
-
 
 it('connectRoutes(undefined): throw error if no history provided', () => {
   expect(() => connectRoutes()).toThrowError()

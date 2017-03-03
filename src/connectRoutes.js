@@ -94,6 +94,7 @@ export default (
   }
 
   const {
+    onChange,
     onBackNext,
     location: locationKey = 'location',
     title: titleKey = 'title',
@@ -143,19 +144,33 @@ export default (
     const nextAction = next(action)
     const nextState = store.getState()
 
-    // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
-    // between BROWSER back/forward button usage vs middleware-generated actions
-    _middlewareAttemptChangeUrl(nextState[locationKey], history)
-    changePageTitle(windowDocument, nextState[titleKey])
+    // perform various actions if a route was matched and its corresponding action dispatched:
+    if (route) {
+      // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
+      // between BROWSER back/forward button usage vs middleware-generated actions
+      _middlewareAttemptChangeUrl(nextState[locationKey], history)
+      changePageTitle(windowDocument, nextState[titleKey])
 
-    if (typeof route === 'object') {
       const dispatch = middleware(store)(next) // re-create this function's position in the middleware chain
-      attemptCallRouteThunk(dispatch, store.getState, route)
+
+      if (typeof route === 'object') {
+        attemptCallRouteThunk(dispatch, store.getState, route)
+      }
+
+      if (onChange) {
+        onChange(dispatch, store.getState)
+      }
     }
 
     return nextAction
   }
 
+  const _middlewareAttemptChangeUrl = (locationState: LocationState, history: History) => {
+    if (locationState.pathname !== currentPathname) { // IMPORTANT: insure history hasn't already handled location change
+      currentPathname = locationState.pathname        // IMPORTANT: must happen before history.push() (to prevent double handling)
+      history.push(currentPathname)                   // change address bar corresponding to matched actions from middleware
+    }
+  }
 
   /** ENHANCER
    *  1)  dispatches actions with types and payload extracted from the URL pattern
@@ -192,9 +207,6 @@ export default (
     return store
   }
 
-
-  /* INTERNAL UTILITY FUNCTIONS (THEY ARE IN THIS FILE BECAUSE THEY RELY ON OUR ENCLOSED STATE) **/
-
   const _historyAttemptDispatchAction = (dispatch: Dispatch, location: HistoryLocation) => {
     if (location.pathname !== currentPathname) {      // IMPORTANT: insure middleware hasn't already handled location change
       currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
@@ -210,17 +222,6 @@ export default (
     }
   }
 
-  const _middlewareAttemptChangeUrl = (locationState: LocationState, history: History) => {
-    if (locationState.pathname !== currentPathname) { // IMPORTANT: insure history hasn't already handled location change
-      currentPathname = locationState.pathname        // IMPORTANT: must happen before history.push() (to prevent double handling)
-      history.push({ pathname: currentPathname })     // change address bar corresponding to matched actions from middleware
-    }
-  }
-
-  // solely for use by exported `go` function in client code (see below)
-  _exportedGo = (pathname: string) =>
-    pathToAction(pathname, routesMap) // only pathname arg expected in client code
-
   _history = history
 
 
@@ -235,38 +236,35 @@ export default (
     // returned only for tests (not for use in application code)
     _middlewareAttemptChangeUrl,
     _historyAttemptDispatchAction,
-    _exportedGo,
     windowDocument,
     history,
   }
 }
 
 /** SIDE EFFECTS:
- *  Client code needs a simple `go` to path action creator and `back` + `next` functions because it's convenient for
- *  prototyping. It will not harm SSR, so long as you don't use it server side. So that means DO NOT
+ *  Client code needs a simple `push`,`back` + `next` functions because it's convenient for
+ *  prototyping. It will not harm SSR, so long as you don't use it server side. So if you use it, that means DO NOT
  *  simulate clicking links server side--and dont do that, dispatch actions to setup state instead.
  *
  *  THE IDIOMATIC WAY: instead use https://github.com/faceyspacey/pure-redux-router-link 's `<Link />`
  *  component to generate SEO friendly urls. As its `href` prop, you pass it a path, array of path
  *  segments or action, and internally it will use `connectRoutes` to change the address bar and
  *  dispatch the correct final action from middleware.
-*/
-
-let _exportedGo
-let _history
-
-export const go = (pathname: string) =>
-  _exportedGo(pathname)
-
-
-/** NOTE: The better way to accomplish a back button is to use your redux state to determine
+ *
+ *  NOTE ON BACK FUNCTIONALITY: The better way to accomplish a back button is to use your redux state to determine
  *  the previous URL. The location reducer will also contain relevant info. But if you must,
  *  this is here for convenience and it basically simulates the user pressing the browser
  *  back button, which of course the system picks up and parses into an action.
  */
+
+let _history
+
+export const push = (pathname: string) =>
+  _history.push(pathname)
 
 export const back = () =>
   _history.goBack()
 
 export const next = () =>
   _history.goForward()
+
