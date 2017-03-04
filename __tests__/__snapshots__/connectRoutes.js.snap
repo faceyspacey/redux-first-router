@@ -194,32 +194,3 @@ Object {
   "type": "@@pure-redux-router/NOT_FOUND",
 }
 `;
-
-exports[`reducer reducer EXISTS and works (see __tests__/createLocationReducer for all its tests) 1`] = `
-Object {
-  "backNext": true,
-  "hasSSR": undefined,
-  "history": Object {
-    "entries": Array [
-      "/second/bar",
-    ],
-    "index": 0,
-    "length": 1,
-  },
-  "load": true,
-  "pathname": "/second/bar",
-  "payload": Object {
-    "param": "bar",
-  },
-  "prev": Object {
-    "pathname": "/first",
-    "payload": Object {},
-    "type": "FIRST",
-  },
-  "routesMap": Object {
-    "FIRST": "/first",
-    "SECOND": "/second/:param",
-  },
-  "type": "SECOND",
-}
-`;
