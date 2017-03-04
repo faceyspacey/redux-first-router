@@ -1,4 +1,4 @@
-exports[`test nestAction(pathname, action, location) 1`] = `
+exports[`nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?) nestAction properly formats/nests action object 1`] = `
 Object {
   "meta": Object {
     "info": "something",
@@ -19,6 +19,37 @@ Object {
         "index": 1,
         "length": 2,
       },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "previous",
+        "payload": Object {
+          "bla": "prev",
+        },
+        "type": "PREV",
+      },
+    },
+  },
+  "payload": Object {
+    "bar": "baz",
+  },
+  "type": "FOO",
+}
+`;
+
+exports[`nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?) nestAction set action.meta.location.history === undefined when using createBrowserHistory 1`] = `
+Object {
+  "meta": Object {
+    "info": "something",
+    "location": Object {
+      "backNext": undefined,
+      "current": Object {
+        "pathname": "/path",
+        "payload": Object {
+          "bar": "baz",
+        },
+        "type": "FOO",
+      },
+      "history": undefined,
       "load": undefined,
       "prev": Object {
         "pathname": "previous",

@@ -38,47 +38,61 @@ it('objectValues(routesMap) converts map of routes to an array of routes without
   console.log(ret)
 })
 
+describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?)', () => {
+  it('nestAction properly formats/nests action object', () => {
+    const history = createMemoryHistory()
+    const pathname = '/path'
+    const receivedAction = { type: 'FOO', payload: { bar: 'baz' }, meta: { info: 'something' } }
+    const location = { pathname: 'previous', type: 'PREV', payload: { bla: 'prev' } }
 
-it('nestAction(pathname, action, location)', () => {
-  const history = createMemoryHistory()
-  const pathname = '/path'
-  const receivedAction = { type: 'FOO', payload: { bar: 'baz' }, meta: { info: 'something' } }
-  const location = { pathname: 'previous', type: 'PREV', payload: { bla: 'prev' } }
+    let action = nestAction(pathname, receivedAction, location, history, true)
 
-  let action = nestAction(pathname, receivedAction, location, history, true)
+    console.log(action)
+    console.log(action.meta.location)
 
-  console.log(action)
-  console.log(action.meta.location)
+    expect(action.type).toEqual('FOO')
+    expect(action.payload).toEqual({ bar: 'baz' })
 
-  expect(action.type).toEqual('FOO')
-  expect(action.payload).toEqual({ bar: 'baz' })
+    expect(action.type).toEqual(action.meta.location.current.type)
+    expect(action.payload).toEqual(action.meta.location.current.payload)
 
-  expect(action.type).toEqual(action.meta.location.current.type)
-  expect(action.payload).toEqual(action.meta.location.current.payload)
+    expect(action.meta.location.prev).toEqual(location)
+    expect(action.meta).toMatchObject(receivedAction.meta)
+    expect(action.meta.location.current.pathname).toEqual(pathname)
 
-  expect(action.meta.location.prev).toEqual(location)
-  expect(action.meta).toMatchObject(receivedAction.meta)
-  expect(action.meta.location.current.pathname).toEqual(pathname)
+    // isMiddleware (marked by `true` argument above indicates to push new path on entries)
+    expect(action.meta.location.history).toEqual({
+      index: 1,
+      length: 2,
+      entries: ['/', '/path'],
+    })
 
-  // isMiddleware (marked by `true` argument above indicates to push new path on entries)
-  expect(action.meta.location.history).toEqual({
-    index: 1,
-    length: 2,
-    entries: ['/', '/path'],
+    expect(action).toMatchSnapshot()
+
+    expect(action.meta.location.load).not.toBeDefined()
+    action = nestAction(pathname, receivedAction, location, history, false, 'load')
+    expect(action.meta.location.load).toEqual(true)
+
+    // check that new paths are not pushed if pathname is the same
+    action = nestAction('/', receivedAction, location, history, true)
+    expect(action.meta.location.history).toEqual({
+      index: 0,
+      length: 1,
+      entries: ['/'],
+    })
   })
 
-  expect(action).toMatchSnapshot()
+  it('nestAction set action.meta.location.history === undefined when using createBrowserHistory', () => {
+    const history = createMemoryHistory() // still use `createMemoryHistory` for stability during tests
+    const pathname = '/path'
+    const receivedAction = { type: 'FOO', payload: { bar: 'baz' }, meta: { info: 'something' } }
+    const location = { pathname: 'previous', type: 'PREV', payload: { bla: 'prev' } }
 
-  expect(action.meta.location.load).not.toBeDefined()
-  action = nestAction(pathname, receivedAction, location, history, false, 'load')
-  expect(action.meta.location.load).toEqual(true)
+    history.entries = undefined // but remove `entries` key like in `createBrowserHistory`
+    const action = nestAction(pathname, receivedAction, location, history, true)
 
-  // check that new paths are not pushed if pathname is the same
-  action = nestAction('/', receivedAction, location, history, true)
-  expect(action.meta.location.history).toEqual({
-    index: 0,
-    length: 1,
-    entries: ['/'],
+    expect(action.meta.location.history).not.toBeDefined()
+    expect(action).toMatchSnapshot()
   })
 })
 

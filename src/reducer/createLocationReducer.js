@@ -47,7 +47,7 @@ export const getInitialState = (
   },
   load: undefined,
   backNext: undefined,
-  history: {
+  history: !history.entries ? undefined : {
     entries: history.entries.map(entry => entry.pathname),
     index: history.index,
     length: history.length,

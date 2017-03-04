@@ -11,12 +11,6 @@ export default (
   kind?: string,
 ): Action => {
   const { type, payload = {}, meta } = receivedAction
-  const shouldPushEntry = isMiddleware && history.entries[history.index].pathname !== pathname
-
-  // insure if the user went back in the history that we erase previous future entries
-  const entries = shouldPushEntry
-    ? history.entries.slice(0, history.index + 1).map(entry => entry.pathname)
-    : history.entries.map(entry => entry.pathname)
 
   return {
     type,
@@ -32,12 +26,28 @@ export default (
         prev,
         load: kind === 'load' ? true : undefined,
         backNext: kind === 'backNext' ? true : undefined,
-        history: {
-          entries: shouldPushEntry ? [...entries, pathname] : entries,
-          index: shouldPushEntry ? history.index + 1: history.index,
-          length: shouldPushEntry ? history.index + 2 : history.length,
-        },
+        history: getHistory(pathname, history, isMiddleware),
       },
     },
+  }
+}
+
+
+const getHistory = (pathname, history, isMiddleware) => {
+  if (!history.entries) {
+    return undefined
+  }
+
+  const shouldPushEntry = isMiddleware && history.entries[history.index].pathname !== pathname
+
+  // insure if the user went back in the history that we erase previous future entries
+  const entries = shouldPushEntry
+    ? history.entries.slice(0, history.index + 1).map(entry => entry.pathname)
+    : history.entries.map(entry => entry.pathname)
+
+  return {
+    entries: shouldPushEntry ? [...entries, pathname] : entries,
+    index: shouldPushEntry ? history.index + 1: history.index,
+    length: shouldPushEntry ? history.index + 2 : history.length,
   }
 }

@@ -40,7 +40,7 @@ export type LocationState = {
   prev: Location,
   load?: true,
   backNext?: true,
-  history: HistoryData,
+  history: ?HistoryData,
   routesMap: RoutesMap,
   hasSSR?: true,
 }
@@ -57,7 +57,7 @@ export type Meta = {
     prev: Location,
     load?: true,
     backNext?: true,
-    history: HistoryData,
+    history: ?HistoryData,
   },
 }
 

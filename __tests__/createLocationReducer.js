@@ -1,4 +1,5 @@
-import createLocationReducer from '../src/reducer/createLocationReducer'
+import { createMemoryHistory } from 'history'
+import createLocationReducer, { getInitialState } from '../src/reducer/createLocationReducer'
 import { NOT_FOUND } from '../src/index'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
@@ -51,3 +52,20 @@ it('locationReducer() reduces non matched action.type and returns initialState',
 
   expect(state).toEqual(initialState)
 })
+
+
+it('getInitialState() returns state.history === undefined when using createBrowserHistory', () => {
+  const pathname = '/first'
+  const history = createMemoryHistory({ initialEntries: [pathname] })
+  const current = { pathname, type: 'FIRST', payload: {} }
+  const routesMap = {
+    FIRST: '/first',
+  }
+
+  history.entries = undefined
+  const initialState = getInitialState(current.pathname, current.type, current.payload, routesMap, history)
+
+  expect(initialState.history).not.toBeDefined()
+  expect(initialState).toMatchSnapshot()
+})
+

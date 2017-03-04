@@ -4,11 +4,14 @@ import { getInitialState } from '../src/reducer/createLocationReducer'
 
 
 export default (type, pathname) => { // eslint-disable-line import/prefer-default-export
-  const history = createMemoryHistory({ initialEntries: [pathname] })
+  const history = createMemoryHistory({ initialEntries: ['/first'] })
+  history.push(pathname)
+
   const current = { pathname, type, payload: { param: 'bar' } }
   const prev = { pathname: '/first', type: 'FIRST', payload: {} }
   const routesMap = {
     FIRST: '/first',
+    SECOND: '/second/:param',
   }
 
   return {
@@ -19,10 +22,7 @@ export default (type, pathname) => { // eslint-disable-line import/prefer-defaul
 
     initialState: getInitialState(prev.pathname, prev.type, prev.payload, routesMap, history),
 
-    routesMap: {
-      FIRST: '/first/',
-      SECOND: '/second/:param',
-    },
+    routesMap,
 
     action: {
       type,

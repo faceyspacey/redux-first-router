@@ -4,10 +4,11 @@ Object {
   "hasSSR": undefined,
   "history": Object {
     "entries": Array [
+      "/first",
       "/second/bar",
     ],
-    "index": 0,
-    "length": 1,
+    "index": 1,
+    "length": 2,
   },
   "load": true,
   "pathname": "/second/bar",
@@ -20,9 +21,29 @@ Object {
     "type": "FIRST",
   },
   "routesMap": Object {
-    "FIRST": "/first/",
+    "FIRST": "/first",
     "SECOND": "/second/:param",
   },
   "type": "SECOND",
+}
+`;
+
+exports[`test getInitialState() returns state.history === undefined when using createBrowserHistory 1`] = `
+Object {
+  "backNext": undefined,
+  "hasSSR": undefined,
+  "history": undefined,
+  "load": undefined,
+  "pathname": "/first",
+  "payload": Object {},
+  "prev": Object {
+    "pathname": "",
+    "payload": Object {},
+    "type": "",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+  },
+  "type": "FIRST",
 }
 `;
