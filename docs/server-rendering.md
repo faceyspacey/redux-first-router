@@ -13,12 +13,12 @@ const render = async (req, res) => {
   const routesMap = {
     UNAVAILABLE: '/unavailable',
     LOGIN: '/login',
-    USER: { 
-      path: '/user/:slug',
+    ENTITY: { 
+      path: '/entity/:slug',
       thunk: async (dispatch, getState) => {
         const { slug } = getState().location.payload
-        const user = await fetch(`/api/user/${slug}`)
-        const action = { type: 'USER_FOUND', payload: { user } }
+        const entity = await fetch(`/api/entity/${slug}`)
+        const action = { type: 'ENTITY_FOUND', payload: { entity } }
         
         dispatch(action)
       }  
@@ -26,11 +26,11 @@ const render = async (req, res) => {
     MY_ACCOUNT: {
       path: '/my-account',
       thunk: (dispatch, getState) => {
-        const { isLoggedIn } = getState()            // up to you to handle via standard redux techniques
+        const { isLoggedIn } = getState()           // up to you to handle via standard redux techniques
 
         if (!isLoggedIn) {
-          const action = redirect({ type: 'LOGIN' }) // action tells middleware to use history.replace()
-          dispatch(action)                           // on the server you detect a redirect as done below
+          const action = redirect({ type: 'LOGIN' })// action tells middleware to use history.replace()
+          dispatch(action)                          // on the server you detect a redirect as done below
         }
       }
     },
