@@ -65,7 +65,7 @@ const render = async (req, res) => {
   const routesMap = {
     UNAVAILABLE: '/unavailable',
     LOGIN: '/login',
-    PRIVATE_AREAY: {
+    PRIVATE_AREA: {
       path: '/private-area',
       thunk: (dispatch, getState) => {
         const { isLoggedIn } = getState()           // up to you to handle via standard redux techniques
