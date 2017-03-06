@@ -33,8 +33,8 @@ In addition to the declarative state above, here's the ***imperative*** methods 
 ```javascript
 import { push, replace, back, next } from 'pure-redux-router'
 ```
-* **push:** (string) => void
-* **replace:** (string) => void
+* **push:** (path) => void
+* **replace:** (path) => void
 * **back:** () => void
 * **next:** () => void
 
