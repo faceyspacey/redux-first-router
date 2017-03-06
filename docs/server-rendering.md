@@ -65,8 +65,8 @@ const render = async (req, res) => {
   const routesMap = {
     UNAVAILABLE: '/unavailable',
     LOGIN: '/login',
-    MY_ACCOUNT: {
-      path: '/my-account',
+    PRIVATE_AREAY: {
+      path: '/private-area',
       thunk: (dispatch, getState) => {
         const { isLoggedIn } = getState()           // up to you to handle via standard redux techniques
 
@@ -102,13 +102,13 @@ const render = async (req, res) => {
 ```
 
 ## Note on Redirects
-*Whay are dispatched redirect actions are any different from regular actions?* 
+*Whay are dispatched redirect actions any different from regular actions?* 
 
 To answer that question, imagine instead
 you *pushed* a URL on to the address bar for `/login` when the user tried to access a private area. Now imagine, the user
 presses the browser *BACK* button. The user will now be redirected back to `login` again and again. The user will struggle to go farther
-back in the history stack, which the user very well may want to do if he does not want to login at this time and 
-just wants to get back to where he was at. 
+back in the history stack, which the user very well may want to do if he/she does not want to login at this time and 
+just wants to get back to where he/she was at. 
 
 By using `history.replace()` behind the scenes, the private URL the user tried
 to access now becomes the `/login` URL in the stack, and the user can go back to the previous page just as he/she would expect.
