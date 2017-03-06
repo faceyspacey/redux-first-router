@@ -23,6 +23,7 @@ Object {
         "payload": Object {},
         "type": "PREV",
       },
+      "redirect": undefined,
     },
   },
   "payload": Object {
@@ -58,6 +59,7 @@ Object {
         "payload": Object {},
         "type": "PREV",
       },
+      "redirect": undefined,
     },
   },
   "payload": Object {
@@ -93,6 +95,7 @@ Object {
         "payload": Object {},
         "type": "PREV",
       },
+      "redirect": undefined,
     },
   },
   "payload": Object {

@@ -40,6 +40,7 @@ export type LocationState = {
   prev: Location,
   load?: true,
   backNext?: true,
+  redirect?: string,
   history: ?HistoryData,
   routesMap: RoutesMap,
   hasSSR?: true,
@@ -57,6 +58,7 @@ export type Meta = {
     prev: Location,
     load?: true,
     backNext?: true,
+    redirect?: string,
     history: ?HistoryData,
   },
 }
@@ -82,6 +84,7 @@ export type ReceivedAction = {
 export type Listener = ({ pathname: string }) => void
 export type Listen = (Listener) => void
 export type Push = (pathname: string) => void
+export type Replace = (pathname: string) => void
 export type GoBack = () => void
 export type GoForward = () => void
 export type Go = (number) => void
@@ -89,6 +92,7 @@ export type Go = (number) => void
 export type History = {
   listen: Listen,
   push: Push,
+  replace: Replace,
   goBack: GoBack,
   goForward: GoForward,
   go: Go,

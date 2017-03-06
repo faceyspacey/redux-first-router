@@ -10,11 +10,11 @@ export default (path = '/', thunkArg) => {
     THIRD: { path: '/third/:param' },
   }
 
-  const history = createHistory({
+  const hist = createHistory({
     initialEntries: [path],
   })
 
-  const { middleware, enhancer, thunk, reducer } = connectRoutes(history, routesMap)
+  const { middleware, enhancer, thunk, reducer, history } = connectRoutes(hist, routesMap)
 
   const rootReducer = combineReducers({
     location: reducer,
@@ -24,5 +24,5 @@ export default (path = '/', thunkArg) => {
 
   const store = createStore(rootReducer, compose(enhancer, middlewares))
 
-  return { store, thunk }
+  return { store, thunk, history }
 }

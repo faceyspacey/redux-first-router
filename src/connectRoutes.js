@@ -177,7 +177,10 @@ export default (
   const _middlewareAttemptChangeUrl = (locationState: LocationState, title: ?string, history: History) => {
     if (locationState.pathname !== currentPathname) { // IMPORTANT: insure history hasn't already handled location change
       currentPathname = locationState.pathname        // IMPORTANT: must happen before history.push() (to prevent double handling)
-      history.push(currentPathname)                   // change address bar corresponding to matched actions from middleware
+
+      const method = locationState.redirect ? 'replace' : 'push'
+      history[method](currentPathname)                // change address bar corresponding to matched actions from middleware
+
       changePageTitle(windowDocument, title)
     }
   }

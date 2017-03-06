@@ -26,6 +26,7 @@ export default (
         prev,
         load: kind === 'load' ? true : undefined,
         backNext: kind === 'backNext' ? true : undefined,
+        redirect: meta && meta.location && meta.location.redirect ? pathname : undefined,
         history: getHistory(pathname, history, isMiddleware),
       },
     },

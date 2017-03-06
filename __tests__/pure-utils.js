@@ -15,7 +15,7 @@ it('isLocationAction(action) if has meta.location object', () => {
   let ret = isLocationAction({})
   expect(ret).toBeFalsy()
 
-  ret = isLocationAction({ meta: { location: { } } })
+  ret = isLocationAction({ meta: { location: { current: {} } } })
   expect(ret).toBeTruthy()
 })
 
@@ -93,6 +93,16 @@ describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddlewa
 
     expect(action.meta.location.history).not.toBeDefined()
     expect(action).toMatchSnapshot()
+  })
+
+  it('nestAction sets meta.location.redirect === pathname when received meta.location.redirect is truthy', () => {
+    const history = createMemoryHistory() // still use `createMemoryHistory` for stability during tests
+    const pathname = '/path'
+    const receivedAction = { type: 'FOO', meta: { location: { redirect: 'true' } } }
+
+    const action = nestAction(pathname, receivedAction, {}, history, false)
+    console.log(action)
+    expect(action.meta.location.redirect).toEqual('/path')
   })
 })
 

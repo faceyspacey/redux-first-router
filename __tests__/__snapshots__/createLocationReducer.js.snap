@@ -20,6 +20,7 @@ Object {
     "payload": Object {},
     "type": "FIRST",
   },
+  "redirect": undefined,
   "routesMap": Object {
     "FIRST": "/first",
     "SECOND": "/second/:param",
@@ -41,6 +42,7 @@ Object {
     "payload": Object {},
     "type": "",
   },
+  "redirect": undefined,
   "routesMap": Object {
     "FIRST": "/first",
   },

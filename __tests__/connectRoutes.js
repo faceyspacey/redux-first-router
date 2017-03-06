@@ -6,6 +6,7 @@ import reducerParameters from '../__test-helpers__/reducerParameters'
 
 import connectRoutes from '../src/connectRoutes'
 import { NOT_FOUND } from '../src/index'
+import redirect from '../src/action-creators/redirect'
 
 
 describe('middleware', () => {
@@ -151,7 +152,7 @@ describe('middleware', () => {
 
     console.warn = jest.fn()
     const store = createStore(reducer, middlewares)
-    const receivedAction = { error: true, type: 'FOO', meta: { location: {} } }
+    const receivedAction = { error: true, type: 'FOO', meta: { location: { current: {} } } }
     const action = store.dispatch(receivedAction)
     const warnArg = console.warn.mock.calls[0][0]
     expect(warnArg).toEqual('pure-redux-router: location update did not dispatch as your action has an error.')
@@ -219,6 +220,20 @@ describe('middleware -> _middlewareAttemptChangeUrl()', () => {
 
     console.log(history)
     expect(history).toEqual([])
+  })
+
+  it('when redirect calls history.replace(pathname)', () => {
+    const { _middlewareAttemptChangeUrl } = setup('/')
+    const locationState = { pathname: '/foo', redirect: '/foo' }
+    const title = 'FOO'
+    const replace = jest.fn()
+    const history = { replace }
+
+    _middlewareAttemptChangeUrl(locationState, title, history) // final param is redirect path
+
+    console.log(history)
+    expect(replace).toBeCalledWith('/foo')
+    expect(document.title).toEqual('FOO')
   })
 })
 
@@ -405,9 +420,7 @@ describe('thunk', () => {
 
     console.log(thunk.mock.calls[0])
 
-    expect(thunk.mock.calls).not.toEqual([])
-    expect(thunk.mock.calls.length).toEqual(1)
-    expect(thunk.mock.calls[0].length).toEqual(2)
+    expect(thunk).toBeCalled()
   })
 
   it('middleware:attemptCallRouteThunk does NOT call thunk if locationState.load && locationState.hasSSR', () => {
@@ -420,7 +433,7 @@ describe('thunk', () => {
     console.log(store.getState())
     console.log(thunk.mock.calls)
 
-    expect(thunk.mock.calls).toEqual([])
+    expect(thunk).not.toBeCalled()
   })
 
   it('middleware:attemptCallRouteThunk DOES call thunk if !locationState.load', () => {
@@ -433,8 +446,7 @@ describe('thunk', () => {
     console.log(store.getState())
     console.log(thunk.mock.calls[0])
 
-    expect(thunk.mock.calls).not.toEqual([])
-    expect(thunk.mock.calls[0].length).toEqual(2)
+    expect(thunk).toBeCalled()
   })
 
   it('attemptCallRouteThunk calls thunk with same `dispatch` argument as in middleware chain', () => {
@@ -494,6 +506,52 @@ describe('thunk', () => {
     const ret = await ssrThunk(store)
     console.log(ret)
     expect(ret).not.toBeDefined()
+  })
+
+  it('dispatched thunk performs redirect with history.replace(path)', () => {
+    const thunk = jest.fn(dispatch => {
+      const action = redirect({ type: 'THIRD', payload: { param: 'hurray' } })
+      console.log(action)
+      dispatch(action)
+    })
+    const { store, history } = setupThunk('/first', thunk)
+
+    const action = { type: 'SECOND', payload: { param: 'bar' } }
+    store.dispatch(action)
+
+    const { location } = store.getState()
+    console.log(location)
+    expect(location.redirect).toEqual('/third/hurray')
+
+    console.log(history.entries)
+    expect(history.length).toEqual(2) // if it wasn't a redirect, the length would be 3!
+    expect(history.entries[1].pathname).toEqual('/third/hurray')
+  })
+
+  it('store.getState().location.redirect === /path-to-redurect-to after awaiting thunk', async () => {
+    const thunk = jest.fn(dispatch => {
+      const action = redirect({ type: 'THIRD', payload: { param: 'hurray' } })
+      console.log(action)
+      dispatch(action)
+    })
+
+    global.window.SSRtest = true
+    const { store, history, thunk: ssrThunk } = setupThunk('/second/bar', thunk)
+    delete global.window.SSRtest
+
+    let { location } = store.getState()
+    console.log(location)
+    expect(location.pathname).toEqual('/second/bar')
+
+    await ssrThunk(store)
+
+    location = store.getState().location
+    console.log(location)
+    expect(location.redirect).toEqual('/third/hurray') // userland code would now call res.redirect(302, redirect) -- see server-rendering.md
+
+    console.log(history.entries)
+    expect(history.length).toEqual(1) // if it wasn't a redirect, the length would be 2!
+    expect(history.entries[0].pathname).toEqual('/third/hurray')
   })
 })
 

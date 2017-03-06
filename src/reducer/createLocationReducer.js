@@ -20,6 +20,7 @@ export default (
       prev: action.meta.location.prev,
       load: action.meta.location.load,
       backNext: action.meta.location.backNext,
+      redirect: action.meta.location.redirect,
       history: action.meta.location.history,
       hasSSR: state.hasSSR,
       routesMap,
@@ -47,6 +48,7 @@ export const getInitialState = (
   },
   load: undefined,
   backNext: undefined,
+  redirect: undefined,
   history: !history.entries ? undefined : {
     entries: history.entries.map(entry => entry.pathname),
     index: history.index,

@@ -2,6 +2,7 @@ import { createMemoryHistory } from 'history'
 
 import historyCreateAction from '../src/action-creators/historyCreateAction'
 import middlewareCreateAction from '../src/action-creators/middlewareCreateAction'
+import redirect from '../src/action-creators/redirect'
 import { NOT_FOUND } from '../src/index'
 
 
@@ -87,4 +88,12 @@ it('middlewareCreateAction() - [action not matched to any routePath]', () => {
   expect(action.meta.location.current.pathname).toEqual('/prev') // keep old pathname since no new pathname to push on to address bar
 
   expect(action).toMatchSnapshot()
+})
+
+it('redirect(action) - adds truthy redirect key to action.meta.location.redirect === \'true\'', () => {
+  const receivedAction = { type: 'ANYTHING' }
+  const action = redirect(receivedAction)
+
+  console.log(action)
+  expect(action.meta.location.redirect).toEqual('true')
 })
