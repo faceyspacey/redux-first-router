@@ -52,7 +52,7 @@ import { actionToPath, pathToAction } from 'pure-redux-router'
 const { routesMap } = store.getState().location
 
 const path = actionToPath(action, routesMap)
-const action = actionToPath(path, routesMap)
+const action = pathToAction(path, routesMap)
 ```
 
 You will need the `routesMap` you made, which you can import from where you created it or you can
