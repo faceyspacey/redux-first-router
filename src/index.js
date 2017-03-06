@@ -1,6 +1,7 @@
 export {
   default as connectRoutes,
   push,
+  replace,
   back,
   next,
 } from './connectRoutes'

@@ -37,6 +37,7 @@ const nestAction = (
         prev,
         load: kind === 'load' ? true : undefined,
         backNext: kind === 'backNext' ? true : undefined,
+        redirect: meta.isRedirect ? pathname : undefined,
       },
     },
   }
@@ -62,6 +63,7 @@ type Meta = {
     prev: Location,
     load?: true,
     backNext?: true,
+    redirect?: string,
   },
 }
 

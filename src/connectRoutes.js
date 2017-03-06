@@ -275,6 +275,9 @@ let _history
 export const push = (pathname: string) =>
   _history.push(pathname)
 
+export const replace = (pathname: string) =>
+  _history.replace(pathname)
+
 export const back = () =>
   _history.goBack()
 

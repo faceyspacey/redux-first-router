@@ -26,6 +26,7 @@ const initialState = {
   },
   load: undefined,
   backNext: undefined,
+  redirect: undefined,
   hasSSR: isServer() ? true : undefined,
   routesMap: {
     EXAMPLE: '/example/:param', 
@@ -47,6 +48,7 @@ const locationReducer = (state = initialState, action = {}) => {
       prev: action.meta.location.prev,
       load: action.meta.location.load,
       backNext: action.meta.location.backNext,
+      redirect: action.meta.location.redirect,
       hasSSR: state.hasSSR,
       routesMap,
     }
@@ -75,7 +77,8 @@ type Location = {
   load?: true,            // extra info
   backNext?: true,
   hasSSR?: true,
-
+  redirect?: string,
+  
   routesMap: RoutesMap,   // your routes, for reference
 }
 
