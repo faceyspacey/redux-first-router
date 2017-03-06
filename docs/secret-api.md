@@ -28,7 +28,7 @@ not worth it.
 Well, you see the fake browser we made in our playground on *webpackbin*, right? We emulate the browser's back/next buttons
 using it. If you have the need to make such a demo or something similar, totally use it--we plan to maintain the secret API.
 
-In addition to the declarative state above, here's the ***imperative*** methods we used to make that fake browser (available on *both the client and the server*):
+In addition to the declarative state above, here's the ***imperative*** methods we used to make that fake browser (these methods are available on *both the client and the server*):
 
 ```javascript
 import { push, replace, back, next } from 'pure-redux-router'
