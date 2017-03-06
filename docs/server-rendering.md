@@ -83,7 +83,7 @@ const render = async (req, res) => {
   const rootReducer = combineReducers({ location: reducer })
   const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
 
-  await thunk(store)
+  await thunk(store) // dont worry if your thunk doesn't return a promise
   
   // the idiomatic way to handle routes not found + redirects :)
   const { type, redirect } = store.getState().location
