@@ -8,8 +8,8 @@ is its shape:
 
 ```javascript
 history: {
-  index: number,          // index of focused entry
-  length: number,         // total # of entries
+  index: number,          // index of focused entry/path
+  length: number,         // total # of entries/paths
   entries: Array<string>, // array of paths obviously
 }
 ```
