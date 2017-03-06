@@ -39,7 +39,7 @@ import { push, replace, back, next } from 'pure-redux-router'
 * **next:** () => void
 
 *note: do NOT rely on these methods on the server, as they do not make use of enclosed* ***per request*** *state. If you must, use the corresponding
-methods on the* ***per-request-created*** *`history` object you pass to `connectRoutes(history`). See the [history package's docs](https://github.com/ReactTraining/history)
+methods on the `history` object you create per request which you pass to `connectRoutes(history`). See the [history package's docs](https://github.com/ReactTraining/history)
 for more info.*
 
 
