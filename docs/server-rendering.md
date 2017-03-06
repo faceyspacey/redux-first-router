@@ -2,6 +2,7 @@
 Ok, this is the biggest example here, but given what it does, we think it's extremely concise and sensible. Since the middleware handles the actions it receives asyncronously, on the server you simply await the result of a possible matching thunk:
 ```javascript
 import express from 'express'
+import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createMemoryHistory'
 import { connectRoutes, NOT_FOUND } from 'pure-redux-router'
 
@@ -54,8 +55,6 @@ http.createServer(app).listen(3000)
 ## Redirects Example
 
 ```javascript
-import express from 'express'
-import createHistory from 'history/createMemoryHistory'
 import { connectRoutes, NOT_FOUND, redirect } from 'pure-redux-router'
 
 const render = async (req, res) => {
