@@ -12,7 +12,6 @@ const render = async (req, res) => {
 
   const routesMap = {
     UNAVAILABLE: '/unavailable',
-    LOGIN: '/login',
     ENTITY: { 
       path: '/entity/:slug',
       thunk: async (dispatch, getState) => {
