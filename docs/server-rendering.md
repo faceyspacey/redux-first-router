@@ -5,7 +5,6 @@ import express from 'express'
 import createHistory from 'history/createMemoryHistory'
 import { connectRoutes, NOT_FOUND, redirect } from 'pure-redux-router'
 
-
 const render = async (req, res) => {
    const history = createHistory({
     initialEntries: [req.path], // match initial route to express path
@@ -27,11 +26,11 @@ const render = async (req, res) => {
     MY_ACCOUNT: {
       path: '/my-account',
       thunk: (dispatch, getState) => {
-        const { isLoggedIn } = getState()            // this is up to you to handle via standard redux techniques
+        const { isLoggedIn } = getState()            // up to you to handle via standard redux techniques
 
         if (!isLoggedIn) {
-          const action = redirect({ type: 'LOGIN' }) // returned action tells middleware to use history.replace()
-          dispatch(action)                           // and on the server you can detect a redirect as done below
+          const action = redirect({ type: 'LOGIN' }) // action tells middleware to use history.replace()
+          dispatch(action)                           // on the server you detect a redirect as done below
         }
       }
     },
