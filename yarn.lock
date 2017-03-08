@@ -1599,9 +1599,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-"eslint-changes@git+ssh://git@github.com/faceyspacey/eslint-changes.git":
+eslint-changes@faceyspacey/eslint-changes:
   version "0.1.2"
-  resolved "git+ssh://git@github.com/faceyspacey/eslint-changes.git#090502eec143733e600c0b9b964d25b7771f59c6"
+  resolved "https://codeload.github.com/faceyspacey/eslint-changes/tar.gz/090502eec143733e600c0b9b964d25b7771f59c6"
   dependencies:
     child-process-promise "^2.1.3"
     github "^5.2.2"
