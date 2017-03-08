@@ -23,7 +23,7 @@ export default (
       redirect: action.meta.location.redirect,
       history: action.meta.location.history,
       hasSSR: state.hasSSR,
-      routesMap
+      routesMap,
     }
   }
 
@@ -55,6 +55,6 @@ export const getInitialState = (
     length: history.length,
   },
   hasSSR: isServer() ? true : undefined,
-  routesMap
+  routesMap,
 })
 
