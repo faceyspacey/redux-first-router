@@ -15,7 +15,7 @@
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "flow-check": "flow",
+    "flow-ci": "flow",
     "clean": "rimraf dist && mkdir dist",
     "test": "jest",
     "lint": "eslint *.js"
