@@ -6,4 +6,4 @@ node_js:
 cache: yarn
 
 script:
-  - npm run flow-ci
+  - npm run flow
