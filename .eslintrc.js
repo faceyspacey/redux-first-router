@@ -1090,7 +1090,9 @@ module.exports = {
         '**/gulpfile.*.js', // gulp config
         '**/Gruntfile', // grunt config
       ],
-      optionalDependencies: false,
+      optionalDependencies: true,
+      devDependencies: true,
+      peerDependencies: true,
     }],
 
     // Forbid mutable exports
