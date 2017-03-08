@@ -22,7 +22,7 @@ export default (
       backNext: action.meta.location.backNext,
       redirect: action.meta.location.redirect,
       history: action.meta.location.history,
-      hasSSR: state.hasSSR
+      hasSSR: state.hasSSR,
       routesMap
     }
   }
