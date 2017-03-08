@@ -137,7 +137,7 @@ describe('pathToAction(path, routesMap)', () => {
     }
 
     const action = pathToAction(path, routesMap)
-    expect(action.payload.param).toEqual('Foo Bar')
+    expect(action.payload.param).toEqual('Foo BarD')
     console.log(action)
   })
 
