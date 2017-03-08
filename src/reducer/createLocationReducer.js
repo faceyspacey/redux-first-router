@@ -9,7 +9,7 @@ export default (
   routesMap: RoutesMap,
 ) => (
   state: LocationState = initialState,
-  action: LocationState,
+  action: Action,
 ): LocationState => {
   if (action.type === NOT_FOUND || (routesMap[action.type]
       && (action.meta.location.current.pathname !== state.pathname || action.meta.location.load))) {
