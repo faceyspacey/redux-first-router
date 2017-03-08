@@ -55,6 +55,6 @@ export const getInitialState = (
     length: history.length,
   },
   hasSSR: isServer() ? true : undefined,
-  routesMap,
+  routesMap
 })
 
