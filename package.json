@@ -18,7 +18,7 @@
     "flow-ci": "flow",
     "clean": "rimraf dist && mkdir dist",
     "test": "jest",
-    "lint": "eslint *.js"
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
