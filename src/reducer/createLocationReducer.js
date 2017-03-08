@@ -11,8 +11,8 @@ export default (
   state: LocationState = initialState,
   action: Action,
 ): LocationState => {
-  if ((routesMap[action.type] || action.type === NOT_FOUND)
-      && (action.meta.location.current.pathname !== state.pathname || action.meta.location.load)) {
+  if (action.type === NOT_FOUND || (routesMap[action.type]
+      && (action.meta.location.current.pathname !== state.pathname || action.meta.location.load))) {
     return {
       pathname: action.meta.location.current.pathname,
       type: action.type,
