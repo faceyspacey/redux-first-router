@@ -7,6 +7,6 @@ cache: yarn
 
 script:
   - npm run lint
-  - npm run flow
+  - npm run flow-check
   - npm run test
   - ./node_modules/.bin/eslint-changes
