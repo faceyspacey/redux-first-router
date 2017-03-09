@@ -26,3 +26,5 @@ exclude_paths:
 - ".vscode/**/*"
 - "*"
 - ".*"
+- ".eslintrc.js"
+- "**/*.snap"
