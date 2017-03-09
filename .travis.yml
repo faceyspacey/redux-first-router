@@ -12,11 +12,9 @@ script:
   - ./node_modules/eslint-changes/index.js
   - ./node_modules/.bin/snyk test
 
-install:
+after_script:
   - npm install -g codecov
   - npm install -g codeclimate-test-reporter
-
-after_script:
   - codeclimate-test-reporter < ./coverage/lcov.info
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
