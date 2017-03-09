@@ -27,6 +27,7 @@ exclude_paths:
 - "docs/**/*"
 - "dist/**/*"
 - "flow-typed/**/*"
+- "flow-typed/"
 - "node_modules/**/*"
 - ".vscode/**/*"
 - "*"
