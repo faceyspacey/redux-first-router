@@ -1185,7 +1185,7 @@ chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-child-process-promise@^2.1.3:
+child-process-promise@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/child-process-promise/-/child-process-promise-2.2.0.tgz#08f6c9ed7848c770c0a2539cb132f4ce0840a866"
   dependencies:
@@ -1730,13 +1730,6 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-changes@faceyspacey/eslint-changes:
-  version "0.1.2"
-  resolved "https://codeload.github.com/faceyspacey/eslint-changes/tar.gz/090502eec143733e600c0b9b964d25b7771f59c6"
-  dependencies:
-    child-process-promise "^2.1.3"
-    github "^5.2.2"
-
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.2.3.tgz#5add8106e8c928db2cba232bcd9efa846e3da16c"
@@ -2126,13 +2119,14 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-github@^5.2.2:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/github/-/github-5.3.3.tgz#8d0d587b3d4556ea7be90d1c5a20fce96f3826ad"
+github@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/github/-/github-9.1.0.tgz#bc3f29b5df6680ad90e9ca2bcf93cf1f78e7b9ef"
   dependencies:
     follow-redirects "0.0.7"
     https-proxy-agent "^1.0.0"
     mime "^1.2.11"
+    netrc "^0.1.4"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -3275,6 +3269,10 @@ nested-error-stacks@^1.0.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz#19f619591519f096769a5ba9a86e6eeec823c3cf"
   dependencies:
     inherits "~2.0.1"
+
+netrc@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/netrc/-/netrc-0.1.4.tgz#6be94fcaca8d77ade0a9670dc460914c94472444"
 
 node-int64@^0.4.0:
   version "0.4.0"
