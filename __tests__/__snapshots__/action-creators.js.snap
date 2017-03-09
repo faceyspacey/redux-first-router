@@ -1,4 +1,6 @@
-exports[`test historyCreateAction() - returns action created when history/address_bar chanages 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`historyCreateAction() - returns action created when history/address_bar chanages 1`] = `
 Object {
   "meta": Object {
     "location": Object {
@@ -33,7 +35,7 @@ Object {
 }
 `;
 
-exports[`test middlewareCreateAction() - [action not matched to any routePath] 1`] = `
+exports[`middlewareCreateAction() - [action not matched to any routePath] 1`] = `
 Object {
   "meta": Object {
     "location": Object {
@@ -69,7 +71,7 @@ Object {
 }
 `;
 
-exports[`test middlewareCreateAction() - returns action created when middleware detects connected/matched action.type 1`] = `
+exports[`middlewareCreateAction() - returns action created when middleware detects connected/matched action.type 1`] = `
 Object {
   "meta": Object {
     "location": Object {

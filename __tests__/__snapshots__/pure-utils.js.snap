@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?) nestAction properly formats/nests action object 1`] = `
 Object {
   "meta": Object {

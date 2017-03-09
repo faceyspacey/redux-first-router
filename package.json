@@ -16,7 +16,7 @@
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow-ci": "flow",
-    "clean": "rimraf dist && mkdir dist",
+    "clean": "rimraf dist && mkdir dist && rimraf coverage",
     "test": "jest",
     "lint": "eslint ./"
   },
@@ -49,7 +49,7 @@
     "flow-bin": "^0.38.0",
     "flow-copy-source": "^1.1.0",
     "history": "^4.5.1",
-    "jest": "^18.1.0",
+    "jest": "^19.0.2",
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
     "webpack": "2.2.1"

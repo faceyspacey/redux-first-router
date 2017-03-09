@@ -92,15 +92,15 @@ it('back: verify client-only `back` and `next` functions call `history.goBack/go
 it('verify window.document is not used server side', () => {
   window.isSSR = true
 
-  const { middleware, windowDocument, reducer: locationReducer } = setup()
+  const { middleware, windowDocument, reducer } = setup()
   const middlewares = applyMiddleware(middleware)
 
-  const reducer = (state = {}, action = {}) => ({
-    location: locationReducer(state.location, action),
+  const rootReducer = (state = {}, action = {}) => ({
+    location: reducer(state.location, action),
     title: `title: ${action.type}`,
   })
 
-  const store = createStore(reducer, undefined, middlewares)
+  const store = createStore(rootReducer, undefined, middlewares)
 
   store.dispatch({ type: 'FIRST' })
 

@@ -3,6 +3,7 @@ import { NOT_FOUND } from '../index'
 import isServer from '../pure-utils/isServer'
 import type { LocationState, RoutesMap, Action, Payload, History } from '../flow-types'
 
+
 export default (
   initialState: LocationState,
   routesMap: RoutesMap,

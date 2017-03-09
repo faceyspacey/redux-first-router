@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`enhancer -> _historyAttemptDispatchAction() dispatches action matching pathname when history location changes 1`] = `
 Object {
   "meta": Object {

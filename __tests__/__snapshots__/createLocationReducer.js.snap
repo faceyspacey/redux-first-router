@@ -1,4 +1,6 @@
-exports[`test createLocationReducer() - maintains address bar pathname state and current + previous matched location-aware actions 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createLocationReducer() - maintains address bar pathname state and current + previous matched location-aware actions 1`] = `
 Object {
   "backNext": true,
   "hasSSR": undefined,
@@ -29,7 +31,7 @@ Object {
 }
 `;
 
-exports[`test getInitialState() returns state.history === undefined when using createBrowserHistory 1`] = `
+exports[`getInitialState() returns state.history === undefined when using createBrowserHistory 1`] = `
 Object {
   "backNext": undefined,
   "hasSSR": undefined,

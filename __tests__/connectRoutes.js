@@ -11,15 +11,15 @@ import redirect from '../src/action-creators/redirect'
 
 describe('middleware', () => {
   it('dispatches location-aware action, changes address bar + document.title', () => {
-    const { middleware, history, reducer: locationReducer } = setup()
+    const { middleware, history, reducer } = setup()
     const middlewares = applyMiddleware(middleware)
 
-    const reducer = (state = {}, action = {}) => ({
-      location: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
       title: `title: ${action.type}`,
     })
 
-    const store = createStore(reducer, middlewares)
+    const store = createStore(rootReducer, middlewares)
 
     console.log(store.getState())
 
@@ -71,14 +71,14 @@ describe('middleware', () => {
   })
 
   it('not matched received action dispatches the action as normal with no changes', () => {
-    const { middleware, history, reducer: locationReducer } = setup('/first')
+    const { middleware, history, reducer } = setup('/first')
     const middlewares = applyMiddleware(middleware)
-    const reducer = (state = {}, action = {}) => ({
-      location: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
       title: action.type,
     })
 
-    const store = createStore(reducer, middlewares)
+    const store = createStore(rootReducer, middlewares)
 
     console.log(history.location)
     console.log(store.getState())
@@ -110,15 +110,15 @@ describe('middleware', () => {
   })
 
   it('user dispatches NOT_FOUND and middleware adds missing info to action', () => {
-    const { middleware, reducer: locationReducer } = setup()
+    const { middleware, reducer } = setup()
     const middlewares = applyMiddleware(middleware)
 
-    const reducer = (state = {}, action = {}) => ({
-      location: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
       title: action.type,
     })
 
-    const store = createStore(reducer, middlewares)
+    const store = createStore(rootReducer, middlewares)
     const action = store.dispatch({ type: NOT_FOUND })
 
     console.log(action)
@@ -142,16 +142,16 @@ describe('middleware', () => {
   })
 
   it('does nothing and warns if action has error && dispatched action isLocationAction', () => {
-    const { middleware, reducer: locationReducer } = setup()
+    const { middleware, reducer } = setup()
     const middlewares = applyMiddleware(middleware)
 
-    const reducer = (state = {}, action = {}) => ({
-      location: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
       title: action.type,
     })
 
     console.warn = jest.fn()
-    const store = createStore(reducer, middlewares)
+    const store = createStore(rootReducer, middlewares)
     const receivedAction = { error: true, type: 'FOO', meta: { location: { current: {} } } }
     const action = store.dispatch(receivedAction)
     const warnArg = console.warn.mock.calls[0][0]
@@ -240,18 +240,18 @@ describe('middleware -> _middlewareAttemptChangeUrl()', () => {
 
 describe('enhancer', () => {
   it('dispatches location-aware action when store is first created so app is location aware on load', () => {
-    const { enhancer, reducer: locationReducer } = setup('/first')
+    const { enhancer, reducer } = setup('/first')
 
     const createStore = (reducer /* , initialState, enhancer */) => ({ // eslint-disable-line arrow-parens
       dispatch: jest.fn(),
       getState: () => reducer(),
     })
 
-    const reducer = (state = {}, action = {}) => ({
-      location: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
     })
 
-    const store = enhancer(createStore)(reducer)
+    const store = enhancer(createStore)(rootReducer)
     const action = store.dispatch.mock.calls[0][0]
 
     console.log(action)
@@ -275,18 +275,18 @@ describe('enhancer', () => {
   })
 
   it('listens to history changes and dispatches actions matching history\'s location.pathname', () => {
-    const { history, enhancer, reducer: locationReducer } = setup('/first')
+    const { history, enhancer, reducer } = setup('/first')
 
     const createStore = (reducer /* , initialState, enhancer */) => ({ // eslint-disable-line arrow-parens
       dispatch: jest.fn(),
       getState: () => reducer(),
     })
 
-    const reducer = (state = {}, action = {}) => ({
-      location: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
     })
 
-    const store = enhancer(createStore)(reducer)
+    const store = enhancer(createStore)(rootReducer)
 
     history.push('/second/bar')
 
@@ -324,35 +324,35 @@ describe('enhancer', () => {
   })
 
   it('throws when no location reducer provided', () => {
-    const { enhancer, reducer: locationReducer } = setup('/first')
+    const { enhancer, reducer } = setup('/first')
 
     const createStore = (reducer /* , initialState, enhancer */) => ({ // eslint-disable-line arrow-parens
       dispatch: jest.fn(),
       getState: () => reducer(),
     })
 
-    const reducer = (state = {}, action = {}) => ({
-      locationFOO: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      locationFOO: reducer(state.location, action),
     })
 
-    const createEnhancer = () => enhancer(createStore)(reducer)
+    const createEnhancer = () => enhancer(createStore)(rootReducer)
     expect(createEnhancer).toThrowError()
   })
 
   it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', () => {
-    const { enhancer, reducer: locationReducer } = setup('/first')
+    const { enhancer, reducer } = setup('/first')
 
     const createStore = (reducer /* , initialState, enhancer */) => ({ // eslint-disable-line arrow-parens
       dispatch: jest.fn(),
       getState: () => reducer(),
     })
 
-    const reducer = (state = {}, action = {}) => ({
-      location: locationReducer(state.location, action),
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
     })
 
     const preloadedState = { location: {} }
-    enhancer(createStore)(reducer, preloadedState)
+    enhancer(createStore)(rootReducer, preloadedState)
 
     console.log(preloadedState)
     expect(preloadedState.location.routesMap).toBeDefined()
