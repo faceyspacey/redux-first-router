@@ -476,7 +476,7 @@ describe('thunk', () => {
       const action = { type: 'THIRD', payload: { param: 'hurray' } }
       dispatch(action)
 
-      return await Promise.resolve(getState()) // not really needed, but it's important we are testing what a thunk returning a promise looks like
+      return Promise.resolve(getState()) // not really needed, but it's important we are testing what a thunk returning a promise looks like
     })
 
     global.window.SSRtest = true
