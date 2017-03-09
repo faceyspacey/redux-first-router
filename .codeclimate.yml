@@ -14,7 +14,7 @@ engines:
     config:
       config: .eslintrc.js
     checks:
-      import/no-resolved:
+      import/no-unresolved:
         enabled: false
       import/extensions:
         enabled: false
