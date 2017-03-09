@@ -9,7 +9,7 @@ script:
   - npm run lint
   - ./node_modules/.bin/flow
   - ./node_modules/.bin/jest --coverage
-  - ./node_modules/eslint-changes/index.js
+  - ./travis-script.js
   - ./node_modules/.bin/snyk test
 
 after_script:

@@ -86,6 +86,7 @@ getChangedFilePaths()
   .catch(err => console.error('Error: ', err));
 
 
+/**
 
 exec('./node_modules/.bin/jest').then(res => {
   const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/gm
@@ -122,3 +123,4 @@ exec('./node_modules/.bin/flow check | tail -1')
 .then(res => {
   const errorCount = parseInt(res.stdout.replace('Found ', ''))
 })
+*/
