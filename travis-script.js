@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-
+/* eslint-disable */
 const Github = require('github');
 const eslint = require('eslint');
 const exec = require('child-process-promise').exec;
