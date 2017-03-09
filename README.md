@@ -1,5 +1,7 @@
 # Brief
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/faceyspacey/pure-redux-router.svg)](https://greenkeeper.io/)
+
 ![pure-redux-router flow chart](https://raw.githubusercontent.com/faceyspacey/pure-redux-router/master/docs/pure-redux-router-flow.png)
 
 At face value, the goal of **Pure Redux Router** is to think of your app in *states*--which, thanks to tools like Redux and React itself,
