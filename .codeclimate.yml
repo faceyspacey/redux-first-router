@@ -21,13 +21,14 @@ engines:
 
 ratings:
    paths:
-   - "**/*.js"
+   - "src/**"
 
 exclude_paths:
 - "docs/**/*"
 - "dist/**/*"
 - "flow-typed/**/*"
 - "flow-typed/"
+- "flow-typed/**"
 - "node_modules/**/*"
 - ".vscode/**/*"
 - "*"
