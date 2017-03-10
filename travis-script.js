@@ -1,92 +1,120 @@
-#!/usr/bin/env node
-/* eslint-disable */
+const Github = require('github')
+const eslint = require('eslint')
+const exec = require('child-process-promise').exec
 
-const Github = require('github');
-const eslint = require('eslint');
-const exec = require('child-process-promise').exec;
+const cli = new eslint.CLIEngine()
 
-const cli = new eslint.CLIEngine();
 
-// Runs eslint on the array of file pathes and returns the lint results
-const runEslint = files => cli.executeOnFiles(cli.resolveFileGlobPatterns(files));
+const setStatuses = () => {
+  const gh = new Github()
+  const status = authenticateWithGithub(gh, process.env)
 
-// Get a promise of an array of the paths of *.js files that changed in the commit/PR
-const getChangedFilePaths = () => exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`)
-  .then((result) => {
-    const files = result.stdout.split('\n');
-    // Remove the extra "" caused by the last newline
-    files.pop();
-    return files;
-  });
+  setLintStatus(gh, status)
+  setFlowStatus(gh, status)
+  setJestStatus(gh, status)
+}
 
-// Gets the sha of the commit/pull request
-const getCommitTarget = (eventType) => {
-  let sha;
-  if (eventType === 'push') {
-    sha = process.env.TRAVIS_COMMIT;
-  } else if (eventType === 'pull_request') {
-    const travisCommitRange = process.env.TRAVIS_COMMIT_RANGE;
-    const parsed = travisCommitRange.split('...');
-    if (parsed.length === 1) {
-      sha = travisCommitRange;
-    } else {
-      sha = parsed[1];
-    }
-  } else {
-    console.error('event type \'%s\' not supported', eventType);
-    sha = null;
-  }
 
-  return sha;
-};
-
-// Add status with lint info to GitHub UI
-const setGithubStatus = (eslintReport) => {
-  const errors = eslintReport.errorCount;
-  const gh = new Github();
-  const parsedSlug = process.env.TRAVIS_REPO_SLUG.split('/');
-  const sha = getCommitTarget(process.env.TRAVIS_EVENT_TYPE);
-  const state = eslintReport.errorCount > 0 ? 'failure' : 'success';
-  const warnings = eslintReport.warningCount;
-
-  const description = `errors: ${errors} warnings: ${warnings}`;
-  const repo = parsedSlug[1];
-  const user = parsedSlug[0];
-  const targetUrl = `https://travis-ci.org/${process.env.TRAVIS_REPO_SLUG}/jobs/${process.env.TRAVIS_JOB_ID}`;
+const authenticateWithGithub = (gh, { TRAVIS_EVENT_TYPE, TRAVIS_REPO_SLUG, TRAVIS_JOB_ID, GITHUB_TOKEN }) => {
+  const sha = getCommitSha(TRAVIS_EVENT_TYPE)
+  const repoSlug = TRAVIS_REPO_SLUG
+  const target_url = `https://travis-ci.org/${repoSlug}/jobs/${TRAVIS_JOB_ID}`
+  const parsedSlug = repoSlug.split('/')
+  const owner = parsedSlug[0]
+  const repo = parsedSlug[1]
 
   gh.authenticate({
-    token: process.env.GITHUB_TOKEN,
+    token: GITHUB_TOKEN,
     type: 'oauth',
-  }, (err) => {
-    if (err) console.error('Error authenticating GitHub', err);
-  });
-
-  gh.repos.createStatus({
-    context: 'ESLint Changes',
-    owner: user,
-    target_url: targetUrl,
-    description,
-    repo,
-    sha,
-    state,
-  }, (err) => {
-    if (err) console.error('Error creating GitHub status', err);
-  });
-};
-
-const logEslintResults = (eslintReport) => {
-  const formatter = cli.getFormatter();
-  console.log(formatter(eslintReport.results));
-};
-
-getChangedFilePaths()
-  .then((files) => {
-    const eslintReport = runEslint(files);
-    setGithubStatus(eslintReport);
-    logEslintResults(eslintReport);
+  }, err => {
+    if (err) console.error('Error authenticating GitHub', err)
   })
-  .catch(err => console.error('Error: ', err));
 
+  return {
+    sha,
+    target_url,
+    owner,
+    repo,
+  }
+}
+
+
+const getCommitSha = eventType => {
+  if (eventType === 'push') {
+    return process.env.TRAVIS_COMMIT
+  }
+  else if (eventType === 'pull_request') {
+    const travisCommitRange = process.env.TRAVIS_COMMIT_RANGE
+    const parsed = travisCommitRange.split('...')
+    return parsed.length === 1 ? travisCommitRange : parsed[1]
+  }
+
+  console.error('event type \'%s\' not supported', eventType)
+  return null
+}
+
+
+const setLintStatus = async (gh, status) => {
+  const { stdout } = await exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`)
+  const files = stdout // paths of *.js files that changed in the commit/PR
+      .split('\n')
+      .slice(0, -1) // Remove the extra "" caused by the last newline
+
+  const { errorCount, warningCount, results } = cli.executeOnFiles(cli.resolveFileGlobPatterns(files))
+
+  const description = `errors: ${errorCount} warnings: ${warningCount}`
+  const success = errorCount === 0
+  setStatus(gh, status, 'ESLint Report', description, success)
+
+  const format = cli.getFormatter()
+  const log = format(results)
+  console.log(log)
+}
+
+
+const setFlowStatus = async (gh, status) => {
+  const { stdout } = await exec('./node_modules/.bin/flow check | tail -1')
+  const errorCount = parseInt(stdout.replace('Found ', ''))
+
+  const description = `errors: ${errorCount}`
+  const success = errorCount === 0
+  setStatus(gh, status, 'Flow Report', description, success)
+}
+
+
+const setJestStatus = async (gh, status) => {
+  const { stderr } = await exec('./node_modules/.bin/jest')
+
+  const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
+  const [passedCount, testCount] = regex
+    .exec(stderr)
+    .slice(1, 3)
+    .map(num => parseInt(num))
+
+  const description = `${passedCount} passed, ${testCount} total`
+  const success = passedCount === testCount
+  setStatus(gh, status, 'Jest Tests', description, success)
+}
+
+
+const setStatus = (gh, status, context, description, success) => {
+  gh.repos.createStatus(Object.assign({
+    context,
+    description,
+    state: success ? 'success' : 'failure',
+  }, status), err => {
+    console.log(`${context}: DONE!`)
+
+    if (err) {
+      console.error(`${context}: Error creating status`, err)
+    }
+    else {
+      console.log(`${context}: SUCCESS`)
+    }
+  })
+}
+
+setStatuses()
 
 /**
 
@@ -121,8 +149,4 @@ exec('./node_modules/.bin/jest').then(res => {
   console.log(arr)
 })
 
-exec('./node_modules/.bin/flow check | tail -1')
-.then(res => {
-  const errorCount = parseInt(res.stdout.replace('Found ', ''))
-})
-*/
+**/
