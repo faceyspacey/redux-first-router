@@ -1,6 +1,6 @@
 const Github = require('github')
 const eslint = require('eslint')
-const exec = require('child-process-promise').exec
+const exec = require('child-process').execSync
 
 const cli = new eslint.CLIEngine()
 
@@ -54,8 +54,8 @@ const getCommitSha = eventType => {
 }
 
 
-const setLintStatus = async (gh, status) => {
-  const { stdout } = await exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`)
+const setLintStatus = (gh, status) => {
+  const { stdout } = exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`)
   const files = stdout // paths of *.js files that changed in the commit/PR
       .split('\n')
       .slice(0, -1) // Remove the extra "" caused by the last newline
@@ -72,20 +72,18 @@ const setLintStatus = async (gh, status) => {
 }
 
 
-const setFlowStatus = async (gh, status) => {
-  const { stdout } = await exec('./node_modules/.bin/flow check | tail -1')
+const setFlowStatus = (gh, status) => {
+  const { stdout } = exec('./node_modules/.bin/flow check | tail -1', { stdio: [0, 1, 2] })
   const errorCount = parseInt(stdout.replace('Found ', ''))
 
   const description = `errors: ${errorCount}`
   const success = errorCount === 0
   setStatus(gh, status, 'Flow Report', description, success)
-
-  console.log(stdout)
 }
 
 
-const setJestStatus = async (gh, status) => {
-  const { stderr } = await exec('./node_modules/.bin/jest');
+const setJestStatus = (gh, status) => {
+  const { stderr } = exec('./node_modules/.bin/jest', { stdio: [0, 1, 2] });
 
   const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
   const [passedCount, testCount] = regex
@@ -96,8 +94,6 @@ const setJestStatus = async (gh, status) => {
   const description = `${passedCount} passed, ${testCount} total`
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
-
-  console.log(cli.getFormatter()(stderr))
 }
 
 
