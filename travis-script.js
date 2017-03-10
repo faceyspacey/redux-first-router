@@ -55,7 +55,7 @@ const getCommitSha = eventType => {
 
 
 const setLintStatus = (gh, status) => {
-  const { stdout } = exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`)
+  const { stdout } = exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`, { stdio: [0, 1, 2] })
   const files = stdout // paths of *.js files that changed in the commit/PR
       .split('\n')
       .slice(0, -1) // Remove the extra "" caused by the last newline
@@ -65,10 +65,6 @@ const setLintStatus = (gh, status) => {
   const description = `errors: ${errorCount} warnings: ${warningCount}`
   const success = errorCount === 0
   setStatus(gh, status, 'ESLint Report', description, success)
-
-  const format = cli.getFormatter()
-  const log = format(results)
-  console.log(log)
 }
 
 
