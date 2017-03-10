@@ -85,7 +85,7 @@ const setFlowStatus = async (gh, status) => {
 
 
 const setJestStatus = async (gh, status) => {
-  const { stderr, stdout } = await exec('./node_modules/.bin/jest')
+  const { stderr } = await exec('./node_modules/.bin/jest');
 
   const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
   const [passedCount, testCount] = regex
@@ -98,7 +98,6 @@ const setJestStatus = async (gh, status) => {
   setStatus(gh, status, 'Jest Tests', description, success)
 
   console.log(stderr)
-  console.log(stdout)
 }
 
 
