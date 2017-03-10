@@ -79,6 +79,8 @@ const setFlowStatus = async (gh, status) => {
   const description = `errors: ${errorCount}`
   const success = errorCount === 0
   setStatus(gh, status, 'Flow Report', description, success)
+
+  console.log(stdout)
 }
 
 
@@ -94,6 +96,8 @@ const setJestStatus = async (gh, status) => {
   const description = `${passedCount} passed, ${testCount} total`
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
+
+  console.log(stderr)
 }
 
 
