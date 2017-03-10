@@ -97,7 +97,7 @@ const setJestStatus = async (gh, status) => {
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
 
-  console.log(stderr)
+  console.log(cli.getFormatter()(stderr))
 }
 
 
