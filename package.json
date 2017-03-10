@@ -63,7 +63,8 @@
     "redux": "^3.x"
   },
   "jest": {
-    "verbose": false,
+    "verbose": true,
+    "silent": true,
     "testURL": "http://localhost:3000",
     "moduleFileExtensions": [
       "js"
