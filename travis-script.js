@@ -1,6 +1,6 @@
 const Github = require('github')
 const eslint = require('eslint')
-const exec = require('child-process').execSync
+const exec = require('child_process').execSync
 
 const cli = new eslint.CLIEngine()
 
