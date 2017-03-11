@@ -24,13 +24,11 @@ ratings:
    - "src/**"
 
 exclude_paths:
-- "docs/**/*"
-- "dist/**/*"
-- "flow-typed/**/*"
+- "docs/"
+- "dist/"
 - "flow-typed/"
-- "flow-typed/**"
-- "node_modules/**/*"
-- ".vscode/**/*"
+- "node_modules/"
+- ".vscode/"
 - "*"
 - ".*"
 - ".eslintrc.js"
