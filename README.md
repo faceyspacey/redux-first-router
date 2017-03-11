@@ -21,15 +21,15 @@
     <img src="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/gpa.svg" alt="GPA" />
   </a>
 
-  <a href="https://www.npmjs.com/package/vue">
-    <img src="https://img.shields.io/npm/dt/vue.svg" alt="Downloads" />
+  <a href="https://www.npmjs.com/package/pure-redux-router">
+    <img src="https://img.shields.io/npm/dt/pure-redux-router.svg" alt="Downloads" />
   </a>
   
   <a href="https://snyk.io/test/github/faceyspacey/pure-redux-router">
     <img src="https://snyk.io/test/github/faceyspacey/pure-redux-router/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/faceyspacey/pure-redux-router">
   </a>
 
-  <a href="https://www.npmjs.com/package/vue">
+  <a href="https://www.npmjs.com/package/pure-redux-router">
     <img src="https://img.shields.io/npm/l/pure-redux-router.svg" alt="License" />
   </a>
 
