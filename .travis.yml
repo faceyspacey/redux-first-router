@@ -6,9 +6,9 @@ node_js:
 cache: yarn
 
 script:
-  - npm run lint
-  - ./node_modules/.bin/flow
-  - ./node_modules/.bin/jest --coverage
+  #- npm run lint
+  #- ./node_modules/.bin/flow
+  #- ./node_modules/.bin/jest --coverage
   - node ./travis-script.js
   - ./node_modules/.bin/snyk test
 

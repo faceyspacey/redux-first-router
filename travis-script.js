@@ -88,7 +88,7 @@ const setFlowStatus = (gh, status) => {
 
 
 const setJestStatus = (gh, status) => {
-  const { stderr } = spawn('./node_modules/.bin/jest', { encoding: 'utf8' })
+  const { stderr } = spawn('./node_modules/.bin/jest', ['--coverage'], { encoding: 'utf8' })
 
   const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
   const [passedCount, testCount] = regex
@@ -119,6 +119,10 @@ const setStatus = (gh, status, context, description, success) => {
       console.log(`${context}: SUCCESS`)
     }
   })
+
+  if (!success) {
+    process.exitCode = 1
+  }
 }
 
 setStatuses()
