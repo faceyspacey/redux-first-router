@@ -1,5 +1,40 @@
 # Brief
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue">
+    <img src="https://img.shields.io/npm/v/pure-redux-router.svg" alt="Version" />
+  </a>
+
+  <a href="https://travis-ci.org/faceyspacey/pure-redux-router">
+    <img src="https://travis-ci.org/faceyspacey/pure-redux-router.svg?branch=master" alt="Build Status" />
+  </a>
+
+  <a href="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/coverag">
+    <img src="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/coverage.svg" alt="Coverage Status"/>
+  </a>
+
+  <a href="https://greenkeeper.io">
+    <img src="https://badges.greenkeeper.io/faceyspacey/pure-redux-router.svg" alt="Green Keeper" />
+  </a>
+
+  <a href="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router">
+    <img src="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/gpa.svg" alt="GPA" />
+  </a>
+
+  <a href="https://www.npmjs.com/package/vue">
+    <img src="https://img.shields.io/npm/dt/vue.svg" alt="Downloads" />
+  </a>
+  
+  <a href="https://snyk.io/test/github/faceyspacey/pure-redux-router">
+    <img src="https://snyk.io/test/github/faceyspacey/pure-redux-router/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/faceyspacey/pure-redux-router">
+  </a>
+
+  <a href="https://www.npmjs.com/package/vue">
+    <img src="https://img.shields.io/npm/l/pure-redux-router.svg" alt="License" />
+  </a>
+
+</p>
+
 [![Build Status](https://travis-ci.org/faceyspacey/pure-redux-router.svg?branch=master)](https://travis-ci.org/faceyspacey/pure-redux-router)
 
 [![Test Coverage](https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/coverage.svg)](https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/coverage)
