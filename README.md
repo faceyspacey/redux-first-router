@@ -72,7 +72,7 @@ To think solely in terms of *"state"* and *NOT routes, paths, route matching com
 for server side rendering to require no more than dispatching on the store. Path params are just
 action payloads, and action types demarcate a certain kind of path. **That is what routing in Redux is meant to be.** 
 
-That means having the address bar update in response to actions and ***bi-directionally*** 
+In practice, what that means is having the address bar update in response to actions and ***bi-directionally*** 
 having actions dispatched in response to address bar changes, such as via the browser
 back/forward buttons. The "bi-directional" aspect is embodied in the diagram above where the first arrow
 points both ways--dispatching actions changes the address bar, *and* changes to
