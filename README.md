@@ -65,7 +65,7 @@ Install `pure-redux-router` and its peer dependency `history` plus our small `<L
 yarn add history pure-redux-router pure-redux-router-link
 ```
 
-## Motivation
+## Motivation - What Routing in Redux is Meant To Be
 
 To be able to use Redux *as is* while keeping the URL in the address bar in sync. To automate routing. 
 To think solely in terms of *"state"* and NOT routes, paths, route matching components, etc.
