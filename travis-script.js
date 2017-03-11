@@ -10,11 +10,13 @@ const setStatuses = () => {
   const gh = new Github()
   const status = authenticateWithGithub(gh, process.env)
 
-  setLintStatus(gh, status)
-  setFlowStatus(gh, status)
-  setJestStatus(gh, status)
+  if (shouldSet('lint')) setLintStatus(gh, status)
+  if (shouldSet('flow')) setFlowStatus(gh, status)
+  if (shouldSet('jest')) setJestStatus(gh, status)
 }
 
+const shouldSet = tool =>
+  process.argv.indexOf(tool) > -1
 
 const authenticateWithGithub = (gh, { TRAVIS_EVENT_TYPE, TRAVIS_REPO_SLUG, TRAVIS_JOB_ID, GITHUB_TOKEN }) => {
   const sha = getCommitSha(TRAVIS_EVENT_TYPE)
@@ -126,38 +128,3 @@ const setStatus = (gh, status, context, description, success) => {
 }
 
 setStatuses()
-
-/**
-
-exec('./node_modules/.bin/jest').then(res => {
-  const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/gm
-  const str = res.stderr
-
-  let m
-
-  if ((m = regex.exec(str)) !== null) {
-      m.forEach((match, groupIndex) => {
-          console.log(`Found match, group ${groupIndex}: ${match}`)
-      })
-  }
-})
-
-
-exec('./node_modules/.bin/jest').then(res => {
-  console.log('DONE', res)
-})
-
-
-exec('./node_modules/.bin/jest').then(res => {
-  const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
-  const str = res.stderr
-
-  const arr = regex
-    .exec(str)
-    .slice(1, 3)
-    .map(num => parseInt(num))
-
-  console.log(arr)
-})
-
-**/
