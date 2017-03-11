@@ -32,7 +32,6 @@
   <a href="https://www.npmjs.com/package/pure-redux-router">
     <img src="https://img.shields.io/npm/l/pure-redux-router.svg" alt="License" />
   </a>
-
 </p>
 
 
