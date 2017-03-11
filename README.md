@@ -67,7 +67,7 @@ yarn add history pure-redux-router pure-redux-router-link
 
 ## Motivation - What Routing in Redux is Meant To Be
 
-To be able to use Redux *as is* while keeping the URL in the address bar in sync. To automate routing. 
+To automate routing. To be able to use Redux *as is* while keeping the URL in the address bar in sync. 
 To think solely in terms of *"state"* and *NOT routes, paths, route matching components*. And of course
 for server side rendering to require no more than dispatching on the store. Path params are just
 action payloads, and action types demarcate a certain kind of path. **That is what routing in Redux is meant to be.** 
