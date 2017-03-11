@@ -68,12 +68,7 @@
     "testURL": "http://localhost:3000",
     "moduleFileExtensions": [
       "js"
-    ],
-    "globals": {
-      "CONFIG": {
-        "isSSR": false
-      }
-    }
+    ]
   },
   "dependencies": {
     "path-to-regexp": "^1.7.0"

@@ -110,5 +110,5 @@ it('verify window.document is not used server side', () => {
   expect(windowDocument.title).toEqual('title: FIRST') // fake document object used instead
   expect(document.title).toEqual('')
 
-  delete CONFIG.isSSR
+  delete window.isSSR
 })

@@ -613,9 +613,6 @@ module.exports = {
     // treat var statements as if they were block scoped
     'block-scoped-var': 'error',
 
-    // specify the maximum cyclomatic complexity allowed in a program
-    complexity: ['off', 11],
-
     // enforce that class methods use "this"
     // http://eslint.org/docs/rules/class-methods-use-this
     'class-methods-use-this': ['error', {
@@ -1346,7 +1343,7 @@ module.exports = {
     }],
 
     // specify the maximum depth that blocks can be nested
-    'max-depth': ['off', 4],
+    'max-depth': ['warn', 5],
 
     // specify the maximum length of a line in your program
     // http://eslint.org/docs/rules/max-len
@@ -1360,7 +1357,7 @@ module.exports = {
 
     // specify the max number of lines in a file
     // http://eslint.org/docs/rules/max-lines
-    'max-lines': ['off', {
+    'max-lines': ['warn', {
       max: 300,
       skipBlankLines: true,
       skipComments: true
@@ -1370,14 +1367,17 @@ module.exports = {
     'max-nested-callbacks': 'off',
 
     // limits the number of parameters that can be used in the function declaration.
-    'max-params': ['off', 3],
+    'max-params': ['warn', 6],
 
     // specify the maximum number of statement allowed in a function
-    'max-statements': ['off', 10],
+    'max-statements': ['warn', { "max": 20 }, { "ignoreTopLevelFunctions": true }],
 
     // restrict the number of statements per line
     // http://eslint.org/docs/rules/max-statements-per-line
-    'max-statements-per-line': ['off', { max: 1 }],
+    'max-statements-per-line': ['warn', { max: 2 }],
+
+    // specify the maximum cyclomatic complexity allowed in a program
+    "complexity": ["warn", { "max": 6 }],
 
     // require multiline ternary
     // http://eslint.org/docs/rules/multiline-ternary

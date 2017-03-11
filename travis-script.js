@@ -1,6 +1,7 @@
 const Github = require('github')
 const eslint = require('eslint')
-const exec = require('child_process').spawnSync
+const exec = require('child_process').execSync
+const spawn = require('child_process').spawnSync
 
 const cli = new eslint.CLIEngine()
 
@@ -55,7 +56,7 @@ const getCommitSha = eventType => {
 
 
 const setLintStatus = (gh, status) => {
-  const { stdout } = exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`, { stdio: [0, 1, 2] })
+  const stdout = exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`)
   const files = stdout // paths of *.js files that changed in the commit/PR
       .split('\n')
       .slice(0, -1) // Remove the extra "" caused by the last newline
@@ -65,21 +66,29 @@ const setLintStatus = (gh, status) => {
   const description = `errors: ${errorCount} warnings: ${warningCount}`
   const success = errorCount === 0
   setStatus(gh, status, 'ESLint Report', description, success)
+
+  const format = cli.getFormatter()
+  const log = format(results)
+  console.log(log)
 }
 
 
 const setFlowStatus = (gh, status) => {
-  const { stdout } = exec('./node_modules/.bin/flow check | tail -1', { stdio: [0, 1, 2] })
-  const errorCount = parseInt(stdout.replace('Found ', ''))
+  const { stdout } = spawn('./node_modules/.bin/flow', ['check'], { encoding: 'utf8' })
+  const lines = stdout.split('\n')
+  const lastLine = lines[lines.length - 2]
+  const errorCount = parseInt(lastLine.replace('Found ', ''))
 
   const description = `errors: ${errorCount}`
   const success = errorCount === 0
   setStatus(gh, status, 'Flow Report', description, success)
+
+  console.log(stdout)
 }
 
 
 const setJestStatus = (gh, status) => {
-  const { stderr } = exec('./node_modules/.bin/jest', { stdio: [0, 1, 2] });
+  const { stderr } = spawn('./node_modules/.bin/jest', { encoding: 'utf8' })
 
   const regex = /Tests:\s+(\d+)\D+(\d+)\s+total/
   const [passedCount, testCount] = regex
@@ -90,6 +99,8 @@ const setJestStatus = (gh, status) => {
   const description = `${passedCount} passed, ${testCount} total`
   const success = passedCount === testCount
   setStatus(gh, status, 'Jest Tests', description, success)
+
+  console.log(stderr)
 }
 
 
