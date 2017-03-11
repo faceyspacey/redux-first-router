@@ -1,4 +1,4 @@
-# Brief
+# Brief [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)]()
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vue">
