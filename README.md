@@ -1,7 +1,7 @@
 # Pure Redux Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/pure-redux-router/Lobby)
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vue">
+  <a href="https://www.npmjs.com/package/pure-redux-router">
     <img src="https://img.shields.io/npm/v/pure-redux-router.svg" alt="Version" />
   </a>
 
