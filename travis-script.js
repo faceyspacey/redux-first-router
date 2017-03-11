@@ -12,7 +12,7 @@ const setStatuses = () => {
 
   setLintStatus(gh, status)
   setFlowStatus(gh, status)
-  setJestStatus(gh, status)
+  setJestStatus(gh, status);
 }
 
 
