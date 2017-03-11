@@ -127,7 +127,6 @@ module.exports = {
     "babel/object-curly-spacing": 0,
     "object-shorthand": 1,
     "arrow-parens": 0,
-    "babel/no-await-in-loop": 1,
     "comma-dangle": 0,
     "no-console": ["off", { allow: ["warn", "error"] }],
     "no-unused-vars": ["off", { "vars": "all", "args": "after-used" }], //doesn't play nice with jsx
