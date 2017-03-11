@@ -6,7 +6,7 @@ node_js:
 cache: yarn
 
 script:
-  - node ./travis-script.js lint flow jest # git.repos.createSatus(error count 4 tool)
+  - ./travis-script lint flow jest # git.repos.createSatus(error count 4 tool)
   - ./node_modules/.bin/snyk test
 
 after_script:
