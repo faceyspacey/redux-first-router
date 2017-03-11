@@ -6,11 +6,7 @@ node_js:
 cache: yarn
 
 script:
-  - node_modules/.bin/travis-github-status lint flow jest # git.repos.createSatus(error count 4 tool)
-  - ./node_modules/.bin/snyk test
-
-after_script:
-  - cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter
+  - node_modules/.bin/travis-github-status lint flow jest snyk codeclimate # git.repos.createSatus(error count 4 tool)
 
 notifications:
   webhooks:
