@@ -1,4 +1,4 @@
-# Pure Redux Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)]()
+# Pure Redux Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/pure-redux-router/Lobby)
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vue">
