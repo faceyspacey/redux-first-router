@@ -10,7 +10,7 @@ script:
   - ./node_modules/.bin/snyk test
 
 after_script:
-  - ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info
+  - cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter
 
 notifications:
   webhooks:
