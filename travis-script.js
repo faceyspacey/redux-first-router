@@ -49,6 +49,7 @@ const getCommitSha = eventType => {
   else if (eventType === 'pull_request') {
     const travisCommitRange = process.env.TRAVIS_COMMIT_RANGE
     const parsed = travisCommitRange.split('...')
+
     return parsed.length === 1 ? travisCommitRange : parsed[1]
   }
 
@@ -59,9 +60,9 @@ const getCommitSha = eventType => {
 
 const setLintStatus = (gh, status) => {
   const stdout = exec(`git diff --name-only ${process.env.TRAVIS_COMMIT_RANGE} -- '*.js'`, { encoding: 'utf8' })
-  const files = stdout // paths of *.js files that changed in the commit/PR
+  const files = stdout  // paths of *.js files that changed in the commit/PR
       .split('\n')
-      .slice(0, -1) // Remove the extra "" caused by the last newline
+      .slice(0, -1)     // Remove the extra "" caused by the last newline
 
   const { errorCount, warningCount, results } = cli.executeOnFiles(cli.resolveFileGlobPatterns(files))
 
