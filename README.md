@@ -69,12 +69,12 @@ yarn add history pure-redux-router pure-redux-router-link
 
 To automate routing. To be able to use Redux *as is* while keeping the URL in the address bar in sync. 
 To think solely in terms of *"state"* and *NOT routes, paths, route matching components*. And of course
-for server side rendering to require no more than dispatching on the store. Path params are just
+for server side rendering to require no more than dispatching on the store like normal. Path params are just
 action payloads, and action types demarcate a certain kind of path. **That is what routing in Redux is meant to be.** 
 
 In practice, what that means is having the address bar update in response to actions and ***bi-directionally*** 
 having actions dispatched in response to address bar changes, such as via the browser
-back/forward buttons. The "bi-directional" aspect is embodied in the diagram above where the first arrow
+back/forward buttons. The "bi-directional" aspect is embodied in the diagram above where the first blue arrows
 points both ways--dispatching actions changes the address bar, *and* changes to
 the address bar dispatches actions.
 
