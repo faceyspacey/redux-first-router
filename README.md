@@ -9,7 +9,7 @@
     <img src="https://travis-ci.org/faceyspacey/pure-redux-router.svg?branch=master" alt="Build Status" />
   </a>
 
-  <a href="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/coverag">
+  <a href="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/coverage">
     <img src="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/coverage.svg" alt="Coverage Status"/>
   </a>
 
