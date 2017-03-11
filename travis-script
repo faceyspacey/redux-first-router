@@ -17,8 +17,10 @@ const setStatuses = () => {
   if (shouldSet('jest')) setJestStatus(gh, status)
 }
 
+
 const shouldSet = tool =>
   process.argv.indexOf(tool) > -1
+
 
 const authenticateWithGithub = (gh, { TRAVIS_EVENT_TYPE, TRAVIS_REPO_SLUG, TRAVIS_JOB_ID, GITHUB_TOKEN }) => {
   const sha = getCommitSha(TRAVIS_EVENT_TYPE)
