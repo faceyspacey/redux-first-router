@@ -35,14 +35,6 @@
 
 </p>
 
-[![Build Status](https://travis-ci.org/faceyspacey/pure-redux-router.svg?branch=master)](https://travis-ci.org/faceyspacey/pure-redux-router)
-
-[![Test Coverage](https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/coverage.svg)](https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/coverage)
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/faceyspacey/pure-redux-router.svg)](https://greenkeeper.io/)
-
-[![Code Climate](https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/gpa.svg)](https://lima.codeclimate.com/github/faceyspacey/pure-redux-router)
-
 
 ![pure-redux-router flow chart](https://raw.githubusercontent.com/faceyspacey/pure-redux-router/master/docs/pure-redux-router-flow.png)
 
