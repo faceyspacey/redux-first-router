@@ -112,13 +112,10 @@ const setStatus = (gh, status, context, description, success) => {
     description,
     state: success ? 'success' : 'failure',
   }, status), err => {
-    console.log(`${context}: DONE!`)
+    console.log(`${context}: ${err ? 'fail' : 'success!'}`)
 
     if (err) {
       console.error(`${context}: Error creating status`, err)
-    }
-    else {
-      console.log(`${context}: SUCCESS`)
     }
   })
 
