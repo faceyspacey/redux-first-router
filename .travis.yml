@@ -6,10 +6,7 @@ node_js:
 cache: yarn
 
 script:
-  #- npm run lint
-  #- ./node_modules/.bin/flow
-  #- ./node_modules/.bin/jest --coverage
-  - node ./travis-script.js
+  - node ./travis-script.js # eslint, flow, jest + git.repos.createSatus(error count)
   - ./node_modules/.bin/snyk test
 
 after_script:
@@ -17,8 +14,7 @@ after_script:
   - codeclimate-test-reporter < ./coverage/lcov.info
   #- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   #- cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
-  #- npm install -g codecov
-  #- codecov
+  #- npm install -g codecov && codecov
 
 notifications:
   webhooks:
@@ -26,4 +22,4 @@ notifications:
       - https://webhooks.gitter.im/e/5c214c2a052a937c9922
     on_success: always  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
-    on_start: always    # options: [always|never|change] default: always
+    on_start: never    # options: [always|never|change] default: always
