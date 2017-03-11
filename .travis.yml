@@ -13,12 +13,12 @@ script:
   - ./node_modules/.bin/snyk test
 
 after_script:
-  - npm install -g codecov
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < ./coverage/lcov.info
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-  - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
-  - codecov
+  #- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  #- cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+  #- npm install -g codecov
+  #- codecov
 
 notifications:
   webhooks:
