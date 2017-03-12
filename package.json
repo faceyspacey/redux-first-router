@@ -1,6 +1,6 @@
 {
   "name": "pure-redux-router",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "files": [
@@ -51,7 +51,6 @@
     "jest": "^19.0.2",
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
-    "travis-github-status": "^1.0.8",
     "travis-github-status": "^1.0.11",
     "webpack": "2.2.1"
   },
