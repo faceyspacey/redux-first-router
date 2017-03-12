@@ -2103,8 +2103,8 @@ getpass@^0.1.1:
     assert-plus "^1.0.0"
 
 github@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/github/-/github-9.1.0.tgz#bc3f29b5df6680ad90e9ca2bcf93cf1f78e7b9ef"
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/github/-/github-9.2.0.tgz#8a886dc40dd63636707dcaf99df3df26c59f16fc"
   dependencies:
     follow-redirects "0.0.7"
     https-proxy-agent "^1.0.0"
@@ -4419,9 +4419,9 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
 
-travis-github-status@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/travis-github-status/-/travis-github-status-1.0.4.tgz#d3918e456cca2dac2fe02875e2e2fa4891cdddaf"
+travis-github-status@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/travis-github-status/-/travis-github-status-1.0.6.tgz#72a5ac4557a36c64f75795f0679e6cf0c4150192"
   dependencies:
     codeclimate-test-reporter "^0.4.1"
     github "^9.1.0"
