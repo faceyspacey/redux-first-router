@@ -51,7 +51,7 @@
     "jest": "^19.0.2",
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
-    "travis-github-status": "^1.0.6",
+    "travis-github-status": "^1.0.8",
     "webpack": "2.2.1"
   },
   "peerDependencies": {
