@@ -1,12 +1,12 @@
 // @flow
-import type { Dispatch, GetState, RouteObject, LocationState } from '../flow-types'
+import type {
+  Dispatch,
+  GetState,
+  RouteObject,
+  LocationState
+} from '../flow-types'
 
-
-export default (
-  dispatch: Dispatch,
-  getState: GetState,
-  route: RouteObject,
-) => {
+export default (dispatch: Dispatch, getState: GetState, route: RouteObject) => {
   if (typeof window !== 'undefined') {
     const thunk = route.thunk
 

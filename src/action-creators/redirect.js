@@ -1,7 +1,6 @@
 // @flow
 import type { Action } from '../flow-types'
 
-
 export default (action: Action) => {
   action.meta = action.meta || {}
   action.meta.location = action.meta.location || {}

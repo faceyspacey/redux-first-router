@@ -10,7 +10,6 @@ import changePageTitle from '../src/pure-utils/changePageTitle'
 
 import { NOT_FOUND } from '../src/index'
 
-
 it('isLocationAction(action) if has meta.location object', () => {
   let ret = isLocationAction({})
   expect(ret).toBeFalsy()
@@ -30,25 +29,35 @@ it('isServer()', () => {
 it('objectValues(routesMap) converts map of routes to an array of routes without the action type keys', () => {
   const routesMap = {
     ACTION_TYPE: '/foo/:bar',
-    ACTION_TYPE_2: { path: '/path/:baz/', capitalizedWords: true },
+    ACTION_TYPE_2: { path: '/path/:baz/', capitalizedWords: true }
   }
 
   const ret = objectValues(routesMap)
-  expect(ret).toEqual([routesMap.ACTION_TYPE, routesMap.ACTION_TYPE_2])
-  console.log(ret)
+  expect(ret).toEqual([routesMap.ACTION_TYPE, routesMap.ACTION_TYPE_2]) /*? */
 })
 
 describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?)', () => {
   it('nestAction properly formats/nests action object', () => {
     const history = createMemoryHistory()
     const pathname = '/path'
-    const receivedAction = { type: 'FOO', payload: { bar: 'baz' }, meta: { info: 'something' } }
-    const location = { pathname: 'previous', type: 'PREV', payload: { bla: 'prev' } }
+    const receivedAction = {
+      type: 'FOO',
+      payload: { bar: 'baz' },
+      meta: { info: 'something' }
+    }
+    const location = {
+      pathname: 'previous',
+      type: 'PREV',
+      payload: { bla: 'prev' }
+    }
 
-    let action = nestAction(pathname, receivedAction, location, history, true)
-
-    console.log(action)
-    console.log(action.meta.location)
+    let action = nestAction(
+      pathname,
+      receivedAction,
+      location,
+      history,
+      true
+    ) /*? $.meta */
 
     expect(action.type).toEqual('FOO')
     expect(action.payload).toEqual({ bar: 'baz' })
@@ -64,13 +73,20 @@ describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddlewa
     expect(action.meta.location.history).toEqual({
       index: 1,
       length: 2,
-      entries: ['/', '/path'],
+      entries: ['/', '/path']
     })
 
     expect(action).toMatchSnapshot()
 
     expect(action.meta.location.load).not.toBeDefined()
-    action = nestAction(pathname, receivedAction, location, history, false, 'load')
+    action = nestAction(
+      pathname,
+      receivedAction,
+      location,
+      history,
+      false,
+      'load'
+    )
     expect(action.meta.location.load).toEqual(true)
 
     // check that new paths are not pushed if pathname is the same
@@ -78,15 +94,23 @@ describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddlewa
     expect(action.meta.location.history).toEqual({
       index: 0,
       length: 1,
-      entries: ['/'],
+      entries: ['/']
     })
   })
 
   it('nestAction set action.meta.location.history === undefined when using createBrowserHistory', () => {
     const history = createMemoryHistory() // still use `createMemoryHistory` for stability during tests
     const pathname = '/path'
-    const receivedAction = { type: 'FOO', payload: { bar: 'baz' }, meta: { info: 'something' } }
-    const location = { pathname: 'previous', type: 'PREV', payload: { bla: 'prev' } }
+    const receivedAction = {
+      type: 'FOO',
+      payload: { bar: 'baz' },
+      meta: { info: 'something' }
+    }
+    const location = {
+      pathname: 'previous',
+      type: 'PREV',
+      payload: { bla: 'prev' }
+    }
 
     history.entries = undefined // but remove `entries` key like in `createBrowserHistory`
     const action = nestAction(pathname, receivedAction, location, history, true)
@@ -98,158 +122,162 @@ describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddlewa
   it('nestAction sets meta.location.redirect === pathname when received meta.location.redirect is truthy', () => {
     const history = createMemoryHistory() // still use `createMemoryHistory` for stability during tests
     const pathname = '/path'
-    const receivedAction = { type: 'FOO', meta: { location: { redirect: 'true' } } }
+    const receivedAction = {
+      type: 'FOO',
+      meta: { location: { redirect: 'true' } }
+    }
 
-    const action = nestAction(pathname, receivedAction, {}, history, false)
-    console.log(action)
+    const action = nestAction(
+      pathname,
+      receivedAction,
+      {},
+      history,
+      false
+    ) /*? */
     expect(action.meta.location.redirect).toEqual('/path')
   })
 })
-
 
 describe('pathToAction(path, routesMap)', () => {
   it('parse path into action using routePath without /:param segment', () => {
     const routesMap = {
       INFO: '/info',
-      INFO_PARAM: '/info/:param',
+      INFO_PARAM: '/info/:param'
     }
 
     const action = pathToAction('/info', routesMap)
-    expect(action).toEqual({ type: 'INFO', payload: {} })
-    console.log(action)
+    expect(action).toEqual({ type: 'INFO', payload: {} }) /*? */
   })
 
   it('parse path into action using routePath with /:param segment', () => {
     const routesMap = {
       INFO: '/info',
-      INFO_PARAM: '/info/:param',
+      INFO_PARAM: '/info/:param'
     }
 
     const action = pathToAction('/info/foo', routesMap)
-    expect(action).toEqual({ type: 'INFO_PARAM', payload: { param: 'foo' } })
-    console.log(action)
+    expect(action).toEqual({
+      type: 'INFO_PARAM',
+      payload: { param: 'foo' }
+    }) /*? */
   })
 
   it('parse path (/info/foo-bar) into action using route object containing capitalizedWords: true: payload: { param: "Foo Bar" }', () => {
     const path = '/info/foo-bar'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/', capitalizedWords: true },
+      INFO_PARAM: { path: '/info/:param/', capitalizedWords: true }
     }
 
-    const action = pathToAction(path, routesMap)
+    const action = pathToAction(path, routesMap) /*? */
     expect(action.payload.param).toEqual('Foo Bar')
-    console.log(action)
   })
 
   it('parse path into action using route object containing fromPath() function', () => {
     const path = '/info/foo-bar'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/', fromPath: (segment, key) => (`${segment} ${key}`).replace('-', ' ').toUpperCase() },
+      INFO_PARAM: {
+        path: '/info/:param/',
+        fromPath: (segment, key) =>
+          `${segment} ${key}`.replace('-', ' ').toUpperCase()
+      }
     }
 
-    const action = pathToAction(path, routesMap)
+    const action = pathToAction(path, routesMap) /*? */
     expect(action.payload.param).toEqual('FOO BAR PARAM')
-    console.log(action)
   })
 
   it('parse path containing number param into action with payload value set as integer instead of string', () => {
     const path = '/info/69'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/' },
+      INFO_PARAM: { path: '/info/:param/' }
     }
 
-    const action = pathToAction(path, routesMap)
+    const action = pathToAction(path, routesMap) /*? */
     expect(typeof action.payload.param).toEqual('number')
     expect(action.payload.param).toEqual(69)
-    console.log(action)
   })
 
   it('parsed path not found and return NOT_FOUND action.type: "@@pure-redux-router/NOT_FOUND"', () => {
     const path = '/info/foo/bar'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/' },
+      INFO_PARAM: { path: '/info/:param/' }
     }
 
-    const action = pathToAction(path, routesMap)
+    const action = pathToAction(path, routesMap) /*? */
     expect(action.type).toEqual(NOT_FOUND)
-    console.log(action)
   })
 })
-
 
 describe('actionToPath(action, routesMap)', () => {
   it('parse action into path without payload: /info', () => {
     const action = { type: 'INFO' }
     const routesMap = {
       INFO: '/info',
-      INFO_PARAM: '/info/:param',
+      INFO_PARAM: '/info/:param'
     }
 
-    const path = actionToPath(action, routesMap)
+    const path = actionToPath(action, routesMap) /*? */
     expect(path).toEqual('/info')
-    console.log(path)
   })
 
   it('parse action payload into path segment: /info/foo', () => {
     const action = { type: 'INFO_PARAM', payload: { param: 'foo' } }
     const routesMap = {
       INFO: '/info',
-      INFO_PARAM: '/info/:param',
+      INFO_PARAM: '/info/:param'
     }
 
-    const path = actionToPath(action, routesMap)
+    const path = actionToPath(action, routesMap) /*? */
     expect(path).toEqual('/info/foo')
-    console.log(path)
   })
 
   it('parse action into path with numerical payload key value: /info/69', () => {
     const action = { type: 'INFO_PARAM', payload: { param: 69 } }
     const routesMap = {
       INFO: '/info',
-      INFO_PARAM: { path: '/info/:param', capitalizedWords: true },
+      INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
     }
 
-    const path = actionToPath(action, routesMap)
+    const path = actionToPath(action, routesMap) /*? */
     expect(path).toEqual('/info/69')
-    console.log(path)
   })
 
   it('parse action into path with parameters using route object containing capitalizedWords: true: /info/foo-bar', () => {
     const action = { type: 'INFO_PARAM', payload: { param: 'Foo Bar' } }
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param', capitalizedWords: true },
+      INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
     }
 
-    const path = actionToPath(action, routesMap)
+    const path = actionToPath(action, routesMap) /*? */
     expect(path).toEqual('/info/foo-bar')
-    console.log(path)
   })
 
   it('parse action into path with parameters using route object containing toPath() function: /info/foo-param-bar', () => {
     const action = { type: 'INFO_PARAM', payload: { param: 'Foo Bar' } }
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param', toPath: (value, key) => value.replace(' ', `-${key}-`).toLowerCase() },
+      INFO_PARAM: {
+        path: '/info/:param',
+        toPath: (value, key) => value.replace(' ', `-${key}-`).toLowerCase()
+      }
     }
 
-    const path = actionToPath(action, routesMap)
+    const path = actionToPath(action, routesMap) /*? */
     expect(path).toEqual('/info/foo-param-bar')
-    console.log(path)
   })
 
   it('perform no formatting when route object contains ONLY path key: /info/FooBar', () => {
     const action = { type: 'INFO_PARAM', payload: { param: 'FooBar' } }
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param' },
+      INFO_PARAM: { path: '/info/:param' }
     }
 
-    const path = actionToPath(action, routesMap)
+    const path = actionToPath(action, routesMap) /*? */
     expect(path).toEqual('/info/FooBar')
-    console.log(path)
   })
 
   it('throw error when parsing non-matched action', () => {
     const routesMap = {
-      INFO: { path: '/info' },
+      INFO: { path: '/info' }
     }
 
     let performMatch = () => actionToPath({ type: 'MISSED' }, routesMap)
@@ -260,15 +288,12 @@ describe('actionToPath(action, routesMap)', () => {
   })
 })
 
-
 describe('changePageTitle()', () => {
   it('when title changes set it to document.title', () => {
-    const document = { }
+    const document = {}
     const title = 'foo'
 
     const ret = changePageTitle(document, title)
-
-    console.log(document)
 
     expect(document).toEqual({ title: 'foo' })
     expect(ret).toEqual('foo')
@@ -279,8 +304,6 @@ describe('changePageTitle()', () => {
     const title = 'foo'
 
     const ret = changePageTitle(document, title)
-
-    console.log(document)
 
     expect(document).toEqual({ title: 'foo' })
     expect(ret).toEqual(null) // no return value when title does not change

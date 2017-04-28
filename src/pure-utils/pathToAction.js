@@ -4,11 +4,7 @@ import { NOT_FOUND } from '../index'
 import objectValues from './objectValues'
 import type { RoutesMap, ReceivedAction as Action } from '../flow-types'
 
-
-export default (
-  path: string,
-  routesMap: RoutesMap,
-): Action => {
+export default (path: string, routesMap: RoutesMap): Action => {
   const routes = objectValues(routesMap)
   const routeTypes = Object.keys(routesMap)
 
@@ -27,8 +23,12 @@ export default (
   if (match) {
     i--
 
-    const capitalizedWords = typeof routes[i] === 'object' && routes[i].capitalizedWords
-    const fromPath = routes[i] && typeof routes[i].fromPath === 'function' && routes[i].fromPath
+    const capitalizedWords =
+      typeof routes[i] === 'object' && routes[i].capitalizedWords
+    const fromPath =
+      routes[i] &&
+      typeof routes[i].fromPath === 'function' &&
+      routes[i].fromPath
     const type = routeTypes[i]
 
     const payload = keys.reduce((payload, key, index) => {

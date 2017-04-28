@@ -3,7 +3,7 @@ export {
   push,
   replace,
   back,
-  next,
+  next
 } from './connectRoutes'
 
 export const NOT_FOUND = '@@pure-redux-router/NOT_FOUND'
@@ -34,6 +34,5 @@ export type {
   GoBack,
   History,
   HistoryLocation,
-  Document,
- } from './flow-types'
-
+  Document
+} from './flow-types'

@@ -5,18 +5,18 @@ import type {
   Payload,
   Params,
   RoutesMap,
-  ReceivedAction as Action,
+  ReceivedAction as Action
 } from '../flow-types'
-
 
 export default (action: Action, routesMap: RoutesMap): string => {
   const route = routesMap[action.type]
   const path = typeof route === 'object' ? route.path : route
-  const params = typeof route === 'object' ? _payloadToParams(route, action.payload) : action.payload
+  const params = typeof route === 'object'
+    ? _payloadToParams(route, action.payload)
+    : action.payload
 
   return pathToRegexp.compile(path)(params || {})
 }
-
 
 const _payloadToParams = (route: RouteObject, params: Payload = {}): Params =>
   Object.keys(params).reduce((sluggifedParams, key) => {

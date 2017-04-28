@@ -43,6 +43,8 @@ module.exports = {
     'react/prop-types': 0,
     'react/no-render-return-value': 0,
     'no-confusing-arrow': 0,
+    'no-underscore-dangle': 0,
+    'no-plusplus': 0,
     camelcase: 1,
     'prefer-template': 1,
     'react/no-array-index-key': 1,
@@ -75,6 +77,18 @@ module.exports = {
         imports: 'never',
         exports: 'never',
         functions: 'never'
+      }
+    ],
+    'max-len': [
+      'error',
+      {
+        code: 80,
+        tabWidth: 2,
+        ignoreUrls: true,
+        ignoreComments: true,
+        ignoreRegExpLiterals: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true
       }
     ]
   }

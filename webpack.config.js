@@ -1,5 +1,3 @@
-'use strict'
-
 const webpack = require('webpack')
 
 const env = process.env.NODE_ENV
@@ -7,19 +5,19 @@ const env = process.env.NODE_ENV
 const config = {
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ },
-    ],
+      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+    ]
   },
   output: {
     library: 'PureReduxRouter',
-    libraryTarget: 'umd',
+    libraryTarget: 'umd'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env),
-    }),
-  ],
+      'process.env.NODE_ENV': JSON.stringify(env)
+    })
+  ]
 }
 
 if (env === 'production') {
@@ -30,14 +28,14 @@ if (env === 'production') {
         unsafe: true,
         unsafe_comps: true,
         warnings: false,
-        screw_ie8: false,
+        screw_ie8: false
       },
       mangle: {
-        screw_ie8: false,
+        screw_ie8: false
       },
       output: {
-        screw_ie8: false,
-      },
+        screw_ie8: false
+      }
     }) // eslint-disable-line comma-dangle
   )
 }

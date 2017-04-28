@@ -4,12 +4,11 @@ import actionToPath from '../pure-utils/actionToPath'
 import nestAction from '../pure-utils/nestAction'
 import { NOT_FOUND } from '../index'
 
-
 export default (
   action: Object, // eslint-disable-line flowtype/no-weak-types
   routesMap: RoutesMap,
   prevLocation: Location,
-  history: History,
+  history: History
 ): Action => {
   try {
     const pathname = actionToPath(action, routesMap)
@@ -20,6 +19,12 @@ export default (
     // preserve previous pathname to keep app stable for future correct actions that depend on it
     const pathname = prevLocation.pathname
     const payload = { ...action.payload }
-    return nestAction(pathname, { type: NOT_FOUND, payload }, prevLocation, history, true)
+    return nestAction(
+      pathname,
+      { type: NOT_FOUND, payload },
+      prevLocation,
+      history,
+      true
+    )
   }
 }

@@ -2,8 +2,8 @@ import { createMemoryHistory } from 'history'
 
 import { getInitialState } from '../src/reducer/createLocationReducer'
 
-
-export default (type, pathname) => { // eslint-disable-line import/prefer-default-export
+export default (type, pathname) => {
+  // eslint-disable-line import/prefer-default-export
   const history = createMemoryHistory({ initialEntries: ['/first'] })
   history.push(pathname)
 
@@ -11,7 +11,7 @@ export default (type, pathname) => { // eslint-disable-line import/prefer-defaul
   const prev = { pathname: '/first', type: 'FIRST', payload: {} }
   const routesMap = {
     FIRST: '/first',
-    SECOND: '/second/:param',
+    SECOND: '/second/:param'
   }
 
   return {
@@ -20,7 +20,13 @@ export default (type, pathname) => { // eslint-disable-line import/prefer-defaul
     current,
     prev,
 
-    initialState: getInitialState(prev.pathname, prev.type, prev.payload, routesMap, history),
+    initialState: getInitialState(
+      prev.pathname,
+      prev.type,
+      prev.payload,
+      routesMap,
+      history
+    ),
 
     routesMap,
 
@@ -36,10 +42,10 @@ export default (type, pathname) => { // eslint-disable-line import/prefer-defaul
           history: {
             entries: history.entries.map(entry => entry.pathname),
             index: history.index,
-            length: history.length,
-          },
-        },
-      },
+            length: history.length
+          }
+        }
+      }
     },
 
     expectState(state) {
@@ -51,6 +57,6 @@ export default (type, pathname) => { // eslint-disable-line import/prefer-defaul
       expect(state.backNext).toEqual(true)
 
       expect(state).toMatchSnapshot()
-    },
+    }
   }
 }

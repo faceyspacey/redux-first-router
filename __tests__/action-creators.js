@@ -1,10 +1,10 @@
 import { createMemoryHistory } from 'history'
 
 import historyCreateAction from '../src/action-creators/historyCreateAction'
-import middlewareCreateAction from '../src/action-creators/middlewareCreateAction'
+import middlewareCreateAction
+  from '../src/action-creators/middlewareCreateAction'
 import redirect from '../src/action-creators/redirect'
 import { NOT_FOUND } from '../src/index'
-
 
 it('historyCreateAction() - returns action created when history/address_bar chanages', () => {
   const history = createMemoryHistory()
@@ -13,13 +13,16 @@ it('historyCreateAction() - returns action created when history/address_bar chan
   const kind = 'backNext'
   const routesMap = {
     INFO: '/info',
-    INFO_PARAM: '/info/:param',
+    INFO_PARAM: '/info/:param'
   }
 
-  const action = historyCreateAction(pathname, routesMap, prevLocation, history, kind)
-
-  console.log(action)
-  console.log(action.meta.location)
+  const action = historyCreateAction(
+    pathname,
+    routesMap,
+    prevLocation,
+    history,
+    kind
+  ) /*? $.meta.location */
 
   expect(action).toMatchSnapshot()
 
@@ -30,26 +33,31 @@ it('historyCreateAction() - returns action created when history/address_bar chan
   expect(action.payload).toEqual(action.meta.location.current.payload)
 
   expect(action.meta.location.prev).toEqual(prevLocation)
-  expect(action.meta.location.current).toEqual({ pathname, type: 'INFO_PARAM', payload: { param: 'foo' } })
+  expect(action.meta.location.current).toEqual({
+    pathname,
+    type: 'INFO_PARAM',
+    payload: { param: 'foo' }
+  })
 
   expect(action.meta.location.backNext).toEqual(true)
   expect(action.meta.location.load).not.toBeDefined()
 })
-
 
 it('middlewareCreateAction() - returns action created when middleware detects connected/matched action.type', () => {
   const history = createMemoryHistory()
   const receivedAction = { type: 'INFO_PARAM', payload: { param: 'foo' } }
   const routesMap = {
     INFO: '/info',
-    INFO_PARAM: '/info/:param',
+    INFO_PARAM: '/info/:param'
   }
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
 
-  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, history)
-
-  console.log(action)
-  console.log(action.meta.location)
+  const action = middlewareCreateAction(
+    receivedAction,
+    routesMap,
+    prevLocation,
+    history
+  ) /*? $.meta.location */
 
   expect(action.type).toEqual('INFO_PARAM')
   expect(action.payload).toEqual({ param: 'foo' })
@@ -58,7 +66,11 @@ it('middlewareCreateAction() - returns action created when middleware detects co
   expect(action.payload).toEqual(action.meta.location.current.payload)
 
   expect(action.meta.location.prev).toEqual(prevLocation)
-  expect(action.meta.location.current).toEqual({ pathname: '/info/foo', type: 'INFO_PARAM', payload: { param: 'foo' } })
+  expect(action.meta.location.current).toEqual({
+    pathname: '/info/foo',
+    type: 'INFO_PARAM',
+    payload: { param: 'foo' }
+  })
 
   expect(action.meta.location.load).not.toBeDefined()
   expect(action.meta.location.bakNext).not.toBeDefined()
@@ -66,20 +78,21 @@ it('middlewareCreateAction() - returns action created when middleware detects co
   expect(action).toMatchSnapshot()
 })
 
-
 it('middlewareCreateAction() - [action not matched to any routePath]', () => {
   const history = createMemoryHistory()
   const receivedAction = { type: 'BLA', payload: { someKey: 'foo' } }
   const routesMap = {
     INFO: '/info',
-    INFO_PARAM: '/info/:param',
+    INFO_PARAM: '/info/:param'
   }
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
 
-  const action = middlewareCreateAction(receivedAction, routesMap, prevLocation, history)
-
-  console.log(action)
-  console.log(action.meta.location)
+  const action = middlewareCreateAction(
+    receivedAction,
+    routesMap,
+    prevLocation,
+    history
+  ) /*? $.meta.location */
 
   expect(action.type).toEqual(NOT_FOUND)
   expect(action.payload).toEqual({ someKey: 'foo' })
@@ -90,10 +103,9 @@ it('middlewareCreateAction() - [action not matched to any routePath]', () => {
   expect(action).toMatchSnapshot()
 })
 
-it('redirect(action) - adds truthy redirect key to action.meta.location.redirect === \'true\'', () => {
+it("redirect(action) - adds truthy redirect key to action.meta.location.redirect === 'true'", () => {
   const receivedAction = { type: 'ANYTHING' }
-  const action = redirect(receivedAction)
+  const action = redirect(receivedAction) /*? */
 
-  console.log(action)
   expect(action.meta.location.redirect).toEqual('true')
 })

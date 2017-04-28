@@ -12,7 +12,9 @@ import createThunk from './pure-utils/createThunk'
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
 
-import createLocationReducer, { getInitialState } from './reducer/createLocationReducer'
+import createLocationReducer, {
+  getInitialState
+} from './reducer/createLocationReducer'
 import { NOT_FOUND } from './index'
 
 import type {
@@ -25,9 +27,8 @@ import type {
   LocationState,
   History,
   HistoryLocation,
-  Document,
+  Document
 } from './flow-types'
-
 
 /** PRIMARY EXPORT - `connectRoutes(history, routeMap, options)`:
  *
@@ -74,24 +75,25 @@ import type {
 export default (
   history: History,
   routesMap: RoutesMap = {},
-  options: Options = {},
+  options: Options = {}
 ) => {
   if (process.env.NODE_ENV !== 'production' && !history) {
-    throw new Error(`
+    throw new Error(
+      `
       [pure-redux-router] invalid \`history\` agument. Using the 'history' package on NPM,
       please provide a \`history\` object as a second parameter. The object will be the
       return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
-      See: https://github.com/mjackson/history`,
+      See: https://github.com/mjackson/history`
     )
   }
 
-
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
-  let currentPathname: string = history.location.pathname     // very important: used for comparison to determine address bar changes
-  let prevLocation: Location = {                              // maintains previous location state in location reducer
+  let currentPathname: string = history.location.pathname // very important: used for comparison to determine address bar changes
+  let prevLocation: Location = {
+    // maintains previous location state in location reducer
     pathname: '',
     type: '',
-    payload: {},
+    payload: {}
   }
 
   const {
@@ -99,17 +101,25 @@ export default (
     onBackNext,
     location: locationKey = 'location',
     title: titleKey = 'title',
-    scrollTop = false,
+    scrollTop = false
   }: Options = options
 
-  const { type, payload }: ReceivedAction = pathToAction(currentPathname, routesMap)
-  const INITIAL_LOCATION_STATE: LocationState = getInitialState(currentPathname, type, payload, routesMap, history)
+  const { type, payload }: ReceivedAction = pathToAction(
+    currentPathname,
+    routesMap
+  )
+  const INITIAL_LOCATION_STATE: LocationState = getInitialState(
+    currentPathname,
+    type,
+    payload,
+    routesMap,
+    history
+  )
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
   const thunk = createThunk(routesMap, locationKey)
 
-  const windowDocument: Document = getDocument()              // get plain object for window.document if server side
-
+  const windowDocument: Document = getDocument() // get plain object for window.document if server side
 
   /** MIDDLEWARE
    *  1)  dispatches actions with location info in the `meta` key by matching the received action
@@ -123,22 +133,28 @@ export default (
 
     if (action.error && isLocationAction(action)) {
       if (process.env.NODE_ENV !== 'production') {
-        console.warn('pure-redux-router: location update did not dispatch as your action has an error.')
+        console.warn(
+          'pure-redux-router: location update did not dispatch as your action has an error.'
+        )
       }
     }
-
-    // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
     else if (action.type === NOT_FOUND && !isLocationAction(action)) {
+      // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
       const { pathname } = store.getState().location
       const { payload } = action
 
-      action = nestAction(pathname, { type: NOT_FOUND, payload }, prevLocation, history, true)
+      action = nestAction(
+        pathname,
+        { type: NOT_FOUND, payload },
+        prevLocation,
+        history,
+        true
+      )
       prevLocation = action.meta.location.current
     }
-
-    // THE MAGIC: dispatched action matches a connected type, so we generate a
-    // location-aware action and also as a result update location reducer state.
     else if (route && !isLocationAction(action)) {
+      // THE MAGIC: dispatched action matches a connected type, so we generate a
+      // location-aware action and also as a result update location reducer state.
       action = middlewareCreateAction(action, routesMap, prevLocation, history)
       prevLocation = action.meta.location.current
     }
@@ -153,13 +169,18 @@ export default (
     return nextAction
   }
 
-  const _afterRouteChange = (store: Object, next: Dispatch, route: Route) => { // eslint-disable-line flowtype/no-weak-types
+  const _afterRouteChange = (store: Object, next: Dispatch, route: Route) => {
+    // eslint-disable-line flowtype/no-weak-types
     const nextState = store.getState()
     const dispatch = middleware(store)(next) // re-create this function's position in the middleware chain
 
     // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
     // between BROWSER back/forward button usage vs middleware-generated actions
-    _middlewareAttemptChangeUrl(nextState[locationKey], nextState[titleKey], history)
+    _middlewareAttemptChangeUrl(
+      nextState[locationKey],
+      nextState[titleKey],
+      history
+    )
 
     if (typeof route === 'object') {
       attemptCallRouteThunk(dispatch, store.getState, route)
@@ -174,12 +195,17 @@ export default (
     }
   }
 
-  const _middlewareAttemptChangeUrl = (locationState: LocationState, title: ?string, history: History) => {
-    if (locationState.pathname !== currentPathname) { // IMPORTANT: insure history hasn't already handled location change
-      currentPathname = locationState.pathname        // IMPORTANT: must happen before history.push() (to prevent double handling)
+  const _middlewareAttemptChangeUrl = (
+    locationState: LocationState,
+    title: ?string,
+    history: History
+  ) => {
+    if (locationState.pathname !== currentPathname) {
+      // IMPORTANT: insure history hasn't already handled location change
+      currentPathname = locationState.pathname // IMPORTANT: must happen before history.push() (to prevent double handling)
 
       const method = locationState.redirect ? 'replace' : 'push'
-      history[method](currentPathname)                // change address bar corresponding to matched actions from middleware
+      history[method](currentPathname) // change address bar corresponding to matched actions from middleware
 
       changePageTitle(windowDocument, title)
     }
@@ -191,10 +217,18 @@ export default (
    *  2)  on load of the app dispatches an action corresponding to the initial url
    */
 
-  const enhancer: StoreEnhancer<*, *> = createStore => (reducer, preloadedState, enhancer): Store<*, *> => {
+  const enhancer: StoreEnhancer<*, *> = createStore => (
+    reducer,
+    preloadedState,
+    enhancer
+  ): Store<*, *> => {
     // routesMap stored in location reducer will be stringified as it goes from the server to client
     // and as a result functions in route objects will be removed--here's how we insure we bring them back
-    if (typeof window !== 'undefined' && preloadedState && preloadedState[locationKey]) {
+    if (
+      typeof window !== 'undefined' &&
+      preloadedState &&
+      preloadedState[locationKey]
+    ) {
       preloadedState[locationKey].routesMap = routesMap
     }
 
@@ -203,16 +237,25 @@ export default (
     const location = state[locationKey]
 
     if (!location || !location.pathname) {
-      throw new Error(`[pure-redux-router] you must provide the key of the location
-        reducer state and properly assigned the location reducer to that key.`)
+      throw new Error(
+        `[pure-redux-router] you must provide the key of the location
+        reducer state and properly assigned the location reducer to that key.`
+      )
     }
 
     const dispatch = store.dispatch.bind(store)
     history.listen(_historyAttemptDispatchAction.bind(null, dispatch))
 
     // dispatch the first location-aware action so initial app state is based on the url on load
-    if (!location.hasSSR || isServer()) { // only dispatch on client before SSR is setup, which passes state on to the client
-      const action = historyCreateAction(currentPathname, routesMap, prevLocation, history, 'load')
+    if (!location.hasSSR || isServer()) {
+      // only dispatch on client before SSR is setup, which passes state on to the client
+      const action = historyCreateAction(
+        currentPathname,
+        routesMap,
+        prevLocation,
+        history,
+        'load'
+      )
       prevLocation = action.meta.location.current
       store.dispatch(action)
     }
@@ -220,14 +263,24 @@ export default (
     return store
   }
 
-  const _historyAttemptDispatchAction = (dispatch: Dispatch, location: HistoryLocation) => {
-    if (location.pathname !== currentPathname) {      // IMPORTANT: insure middleware hasn't already handled location change
-      currentPathname = location.pathname             // IMPORTANT: must happen before dispatch (to prevent double handling)
+  const _historyAttemptDispatchAction = (
+    dispatch: Dispatch,
+    location: HistoryLocation
+  ) => {
+    if (location.pathname !== currentPathname) {
+      // IMPORTANT: insure middleware hasn't already handled location change
+      currentPathname = location.pathname // IMPORTANT: must happen before dispatch (to prevent double handling)
 
       // THE MAGIC: parse the address bar path into a matched action
-      const action = historyCreateAction(location.pathname, routesMap, prevLocation, history, 'backNext')
+      const action = historyCreateAction(
+        location.pathname,
+        routesMap,
+        prevLocation,
+        history,
+        'backNext'
+      )
       prevLocation = action.meta.location.current
-      dispatch(action)                                // dispatch route type + payload corresponding to browser back/forward usage
+      dispatch(action) // dispatch route type + payload corresponding to browser back/forward usage
 
       if (typeof onBackNext === 'function') {
         onBackNext(action, location)
@@ -236,7 +289,6 @@ export default (
   }
 
   _history = history
-
 
   /* RETURN  */
 
@@ -250,7 +302,7 @@ export default (
     _middlewareAttemptChangeUrl,
     _historyAttemptDispatchAction,
     windowDocument,
-    history,
+    history
   }
 }
 
@@ -272,15 +324,10 @@ export default (
 
 let _history
 
-export const push = (pathname: string) =>
-  _history.push(pathname)
+export const push = (pathname: string) => _history.push(pathname)
 
-export const replace = (pathname: string) =>
-  _history.replace(pathname)
+export const replace = (pathname: string) => _history.replace(pathname)
 
-export const back = () =>
-  _history.goBack()
+export const back = () => _history.goBack()
 
-export const next = () =>
-  _history.goForward()
-
+export const next = () => _history.goForward()

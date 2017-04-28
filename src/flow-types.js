@@ -10,13 +10,13 @@ export type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>, // eslint-disable-line flowtype/no-weak-types
+  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any> // eslint-disable-line flowtype/no-weak-types
 }
 
 export type Route = RouteString | RouteObject
 
 export type RoutesMap = {
-  [key: string]: Route,
+  [key: string]: Route
 }
 
 export type Routes = Array<Route>
@@ -27,7 +27,7 @@ export type Options = {
   onBackNext?: (Action, HistoryLocation) => void,
   title?: string,
   location?: string,
-  scrollTop?: boolean,
+  scrollTop?: boolean
 }
 
 export type Params = Object // eslint-disable-line flowtype/no-weak-types
@@ -43,13 +43,13 @@ export type LocationState = {
   redirect?: string,
   history: ?HistoryData,
   routesMap: RoutesMap,
-  hasSSR?: true,
+  hasSSR?: true
 }
 
 export type Location = {
   pathname: string,
   type: string,
-  payload: Payload,
+  payload: Payload
 }
 
 export type Meta = {
@@ -59,35 +59,35 @@ export type Meta = {
     load?: true,
     backNext?: true,
     redirect?: string,
-    history: ?HistoryData,
-  },
+    history: ?HistoryData
+  }
 }
 
 export type HistoryData = {
   entries: Array<string>,
   index: number,
-  length: number,
+  length: number
 }
 
 export type Action = {
   type: string,
   payload: Payload,
-  meta: Meta,
+  meta: Meta
 }
 
 export type ReceivedAction = {
   type: string,
   payload: Payload,
-  meta?: Meta, // eslint-disable-line flowtype/no-weak-types
+  meta?: Meta // eslint-disable-line flowtype/no-weak-types
 }
 
 export type Listener = ({ pathname: string }) => void
-export type Listen = (Listener) => void
+export type Listen = Listener => void
 export type Push = (pathname: string) => void
 export type Replace = (pathname: string) => void
 export type GoBack = () => void
 export type GoForward = () => void
-export type Go = (number) => void
+export type Go = number => void
 
 export type History = {
   listen: Listen,
@@ -100,12 +100,12 @@ export type History = {
   index: number,
   length: number,
   location: {
-    pathname: string,
-  },
+    pathname: string
+  }
 }
 
 export type HistoryLocation = {
-  pathname: string,
+  pathname: string
 }
 
 export type Document = Object // eslint-disable-line flowtype/no-weak-types
