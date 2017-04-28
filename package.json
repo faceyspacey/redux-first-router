@@ -1,6 +1,6 @@
 {
   "name": "pure-redux-router",
-  "version": "1.0.37",
+  "version": "0.0.0-development",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "files": [
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/faceyspacey/pure-redux-router.git"
+    "url": "https://github.com/faceyspacey/pure-redux-router.git"
   },
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "url": "https://github.com/faceyspacey/pure-redux-router/issues"
   },
   "homepage": "https://github.com/faceyspacey/pure-redux-router#readme",
-   "dependencies": {
+  "dependencies": {
     "path-to-regexp": "^1.7.0"
   },
   "devDependencies": {
