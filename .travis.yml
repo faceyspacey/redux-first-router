@@ -1,14 +1,11 @@
 language: node_js
-
 node_js:
   - stable
-
 cache: yarn
-
 script:
   - node_modules/.bin/travis-github-status lint flow jest snyk codeclimate # git.repos.createSatus(error count 4 tool)
-
 notifications:
+  email: false
   webhooks:
     urls:
       - https://webhooks.gitter.im/e/5c214c2a052a937c9922

@@ -44,14 +44,7 @@ The thinking behind this package has been: "if we were to dream up a 'Redux-firs
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
 "inversion of control" scenarios that makes a challenging problem *simple* when coming at it from a different angle.
 
-Therefore the desired effect to have on you is: 
-> "Wow, this is an obvious and simple solution to a long standing problem. 
-I'm not sure why this hasn't been done yet. This is the correct way to do routing with redux. Forget 'React Router' if your app 
-is Redux-heavy. Redux states always had all we need to render our app."
-
-It's a bold statement. We know. You be the judge of that. We're anxious to here what you think in the [Issues](https://github.com/faceyspacey/pure-redux-router/issues).
-
-That all said and before we get started, there is some *prior art*, and you should [check them out](./docs/prior-art.md). **Pure Redux Router**
+Before we get started, there is some *prior art*, and you should [check them out](./docs/prior-art.md). **Pure Redux Router**
 isn't the first stab at something like this, but--aside from this path being pre-validated--we feel it is the most complete, tested and *spot on* solution. 
 We have reviewed what came before, stripped what was unnecessary, added what was needed, and generally focused on getting the ***developer experience*** right. The best
 part is that once you set it up there's virtually nothing left to do. It's truly "set it and forget it." Let's get started.

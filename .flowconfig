@@ -1,7 +1,6 @@
 [ignore]
-<PROJECT_ROOT>/node_modules/fbjs
-<PROJECT_ROOT>/node_modules/kefir
-<PROJECT_ROOT>/node_modules/invariant
+.*/node_modules/config-chain/.*
+.*/node_modules/npmconf/.*
 
 [include]
 
