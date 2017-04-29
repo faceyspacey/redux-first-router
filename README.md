@@ -319,3 +319,9 @@ enclosed state (i.e. within a "closure") in a *per instance* fashion. Most of th
 and we are very proud about that. But what's not is returned to you in a way that will insure state is not shared between
 requests on the server. In short, we have spared no expense to get this package as tight as possible. Watch the video below to get an 
 idea of how the system works and its overall simplicity:
+
+*video coming soon...*
+
+
+## Contributing
+We use [commitizen](https://github.com/commitizen/cz-cli), so run `npm run commit` to make commits. A command-line form will appear, requiring you answer a few questions to automatically produce a nicely formatted commit. Releases, semantic version numbers, tags and changelogs will automatically be generated based on these commits thanks to [semantic-release](https://github.com/semantic-release/semantic-release). Be good.
