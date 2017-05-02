@@ -3,7 +3,9 @@ export {
   push,
   replace,
   back,
-  next
+  next,
+  scrollBehavior,
+  updateScroll
 } from './connectRoutes'
 
 export const NOT_FOUND = '@@redux-first-router/NOT_FOUND'

@@ -1,4 +1,5 @@
 // @flow
+import { updateScroll } from '../connectRoutes'
 import type {
   Dispatch,
   GetState,
@@ -17,7 +18,11 @@ export default (dispatch: Dispatch, getState: GetState, route: RouteObject) => {
       // without SSR setup yet, so app state is setup on client when prototyping,
       // such as with with webpack-dev-server before server infrastructure is built
       if (!load || (load && !hasSSR)) {
-        thunk(dispatch, getState)
+        const prom = thunk(dispatch, getState)
+
+        if (prom && typeof prom.next === 'function') {
+          prom.next(updateScroll)
+        }
       }
     }
   }

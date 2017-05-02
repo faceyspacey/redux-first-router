@@ -132,9 +132,9 @@ type Options = {
 }
 ```
 
-* **location** - the `location` lets you specify what key **Redux First Router** should expect its reducer to be attached to in your Redux state stree. 
+* **location** - the `location` lets you specify what key **Redux First Router** should expect its reducer to be attached to in your Redux state tree. 
 
-* **title** - the `title` is similarly the name of the state key for your page title. If it's provided, **Redux First Router** will change your page 
+* **title** - the `title` is similarly the name of the state key for your page title. **Redux First Router** will change your page 
 title for you when the route changes, e.g. `document.title = 'foo'`.
 
 * **scrollTop** - the `scrollTop` option calls `window.scrollTo(0, 0)` on route changes so the user starts each page at the top. This is a *"poor man's"* scroll

@@ -185,10 +185,10 @@ export default (
     }
 
     const nextAction = next(action)
-    nextState = store.getState()
 
     // perform various actions if a route was matched and its corresponding action dispatched:
     if (route) {
+      nextState = store.getState()
       _afterRouteChange(store, next, route)
     }
 
@@ -280,6 +280,9 @@ export default (
         )
       }
     }
+
+    // update the scroll position after initial rendering of page
+    setTimeout(_updateScroll, 0)
 
     // dispatch the first location-aware action so initial app state is based on the url on load
     if (!location.hasSSR || isServer()) {
