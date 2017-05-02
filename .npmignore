@@ -1,0 +1,7 @@
+coverage
+__test-helpers__
+__tests__
+docs
+flow-typed
+src
+*.log

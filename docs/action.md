@@ -1,5 +1,5 @@
 # Flux Standard Actions (FSA)
-One of the goals of **Pure Redux Router** is to *NOT* alter your actions and be 100% *flux standard action*-compliant. That allows
+One of the goals of **Redux First Router** is to *NOT* alter your actions and be 100% *flux standard action*-compliant. That allows
 for automatic support for packages such as `redux-actions`. 
 
 So simply put, to do that, we stuffed all the info our middleware, reducer, etc, depends on in the `meta` key of your actions.

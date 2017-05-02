@@ -2,7 +2,7 @@
 import type { Dispatch as ReduxDispatch } from 'redux'
 
 export type Dispatch = ReduxDispatch<*>
-export type GetState = () => Object // eslint-disable-line flowtype/no-weak-types
+export type GetState = () => Object
 export type RouteString = string
 
 export type RouteObject = {
@@ -10,7 +10,7 @@ export type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any> // eslint-disable-line flowtype/no-weak-types
+  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>
 }
 
 export type Route = RouteString | RouteObject
@@ -23,15 +23,19 @@ export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
 export type Options = {
-  onChange?: (dispatch: Dispatch, getState: GetState) => void, // eslint-disable-line flowtype/no-weak-types
-  onBackNext?: (Action, HistoryLocation) => void,
   title?: string,
   location?: string,
-  scrollTop?: boolean
+  scrollTop?: boolean,
+  beforeChange?: (dispatch: Dispatch, getState: GetState) => void,
+  afterChange?: (dispatch: Dispatch, getState: GetState) => void,
+  onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
+  restoreScroll?: History => ScrollBehavior
 }
 
-export type Params = Object // eslint-disable-line flowtype/no-weak-types
-export type Payload = Object // eslint-disable-line flowtype/no-weak-types
+export type ScrollBehavior = Object
+
+export type Params = Object
+export type Payload = Object
 
 export type LocationState = {
   pathname: string,
@@ -78,10 +82,10 @@ export type Action = {
 export type ReceivedAction = {
   type: string,
   payload: Payload,
-  meta?: Meta // eslint-disable-line flowtype/no-weak-types
+  meta?: Meta
 }
 
-export type Listener = ({ pathname: string }) => void
+export type Listener = HistoryLocation => void
 export type Listen = Listener => void
 export type Push = (pathname: string) => void
 export type Replace = (pathname: string) => void
@@ -108,4 +112,4 @@ export type HistoryLocation = {
   pathname: string
 }
 
-export type Document = Object // eslint-disable-line flowtype/no-weak-types
+export type Document = Object

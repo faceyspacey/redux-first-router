@@ -197,7 +197,7 @@ describe('pathToAction(path, routesMap)', () => {
     expect(action.payload.param).toEqual(69)
   })
 
-  it('parsed path not found and return NOT_FOUND action.type: "@@pure-redux-router/NOT_FOUND"', () => {
+  it('parsed path not found and return NOT_FOUND action.type: "@@redux-first-router/NOT_FOUND"', () => {
     const path = '/info/foo/bar'
     const routesMap = {
       INFO_PARAM: { path: '/info/:param/' }

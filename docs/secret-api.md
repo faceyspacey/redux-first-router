@@ -31,7 +31,7 @@ using it. If you have the need to make such a demo or something similar, totally
 In addition to the declarative state above, here's the ***imperative*** methods we used to make that fake browser (these methods are available on *both the client and the server*):
 
 ```javascript
-import { push, replace, back, next } from 'pure-redux-router'
+import { push, replace, back, next } from 'redux-first-router'
 ```
 * **push:** (path) => void
 * **replace:** (path) => void
@@ -47,7 +47,7 @@ for more info.*
 These methods are also exported:
 
 ```javascript
-import { actionToPath, pathToAction } from 'pure-redux-router'
+import { actionToPath, pathToAction } from 'redux-first-router'
 
 const { routesMap } = store.getState().location
 
@@ -58,13 +58,13 @@ const action = pathToAction(path, routesMap)
 You will need the `routesMap` you made, which you can import from where you created it or you can
 get any time from your store. 
 
-[Pure Redux Rouer Link](https://github.com/faceyspacey/pure-redux-router-link)
+[Redux First Router Link](https://github.com/faceyspacey/redux-first-router-link)
 generates your links using these methods. It does so using the `store` Redux makes available via `context` in 
 order for all your links not to need to subscribe to the `store` and become unnecessarilly reactive. 
 
 Unlike *React Router* we do not offer a [NavLink](https://reacttraining.com/react-router/#navlink) component
 as that leads to unnecessary renders. We plan to offer it in the future. Until then, it's extremely easy
 to make yourself. You can do so in an ad hoc way *without* using `actionToPath` or `pathToAction` (just by using your app-specific state), 
-but if you'd like to abstract it, analyze the **Pure Redux Router Link** code. Feel free to make a PR; we'd welcome
+but if you'd like to abstract it, analyze the **Redux First Router Link** code. Feel free to make a PR; we'd welcome
 a second export in that package.
 

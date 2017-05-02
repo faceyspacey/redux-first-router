@@ -9,7 +9,7 @@ const config = {
     ]
   },
   output: {
-    library: 'PureReduxRouter',
+    library: 'ReduxFirstRouter',
     libraryTarget: 'umd'
   },
   plugins: [
@@ -36,7 +36,7 @@ if (env === 'production') {
       output: {
         screw_ie8: false
       }
-    }) // eslint-disable-line comma-dangle
+    })
   )
 }
 

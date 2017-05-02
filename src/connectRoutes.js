@@ -77,18 +77,30 @@ export default (
   routesMap: RoutesMap = {},
   options: Options = {}
 ) => {
-  if (process.env.NODE_ENV !== 'production' && !history) {
-    throw new Error(
-      `
-      [pure-redux-router] invalid \`history\` agument. Using the 'history' package on NPM,
-      please provide a \`history\` object as a second parameter. The object will be the
-      return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
-      See: https://github.com/mjackson/history`
-    )
+  if (process.env.NODE_ENV !== 'production') {
+    if (!history) {
+      throw new Error(
+        `[redux-first-router] invalid \`history\` agument. Using the 'history' package on NPM,
+        please provide a \`history\` object as a second parameter. The object will be the
+        return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
+        See: https://github.com/mjackson/history`
+      )
+    }
+
+    if (options.restoreScroll && typeof options.restoreScroll !== 'function') {
+      throw new Error(
+        `[redux-first-router] invalid \`restoreScroll\` option. Using
+        https://github.com/faceyspacey/redux-first-router-restore-scroll
+        please call \`restoreScroll\` and assign it the option key
+        of the same name.`
+      )
+    }
   }
 
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
   let currentPathname: string = history.location.pathname // very important: used for comparison to determine address bar changes
+  let prevState = {} // used only to pass to pass as 1st argument to restore-scroll package if used
+  let nextState = {} // used only to pass to pass as 2nd argument to restore-scroll package if used
   let prevLocation: Location = {
     // maintains previous location state in location reducer
     pathname: '',
@@ -97,12 +109,16 @@ export default (
   }
 
   const {
-    onChange,
-    onBackNext,
     location: locationKey = 'location',
     title: titleKey = 'title',
-    scrollTop = false
+    scrollTop = false,
+    beforeChange,
+    afterChange,
+    onBackNext,
+    restoreScroll
   }: Options = options
+
+  const scrollBehavior = restoreScroll && restoreScroll(history)
 
   const { type, payload }: ReceivedAction = pathToAction(
     currentPathname,
@@ -134,7 +150,7 @@ export default (
     if (action.error && isLocationAction(action)) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn(
-          'pure-redux-router: location update did not dispatch as your action has an error.'
+          'redux-first-router: location update did not dispatch as your action has an error.'
         )
       }
     }
@@ -159,7 +175,17 @@ export default (
       prevLocation = action.meta.location.current
     }
 
+    if (route) {
+      prevState = store.getState()
+
+      if (beforeChange) {
+        const dispatch = middleware(store)(next) // re-create middleware's position in chain
+        beforeChange(dispatch, store.getState)
+      }
+    }
+
     const nextAction = next(action)
+    nextState = store.getState()
 
     // perform various actions if a route was matched and its corresponding action dispatched:
     if (route) {
@@ -170,9 +196,7 @@ export default (
   }
 
   const _afterRouteChange = (store: Object, next: Dispatch, route: Route) => {
-    // eslint-disable-line flowtype/no-weak-types
-    const nextState = store.getState()
-    const dispatch = middleware(store)(next) // re-create this function's position in the middleware chain
+    const dispatch = middleware(store)(next) // re-create middleware's position in chain
 
     // IMPORTANT: keep currentPathname up to date for comparison to prevent double dispatches
     // between BROWSER back/forward button usage vs middleware-generated actions
@@ -186,12 +210,12 @@ export default (
       attemptCallRouteThunk(dispatch, store.getState, route)
     }
 
-    if (onChange) {
-      onChange(dispatch, store.getState)
+    if (scrollTop && typeof window !== 'undefined') {
+      setTimeout(() => window.scrollTo(0, 0), 0)
     }
 
-    if (scrollTop && typeof window !== 'undefined') {
-      window.scrollTo(0, 0)
+    if (afterChange) {
+      setTimeout(() => afterChange(dispatch, store.getState), 0)
     }
   }
 
@@ -238,13 +262,24 @@ export default (
 
     if (!location || !location.pathname) {
       throw new Error(
-        `[pure-redux-router] you must provide the key of the location
+        `[redux-first-router] you must provide the key of the location
         reducer state and properly assigned the location reducer to that key.`
       )
     }
 
-    const dispatch = store.dispatch.bind(store)
-    history.listen(_historyAttemptDispatchAction.bind(null, dispatch))
+    history.listen(_historyAttemptDispatchAction.bind(null, store))
+
+    _updateScroll = () => {
+      if (scrollBehavior) {
+        scrollBehavior.updateScroll(prevState, nextState)
+      }
+      else if (process.env.NODE_ENV !== 'production') {
+        throw new Error(
+          `[redux-first-router] you must set the \`restoreScroll\` option before
+          you can call \`updateScroll\``
+        )
+      }
+    }
 
     // dispatch the first location-aware action so initial app state is based on the url on load
     if (!location.hasSSR || isServer()) {
@@ -264,7 +299,7 @@ export default (
   }
 
   const _historyAttemptDispatchAction = (
-    dispatch: Dispatch,
+    store: Store<*, *>,
     location: HistoryLocation
   ) => {
     if (location.pathname !== currentPathname) {
@@ -279,16 +314,22 @@ export default (
         history,
         'backNext'
       )
+
       prevLocation = action.meta.location.current
-      dispatch(action) // dispatch route type + payload corresponding to browser back/forward usage
+      store.dispatch(action) // dispatch route type + payload corresponding to browser back/forward usage
 
       if (typeof onBackNext === 'function') {
-        onBackNext(action, location)
+        onBackNext(store.dispatch, store.getState)
       }
+    }
+
+    if (scrollBehavior) {
+      _updateScroll()
     }
   }
 
   _history = history
+  _scrollBehavior = scrollBehavior
 
   /* RETURN  */
 
@@ -311,7 +352,7 @@ export default (
  *  prototyping. It will not harm SSR, so long as you don't use it server side. So if you use it, that means DO NOT
  *  simulate clicking links server side--and dont do that, dispatch actions to setup state instead.
  *
- *  THE IDIOMATIC WAY: instead use https://github.com/faceyspacey/pure-redux-router-link 's `<Link />`
+ *  THE IDIOMATIC WAY: instead use https://github.com/faceyspacey/redux-first-router-link 's `<Link />`
  *  component to generate SEO friendly urls. As its `href` prop, you pass it a path, array of path
  *  segments or action, and internally it will use `connectRoutes` to change the address bar and
  *  dispatch the correct final action from middleware.
@@ -323,6 +364,8 @@ export default (
  */
 
 let _history
+let _scrollBehavior
+let _updateScroll
 
 export const push = (pathname: string) => _history.push(pathname)
 
@@ -331,3 +374,7 @@ export const replace = (pathname: string) => _history.replace(pathname)
 export const back = () => _history.goBack()
 
 export const next = () => _history.goForward()
+
+export const scrollBehavior = () => _scrollBehavior
+
+export const updateScroll = () => _updateScroll && _updateScroll()

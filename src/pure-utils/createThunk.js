@@ -6,7 +6,6 @@ export default (routesMap: RoutesMap, locationKey: string) => ({
   dispatch,
   getState
 }: Store<*, *>): Promise<any> => {
-  // eslint-disable-line flowtype/no-weak-types
   const { type } = getState()[locationKey]
   const route = routesMap[type]
 

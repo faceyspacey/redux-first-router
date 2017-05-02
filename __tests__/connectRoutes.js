@@ -116,13 +116,13 @@ describe('middleware', () => {
     store.getState() /*? $.location */
 
     expect(action).toMatchObject({
-      type: '@@pure-redux-router/NOT_FOUND',
+      type: '@@redux-first-router/NOT_FOUND',
       payload: {},
       meta: {
         location: {
           current: {
             pathname: '/',
-            type: '@@pure-redux-router/NOT_FOUND',
+            type: '@@redux-first-router/NOT_FOUND',
             payload: {}
           },
           prev: { pathname: '', type: '', payload: {} },
@@ -154,15 +154,15 @@ describe('middleware', () => {
     const action = store.dispatch(receivedAction) /*? */
     const warnArg = console.warn.mock.calls[0][0] /*? */
     expect(warnArg).toEqual(
-      'pure-redux-router: location update did not dispatch as your action has an error.'
+      'redux-first-router: location update did not dispatch as your action has an error.'
     )
 
     expect(action).toEqual(receivedAction)
   })
 
-  it('calls onChange handler on route change', () => {
-    const onChange = jest.fn()
-    const { middleware, reducer } = setup('/first', { onChange })
+  it('calls beforeChange handler on route change', () => {
+    const beforeChange = jest.fn()
+    const { middleware, reducer } = setup('/first', { beforeChange })
     const middlewares = applyMiddleware(middleware)
 
     const rootReducer = (state = {}, action = {}) => ({
@@ -173,7 +173,26 @@ describe('middleware', () => {
     const store = createStore(rootReducer, middlewares)
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
 
-    expect(onChange).toHaveBeenCalled()
+    expect(beforeChange).toHaveBeenCalled()
+  })
+
+  it('calls afterChange handler on route change', () => {
+    const afterChange = jest.fn()
+    const { middleware, reducer } = setup('/first', { afterChange })
+    const middlewares = applyMiddleware(middleware)
+
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
+      title: action.type
+    })
+
+    const store = createStore(rootReducer, middlewares)
+
+    jest.useFakeTimers()
+    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+    jest.runAllTimers()
+
+    expect(afterChange).toHaveBeenCalled()
   })
 
   it('scrolls to top on route change when options.scrollTop === true', () => {
@@ -188,7 +207,10 @@ describe('middleware', () => {
     })
 
     const store = createStore(rootReducer, middlewares)
+
+    jest.useFakeTimers()
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+    jest.runAllTimers()
 
     expect(scrollTo).toHaveBeenCalled()
   })
@@ -355,10 +377,11 @@ describe('enhancer', () => {
 describe('enhancer -> _historyAttemptDispatchAction()', () => {
   it('dispatches action matching pathname when history location changes', () => {
     const dispatch = jest.fn()
+    const store = { dispatch }
     const historyLocation = { pathname: '/second/foo' }
     const { _historyAttemptDispatchAction } = setup()
 
-    _historyAttemptDispatchAction(dispatch, historyLocation)
+    _historyAttemptDispatchAction(store, historyLocation)
 
     const action = dispatch.mock.calls[0][0] /*? */
 
@@ -371,11 +394,12 @@ describe('enhancer -> _historyAttemptDispatchAction()', () => {
 
   it('does not dispatch if pathname is the same (i.e. was handled by middleware already)', () => {
     const dispatch = jest.fn()
+    const store = { dispatch }
     const historyLocation = { pathname: '/second/foo' }
     const { _historyAttemptDispatchAction } = setup()
 
-    _historyAttemptDispatchAction(jest.fn(), historyLocation)
-    _historyAttemptDispatchAction(dispatch, historyLocation)
+    _historyAttemptDispatchAction({ dispatch: jest.fn() }, historyLocation)
+    _historyAttemptDispatchAction(store, historyLocation)
 
     // insure multiple dispatches are prevented for the same action/pathname
     // so that middleware and history listener don't double dispatch
@@ -383,19 +407,19 @@ describe('enhancer -> _historyAttemptDispatchAction()', () => {
   })
 
   it('calls onBackNext handler with action + location arguments on path change', () => {
-    const dispatch = jest.fn()
+    const dispatch = jest.fn(action => expect(action).toMatchSnapshot())
+    const getState = jest.fn()
+    const store = { dispatch, getState }
     const historyLocation = { pathname: '/second/foo' }
     const onBackNext = jest.fn()
     const { _historyAttemptDispatchAction } = setup('/', { onBackNext })
 
-    _historyAttemptDispatchAction(dispatch, historyLocation)
+    _historyAttemptDispatchAction(store, historyLocation)
 
     const args = onBackNext.mock.calls[0]
-    const action = args[0] /*? */
-    const histLocation = args[1] /*? */
 
-    expect(action.meta.location.current.pathname).toEqual('/second/foo')
-    expect(histLocation.pathname).toEqual('/second/foo')
+    expect(args[0]).toEqual(dispatch)
+    expect(args[1]).toEqual(getState)
   })
 })
 

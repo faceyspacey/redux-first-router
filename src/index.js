@@ -6,7 +6,7 @@ export {
   next
 } from './connectRoutes'
 
-export const NOT_FOUND = '@@pure-redux-router/NOT_FOUND'
+export const NOT_FOUND = '@@redux-first-router/NOT_FOUND'
 
 export { default as redirect } from './action-creators/redirect'
 

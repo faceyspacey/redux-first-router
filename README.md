@@ -1,41 +1,41 @@
-# Pure Redux Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/pure-redux-router/Lobby)
+# Pure Redux Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/redux-first-router/Lobby)
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/pure-redux-router">
-    <img src="https://img.shields.io/npm/v/pure-redux-router.svg" alt="Version" />
+  <a href="https://www.npmjs.com/package/redux-first-router">
+    <img src="https://img.shields.io/npm/v/redux-first-router.svg" alt="Version" />
   </a>
 
-  <a href="https://travis-ci.org/faceyspacey/pure-redux-router">
-    <img src="https://travis-ci.org/faceyspacey/pure-redux-router.svg?branch=master" alt="Build Status" />
+  <a href="https://travis-ci.org/faceyspacey/redux-first-router">
+    <img src="https://travis-ci.org/faceyspacey/redux-first-router.svg?branch=master" alt="Build Status" />
   </a>
 
-  <a href="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/coverage">
-    <img src="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/coverage.svg" alt="Coverage Status"/>
+  <a href="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/coverage">
+    <img src="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/badges/coverage.svg" alt="Coverage Status"/>
   </a>
 
   <a href="https://greenkeeper.io">
-    <img src="https://badges.greenkeeper.io/faceyspacey/pure-redux-router.svg" alt="Green Keeper" />
+    <img src="https://badges.greenkeeper.io/faceyspacey/redux-first-router.svg" alt="Green Keeper" />
   </a>
 
-  <a href="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router">
-    <img src="https://lima.codeclimate.com/github/faceyspacey/pure-redux-router/badges/gpa.svg" alt="GPA" />
+  <a href="https://lima.codeclimate.com/github/faceyspacey/redux-first-router">
+    <img src="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/badges/gpa.svg" alt="GPA" />
   </a>
 
-  <a href="https://www.npmjs.com/package/pure-redux-router">
-    <img src="https://img.shields.io/npm/dt/pure-redux-router.svg" alt="Downloads" />
+  <a href="https://www.npmjs.com/package/redux-first-router">
+    <img src="https://img.shields.io/npm/dt/redux-first-router.svg" alt="Downloads" />
   </a>
   
-  <a href="https://snyk.io/test/github/faceyspacey/pure-redux-router">
-    <img src="https://snyk.io/test/github/faceyspacey/pure-redux-router/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/faceyspacey/pure-redux-router">
+  <a href="https://snyk.io/test/github/faceyspacey/redux-first-router">
+    <img src="https://snyk.io/test/github/faceyspacey/redux-first-router/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/faceyspacey/redux-first-router">
   </a>
 
-  <a href="https://www.npmjs.com/package/pure-redux-router">
-    <img src="https://img.shields.io/npm/l/pure-redux-router.svg" alt="License" />
+  <a href="https://www.npmjs.com/package/redux-first-router">
+    <img src="https://img.shields.io/npm/l/redux-first-router.svg" alt="License" />
   </a>
 </p>
 
 
-![pure-redux-router flow chart](https://raw.githubusercontent.com/faceyspacey/pure-redux-router/master/docs/pure-redux-router-flow.png)
+![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
 At face value, the goal of **Pure Redux Router** is to think of your app in *states*--which, thanks to tools like Redux and React itself,
 so many of us have found effective--NOT *routes*; and of course while keeping the address bar in sync.
@@ -51,10 +51,10 @@ part is that once you set it up there's virtually nothing left to do. It's truly
 
 ## Installation
 
-Install `pure-redux-router` and its peer dependency `history` plus our small `<Link />` package:
+Install `redux-first-router` and its peer dependency `history` plus our small `<Link />` package:
 
 ```bash
-yarn add history pure-redux-router pure-redux-router-link
+yarn add history redux-first-router redux-first-router-link
 ```
 
 ## Motivation - What Routing in Redux is Meant To Be
@@ -87,7 +87,7 @@ get in the way of optimizing animations.
 ## The Gist
 It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
 ```javascript
-import { connectRoutes } from 'pure-redux-router'
+import { connectRoutes } from 'redux-first-router'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createBrowserHistory'
 import userIdReducer from './reducers/userIdReducer'
@@ -109,7 +109,7 @@ const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
 ```javascript
-import { NOT_FOUND } from 'pure-redux-router'
+import { NOT_FOUND } from 'redux-first-router'
 
 export const userIdReducer = (state = null, action = {}) => {
   switch(action.type) {
@@ -129,7 +129,7 @@ And here's how you'd embed SEO/Redux-friendly links in your app, while making us
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider, connect } from 'react-redux'
-import Link from 'pure-redux-router-link'
+import Link from 'redux-first-router-link'
 import store from './configureStore'
 
 const App = ({ userId, onClick }) =>
@@ -179,12 +179,12 @@ as keys in the payload object:
 
 *note: if you have more keys in your payload that is fine--so long as you have the minimum required keys to populate the path*
 
-Lastly, we haven't mentioned `pure-redux-router-link`yet--**Pure Redux Router** is purposely built in
+Lastly, we haven't mentioned `redux-first-router-link`yet--**Pure Redux Router** is purposely built in
 a very modular way, which is why the `<Link />` component is in a separate package. It's extremely simple
 and you're free to make your own. Basically it passes the `href` on to **Pure Redux Router** and calls
 `event.preventDefault()` to stop page reloads. It also can take an action object as a prop, which it will transform
 into a URL for you! The package is obvious enough once you get the hang of what's going on here--check it
-out when you're ready: [pure-redux-router-link](http://github.com/faceyspacey/pure-redux-router-link). And if 
+out when you're ready: [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). And if 
 you're wondering, we don't offer route matching components like *React Router*--that's what state is for! 
 See our FAQ below.
 
@@ -250,7 +250,7 @@ That's all folks! :+1:
 
 What about if the URL is not found?
 > If the path is not found, or if actions fail to be converted to paths, our `NOT_FOUND` action type will be dispatched. You can apply it
-as a case in your reducer's switch statements. Here's where you get it: `import { NOT_FOUND } from 'pure-redux-router'`. We have strong
+as a case in your reducer's switch statements. Here's where you get it: `import { NOT_FOUND } from 'redux-first-router'`. We have strong
 idiomatic way to deal with it in server side rendering--check it out: [server side rendering](./docs/server-rendering.md).
 
 What about query strings and hashes?
@@ -292,8 +292,8 @@ That said, you absolutely don't need to have a URL for every action. In our apps
 to the biggest visual changes in the page that we want search engines to pick up.
 
 And what about actually getting links on the page for search engines to see?
-> Use [pure-redux-router-link](http://github.com/faceyspacey/pure-redux-router-link). This package has been built in a modular way,
-which is why that's not in here. *pure-redux-router-link's* `<Link />` component is simple. Review its code. Perhaps you want to make your own.
+> Use [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). This package has been built in a modular way,
+which is why that's not in here. *redux-first-router-link's* `<Link />` component is simple. Review its code. Perhaps you want to make your own.
 All it does is take an `href`, pass that along to **Pure Redux Router** and call `event.preventDefault()` to prevent the browser
 from reloading the page as it visits the new URL. The net result is you have `<a>` tags on your page for *Google* to pick up.
 

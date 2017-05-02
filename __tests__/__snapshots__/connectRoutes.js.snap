@@ -1,5 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`enhancer -> _historyAttemptDispatchAction() calls onBackNext handler with action + location arguments on path change 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "backNext": true,
+      "current": Object {
+        "pathname": "/second/foo",
+        "payload": Object {
+          "param": "foo",
+        },
+        "type": "SECOND",
+      },
+      "history": Object {
+        "entries": Array [
+          "/",
+        ],
+        "index": 0,
+        "length": 1,
+      },
+      "load": undefined,
+      "prev": Object {
+        "pathname": "",
+        "payload": Object {},
+        "type": "",
+      },
+      "redirect": undefined,
+    },
+  },
+  "payload": Object {
+    "param": "foo",
+  },
+  "type": "SECOND",
+}
+`;
+
 exports[`enhancer -> _historyAttemptDispatchAction() dispatches action matching pathname when history location changes 1`] = `
 Object {
   "meta": Object {
@@ -180,7 +215,7 @@ Object {
       "current": Object {
         "pathname": "/",
         "payload": Object {},
-        "type": "@@pure-redux-router/NOT_FOUND",
+        "type": "@@redux-first-router/NOT_FOUND",
       },
       "history": Object {
         "entries": Array [
@@ -199,6 +234,6 @@ Object {
     },
   },
   "payload": Object {},
-  "type": "@@pure-redux-router/NOT_FOUND",
+  "type": "@@redux-first-router/NOT_FOUND",
 }
 `;

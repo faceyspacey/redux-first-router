@@ -1,16 +1,12 @@
 {
-  "name": "pure-redux-router",
+  "name": "redux-first-router",
   "version": "0.0.0-development",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "push": "git add --all && git commit -a -m 'build' && git push",
     "build": "babel src -d dist",
-    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/pure-redux-router.js",
-    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/pure-redux-router.min.js",
+    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/redux-first-router.js",
+    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -25,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/faceyspacey/pure-redux-router.git"
+    "url": "https://github.com/faceyspacey/redux-first-router.git"
   },
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/faceyspacey/pure-redux-router/issues"
+    "url": "https://github.com/faceyspacey/redux-first-router/issues"
   },
-  "homepage": "https://github.com/faceyspacey/pure-redux-router#readme",
+  "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
   "dependencies": {
     "path-to-regexp": "^1.7.0"
   },

@@ -8,7 +8,7 @@ In addition, it maintains similar state for the previous route on the `prev` key
 * *backNext*: if the user has used the browser back/forward buttons, `backNext` will be true
 * *hasSSR*: if the app is utilizing server side rendering, `hasSSR` will be true. 
 
-Lastly, your `routesMap` will also be stored for use by, for instance, *pure-redux-router-link's* `<Link />` component. 
+Lastly, your `routesMap` will also be stored for use by, for instance, *redux-first-router-link's* `<Link />` component. 
 
 Here's an example of the initialState that will be created for your location reducer:
 

@@ -45,7 +45,7 @@ Object {
         "payload": Object {
           "someKey": "foo",
         },
-        "type": "@@pure-redux-router/NOT_FOUND",
+        "type": "@@redux-first-router/NOT_FOUND",
       },
       "history": Object {
         "entries": Array [
@@ -67,7 +67,7 @@ Object {
   "payload": Object {
     "someKey": "foo",
   },
-  "type": "@@pure-redux-router/NOT_FOUND",
+  "type": "@@redux-first-router/NOT_FOUND",
 }
 `;
 

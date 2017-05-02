@@ -5,7 +5,7 @@ import nestAction from '../pure-utils/nestAction'
 import { NOT_FOUND } from '../index'
 
 export default (
-  action: Object, // eslint-disable-line flowtype/no-weak-types
+  action: Object,
   routesMap: RoutesMap,
   prevLocation: Location,
   history: History

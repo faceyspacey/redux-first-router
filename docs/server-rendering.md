@@ -4,7 +4,7 @@ Ok, this is the biggest example here, but given what it does, we think it's extr
 import express from 'express'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createMemoryHistory'
-import { connectRoutes, NOT_FOUND } from 'pure-redux-router'
+import { connectRoutes, NOT_FOUND } from 'redux-first-router'
 
 const render = async (req, res) => {
    const history = createHistory({
@@ -53,9 +53,10 @@ http.createServer(app).listen(3000)
 
 
 ## Redirects Example
+> Note: usage of `redirect` within the thunk is how to do redirects even without SSR.
 
 ```javascript
-import { connectRoutes, NOT_FOUND, redirect } from 'pure-redux-router'
+import { connectRoutes, NOT_FOUND, redirect } from 'redux-first-router'
 
 const render = async (req, res) => {
    const history = createHistory({

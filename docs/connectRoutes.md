@@ -1,6 +1,6 @@
 # connectRoutes
 
-`connectRoutes` is the primary "work" you will do to get **Pure Redux Router** going. It's all about creating and maintaining
+`connectRoutes` is the primary "work" you will do to get **Redux First Router** going. It's all about creating and maintaining
 a pairing of *action types* and dynamic express style route paths. If you use our `<Link />` component and pass an *action* as
 its `href` prop, you can change the URLs you use here any time without having to change your application code. 
 
@@ -14,7 +14,7 @@ rather than `mapDispatchToProps` handlers. Once you get used to it, it will take
 
 Lastly, it's not that you can't still use `mapDispatchToProps`--you just won't want to
 in order to get SEO benefits for actions that you want to change the address bar (and allow the user to *back/next` through using the 
-browser buttons). To learn more about how to create links, check out our [Link component](https://github.com/faceyspacey/pure-redux-router-link).
+browser buttons). To learn more about how to create links, check out our [Link component](https://github.com/faceyspacey/redux-first-router-link).
 
 Let's now examine our `connectRoutes` function more deeply:
 
@@ -60,11 +60,11 @@ use `createMemoryHistory` to keep tests isolated).
 
 When using `createMemoryHistory` the key is to to provide the initial path as the value (within an array) for `initialEntries`. On the
 server this is easy because you can get it from your `request` object such as when using *express*. In tests, you can set it to whatever
-you want to trick **Pure Redux Router** into thinking the app is starting on whatever route you want. In React Native, you get it via
+you want to trick **Redux First Router** into thinking the app is starting on whatever route you want. In React Native, you get it via
 the `Linking` API like this:
 
 ```javascript
-import { connectRoutes } from 'pure-redux-router'
+import { connectRoutes } from 'redux-first-router'
 import createHistory from 'history/createMemoryHistory'
 import { Linking } from 'react-native'
 
@@ -97,7 +97,7 @@ type RouteObject = {
 ```
 
 *note: one very important thing to note about the resulting dispatched actions is that the payload is expected to always be an object.
-When using* **Pure Redux Router**, *do not dispatch payloads that are primitives such as `number` or `string`.*
+When using* **Redux First Router**, *do not dispatch payloads that are primitives such as `number` or `string`.*
 
 Features:
 * **route as a string** is simply path to match to an action type without any transformations
@@ -118,33 +118,34 @@ to be handled manually in order to allow you to syncronously `await` its result 
 
 
 ## Options
-Lastly, let's talk about the `options` you can provide. There are 5. Here's its flow type:
+Lastly, let's talk about the `options` you can provide. There are 6. Here's its flow type:
 
 ```javascript
 type Options = {
   location?: string, // default: 'location'
   title?: string,    // default: 'title'
   scrollTop?: boolean,
-  onChange?: (Dispatch, GetState) => void,
-  onBackNext?: (HistoryLocation, Action) => void,
+  restoreScroll?: ((PrevLocationState, LocationState) => boolean | string | array) => ScrollBehavior,
+  beforeChange?: (Dispatch, GetState) => void,
+  afterChange?: (Dispatch, GetState) => void,
+  onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void
 }
 ```
 
-* **location** - the `location` lets you specify what key **Pure Redux Router** should expect its reducer to be attached to in your Redux state stree. 
+* **location** - the `location` lets you specify what key **Redux First Router** should expect its reducer to be attached to in your Redux state stree. 
 
-* **title** - the `title` is similarly the name of the state key for your page title. If it's provided, **Pure Redux Router** will change your page 
+* **title** - the `title` is similarly the name of the state key for your page title. If it's provided, **Redux First Router** will change your page 
 title for you when the route changes, e.g. `document.title = 'foo'`.
 
-* **scrollTop** - the `scrollTop` option calls `window.scrollTo(0, 0)` on route changes so the user starts each page at the top.
+* **scrollTop** - the `scrollTop` option calls `window.scrollTo(0, 0)` on route changes so the user starts each page at the top. This is a *"poor man's"* scroll
+restoration, and should be fine while developing, especially if you're using Chrome. Though hash links won't fully function. See the next option for full-on scroll restoration support.
 
-* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed 2 arguments:
-the `action` dispatched as a result of the URL changing and the value of `history.location`. It's one of the few frills this package
-offers. *Fun Fact: we originally added it because we wanted to play a click a sound when the user presses those buttons, similar to
-the experience when the user pressed buttons on the page.* Perhaps you will find it useful too. 
+* **restoreScroll** - the `restoreScroll` is a call to `redux-first-router-restore-scroll`'s restoreScroll` function, with a `shouldUpdateScroll` callback passed a single argument. See the [scroll restoration doc](./scroll-restoration.md) for more info. 
 
-* **onChange** - `onChange` is a simple function that will be called whenever the routes change. It's passed your standard `dispatch` and `getState` arguments
-like a thunk. It can be used to, for example, customize scroll position:
+* **beforeChange** - `beforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments
+like a thunk.
 
-```javascript
-onChange: () => typeof window !== 'undefined' && window.scrollTo(0, 100)
-```
+* **afterChange** - `afterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments
+like a thunk.
+
+* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk.
