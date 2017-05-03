@@ -42,6 +42,7 @@ The goal of **Redux First Router** is to think of your app in *states*, not *rou
 The thinking behind this package has been: "if we were to dream up a 'Redux-first' approach to routing from the 
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
 "inversion of control" scenarios that makes a challenging problem *simple* when coming at it from a different angle.
+We hope *Redux First Router* comes off as an obvious solution.
 
 Before we get started, there is some *prior art*, and you should [check them out](./docs/prior-art.md). **Redux First Router**
 isn't the first stab at something like this, but--aside from this path being pre-validated--we feel it is the most complete, tested and *spot on* solution. 
