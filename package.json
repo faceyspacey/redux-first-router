@@ -61,7 +61,7 @@
     "travis-github-status": "^1.4.0",
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
-    "webpack": "2.4.1"
+    "webpack": "2.5.0"
   },
   "peerDependencies": {
     "history": "^4.3.0",
