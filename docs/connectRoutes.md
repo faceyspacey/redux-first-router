@@ -126,8 +126,8 @@ type Options = {
   title?: string,    // default: 'title'
   scrollTop?: boolean,
   restoreScroll?: ((PrevLocationState, LocationState) => boolean | string | array) => ScrollBehavior,
-  beforeChange?: (Dispatch, GetState) => void,
-  afterChange?: (Dispatch, GetState) => void,
+  onBeforeChange?: (Dispatch, GetState) => void,
+  onAfterChange?: (Dispatch, GetState) => void,
   onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void
 }
 ```
@@ -142,10 +142,10 @@ restoration, and should be fine while developing, especially if you're using Chr
 
 * **restoreScroll** - the `restoreScroll` is a call to `redux-first-router-restore-scroll`'s restoreScroll` function, with a `shouldUpdateScroll` callback passed a single argument. See the [scroll restoration doc](./scroll-restoration.md) for more info. 
 
-* **beforeChange** - `beforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments
+* **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments
 like a thunk.
 
-* **afterChange** - `afterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments
+* **onAfterChange** - `onAfterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments
 like a thunk.
 
 * **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk.

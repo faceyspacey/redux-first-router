@@ -160,9 +160,9 @@ describe('middleware', () => {
     expect(action).toEqual(receivedAction)
   })
 
-  it('calls beforeChange handler on route change', () => {
-    const beforeChange = jest.fn()
-    const { middleware, reducer } = setup('/first', { beforeChange })
+  it('calls onBeforeChange handler on route change', () => {
+    const onBeforeChange = jest.fn()
+    const { middleware, reducer } = setup('/first', { onBeforeChange })
     const middlewares = applyMiddleware(middleware)
 
     const rootReducer = (state = {}, action = {}) => ({
@@ -173,12 +173,12 @@ describe('middleware', () => {
     const store = createStore(rootReducer, middlewares)
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
 
-    expect(beforeChange).toHaveBeenCalled()
+    expect(onBeforeChange).toHaveBeenCalled()
   })
 
-  it('calls afterChange handler on route change', () => {
-    const afterChange = jest.fn()
-    const { middleware, reducer } = setup('/first', { afterChange })
+  it('calls onAfterChange handler on route change', () => {
+    const onAfterChange = jest.fn()
+    const { middleware, reducer } = setup('/first', { onAfterChange })
     const middlewares = applyMiddleware(middleware)
 
     const rootReducer = (state = {}, action = {}) => ({
@@ -192,7 +192,7 @@ describe('middleware', () => {
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
     jest.runAllTimers()
 
-    expect(afterChange).toHaveBeenCalled()
+    expect(onAfterChange).toHaveBeenCalled()
   })
 
   it('scrolls to top on route change when options.scrollTop === true', () => {

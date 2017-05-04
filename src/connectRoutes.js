@@ -112,8 +112,8 @@ export default (
     location: locationKey = 'location',
     title: titleKey = 'title',
     scrollTop = false,
-    beforeChange,
-    afterChange,
+    onBeforeChange,
+    onAfterChange,
     onBackNext,
     restoreScroll
   }: Options = options
@@ -178,9 +178,9 @@ export default (
     if (route) {
       prevState = store.getState()
 
-      if (beforeChange) {
+      if (onBeforeChange) {
         const dispatch = middleware(store)(next) // re-create middleware's position in chain
-        beforeChange(dispatch, store.getState)
+        onBeforeChange(dispatch, store.getState)
       }
     }
 
@@ -214,8 +214,8 @@ export default (
       setTimeout(() => window.scrollTo(0, 0), 0)
     }
 
-    if (afterChange) {
-      setTimeout(() => afterChange(dispatch, store.getState), 0)
+    if (onAfterChange) {
+      setTimeout(() => onAfterChange(dispatch, store.getState), 0)
     }
   }
 
