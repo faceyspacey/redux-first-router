@@ -8,11 +8,11 @@ export default (
   action: Object,
   routesMap: RoutesMap,
   prevLocation: Location,
-  history: History
+  hist: History
 ): Action => {
   try {
     const pathname = actionToPath(action, routesMap)
-    const kind = getKind(pathname, history)
+    const [kind, history] = getKindAndHistory(!!hist.entries, pathname, hist)
     return nestAction(pathname, action, prevLocation, history, kind)
   }
   catch (e) {
@@ -25,49 +25,45 @@ export default (
       pathname,
       { type: NOT_FOUND, payload },
       prevLocation,
-      history
+      hist
     )
   }
 }
 
-const getKind = (pathname: string, history: History): ?string => {
-  const isMemoryHistory = !!history.entries
-
+// REACT NATIVE FEATURE:
+// emulate npm `history` package and `historyCreateAction`  so that actions
+// and state indicate the user went back or forward. The idea is if you are
+// going back or forward to a route you were just at, apps can determine
+// from `state.location.backNext` and `action.backNext` that things like
+// scroll position should be restored.
+// NOTE: for testability, history is also returned to make this a pure function
+const getKindAndHistory = (
+  isMemoryHistory: boolean,
+  pathname: string,
+  history: History
+): [?string, History] => {
   if (!isMemoryHistory) {
-    return undefined
+    return [undefined, history]
   }
 
-  const isLast = history.index === history.length - 1
+  if (goingBack(pathname, history)) {
+    history.index--
+    return ['backNext', history]
+  }
+  else if (goingForward(pathname, history)) {
+    history.index++
+    return ['backNext', history]
+  }
+
+  return [undefined, history]
+}
+
+const goingBack = (pathname: string, history: History): boolean => {
   const prev = history.entries[history.index - 1]
-  // REACT NATIVE FEATURE:
-  // emulate npm `history` package and `historyCreateAction`  so that actions
-  // and state indicate the user went back or forward. The idea is if you are
-  // going back or forward to a route you were just at, apps can determine
-  // from `state.location.backNext` and `action.backNext` that things like
-  // scroll position should be restored.
-  if (isLast && prev) {
-    const prevPath = prev.pathname
-    const isGoingBack = prevPath === pathname
+  return prev && prev.pathname === pathname
+}
 
-    if (isGoingBack) {
-      history.index--
-      return 'backNext'
-    }
-
-    return undefined
-  }
-
+const goingForward = (pathname: string, history: History): boolean => {
   const next = history.entries[history.index + 1]
-
-  if (next) {
-    const nextPath = next.pathname
-    const isGoingForward = nextPath === pathname
-
-    if (isGoingForward) {
-      history.index++
-      return 'backNext'
-    }
-  }
-
-  return undefined
+  return next && next.pathname === pathname
 }

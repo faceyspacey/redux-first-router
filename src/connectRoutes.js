@@ -277,22 +277,8 @@ export default (
 
     history.listen(_historyAttemptDispatchAction.bind(null, store))
 
-    _updateScroll = () => {
-      if (scrollBehavior) {
-        scrollBehavior.updateScroll(prevState, nextState)
-      }
-      else if (process.env.NODE_ENV !== 'production') {
-        throw new Error(
-          `[redux-first-router] you must set the \`restoreScroll\` option before
-          you can call \`updateScroll\``
-        )
-      }
-    }
-
     // update the scroll position after initial rendering of page
-    if (scrollBehavior) {
-      setTimeout(_updateScroll, 0)
-    }
+    setTimeout(() => _updateScroll(false))
 
     // dispatch the first location-aware action so initial app state is based on the url on load
     if (!location.hasSSR || isServer()) {
@@ -337,13 +323,27 @@ export default (
       }
     }
 
-    if (scrollBehavior) {
-      _updateScroll()
-    }
+    _updateScroll(false)
   }
+
+  /* SIDE_EFFECTS - client-only state that must escape closure */
 
   _history = history
   _scrollBehavior = scrollBehavior
+
+  _updateScroll = (performedByUser: boolean = true) => {
+    if (scrollBehavior) {
+      if (!scrollBehavior.manual) {
+        scrollBehavior.updateScroll(prevState, nextState)
+      }
+    }
+    else if (process.env.NODE_ENV !== 'production' && performedByUser) {
+      throw new Error(
+        `[redux-first-router] you must set the \`restoreScroll\` option before
+        you can call \`updateScroll\``
+      )
+    }
+  }
 
   /* RETURN  */
 

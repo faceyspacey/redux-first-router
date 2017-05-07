@@ -186,7 +186,7 @@ and you're free to make your own. Basically it passes the `href` on to **Redux F
 into a URL for you! The package is obvious enough once you get the hang of what's going on here--check it
 out when you're ready: [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). And if 
 you're wondering, we don't offer route matching components like *React Router*--that's what state is for! 
-See our FAQ below.
+See our [FAQ](#faq) below.
 
 ## routesMap
 
