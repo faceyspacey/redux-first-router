@@ -29,7 +29,5 @@ exclude_paths:
 - "flow-typed/"
 - "node_modules/"
 - ".vscode/"
-- "*"
-- ".*"
 - ".eslintrc.js"
 - "**/*.snap"

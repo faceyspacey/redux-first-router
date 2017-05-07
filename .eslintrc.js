@@ -64,6 +64,14 @@ module.exports = {
     'spaced-comment': [2, 'always', { markers: ['?'] }],
     'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],
     'brace-style': [2, 'stroustrup'],
+    'no-unused-expressions': [
+      2,
+      {
+        allowShortCircuit: true,
+        allowTernary: true,
+        allowTaggedTemplates: true
+      }
+    ],
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -92,6 +100,24 @@ module.exports = {
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true
+      }
+    ],
+    'react/sort-comp': [
+      2,
+      {
+        order: [
+          'propTypes',
+          'props',
+          'state',
+          'defaultProps',
+          'contextTypes',
+          'childContextTypes',
+          'getChildContext',
+          'static-methods',
+          'lifecycle',
+          'everything-else',
+          'render'
+        ]
       }
     ]
   }
