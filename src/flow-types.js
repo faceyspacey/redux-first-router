@@ -85,13 +85,14 @@ export type ReceivedAction = {
   meta?: Meta
 }
 
-export type Listener = HistoryLocation => void
+export type Listener = (HistoryLocation, HistoryAction) => void
 export type Listen = Listener => void
 export type Push = (pathname: string) => void
 export type Replace = (pathname: string) => void
 export type GoBack = () => void
 export type GoForward = () => void
 export type Go = number => void
+export type CanGo = number => boolean
 
 export type History = {
   listen: Listen,
@@ -100,6 +101,7 @@ export type History = {
   goBack: GoBack,
   goForward: GoForward,
   go: Go,
+  canGo: CanGo,
   entries: Array<{ pathname: string }>,
   index: number,
   length: number,
@@ -111,5 +113,7 @@ export type History = {
 export type HistoryLocation = {
   pathname: string
 }
+
+export type HistoryAction = string
 
 export type Document = Object

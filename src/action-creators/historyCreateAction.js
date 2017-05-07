@@ -11,5 +11,5 @@ export default (
   kind: string
 ): Action => {
   const action = pathToAction(pathname, routesMap)
-  return nestAction(pathname, action, prevLocation, history, false, kind)
+  return nestAction(pathname, action, prevLocation, history, kind)
 }

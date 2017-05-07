@@ -55,8 +55,7 @@ describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddlewa
       pathname,
       receivedAction,
       location,
-      history,
-      true
+      history
     ) /*? $.meta */
 
     expect(action.type).toEqual('FOO')
@@ -79,14 +78,7 @@ describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddlewa
     expect(action).toMatchSnapshot()
 
     expect(action.meta.location.load).not.toBeDefined()
-    action = nestAction(
-      pathname,
-      receivedAction,
-      location,
-      history,
-      false,
-      'load'
-    )
+    action = nestAction(pathname, receivedAction, location, history, 'load')
     expect(action.meta.location.load).toEqual(true)
 
     // check that new paths are not pushed if pathname is the same

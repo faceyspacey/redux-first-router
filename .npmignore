@@ -5,3 +5,12 @@ docs
 flow-typed
 src
 *.log
+
+.babelrc
+.codeclimate.yml
+.editorconfig
+.eslintrc.js
+.snyk
+.travis.yml
+wallaby.js
+webpack.config.js

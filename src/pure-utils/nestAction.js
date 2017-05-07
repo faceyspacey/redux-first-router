@@ -1,13 +1,18 @@
 // @flow
-import type { Action, Location, ReceivedAction, History } from '../flow-types'
+import type {
+  Action,
+  Location,
+  ReceivedAction,
+  History,
+  HistoryData
+} from '../flow-types'
 
 export default (
   pathname: string,
   receivedAction: ReceivedAction,
   prev: Location,
   history: History,
-  isMiddleware: boolean,
-  kind?: string
+  kind?: ?string
 ): Action => {
   const { type, payload = {}, meta } = receivedAction
 
@@ -28,14 +33,19 @@ export default (
         redirect: meta && meta.location && meta.location.redirect
           ? pathname
           : undefined,
-        history: getHistory(pathname, history, isMiddleware)
+        history: getHistory(!!history.entries, pathname, history, !kind)
       }
     }
   }
 }
 
-const getHistory = (pathname, history, isMiddleware) => {
-  if (!history.entries) {
+const getHistory = (
+  isMemoryHistory: boolean,
+  pathname: string,
+  history: History,
+  isMiddleware: boolean
+): ?HistoryData => {
+  if (!isMemoryHistory) {
     return undefined
   }
 

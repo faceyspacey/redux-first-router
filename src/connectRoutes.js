@@ -163,8 +163,7 @@ export default (
         pathname,
         { type: NOT_FOUND, payload },
         prevLocation,
-        history,
-        true
+        history
       )
       prevLocation = action.meta.location.current
     }
@@ -224,12 +223,21 @@ export default (
     title: ?string,
     history: History
   ) => {
+    // IMPORTANT: insure history hasn't already handled location change
     if (locationState.pathname !== currentPathname) {
-      // IMPORTANT: insure history hasn't already handled location change
       currentPathname = locationState.pathname // IMPORTANT: must happen before history.push() (to prevent double handling)
 
-      const method = locationState.redirect ? 'replace' : 'push'
-      history[method](currentPathname) // change address bar corresponding to matched actions from middleware
+      // for React Native `middlewareCreateAction` may emulate
+      // `history` backNext actions to support features such
+      // as scroll restoration, in case `back` or `next` is
+      // not called directly. In those cases, we need to prevent
+      // pushing new routes on to the entries array.
+      const manuallyInvoked = locationState.backNext
+
+      if (!manuallyInvoked) {
+        const method = locationState.redirect ? 'replace' : 'push'
+        history[method](currentPathname) // change address bar corresponding to matched actions from middleware
+      }
 
       changePageTitle(windowDocument, title)
     }
@@ -282,7 +290,9 @@ export default (
     }
 
     // update the scroll position after initial rendering of page
-    setTimeout(_updateScroll, 0)
+    if (scrollBehavior) {
+      setTimeout(_updateScroll, 0)
+    }
 
     // dispatch the first location-aware action so initial app state is based on the url on load
     if (!location.hasSSR || isServer()) {
@@ -303,7 +313,8 @@ export default (
 
   const _historyAttemptDispatchAction = (
     store: Store<*, *>,
-    location: HistoryLocation
+    location: HistoryLocation,
+    historyAction: string
   ) => {
     if (location.pathname !== currentPathname) {
       // IMPORTANT: insure middleware hasn't already handled location change
@@ -377,6 +388,10 @@ export const replace = (pathname: string) => _history.replace(pathname)
 export const back = () => _history.goBack()
 
 export const next = () => _history.goForward()
+
+export const go = (n: number) => _history.go(n)
+
+export const canGo = (n: number) => _history.canGo(n)
 
 export const scrollBehavior = () => _scrollBehavior
 
