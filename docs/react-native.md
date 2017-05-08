@@ -1,37 +1,46 @@
 # React Native
-**Redux First Router** has been thought up from the ground up with React Native (and Server Environments) in mind. They both make use of
-the [history package's](https://www.npmjs.com/package/history):
+**Redux First Router** has been thought up from the ground up with React Native (and server environments) in mind. They both make use of
+the [history package's](https://www.npmjs.com/package/history) `createMemoryHistory`. In coordination, we are able to present you with a first-rate
+developer experience when it comes to URL-handling on native. We hope you come away feeling: "this is what I've been waiting for."
 
+The real clincher is first class *React Navigation* integration. Read on...
 
 
 ## Linking
 This is really where the magic of **Redux First Router** shines. Everything is supposed to be URL-based, right. So handling incoming links from *React Native's* `Linking` API should be as easy as it comes. Here's how you kick off your app from now on:
 
-*src/linking.js:*
+*index.js:*
 ```js
+import { Linking } from 'react-native'
 import { push } from 'redux-first-router'
-import startApp from './startApp'
+import startApp from './src'
 
 Linking.getInitialURL().then(startApp)
 Linking.addEventListener('url', ({ url }) => push(url))
 ```
 
-*startApp.js:*
+*src/index.js:*
 ```js
-import createMemoryHistory from 'history/createMemoryHistory'
+import React from 'react'
+import { AppRegistry } from 'react-native'
+import { Provider } from 'react-redux'
+import createHistory from 'history/createMemoryHistory'
 import configureStore from './configureStore'
-import renderApp from './renderApp'
+import App from './components/App'
 
 export default url => {
-  const initialPath = url.substr(url.indexOf('.com') + 5)
-  const history = createMemoryHistory({
-    initialEntries: [ initialPath ],  
-  })
+  const initialPath = url ? url.substr(url.indexOf('.com') + 5) : '/'
+  const history = createHistory({ initialEntries: [initialPath] })
   const store = configureStore(history)
-  const App = renderApp(store)
+  const App = createApp(store)
 
-  AppRegistry.registerComponent('ReduxFirstRouterBoilerplateNative', () => App)
+  AppRegistry.registerComponent('MyApp', () => App)
 }
+
+const createApp = store => () =>
+  <Provider store={store}>
+    <App />
+  </Provider>
 ```
 
 
