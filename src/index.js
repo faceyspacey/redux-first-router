@@ -4,6 +4,13 @@ export {
   replace,
   back,
   next,
+  go,
+  canGo,
+  canGoBack,
+  canGoForward,
+  prevPath,
+  nextPath,
+  history,
   scrollBehavior,
   updateScroll
 } from './connectRoutes'

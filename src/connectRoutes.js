@@ -393,6 +393,23 @@ export const go = (n: number) => _history.go(n)
 
 export const canGo = (n: number) => _history.canGo(n)
 
+export const canGoBack = (): boolean => !!_history.entries[_history.index - 1]
+
+export const canGoForward = (): boolean =>
+  !!_history.entries[_history.index + 1]
+
+export const prevPath = (): ?string => {
+  const entry = _history.entries[_history.index - 1]
+  return entry && entry.pathname
+}
+
+export const nextPath = (): ?string => {
+  const entry = _history.entries[_history.index + 1]
+  return entry && entry.pathname
+}
+
+export const history = () => _history
+
 export const scrollBehavior = () => _scrollBehavior
 
 export const updateScroll = () => _updateScroll && _updateScroll()

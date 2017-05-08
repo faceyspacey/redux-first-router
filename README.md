@@ -249,6 +249,8 @@ That's all folks! :+1:
 * [server side rendering](./docs/server-rendering.md)
 * [scroll restoration](./docs/scroll-restoration.md)
 * [redirects](./docs/server-rendering.md#redirects-example)
+* [React Native](./docs/react-native.md)
+* [client-only API](./docs/client-only-api.md)
 
 ## FAQ
 
