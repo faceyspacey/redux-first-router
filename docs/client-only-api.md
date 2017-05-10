@@ -34,58 +34,6 @@ for more info.*
 
 
 
-## Declarative History API
-
-The `location` state and the `action.meta.location` object *on the server or in environments where you used `createMemoryHistory`
-to create your history (such as React Native)* will also maintain the ***declarative*** information about the history stack. It can be found within the `history` key, and this 
-is its shape:
-
-```javascript
-history: {
-  index: number,          // index of focused entry/path
-  length: number,         // total # of entries/paths
-  entries: Array<string>, // array of paths obviously
-}
-```
-
-This is different from what the `history` package maintains in that you can use Redux to reactively respond to its changes. Here's an example:
-
-```js
-import React from 'react'
-import { connect } from 'react-redux'
-
-const MyComponent = ({ isLast, path }) =>
-  isLast ? <div>last</div> : <div>{path}</div>
-
-const mapStateToProps = ({ location: { history } }) => ({
-  isLast: history.index === history.length - 1,
-  path: history.entries[history.index].pathname
-})
-
-expoort default connect(mapStateToProps)(MyComponent)
-```
-> By the way, this example also showcases the ultimate goal of **Redux First Router:** *to stay within the "intuitive" workflow of standard Redux patterns*.
-
-
-If you're wondering why such state is limited to `createMemoryHistory`, it's because it can't be consistently maintained in the browser. Here's why:
-
-[would it be possible for createBrowserHistory to also have entries and index? #441](https://github.com/ReactTraining/history/issues/441)
-
-In short, the browser will maintain the history for your website even if you refresh the page, whereas from our app's perspective,
-if that happens, we'll lose awareness of the history stack. `sessionStorage` almost can solve the issue, but because of various
-browser inconsitencies (e.g. when cookies are blocked, you can't recall `sessionStorage`), it becomes unreliable and therefore
-not worth it. 
-
-
-***When might I have use for it though?***
-
-Well, you see the fake browser we made in our playground on *webpackbin*, right? We emulate the browser's back/next buttons
-using it. If you have the need to make such a demo or something similar, totally use it--we plan to maintain the secret API.
-
-*Redux First Router's* [React Navigation implementation](./react-native#react-navigation) also relies heavily on `history` state.
-
-
-
 
 
 

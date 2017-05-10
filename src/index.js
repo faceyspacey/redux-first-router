@@ -21,6 +21,7 @@ export { default as redirect } from './action-creators/redirect'
 
 export { default as actionToPath } from './pure-utils/actionToPath'
 export { default as pathToAction } from './pure-utils/pathToAction'
+export { default as isLocationAction } from './pure-utils/isLocationAction'
 
 export type {
   RouteString,
