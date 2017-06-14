@@ -72,6 +72,32 @@ BackHandler.addEventListener('hardwareBackPress', () => {
 ## First Class React Navigation Support!
 > This is a rough sneak peak of what's possible. I'm almost done and this is the crown jewel of this package, and what I'm using for all my work in the coming months (June 2017). What we have is functional, but expect the docs to be completely revamped. This is just off the top of the dome for fellow journeymen:
 
+First off, this relies on a plugin so it's not included in web builds.
+
+**Installation:**
+
+```
+yarn add redux-first-router-navigation
+```
+
+The way it works is quite interesting so you may want to check out its code:
+https://github.com/faceyspacey/redux-first-router-navigation
+
+
+**Usage:**
+```js
+import { connectRoutes } from 'redux-first-router'
+import reduxNavigation from 'redux-first-router-navigation'
+
+connectRoutes(history, routesMap, {
+  navigators: reduxNavigation({
+    tabs: MyTabNavigator,
+    stack1: Stack1Navigator,
+    stack2: Stack2Navigator
+  })
+})
+```
+
 This perhaps is the crowning feature of **Redux First Router**, we have a lot to share about it.
 
 First off, all the above setup continues to be exactly how you setup your *React Navigation*-based app. However, if you've used or studied *React Navigation*,
