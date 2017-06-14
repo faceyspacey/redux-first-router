@@ -117,6 +117,9 @@ That was the key realization that enabled the *React Navigation* team to finally
 - The nesting of navigators makes the most sense for smaller apps and for novice to intermediate developers who benefit the most from a fully automated solution. For bigger projects and more advanced developers, its trival to slide to Tab 2 in response to a given state whose primary purpose is to push a scene on to a stack. For example, a `tabIndex` reducer can trivilialy know which tab to slide to by simply providing a `navKey` value in the action that pushes scenes/routes on to your StackRouter; if every tab has a different StackNavigator, each StackNavigator gets its own `navKey` value. For all such combinations you can dream of to combine different Navigators, you can come up with similarly natural solutions.
 - The URL bar may not contain enough state/info to pre-fill a StackNavigator with a sequence of routes (though it can), but it doesn't have to when first entering an app in most cases. 
 - Therefore, you don't really need to worry about the sequences of "scenes" stored in your StackRouter when it comes to your app being URL-driven. When you do need to, say, reset a StackNavigator, you can temporarily forgo URL-driven actions and just perform a reset action against the given StackRouter.
+- With disconnected Navigators, it makes it far easier to sandwitch other Views between navigators (e.g. put a background image behind a StackNavigator that itself is on top of a TabNavigator)
+- It's far easier to have your Navigators talk to each other
+
 
 ## The Gist
 > yea baby, this shit is functional!
