@@ -45,9 +45,11 @@ ground up, what would it look like?" The result has been what we hope you feel t
 We hope *Redux First Router* comes off as an obvious solution.
 
 Before we get started, there is some *prior art*, and you should [check them out](./docs/prior-art.md). **Redux First Router**
-isn't the first stab at something like this, but--aside from this path being pre-validated--we feel it is the most complete, tested and *spot on* solution. 
-We have reviewed what came before, stripped what was unnecessary, added what was needed, and generally focused on getting the ***developer experience*** right. The best
+isn't the first stab at something like this, but--aside from this path being pre-validated--we feel it is the most complete, tested and *spot on* solution.
+We have reviewed what came before, stripped what was unnecessary, added what was needed, and generally focused on getting the ***developer experience*** right. Ultimately it offers far more than previous solutions. The best
 part is that once you set it up there's virtually nothing left to do. It's truly "set it and forget it." Let's get started.
+
+> And did we mention: **it has first class support for** ***React Navigation!***
 
 ## Installation
 
@@ -67,14 +69,14 @@ action payloads, and action types demarcate a certain kind of path*. **That is w
 In practice, what that means is having the address bar update in response to actions and ***bi-directionally*** 
 having actions dispatched in response to address bar changes, such as via the browser
 back/forward buttons. The "bi-directional" aspect is embodied in the diagram above where the first blue arrows
-points both ways--dispatching actions changes the address bar, *and* changes to
+points both ways--i.e. dispatching actions changes the address bar, *and* changes to
 the address bar dispatches actions.
 
 In addition, here are some key obstacles **Redux First Router** seeks to *avoid*:
 
 * having to render from any state that doesn't come from redux
-* cluttering component code with route-oriented components
-* the added complexity of 2 forms of state: redux state vs. routing state
+* cluttering component code with route-related components
+* the added complexity [and bugs] from 2 forms of state: redux state vs. routing state
 * large API surface areas  of packages/frameworks
 like `react-router` and `next.js`
 * workarounds that such large *(likely "leaky")* abstractions inevitably require to achieve a professional app
@@ -137,10 +139,13 @@ const App = ({ userId, onClick }) =>
     {!userId  
       ? <div>
           <h1>HOME</h1>
-          <Link href="/user/1234">User 1234</Link> // both dispatches action that updates location state
-          <Link href={{ type: 'USER', payload: { id: 6789 } }}>User 6789</Link> // + changes address bar
-          <span onClick={onClick}>User 5</span>   // does same thing without SEO benefits
+
+          // all 3 "links" dispatch actions:
+          <Link href="/user/123">User 123</Link> // action updates location state + changes address bar
+          <Link href={{ type: 'USER', payload: { id: 456 } }}>User 456</Link> // so does this
+          <span onClick={onClick}>User 5</span>   // so does this, but without SEO benefits
         </div>
+
       : <h1>USER: {userId}</h1> // press the browser BACK button to go HOME :)
     }
   </div>
@@ -160,8 +165,8 @@ ReactDOM.render(
 )
 ```
 *note: ALL THREE clickable elements/links above will change the address bar while dispatching the corresponding `USER` action. The only difference
-is the last one won't get the benefits of SEO--i.e. an `<a>` tag with a matching `href` won't be embedded in the page. What this means is
-you can take an existing app and get the benefit of syncing your address bar without changing your code! The workflow we recommend is to
+is the last one won't get the benefits of SEO--i.e. an `<a>` tag with a matching `href` won't be embedded in the page.* ***What this means is
+you can take an existing Redux app that dispatches similar actions and get the benefit of syncing your address bar without changing your code!*** *The workflow we recommend is to
 first do that and then, once you're comfortable, to use our `<Link />` component to indicate your intentions to Google. Lastly, we recommend
 using `actions` as `hrefs` since it doesn't marry you to a given URL structure--you can always change it in one place later (the `routesMap` object)!*
 
@@ -173,8 +178,8 @@ as keys in the payload object:
 | URL                | <-> | ACTION     |
 | ------------------ |:---:| ----------:|
 | /home              | <-> | { type: 'HOME' } |
-| /user/1234         | <-> | { type: 'USER', payload: { id: 1234 } } |
-| /user/6789         | <-> | { type: 'USER', payload: { id: 6789 } } |
+| /user/123          | <-> | { type: 'USER', payload: { id: 123 } } |
+| /user/456          | <-> | { type: 'USER', payload: { id: 456 } } |
 | /user/5            | <-> | { type: 'USER', payload: { id: 6 } } |
 
 *note: if you have more keys in your payload that is fine--so long as you have the minimum required keys to populate the path*
@@ -191,7 +196,7 @@ See our [FAQ](#faq) below.
 ## routesMap
 
 The `routesMap` object allows you to match action types to express style dynamic paths, with a few frills.
-Here's the complete (and very minimal easy to remember) set of configuration options available to you:
+Here's the primary (and very minimal *easy to remember*) set of configuration options available to you:
 
 ```javascript
 const routesMap = {
@@ -199,7 +204,7 @@ const routesMap = {
   CATEGORY: { path: '/category/:cat', capitalizedWords: true },
   USER: { 
     path: '/user/:cat/:name',
-    fromPath: path => path.toUpperCase().replace(/-/g, ' '),
+    fromPath: path => capitalizeWords(path.replace(/-/g, ' ')),
     toPath: value => value.toLowerCase().replace(/ /g, '-'),
   },
 }
@@ -210,14 +215,14 @@ const routesMap = {
 | ----------------------- |:---:| ----------:|
 | /home                   | <-> | { type: 'HOME' } |
 | /category/java-script   | <-> | { type: 'CATEGORY', payload: { cat: 'Java Script' } } |
-| /user/elm/bill-gates   | <-> | { type: 'USER', payload: { cat: 'ELM', name: 'BILL GATES' } } |
+| /user/elm/evan-czaplicki   | <-> | { type: 'USER', payload: { cat: 'ELM', name: 'Evan Czaplicki' } } |
 
 
 ## routesMap (with thunk)
 We left out one final configuration key available to you: *a thunk*.
 After the dispatch of a matching action, a thunk (if provided) will be called, allowing you to extract path parameters from the location reducer state and make asyncronous requests to get needed data:
-```javascript
 
+```javascript
 const userThunk = async (dispatch, getState) => {
   const { slug } = getState().location.payload
   const user = await fetch(`/api/user/${slug}`)
@@ -230,13 +235,14 @@ const routesMap = {
   USER: { path: '/user/:slug', thunk: userThunk  },
 }
 ```
+
 > your `thunk` should return a promise for SSR to be able to `await` for its resolution and for `updateScroll()` to be called if using our [scroll restoration package](https://github.com/faceyspacey/redux-first-router-restore-scroll).
 
 *note: visit the [location reducer docs](./docs/locationReducer) to see the `location` state's shape*
 
 | URL                     | <-> | ACTION     |
 | ----------------------- |:---:| ----------:|
-| /user/steve-jobs        | <-> | { type: 'CATEGORY', payload: { slug: 'steve-jobs' } } |
+| /user/steve-jobs        | <-> | { type: 'USER', payload: { slug: 'steve-jobs' } } |
 | n/a                     | n/a | { type: 'USER_FOUND', payload: { user: { name: 'Steve Jobs', slug: 'steve-jobs' } } } |
 
 That's all folks! :+1:
@@ -249,9 +255,10 @@ That's all folks! :+1:
 * [server side rendering](./docs/server-rendering.md)
 * [scroll restoration](./docs/scroll-restoration.md)
 * [redirects](./docs/server-rendering.md#redirects-example)
-* [React Native](./docs/react-native.md)
 * [client-only API](./docs/client-only-api.md)
-
+* [React Native](./docs/react-native.md)
+* [React Navigation Support](./docs/react-native.md#first-class-react-navigation-support) 🔮  - *my current primary day-to-day focus*
+* [Prefetching!](./docs/prefetching.md) 🔮 - `<Link prefetch />` ***powered by:*** **[react-universal-component](https://github.com/faceyspacey/react-universal-component)** + **[webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks)**
 ## FAQ
 
 What about if the URL is not found?
@@ -264,13 +271,13 @@ What about query strings and hashes?
 You are free to use query strings to request data in your thunks.
 
 What if I don't want to use the *thunk* feature, can I use other ways of requesting the data?
-> Of course. In fact we recommend strategies that totally avoid thunks, such as [Apoll's GraphQL client](https://github.com/apollographql/apollo-client).
+> Of course. In fact we recommend strategies that totally avoid thunks, such as [Apollo's GraphQL client](https://github.com/apollographql/apollo-client).
 Think of the `thunk` feature as a fallback or for simpler apps. 
 
 Ok, but what if I request my data in `componentDidMount`?
->This works great for that, but it's a naive strategy. The problem with `componentDidMount` is that you can't generate all
+>This works great for that, but it's a naive strategy without a server-side recursive promise resolution service like Apollo offers. The problem with `componentDidMount` is that you can't generate all
 the state required to render your app without first rendering your app at least once. That means additional work on your part as well as cycles
-on the server. It's also makes Redux's highly useful time-traveling tools *unreliable*. If that's where you're at in how you get things
+on the server (the latter of which is also a caveat for Apollo). It's also makes Redux's highly useful time-traveling tools *unreliable*. If that's where you're at in how you get things
 done, that's fine--but we recommend leveling up to a "dispatch to get state" strategy (rather than a "get state on render" approach), as that will provide way more predictability, which is
 especially useful when it comes to testing. When it comes to server side rendering there is no better option. We recommend looking at our 
 [server side rendering doc](./docs/server-rendering.md) to see the
@@ -288,7 +295,7 @@ It essentially generates a fake `history` object based on the `request.path` *ex
 Does this work with React Native?
 > Yes, just like server side rendering, you can use the `history` package's `createMemoryHistory()` function. It's perfect for React Native's `Linking` API and push notifications in general. In fact, 
 if you built your React Native app already and are just starting to deal with deep-linking and push notifications, **Redux First Router**
-is perfectly suited to be tacked on in final stages with very few changes.
+is perfectly suited to be tacked on in final stages with very few changes. We also have first-class support for [**React Navigation**](./docs/react-navigation), which really is the crown jewel here and where we do most our work these days. It does some amazing things. [Check it out!](./docs/react-navigation)
 
 Ok, but there's gotta be a catch--what changes should I expect to make if I start using **Redux First Router**?
 > Primarily it will force you to consolidate the actions you use in your reducers. Whereas before you might have had
@@ -300,22 +307,22 @@ to the biggest visual changes in the page that we want search engines to pick up
 And what about actually getting links on the page for search engines to see?
 > Use [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). This package has been built in a modular way,
 which is why that's not in here. *redux-first-router-link's* `<Link />` component is simple. Review its code. Perhaps you want to make your own.
-All it does is take an `href`, pass that along to **Redux First Router** and call `event.preventDefault()` to prevent the browser
+All it does is take an `href` (or action or path), pass that along to **Redux First Router** and call `event.preventDefault()` to prevent the browser
 from reloading the page as it visits the new URL. The net result is you have `<a>` tags on your page for *Google* to pick up.
 
 Why no route matching components like *React Router*?
 > Because they are unnecessary when the combination of actions and reducers lead to both a wider variety and better defined set of states, not to mention
 more singular. By "singular" we mean that you don't have to think in terms of *both* redux state *AND* address bar paths. You just think
-in terms of *state*. It makes your life simpler. It makes your code cleaner and easier to understand. It gives you the best control
+in terms of *state* after you setup your routes map. It makes your life simpler. It makes your code cleaner and easier to understand. It gives you the best control
 React + Redux has to offer when it comes to optimizing rendering for animations. 
 
 What about all the code splitting features *Next.js* has to offer?
 > They certainly crush it when it comes to code splitting. There's no doubt about it. But check out their Redux example
-where it seems to have a different `store` per page. That's greatly complicates how you will use Redux. If your app is 
+where it seems to have a different `store` per page. I've asked, and they do merge, but it complicates how you will use Redux. If your app is 
 very page-like, great--but we think the whole purpose of tools like React and Redux is to build *"apps"* not *pages*. 
 The hallmark of an app is seamless animated transitions where you forget you're on a specific page. You need full
 control of rendering to do that at the highest level. `shouldComponentUpdate`, pure functions and [reselect](https://github.com/reactjs/reselect)
-become be your best friends. Everything else gets in the way. And of course **Redux First Router** stays out of the way.
+become your best friends. Everything else gets in the way. And of course **Redux First Router** stays out of the way.
 Straightup, let us know if you think we nailed it or what we're missing. Feel free to use github issues.
 
 Gee, I've never seen a Redux middleware/enhancer tool return so many things to use for configuring the store???

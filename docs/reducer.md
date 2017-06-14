@@ -2,13 +2,13 @@
 The location reducer primarily maintains the state of the current `pathname` and action dispatched (`type` + `payload`). 
 That's its core mission. 
 
-In addition, it maintains similar state for the previous route on the `prev` key, as well as the kind of action on the `kind` key: 
+In addition, it maintains similar state for the previous route on the `prev` key, as well as the kind of action on the `kind` key. Here are the kinds you can expect: 
 
 * *load*: if the current route was the first route the app loaded on, `load` will be true
 * *redirect*: if the current route was reached as the result of a redirect
-* *back*: if the current route was reached by going forward (and not a *push*)
-* *next*: if the current route was reached by going back
-* *pop*: if the user has used the browser back/forward buttons and we can't determine the direction
+* *next*: if the current route was reached by going forward (and not a *push*)
+* *back*: if the current route was reached by going back
+* *pop*: if the user has used the browser back/forward buttons and we can't determine the direction (which is typical in the browser using `createBrowserHistory`. If you're using `createMemoryHistory`, the kind will know if you're going forward or back.)
 
 If the app is utilizing server side rendering, a `hasSSR` key will be set to true. 
 
@@ -101,10 +101,14 @@ to create your history (such as React Native)* will also maintain information ab
 is its shape:
 
 ```javascript
-history: {
+type History: {
   index: number,          // index of focused entry/path
   length: number,         // total # of entries/paths
-  entries: Array<string>  // array of paths obviously
+  entries: Entry          // array of objects containting paths
+}
+
+type Entry: {
+  pathname: string
 }
 ```
 
@@ -122,7 +126,7 @@ const mapStateToProps = ({ location: { history } }) => ({
   path: history.entries[history.index].pathname
 })
 
-expoort default connect(mapStateToProps)(MyComponent)
+export default connect(mapStateToProps)(MyComponent)
 ```
 > By the way, this example also showcases the ultimate goal of **Redux First Router:** *to stay within the "intuitive" workflow of standard Redux patterns*.
 
@@ -140,6 +144,4 @@ not worth it.
 ***When might I have use for it though?***
 
 Well, you see the fake browser we made in our playground on *webpackbin*, right? We emulate the browser's back/next buttons
-using it. If you have the need to make such a demo or something similar, totally use it--we plan to maintain the secret API.
-
-*Redux First Router's* [React Navigation implementation](./react-native#react-navigation) also relies heavily on `history` state.
+using it. If you have the need to make such a demo or something similar, totally use it.

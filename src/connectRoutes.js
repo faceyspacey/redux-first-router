@@ -9,10 +9,6 @@ import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
 import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
 import createThunk from './pure-utils/createThunk'
 
-// import patchNavigators from './patchNavigators'
-// import navigationToAction from './navigationToAction'
-// import actionToNavigation from './actionToNavigation'
-
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
 

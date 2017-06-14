@@ -1,5 +1,5 @@
 # Client-Only API
-The following are features you should avoid unless you have a reason that makes sense to use them. These features revolve around the [history package's](npmjs.com/package/history) API. They make the most sense in React Native--for things like back button handling. On web, you'll rarely need it as you'll want to use our [<Link /> component](https://github.com/faceyspacey/redux-first-router-link) to create real links embedded in the page for SEO/SSR instead. 
+The following are features you should avoid unless you have a reason that makes sense to use them. These features revolve around the [history package's](npmjs.com/package/history) API. They make the most sense in React Native--for things like back button handling. If you're using our *React Navigation* tools, you also won't want to use this as `StackRouter` doesn't jive with a plain sequence of history entries. On web, you'll rarely need it as you'll want to use our [Link component](https://github.com/faceyspacey/redux-first-router-link) to create real links embedded in the page for SEO/SSR instead. 
 
 One case for web though--if you're curious--is the fake address bar you've probably seen in one our examples. If you have such needs, go for it.
 

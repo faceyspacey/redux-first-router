@@ -43,16 +43,16 @@ const nestAction = (
 ```
 
 So in short, we take a more basic action you dispatch (or that the address-bar listening enhancer dispatches) and assign 
-all the location-related information we have to its `meta` key.
+all the location-related information we have to the `location` key within the `meta` key.
 
 ## Flow Type
-For an even clearer sense of what is on the `meta` key of your *flux standard actions*, here's its ***Flow*** type:
+For an even clearer sense of what is on the `location` key of your *flux standard actions*, here's its ***Flow*** type:
 
 ```javascript
 type Action = {
   type: string,
   payload: Object,
-  meta?: Meta
+  meta: Meta
 }
 
 type Meta = {
