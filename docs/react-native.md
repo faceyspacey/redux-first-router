@@ -80,8 +80,9 @@ First off, this relies on a plugin so it's not included in web builds.
 yarn add redux-first-router-navigation
 ```
 
-The way it works is quite interesting so you may want to check out its code:
-https://github.com/faceyspacey/redux-first-router-navigation
+**Boilerplate:**
+https://github.com/faceyspacey/redux-first-router-navigation-boilerplate
+It's messy as F***. It has all the remains of everything I tried to put this together. This is strictly for the adventurous. It will all be cleaned up by the last week of June.
 
 
 **Usage:**
@@ -306,5 +307,23 @@ In large apps the reality is there will be endless cases where you want paths as
 So by using *Redux First Router* as your **"master routing controller"**, you're never left in the dust when it comes to URL-driven state.
 
 This will become clearer once its documentation becomes as clear as the rest of the docs. If you want to see it in action now, [check out the boilerplate I'm working on](https://github.com/faceyspacey/redux-first-router-navigation-boilerplate). It's a mess as it has the remains of everything I've tried, but if this matches your current focus, you'll be more than intrigued. 
+
+
+## About the COde
+
+The way *Redux-First Router Navigation* works is quite interesting so you may want to check out its code:
+
+https://github.com/faceyspacey/redux-first-router-navigation
+
+That package is a plugin to this package. Its code is called solely from `src/connectRoutes.js` withinin this repo. There is exactly 3 lines in that file regarding navigation, so as to keep the web build (which doesn't need it) minimal. Look out for the 3 corresponding functions. Basically, on startup, your Navigators' routers
+are patched up as the *React Navigation* docs recommends (e.g: `router.getStateForAction`). 
+
+In addition, the NavigationHelpers are patched to tag dispatched actions with a
+`navKey`. That code is both interesting and easy to understand. 
+
+The more complex part is how regular Redux-First Router actions are converted
+to "Navigation Actions" and vice versa. I.e. if a regular React Navigation action is received by the middleware, it converts it to one Redux-First Router understands. And if a Redux-First Router action is received, it converts it to one methods like `getStateForAction` can understand. This works in conjunection with how your `getStateForAction` method is overriden in the `patchNavigators.js` file. 
+
+> Understanding that code requires first understanding the code in this repo, particularly the middleware in `connectRoutes.js`.
 
 
