@@ -322,7 +322,7 @@ In addition, the NavigationHelpers are patched to tag dispatched actions with a
 `navKey`. That code is both interesting and easy to understand. 
 
 The more complex part is how regular Redux-First Router actions are converted
-to "Navigation Actions" and vice versa. I.e. if a regular React Navigation action is received by the middleware, it converts it to one Redux-First Router understands. And if a Redux-First Router action is received, it converts it to one methods like `getStateForAction` can understand. This works in conjunection with how your `getStateForAction` method is overriden in the `patchNavigators.js` file. 
+to "Navigation Actions" and vice versa. I.e. if a regular React Navigation action is received by the middleware, it converts it to one Redux-First Router understands. And if a Redux-First Router action is received, it converts it to one methods like `getStateForAction` can understand. This works in conjunction with how your `getStateForAction` method is overriden in the `patchNavigators.js` file. 
 
 > Understanding that code requires first understanding the code in this repo, particularly the middleware in `connectRoutes.js`.
 
