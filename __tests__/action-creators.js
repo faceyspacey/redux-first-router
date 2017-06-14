@@ -10,7 +10,7 @@ it('historyCreateAction() - returns action created when history/address_bar chan
   const history = createMemoryHistory()
   const pathname = '/info/foo'
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
-  const kind = 'backNext'
+  const kind = 'pop'
   const routesMap = {
     INFO: '/info',
     INFO_PARAM: '/info/:param'
@@ -39,8 +39,7 @@ it('historyCreateAction() - returns action created when history/address_bar chan
     payload: { param: 'foo' }
   })
 
-  expect(action.meta.location.backNext).toEqual(true)
-  expect(action.meta.location.load).not.toBeDefined()
+  expect(action.meta.location.kind).toEqual('pop')
 })
 
 it('middlewareCreateAction() - returns action created when middleware detects connected/matched action.type', () => {
@@ -72,8 +71,7 @@ it('middlewareCreateAction() - returns action created when middleware detects co
     payload: { param: 'foo' }
   })
 
-  expect(action.meta.location.load).not.toBeDefined()
-  expect(action.meta.location.bakNext).not.toBeDefined()
+  expect(action.meta.location.kind).toEqual('push')
 
   expect(action).toMatchSnapshot()
 })
@@ -91,21 +89,22 @@ it('middlewareCreateAction() - [action not matched to any routePath]', () => {
     receivedAction,
     routesMap,
     prevLocation,
-    history
+    history,
+    '/not-found'
   ) /*? $.meta.location */
 
   expect(action.type).toEqual(NOT_FOUND)
   expect(action.payload).toEqual({ someKey: 'foo' })
 
   expect(action.meta.location.prev).toEqual(prevLocation)
-  expect(action.meta.location.current.pathname).toEqual('/prev') // keep old pathname since no new pathname to push on to address bar
+  expect(action.meta.location.current.pathname).toEqual('/not-found')
 
   expect(action).toMatchSnapshot()
 })
 
-it("redirect(action) - adds truthy redirect key to action.meta.location.redirect === 'true'", () => {
+it('redirect(action) - sets action.meta.location.kind === "redirect"', () => {
   const receivedAction = { type: 'ANYTHING' }
   const action = redirect(receivedAction) /*? */
 
-  expect(action.meta.location.redirect).toEqual('true')
+  expect(action.meta.location.kind).toEqual('redirect')
 })

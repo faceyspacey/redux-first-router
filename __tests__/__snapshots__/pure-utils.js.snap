@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?) nestAction properly formats/nests action object 1`] = `
+exports[`nestAction(pathname, receivedAction, prevLocation, history, kind?) nestAction properly formats/nests action object 1`] = `
 Object {
   "meta": Object {
     "info": "something",
     "location": Object {
-      "backNext": undefined,
       "current": Object {
         "pathname": "/path",
         "payload": Object {
@@ -13,15 +12,8 @@ Object {
         },
         "type": "FOO",
       },
-      "history": Object {
-        "entries": Array [
-          "/",
-          "/path",
-        ],
-        "index": 1,
-        "length": 2,
-      },
-      "load": undefined,
+      "history": undefined,
+      "kind": undefined,
       "prev": Object {
         "pathname": "previous",
         "payload": Object {
@@ -29,7 +21,6 @@ Object {
         },
         "type": "PREV",
       },
-      "redirect": undefined,
     },
   },
   "payload": Object {
@@ -39,34 +30,32 @@ Object {
 }
 `;
 
-exports[`nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?) nestAction set action.meta.location.history === undefined when using createBrowserHistory 1`] = `
+exports[`nestAction(pathname, receivedAction, prevLocation, history, kind?) nestHistory formats simplified history object for action + state 1`] = `
 Object {
-  "meta": Object {
-    "info": "something",
-    "location": Object {
-      "backNext": undefined,
-      "current": Object {
-        "pathname": "/path",
-        "payload": Object {
-          "bar": "baz",
-        },
-        "type": "FOO",
-      },
-      "history": undefined,
-      "load": undefined,
-      "prev": Object {
-        "pathname": "previous",
-        "payload": Object {
-          "bla": "prev",
-        },
-        "type": "PREV",
-      },
-      "redirect": undefined,
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": undefined,
+      "pathname": "/",
+      "search": "",
+      "state": undefined,
     },
-  },
-  "payload": Object {
-    "bar": "baz",
-  },
-  "type": "FOO",
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/foo",
+      "search": "",
+      "state": undefined,
+    },
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/bar/baz",
+      "search": "",
+      "state": undefined,
+    },
+  ],
+  "index": 2,
+  "length": 3,
 }
 `;

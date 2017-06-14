@@ -1,9 +1,9 @@
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory, createBrowserHistory } from 'history'
 
 import isLocationAction from '../src/pure-utils/isLocationAction'
 import isServer from '../src/pure-utils/isServer'
 import objectValues from '../src/pure-utils/objectValues'
-import nestAction from '../src/pure-utils/nestAction'
+import nestAction, { nestHistory } from '../src/pure-utils/nestAction'
 import pathToAction from '../src/pure-utils/pathToAction'
 import actionToPath from '../src/pure-utils/actionToPath'
 import changePageTitle from '../src/pure-utils/changePageTitle'
@@ -36,7 +36,7 @@ it('objectValues(routesMap) converts map of routes to an array of routes without
   expect(ret).toEqual([routesMap.ACTION_TYPE, routesMap.ACTION_TYPE_2]) /*? */
 })
 
-describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddleware, kind?)', () => {
+describe('nestAction(pathname, receivedAction, prevLocation, history, kind?)', () => {
   it('nestAction properly formats/nests action object', () => {
     const history = createMemoryHistory()
     const pathname = '/path'
@@ -68,65 +68,29 @@ describe('nestAction(pathname, receivedAction, prevLocation, history, isMiddlewa
     expect(action.meta).toMatchObject(receivedAction.meta)
     expect(action.meta.location.current.pathname).toEqual(pathname)
 
-    // isMiddleware (marked by `true` argument above indicates to push new path on entries)
-    expect(action.meta.location.history).toEqual({
-      index: 1,
-      length: 2,
-      entries: ['/', '/path']
-    })
-
     expect(action).toMatchSnapshot()
 
-    expect(action.meta.location.load).not.toBeDefined()
+    expect(action.meta.location.kind).not.toBeDefined()
     action = nestAction(pathname, receivedAction, location, history, 'load')
-    expect(action.meta.location.load).toEqual(true)
+    expect(action.meta.location.kind).toEqual('load')
 
-    // check that new paths are not pushed if pathname is the same
-    action = nestAction('/', receivedAction, location, history, true)
-    expect(action.meta.location.history).toEqual({
-      index: 0,
-      length: 1,
-      entries: ['/']
-    })
+    action = nestAction(pathname, receivedAction, location, history, 'pop')
+    expect(action.meta.location.kind).toEqual('pop')
   })
 
-  it('nestAction set action.meta.location.history === undefined when using createBrowserHistory', () => {
+  it('nestHistory formats simplified history object for action + state', () => {
     const history = createMemoryHistory() // still use `createMemoryHistory` for stability during tests
-    const pathname = '/path'
-    const receivedAction = {
-      type: 'FOO',
-      payload: { bar: 'baz' },
-      meta: { info: 'something' }
-    }
-    const location = {
-      pathname: 'previous',
-      type: 'PREV',
-      payload: { bla: 'prev' }
-    }
+    history.push('/foo')
+    history.push('/bar/baz')
 
-    history.entries = undefined // but remove `entries` key like in `createBrowserHistory`
-    const action = nestAction(pathname, receivedAction, location, history, true)
-
-    expect(action.meta.location.history).not.toBeDefined()
-    expect(action).toMatchSnapshot()
+    const nestedHistory = nestHistory(history) /*? */
+    expect(nestedHistory).toMatchSnapshot()
   })
 
-  it('nestAction sets meta.location.redirect === pathname when received meta.location.redirect is truthy', () => {
-    const history = createMemoryHistory() // still use `createMemoryHistory` for stability during tests
-    const pathname = '/path'
-    const receivedAction = {
-      type: 'FOO',
-      meta: { location: { redirect: 'true' } }
-    }
-
-    const action = nestAction(
-      pathname,
-      receivedAction,
-      {},
-      history,
-      false
-    ) /*? */
-    expect(action.meta.location.redirect).toEqual('/path')
+  it('nestHistory returns undefined when using createBrowserHistory', () => {
+    const history = createBrowserHistory()
+    const nestedHistory = nestHistory(history)
+    expect(nestedHistory).toEqual(undefined)
   })
 })
 
@@ -138,7 +102,7 @@ describe('pathToAction(path, routesMap)', () => {
     }
 
     const action = pathToAction('/info', routesMap)
-    expect(action).toEqual({ type: 'INFO', payload: {} }) /*? */
+    expect(action).toEqual({ type: 'INFO', payload: {}, meta: {} }) /*? */
   })
 
   it('parse path into action using routePath with /:param segment', () => {
@@ -150,7 +114,8 @@ describe('pathToAction(path, routesMap)', () => {
     const action = pathToAction('/info/foo', routesMap)
     expect(action).toEqual({
       type: 'INFO_PARAM',
-      payload: { param: 'foo' }
+      payload: { param: 'foo' },
+      meta: {}
     }) /*? */
   })
 

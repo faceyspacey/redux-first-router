@@ -37,10 +37,9 @@ export default (type, pathname) => {
         location: {
           current,
           prev,
-          backNext: true,
-          load: true,
+          kind: 'load',
           history: {
-            entries: history.entries.map(entry => entry.pathname),
+            entries: history.entries.slice(0), // history.entries.map(entry => entry.pathname)
             index: history.index,
             length: history.length
           }
@@ -53,8 +52,7 @@ export default (type, pathname) => {
       expect(state.type).toEqual(type)
       expect(state.payload).toEqual({ param: 'bar' })
       expect(state.prev).toEqual(prev)
-      expect(state.load).toEqual(true)
-      expect(state.backNext).toEqual(true)
+      expect(state.kind).toEqual('load')
 
       expect(state).toMatchSnapshot()
     }

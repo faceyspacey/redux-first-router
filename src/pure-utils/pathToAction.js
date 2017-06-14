@@ -2,9 +2,9 @@
 import pathToRegexp from 'path-to-regexp'
 import { NOT_FOUND } from '../index'
 import objectValues from './objectValues'
-import type { RoutesMap, ReceivedAction as Action } from '../flow-types'
+import type { RoutesMap, ReceivedAction } from '../flow-types'
 
-export default (path: string, routesMap: RoutesMap): Action => {
+export default (pathname: string, routesMap: RoutesMap): ReceivedAction => {
   const routes = objectValues(routesMap)
   const routeTypes = Object.keys(routesMap)
 
@@ -16,7 +16,7 @@ export default (path: string, routesMap: RoutesMap): Action => {
     keys.length = 0 // empty the array and start over
     const routePath = routes[i].path || routes[i] // route may be an object containing a route or a route string itself
     const reg = pathToRegexp(routePath, keys)
-    match = reg.exec(path)
+    match = reg.exec(pathname)
     i++
   }
 
@@ -51,10 +51,10 @@ export default (path: string, routesMap: RoutesMap): Action => {
       return payload
     }, {})
 
-    return { type, payload }
+    return { type, payload, meta: {} }
   }
 
   // This will basically will only end up being called if the developer is manually calling history.push().
   // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
-  return { type: NOT_FOUND, payload: {} }
+  return { type: NOT_FOUND, payload: {}, meta: { notFoundPath: pathname } }
 }

@@ -22,6 +22,7 @@ export { default as redirect } from './action-creators/redirect'
 export { default as actionToPath } from './pure-utils/actionToPath'
 export { default as pathToAction } from './pure-utils/pathToAction'
 export { default as isLocationAction } from './pure-utils/isLocationAction'
+export { default as setKind } from './pure-utils/setKind'
 
 export type {
   RouteString,
@@ -44,5 +45,10 @@ export type {
   GoBack,
   History,
   HistoryLocation,
-  Document
+  Document,
+  Navigators,
+  Navigator,
+  Store,
+  NavigationAction,
+  Router
 } from './flow-types'

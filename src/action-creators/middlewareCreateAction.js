@@ -1,5 +1,11 @@
 // @flow
-import type { RoutesMap, Location, Action, History } from '../flow-types'
+import type {
+  RoutesMap,
+  Location,
+  Action,
+  ReceivedAction,
+  History
+} from '../flow-types'
 import actionToPath from '../pure-utils/actionToPath'
 import nestAction from '../pure-utils/nestAction'
 import { NOT_FOUND } from '../index'
@@ -8,24 +14,22 @@ export default (
   action: Object,
   routesMap: RoutesMap,
   prevLocation: Location,
-  hist: History
+  history: History,
+  notFoundPath: string
 ): Action => {
   try {
     const pathname = actionToPath(action, routesMap)
-    const [kind, history] = getKindAndHistory(!!hist.entries, pathname, hist)
+    const kind = getKind(!!history.entries, pathname, history, action)
     return nestAction(pathname, action, prevLocation, history, kind)
   }
   catch (e) {
-    // developer dispatched an invalid type + payload
-    // preserve previous pathname to keep app stable for future correct actions that depend on it
-    const pathname = prevLocation.pathname
     const payload = { ...action.payload }
 
     return nestAction(
-      pathname,
-      { type: NOT_FOUND, payload },
+      notFoundPath,
+      { ...action, type: NOT_FOUND, payload },
       prevLocation,
-      hist
+      history
     )
   }
 }
@@ -34,36 +38,42 @@ export default (
 // emulate npm `history` package and `historyCreateAction`  so that actions
 // and state indicate the user went back or forward. The idea is if you are
 // going back or forward to a route you were just at, apps can determine
-// from `state.location.backNext` and `action.backNext` that things like
+// from `state.location.kind === 'back|next'` and `action.kind` that things like
 // scroll position should be restored.
 // NOTE: for testability, history is also returned to make this a pure function
-const getKindAndHistory = (
+const getKind = (
   isMemoryHistory: boolean,
   pathname: string,
-  history: History
-): [?string, History] => {
-  if (!isMemoryHistory) {
-    return [undefined, history]
+  history: History,
+  action: ReceivedAction
+): ?string => {
+  const kind = action.meta && action.meta.location && action.meta.location.kind
+
+  if (kind) {
+    return kind
+  }
+  else if (!isMemoryHistory) {
+    return 'push'
   }
 
-  if (goingBack(pathname, history)) {
+  if (goingBack(history, pathname)) {
     history.index--
-    return ['backNext', history]
+    return 'back'
   }
-  else if (goingForward(pathname, history)) {
+  else if (goingForward(history, pathname)) {
     history.index++
-    return ['backNext', history]
+    return 'next'
   }
 
-  return [undefined, history]
+  return 'push'
 }
 
-const goingBack = (pathname: string, history: History): boolean => {
-  const prev = history.entries[history.index - 1]
-  return prev && prev.pathname === pathname
+const goingBack = (hist: History, path: string): boolean => {
+  const prev = hist.entries[hist.index - 1]
+  return prev && prev.pathname === path
 }
 
-const goingForward = (pathname: string, history: History): boolean => {
-  const next = history.entries[history.index + 1]
-  return next && next.pathname === pathname
+const goingForward = (hist: History, path: string): boolean => {
+  const next = hist.entries[hist.index + 1]
+  return next && next.pathname === path
 }

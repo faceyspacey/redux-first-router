@@ -2,17 +2,28 @@
 
 exports[`createLocationReducer() - maintains address bar pathname state and current + previous matched location-aware actions 1`] = `
 Object {
-  "backNext": true,
   "hasSSR": undefined,
   "history": Object {
     "entries": Array [
-      "/first",
-      "/second/bar",
+      Object {
+        "hash": "",
+        "key": undefined,
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second/bar",
+        "search": "",
+        "state": undefined,
+      },
     ],
     "index": 1,
     "length": 2,
   },
-  "load": true,
+  "kind": "load",
   "pathname": "/second/bar",
   "payload": Object {
     "param": "bar",
@@ -22,7 +33,6 @@ Object {
     "payload": Object {},
     "type": "FIRST",
   },
-  "redirect": undefined,
   "routesMap": Object {
     "FIRST": "/first",
     "SECOND": "/second/:param",
@@ -33,10 +43,9 @@ Object {
 
 exports[`getInitialState() returns state.history === undefined when using createBrowserHistory 1`] = `
 Object {
-  "backNext": undefined,
   "hasSSR": undefined,
   "history": undefined,
-  "load": undefined,
+  "kind": undefined,
   "pathname": "/first",
   "payload": Object {},
   "prev": Object {
@@ -44,7 +53,6 @@ Object {
     "payload": Object {},
     "type": "",
   },
-  "redirect": undefined,
   "routesMap": Object {
     "FIRST": "/first",
   },

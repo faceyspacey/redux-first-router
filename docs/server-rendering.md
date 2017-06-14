@@ -76,7 +76,7 @@ const render = async (req, res) => {
           dispatch(action)                          // on the server you detect a redirect as done below
         }
       }
-    },
+    }
   }
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) 
@@ -86,13 +86,16 @@ const render = async (req, res) => {
   await thunk(store) // dont worry if your thunk doesn't return a promise
   
   // the idiomatic way to handle routes not found + redirects :)
-  const { type, redirect } = store.getState().location
+  const { type, kind, pathname } = store.getState().location
   
   if (type === NOT_FOUND) {
     return res.redirect(302, '/unavailable') 
+    // note: another option is to render the same URL, but with a "fail whale"
+    // in that case, use `locationState.type === NOT_FOUND` to render something
+    // different, and perform no interception here
   }
-  else if (redirect) {
-    return res.redirect(302, redirect) // redirect === '/login' in this case
+  else if (kind === 'redirect') {
+    return res.redirect(302, pathname) // pathname === '/login' in this case
   }
 
   const state = JSON.stringify(store.getState())

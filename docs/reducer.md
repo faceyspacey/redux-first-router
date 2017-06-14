@@ -2,11 +2,15 @@
 The location reducer primarily maintains the state of the current `pathname` and action dispatched (`type` + `payload`). 
 That's its core mission. 
 
-In addition, it maintains similar state for the previous route on the `prev` key, as well as these booleans: 
+In addition, it maintains similar state for the previous route on the `prev` key, as well as the kind of action on the `kind` key: 
 
 * *load*: if the current route was the first route the app loaded on, `load` will be true
-* *backNext*: if the user has used the browser back/forward buttons, `backNext` will be true
-* *hasSSR*: if the app is utilizing server side rendering, `hasSSR` will be true. 
+* *redirect*: if the current route was reached as the result of a redirect
+* *back*: if the current route was reached by going forward (and not a *push*)
+* *next*: if the current route was reached by going back
+* *pop*: if the user has used the browser back/forward buttons and we can't determine the direction
+
+If the app is utilizing server side rendering, a `hasSSR` key will be set to true. 
 
 Lastly, your `routesMap` will also be stored for use by, for instance, *redux-first-router-link's* `<Link />` component. 
 
@@ -22,15 +26,13 @@ const initialState = {
   prev: {
     pathname: '',
     type: '',
-    payload: {},
+    payload: {}
   },
-  load: undefined,
-  backNext: undefined,
-  redirect: undefined,
+  kind: undefined,
   hasSSR: isServer() ? true : undefined,
   routesMap: {
-    EXAMPLE: '/example/:param', 
-  },
+    EXAMPLE: '/example/:param',
+  }
 }
 ```
 
@@ -46,11 +48,9 @@ const locationReducer = (state = initialState, action = {}) => {
       type: action.type,
       payload: { ...action.payload },
       prev: action.meta.location.prev,
-      load: action.meta.location.load,
-      backNext: action.meta.location.backNext,
-      redirect: action.meta.location.redirect,
+      kind: action.meta.location.kind,
       hasSSR: state.hasSSR,
-      routesMap,
+      routesMap
     }
   }
 
@@ -66,24 +66,22 @@ To get a precise sense of what values your `location` reducer will store, here's
 type Location = {
   pathname: string,       // current path + action
   type: string,
-  payload: Object,
+  payload: Object
 
   prev: {                 // previous path + action
     pathname: string,
     type: string,
-    payload: Object,
+    payload: Object
   },
 
-  load?: true,            // extra info
-  backNext?: true,
+  kind?: string,            // extra info
   hasSSR?: true,
-  redirect?: string,
   
-  routesMap: RoutesMap,   // your routes, for reference
+  routesMap: RoutesMap    // your routes, for reference
 }
 
 type RoutesMap = {
-  [key: string]: string | RouteObject,
+  [key: string]: string | RouteObject
 }
 
 type RouteObject = {
@@ -91,7 +89,7 @@ type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Function, getState: Function) => Promise<any>,
+  thunk?: (dispatch: Function, getState: Function) => Promise<any>
 }
 ```
 
@@ -106,7 +104,7 @@ is its shape:
 history: {
   index: number,          // index of focused entry/path
   length: number,         // total # of entries/paths
-  entries: Array<string>, // array of paths obviously
+  entries: Array<string>  // array of paths obviously
 }
 ```
 

@@ -4,7 +4,6 @@ exports[`historyCreateAction() - returns action created when history/address_bar
 Object {
   "meta": Object {
     "location": Object {
-      "backNext": true,
       "current": Object {
         "pathname": "/info/foo",
         "payload": Object {
@@ -12,20 +11,13 @@ Object {
         },
         "type": "INFO_PARAM",
       },
-      "history": Object {
-        "entries": Array [
-          "/",
-        ],
-        "index": 0,
-        "length": 1,
-      },
-      "load": undefined,
+      "history": undefined,
+      "kind": "pop",
       "prev": Object {
         "pathname": "/prev",
         "payload": Object {},
         "type": "PREV",
       },
-      "redirect": undefined,
     },
   },
   "payload": Object {
@@ -39,29 +31,20 @@ exports[`middlewareCreateAction() - [action not matched to any routePath] 1`] = 
 Object {
   "meta": Object {
     "location": Object {
-      "backNext": undefined,
       "current": Object {
-        "pathname": "/prev",
+        "pathname": "/not-found",
         "payload": Object {
           "someKey": "foo",
         },
         "type": "@@redux-first-router/NOT_FOUND",
       },
-      "history": Object {
-        "entries": Array [
-          "/",
-          "/prev",
-        ],
-        "index": 1,
-        "length": 2,
-      },
-      "load": undefined,
+      "history": undefined,
+      "kind": undefined,
       "prev": Object {
         "pathname": "/prev",
         "payload": Object {},
         "type": "PREV",
       },
-      "redirect": undefined,
     },
   },
   "payload": Object {
@@ -75,7 +58,6 @@ exports[`middlewareCreateAction() - returns action created when middleware detec
 Object {
   "meta": Object {
     "location": Object {
-      "backNext": undefined,
       "current": Object {
         "pathname": "/info/foo",
         "payload": Object {
@@ -83,21 +65,13 @@ Object {
         },
         "type": "INFO_PARAM",
       },
-      "history": Object {
-        "entries": Array [
-          "/",
-          "/info/foo",
-        ],
-        "index": 1,
-        "length": 2,
-      },
-      "load": undefined,
+      "history": undefined,
+      "kind": "push",
       "prev": Object {
         "pathname": "/prev",
         "payload": Object {},
         "type": "PREV",
       },
-      "redirect": undefined,
     },
   },
   "payload": Object {

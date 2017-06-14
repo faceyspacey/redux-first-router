@@ -1,6 +1,7 @@
 // @flow
 import { NOT_FOUND } from '../index'
 import isServer from '../pure-utils/isServer'
+import { nestHistory } from '../pure-utils/nestAction'
 import type {
   LocationState,
   RoutesMap,
@@ -17,16 +18,14 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
     action.type === NOT_FOUND ||
     (routesMap[action.type] &&
       (action.meta.location.current.pathname !== state.pathname ||
-        action.meta.location.load))
+        action.meta.location.kind === 'load'))
   ) {
     return {
       pathname: action.meta.location.current.pathname,
       type: action.type,
       payload: { ...action.payload },
       prev: action.meta.location.prev,
-      load: action.meta.location.load,
-      backNext: action.meta.location.backNext,
-      redirect: action.meta.location.redirect,
+      kind: action.meta.location.kind,
       history: action.meta.location.history,
       hasSSR: state.hasSSR,
       routesMap
@@ -51,16 +50,8 @@ export const getInitialState = (
     type: '',
     payload: {}
   },
-  load: undefined,
-  backNext: undefined,
-  redirect: undefined,
-  history: !history.entries
-    ? undefined
-    : {
-      entries: history.entries.map(entry => entry.pathname),
-      index: history.index,
-      length: history.length
-    },
-  hasSSR: isServer() ? true : undefined,
+  kind: undefined,
+  history: nestHistory(history),
+  hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
   routesMap
 })

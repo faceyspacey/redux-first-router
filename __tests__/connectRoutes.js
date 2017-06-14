@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
+import { createMemoryHistory } from 'history'
 
 import setup from '../__test-helpers__/setup'
 import setupThunk from '../__test-helpers__/setupThunk'
@@ -40,13 +41,11 @@ describe('middleware', () => {
         location: {
           current: { pathname: '/second/bar', type: 'SECOND', payload },
           prev: { pathname: '', type: '', payload: {} },
-          load: undefined,
-          backNext: undefined
+          kind: 'push'
         }
       }
     })
 
-    expect(document.title).toEqual('title: SECOND')
     expect(history.location.pathname).toEqual('/second/bar')
     expect(store.getState()).toMatchObject({
       location: {
@@ -54,8 +53,7 @@ describe('middleware', () => {
         type: 'SECOND',
         payload,
         prev: { pathname: '', type: '', payload: {} },
-        load: undefined,
-        backNext: undefined,
+        kind: 'push',
         routesMap: { FIRST: '/first', SECOND: '/second/:param' }
       },
       title: 'title: SECOND'
@@ -126,8 +124,7 @@ describe('middleware', () => {
             payload: {}
           },
           prev: { pathname: '', type: '', payload: {} },
-          load: undefined,
-          backNext: undefined
+          kind: undefined
         }
       }
     })
@@ -188,9 +185,9 @@ describe('middleware', () => {
 
     const store = createStore(rootReducer, middlewares)
 
-    jest.useFakeTimers()
+    // jest.useFakeTimers()
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
-    jest.runAllTimers()
+    // jest.runAllTimers()
 
     expect(onAfterChange).toHaveBeenCalled()
   })
@@ -219,38 +216,57 @@ describe('middleware', () => {
 describe('middleware -> _middlewareAttemptChangeUrl()', () => {
   it('when pathname changes push new pathname on to addressbar', () => {
     const { _middlewareAttemptChangeUrl } = setup('/')
-    const locationState = { pathname: '/foo' }
-    const title = 'FOO'
-    const history = []
+    const actionMetaLocation = { current: { pathname: '/foo' } }
+    const history = createMemoryHistory()
 
-    _middlewareAttemptChangeUrl(locationState, title, history)
+    _middlewareAttemptChangeUrl(actionMetaLocation, history)
 
-    expect(history).toEqual(['/foo'])
-    expect(document.title).toEqual('FOO')
+    expect(history.entries[1].pathname).toEqual('/foo')
   })
 
   it('when pathname does not change, do not push pathname on to address bar', () => {
     const { _middlewareAttemptChangeUrl } = setup('/foo')
-    const locationState = { pathname: '/foo' }
-    const title = 'FOO'
+    const actionMetaLocation = { current: { pathname: '/foo' } }
     const history = []
 
-    _middlewareAttemptChangeUrl(locationState, title, history)
+    _middlewareAttemptChangeUrl(actionMetaLocation, history)
 
     expect(history).toEqual([])
   })
 
   it('when redirect calls history.replace(pathname)', () => {
     const { _middlewareAttemptChangeUrl } = setup('/')
-    const locationState = { pathname: '/foo', redirect: '/foo' }
-    const title = 'FOO'
+    const actionMetaLocation = {
+      kind: 'redirect',
+      current: { pathname: '/foo' }
+    }
     const replace = jest.fn()
     const history = { replace }
 
-    _middlewareAttemptChangeUrl(locationState, title, history) // final param is redirect path
+    _middlewareAttemptChangeUrl(actionMetaLocation, history)
 
     expect(replace).toBeCalledWith('/foo')
-    expect(document.title).toEqual('FOO')
+  })
+})
+
+describe('middleware -> _afterRouteChange()', () => {
+  it('calls onBackNext handler when /pop|back|next/.test(kind)', () => {
+    const dispatch = jest.fn(action => expect(action).toMatchSnapshot())
+    const getState = jest.fn(() => ({
+      location: {
+        kind: 'pop'
+      }
+    }))
+    const store = { dispatch, getState }
+    const onBackNext = jest.fn(dispatch => dispatch({ type: 'FOO' }))
+    const { _afterRouteChange } = setup('/', { onBackNext })
+
+    _afterRouteChange(store, dispatch)
+
+    const args = onBackNext.mock.calls[0]
+
+    expect(dispatch).toHaveBeenCalled()
+    expect(args[1]).toEqual(getState)
   })
 })
 
@@ -281,7 +297,7 @@ describe('enhancer', () => {
             payload: {},
             pathname: '/first'
           },
-          load: true // IMPORTANT: only dispatched on load
+          kind: 'load' // IMPORTANT: only dispatched on load
         }
       }
     })
@@ -293,7 +309,6 @@ describe('enhancer', () => {
     const { history, enhancer, reducer } = setup('/first')
 
     const createStore = reducer => ({
-      // eslint-disable-line arrow-parens
       dispatch: jest.fn(),
       getState: () => reducer()
     })
@@ -318,12 +333,7 @@ describe('enhancer', () => {
             payload: { param: 'bar' },
             pathname: '/second/bar'
           },
-          prev: {
-            type: 'FIRST',
-            payload: {},
-            pathname: '/first'
-          },
-          backNext: true // IMPORTANT: only dispatched when using browser back/forward buttons
+          kind: 'push' // IMPORTANT: only dispatched when using browser back/forward buttons
         }
       }
     })
@@ -381,13 +391,13 @@ describe('enhancer -> _historyAttemptDispatchAction()', () => {
     const historyLocation = { pathname: '/second/foo' }
     const { _historyAttemptDispatchAction } = setup()
 
-    _historyAttemptDispatchAction(store, historyLocation)
+    _historyAttemptDispatchAction(store, historyLocation, 'pop')
 
     const action = dispatch.mock.calls[0][0] /*? */
 
     expect(action.type).toEqual('SECOND')
     expect(action.payload).toEqual({ param: 'foo' })
-    expect(action.meta.location.backNext).toEqual(true)
+    expect(action.meta.location.kind).toEqual('pop')
 
     expect(action).toMatchSnapshot()
   })
@@ -398,40 +408,28 @@ describe('enhancer -> _historyAttemptDispatchAction()', () => {
     const historyLocation = { pathname: '/second/foo' }
     const { _historyAttemptDispatchAction } = setup()
 
-    _historyAttemptDispatchAction({ dispatch: jest.fn() }, historyLocation)
-    _historyAttemptDispatchAction(store, historyLocation)
+    _historyAttemptDispatchAction(
+      { dispatch: jest.fn() },
+      historyLocation,
+      'pop'
+    )
+    _historyAttemptDispatchAction(store, historyLocation, 'pop')
 
     // insure multiple dispatches are prevented for the same action/pathname
     // so that middleware and history listener don't double dispatch
     expect(dispatch.mock.calls).toEqual([])
   })
-
-  it('calls onBackNext handler with action + location arguments on path change', () => {
-    const dispatch = jest.fn(action => expect(action).toMatchSnapshot())
-    const getState = jest.fn()
-    const store = { dispatch, getState }
-    const historyLocation = { pathname: '/second/foo' }
-    const onBackNext = jest.fn()
-    const { _historyAttemptDispatchAction } = setup('/', { onBackNext })
-
-    _historyAttemptDispatchAction(store, historyLocation)
-
-    const args = onBackNext.mock.calls[0]
-
-    expect(args[0]).toEqual(dispatch)
-    expect(args[1]).toEqual(getState)
-  })
 })
 
 describe('thunk', () => {
-  it('middleware:attemptCallRouteThunk DOES calls thunk if locationState.load && !locationState.hasSSR', () => {
+  it('middleware:attemptCallRouteThunk DOES calls thunk if locationState.kind === "load" && !locationState.hasSSR', () => {
     const thunk = jest.fn()
     setupThunk('/second/bar', thunk)
 
     expect(thunk).toBeCalled()
   })
 
-  it('middleware:attemptCallRouteThunk does NOT call thunk if locationState.load && locationState.hasSSR', () => {
+  it('middleware:attemptCallRouteThunk does NOT call thunk if locationState.kind === "load" && locationState.hasSSR', () => {
     const thunk = jest.fn()
 
     global.window.SSRtest = true
@@ -441,7 +439,7 @@ describe('thunk', () => {
     expect(thunk).not.toBeCalled()
   })
 
-  it('middleware:attemptCallRouteThunk DOES call thunk if !locationState.load', () => {
+  it('middleware:attemptCallRouteThunk DOES call thunk if locationState.kind !== "load"', () => {
     const thunk = jest.fn()
     const { store } = setupThunk('/first', thunk)
 
@@ -474,7 +472,7 @@ describe('thunk', () => {
     expect(location.pathname).toEqual('/third/hurray')
   })
 
-  it('simulate server side manual usage of thunk via `await connectRoutes().thunk` (to be used when: locationState.load && locationState.hasSSR)', async () => {
+  it('simulate server side manual usage of thunk via `await connectRoutes().thunk` (to be used when: locationState.kind === "load" && locationState.hasSSR)', async () => {
     const thunk = jest.fn(async (dispatch, getState) => {
       const action = { type: 'THIRD', payload: { param: 'hurray' } }
       dispatch(action)
@@ -522,13 +520,14 @@ describe('thunk', () => {
     store.dispatch(action)
 
     const { location } = store.getState() /*? */
-    expect(location.redirect).toEqual('/third/hurray')
+    expect(location.kind).toEqual('redirect')
+    expect(location.pathname).toEqual('/third/hurray')
 
     expect(history.length).toEqual(2) // if it wasn't a redirect, the length would be 3!
     expect(history.entries[1].pathname).toEqual('/third/hurray')
   })
 
-  it('store.getState().location.redirect === /path-to-redurect-to after awaiting thunk', async () => {
+  it('store.getState().location.kind === "redirect" after awaiting thunk', async () => {
     const thunk = jest.fn(dispatch => {
       const action = redirect({
         type: 'THIRD',
@@ -547,7 +546,7 @@ describe('thunk', () => {
     await ssrThunk(store)
 
     location = store.getState().location /*? */
-    expect(location.redirect).toEqual('/third/hurray') // userland code would now call res.redirect(302, redirect) -- see server-rendering.md
+    expect(location.kind).toEqual('redirect') // userland code would now call res.redirect(302, location.pathname) -- see server-rendering.md
 
     expect(history.length).toEqual(1) // if it wasn't a redirect, the length would be 2!
     expect(history.entries[0].pathname).toEqual('/third/hurray')

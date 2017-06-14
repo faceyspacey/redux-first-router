@@ -1,5 +1,5 @@
 // @flow
-import type { Dispatch as ReduxDispatch } from 'redux'
+import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
@@ -10,7 +10,8 @@ export type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>
+  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>,
+  navKey?: string
 }
 
 export type Route = RouteString | RouteObject
@@ -19,17 +20,54 @@ export type RoutesMap = {
   [key: string]: Route
 }
 
+export type Router = {
+  getStateForActionOriginal: (action: Object, state: ?Object) => ?Object,
+  getStateForAction: (action: Object, state: ?Object) => ?Object,
+  getPathAndParamsForState: (
+    state: Object
+  ) => { path: ?string, params: ?Object },
+  getActionForPathAndParams: (path: string) => ?Object
+}
+
+export type Navigator = {
+  router: Router
+}
+
+export type Navigators = {
+  [key: string]: Navigator
+}
+
 export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
 export type Options = {
   title?: string,
   location?: string,
+  notFoundPath?: string,
   scrollTop?: boolean,
   onBeforeChange?: (dispatch: Dispatch, getState: GetState) => void,
   onAfterChange?: (dispatch: Dispatch, getState: GetState) => void,
   onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
-  restoreScroll?: History => ScrollBehavior
+  restoreScroll?: History => ScrollBehavior,
+  navigators?: {
+    navigators: Navigators,
+    patchNavigators: (navigators: Navigators) => void,
+    actionToNavigation: (
+      navigators: Navigators,
+      action: Object,
+      navigationAction: ?NavigationAction,
+      route: ?Route
+    ) => Object,
+    navigationToAction: (
+      navigators: Navigators,
+      store: Store,
+      routesMap: RoutesMap,
+      action: Object
+    ) => {
+      action: Object,
+      navigationAction: ?NavigationAction
+    }
+  }
 }
 
 export type ScrollBehavior = Object
@@ -42,9 +80,7 @@ export type LocationState = {
   type: string,
   payload: Payload,
   prev: Location,
-  load?: true,
-  backNext?: true,
-  redirect?: string,
+  kind: ?string,
   history: ?HistoryData,
   routesMap: RoutesMap,
   hasSSR?: true
@@ -56,19 +92,32 @@ export type Location = {
   payload: Payload
 }
 
+export type ActionMetaLocation = {
+  current: Location,
+  prev: Location,
+  kind: ?string,
+  history: ?HistoryData
+}
+
+export type NavigationAction = {
+  type: string,
+  key?: ?string,
+  navKey?: ?string,
+  routeName?: string,
+  actions?: Array<NavigationAction>,
+  action?: NavigationAction,
+  params?: Object,
+  meta?: Object
+}
+
 export type Meta = {
-  location: {
-    current: Location,
-    prev: Location,
-    load?: true,
-    backNext?: true,
-    redirect?: string,
-    history: ?HistoryData
-  }
+  location: ActionMetaLocation,
+  notFoundPath?: string,
+  navigation?: NavigationAction
 }
 
 export type HistoryData = {
-  entries: Array<string>,
+  entries: Array<{ pathname: string }>,
   index: number,
   length: number
 }
@@ -76,13 +125,24 @@ export type HistoryData = {
 export type Action = {
   type: string,
   payload: Payload,
-  meta: Meta
+  meta: Meta,
+  navKey?: ?string
 }
 
 export type ReceivedAction = {
   type: string,
   payload: Payload,
-  meta?: Meta
+  meta?: Object,
+  navKey?: ?string
+}
+
+export type ReceivedActionMeta = {
+  type: string,
+  payload: Payload,
+  navKey?: ?string,
+  meta: {
+    notFoundPath?: string
+  }
 }
 
 export type Listener = (HistoryLocation, HistoryAction) => void
@@ -117,3 +177,5 @@ export type HistoryLocation = {
 export type HistoryAction = string
 
 export type Document = Object
+
+export type Store = ReduxStore<*, *>

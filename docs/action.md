@@ -16,7 +16,7 @@ const nestAction = (
   pathname: string,
   receivedAction: Action,
   prev: Location,
-  kind?: string,
+  kind?: string
 ): Action => {
   const { type, payload = {}, meta } = receivedAction
 
@@ -32,14 +32,12 @@ const nestAction = (
         current: {
           pathname,
           type,
-          payload,
+          payload
         },
         prev,
-        load: kind === 'load' ? true : undefined,
-        backNext: kind === 'backNext' ? true : undefined,
-        redirect: meta.isRedirect ? pathname : undefined,
-      },
-    },
+        kind
+      }
+    }
   }
 }
 ```
@@ -54,29 +52,28 @@ For an even clearer sense of what is on the `meta` key of your *flux standard ac
 type Action = {
   type: string,
   payload: Object,
-  meta?: Meta,
+  meta?: Meta
 }
 
 type Meta = {
   location: {
     current: Location,
     prev: Location,
-    load?: true,
-    backNext?: true,
-    redirect?: string,
-  },
+    kind: 'load' | 'redirect' | 'back' | 'next' | 'pop'
+  }
 }
 
 type Location = {
   pathname: string,
   type: string,
-  payload: Object,
+  payload: Object
 }
 ```
 
 ## Conclusion
 You will rarely need to inspect the `meta` key. It's primarily for use by our `location` reducer. However, a common
-use for it is to use the `load` and `backNext` keys (especially the `load`) to make some determinations in your
-reducers. `backNext` simply indicates the browser back/next buttons were used. You can also use the `prev` route to 
+use for it is to use the `kind` key to make some determinations in your
+reducers. `pop` simply indicates the browser back/next buttons were used, where as `back` and `next` indicate explicitly
+which direction you were going, which we can determine when using `createMemoryHistory` such as in React Native. In conjunction with `kind`, you can use the `prev` route to 
 do things like declaratively trigger fancy animations in your components because it will indicate which direction 
 the user is moving in a funnel/sequence of pages. 
