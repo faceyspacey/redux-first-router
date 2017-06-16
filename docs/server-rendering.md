@@ -1,14 +1,15 @@
 # Server Side Rendering (using thunk)
 Ok, this is the biggest example here, but given what it does, we think it's extremely concise and sensible. Since the middleware handles the actions it receives asyncronously, on the server you simply `await` the result of a possible matching thunk:
-```javascript
-import express from 'express'
+
+*configureStore.js:*
+```js
 import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createMemoryHistory'
-import { connectRoutes, NOT_FOUND } from 'redux-first-router'
+import { connectRoutes } from 'redux-first-router'
 
-const render = async (req, res) => {
-   const history = createHistory({
-    initialEntries: [req.path], // match initial route to express path
+export function configureStore(path) {
+  const history = createHistory({
+    initialEntries: [path] // match initial route to express path
   })
 
   const routesMap = {
@@ -17,7 +18,8 @@ const render = async (req, res) => {
       path: '/entity/:slug',
       thunk: async (dispatch, getState) => {
         const { slug } = getState().location.payload
-        const entity = await fetch(`/api/entity/${slug}`)
+        const data = await fetch(`/api/entity/${slug}`)
+        const entity = await data.json()
         const action = { type: 'ENTITY_FOUND', payload: { entity } } // you handle this action type
         
         dispatch(action)
@@ -27,7 +29,21 @@ const render = async (req, res) => {
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) // notice `thunk`
   const rootReducer = combineReducers({ location: reducer })
-  const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
+
+  return createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
+}
+```
+
+*serverRender.js:*
+```javascript
+import serialize from 'serialize-javascript'
+import { NOT_FOUND } from 'redux-first-router'
+import configureStore from './configureStore'
+import App from './components/App'
+import Html from './components/Html'
+
+export default async function serverRender(req, res) => {
+  const store = configureStore(req.path)
 
   // using redux-thunk perhaps request and dispatch some app-wide state as well, e.g:
   // await Promise.all([ store.dispatch(myThunkA), store.dispatch(myThunkB) ])
@@ -39,28 +55,42 @@ const render = async (req, res) => {
     return res.redirect(302, '/unavailable') 
   }
 
-  const state = JSON.stringify(store.getState())
+  const app = ReactDOM.renderToString(<Provider store={store}><App /></Provider>)
+  const state = serialize(store.getState())
+
+  // in a real app, you would use webpack-flush-chunks to pass a prop
+  // containing scripts and stylesheets to serve in the final string:
+  const html = ReactDOM.renderToStaticMarkup(<Html app={app} state={state} />)
   
-  const html = ReactDOM.renderToString(<Provider store={store}><App state={state} /></Provider>)
   res.status(200).send(`<!DOCTYPE html>${html}`)
 }
+```
+
+*server.js:*
+```js
+import express from 'express'
+import serverRender from './serverRender'
 
 const app = express()
-app.get('*', render)
+app.get('*', serverRender)
 http.createServer(app).listen(3000)
 ```
+
 *Note: on the server you won't double dispatch your thunks. Unlike the client, calling the matching thunk is intentionally not automatic so that you can `await` the promise before sending your HTML to the browser. And of course the `thunk` returned from `connectRoutes` will automatically match the current route if called.*
 
 
 ## Redirects Example
 > Note: usage of `redirect` within the thunk is how to do redirects even without SSR.
 
-```javascript
-import { connectRoutes, NOT_FOUND, redirect } from 'redux-first-router'
+*configureStore:*
+```js
+import { createStore, applyMiddleware, compose } from 'redux'
+import createHistory from 'history/createMemoryHistory'
+import { connectRoutes } from 'redux-first-router'
 
-const render = async (req, res) => {
-   const history = createHistory({
-    initialEntries: [req.path], // match initial route to express path
+export default function configureStore(path) {
+  const history = createHistory({
+    initialEntries: [req.path]
   })
 
   const routesMap = {
@@ -81,7 +111,21 @@ const render = async (req, res) => {
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) 
   const rootReducer = combineReducers({ location: reducer })
-  const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
+
+  return createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
+}
+```
+
+*serverRender.js:*
+```javascript
+import serialize from 'serialize-javascript'
+import { NOT_FOUND, redirect } from 'redux-first-router'
+import configureStore from './configureStore'
+import App from './components/App'
+import Html from './components/Html'
+
+export default async function serverRender(req, res) {
+  const store = configureStore(req.path)
 
   await thunk(store) // dont worry if your thunk doesn't return a promise
   
@@ -98,9 +142,11 @@ const render = async (req, res) => {
     return res.redirect(302, pathname) // pathname === '/login' in this case
   }
 
-  const state = JSON.stringify(store.getState())
   
-  const html = ReactDOM.renderToString(<Provider store={store}><App state={state} /></Provider>)
+  const app = ReactDOM.renderToString(<Provider store={store}><App /></Provider>)
+  const state = serialize(store.getState())
+  const html = ReactDOM.renderToStaticMarkup(<Html app={app} state={state} />)
+  
   res.status(200).send(`<!DOCTYPE html>${html}`)
 }
 ```

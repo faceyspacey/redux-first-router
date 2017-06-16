@@ -59,6 +59,10 @@ Install `redux-first-router` and its peer dependency `history` plus our small `<
 yarn add history redux-first-router redux-first-router-link
 ```
 
+**Demo App:**
+https://github.com/faceyspacey/redux-first-router-demo
+
+
 ## Motivation - What Routing in Redux is Meant To Be
 
 To automate routing. To be able to use Redux *as is* while keeping the URL in the address bar in sync. 
@@ -225,7 +229,8 @@ After the dispatch of a matching action, a thunk (if provided) will be called, a
 ```javascript
 const userThunk = async (dispatch, getState) => {
   const { slug } = getState().location.payload
-  const user = await fetch(`/api/user/${slug}`)
+  const data = await fetch(`/api/user/${slug}`)
+  const user = await data.json()
   const action = { type: 'USER_FOUND', payload: { user } }
   
   dispatch(action)
