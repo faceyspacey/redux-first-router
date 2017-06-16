@@ -1,4 +1,4 @@
-# Redux First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/redux-first-router/Lobby)
+# Redux-First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/redux-first-router/Lobby)
 
 <p align="center">
   <a href="https://www.npmjs.com/package/redux-first-router">
@@ -37,14 +37,14 @@
 
 ![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
-The goal of **Redux First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. **Everthing is state, not components.**
+The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch actions.*
 
 The thinking behind this package has been: "if we were to dream up a 'Redux-first' approach to routing from the 
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
 "inversion of control" scenarios that makes a challenging problem *simple* when coming at it from a different angle.
-We hope *Redux First Router* comes off as an obvious solution.
+We hope *Redux-First Router* comes off as an obvious solution.
 
-Before we get started, there is some *prior art*, and you should [check them out](./docs/prior-art.md). **Redux First Router**
+Before we get started, there is some *prior art*, and you should [check them out](./docs/prior-art.md). **Redux-First Router**
 isn't the first stab at something like this, but--aside from this path being pre-validated--we feel it is the most complete, tested and *spot on* solution.
 We have reviewed what came before, stripped what was unnecessary, added what was needed, and generally focused on getting the ***developer experience*** right. Ultimately it offers far more than previous solutions. The best
 part is that once you set it up there's virtually nothing left to do. It's truly "set it and forget it." Let's get started.
@@ -76,7 +76,7 @@ back/forward buttons. The "bi-directional" aspect is embodied in the diagram abo
 points both ways--i.e. dispatching actions changes the address bar, *and* changes to
 the address bar dispatches actions.
 
-In addition, here are some key obstacles **Redux First Router** seeks to *avoid*:
+In addition, here are some key obstacles **Redux-First Router** seeks to *avoid*:
 
 * having to render from any state that doesn't come from redux
 * cluttering component code with route-related components
@@ -188,9 +188,9 @@ as keys in the payload object:
 
 *note: if you have more keys in your payload that is fine--so long as you have the minimum required keys to populate the path*
 
-Lastly, we haven't mentioned `redux-first-router-link`yet--**Redux First Router** is purposely built in
+Lastly, we haven't mentioned `redux-first-router-link`yet--**Redux-First Router** is purposely built in
 a very modular way, which is why the `<Link />` component is in a separate package. It's extremely simple
-and you're free to make your own. Basically it passes the `href` on to **Redux First Router** and calls
+and you're free to make your own. Basically it passes the `href` on to **Redux-First Router** and calls
 `event.preventDefault()` to stop page reloads. It also can take an action object as a prop, which it will transform
 into a URL for you! The package is obvious enough once you get the hang of what's going on here--check it
 out when you're ready: [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). And if 
@@ -299,10 +299,10 @@ It essentially generates a fake `history` object based on the `request.path` *ex
 
 Does this work with React Native?
 > Yes, just like server side rendering, you can use the `history` package's `createMemoryHistory()` function. It's perfect for React Native's `Linking` API and push notifications in general. In fact, 
-if you built your React Native app already and are just starting to deal with deep-linking and push notifications, **Redux First Router**
+if you built your React Native app already and are just starting to deal with deep-linking and push notifications, **Redux-First Router**
 is perfectly suited to be tacked on in final stages with very few changes. We also have first-class support for [**React Navigation**](./docs/react-navigation), which really is the crown jewel here and where we do most our work these days. It does some amazing things. [Check it out!](./docs/react-navigation)
 
-Ok, but there's gotta be a catch--what changes should I expect to make if I start using **Redux First Router**?
+Ok, but there's gotta be a catch--what changes should I expect to make if I start using **Redux-First Router**?
 > Primarily it will force you to consolidate the actions you use in your reducers. Whereas before you might have had
 several actions to trigger the same state, you will now centralize on a smaller number of actions that each correspond 
 to a specific URL path. Your actions will become more "page-like", i.e. geared towards triggering page/URL transitions. 
@@ -312,7 +312,7 @@ to the biggest visual changes in the page that we want search engines to pick up
 And what about actually getting links on the page for search engines to see?
 > Use [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). This package has been built in a modular way,
 which is why that's not in here. *redux-first-router-link's* `<Link />` component is simple. Review its code. Perhaps you want to make your own.
-All it does is take an `href` (or action or path), pass that along to **Redux First Router** and call `event.preventDefault()` to prevent the browser
+All it does is take an `href` (or action or path), pass that along to **Redux-First Router** and call `event.preventDefault()` to prevent the browser
 from reloading the page as it visits the new URL. The net result is you have `<a>` tags on your page for *Google* to pick up.
 
 Why no route matching components like *React Router*?
@@ -327,11 +327,11 @@ where it seems to have a different `store` per page. I've asked, and they do mer
 very page-like, great--but we think the whole purpose of tools like React and Redux is to build *"apps"* not *pages*. 
 The hallmark of an app is seamless animated transitions where you forget you're on a specific page. You need full
 control of rendering to do that at the highest level. `shouldComponentUpdate`, pure functions and [reselect](https://github.com/reactjs/reselect)
-become your best friends. Everything else gets in the way. And of course **Redux First Router** stays out of the way.
+become your best friends. Everything else gets in the way. And of course **Redux-First Router** stays out of the way.
 Straightup, let us know if you think we nailed it or what we're missing. Feel free to use github issues.
 
 Gee, I've never seen a Redux middleware/enhancer tool return so many things to use for configuring the store???
->Part of what **Redux First Router** does so well (and one of its considerations from the start) is server side rendering. All these
+>Part of what **Redux-First Router** does so well (and one of its considerations from the start) is server side rendering. All these
 aspects depend on state unique to each visit/request. The returned `middleware`, `enhancer`, `reducer` and `thunk` functions share
 enclosed state (i.e. within a "closure") in a *per instance* fashion. Most of the code is written as pure utility functions
 and we are very proud about that. But what's not is returned to you in a way that will insure state is not shared between
