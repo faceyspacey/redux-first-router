@@ -50,10 +50,12 @@ import Html from './components/Html'
 
 export default async function serverRender(req, res) => {
   const store = await configureStore(req.path)
-  
+  let status = 200
+
   // the idiomatic way to handle routes not found :)
+  // your component's should also detect this state and render a 404 scene
   if (store.getState().location.type === NOT_FOUND) {
-    return res.redirect(302, '/unavailable') 
+    status = 404
   }
 
   const app = ReactDOM.renderToString(<Provider store={store}><App /></Provider>)
@@ -63,7 +65,7 @@ export default async function serverRender(req, res) => {
   // containing scripts and stylesheets to serve in the final string:
   const html = ReactDOM.renderToStaticMarkup(<Html app={app} state={state} />)
   
-  res.status(200).send(`<!DOCTYPE html>${html}`)
+  res.status(status).send(`<!DOCTYPE html>${html}`)
 }
 ```
 
@@ -130,15 +132,13 @@ import Html from './components/Html'
 
 export default async function serverRender(req, res) {
   const store = await configureStore(req.path)
-  
+  let status = 200
+
   // the idiomatic way to handle routes not found + redirects :)
   const { type, kind, pathname } = store.getState().location
   
   if (type === NOT_FOUND) {
-    return res.redirect(302, '/unavailable') 
-    // note: another option is to render the same URL, but with a "fail whale"
-    // in that case, use `locationState.type === NOT_FOUND` to render something
-    // different, and perform no interception here
+    status = 404
   }
   else if (kind === 'redirect') {
     return res.redirect(302, pathname) // pathname === '/login' in this case
@@ -149,7 +149,7 @@ export default async function serverRender(req, res) {
   const state = serialize(store.getState())
   const html = ReactDOM.renderToStaticMarkup(<Html app={app} state={state} />)
   
-  res.status(200).send(`<!DOCTYPE html>${html}`)
+  res.status(status).send(`<!DOCTYPE html>${html}`)
 }
 ```
 
