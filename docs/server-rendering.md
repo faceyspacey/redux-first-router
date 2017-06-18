@@ -7,7 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createMemoryHistory'
 import { connectRoutes } from 'redux-first-router'
 
-export function configureStore(path) {
+export function async configureStore(path) {
   const history = createHistory({
     initialEntries: [path] // match initial route to express path
   })
@@ -29,8 +29,14 @@ export function configureStore(path) {
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) // notice `thunk`
   const rootReducer = combineReducers({ location: reducer })
+  const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
 
-  return createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
+  // using redux-thunk perhaps request and dispatch some app-wide state as well, e.g:
+  // await Promise.all([ store.dispatch(myThunkA), store.dispatch(myThunkB) ])
+  
+  await thunk(store) // THE WORK: if there is a thunk for current route, it will be awaited here
+
+  return store
 }
 ```
 
@@ -43,12 +49,7 @@ import App from './components/App'
 import Html from './components/Html'
 
 export default async function serverRender(req, res) => {
-  const store = configureStore(req.path)
-
-  // using redux-thunk perhaps request and dispatch some app-wide state as well, e.g:
-  // await Promise.all([ store.dispatch(myThunkA), store.dispatch(myThunkB) ])
-  
-  await thunk(store) // THE WORK: if there is a thunk for current route, it will be awaited here
+  const store = await configureStore(req.path)
   
   // the idiomatic way to handle routes not found :)
   if (store.getState().location.type === NOT_FOUND) {
@@ -88,7 +89,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createMemoryHistory'
 import { connectRoutes } from 'redux-first-router'
 
-export default function configureStore(path) {
+export default async function configureStore(path) {
   const history = createHistory({
     initialEntries: [req.path]
   })
@@ -111,8 +112,11 @@ export default function configureStore(path) {
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) 
   const rootReducer = combineReducers({ location: reducer })
+  const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
 
-  return createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
+  await thunk(store) // dont worry if your thunk doesn't return a promise
+
+  return store
 }
 ```
 
@@ -125,9 +129,7 @@ import App from './components/App'
 import Html from './components/Html'
 
 export default async function serverRender(req, res) {
-  const store = configureStore(req.path)
-
-  await thunk(store) // dont worry if your thunk doesn't return a promise
+  const store = await configureStore(req.path)
   
   // the idiomatic way to handle routes not found + redirects :)
   const { type, kind, pathname } = store.getState().location
