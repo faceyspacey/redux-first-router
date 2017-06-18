@@ -94,7 +94,7 @@ get in the way of optimizing animations.
 It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
 ```javascript
 import { connectRoutes } from 'redux-first-router'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import createHistory from 'history/createBrowserHistory'
 import userIdReducer from './reducers/userIdReducer'
 
