@@ -37,7 +37,7 @@
 
 ![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
-The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch actions.*
+The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
 
 The thinking behind this package has been: "if we were to dream up a 'Redux-first' approach to routing from the 
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
