@@ -60,7 +60,7 @@
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.2",
-    "travis-github-status": "^1.4.2",
+    "travis-github-status": "^1.5.3",
     "webpack": "2.4.1"
   },
   "peerDependencies": {
