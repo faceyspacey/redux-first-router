@@ -5426,9 +5426,9 @@ travis-deploy-once@1.0.0-node-0.10-support:
     request-promise "^4.1.1"
     travis-ci "^2.1.1"
 
-travis-github-status@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/travis-github-status/-/travis-github-status-1.5.3.tgz#e4d65a844bbac4f4e55dbd6bef5dbe4da9142011"
+travis-github-status@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/travis-github-status/-/travis-github-status-1.5.4.tgz#0441a9151c5f830e3cb56da2f9c333b9bf289987"
   dependencies:
     codeclimate-test-reporter "^0.4.1"
     colors "^1.1.2"
