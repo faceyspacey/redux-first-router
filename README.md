@@ -109,7 +109,7 @@ const routesMap = {
 const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
 
 // and you already know how the story ends:
-const rootReducer = combineReducers({ location: reducer: userId: userIdReducer })
+const rootReducer = combineReducers({ location: reducer, userId: userIdReducer })
 const middlewares = applyMiddleware(middleware)
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
