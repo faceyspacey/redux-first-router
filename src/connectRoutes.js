@@ -5,6 +5,7 @@ import pathToAction from './pure-utils/pathToAction'
 import nestAction, { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
 import isServer from './pure-utils/isServer'
+import isReactNative from './pure-utils/isReactNative'
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
 import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
 import createThunk from './pure-utils/createThunk'
@@ -265,7 +266,9 @@ export default (
 
     // now we can finally set the history on the action since we get its
     // value from the `history` whose value only changes after `push()`
-    location.history = nestHistory(history)
+    if (isReactNative()) {
+      location.history = nestHistory(history)
+    }
   }
 
   const _afterRouteChange = (store: Store, next: Next, route: Route) => {

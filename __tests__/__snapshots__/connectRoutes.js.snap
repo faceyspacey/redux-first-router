@@ -94,26 +94,7 @@ Object {
         },
         "type": "SECOND",
       },
-      "history": Object {
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": undefined,
-            "pathname": "/",
-            "search": "",
-            "state": undefined,
-          },
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/second/bar",
-            "search": "",
-            "state": undefined,
-          },
-        ],
-        "index": 1,
-        "length": 2,
-      },
+      "history": undefined,
       "kind": "push",
       "prev": Object {
         "pathname": "",
@@ -133,26 +114,7 @@ exports[`middleware dispatches location-aware action, changes address bar + docu
 Object {
   "location": Object {
     "hasSSR": undefined,
-    "history": Object {
-      "entries": Array [
-        Object {
-          "hash": "",
-          "key": undefined,
-          "pathname": "/",
-          "search": "",
-          "state": undefined,
-        },
-        Object {
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second/bar",
-          "search": "",
-          "state": undefined,
-        },
-      ],
-      "index": 1,
-      "length": 2,
-    },
+    "history": undefined,
     "kind": "push",
     "pathname": "/second/bar",
     "payload": Object {
@@ -182,19 +144,7 @@ Object {
         "payload": Object {},
         "type": "@@redux-first-router/NOT_FOUND",
       },
-      "history": Object {
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": undefined,
-            "pathname": "/",
-            "search": "",
-            "state": undefined,
-          },
-        ],
-        "index": 0,
-        "length": 1,
-      },
+      "history": undefined,
       "kind": undefined,
       "prev": Object {
         "pathname": "",
