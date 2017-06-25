@@ -378,6 +378,11 @@ export default (
 
       store.dispatch(action)
     }
+    else {
+      // set correct prevLocation on client that has SSR so that it will be
+      // assigned to `action.meta.location.prev` and the corresponding state
+      prevLocation = location
+    }
 
     // update the scroll position after initial rendering of page
     setTimeout(() => _updateScroll(false))
