@@ -107,7 +107,7 @@ Features:
 * **route as a string** is simply a path to match to an action type without any transformations
 * **capitalizedWords** when true will break apart hyphenated paths into words, each with the first character capitalizedWords
 * **toPath** will one-by-one take the keys and values of your payload object and transform them into path segments. So for a payload 
-with multiple key/value pairs, it will call `toPath` multiple times, passing it the the individual value as the first argument
+with multiple key/value pairs, it will call `toPath` multiple times, passing in the individual value as the first argument
 and the individual key name as the second argument.
 * **fromPath** will do the inverse, taking each dynamic path *:segment* and its name (in this case "segment") and pass it to 
 `fromPath` multiple times. The first argument is the segment and the second its name as delinated in your `routesMap` object
