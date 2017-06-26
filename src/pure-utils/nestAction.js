@@ -5,7 +5,7 @@ export default (
   pathname: string,
   receivedAction: ReceivedAction,
   prev: Location,
-  history: History,
+  history: History, // not used currently, but be brought back
   kind: ?string
 ): Action => {
   const { type, payload = {}, meta } = receivedAction

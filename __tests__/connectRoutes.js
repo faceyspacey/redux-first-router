@@ -100,7 +100,7 @@ describe('middleware', () => {
   })
 
   it('user dispatches NOT_FOUND and middleware adds missing info to action', () => {
-    const { middleware, reducer } = setup()
+    const { middleware, reducer, enhancer } = setup('/first')
     const middlewares = applyMiddleware(middleware)
 
     const rootReducer = (state = {}, action = {}) => ({
@@ -108,26 +108,10 @@ describe('middleware', () => {
       title: action.type
     })
 
-    const store = createStore(rootReducer, middlewares)
+    const store = createStore(rootReducer, middlewares, enhancer)
     const action = store.dispatch({ type: NOT_FOUND }) /*? $.meta */
 
     store.getState() /*? $.location */
-
-    expect(action).toMatchObject({
-      type: '@@redux-first-router/NOT_FOUND',
-      payload: {},
-      meta: {
-        location: {
-          current: {
-            pathname: '/',
-            type: '@@redux-first-router/NOT_FOUND',
-            payload: {}
-          },
-          prev: { pathname: '', type: '', payload: {} },
-          kind: undefined
-        }
-      }
-    })
 
     expect(action).toMatchSnapshot()
   })

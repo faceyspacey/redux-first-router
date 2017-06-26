@@ -45,7 +45,11 @@ export type Options = {
   location?: string,
   notFoundPath?: string,
   scrollTop?: boolean,
-  onBeforeChange?: (dispatch: Dispatch, getState: GetState) => void,
+  onBeforeChange?: (
+    dispatch: Dispatch,
+    getState: GetState,
+    action: Action
+  ) => void,
   onAfterChange?: (dispatch: Dispatch, getState: GetState) => void,
   onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
   restoreScroll?: History => ScrollBehavior,

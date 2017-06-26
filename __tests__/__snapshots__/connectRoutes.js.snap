@@ -140,16 +140,16 @@ Object {
   "meta": Object {
     "location": Object {
       "current": Object {
-        "pathname": "/",
+        "pathname": "/not-found",
         "payload": Object {},
         "type": "@@redux-first-router/NOT_FOUND",
       },
       "history": undefined,
-      "kind": undefined,
+      "kind": "load",
       "prev": Object {
-        "pathname": "",
+        "pathname": "/first",
         "payload": Object {},
-        "type": "",
+        "type": "FIRST",
       },
     },
   },

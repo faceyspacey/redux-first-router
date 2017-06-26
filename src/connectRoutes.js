@@ -23,6 +23,7 @@ import type {
   RoutesMap,
   Route,
   Options,
+  Action,
   ActionMetaLocation,
   ReceivedAction,
   Location,
@@ -203,15 +204,20 @@ export default (
       const { location } = store.getState()
       const { payload } = action
 
-      const notFoundPath = action.meta && action.meta.notFoundPath
+      const meta = action.meta
       const prevPath = location.pathname
-      const pathname = notFoundPath || prevPath
+      const pathname = (meta && meta.notFoundPath) || notFoundPath || prevPath
+      const kind =
+        (meta && meta.location && meta.location.kind) || // possibly kind === 'redirect'
+        (location.kind === 'load' && location.kind) ||
+        'push'
 
       action = nestAction(
         pathname,
         { type: NOT_FOUND, payload },
         prevLocation,
-        location.history
+        history,
+        kind
       )
     }
     else if (route && !isLocationAction(action)) {
@@ -234,7 +240,7 @@ export default (
 
     if ((route || action.type === NOT_FOUND) && action.meta) {
       // satisify flow with `action.meta` check
-      _beforeRouteChange(store, next, history, action.meta.location)
+      _beforeRouteChange(store, next, history, action)
     }
 
     const nextAction = next(action) // DISPATCH
@@ -250,11 +256,13 @@ export default (
     store: Store,
     next: Next,
     history: History,
-    location: ActionMetaLocation
+    action: Action
   ) => {
+    const location = action.meta.location
+
     if (onBeforeChange) {
       const dispatch = middleware(store)(next) // re-create middleware's position in chain
-      onBeforeChange(dispatch, store.getState)
+      onBeforeChange(dispatch, store.getState, action)
     }
 
     prevState = store.getState()[locationKey]
