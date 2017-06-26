@@ -205,12 +205,16 @@ export default (
       const { payload } = action
 
       const meta = action.meta
-      const prevPath = location.pathname
-      const pathname = (meta && meta.notFoundPath) || notFoundPath || prevPath
       const kind =
-        (meta && meta.location && meta.location.kind) || // possibly kind === 'redirect'
-        (location.kind === 'load' && location.kind) ||
+        (meta && meta.location && meta.location.kind) || // likely kind === 'redirect'
+        (location.kind === 'load' && 'load') ||
         'push'
+      const prevPath = location.pathname
+      const pathname =
+        (meta && meta.notFoundPath) ||
+        (kind === 'redirect' && notFoundPath) ||
+        prevPath ||
+        '/'
 
       action = nestAction(
         pathname,

@@ -26,7 +26,7 @@ export default (
     const payload = { ...action.payload }
 
     return nestAction(
-      notFoundPath,
+      notFoundPath || prevLocation.pathname || '/',
       { ...action, type: NOT_FOUND, payload },
       prevLocation,
       history

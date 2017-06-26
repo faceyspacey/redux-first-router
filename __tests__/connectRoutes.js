@@ -116,6 +116,23 @@ describe('middleware', () => {
     expect(action).toMatchSnapshot()
   })
 
+  it('user dispatches NOT_FOUND redirect and middleware adds missing info to action', () => {
+    const { middleware, reducer, enhancer } = setup('/first')
+    const middlewares = applyMiddleware(middleware)
+
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
+      title: action.type
+    })
+
+    const store = createStore(rootReducer, middlewares, enhancer)
+    const action = store.dispatch(redirect({ type: NOT_FOUND })) /*? $.meta */
+
+    store.getState() /*? $.location */
+
+    expect(action).toMatchSnapshot()
+  })
+
   it('does nothing and warns if action has error && dispatched action isLocationAction', () => {
     const { middleware, reducer } = setup()
     const middlewares = applyMiddleware(middleware)
