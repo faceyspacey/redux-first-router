@@ -7,7 +7,8 @@ export default (
 ) => {
   const routesMap = {
     FIRST: '/first',
-    SECOND: '/second/:param'
+    SECOND: '/second/:param',
+    THIRD: '/third'
   }
 
   const history = createHistory({

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { createMemoryHistory } from 'history'
 
 import setup from '../__test-helpers__/setup'
@@ -172,6 +172,61 @@ describe('middleware', () => {
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
 
     expect(onBeforeChange).toHaveBeenCalled()
+  })
+
+  it('if onBeforeChange dispatches redirect, route changes with kind === "redirect"', () => {
+    const onBeforeChange = jest.fn((dispatch, getState, action) => {
+      if (action.type !== 'SECOND') return
+      const act = redirect({ type: 'THIRD' })
+      dispatch(act)
+    })
+    const { middleware, reducer, enhancer, history } = setup('/first', {
+      onBeforeChange
+    })
+    const middlewares = applyMiddleware(middleware)
+    const enhancers = compose(enhancer, middlewares)
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
+      title: action.type
+    })
+
+    const store = createStore(rootReducer, enhancers)
+    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+
+    const { location } = store.getState()
+    expect(location.kind).toEqual('redirect') /*? store.getState() */
+    expect(location.type).toEqual('THIRD')
+    expect(history.entries.length).toEqual(2)
+    expect(location).toMatchSnapshot()
+    expect(onBeforeChange).toHaveBeenCalled()
+  })
+
+  it('onBeforeChange redirect on server results in 1 history entry', () => {
+    window.SSRtest = true
+
+    const onBeforeChange = jest.fn((dispatch, getState, action) => {
+      if (action.type !== 'SECOND') return
+      const act = redirect({ type: 'THIRD' })
+      dispatch(act)
+    })
+    const { middleware, reducer, enhancer, history } = setup('/first', {
+      onBeforeChange
+    })
+    const middlewares = applyMiddleware(middleware)
+    const enhancers = compose(enhancer, middlewares)
+    const rootReducer = (state = {}, action = {}) => ({
+      location: reducer(state.location, action),
+      title: action.type
+    })
+
+    const store = createStore(rootReducer, enhancers)
+    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+
+    const { location } = store.getState()
+    expect(history.entries.length).toEqual(1) // what we are testing for
+    expect(location).toMatchSnapshot()
+
+    window.SSRtest = false
   })
 
   it('calls onAfterChange handler on route change', () => {

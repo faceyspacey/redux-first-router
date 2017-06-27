@@ -128,10 +128,53 @@ Object {
     "routesMap": Object {
       "FIRST": "/first",
       "SECOND": "/second/:param",
+      "THIRD": "/third",
     },
     "type": "SECOND",
   },
   "title": "title: SECOND",
+}
+`;
+
+exports[`middleware if onBeforeChange dispatches redirect, route changes with kind === "redirect" 1`] = `
+Object {
+  "hasSSR": undefined,
+  "history": undefined,
+  "kind": "redirect",
+  "pathname": "/third",
+  "payload": Object {},
+  "prev": Object {
+    "pathname": "/first",
+    "payload": Object {},
+    "type": "FIRST",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+    "THIRD": "/third",
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`middleware onBeforeChange redirect on server results in 1 history entry 1`] = `
+Object {
+  "hasSSR": true,
+  "history": undefined,
+  "kind": "redirect",
+  "pathname": "/third",
+  "payload": Object {},
+  "prev": Object {
+    "pathname": "/first",
+    "payload": Object {},
+    "type": "FIRST",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+    "THIRD": "/third",
+  },
+  "type": "THIRD",
 }
 `;
 

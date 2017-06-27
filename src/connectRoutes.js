@@ -12,6 +12,8 @@ import createThunk from './pure-utils/createThunk'
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
+import middlewareCreateNotFoundAction
+  from './action-creators/middlewareCreateNotFoundAction'
 
 import createLocationReducer, {
   getInitialState
@@ -201,27 +203,12 @@ export default (
     }
     else if (action.type === NOT_FOUND && !isLocationAction(action)) {
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
-      const { location } = store.getState()
-      const { payload } = action
-
-      const meta = action.meta
-      const kind =
-        (meta && meta.location && meta.location.kind) || // likely kind === 'redirect'
-        (location.kind === 'load' && 'load') ||
-        'push'
-      const prevPath = location.pathname
-      const pathname =
-        (meta && meta.notFoundPath) ||
-        (kind === 'redirect' && notFoundPath) ||
-        prevPath ||
-        '/'
-
-      action = nestAction(
-        pathname,
-        { type: NOT_FOUND, payload },
+      action = middlewareCreateNotFoundAction(
+        action,
+        store.getState().location,
         prevLocation,
         history,
-        kind
+        notFoundPath
       )
     }
     else if (route && !isLocationAction(action)) {
@@ -241,12 +228,13 @@ export default (
     }
 
     // DISPATCH LIFECYLE:
-
+    let skip
     if ((route || action.type === NOT_FOUND) && action.meta) {
       // satisify flow with `action.meta` check
-      _beforeRouteChange(store, next, history, action)
+      skip = _beforeRouteChange(store, next, history, action)
     }
 
+    if (skip) return
     const nextAction = next(action) // DISPATCH
 
     if (route || action.type === NOT_FOUND) {
@@ -265,8 +253,36 @@ export default (
     const location = action.meta.location
 
     if (onBeforeChange) {
-      const dispatch = middleware(store)(next) // re-create middleware's position in chain
+      let skip
+
+      const dispatch = (action: Object) => {
+        if (
+          action &&
+          action.meta &&
+          action.meta.location &&
+          action.meta.location.kind === 'redirect'
+        ) {
+          skip = true
+          const isHistoryChange = location.current.pathname === currentPathname
+
+          // In this unique scenario, the action won't in fact be treated as a
+          // redirect since the initial action is never dispatched. If it is
+          // an action resulting from pressing the browser buttons, it will
+          // do a replace just like a redirect is meant to, since the location
+          // change is unavoidable and happens before the middleware. On the
+          // server, a redirect is always dispatched since its needed to detect
+          // whether to call `res.redirect`. In that case history is irrelevant.
+          if (!isHistoryChange && !isServer()) {
+            history.push(action.meta.location.pathname) // this will be replaced since it's a redirect
+          }
+        }
+
+        const dispatch = middleware(store)(next) // re-create middleware's position in chain
+        dispatch(action)
+      }
+
       onBeforeChange(dispatch, store.getState, action)
+      if (skip) return true
     }
 
     prevState = store.getState()[locationKey]
