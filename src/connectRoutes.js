@@ -143,10 +143,10 @@ export default (
   let prevState = INITIAL_LOCATION_STATE // used only to pass  as 1st arg to `scrollBehavior.updateScroll` if used
   let nextState = {} // used as 2nd arg to `scrollBehavior.updateScroll` and to change `document.title`
   let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
-  let initialDispatch = () => null
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
   const thunk = createThunk(routesMap, locationKey)
+  const initialDispatch = () => _initialDispatch && _initialDispatch()
 
   const windowDocument: Document = getDocument() // get plain object for window.document if server side
 
@@ -398,7 +398,7 @@ export default (
     // dispatch the first location-aware action so initial app state is based on the url on load
     if (!location.hasSSR || isServer()) {
       // only dispatch on client before SSR is setup, which passes state on to the client
-      initialDispatch = () => {
+      _initialDispatch = () => {
         const action = historyCreateAction(
           currentPathname,
           routesMap,
@@ -411,7 +411,7 @@ export default (
       }
 
       if (shouldPerformInitialDispatch !== false) {
-        initialDispatch()
+        _initialDispatch()
       }
     }
     else {
@@ -455,6 +455,7 @@ export default (
 
   _history = history
   _scrollBehavior = scrollBehavior
+  let _initialDispatch
 
   _updateScroll = (performedByUser: boolean = true) => {
     if (scrollBehavior) {
