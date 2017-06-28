@@ -132,6 +132,7 @@ type Options = {
   restoreScroll?: ((PrevLocationState, LocationState) => boolean | string | array) => ScrollBehavior,
   onBeforeChange?: (Dispatch, GetState) => void,
   onAfterChange?: (Dispatch, GetState) => void,
+  initialDispatch?: boolean, // default: true
   onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void
 }
 ```
@@ -156,7 +157,7 @@ the state won't reflect it. So you need to use the action to extract URL params 
 
 * **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk. Actions with kinds `back`, `next`, and `pop` trigger this.
 
-* **initialDispatch** - `initialDispatch` can be set to `false` to bypass the initial dispatch, so you can do it manually, perhaps after running sagas. An `initialDispatch` function will exist in the object returned by `connectRoutes`. 
+* **initialDispatch** - `initialDispatch` can be set to `false` to bypass the initial dispatch, so you can do it manually, perhaps after running sagas. An `initialDispatch` function will exist in the object returned by `connectRoutes`. Simply call `initialDispatch()` when you are ready.
 
 * **navigators** - `navigators` is a map of of your Redux state keys to *React Navigation* navigators. Here's how you do it:
 
