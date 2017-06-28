@@ -53,6 +53,7 @@ export type Options = {
   onAfterChange?: (dispatch: Dispatch, getState: GetState) => void,
   onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
   restoreScroll?: History => ScrollBehavior,
+  initialDispatch?: boolean,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,

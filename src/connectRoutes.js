@@ -122,7 +122,8 @@ export default (
     onBeforeChange,
     onAfterChange,
     onBackNext,
-    restoreScroll
+    restoreScroll,
+    initialDispatch: shouldPerformInitialDispatch = true
   }: Options = options
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
@@ -142,6 +143,7 @@ export default (
   let prevState = INITIAL_LOCATION_STATE // used only to pass  as 1st arg to `scrollBehavior.updateScroll` if used
   let nextState = {} // used as 2nd arg to `scrollBehavior.updateScroll` and to change `document.title`
   let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
+  let initialDispatch = () => null
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
   const thunk = createThunk(routesMap, locationKey)
@@ -396,15 +398,21 @@ export default (
     // dispatch the first location-aware action so initial app state is based on the url on load
     if (!location.hasSSR || isServer()) {
       // only dispatch on client before SSR is setup, which passes state on to the client
-      const action = historyCreateAction(
-        currentPathname,
-        routesMap,
-        prevLocation,
-        history,
-        'load'
-      )
+      initialDispatch = () => {
+        const action = historyCreateAction(
+          currentPathname,
+          routesMap,
+          prevLocation,
+          history,
+          'load'
+        )
 
-      store.dispatch(action)
+        store.dispatch(action)
+      }
+
+      if (shouldPerformInitialDispatch !== false) {
+        initialDispatch()
+      }
     }
     else {
       // set correct prevLocation on client that has SSR so that it will be
@@ -413,7 +421,7 @@ export default (
     }
 
     // update the scroll position after initial rendering of page
-    setTimeout(() => _updateScroll(false))
+    if (typeof window !== 'undefined') setTimeout(() => _updateScroll(false))
 
     return store
   }
@@ -469,6 +477,7 @@ export default (
     middleware,
     enhancer,
     thunk,
+    initialDispatch,
 
     // returned only for tests (not for use in application code)
     _middlewareAttemptChangeUrl,
