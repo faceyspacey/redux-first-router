@@ -301,7 +301,7 @@ It essentially generates a fake `history` object based on the `request.path` *ex
 Does this work with React Native?
 > Yes, just like server side rendering, you can use the `history` package's `createMemoryHistory()` function. It's perfect for React Native's `Linking` API and push notifications in general. In fact, 
 if you built your React Native app already and are just starting to deal with deep-linking and push notifications, **Redux-First Router**
-is perfectly suited to be tacked on in final stages with very few changes. We also have first-class support for [**React Navigation**](./docs/react-navigation), which really is the crown jewel here and where we do most our work these days. It does some amazing things. [Check it out!](./docs/react-navigation)
+is perfectly suited to be tacked on in final stages with very few changes. We also have first-class support for [**React Navigation**](./docs/react-native.md#first-class-react-navigation-support), which really is the crown jewel here and where we do most our work these days. It does some amazing things. [Check it out!](./docs/react-native.md#first-class-react-navigation-support)
 
 Ok, but there's gotta be a catch--what changes should I expect to make if I start using **Redux-First Router**?
 > Primarily it will force you to consolidate the actions you use in your reducers. Whereas before you might have had

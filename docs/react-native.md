@@ -309,7 +309,7 @@ So by using *Redux First Router* as your **"master routing controller"**, you're
 This will become clearer once its documentation becomes as clear as the rest of the docs. If you want to see it in action now, [check out the boilerplate I'm working on](https://github.com/faceyspacey/redux-first-router-navigation-boilerplate). It's a mess as it has the remains of everything I've tried, but if this matches your current focus, you'll be more than intrigued. 
 
 
-## About the COde
+## About the Code
 
 The way *Redux-First Router Navigation* works is quite interesting so you may want to check out its code:
 
