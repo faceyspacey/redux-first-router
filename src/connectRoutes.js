@@ -384,7 +384,7 @@ export default (
 
     const store = createStore(reducer, preloadedState, enhancer)
     const state = store.getState()
-    const location = state[locationKey]
+    const location = state && state[locationKey]
 
     if (!location || !location.pathname) {
       throw new Error(
