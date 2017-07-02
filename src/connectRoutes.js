@@ -240,7 +240,7 @@ export default (
     const nextAction = next(action) // DISPATCH
 
     if (route || action.type === NOT_FOUND) {
-      _afterRouteChange(store, next, route, nextState)
+      _afterRouteChange(store, next, route)
     }
 
     return nextAction

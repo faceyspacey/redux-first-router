@@ -147,8 +147,8 @@ const App = ({ userId, onClick }) =>
           <h1>HOME</h1>
 
           // all 3 "links" dispatch actions:
-          <Link href="/user/123">User 123</Link> // action updates location state + changes address bar
-          <Link href={{ type: 'USER', payload: { id: 456 } }}>User 456</Link> // so does this
+          <Link to="/user/123">User 123</Link> // action updates location state + changes address bar
+          <Link to={{ type: 'USER', payload: { id: 456 } }}>User 456</Link> // so does this
           <span onClick={onClick}>User 5</span>   // so does this, but without SEO benefits
         </div>
 
@@ -171,10 +171,10 @@ ReactDOM.render(
 )
 ```
 *note: ALL THREE clickable elements/links above will change the address bar while dispatching the corresponding `USER` action. The only difference
-is the last one won't get the benefits of SEO--i.e. an `<a>` tag with a matching `href` won't be embedded in the page.* ***What this means is
+is the last one won't get the benefits of SEO--i.e. an `<a>` tag with a matching `to` path won't be embedded in the page.* ***What this means is
 you can take an existing Redux app that dispatches similar actions and get the benefit of syncing your address bar without changing your code!*** *The workflow we recommend is to
 first do that and then, once you're comfortable, to use our `<Link />` component to indicate your intentions to Google. Lastly, we recommend
-using `actions` as `hrefs` since it doesn't marry you to a given URL structure--you can always change it in one place later (the `routesMap` object)!*
+using `actions` as your `to` prop since it doesn't marry you to a given URL structure--you can always change it in one place later (the `routesMap` object)!*
 
 Based on the above `routesMap` the following actions will be dispatched when the
 corresponding URL is visited, and conversely those URLs will appear in the address bar
@@ -192,12 +192,11 @@ as keys in the payload object:
 
 Lastly, we haven't mentioned `redux-first-router-link`yet--**Redux-First Router** is purposely built in
 a very modular way, which is why the `<Link />` component is in a separate package. It's extremely simple
-and you're free to make your own. Basically it passes the `href` on to **Redux-First Router** and calls
+and you're free to make your own. Basically it passes the `to` path on to **Redux-First Router** and calls
 `event.preventDefault()` to stop page reloads. It also can take an action object as a prop, which it will transform
-into a URL for you! The package is obvious enough once you get the hang of what's going on here--check it
+into a URL for you! Its props API mirrors React Router's. The package is obvious enough once you get the hang of what's going on here--check it
 out when you're ready: [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). And if 
-you're wondering, we don't offer route matching components like *React Router*--that's what state is for! 
-See our [FAQ](#faq) below.
+you're wondering, yes there is a `NavLink` component with props like `activeClass` and `activeStyle` just like in React Router.
 
 ## routesMap
 
@@ -313,9 +312,7 @@ to the biggest visual changes in the page that we want search engines to pick up
 
 And what about actually getting links on the page for search engines to see?
 > Use [redux-first-router-link](http://github.com/faceyspacey/redux-first-router-link). This package has been built in a modular way,
-which is why that's not in here. *redux-first-router-link's* `<Link />` component is simple. Review its code. Perhaps you want to make your own.
-All it does is take an `href` (or action or path), pass that along to **Redux-First Router** and call `event.preventDefault()` to prevent the browser
-from reloading the page as it visits the new URL. The net result is you have `<a>` tags on your page for *Google* to pick up.
+which is why that's not in here. *redux-first-router-link's* `<Link />` and `<NavLink />` components mirror React Router's. You should be using these on web to get `<a>` tags on your page for *Google*. In React Native, just dispatch actions in `onPress` handlers.
 
 Why no route matching components like *React Router*?
 > Because they are unnecessary when the combination of actions and reducers lead to both a wider variety and better defined set of states, not to mention
