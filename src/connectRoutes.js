@@ -455,6 +455,7 @@ export default (
 
   _history = history
   _scrollBehavior = scrollBehavior
+  _locationKey = locationKey
   let _initialDispatch
 
   _updateScroll = (performedByUser: boolean = true) => {
@@ -508,6 +509,7 @@ export default (
 let _history
 let _scrollBehavior
 let _updateScroll
+let _locationKey
 
 export const push = (pathname: string) => _history.push(pathname)
 
@@ -541,3 +543,5 @@ export const history = () => _history
 export const scrollBehavior = () => _scrollBehavior
 
 export const updateScroll = () => _updateScroll && _updateScroll()
+
+export const locationKey = () => _locationKey
