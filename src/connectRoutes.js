@@ -115,8 +115,8 @@ export default (
   }
 
   const {
-    location: locationKey = 'location',
-    title: titleKey = 'title',
+    selectLocationState = state => state.location,
+    selectTitleState = state => state.title,
     notFoundPath = '/not-found',
     scrollTop = false,
     onBeforeChange,
@@ -145,7 +145,7 @@ export default (
   let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
-  const thunk = createThunk(routesMap, locationKey)
+  const thunk = createThunk(routesMap, selectLocationState)
   const initialDispatch = () => _initialDispatch && _initialDispatch()
 
   const windowDocument: Document = getDocument() // get plain object for window.document if server side
@@ -287,7 +287,7 @@ export default (
       if (skip) return true
     }
 
-    prevState = store.getState()[locationKey]
+    prevState = selectLocationState(store.getState())
     prevLocation = location.current
     prevLength = history.length
 
@@ -304,9 +304,9 @@ export default (
   const _afterRouteChange = (store: Store, next: Next, route: Route) => {
     const dispatch = middleware(store)(next) // re-create middleware's position in chain
     const state = store.getState()
-    const kind = state[locationKey].kind
-    const title = state[titleKey]
-    nextState = state[locationKey]
+    const kind = selectLocationState(state).kind
+    const title = selectTitleState(state)
+    nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
       attemptCallRouteThunk(dispatch, store.getState, route)
@@ -377,14 +377,14 @@ export default (
     if (
       typeof window !== 'undefined' &&
       preloadedState &&
-      preloadedState[locationKey]
+      selectLocationState(preloadedState)
     ) {
-      preloadedState[locationKey].routesMap = routesMap
+      selectLocationState(preloadedState).routesMap = routesMap
     }
 
     const store = createStore(reducer, preloadedState, enhancer)
     const state = store.getState()
-    const location = state && state[locationKey]
+    const location = state && selectLocationState(state)
 
     if (!location || !location.pathname) {
       throw new Error(
@@ -455,7 +455,7 @@ export default (
 
   _history = history
   _scrollBehavior = scrollBehavior
-  _locationKey = locationKey
+  _selectLocationState = selectLocationState
   let _initialDispatch
 
   _updateScroll = (performedByUser: boolean = true) => {
@@ -509,7 +509,7 @@ export default (
 let _history
 let _scrollBehavior
 let _updateScroll
-let _locationKey
+let _selectLocationState
 
 export const push = (pathname: string) => _history.push(pathname)
 
@@ -544,4 +544,4 @@ export const scrollBehavior = () => _scrollBehavior
 
 export const updateScroll = () => _updateScroll && _updateScroll()
 
-export const locationKey = () => _locationKey
+export const selectLocationState = state => _selectLocationState(state)
