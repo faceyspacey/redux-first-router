@@ -115,14 +115,10 @@ export default (
   }
 
   const {
-    // Flow doesn't like defaulting to string or func here, although it does not
-    // complain if we _do not_ provide a default value
-    // $FlowIssue
-    location: locationKey = 'location',
-    // $FlowIssue: Same as above
-    title: titleKey = 'title',
     notFoundPath = '/not-found',
     scrollTop = false,
+    location,
+    title,
     onBeforeChange,
     onAfterChange,
     onBackNext,
@@ -130,13 +126,27 @@ export default (
     initialDispatch: shouldPerformInitialDispatch = true
   }: Options = options
 
-  const selectLocationState = typeof locationKey === 'function'
-    ? locationKey
-    : state => state[locationKey]
+  let selectLocationState
+  if (typeof location === 'string') {
+    selectLocationState = state => state[location]
+  }
+  else if (typeof location === 'function') {
+    selectLocationState = location
+  }
+  else {
+    selectLocationState = state => state.location
+  }
 
-  const selectTitleState = typeof titleKey === 'function'
-    ? titleKey
-    : state => state[titleKey]
+  let selectTitleState
+  if (typeof title === 'string') {
+    selectTitleState = state => state[title]
+  }
+  else if (typeof title === 'function') {
+    selectTitleState = title
+  }
+  else {
+    selectTitleState = state => state.title
+  }
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
@@ -328,10 +338,7 @@ export default (
       onAfterChange(dispatch, store.getState)
     }
 
-    if (typeof window !== 'undefined') {
-      // `kind` is typed as ?string which will not throw if passed to .test.
-      // Typing kind as string threw other flow errrs in the codebase
-      // $FlowIssue
+    if (typeof window !== 'undefined' && kind) {
       if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
         onBackNext(dispatch, store.getState)
       }
