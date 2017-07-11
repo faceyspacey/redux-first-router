@@ -1,8 +1,8 @@
 // @flow
-import type { Middleware, StoreEnhancer } from 'redux'
+import type { StoreEnhancer } from 'redux'
 
 import pathToAction from './pure-utils/pathToAction'
-import nestAction, { nestHistory } from './pure-utils/nestAction'
+import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
 import isServer from './pure-utils/isServer'
 import isReactNative from './pure-utils/isReactNative'
@@ -115,8 +115,10 @@ export default (
   }
 
   const {
-    selectLocationState = state => state.location,
-    selectTitleState = state => state.title,
+    location: locationKey = 'location',
+    title: titleKey = 'title',
+    selectLocationState = state => state[locationKey],
+    selectTitleState = state => state[titleKey],
     notFoundPath = '/not-found',
     scrollTop = false,
     onBeforeChange,
@@ -317,6 +319,9 @@ export default (
     }
 
     if (typeof window !== 'undefined') {
+      // `kind` is typed as ?string which will not throw if passed to .test.
+      // Typing kind as string threw other flow errrs in the codebase
+      // $FlowIssue
       if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
         onBackNext(dispatch, store.getState)
       }
@@ -544,4 +549,5 @@ export const scrollBehavior = () => _scrollBehavior
 
 export const updateScroll = () => _updateScroll && _updateScroll()
 
-export const selectLocationState = state => _selectLocationState(state)
+export const selectLocationState = (state: Object) =>
+  _selectLocationState(state)

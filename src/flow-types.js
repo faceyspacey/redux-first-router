@@ -43,6 +43,8 @@ export type RouteNames = Array<string>
 export type Options = {
   title?: string,
   location?: string,
+  selectLocationState?: (state: Object) => LocationState,
+  selectTitleState?: (state: Object) => string,
   notFoundPath?: string,
   scrollTop?: boolean,
   onBeforeChange?: (
