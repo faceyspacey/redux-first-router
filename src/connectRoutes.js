@@ -1,8 +1,8 @@
 // @flow
-import type { Middleware, StoreEnhancer } from 'redux'
+import type { StoreEnhancer } from 'redux'
 
 import pathToAction from './pure-utils/pathToAction'
-import nestAction, { nestHistory } from './pure-utils/nestAction'
+import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
 import isServer from './pure-utils/isServer'
 import isReactNative from './pure-utils/isReactNative'
@@ -115,16 +115,38 @@ export default (
   }
 
   const {
-    location: locationKey = 'location',
-    title: titleKey = 'title',
     notFoundPath = '/not-found',
     scrollTop = false,
+    location,
+    title,
     onBeforeChange,
     onAfterChange,
     onBackNext,
     restoreScroll,
     initialDispatch: shouldPerformInitialDispatch = true
   }: Options = options
+
+  let selectLocationState
+  if (typeof location === 'string') {
+    selectLocationState = state => state[location]
+  }
+  else if (typeof location === 'function') {
+    selectLocationState = location
+  }
+  else {
+    selectLocationState = state => state.location
+  }
+
+  let selectTitleState
+  if (typeof title === 'string') {
+    selectTitleState = state => state[title]
+  }
+  else if (typeof title === 'function') {
+    selectTitleState = title
+  }
+  else {
+    selectTitleState = state => state.title
+  }
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
@@ -145,7 +167,7 @@ export default (
   let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
-  const thunk = createThunk(routesMap, locationKey)
+  const thunk = createThunk(routesMap, selectLocationState)
   const initialDispatch = () => _initialDispatch && _initialDispatch()
 
   const windowDocument: Document = getDocument() // get plain object for window.document if server side
@@ -287,7 +309,7 @@ export default (
       if (skip) return true
     }
 
-    prevState = store.getState()[locationKey]
+    prevState = selectLocationState(store.getState())
     prevLocation = location.current
     prevLength = history.length
 
@@ -304,9 +326,9 @@ export default (
   const _afterRouteChange = (store: Store, next: Next, route: Route) => {
     const dispatch = middleware(store)(next) // re-create middleware's position in chain
     const state = store.getState()
-    const kind = state[locationKey].kind
-    const title = state[titleKey]
-    nextState = state[locationKey]
+    const kind = selectLocationState(state).kind
+    const title = selectTitleState(state)
+    nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
       attemptCallRouteThunk(dispatch, store.getState, route)
@@ -316,7 +338,7 @@ export default (
       onAfterChange(dispatch, store.getState)
     }
 
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && kind) {
       if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
         onBackNext(dispatch, store.getState)
       }
@@ -377,14 +399,14 @@ export default (
     if (
       typeof window !== 'undefined' &&
       preloadedState &&
-      preloadedState[locationKey]
+      selectLocationState(preloadedState)
     ) {
-      preloadedState[locationKey].routesMap = routesMap
+      selectLocationState(preloadedState).routesMap = routesMap
     }
 
     const store = createStore(reducer, preloadedState, enhancer)
     const state = store.getState()
-    const location = state && state[locationKey]
+    const location = state && selectLocationState(state)
 
     if (!location || !location.pathname) {
       throw new Error(
@@ -455,7 +477,7 @@ export default (
 
   _history = history
   _scrollBehavior = scrollBehavior
-  _locationKey = locationKey
+  _selectLocationState = selectLocationState
   let _initialDispatch
 
   _updateScroll = (performedByUser: boolean = true) => {
@@ -509,7 +531,7 @@ export default (
 let _history
 let _scrollBehavior
 let _updateScroll
-let _locationKey
+let _selectLocationState
 
 export const push = (pathname: string) => _history.push(pathname)
 
@@ -544,4 +566,5 @@ export const scrollBehavior = () => _scrollBehavior
 
 export const updateScroll = () => _updateScroll && _updateScroll()
 
-export const locationKey = () => _locationKey
+export const selectLocationState = (state: Object) =>
+  _selectLocationState(state)

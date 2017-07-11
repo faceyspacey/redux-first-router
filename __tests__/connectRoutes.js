@@ -623,3 +623,23 @@ describe('reducer', () => {
 it('connectRoutes(undefined): throw error if no history provided', () => {
   expect(() => connectRoutes()).toThrowError()
 })
+
+it('title and location options as selector functions', () => {
+  const { middleware, reducer, enhancer } = setup('/first', {
+    title: state => state.title,
+    location: state => state.location
+  })
+  const middlewares = applyMiddleware(middleware)
+
+  const rootReducer = (state = {}, action = {}) => ({
+    location: reducer(state.location, action),
+    title: action.type
+  })
+
+  const store = createStore(rootReducer, middlewares, enhancer)
+  const action = store.dispatch({ type: 'FIRST' }) /*? $.meta */
+
+  store.getState() /*? $.location */
+
+  expect(action).toMatchSnapshot()
+})

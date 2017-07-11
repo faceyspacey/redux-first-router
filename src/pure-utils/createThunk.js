@@ -1,12 +1,12 @@
 // @flow
 import type { Store } from 'redux'
-import type { RoutesMap } from '../flow-types'
+import type { RoutesMap, SelectLocationState } from '../flow-types'
 
-export default (routesMap: RoutesMap, locationKey: string) => ({
-  dispatch,
-  getState
-}: Store<*, *>): Promise<any> => {
-  const { type } = getState()[locationKey]
+export default (
+  routesMap: RoutesMap,
+  selectLocationState: SelectLocationState
+) => ({ dispatch, getState }: Store<*, *>): Promise<*> => {
+  const { type } = selectLocationState(getState())
   const route = routesMap[type]
 
   if (route && typeof route.thunk === 'function') {

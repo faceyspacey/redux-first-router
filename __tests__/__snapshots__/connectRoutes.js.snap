@@ -223,3 +223,26 @@ Object {
   "type": "@@redux-first-router/NOT_FOUND",
 }
 `;
+
+exports[`title and location options as selector functions 1`] = `
+Object {
+  "meta": Object {
+    "location": Object {
+      "current": Object {
+        "pathname": "/first",
+        "payload": Object {},
+        "type": "FIRST",
+      },
+      "history": undefined,
+      "kind": "push",
+      "prev": Object {
+        "pathname": "/first",
+        "payload": Object {},
+        "type": "FIRST",
+      },
+    },
+  },
+  "payload": Object {},
+  "type": "FIRST",
+}
+`;
