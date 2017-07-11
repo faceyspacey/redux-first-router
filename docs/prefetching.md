@@ -12,7 +12,7 @@ For now, checkout:
 - https://github.com/faceyspacey/webpack-flush-chunks
 - https://github.com/faceyspacey/extract-css-chunks-webpack-plugin
 
-*Redux First Router* will allow you to specify chunks in your `routsMap` and your `<Link />` components will have a `prefetch` prop you can set to `true` to prefetch associated chunks. An imperative API via the instance ref will exist too: 
+*Redux First Router* will allow you to specify chunks in your `routesMap` and your `<Link />` components will have a `prefetch` prop you can set to `true` to prefetch associated chunks. An imperative API via the instance ref will exist too: 
 
 ```js
 const routesMap = {
