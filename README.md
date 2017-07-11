@@ -281,8 +281,7 @@ What about query strings and hashes?
 You are free to use query strings to request data in your thunks.
 
 What if I don't want to use the *thunk* feature, can I use other ways of requesting the data?
-> Of course. In fact we recommend strategies that totally avoid thunks, such as [Apollo's GraphQL client](https://github.com/apollographql/apollo-client).
-Think of the `thunk` feature as a fallback or for simpler apps. 
+> Of course. This work along side any middleware of your choosing, and even GraphQL solutions like Apollo. But for the 80% use-case, "follow-up" thunks attached to routes gets a lot of bang for your buck via the context associated with the initial route action.
 
 Ok, but what if I request my data in `componentDidMount`?
 >This works great for that, but it's a naive strategy without a server-side recursive promise resolution service like Apollo offers. The problem with `componentDidMount` is that you can't generate all
