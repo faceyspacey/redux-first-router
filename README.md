@@ -37,6 +37,9 @@
 
 ![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
+To play with this immediately, start with the Codesandbox and the Medium article that describes it:
+https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053
+
 The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
 
 > **intro article:** 🚀 https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea
@@ -61,7 +64,8 @@ Install `redux-first-router` and its peer dependency `history` plus our small `<
 yarn add history redux-first-router redux-first-router-link
 ```
 
-**Demo App:**
+**Full-Featured Universal Demo App (includes SSR + Splitting!):**
+
 https://github.com/faceyspacey/redux-first-router-demo
 
 
