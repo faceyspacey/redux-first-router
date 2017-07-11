@@ -40,11 +40,12 @@ export type Navigators = {
 export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
+export type SelectLocationState = (state: Object) => LocationState
+export type SelectTitleState = (state: Object) => string
+
 export type Options = {
-  title?: string,
-  location?: string,
-  selectLocationState?: (state: Object) => LocationState,
-  selectTitleState?: (state: Object) => string,
+  title?: string | SelectTitleState,
+  location?: string | SelectLocationState,
   notFoundPath?: string,
   scrollTop?: boolean,
   onBeforeChange?: (

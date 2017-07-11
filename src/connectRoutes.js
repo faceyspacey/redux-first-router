@@ -115,10 +115,12 @@ export default (
   }
 
   const {
+    // Flow doesn't like defaulting to string or func here, although it does not
+    // complain if we _do not_ provide a default value
+    // $FlowIssue
     location: locationKey = 'location',
+    // $FlowIssue: Same as above
     title: titleKey = 'title',
-    selectLocationState = state => state[locationKey],
-    selectTitleState = state => state[titleKey],
     notFoundPath = '/not-found',
     scrollTop = false,
     onBeforeChange,
@@ -127,6 +129,14 @@ export default (
     restoreScroll,
     initialDispatch: shouldPerformInitialDispatch = true
   }: Options = options
+
+  const selectLocationState = typeof locationKey === 'function'
+    ? locationKey
+    : state => state[locationKey]
+
+  const selectTitleState = typeof titleKey === 'function'
+    ? titleKey
+    : state => state[titleKey]
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
