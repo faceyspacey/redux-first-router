@@ -65,7 +65,6 @@
   },
   "peerDependencies": {
     "history": "^4.x",
-    "react-redux": "^5.x",
     "redux": "^3.x"
   },
   "jest": {
