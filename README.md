@@ -1,4 +1,5 @@
-# Redux-First Router [![Redux-First Router CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/redux-first-router/Lobby)
+[![Redux-First Router CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox)
+# Redux-First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/redux-first-router/Lobby)
 
 <p align="center">
   <a href="https://www.npmjs.com/package/redux-first-router">
