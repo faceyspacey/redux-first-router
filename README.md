@@ -283,10 +283,6 @@ What about if the URL is not found?
 as a case in your reducer's switch statements. Here's where you get it: `import { NOT_FOUND } from 'redux-first-router'`. We have strong
 idiomatic way to deal with it in server side rendering--check it out: [server side rendering](./docs/server-rendering.md).
 
-What about query strings and hashes?
-> Intentionally we have chosen to solely support paths since they are best for SEO and keep the API minimal. 
-You are free to use query strings to request data in your thunks.
-
 What if I don't want to use the *thunk* feature, can I use other ways of requesting the data?
 > Of course. This work along side any middleware of your choosing, and even GraphQL solutions like Apollo. But for the 80% use-case, "follow-up" thunks attached to routes gets a lot of bang for your buck via the context associated with the initial route action.
 
