@@ -4,7 +4,7 @@
 
 > UPDATE: as of July 17th, query/search support is available. Please try it out via `yarn upgrade redux-first-router@next redux-first-router-link@next`. And review [this comment](https://github.com/faceyspacey/redux-first-router/issues/17#issuecomment-315957332) for a usage example.
 
-# Redux-First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/redux-first-router/Lobby)
+# Redux-First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Reactlandia/Lobby)
 
 <p align="center">
   <a href="https://www.npmjs.com/package/redux-first-router">
