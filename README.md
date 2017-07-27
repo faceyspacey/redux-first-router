@@ -1,9 +1,12 @@
+<a href="https://gitter.im/Reactlandia/Lobby" target="_blank">
+  <img alt="Edit Redux-First Router Demo" src="http://cdn.reactlandia.com/badge-reactlandia.png">
+</a>
+
 <a href="https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox" target="_blank">
   <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 
-
-# Redux-First Router [![Gitter](http://cdn.reactlandia.com/reactlandia-chat-badge.png)](https://gitter.im/Reactlandia/Lobby)
+# Redux-First Router
 
 <p align="center">
   <a href="https://www.npmjs.com/package/redux-first-router">
