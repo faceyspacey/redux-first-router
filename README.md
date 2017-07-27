@@ -3,7 +3,7 @@
 </a>
 
 
-# Redux-First Router [![Gitter](http://cdn.reactlandia.com/reactlandia-chat.png)](https://gitter.im/Reactlandia/Lobby)
+# Redux-First Router [![Gitter](http://cdn.reactlandia.com/reactlandia-badge.png)](https://gitter.im/Reactlandia/Lobby)
 
 <p align="center">
   <a href="https://www.npmjs.com/package/redux-first-router">
