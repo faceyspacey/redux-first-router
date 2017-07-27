@@ -65,8 +65,8 @@
     "webpack": "2.4.1"
   },
   "peerDependencies": {
-    "history": "^4.x",
-    "redux": "^3.x"
+    "history": "*",
+    "redux": "*"
   },
   "jest": {
     "verbose": true,
