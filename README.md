@@ -1,4 +1,10 @@
-# Redux-First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/redux-first-router/Lobby)
+<a href="https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox" target="_blank">
+  <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+
+> UPDATE: as of July 17th, query/search support is available. Please try it out via `yarn upgrade redux-first-router@next redux-first-router-link@next`. And review [this comment](https://github.com/faceyspacey/redux-first-router/issues/17#issuecomment-315957332) for a usage example.
+
+# Redux-First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Reactlandia/Lobby)
 
 <p align="center">
   <a href="https://www.npmjs.com/package/redux-first-router">
@@ -37,12 +43,13 @@
 
 ![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
-To play with this immediately, start with the Codesandbox and the Medium article that describes how to use it:
-https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053
 
 The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
 
-> **intro article:** 🚀 https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea
+**Articles You Should Read:**
+- **[introduction article](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)** 🚀 
+- **[how to use demo on CodeSandbox](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)** 
+- **[how to use the thunk option to fetch data](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)**
 
 The thinking behind this package has been: "if we were to dream up a 'Redux-first' approach to routing from the 
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
@@ -275,10 +282,6 @@ What about if the URL is not found?
 > If the path is not found, or if actions fail to be converted to paths, our `NOT_FOUND` action type will be dispatched. You can apply it
 as a case in your reducer's switch statements. Here's where you get it: `import { NOT_FOUND } from 'redux-first-router'`. We have strong
 idiomatic way to deal with it in server side rendering--check it out: [server side rendering](./docs/server-rendering.md).
-
-What about query strings and hashes?
-> Intentionally we have chosen to solely support paths since they are best for SEO and keep the API minimal. 
-You are free to use query strings to request data in your thunks.
 
 What if I don't want to use the *thunk* feature, can I use other ways of requesting the data?
 > Of course. This work along side any middleware of your choosing, and even GraphQL solutions like Apollo. But for the 80% use-case, "follow-up" thunks attached to routes gets a lot of bang for your buck via the context associated with the initial route action.
