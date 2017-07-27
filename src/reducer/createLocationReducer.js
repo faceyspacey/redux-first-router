@@ -18,12 +18,17 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
     action.type === NOT_FOUND ||
     (routesMap[action.type] &&
       (action.meta.location.current.pathname !== state.pathname ||
+        action.meta.location.current.search !== state.search ||
         action.meta.location.kind === 'load'))
   ) {
+    const query = action.query || action.meta.query || action.payload.query
+    const search = action.meta.location.current.search
+
     return {
       pathname: action.meta.location.current.pathname,
       type: action.type,
       payload: { ...action.payload },
+      ...(query && { query, search }),
       prev: action.meta.location.prev,
       kind: action.meta.location.kind,
       history: action.meta.location.history,
@@ -37,14 +42,16 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
 
 export const getInitialState = (
   currentPathname: string,
+  meta: ?{ search?: string, query?: Object },
   type: string,
   payload: Payload,
   routesMap: RoutesMap,
   history: History
 ): LocationState => ({
-  pathname: currentPathname,
+  pathname: currentPathname.split('?')[0],
   type,
   payload,
+  ...meta,
   prev: {
     pathname: '',
     type: '',

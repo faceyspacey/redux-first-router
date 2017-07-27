@@ -22,6 +22,7 @@ export default (type, pathname) => {
 
     initialState: getInitialState(
       prev.pathname,
+      {},
       prev.type,
       prev.payload,
       routesMap,

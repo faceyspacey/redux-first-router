@@ -13,7 +13,8 @@ export {
   history,
   scrollBehavior,
   updateScroll,
-  selectLocationState
+  selectLocationState,
+  getOptions
 } from './connectRoutes'
 
 export const NOT_FOUND = '@@redux-first-router/NOT_FOUND'

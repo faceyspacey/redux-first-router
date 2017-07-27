@@ -3,24 +3,30 @@ import type { Action, Location, ReceivedAction, History } from '../flow-types'
 
 export default (
   pathname: string,
-  receivedAction: ReceivedAction,
+  action: ReceivedAction,
   prev: Location,
   history: History, // not used currently, but be brought back
   kind: ?string
 ): Action => {
-  const { type, payload = {}, meta } = receivedAction
+  const { type, payload = {}, meta = {} } = action
+  const query = action.query || meta.query || payload.query
+  const parts = pathname.split('?')
+  const search = parts[1]
 
   return {
-    ...receivedAction, // keep any possible other non-FSA keys
+    ...action,
+    ...(query && { query }), // only non-FSA key (possible todo: option to not use it)
     type,
     payload,
     meta: {
       ...meta,
+      ...(query && { query }),
       location: {
         current: {
-          pathname,
+          pathname: parts[0],
           type,
-          payload
+          payload,
+          ...(query && { query, search })
         },
         prev,
         kind,

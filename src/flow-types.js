@@ -43,6 +43,11 @@ export type RouteNames = Array<string>
 export type SelectLocationState = (state: Object) => LocationState
 export type SelectTitleState = (state: Object) => string
 
+export type QuerySerializer = {
+  stringify: (params: Object) => string,
+  parse: (queryString: string) => Object
+}
+
 export type Options = {
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
@@ -57,6 +62,7 @@ export type Options = {
   onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
   restoreScroll?: History => ScrollBehavior,
   initialDispatch?: boolean,
+  querySerializer?: QuerySerializer,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
@@ -87,6 +93,8 @@ export type LocationState = {
   pathname: string,
   type: string,
   payload: Payload,
+  query?: Object,
+  search?: string,
   prev: Location,
   kind: ?string,
   history: ?HistoryData,
@@ -97,7 +105,9 @@ export type LocationState = {
 export type Location = {
   pathname: string,
   type: string,
-  payload: Payload
+  payload: Payload,
+  query?: Object,
+  search?: string
 }
 
 export type ActionMetaLocation = {
@@ -121,7 +131,9 @@ export type NavigationAction = {
 export type Meta = {
   location: ActionMetaLocation,
   notFoundPath?: string,
-  navigation?: NavigationAction
+  navigation?: NavigationAction,
+  query?: Object,
+  search?: string
 }
 
 export type HistoryData = {
@@ -134,6 +146,7 @@ export type Action = {
   type: string,
   payload: Payload,
   meta: Meta,
+  query?: Object,
   navKey?: ?string
 }
 
@@ -141,15 +154,20 @@ export type ReceivedAction = {
   type: string,
   payload: Payload,
   meta?: Object,
+  query?: Object,
+  search?: string,
   navKey?: ?string
 }
 
 export type ReceivedActionMeta = {
   type: string,
   payload: Payload,
+  query?: Object,
   navKey?: ?string,
   meta: {
-    notFoundPath?: string
+    notFoundPath?: string,
+    query?: Object,
+    search?: string
   }
 }
 
@@ -173,13 +191,12 @@ export type History = {
   entries: Array<{ pathname: string }>,
   index: number,
   length: number,
-  location: {
-    pathname: string
-  }
+  location: HistoryLocation
 }
 
 export type HistoryLocation = {
-  pathname: string
+  pathname: string,
+  search?: string
 }
 
 export type HistoryAction = string

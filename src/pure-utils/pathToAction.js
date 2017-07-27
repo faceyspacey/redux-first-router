@@ -2,11 +2,20 @@
 import pathToRegexp from 'path-to-regexp'
 import { NOT_FOUND } from '../index'
 import objectValues from './objectValues'
-import type { RoutesMap, ReceivedAction } from '../flow-types'
+import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
 
-export default (pathname: string, routesMap: RoutesMap): ReceivedAction => {
+export default (
+  pathname: string,
+  routesMap: RoutesMap,
+  serializer?: QuerySerializer
+): ReceivedAction => {
+  const parts = pathname.split('?')
+  const search = parts[1]
+  const query = search && serializer && serializer.parse(search)
   const routes = objectValues(routesMap)
   const routeTypes = Object.keys(routesMap)
+
+  pathname = parts[0]
 
   let i = 0
   let match
@@ -51,10 +60,11 @@ export default (pathname: string, routesMap: RoutesMap): ReceivedAction => {
       return payload
     }, {})
 
-    return { type, payload, meta: {} }
+    return { type, payload, meta: query ? { query } : {} }
   }
 
   // This will basically will only end up being called if the developer is manually calling history.push().
   // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
-  return { type: NOT_FOUND, payload: {}, meta: { notFoundPath: pathname } }
+  const meta = { notFoundPath: pathname, ...(query ? { query } : {}) }
+  return { type: NOT_FOUND, payload: {}, meta }
 }

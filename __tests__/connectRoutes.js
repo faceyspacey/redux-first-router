@@ -1,80 +1,36 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createMemoryHistory } from 'history'
+import querySerializer from 'query-string'
 
-import setup from '../__test-helpers__/setup'
+import setup, { setupAll } from '../__test-helpers__/setup'
 import setupThunk from '../__test-helpers__/setupThunk'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
 import connectRoutes from '../src/connectRoutes'
 import { NOT_FOUND } from '../src/index'
 import redirect from '../src/action-creators/redirect'
+import pathToAction from '../src/pure-utils/pathToAction'
 
 describe('middleware', () => {
   it('dispatches location-aware action, changes address bar + document.title', () => {
-    const { middleware, history, reducer } = setup()
-    const middlewares = applyMiddleware(middleware)
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: `title: ${action.type}`
-    })
-
-    const store = createStore(rootReducer, middlewares) /*? $.getState() */
+    const { store, history } = setupAll()
 
     expect(document.title).toEqual('')
     expect(history.location.pathname).toEqual('/')
-    expect(store.getState().location).toMatchObject({
-      pathname: '/',
-      type: NOT_FOUND,
-      payload: {}
-    })
+    expect(store.getState().location).toMatchSnapshot()
 
     const payload = { param: 'bar' }
     const action = store.dispatch({ type: 'SECOND', payload }) /*? $.meta */
 
     store.getState() /*? */
 
-    expect(action).toMatchObject({
-      type: 'SECOND',
-      payload,
-      meta: {
-        location: {
-          current: { pathname: '/second/bar', type: 'SECOND', payload },
-          prev: { pathname: '', type: '', payload: {} },
-          kind: 'push'
-        }
-      }
-    })
-
     expect(history.location.pathname).toEqual('/second/bar')
-    expect(store.getState()).toMatchObject({
-      location: {
-        pathname: '/second/bar',
-        type: 'SECOND',
-        payload,
-        prev: { pathname: '', type: '', payload: {} },
-        kind: 'push',
-        routesMap: { FIRST: '/first', SECOND: '/second/:param' }
-      },
-      title: 'title: SECOND'
-    })
-
     expect(action).toMatchSnapshot()
     expect(store.getState()).toMatchSnapshot()
   })
 
   it('not matched received action dispatches the action as normal with no changes', () => {
-    const { middleware, history, reducer } = setup('/first')
-    const middlewares = applyMiddleware(middleware)
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
-
-    const store = createStore(
-      rootReducer,
-      middlewares
-    ) /*? $.getState().location */
+    const { store, history } = setupAll('/first')
 
     expect(history.location.pathname).toEqual('/first')
     expect(store.getState().location).toMatchObject({
@@ -100,15 +56,7 @@ describe('middleware', () => {
   })
 
   it('user dispatches NOT_FOUND and middleware adds missing info to action', () => {
-    const { middleware, reducer, enhancer } = setup('/first')
-    const middlewares = applyMiddleware(middleware)
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
-
-    const store = createStore(rootReducer, middlewares, enhancer)
+    const { store } = setupAll('/first')
     const action = store.dispatch({ type: NOT_FOUND }) /*? $.meta */
 
     store.getState() /*? $.location */
@@ -117,15 +65,7 @@ describe('middleware', () => {
   })
 
   it('user dispatches NOT_FOUND redirect and middleware adds missing info to action', () => {
-    const { middleware, reducer, enhancer } = setup('/first')
-    const middlewares = applyMiddleware(middleware)
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
-
-    const store = createStore(rootReducer, middlewares, enhancer)
+    const { store } = setupAll('/first')
     const action = store.dispatch(redirect({ type: NOT_FOUND })) /*? $.meta */
 
     store.getState() /*? $.location */
@@ -134,16 +74,9 @@ describe('middleware', () => {
   })
 
   it('does nothing and warns if action has error && dispatched action isLocationAction', () => {
-    const { middleware, reducer } = setup()
-    const middlewares = applyMiddleware(middleware)
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
-
     console.warn = jest.fn()
-    const store = createStore(rootReducer, middlewares)
+    const { store } = setupAll()
+
     const receivedAction = {
       error: true,
       type: 'FOO',
@@ -160,15 +93,8 @@ describe('middleware', () => {
 
   it('calls onBeforeChange handler on route change', () => {
     const onBeforeChange = jest.fn()
-    const { middleware, reducer } = setup('/first', { onBeforeChange })
-    const middlewares = applyMiddleware(middleware)
+    const { store } = setupAll('/first', { onBeforeChange })
 
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
-
-    const store = createStore(rootReducer, middlewares)
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
 
     expect(onBeforeChange).toHaveBeenCalled()
@@ -180,21 +106,12 @@ describe('middleware', () => {
       const act = redirect({ type: 'THIRD' })
       dispatch(act)
     })
-    const { middleware, reducer, enhancer, history } = setup('/first', {
-      onBeforeChange
-    })
-    const middlewares = applyMiddleware(middleware)
-    const enhancers = compose(enhancer, middlewares)
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
 
-    const store = createStore(rootReducer, enhancers)
+    const { store, history } = setupAll('/first', { onBeforeChange })
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
-
     const { location } = store.getState()
-    expect(location.kind).toEqual('redirect') /*? store.getState() */
+
+    expect(location.kind).toEqual('redirect')
     expect(location.type).toEqual('THIRD')
     expect(history.entries.length).toEqual(2)
     expect(location).toMatchSnapshot()
@@ -209,17 +126,10 @@ describe('middleware', () => {
       const act = redirect({ type: 'THIRD' })
       dispatch(act)
     })
-    const { middleware, reducer, enhancer, history } = setup('/first', {
+    const { store, history } = setupAll('/first', {
       onBeforeChange
     })
-    const middlewares = applyMiddleware(middleware)
-    const enhancers = compose(enhancer, middlewares)
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
 
-    const store = createStore(rootReducer, enhancers)
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
 
     const { location } = store.getState()
@@ -231,35 +141,16 @@ describe('middleware', () => {
 
   it('calls onAfterChange handler on route change', () => {
     const onAfterChange = jest.fn()
-    const { middleware, reducer } = setup('/first', { onAfterChange })
-    const middlewares = applyMiddleware(middleware)
+    const { store } = setupAll('/first', { onAfterChange })
 
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
-
-    const store = createStore(rootReducer, middlewares)
-
-    // jest.useFakeTimers()
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
-    // jest.runAllTimers()
-
     expect(onAfterChange).toHaveBeenCalled()
   })
 
   it('scrolls to top on route change when options.scrollTop === true', () => {
     const scrollTo = jest.fn()
     window.scrollTo = scrollTo
-    const { middleware, reducer } = setup('/first', { scrollTop: true })
-    const middlewares = applyMiddleware(middleware)
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action),
-      title: action.type
-    })
-
-    const store = createStore(rootReducer, middlewares)
+    const { store } = setupAll('/first', { scrollTop: true })
 
     jest.useFakeTimers()
     store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
@@ -271,7 +162,7 @@ describe('middleware', () => {
 
 describe('middleware -> _middlewareAttemptChangeUrl()', () => {
   it('when pathname changes push new pathname on to addressbar', () => {
-    const { _middlewareAttemptChangeUrl } = setup('/')
+    const { _middlewareAttemptChangeUrl } = setup()
     const actionMetaLocation = { current: { pathname: '/foo' } }
     const history = createMemoryHistory()
 
@@ -307,136 +198,63 @@ describe('middleware -> _middlewareAttemptChangeUrl()', () => {
 
 describe('middleware -> _afterRouteChange()', () => {
   it('calls onBackNext handler when /pop|back|next/.test(kind)', () => {
-    const dispatch = jest.fn(action => expect(action).toMatchSnapshot())
-    const getState = jest.fn(() => ({
-      location: {
-        kind: 'pop'
-      }
-    }))
-    const store = { dispatch, getState }
-    const onBackNext = jest.fn(dispatch => dispatch({ type: 'FOO' }))
-    const { _afterRouteChange } = setup('/', { onBackNext })
+    const onBackNext = jest.fn(dispatch => dispatch({ type: 'THIRD' }))
+    const { store, history } = setupAll('/first', { onBackNext })
 
-    _afterRouteChange(store, dispatch)
+    history.push('/second/foo')
+    history.goBack()
 
-    const args = onBackNext.mock.calls[0]
-
-    expect(dispatch).toHaveBeenCalled()
-    expect(args[1]).toEqual(getState)
+    expect(onBackNext).toHaveBeenCalled()
+    expect(store.getState().location.type).toEqual('THIRD')
   })
 })
 
 describe('enhancer', () => {
   it('dispatches location-aware action when store is first created so app is location aware on load', () => {
-    const { enhancer, reducer } = setup('/first')
+    const { store } = setupAll('/first')
+    const location = store.getState().location
 
-    const createStore = reducer => ({
-      // eslint-disable-line arrow-parens
-      dispatch: jest.fn(),
-      getState: () => reducer()
-    })
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action)
-    })
-
-    const store = enhancer(createStore)(rootReducer)
-    const action = store.dispatch.mock.calls[0][0] /*? */
-
-    expect(action).toMatchObject({
+    expect(location).toMatchObject({
       type: 'FIRST',
       payload: {},
-      meta: {
-        location: {
-          current: {
-            type: 'FIRST',
-            payload: {},
-            pathname: '/first'
-          },
-          kind: 'load' // IMPORTANT: only dispatched on load
-        }
-      }
+      kind: 'load' // IMPORTANT: only dispatched on load
     })
-
-    expect(action).toMatchSnapshot()
   })
 
   it("listens to history changes and dispatches actions matching history's location.pathname", () => {
-    const { history, enhancer, reducer } = setup('/first')
-
-    const createStore = reducer => ({
-      dispatch: jest.fn(),
-      getState: () => reducer()
-    })
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action)
-    })
-
-    const store = enhancer(createStore)(rootReducer)
+    const { store, history } = setupAll('/first')
 
     history.push('/second/bar')
+    const location1 = store.getState().location
 
-    let action = store.dispatch.mock.calls[1][0] /*? */
-
-    expect(action).toMatchObject({
+    expect(location1).toMatchObject({
       type: 'SECOND',
+      pathname: '/second/bar',
       payload: { param: 'bar' },
-      meta: {
-        location: {
-          current: {
-            type: 'SECOND',
-            payload: { param: 'bar' },
-            pathname: '/second/bar'
-          },
-          kind: 'push' // IMPORTANT: only dispatched when using browser back/forward buttons
-        }
-      }
+      kind: 'push' // IMPORTANT: only dispatched when using browser back/forward buttons
     })
 
-    expect(action).toMatchSnapshot()
-
     history.goBack()
-    action = store.dispatch.mock.calls[2][0] /*? */
+    const location2 = store.getState().location
 
-    expect(action.type).toEqual('FIRST')
-    expect(action.meta.location.current.pathname).toEqual('/first')
+    expect(location2.type).toEqual('FIRST')
+    expect(location2.pathname).toEqual('/first')
   })
 
   it('throws when no location reducer provided', () => {
-    const { enhancer, reducer } = setup('/first')
-
-    const createStore = reducer => ({
-      // eslint-disable-line arrow-parens
-      dispatch: jest.fn(),
-      getState: () => reducer()
-    })
-
     const rootReducer = (state = {}, action = {}) => ({
-      locationFOO: reducer(state.location, action)
+      locationFOO: 'bar'
     })
 
-    const createEnhancer = () => enhancer(createStore)(rootReducer)
+    const createEnhancer = () => setupAll('/first', undefined, rootReducer)
     expect(createEnhancer).toThrowError()
   })
 
   it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', () => {
-    const { enhancer, reducer } = setup('/first')
+    const preLoadedState = { location: { pathname: '/' } }
+    const { store } = setupAll('/first', undefined, undefined, preLoadedState)
 
-    const createStore = reducer => ({
-      // eslint-disable-line arrow-parens
-      dispatch: jest.fn(),
-      getState: () => reducer()
-    })
-
-    const rootReducer = (state = {}, action = {}) => ({
-      location: reducer(state.location, action)
-    })
-
-    const preloadedState = { location: {} }
-    enhancer(createStore)(rootReducer, preloadedState)
-
-    expect(preloadedState.location.routesMap).toBeDefined()
+    expect(store.getState().location.routesMap).toBeDefined()
   })
 })
 
@@ -625,21 +443,88 @@ it('connectRoutes(undefined): throw error if no history provided', () => {
 })
 
 it('title and location options as selector functions', () => {
-  const { middleware, reducer, enhancer } = setup('/first', {
+  const { store } = setupAll('/first', {
     title: state => state.title,
     location: state => state.location
   })
-  const middlewares = applyMiddleware(middleware)
 
-  const rootReducer = (state = {}, action = {}) => ({
-    location: reducer(state.location, action),
-    title: action.type
-  })
-
-  const store = createStore(rootReducer, middlewares, enhancer)
   const action = store.dispatch({ type: 'FIRST' }) /*? $.meta */
 
   store.getState() /*? $.location */
 
   expect(action).toMatchSnapshot()
+})
+
+it('QUERY: dispatched as action.query', () => {
+  const { store } = setupAll('/third', { querySerializer })
+  const query = { foo: 'bar', baz: 69 }
+
+  store.dispatch({ type: 'FIRST', query })
+  store.dispatch({ type: 'THIRD', query })
+
+  const state = store.getState() /*? $.location */
+  expect(state).toMatchSnapshot()
+})
+
+it('QUERY: dispatched as action.meta.query', () => {
+  const { store } = setupAll('/third', { querySerializer })
+  const query = { foo: 'bar', baz: 69 }
+
+  store.dispatch({ type: 'FIRST', meta: { query } })
+  store.dispatch({ type: 'THIRD', meta: { query } })
+
+  const state = store.getState() /*? $.location */
+  expect(state).toMatchSnapshot()
+})
+
+it('QUERY: dispatched as action.payload.query', () => {
+  const { store } = setupAll('/third', { querySerializer })
+  const payload = { foo: 'bar', baz: 69 }
+
+  store.dispatch({ type: 'FIRST', meta: { payload } })
+  store.dispatch({ type: 'THIRD', meta: { payload } })
+
+  const state = store.getState() /*? $.location */
+  expect(state).toMatchSnapshot()
+})
+
+it('QUERY: history.push("/path?search=foo")', () => {
+  const { store, history } = setupAll('/third', { querySerializer })
+
+  history.push('/first?foo=bar&baz=69')
+  history.push('/third?foo=bar&baz=69')
+
+  const state = store.getState() /*? $.location */
+  expect(state).toMatchSnapshot()
+})
+
+it('QUERY: currentPathName changes, but pathname stays the same (only query changes)', () => {
+  const { store, history } = setupAll('/third', { querySerializer })
+
+  history.push('/first?foo=bar&baz=69')
+  history.push('/first?foo=car&baz=70')
+
+  const state = store.getState() /*? $.location */
+  expect(state).toMatchSnapshot()
+})
+
+it('QUERY: generated from pathToAction within <Link />', () => {
+  const { store, history, routesMap } = setupAll('/third', { querySerializer })
+
+  let action = pathToAction(
+    '/first?foo=bar&baz=69',
+    routesMap,
+    querySerializer
+  ) /*? */
+  store.dispatch(action)
+
+  action = pathToAction(
+    '/first?foo=car&baz=70',
+    routesMap,
+    querySerializer
+  ) /*? */
+  store.dispatch(action)
+
+  const state = store.getState() /*? $.location */
+  expect(state).toMatchSnapshot()
 })

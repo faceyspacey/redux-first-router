@@ -9,6 +9,7 @@ import isReactNative from './pure-utils/isReactNative'
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
 import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
 import createThunk from './pure-utils/createThunk'
+import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
@@ -106,7 +107,10 @@ export default (
   }
 
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
-  let currentPathname: string = history.location.pathname // very important: used for comparison to determine address bar changes
+
+  // very important: used for comparison to determine address bar changes
+  let currentPath: string = pathnamePlusSearch(history.location)
+
   let prevLocation: Location = {
     // maintains previous location state in location reducer
     pathname: '',
@@ -123,39 +127,27 @@ export default (
     onAfterChange,
     onBackNext,
     restoreScroll,
-    initialDispatch: shouldPerformInitialDispatch = true
+    initialDispatch: shouldPerformInitialDispatch = true,
+    querySerializer
   }: Options = options
 
-  let selectLocationState
-  if (typeof location === 'string') {
-    selectLocationState = state => state[location]
-  }
-  else if (typeof location === 'function') {
-    selectLocationState = location
-  }
-  else {
-    selectLocationState = state => state.location
-  }
+  const selectLocationState = typeof location === 'function'
+    ? location
+    : location ? state => state[location] : state => state.location
 
-  let selectTitleState
-  if (typeof title === 'string') {
-    selectTitleState = state => state[title]
-  }
-  else if (typeof title === 'function') {
-    selectTitleState = title
-  }
-  else {
-    selectTitleState = state => state.title
-  }
+  const selectTitleState = typeof title === 'function'
+    ? title
+    : title ? state => state[title] : state => state.title
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
-  const { type, payload }: ReceivedAction = pathToAction(
-    currentPathname,
+  const { type, payload, meta }: ReceivedAction = pathToAction(
+    currentPath,
     routesMap
   )
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(
-    currentPathname,
+    currentPath,
+    meta,
     type,
     payload,
     routesMap,
@@ -243,7 +235,8 @@ export default (
         routesMap,
         prevLocation,
         history,
-        notFoundPath
+        notFoundPath,
+        querySerializer
       )
     }
 
@@ -255,14 +248,14 @@ export default (
     let skip
     if ((route || action.type === NOT_FOUND) && action.meta) {
       // satisify flow with `action.meta` check
-      skip = _beforeRouteChange(store, next, history, action)
+      skip = _beforeRouteChange(_store, history, action)
     }
 
     if (skip) return
     const nextAction = next(action) // DISPATCH
 
     if (route || action.type === NOT_FOUND) {
-      _afterRouteChange(store, next, route)
+      _afterRouteChange(_store, route)
     }
 
     return nextAction
@@ -270,7 +263,6 @@ export default (
 
   const _beforeRouteChange = (
     store: Store,
-    next: Next,
     history: History,
     action: Action
   ) => {
@@ -287,7 +279,8 @@ export default (
           action.meta.location.kind === 'redirect'
         ) {
           skip = true
-          const isHistoryChange = location.current.pathname === currentPathname
+          const nextPath = pathnamePlusSearch(location.current)
+          const isHistoryChange = nextPath === currentPath
 
           // In this unique scenario, the action won't in fact be treated as a
           // redirect since the initial action is never dispatched. If it is
@@ -297,12 +290,11 @@ export default (
           // server, a redirect is always dispatched since its needed to detect
           // whether to call `res.redirect`. In that case history is irrelevant.
           if (!isHistoryChange && !isServer()) {
-            history.push(action.meta.location.pathname) // this will be replaced since it's a redirect
+            history.push(nextPath) // this will be replaced since it's a redirect
           }
         }
 
-        const dispatch = middleware(store)(next) // re-create middleware's position in chain
-        dispatch(action)
+        store.dispatch(action)
       }
 
       onBeforeChange(dispatch, store.getState, action)
@@ -323,8 +315,8 @@ export default (
     }
   }
 
-  const _afterRouteChange = (store: Store, next: Next, route: Route) => {
-    const dispatch = middleware(store)(next) // re-create middleware's position in chain
+  const _afterRouteChange = (store: Store, route: Route) => {
+    const dispatch = store.dispatch
     const state = store.getState()
     const kind = selectLocationState(state).kind
     const title = selectTitleState(state)
@@ -360,10 +352,11 @@ export default (
     history: History
   ) => {
     // IMPORTANT: insure history hasn't already handled location change
-    if (location.current.pathname !== currentPathname) {
-      // keep currentPathname up to date for comparison to prevent double dispatches
+    const nextPath = pathnamePlusSearch(location.current)
+    if (nextPath !== currentPath) {
+      // keep currentPath up to date for comparison to prevent double dispatches
       // between BROWSER back/forward button usage vs middleware-generated actions
-      currentPathname = location.current.pathname // IMPORTANT: must happen before history.push() (to prevent double handling)
+      currentPath = nextPath // IMPORTANT: must happen before history.push() (to prevent double handling)
 
       // for React Native, in the case `back` or `next` is
       // not called directly, `middlewareCreateAction` may emulate
@@ -378,7 +371,7 @@ export default (
 
       if (!manuallyInvoked) {
         const method = kind === 'redirect' ? 'replace' : 'push'
-        history[method](currentPathname) // change address bar corresponding to matched actions from middleware
+        history[method](currentPath) // change address bar corresponding to matched actions from middleware
       }
     }
   }
@@ -408,6 +401,10 @@ export default (
     const state = store.getState()
     const location = state && selectLocationState(state)
 
+    // assign to outer closure so middleware can access full middleware
+    // pipeline when dispatching additional actions in onBefore/AfterChange
+    _store = store
+
     if (!location || !location.pathname) {
       throw new Error(
         `[redux-first-router] you must provide the key of the location
@@ -422,11 +419,12 @@ export default (
       // only dispatch on client before SSR is setup, which passes state on to the client
       _initialDispatch = () => {
         const action = historyCreateAction(
-          currentPathname,
+          currentPath,
           routesMap,
           prevLocation,
           history,
-          'load'
+          'load',
+          querySerializer
         )
 
         store.dispatch(action)
@@ -454,20 +452,24 @@ export default (
     historyAction: string
   ) => {
     // IMPORTANT: insure middleware hasn't already handled location change:
-    if (location.pathname !== currentPathname) {
+    const nextPath = pathnamePlusSearch(location)
+
+    if (nextPath !== currentPath) {
       // THE MAGIC: parse the address bar path into a matched action
       const kind = historyAction === 'REPLACE' ? 'redirect' : historyAction
+
       const action = historyCreateAction(
-        location.pathname,
+        nextPath,
         routesMap,
         prevLocation,
         history,
         kind.toLowerCase(),
-        currentPathname,
+        querySerializer,
+        currentPath,
         prevLength
       )
 
-      currentPathname = location.pathname // IMPORTANT: must happen before dispatch (to prevent double handling)
+      currentPath = nextPath // IMPORTANT: must happen before dispatch (to prevent double handling)
 
       store.dispatch(action) // dispatch route type + payload corresponding to browser back/forward usage
     }
@@ -478,6 +480,7 @@ export default (
   _history = history
   _scrollBehavior = scrollBehavior
   _selectLocationState = selectLocationState
+  _options = options
   let _initialDispatch
 
   _updateScroll = (performedByUser: boolean = true) => {
@@ -532,6 +535,8 @@ let _history
 let _scrollBehavior
 let _updateScroll
 let _selectLocationState
+let _options
+let _store
 
 export const push = (pathname: string) => _history.push(pathname)
 
@@ -568,3 +573,5 @@ export const updateScroll = () => _updateScroll && _updateScroll()
 
 export const selectLocationState = (state: Object) =>
   _selectLocationState(state)
+
+export const getOptions = (): Options => _options

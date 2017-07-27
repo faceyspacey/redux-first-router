@@ -53,6 +53,7 @@ it('getInitialState() returns state.history === undefined when using createBrows
   history.entries = undefined
   const initialState = getInitialState(
     current.pathname,
+    {},
     current.type,
     current.payload,
     routesMap,

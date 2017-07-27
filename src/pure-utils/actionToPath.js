@@ -5,17 +5,31 @@ import type {
   Payload,
   Params,
   RoutesMap,
-  ReceivedAction as Action
+  ReceivedAction as Action,
+  QuerySerializer
 } from '../flow-types'
 
-export default (action: Action, routesMap: RoutesMap): string => {
+export default (
+  action: Action,
+  routesMap: RoutesMap,
+  serializer?: QuerySerializer
+): string => {
   const route = routesMap[action.type]
-  const path = typeof route === 'object' ? route.path : route
+  const routePath = typeof route === 'object' ? route.path : route
   const params = typeof route === 'object'
     ? _payloadToParams(route, action.payload)
     : action.payload
 
-  return pathToRegexp.compile(path)(params || {})
+  const path = pathToRegexp.compile(routePath)(params || {})
+
+  const query =
+    action.query ||
+    (action.meta && action.meta.query) ||
+    (action.payload && action.payload.query)
+
+  const search = query && serializer && serializer.stringify(query)
+
+  return search ? `${path}?${search}` : path
 }
 
 const _payloadToParams = (route: RouteObject, params: Payload = {}): Params =>

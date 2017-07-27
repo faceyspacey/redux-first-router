@@ -1,5 +1,11 @@
 // @flow
-import type { RoutesMap, Location, Action, History } from '../flow-types'
+import type {
+  RoutesMap,
+  Location,
+  Action,
+  History,
+  QuerySerializer
+} from '../flow-types'
 import pathToAction from '../pure-utils/pathToAction'
 import nestAction from '../pure-utils/nestAction'
 
@@ -9,10 +15,11 @@ export default (
   prevLocation: Location,
   history: History,
   kind: string,
+  serializer?: QuerySerializer,
   prevPath?: string,
   prevLength?: number
 ): Action => {
-  const action = pathToAction(pathname, routesMap)
+  const action = pathToAction(pathname, routesMap, serializer)
   kind = getKind(!!history.entries, history, kind, prevPath, prevLength)
   return nestAction(pathname, action, prevLocation, history, kind)
 }

@@ -360,3 +360,7 @@ Below is a screenshot of this module's tests running in [Wallaby](https://wallab
 
 ![redux-first-router wallaby tests screenshot](./tests-screenshot-2.png)
 
+## More from FaceySpacey in Reactlandia
+- [react-universal-component](https://github.com/faceyspacey/react-universal-component). It's made to work perfectly with *Redux First Router*. Together they comprise our *"frameworkless"* Redux-based approach to what Next.js does (splitting, SSR, prefetching, and routing).
+- [webpack-flush-chunks](webpack-flush-chunks). And this is the foundation of our `Universal` product line. Make sure to check out!
+
