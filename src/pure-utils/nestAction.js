@@ -15,12 +15,12 @@ export default (
 
   return {
     ...action,
-    ...(query && { query }), // only non-FSA key (possible todo: option to not use it)
+    ...(action.query && { query }),
     type,
     payload,
     meta: {
       ...meta,
-      ...(query && { query }),
+      ...(meta.query && { query }),
       location: {
         current: {
           pathname: parts[0],

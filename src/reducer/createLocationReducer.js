@@ -21,7 +21,7 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
         action.meta.location.current.search !== state.search ||
         action.meta.location.kind === 'load'))
   ) {
-    const query = action.query || action.meta.query || action.payload.query
+    const query = action.meta.location.current.query
     const search = action.meta.location.current.search
 
     return {

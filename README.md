@@ -2,7 +2,6 @@
   <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 
-> UPDATE: as of July 17th, query/search support is available. Please try it out via `yarn upgrade redux-first-router@next redux-first-router-link@next`. And review [this comment](https://github.com/faceyspacey/redux-first-router/issues/17#issuecomment-315957332) for a usage example.
 
 # Redux-First Router [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Reactlandia/Lobby)
 
@@ -270,6 +269,7 @@ That's all folks! :+1:
 * [action.meta (the `meta` key is how our system communicates & how our action maintains its status as an "FSA")](./docs/action.md)
 * [location reducer shape](./docs/reducer.md)
 * [server side rendering](./docs/server-rendering.md)
+* [query strings](./docs/query-strings.md)
 * [scroll restoration](./docs/scroll-restoration.md)
 * [redirects](./docs/server-rendering.md#redirects-example)
 * [client-only API](./docs/client-only-api.md)
