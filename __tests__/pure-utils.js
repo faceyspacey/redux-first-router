@@ -243,6 +243,13 @@ describe('actionToPath(action, routesMap)', () => {
     performMatch = () => actionToPath({ type: 'INFO' }, routesMap)
     expect(performMatch).not.toThrowError()
   })
+
+  it('never returns an empty string when path has single optional param that is undefined', () => {
+    const action = { type: 'INFO_PARAM', payload: { param: undefined } }
+    const routesMap = { INFO_PARAM: '/:param?' }
+    const path = actionToPath(action, routesMap) /*? */
+    expect(path).toEqual('/')
+  })
 })
 
 describe('changePageTitle()', () => {
