@@ -23,6 +23,35 @@ The `<Link />` component--if you supply a string for the `to` prop--will put it 
 The actual search string will only ever exist at:
 - `action.meta.location.current.search`
 
+## Some Example Actions
+
+Using links, here is some examples of how to format these actions:
+
+*action.query:*
+```js
+<Link to={{ type: 'ANYTHING', payload:  { key: val }, query: { foo: 'bar' } }}>
+```
+
+*action.payload.query:*
+```js
+<Link to={{ type: 'ANYTHING', payload:  { key: val, query: { foo: 'bar' } } }}>
+```
+
+*action.meta.query:*
+```js
+<Link to={{ type: 'ANYTHING', payload:  { key: val }, meta: { query: { foo: 'bar' } } }}>
+```
+
+The matching route would be:
+
+```js
+const routesMap = {
+  ANYTHING: '/anything/:key'
+}
+```
+
+Notice there is no path params for query key/vals. They don't affect the determination of which route is selected. Only the `type` and `payload` do. The same `type` is shared no matter what query is provided..
+
 
 ## Where will `query` + `search` live in `location` state?
 
@@ -32,6 +61,23 @@ Here:
 store.getState().location.query
 store.getState().location.search
 ```
+
+
+## How to Enable Query String Serialization
+
+To enable query string serialization you must provide a `querySerializer` option to `connectRoutes` like this:
+
+```js
+import queryString from 'query-string'
+
+connectRoutes(routesMap, {
+  querySerializer: queryString
+})
+```
+If you would like to create your own, you can pass any object with a `stringify` and `parse` function. The former takes an object and creates a query string and the latter takes a `string` and creates an object.
+
+Also note that the `query-string` package will produce strings for numbers. There's a [package](https://github.com/mariusc23/express-query-int) made for express that will format numbers into `ints`, which you may be interested in learning from if you want to achieve that goal. I couldn't find a general one identical to this one. If you make it, publish it to NPM and make a PR to this doc with a link to it. *I think it's a mistake that numbers aren't converted for you.*
+
 
 ## CodeSandBox
 You can test out query support on codesandbox here:
