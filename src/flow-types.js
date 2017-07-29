@@ -81,7 +81,8 @@ export type Options = {
       action: Object,
       navigationAction: ?NavigationAction
     }
-  }
+  },
+  extraThunkArgument?: any
 }
 
 export type ScrollBehavior = Object

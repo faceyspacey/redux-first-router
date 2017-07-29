@@ -128,7 +128,8 @@ export default (
     onBackNext,
     restoreScroll,
     initialDispatch: shouldPerformInitialDispatch = true,
-    querySerializer
+    querySerializer,
+    extraThunkArgument
   }: Options = options
 
   const selectLocationState = typeof location === 'function'
@@ -159,7 +160,7 @@ export default (
   let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
-  const thunk = createThunk(routesMap, selectLocationState)
+  const thunk = createThunk(routesMap, selectLocationState, extraThunkArgument)
   const initialDispatch = () => _initialDispatch && _initialDispatch()
 
   const windowDocument: Document = getDocument() // get plain object for window.document if server side
@@ -323,9 +324,11 @@ export default (
     nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
-      attemptCallRouteThunk(dispatch, store.getState, route)
+      attemptCallRouteThunk(dispatch, store.getState, route, extraThunkArgument)
     }
 
+    // TODO: Should these other thunk-like functions also be passed the
+    // extraThunkArgument?
     if (onAfterChange) {
       onAfterChange(dispatch, store.getState)
     }
