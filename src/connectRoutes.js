@@ -324,7 +324,10 @@ export default (
     nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
-      attemptCallRouteThunk(dispatch, store.getState, route, extraThunkArgument)
+      attemptCallRouteThunk(dispatch, store.getState, route, {
+        selectLocationState,
+        extraThunkArgument
+      })
     }
 
     if (onAfterChange) {

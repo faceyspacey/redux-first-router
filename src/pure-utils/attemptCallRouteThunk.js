@@ -7,17 +7,22 @@ import type {
   LocationState
 } from '../flow-types'
 
+type Options = {
+  selectLocationState: (state: Object) => LocationState,
+  extraThunkArgument?: any
+}
+
 export default (
   dispatch: Dispatch,
   getState: GetState,
   route: RouteObject,
-  extraThunkArgument: any
+  { selectLocationState, extraThunkArgument }: Options
 ) => {
   if (typeof window !== 'undefined') {
     const thunk = route.thunk
 
     if (typeof thunk === 'function') {
-      const { kind, hasSSR }: LocationState = getState().location // TODO: This should be using selectLocationState
+      const { kind, hasSSR }: LocationState = selectLocationState(getState())
 
       // call thunks always if it's not initial load of the app or only if it's load
       // without SSR setup yet, so app state is setup on client when prototyping,
