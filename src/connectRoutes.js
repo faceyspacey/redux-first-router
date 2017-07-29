@@ -298,7 +298,7 @@ export default (
         store.dispatch(action)
       }
 
-      onBeforeChange(dispatch, store.getState, action)
+      onBeforeChange(dispatch, store.getState, action, extraThunkArgument)
       if (skip) return true
     }
 
@@ -327,15 +327,13 @@ export default (
       attemptCallRouteThunk(dispatch, store.getState, route, extraThunkArgument)
     }
 
-    // TODO: Should these other thunk-like functions also be passed the
-    // extraThunkArgument?
     if (onAfterChange) {
-      onAfterChange(dispatch, store.getState)
+      onAfterChange(dispatch, store.getState, extraThunkArgument)
     }
 
     if (typeof window !== 'undefined' && kind) {
       if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
-        onBackNext(dispatch, store.getState)
+        onBackNext(dispatch, store.getState, extraThunkArgument)
       }
 
       setTimeout(() => {

@@ -134,8 +134,9 @@ type Options = {
   restoreScroll?: ((PrevLocationState, LocationState) => boolean | string | array) => ScrollBehavior,
   onBeforeChange?: (Dispatch, GetState) => void,
   onAfterChange?: (Dispatch, GetState) => void,
-  initialDispatch?: boolean, // default: true
-  onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void
+  initialDispatch?: boolean, // default: true,
+  onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void,
+  extraThunkArgument: any
 }
 ```
 
@@ -151,17 +152,18 @@ restoration, and should be fine while developing, especially if you're using Chr
 * **restoreScroll** - the `restoreScroll` is a call to `redux-first-router-restore-scroll`'s restoreScroll` function, with a `shouldUpdateScroll` callback passed a single argument. See the [scroll restoration doc](./scroll-restoration.md) for more info.
 
 * **onAfterChange** - `onAfterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments
-like a thunk.
+like a thunk. If the `extraThunkArgument` option was supplied then its value will be passed as the final argument.
 
-* **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `action` as a third parameter. Keep in mind unlike `onAfterChange`, the action has not been dispatched yet. Therefore,
+* **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `action` as a third parameter. If the `extraThunkArgument` option was supplied then it's value will be passed as a fourth parameter. Keep in mind unlike `onAfterChange`, the action has not been dispatched yet. Therefore,
 the state won't reflect it. So you need to use the action to extract URL params from the `payload`. You can use this function to efficiently short-circuit the middleware by calling `dispatch(redirect(newAction))`, where `newAction` has the matching `type` and `payload` of the route you would like to redirect to. Using `onBeforeChange` and `location.kind === 'redirect'` + `res.redirect(301, pathname)` in your `serverRender` function is the idiom here for handling redirects server-side. See [server-rendering docs](.server-rendering.md) for more info.
 
-* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk. Actions with kinds `back`, `next`, and `pop` trigger this.
+* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk. If the `extraThunkArgument` option was supplied then its value will be passed as the final argument. Actions with kinds `back`, `next`, and `pop` trigger this.
 
 * **initialDispatch** - `initialDispatch` can be set to `false` to bypass the initial dispatch, so you can do it manually, perhaps after running sagas. An `initialDispatch` function will exist in the object returned by `connectRoutes`. Simply call `initialDispatch()` when you are ready.
 
-* **navigators** - `navigators` is a map of of your Redux state keys to *React Navigation* navigators. Here's how you do it:
+* **extraThunkArgument** - `extraThunkArgument` can be any value you'd like to be passed to your thunks. This allows you to inject arbitrary parameters into your route thunks just like [redux-thunk](https://github.com/gaearon/redux-thunk#injecting-a-custom-argument). This value will also be passed to `onAfterChange`, `onBeforeChange` and `onBackNext` since they function like thunks. Note however, that `onBeforeChange` passes the `action` as the third argument. Therefore the value of `extraThunkArgument` will be passed as the _fourth_ argument to `onBeforeChange`.
 
+* **navigators** - `navigators` is a map of of your Redux state keys to *React Navigation* navigators. Here's how you do it:
 
 ```js
 import reduxNavigation from 'redux-first-router-navigation'
@@ -174,3 +176,4 @@ const options = {
 ```
 
 > See the [Redux Navigation](./redux-navigation) docs for info on how to use *React Navigation* with this package. We think you're gonna love it :)
+
