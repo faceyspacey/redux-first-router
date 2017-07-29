@@ -10,7 +10,11 @@ export type RouteObject = {
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>,
+  thunk?: (
+    dispatch: Dispatch,
+    getState: GetState,
+    extraThunkArgument?: any
+  ) => any | Promise<any>,
   navKey?: string
 }
 
@@ -56,10 +60,19 @@ export type Options = {
   onBeforeChange?: (
     dispatch: Dispatch,
     getState: GetState,
-    action: Action
+    action: Action,
+    extraThunkArgument?: any
   ) => void,
-  onAfterChange?: (dispatch: Dispatch, getState: GetState) => void,
-  onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
+  onAfterChange?: (
+    dispatch: Dispatch,
+    getState: GetState,
+    extraThunkArgument?: any
+  ) => void,
+  onBackNext?: (
+    dispatch: Dispatch,
+    getState: GetState,
+    extraThunkArgument?: any
+  ) => void,
   restoreScroll?: History => ScrollBehavior,
   initialDispatch?: boolean,
   querySerializer?: QuerySerializer,
