@@ -3,7 +3,7 @@
 exports[`QUERY: currentPathName changes, but pathname stays the same (only query changes) 1`] = `
 Object {
   "location": Object {
-    "hasSSR": undefined,
+    "hasSSR": true,
     "history": undefined,
     "kind": "push",
     "pathname": "/first",
@@ -37,7 +37,7 @@ Object {
 exports[`QUERY: dispatched as action.meta.query 1`] = `
 Object {
   "location": Object {
-    "hasSSR": undefined,
+    "hasSSR": true,
     "history": undefined,
     "kind": "push",
     "pathname": "/third",
@@ -71,7 +71,7 @@ Object {
 exports[`QUERY: dispatched as action.payload.query 1`] = `
 Object {
   "location": Object {
-    "hasSSR": undefined,
+    "hasSSR": true,
     "history": undefined,
     "kind": "back",
     "pathname": "/third",
@@ -95,7 +95,7 @@ Object {
 exports[`QUERY: dispatched as action.query 1`] = `
 Object {
   "location": Object {
-    "hasSSR": undefined,
+    "hasSSR": true,
     "history": undefined,
     "kind": "push",
     "pathname": "/third",
@@ -129,7 +129,7 @@ Object {
 exports[`QUERY: generated from pathToAction within <Link /> 1`] = `
 Object {
   "location": Object {
-    "hasSSR": undefined,
+    "hasSSR": true,
     "history": undefined,
     "kind": "push",
     "pathname": "/first",
@@ -163,7 +163,7 @@ Object {
 exports[`QUERY: history.push("/path?search=foo") 1`] = `
 Object {
   "location": Object {
-    "hasSSR": undefined,
+    "hasSSR": true,
     "history": undefined,
     "kind": "push",
     "pathname": "/third",
