@@ -174,3 +174,23 @@ const options = {
 ```
 
 > See the [Redux Navigation](./redux-navigation) docs for info on how to use *React Navigation* with this package. We think you're gonna love it :)
+
+## Returned Values
+
+`connectRoutes` returns an `enhancer` and a `middleware` that you will need to use in order to tie everything together.  It should be noted that the order that those values are applied to the store *does matter*.  The enhancer must come first in order for the middleware to correctly function.
+
+The returned `reducer` expects its key in the root reducer to be at `location`, unless specified otherwise via the `location` option (outlined above).
+
+```
+import * as reducers from '../reducers/';
+import * as otherMiddlewares from '../middlewares';
+import { connectRoutes } from 'redux-first-router'
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
+
+const { reducer, middleware, enhancer } = connectRoutes(history, routesMap)
+
+const rootReducer = combineReducers({ ...reducers, location: reducer })
+const middlewares = applyMiddleware([ middleware, ...otherMiddlewares ])
+// note that the enhancer comes before other middleware
+const store = createStore(rootReducer, compose(enhancer, middlewares))
+```
