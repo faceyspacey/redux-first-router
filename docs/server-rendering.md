@@ -29,6 +29,7 @@ export async function configureStore(req) {
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) // notice `thunk`
   const rootReducer = combineReducers({ location: reducer })
+  // note the order that the enhancer and middleware are composed in: enhancer first, then middleware
   const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
 
   // using redux-thunk perhaps request and dispatch some app-wide state as well, e.g:
@@ -108,6 +109,7 @@ export default async function configureStore(req, res) {
 
   const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap) 
   const rootReducer = combineReducers({ location: reducer })
+  // enhancer first, then middleware
   const store = createStore(rootReducer, compose(enhancer, applyMiddleware(middleware)))
 
   // the idiomatic way to handle redirects

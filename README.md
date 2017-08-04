@@ -126,6 +126,7 @@ const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // y
 // and you already know how the story ends:
 const rootReducer = combineReducers({ location: reducer, userId: userIdReducer })
 const middlewares = applyMiddleware(middleware)
+// note the order: enhancer, then middlewares
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
