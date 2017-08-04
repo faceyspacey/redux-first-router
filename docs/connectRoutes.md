@@ -181,7 +181,7 @@ const options = {
 
 The returned `reducer` expects its key in the root reducer to be at `location`, unless specified otherwise via the `location` option (outlined above).
 
-```
+```js
 import * as reducers from '../reducers/';
 import * as otherMiddlewares from '../middlewares';
 import { connectRoutes } from 'redux-first-router'
