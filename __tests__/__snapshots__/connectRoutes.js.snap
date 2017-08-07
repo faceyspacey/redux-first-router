@@ -303,9 +303,11 @@ Object {
   "pathname": "/third",
   "payload": Object {},
   "prev": Object {
-    "pathname": "/first",
-    "payload": Object {},
-    "type": "FIRST",
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
   },
   "routesMap": Object {
     "FIRST": "/first",
@@ -321,12 +323,14 @@ Object {
   "hasSSR": true,
   "history": undefined,
   "kind": "redirect",
-  "pathname": "/third",
+  "pathname": "/second/bar",
   "payload": Object {},
   "prev": Object {
     "pathname": "/first",
-    "payload": Object {},
-    "type": "FIRST",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
   },
   "routesMap": Object {
     "FIRST": "/first",
