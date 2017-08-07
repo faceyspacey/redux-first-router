@@ -279,6 +279,7 @@ export default (
           action.meta.location.kind === 'redirect'
         ) {
           skip = true
+          prevLocation = location.current
           const nextPath = pathnamePlusSearch(location.current)
           const isHistoryChange = nextPath === currentPath
 
