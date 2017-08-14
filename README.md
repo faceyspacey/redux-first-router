@@ -49,10 +49,10 @@
 The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
 
 **Articles You Should Read:**
-- **[Pre Release: Redux-First Router — A Step Beyond Redux-Little-Router](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)** 🚀 
+- **[Pre Release: Redux-First Router — A Step Beyond Redux-Little-Router](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)** 
 - **[Redux-First Router lookin Sexy on Code Sandbox](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)** 
 - **[Redux-First Router data-fetching: solving the 80% use case for async Middleware](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)**
-- **[Server-Render like a Pro /w Redux-First Router in 10 steps](https://medium.com/faceyspacey/server-render-like-a-pro-w-redux-first-router-in-10-steps-b27dd93859de)**
+- **[Server-Render like a Pro /w Redux-First Router in 10 steps](https://medium.com/faceyspacey/server-render-like-a-pro-w-redux-first-router-in-10-steps-b27dd93859de)** 🚀🚀🚀 *(READ THIS!)*
 
 The thinking behind this package has been: "if we were to dream up a 'Redux-first' approach to routing from the 
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
