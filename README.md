@@ -7,7 +7,7 @@
 </a>
 
 <a href="https://github.com/faceyspacey/redux-first-router-boilerplate" target="_blank">
-  <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/simple-boilerplate-button.png?a=1">
+  <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/boilerplate-button.png">
 </a>
 
 <a href="https://github.com/faceyspacey/redux-first-router-demo" target="_blank">
