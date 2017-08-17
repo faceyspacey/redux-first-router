@@ -1,10 +1,12 @@
 import { createMemoryHistory } from 'history'
 
 import historyCreateAction from '../src/action-creators/historyCreateAction'
-import middlewareCreateAction
-  from '../src/action-creators/middlewareCreateAction'
+import middlewareCreate from '../src/action-creators/middlewareCreateAction'
 import redirect from '../src/action-creators/redirect'
+import addRoutes from '../src/action-creators/addRoutes'
 import { NOT_FOUND } from '../src/index'
+
+import { setupAll } from '../__test-helpers__/setup'
 
 it('historyCreateAction() - returns action created when history/address_bar chanages', () => {
   const history = createMemoryHistory()
@@ -42,7 +44,7 @@ it('historyCreateAction() - returns action created when history/address_bar chan
   expect(action.meta.location.kind).toEqual('pop')
 })
 
-it('middlewareCreateAction() - returns action created when middleware detects connected/matched action.type', () => {
+it('middlewareCreate() - returns action created when middleware detects connected/matched action.type', () => {
   const history = createMemoryHistory()
   const receivedAction = { type: 'INFO_PARAM', payload: { param: 'foo' } }
   const routesMap = {
@@ -51,7 +53,7 @@ it('middlewareCreateAction() - returns action created when middleware detects co
   }
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
 
-  const action = middlewareCreateAction(
+  const action = middlewareCreate(
     receivedAction,
     routesMap,
     prevLocation,
@@ -76,7 +78,7 @@ it('middlewareCreateAction() - returns action created when middleware detects co
   expect(action).toMatchSnapshot()
 })
 
-it('middlewareCreateAction() - [action not matched to any routePath]', () => {
+it('middlewareCreate() - [action not matched to any routePath]', () => {
   const history = createMemoryHistory()
   const receivedAction = { type: 'BLA', payload: { someKey: 'foo' } }
   const routesMap = {
@@ -85,7 +87,7 @@ it('middlewareCreateAction() - [action not matched to any routePath]', () => {
   }
   const prevLocation = { pathname: '/prev', type: 'PREV', payload: {} }
 
-  const action = middlewareCreateAction(
+  const action = middlewareCreate(
     receivedAction,
     routesMap,
     prevLocation,
@@ -107,4 +109,20 @@ it('redirect(action) - sets action.meta.location.kind === "redirect"', () => {
   const action = redirect(receivedAction) /*? */
 
   expect(action.meta.location.kind).toEqual('redirect')
+})
+
+it('addRoutes(routes) - adds routes to routesMap', () => {
+  const newRoutes = {
+    FOO: '/foo',
+    BAR: { path: '/bar' }
+  }
+
+  const { store } = setupAll()
+
+  const thunk = addRoutes(newRoutes)
+  store.dispatch(thunk)
+  expect(store.getState()).toMatchSnapshot()
+
+  store.dispatch({ type: 'FOO' })
+  expect(store.getState().location.type).toEqual('FOO')
 })

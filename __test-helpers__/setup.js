@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore, compose } from 'redux'
+import reduxThunk from 'redux-thunk'
 import createHistory from 'history/createMemoryHistory'
 import connectRoutes from '../src/connectRoutes'
 
@@ -27,7 +28,7 @@ export default setup
 export const setupAll = (path, options, rootReducer, preLoadedState) => {
   const tools = setup(path, options)
   const { middleware, reducer, enhancer } = tools
-  const middlewares = applyMiddleware(middleware)
+  const middlewares = applyMiddleware(reduxThunk, middleware)
   const enhancers = compose(enhancer, middlewares)
 
   rootReducer =

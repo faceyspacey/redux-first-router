@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`addRoutes(routes) - adds routes to routesMap 1`] = `
+Object {
+  "location": Object {
+    "hasSSR": undefined,
+    "history": undefined,
+    "kind": "load",
+    "pathname": "/",
+    "payload": Object {},
+    "prev": Object {
+      "pathname": "",
+      "payload": Object {},
+      "type": "",
+    },
+    "routesMap": Object {
+      "BAR": Object {
+        "path": "/bar",
+      },
+      "FIRST": "/first",
+      "FOO": "/foo",
+      "SECOND": "/second/:param",
+      "THIRD": "/third",
+    },
+    "type": "@@redux-first-router/NOT_FOUND",
+  },
+  "title": "@@redux-first-router/ADD_ROUTES",
+}
+`;
+
 exports[`historyCreateAction() - returns action created when history/address_bar chanages 1`] = `
 Object {
   "meta": Object {
@@ -27,7 +55,7 @@ Object {
 }
 `;
 
-exports[`middlewareCreateAction() - [action not matched to any routePath] 1`] = `
+exports[`middlewareCreate() - [action not matched to any routePath] 1`] = `
 Object {
   "meta": Object {
     "location": Object {
@@ -54,7 +82,7 @@ Object {
 }
 `;
 
-exports[`middlewareCreateAction() - returns action created when middleware detects connected/matched action.type 1`] = `
+exports[`middlewareCreate() - returns action created when middleware detects connected/matched action.type 1`] = `
 Object {
   "meta": Object {
     "location": Object {

@@ -19,7 +19,7 @@ import middlewareCreateNotFoundAction
 import createLocationReducer, {
   getInitialState
 } from './reducer/createLocationReducer'
-import { NOT_FOUND } from './index'
+import { NOT_FOUND, ADD_ROUTES } from './index'
 
 import type {
   Dispatch as Next,
@@ -197,6 +197,11 @@ export default (
   */
 
   const middleware = (store: Store) => (next: Next) => (action: Object) => {
+    if (action.type === ADD_ROUTES) {
+      routesMap = { ...routesMap, ...action.payload.routes }
+      return next(action)
+    }
+
     let navigationAction
 
     if (navigators && action.type.indexOf('Navigation/') === 0) {
