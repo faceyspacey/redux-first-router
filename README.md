@@ -203,7 +203,7 @@ as keys in the payload object:
 | /home              | <-> | { type: 'HOME' } |
 | /user/123          | <-> | { type: 'USER', payload: { id: 123 } } |
 | /user/456          | <-> | { type: 'USER', payload: { id: 456 } } |
-| /user/5            | <-> | { type: 'USER', payload: { id: 6 } } |
+| /user/5            | <-> | { type: 'USER', payload: { id: 5 } } |
 
 *note: if you have more keys in your payload that is fine--so long as you have the minimum required keys to populate the path*
 
