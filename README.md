@@ -6,6 +6,14 @@
   <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 
+<a href="https://github.com/faceyspacey/redux-first-router-boilerplate" target="_blank">
+  <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/simple-boilerplate-button.png?a=1">
+</a>
+
+<a href="https://github.com/faceyspacey/redux-first-router-demo" target="_blank">
+  <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/full-demo-button.png">
+</a>
+
 > **UPDATE (8/15):** you can now add additional routes as part of your code splitting strategy. See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/62#issuecomment-322558836) for more info.
 
 # Redux-First Router
