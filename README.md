@@ -1,10 +1,12 @@
 <a href="https://gitter.im/Reactlandia/Lobby" target="_blank">
-  <img alt="Edit Redux-First Router Demo" src="http://cdn.reactlandia.com/chat-badge-reactlandia.png">
+  <img alt="Edit Redux-First Router Demo" src="http://cdn.reactlandia.com/reactlandia-chat.png">
 </a>
 
 <a href="https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox" target="_blank">
   <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
+
+> **UPDATE (8/15):** you can now add additional routes as part of your code splitting strategy. See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/62#issuecomment-322558836) for more info.
 
 # Redux-First Router
 
@@ -49,9 +51,10 @@
 The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
 
 **Articles You Should Read:**
-- **[introduction article](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)** 🚀 
-- **[how to use demo on CodeSandbox](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)** 
-- **[how to use the thunk option to fetch data](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)**
+- **[Pre Release: Redux-First Router — A Step Beyond Redux-Little-Router](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)** 
+- **[Redux-First Router lookin Sexy on Code Sandbox](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)** 
+- **[Redux-First Router data-fetching: solving the 80% use case for async Middleware](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)**
+- **[Server-Render like a Pro /w Redux-First Router in 10 steps](https://medium.com/faceyspacey/server-render-like-a-pro-w-redux-first-router-in-10-steps-b27dd93859de)** 🚀🚀🚀 *(READ THIS!)*
 
 The thinking behind this package has been: "if we were to dream up a 'Redux-first' approach to routing from the 
 ground up, what would it look like?" The result has been what we hope you feel to be one of those 
@@ -126,6 +129,7 @@ const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // y
 // and you already know how the story ends:
 const rootReducer = combineReducers({ location: reducer, userId: userIdReducer })
 const middlewares = applyMiddleware(middleware)
+// note the order: enhancer, then middlewares
 const store = createStore(rootReducer, compose(enhancer, middlewares))
 ```
 
@@ -199,7 +203,7 @@ as keys in the payload object:
 | /home              | <-> | { type: 'HOME' } |
 | /user/123          | <-> | { type: 'USER', payload: { id: 123 } } |
 | /user/456          | <-> | { type: 'USER', payload: { id: 456 } } |
-| /user/5            | <-> | { type: 'USER', payload: { id: 6 } } |
+| /user/5            | <-> | { type: 'USER', payload: { id: 5 } } |
 
 *note: if you have more keys in your payload that is fine--so long as you have the minimum required keys to populate the path*
 

@@ -20,7 +20,7 @@ export default (
     ? _payloadToParams(route, action.payload)
     : action.payload
 
-  const path = pathToRegexp.compile(routePath)(params || {})
+  const path = pathToRegexp.compile(routePath)(params || {}) || '/'
 
   const query =
     action.query ||

@@ -154,6 +154,16 @@ describe('pathToAction(path, routesMap)', () => {
     expect(action.payload.param).toEqual(69)
   })
 
+  it('does not parse a blank string "" as NaN', () => {
+    const path = '/info'
+    const routesMap = {
+      INFO_WILDCARD: { path: '/info(.*)' }
+    }
+
+    const action = pathToAction(path, routesMap)
+    expect(action.payload[0]).toEqual('')
+  })
+
   it('parsed path not found and return NOT_FOUND action.type: "@@redux-first-router/NOT_FOUND"', () => {
     const path = '/info/foo/bar'
     const routesMap = {
@@ -242,6 +252,13 @@ describe('actionToPath(action, routesMap)', () => {
 
     performMatch = () => actionToPath({ type: 'INFO' }, routesMap)
     expect(performMatch).not.toThrowError()
+  })
+
+  it('never returns an empty string when path has single optional param that is undefined', () => {
+    const action = { type: 'INFO_PARAM', payload: { param: undefined } }
+    const routesMap = { INFO_PARAM: '/:param?' }
+    const path = actionToPath(action, routesMap) /*? */
+    expect(path).toEqual('/')
   })
 })
 

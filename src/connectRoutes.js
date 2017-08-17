@@ -284,6 +284,7 @@ export default (
           action.meta.location.kind === 'redirect'
         ) {
           skip = true
+          prevLocation = location.current
           const nextPath = pathnamePlusSearch(location.current)
           const isHistoryChange = nextPath === currentPath
 
@@ -328,7 +329,12 @@ export default (
     nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
-      attemptCallRouteThunk(dispatch, store.getState, route)
+      attemptCallRouteThunk(
+        dispatch,
+        store.getState,
+        route,
+        selectLocationState
+      )
     }
 
     if (onAfterChange) {
