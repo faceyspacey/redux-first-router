@@ -60,7 +60,7 @@
     "query-string": "^4.3.4",
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
-    "semantic-release": "^6.3.2",
+    "semantic-release": "^7.0.1",
     "travis-github-status": "^1.5.4",
     "webpack": "2.4.1"
   },
