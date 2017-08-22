@@ -122,7 +122,7 @@ to be handled manually in order to allow you to syncronously `await` its result 
 
 
 ## Options
-Lastly, let's talk about the `options` you can provide. There are 6. Here's its flow type:
+Lastly, let's talk about the `options` you can provide. Here's its flow type:
 
 ```javascript
 type Options = {
@@ -135,7 +135,8 @@ type Options = {
   onBeforeChange?: (Dispatch, GetState) => void,
   onAfterChange?: (Dispatch, GetState) => void,
   initialDispatch?: boolean, // default: true
-  onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void
+  onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void,
+  querySerializer?: {parse: Function, stringify: Function}
 }
 ```
 
@@ -148,7 +149,7 @@ type Options = {
 * **scrollTop** - the `scrollTop` option calls `window.scrollTo(0, 0)` on route changes so the user starts each page at the top. This is a *"poor man's"* scroll
 restoration, and should be fine while developing, especially if you're using Chrome. Though hash links won't fully function. See the next option for full-on scroll restoration support.
 
-* **restoreScroll** - the `restoreScroll` is a call to `redux-first-router-restore-scroll`'s restoreScroll` function, with a `shouldUpdateScroll` callback passed a single argument. See the [scroll restoration doc](./scroll-restoration.md) for more info.
+* **restoreScroll** - the `restoreScroll` is a call to `redux-first-router-restore-scroll`'s `restoreScroll` function, with a `shouldUpdateScroll` callback passed a single argument. See the [scroll restoration doc](./scroll-restoration.md) for more info.
 
 * **onAfterChange** - `onAfterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments
 like a thunk.
@@ -172,6 +173,9 @@ const options = {
   })
 }
 ```
+
+* **querySerializer** - an object with `parse` and `stringify` methods, such as the `query-string` or `qs` libraries (or anything handmade). This will be used to handle querystrings. Without this option, querystrings are ignored silently.
+
 
 > See the [Redux Navigation](./redux-navigation) docs for info on how to use *React Navigation* with this package. We think you're gonna love it :)
 
