@@ -43,7 +43,6 @@ import type {
 } from './flow-types'
 
 const __DEV__ = process.env.NODE_ENV !== 'production'
-const isClient = () => typeof window !== 'undefined'
 
 /** PRIMARY EXPORT - `connectRoutes(history, routeMap, options)`:
  *
@@ -356,7 +355,7 @@ export default (
       onAfterChange(dispatch, store.getState)
     }
 
-    if (isClient()) {
+    if (!isServer()) {
       if (kind) {
         if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
           onBackNext(dispatch, store.getState)
@@ -428,7 +427,7 @@ export default (
   ): Store => {
     // routesMap stored in location reducer will be stringified as it goes from the server to client
     // and as a result functions in route objects will be removed--here's how we insure we bring them back
-    if (isClient() && preloadedState && selectLocationState(preloadedState)) {
+    if (!isServer() && preloadedState && selectLocationState(preloadedState)) {
       selectLocationState(preloadedState).routesMap = routesMap
     }
 
@@ -469,10 +468,24 @@ export default (
       // set correct prevLocation on client that has SSR so that it will be
       // assigned to `action.meta.location.prev` and the corresponding state
       prevLocation = location
+
+      const route = routesMap[location.type]
+
+      if (typeof route === 'object' && route.confirmLeave) {
+        _confirm = createConfirm(
+          route.confirmLeave,
+          store,
+          selectLocationState,
+          history,
+          querySerializer,
+          () => (_confirm = null)
+        )
+      }
     }
 
     // update the scroll position after initial rendering of page
-    if (isClient()) setTimeout(() => _updateScroll(false))
+    if (!isServer()) setTimeout(() => _updateScroll(false))
+
     return store
   }
 
