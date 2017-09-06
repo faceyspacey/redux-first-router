@@ -246,13 +246,13 @@ describe('enhancer', () => {
       locationFOO: 'bar'
     })
 
-    const createEnhancer = () => setupAll('/first', undefined, rootReducer)
+    const createEnhancer = () => setupAll('/first', undefined, { rootReducer })
     expect(createEnhancer).toThrowError()
   })
 
   it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', () => {
     const preLoadedState = { location: { pathname: '/' } }
-    const { store } = setupAll('/first', undefined, undefined, preLoadedState)
+    const { store } = setupAll('/first', undefined, { preLoadedState })
 
     expect(store.getState().location.routesMap).toBeDefined()
   })

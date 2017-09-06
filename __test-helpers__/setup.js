@@ -4,9 +4,10 @@ import connectRoutes from '../src/connectRoutes'
 
 const setup = (
   path = '/',
-  options = { title: 'title', location: 'location' }
+  options = { title: 'title', location: 'location' },
+  routesMap
 ) => {
-  const routesMap = {
+  routesMap = routesMap || {
     FIRST: '/first',
     SECOND: '/second/:param',
     THIRD: '/third'
@@ -24,8 +25,12 @@ const setup = (
 
 export default setup
 
-export const setupAll = (path, options, rootReducer, preLoadedState) => {
-  const tools = setup(path, options)
+export const setupAll = (
+  path,
+  options,
+  { rootReducer, preLoadedState, routesMap } = {}
+) => {
+  const tools = setup(path, options, routesMap)
   const { middleware, reducer, enhancer } = tools
   const middlewares = applyMiddleware(middleware)
   const enhancers = compose(enhancer, middlewares)

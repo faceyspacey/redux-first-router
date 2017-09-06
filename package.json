@@ -1,6 +1,6 @@
 {
   "name": "redux-first-router",
-  "version": "0.0.0-development",
+  "version": "0.0.10-next",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "scripts": {
@@ -54,7 +54,7 @@
     "flow-copy-source": "^1.1.0",
     "history": "^4.5.1",
     "husky": "^0.13.2",
-    "jest": "^19.0.2",
+    "jest": "^21.0.1",
     "lint-staged": "^3.4.0",
     "prettier": "^1.2.2",
     "query-string": "^4.3.4",

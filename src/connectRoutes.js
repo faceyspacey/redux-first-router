@@ -10,6 +10,11 @@ import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
 import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
 import createThunk from './pure-utils/createThunk'
 import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
+import {
+  createConfirm,
+  confirmUI,
+  setDisplayConfirmLeave
+} from './pure-utils/confirmLeave'
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
@@ -38,6 +43,7 @@ import type {
 } from './flow-types'
 
 const __DEV__ = process.env.NODE_ENV !== 'production'
+const isClient = () => typeof window !== 'undefined'
 
 /** PRIMARY EXPORT - `connectRoutes(history, routeMap, options)`:
  *
@@ -128,8 +134,11 @@ export default (
     onBackNext,
     restoreScroll,
     initialDispatch: shouldPerformInitialDispatch = true,
-    querySerializer
+    querySerializer,
+    displayConfirmLeave
   }: Options = options
+
+  setDisplayConfirmLeave(displayConfirmLeave)
 
   const selectLocationState = typeof location === 'function'
     ? location
@@ -248,14 +257,14 @@ export default (
     let skip
     if ((route || action.type === NOT_FOUND) && action.meta) {
       // satisify flow with `action.meta` check
-      skip = _beforeRouteChange(_store, history, action)
+      skip = _beforeRouteChange(store, history, action)
     }
 
     if (skip) return
     const nextAction = next(action) // DISPATCH
 
     if (route || action.type === NOT_FOUND) {
-      _afterRouteChange(_store, route)
+      _afterRouteChange(store, route)
     }
 
     return nextAction
@@ -267,6 +276,17 @@ export default (
     action: Action
   ) => {
     const location = action.meta.location
+
+    if (_confirm) {
+      const message = _confirm(location.current)
+
+      if (message) {
+        confirmUI(message, store, action)
+        return true // skip if there's a message to show in the confirm UI
+      }
+
+      _confirm = null
+    }
 
     if (onBeforeChange) {
       let skip
@@ -336,20 +356,33 @@ export default (
       onAfterChange(dispatch, store.getState)
     }
 
-    if (typeof window !== 'undefined' && kind) {
-      if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
-        onBackNext(dispatch, store.getState)
-      }
-
-      setTimeout(() => {
-        changePageTitle(windowDocument, title)
-
-        if (scrollTop) {
-          return window.scrollTo(0, 0)
+    if (isClient()) {
+      if (kind) {
+        if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
+          onBackNext(dispatch, store.getState)
         }
 
-        _updateScroll(false)
-      })
+        setTimeout(() => {
+          changePageTitle(windowDocument, title)
+
+          if (scrollTop) {
+            return window.scrollTo(0, 0)
+          }
+
+          _updateScroll(false)
+        })
+      }
+
+      if (typeof route === 'object' && route.confirmLeave) {
+        _confirm = createConfirm(
+          route.confirmLeave,
+          store,
+          selectLocationState,
+          history,
+          querySerializer,
+          () => (_confirm = null)
+        )
+      }
     }
   }
 
@@ -395,21 +428,13 @@ export default (
   ): Store => {
     // routesMap stored in location reducer will be stringified as it goes from the server to client
     // and as a result functions in route objects will be removed--here's how we insure we bring them back
-    if (
-      typeof window !== 'undefined' &&
-      preloadedState &&
-      selectLocationState(preloadedState)
-    ) {
+    if (isClient() && preloadedState && selectLocationState(preloadedState)) {
       selectLocationState(preloadedState).routesMap = routesMap
     }
 
     const store = createStore(reducer, preloadedState, enhancer)
     const state = store.getState()
     const location = state && selectLocationState(state)
-
-    // assign to outer closure so middleware can access full middleware
-    // pipeline when dispatching additional actions in onBefore/AfterChange
-    _store = store
 
     if (!location || !location.pathname) {
       throw new Error(
@@ -447,8 +472,7 @@ export default (
     }
 
     // update the scroll position after initial rendering of page
-    if (typeof window !== 'undefined') setTimeout(() => _updateScroll(false))
-
+    if (isClient()) setTimeout(() => _updateScroll(false))
     return store
   }
 
@@ -461,9 +485,9 @@ export default (
     const nextPath = pathnamePlusSearch(location)
 
     if (nextPath !== currentPath) {
-      // THE MAGIC: parse the address bar path into a matched action
       const kind = historyAction === 'REPLACE' ? 'redirect' : historyAction
 
+      // THE MAGIC: parse the address bar path into a matched action
       const action = historyCreateAction(
         nextPath,
         routesMap,
@@ -488,6 +512,7 @@ export default (
   _selectLocationState = selectLocationState
   _options = options
   let _initialDispatch
+  let _confirm
 
   _updateScroll = (performedByUser: boolean = true) => {
     if (scrollBehavior) {
@@ -542,7 +567,6 @@ let _scrollBehavior
 let _updateScroll
 let _selectLocationState
 let _options
-let _store
 
 export const push = (pathname: string) => _history.push(pathname)
 

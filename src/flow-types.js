@@ -4,6 +4,7 @@ import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
 export type RouteString = string
+export type ConfirmLeave = (state: Object, action: Object) => ?string
 
 export type RouteObject = {
   path: string,
@@ -11,7 +12,8 @@ export type RouteObject = {
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
   thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>,
-  navKey?: string
+  navKey?: string,
+  confirmLeave?: ConfirmLeave
 }
 
 export type Route = RouteString | RouteObject
@@ -48,6 +50,11 @@ export type QuerySerializer = {
   parse: (queryString: string) => Object
 }
 
+export type DisplayConfirmLeave = (
+  message: string,
+  callback: (canLeave: boolean) => void
+) => void
+
 export type Options = {
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
@@ -63,6 +70,7 @@ export type Options = {
   restoreScroll?: History => ScrollBehavior,
   initialDispatch?: boolean,
   querySerializer?: QuerySerializer,
+  displayConfirmLeave?: DisplayConfirmLeave,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
@@ -179,6 +187,10 @@ export type GoBack = () => void
 export type GoForward = () => void
 export type Go = number => void
 export type CanGo = number => boolean
+export type BlockFunction = (
+  location: HistoryLocation,
+  action: string
+) => ?string
 
 export type History = {
   listen: Listen,
@@ -191,7 +203,8 @@ export type History = {
   entries: Array<{ pathname: string }>,
   index: number,
   length: number,
-  location: HistoryLocation
+  location: HistoryLocation,
+  block: (func: BlockFunction) => void
 }
 
 export type HistoryLocation = {
