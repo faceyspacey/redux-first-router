@@ -1,7 +1,7 @@
 // @flow
-import type { Action, ReceivedAction } from '../flow-types'
+import type { Action } from '../flow-types'
 
-export default (action: Object): boolean =>
+export default (action: Action): boolean =>
   !!(action &&
     action.meta &&
     action.meta.location &&
