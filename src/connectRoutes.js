@@ -4,6 +4,7 @@ import type { StoreEnhancer } from 'redux'
 import pathToAction from './pure-utils/pathToAction'
 import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
+import isRedirectAction from './pure-utils/isRedirectAction'
 import isServer from './pure-utils/isServer'
 import isReactNative from './pure-utils/isReactNative'
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
@@ -271,13 +272,8 @@ export default (
     if (onBeforeChange) {
       let skip
 
-      const dispatch = (action: Object) => {
-        if (
-          action &&
-          action.meta &&
-          action.meta.location &&
-          action.meta.location.kind === 'redirect'
-        ) {
+      const dispatch = (action: Action) => {
+        if (isRedirectAction(action)) {
           skip = true
           prevLocation = location.current
           const nextPath = pathnamePlusSearch(location.current)
@@ -317,28 +313,36 @@ export default (
   }
 
   const _afterRouteChange = (store: Store, route: Route) => {
-    const dispatch = store.dispatch
     const state = store.getState()
     const kind = selectLocationState(state).kind
     const title = selectTitleState(state)
     nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
+      let skip = false
+      const dispatch = (action: Action) => {
+        if (isRedirectAction(action)) {
+          skip = true
+        }
+
+        store.dispatch(action)
+      }
       attemptCallRouteThunk(
         dispatch,
         store.getState,
         route,
         selectLocationState
       )
+      if (skip) return
     }
 
     if (onAfterChange) {
-      onAfterChange(dispatch, store.getState)
+      onAfterChange(store.dispatch, store.getState)
     }
 
     if (typeof window !== 'undefined' && kind) {
       if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
-        onBackNext(dispatch, store.getState)
+        onBackNext(store.dispatch, store.getState)
       }
 
       setTimeout(() => {

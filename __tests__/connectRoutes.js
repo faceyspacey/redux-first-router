@@ -147,6 +147,23 @@ describe('middleware', () => {
     expect(onAfterChange).toHaveBeenCalled()
   })
 
+  it('skips onAfterChange on redirect', () => {
+    const redirectAction = { type: 'THIRD', payload: { param: 'bar' } }
+    const thunk = jest.fn(dispatch => {
+      const act = redirect({ ...redirectAction })
+      dispatch(act)
+    })
+    const onAfterChange = jest.fn()
+
+    const { store } = setupThunk('/first', thunk, { onAfterChange })
+    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+
+    const { location } = store.getState()
+    expect(location).toMatchObject(redirectAction)
+    expect(onAfterChange).toHaveBeenCalled()
+    expect(onAfterChange.mock.calls.length).toEqual(2)
+  })
+
   it('scrolls to top on route change when options.scrollTop === true', () => {
     const scrollTo = jest.fn()
     window.scrollTo = scrollTo
