@@ -1,8 +1,8 @@
 {
   "name": "redux-first-router",
-  "version": "0.0.11-next",
+  "version": "0.0.13-next",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/redux-first-router.js",

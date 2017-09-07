@@ -34,20 +34,28 @@ export default (
 
 const _payloadToParams = (route: RouteObject, params: Payload = {}): Params =>
   Object.keys(params).reduce((sluggifedParams, key) => {
-    if (typeof params[key] !== 'undefined') {
-      if (typeof params[key] === 'number') {
-        sluggifedParams[key] = params[key]
-      }
-      else if (route.capitalizedWords === true) {
-        sluggifedParams[key] = params[key].replace(/ /g, '-').toLowerCase()
-      }
-      else if (typeof route.toPath === 'function') {
-        sluggifedParams[key] = route.toPath(params[key], key)
-      }
-      else if (typeof params[key] === 'string') {
-        sluggifedParams[key] = params[key]
-      }
-    }
-
+    const segment = params[key]
+    sluggifedParams[key] = transformSegment(segment, route, key)
     return sluggifedParams
   }, {})
+
+const transformSegment = (segment: string, route: RouteObject, key: string) => {
+  if (typeof segment === 'string') {
+    if (segment.indexOf('/') > -1) {
+      return segment.split('/')
+    }
+
+    if (route.capitalizedWords === true) {
+      return segment.replace(/ /g, '-').toLowerCase()
+    }
+
+    if (typeof route.toPath === 'function') {
+      return route.toPath(segment, key)
+    }
+
+    return segment
+  }
+  else if (typeof segment === 'number') {
+    return segment
+  }
+}

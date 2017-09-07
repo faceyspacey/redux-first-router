@@ -20,7 +20,7 @@ let _displayConfirmLeave
 
 const clearBlocking = () => {
   _unblock && _unblock()
-  _removeConfirmBlocking()
+  _removeConfirmBlocking && _removeConfirmBlocking()
 }
 
 // This is the default `displayConfirmLeave` handler.

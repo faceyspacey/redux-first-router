@@ -177,6 +177,10 @@ export default (
   let actionToNavigation
   let navigationToAction
 
+  // this value is used to hold temp state between consecutive runs through
+  // the middleware (i.e. from new dispatches triggered within the middleware)
+  let tempVal
+
   if (options.navigators) {
     // redux-first-router-navigation reformats the `navigators` option
     // to have the navigators nested one depth deeper, so as to include
@@ -302,15 +306,11 @@ export default (
           const nextPath = pathnamePlusSearch(location.current)
           const isHistoryChange = nextPath === currentPath
 
-          // In this unique scenario, the action won't in fact be treated as a
-          // redirect since the initial action is never dispatched. If it is
-          // an action resulting from pressing the browser buttons, it will
-          // do a replace just like a redirect is meant to, since the location
-          // change is unavoidable and happens before the middleware. On the
-          // server, a redirect is always dispatched since its needed to detect
-          // whether to call `res.redirect`. In that case history is irrelevant.
+          // this insures a `history.push` is called instead of `history.replace`
+          // even though it's a redirect, since unlike route changes triggered
+          // from the browser buttons, the URL did not change yet.
           if (!isHistoryChange && !isServer()) {
-            history.push(nextPath) // this will be replaced since it's a redirect
+            tempVal = 'onBeforeChange'
           }
         }
 
@@ -404,11 +404,12 @@ export default (
       // a React Navigation feature for changing StackNavigators
       // without triggering other navigators (such as a TabNavigator)
       // to change as well. It allows you to reset hidden StackNavigators.
-      const kind = location.kind
+      const { kind } = location
       const manuallyInvoked = kind && /back|next|pop|stealth/.test(kind)
 
       if (!manuallyInvoked) {
-        const method = kind === 'redirect' ? 'replace' : 'push'
+        const isRedirect = kind === 'redirect' && tempVal !== 'onBeforeChange'
+        const method = isRedirect ? 'replace' : 'push'
         history[method](currentPath) // change address bar corresponding to matched actions from middleware
       }
     }
