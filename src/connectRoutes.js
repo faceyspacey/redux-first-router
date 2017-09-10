@@ -209,6 +209,11 @@ export default (
   */
 
   const middleware = (store: Store) => (next: Next) => (action: Object) => {
+    // We have chosen to not change routes on errors, while letting other middleware
+    // handle it. Perhaps in the future we will explicitly handle it (as an option)
+    if (action.error) return next(action)
+
+    // navigation transformation specific to React Navigation
     let navigationAction
 
     if (navigators && action.type.indexOf('Navigation/') === 0) {
@@ -222,14 +227,25 @@ export default (
 
     const route = routesMap[action.type]
 
-    if (action.error && isLocationAction(action)) {
-      if (__DEV__) {
-        console.warn(
-          'redux-first-router: location update did not dispatch as your action has an error.'
-        )
-      }
+    // We now support "routes" without paths for the purpose of dispatching thunks according
+    // to the same idiom as full-fledged routes. The purpose is uniformity of async actions.
+    // The URLs will NOT change.
+    if (typeof route === 'object' && !route.path) {
+      const nextAction = next(action)
+
+      attemptCallRouteThunk(
+        store.dispatch,
+        store.getState,
+        route,
+        selectLocationState
+      )
+
+      return nextAction
     }
-    else if (action.type === NOT_FOUND && !isLocationAction(action)) {
+
+    // START THE TYPICAL FLOW:
+
+    if (action.type === NOT_FOUND && !isLocationAction(action)) {
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
       action = middlewareCreateNotFoundAction(
         action,
@@ -264,7 +280,7 @@ export default (
     }
 
     if (skip) return
-    const nextAction = next(action) // DISPATCH
+    const nextAction = next(action)
 
     if (route || action.type === NOT_FOUND) {
       _afterRouteChange(store, route)

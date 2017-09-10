@@ -1,5 +1,5 @@
 // @flow
-import pathToRegexp from 'path-to-regexp'
+import { compileParamsToPath } from 'rudy-match-path'
 import type {
   RouteObject,
   Payload,
@@ -20,7 +20,7 @@ export default (
     ? _payloadToParams(route, action.payload)
     : action.payload
 
-  const path = pathToRegexp.compile(routePath)(params || {}) || '/'
+  const path = compileParamsToPath(routePath, params) || '/'
 
   const query =
     action.query ||

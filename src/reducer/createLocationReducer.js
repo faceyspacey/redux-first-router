@@ -14,9 +14,13 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
   state: LocationState = initialState,
   action: Action
 ): LocationState => {
+  const route = routesMap[action.type]
+
   if (
     action.type === NOT_FOUND ||
-    (routesMap[action.type] &&
+    (route &&
+      !action.error &&
+      (typeof route === 'string' || route.path) &&
       (action.meta.location.current.pathname !== state.pathname ||
         action.meta.location.current.search !== state.search ||
         action.meta.location.kind === 'load'))

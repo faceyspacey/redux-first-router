@@ -1,5 +1,5 @@
 // @flow
-import pathToRegexp from 'path-to-regexp'
+import { compilePath } from 'rudy-match-path'
 import { NOT_FOUND } from '../index'
 import objectValues from './objectValues'
 import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
@@ -19,13 +19,13 @@ export default (
 
   let i = 0
   let match
-  const keys = []
+  let keys
 
   while (!match && i < routes.length) {
-    keys.length = 0 // empty the array and start over
-    const routePath = routes[i].path || routes[i] // route may be an object containing a route or a route string itself
-    const reg = pathToRegexp(routePath, keys)
-    match = reg.exec(pathname)
+    const regPath = typeof routes[i] === 'string' ? routes[i] : routes[i].path // route may be an object containing a route or a route string itself
+    const { re, keys: k } = compilePath(regPath)
+    match = re.exec(pathname)
+    keys = k
     i++
   }
 
@@ -40,7 +40,7 @@ export default (
       routes[i].fromPath
     const type = routeTypes[i]
 
-    const payload = keys.reduce((payload, key, index) => {
+    const payload = (keys || []).reduce((payload, key, index) => {
       let value = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
 
       value = typeof value === 'string' &&

@@ -73,22 +73,17 @@ describe('middleware', () => {
     expect(action).toMatchSnapshot()
   })
 
-  it('does nothing and warns if action has error && dispatched action isLocationAction', () => {
-    console.warn = jest.fn()
-    const { store } = setupAll()
+  it('does nothing if action has error', () => {
+    const { store } = setupAll('/first')
 
     const receivedAction = {
       error: true,
-      type: 'FOO',
+      type: 'SECOND',
       meta: { location: { current: {} } }
     }
-    const action = store.dispatch(receivedAction) /*? */
-    const warnArg = console.warn.mock.calls[0][0] /*? */
-    expect(warnArg).toEqual(
-      'redux-first-router: location update did not dispatch as your action has an error.'
-    )
 
-    expect(action).toEqual(receivedAction)
+    store.dispatch(receivedAction) /*? */
+    expect(store.getState().location.type).toEqual('FIRST')
   })
 
   it('calls onBeforeChange handler on route change', () => {
@@ -344,6 +339,22 @@ describe('thunk', () => {
     // expect state matched that was dispatched in thunk
     expect(location.type).toEqual('THIRD')
     expect(location.pathname).toEqual('/third/hurray')
+  })
+
+  it('pathless route calls attemptCallRouteThunk', () => {
+    const thunk = jest.fn()
+    const routesMap = {
+      FIRST: '/',
+      PATHLESS: {
+        thunk
+      }
+    }
+
+    const { store, history } = setupAll('/', undefined, { routesMap })
+    store.dispatch({ type: 'PATHLESS' })
+
+    expect(thunk).toHaveBeenCalled()
+    expect(thunk.mock.calls[0].length).toEqual(2) // 2 args: dispatch, getState
   })
 
   it('simulate server side manual usage of thunk via `await connectRoutes().thunk` (to be used when: locationState.kind === "load" && locationState.hasSSR)', async () => {
