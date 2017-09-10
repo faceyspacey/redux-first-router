@@ -134,7 +134,8 @@ export default (
     restoreScroll,
     initialDispatch: shouldPerformInitialDispatch = true,
     querySerializer,
-    displayConfirmLeave
+    displayConfirmLeave,
+    extra
   }: Options = options
 
   setDisplayConfirmLeave(displayConfirmLeave)
@@ -149,10 +150,9 @@ export default (
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
-  const { type, payload, meta }: ReceivedAction = pathToAction(
-    currentPath,
-    routesMap
-  )
+  const initialAction = pathToAction(currentPath, routesMap)
+  const { type, payload, meta }: ReceivedAction = initialAction
+
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(
     currentPath,
     meta,
@@ -167,7 +167,8 @@ export default (
   let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
-  const thunk = createThunk(routesMap, selectLocationState)
+  const initialBag = { action: initialAction, extra }
+  const thunk = createThunk(routesMap, selectLocationState, initialBag)
   const initialDispatch = () => _initialDispatch && _initialDispatch()
 
   const windowDocument: Document = getDocument() // get plain object for window.document if server side
@@ -237,7 +238,8 @@ export default (
         store.dispatch,
         store.getState,
         route,
-        selectLocationState
+        selectLocationState,
+        { action: nextAction, extra }
       )
 
       return nextAction
@@ -283,7 +285,7 @@ export default (
     const nextAction = next(action)
 
     if (route || action.type === NOT_FOUND) {
-      _afterRouteChange(store, route)
+      _afterRouteChange(store, route, nextAction)
     }
 
     return nextAction
@@ -333,7 +335,8 @@ export default (
         store.dispatch(action)
       }
 
-      onBeforeChange(dispatch, store.getState, action)
+      const bag = { action, extra }
+      onBeforeChange(dispatch, store.getState, bag)
       if (skip) return true
     }
 
@@ -351,11 +354,12 @@ export default (
     }
   }
 
-  const _afterRouteChange = (store: Store, route: Route) => {
+  const _afterRouteChange = (store: Store, route: Route, action: Action) => {
     const dispatch = store.dispatch
     const state = store.getState()
     const kind = selectLocationState(state).kind
     const title = selectTitleState(state)
+    const bag = { action, extra }
     nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
@@ -363,18 +367,19 @@ export default (
         dispatch,
         store.getState,
         route,
-        selectLocationState
+        selectLocationState,
+        bag
       )
     }
 
     if (onAfterChange) {
-      onAfterChange(dispatch, store.getState)
+      onAfterChange(dispatch, store.getState, bag)
     }
 
     if (!isServer()) {
       if (kind) {
         if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
-          onBackNext(dispatch, store.getState)
+          onBackNext(dispatch, store.getState, bag)
         }
 
         setTimeout(() => {

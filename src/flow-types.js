@@ -6,12 +6,21 @@ export type GetState = () => Object
 export type RouteString = string
 export type ConfirmLeave = (state: Object, action: Object) => ?string
 
+export type Bag = {
+  action: ReceivedAction | Action,
+  extra: any
+}
+
 export type RouteObject = {
   path: string,
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>,
+  thunk?: (
+    dispatch: Dispatch,
+    getState: GetState,
+    bag: Bag
+  ) => any | Promise<any>,
   navKey?: string,
   confirmLeave?: ConfirmLeave
 }
@@ -60,13 +69,9 @@ export type Options = {
   location?: string | SelectLocationState,
   notFoundPath?: string,
   scrollTop?: boolean,
-  onBeforeChange?: (
-    dispatch: Dispatch,
-    getState: GetState,
-    action: Action
-  ) => void,
-  onAfterChange?: (dispatch: Dispatch, getState: GetState) => void,
-  onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
+  onBeforeChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
+  onAfterChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
+  onBackNext?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   restoreScroll?: History => ScrollBehavior,
   initialDispatch?: boolean,
   querySerializer?: QuerySerializer,
@@ -89,7 +94,8 @@ export type Options = {
       action: Object,
       navigationAction: ?NavigationAction
     }
-  }
+  },
+  extra?: any
 }
 
 export type ScrollBehavior = Object

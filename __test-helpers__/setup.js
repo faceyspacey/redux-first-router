@@ -19,6 +19,7 @@ const setup = (
     keyLength: 6
   })
 
+  options.extra = 'extra-arg'
   const tools = connectRoutes(history, routesMap, options)
   return { ...tools, routesMap }
 }

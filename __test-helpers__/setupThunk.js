@@ -13,10 +13,13 @@ export default (path = '/', thunkArg) => {
     initialEntries: [path]
   })
 
-  const { middleware, enhancer, thunk, reducer, history } = connectRoutes(
-    hist,
-    routesMap
-  )
+  const {
+    middleware,
+    enhancer,
+    thunk,
+    reducer,
+    history
+  } = connectRoutes(hist, routesMap, { extra: 'extra-arg' })
 
   const rootReducer = combineReducers({
     location: reducer

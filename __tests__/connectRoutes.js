@@ -90,13 +90,16 @@ describe('middleware', () => {
     const onBeforeChange = jest.fn()
     const { store } = setupAll('/first', { onBeforeChange })
 
-    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+    const action = { type: 'SECOND', payload: { param: 'bar' } }
+    store.dispatch(action)
 
     expect(onBeforeChange).toHaveBeenCalled()
+    expect(onBeforeChange.mock.calls[1][2].action).toMatchObject(action)
+    expect(onBeforeChange.mock.calls[1][2].extra).toEqual('extra-arg')
   })
 
   it('if onBeforeChange dispatches redirect, route changes with kind === "redirect"', () => {
-    const onBeforeChange = jest.fn((dispatch, getState, action) => {
+    const onBeforeChange = jest.fn((dispatch, getState, { action }) => {
       if (action.type !== 'SECOND') return
       const act = redirect({ type: 'THIRD' })
       dispatch(act)
@@ -116,7 +119,7 @@ describe('middleware', () => {
   it('onBeforeChange redirect on server results in 1 history entry', () => {
     window.SSRtest = true
 
-    const onBeforeChange = jest.fn((dispatch, getState, action) => {
+    const onBeforeChange = jest.fn((dispatch, getState, { action }) => {
       if (action.type !== 'SECOND') return
       const act = redirect({ type: 'THIRD' })
       dispatch(act)
@@ -138,8 +141,12 @@ describe('middleware', () => {
     const onAfterChange = jest.fn()
     const { store } = setupAll('/first', { onAfterChange })
 
-    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+    const action = { type: 'SECOND', payload: { param: 'bar' } }
+    store.dispatch(action)
     expect(onAfterChange).toHaveBeenCalled()
+    expect(onAfterChange.mock.calls[0][1]()).toEqual(store.getState())
+    expect(onAfterChange.mock.calls[1][2].action).toMatchObject(action)
+    expect(onAfterChange.mock.calls[1][2].extra).toEqual('extra-arg')
   })
 
   it('scrolls to top on route change when options.scrollTop === true', () => {
@@ -339,6 +346,10 @@ describe('thunk', () => {
     // expect state matched that was dispatched in thunk
     expect(location.type).toEqual('THIRD')
     expect(location.pathname).toEqual('/third/hurray')
+    expect(thunk).toHaveBeenCalled()
+    expect(thunk.mock.calls[0].length).toEqual(3)
+    expect(thunk.mock.calls[0][2].action).toMatchObject(action)
+    expect(thunk.mock.calls[0][2].extra).toEqual('extra-arg')
   })
 
   it('pathless route calls attemptCallRouteThunk', () => {
@@ -351,10 +362,12 @@ describe('thunk', () => {
     }
 
     const { store, history } = setupAll('/', undefined, { routesMap })
-    store.dispatch({ type: 'PATHLESS' })
+    const action = { type: 'PATHLESS' }
+    store.dispatch(action)
 
     expect(thunk).toHaveBeenCalled()
-    expect(thunk.mock.calls[0].length).toEqual(2) // 2 args: dispatch, getState
+    expect(thunk.mock.calls[0].length).toEqual(3) // 2 args: dispatch, getState
+    expect(thunk.mock.calls[0][2].action).toEqual(action)
   })
 
   it('simulate server side manual usage of thunk via `await connectRoutes().thunk` (to be used when: locationState.kind === "load" && locationState.hasSSR)', async () => {
