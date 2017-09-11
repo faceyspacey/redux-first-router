@@ -1,6 +1,6 @@
 {
   "name": "redux-first-router",
-  "version": "0.0.19-next",
+  "version": "0.0.20-next",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "scripts": {
@@ -59,6 +59,7 @@
     "prettier": "^1.2.2",
     "query-string": "^4.3.4",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.2",
     "travis-github-status": "^1.5.4",

@@ -1,5 +1,5 @@
 // @flow
-import { NOT_FOUND } from '../index'
+import { NOT_FOUND, ADD_ROUTES } from '../index'
 import isServer from '../pure-utils/isServer'
 import { nestHistory } from '../pure-utils/nestAction'
 import type {
@@ -14,6 +14,7 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
   state: LocationState = initialState,
   action: Action
 ): LocationState => {
+  routesMap = state.routesMap || routesMap
   const route = routesMap[action.type]
 
   if (
@@ -38,6 +39,12 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
       history: action.meta.location.history,
       hasSSR: state.hasSSR,
       routesMap
+    }
+  }
+  else if (action.type === ADD_ROUTES) {
+    return {
+      ...state,
+      routesMap: { ...state.routesMap, ...action.payload.routes }
     }
   }
 

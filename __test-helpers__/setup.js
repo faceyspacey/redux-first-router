@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore, compose } from 'redux'
+import reduxThunk from 'redux-thunk'
 import createHistory from 'history/createMemoryHistory'
 import connectRoutes from '../src/connectRoutes'
 
@@ -33,7 +34,7 @@ export const setupAll = (
 ) => {
   const tools = setup(path, options, routesMap)
   const { middleware, reducer, enhancer } = tools
-  const middlewares = applyMiddleware(middleware)
+  const middlewares = applyMiddleware(reduxThunk, middleware)
   const enhancers = compose(enhancer, middlewares)
 
   rootReducer =

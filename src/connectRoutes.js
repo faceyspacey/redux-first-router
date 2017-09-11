@@ -24,7 +24,7 @@ import middlewareCreateNotFoundAction
 import createLocationReducer, {
   getInitialState
 } from './reducer/createLocationReducer'
-import { NOT_FOUND } from './index'
+import { NOT_FOUND, ADD_ROUTES } from './index'
 
 import type {
   Dispatch as Next,
@@ -213,6 +213,12 @@ export default (
     // We have chosen to not change routes on errors, while letting other middleware
     // handle it. Perhaps in the future we will explicitly handle it (as an option)
     if (action.error) return next(action)
+
+    // code-splitting functionliaty to add routes after store is initially configured
+    if (action.type === ADD_ROUTES) {
+      routesMap = { ...routesMap, ...action.payload.routes }
+      return next(action)
+    }
 
     // navigation transformation specific to React Navigation
     let navigationAction
