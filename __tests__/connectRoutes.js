@@ -370,6 +370,40 @@ describe('thunk', () => {
     expect(thunk.mock.calls[0][2].action).toEqual(action)
   })
 
+  it('pathless routes do not break other real route dispatches', () => {
+    const thunk = jest.fn()
+    const routesMap = {
+      FIRST: '/',
+      SECOND: '/second',
+      PATHLESS: {
+        thunk
+      }
+    }
+
+    const { store, history } = setupAll('/', undefined, { routesMap })
+    store.dispatch({ type: 'SECOND' })
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+  })
+
+  it('pathless routes do not break history changes from real route dispatches', () => {
+    const thunk = jest.fn()
+    const routesMap = {
+      FIRST: '/',
+      SECOND: '/second',
+      PATHLESS: {
+        thunk
+      }
+    }
+
+    const { store, history } = setupAll('/', undefined, { routesMap })
+    history.push('/second')
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+  })
+
   it('simulate server side manual usage of thunk via `await connectRoutes().thunk` (to be used when: locationState.kind === "load" && locationState.hasSSR)', async () => {
     const thunk = jest.fn(async (dispatch, getState) => {
       const action = { type: 'THIRD', payload: { param: 'hurray' } }

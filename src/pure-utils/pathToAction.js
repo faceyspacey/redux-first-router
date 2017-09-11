@@ -23,6 +23,12 @@ export default (
 
   while (!match && i < routes.length) {
     const regPath = typeof routes[i] === 'string' ? routes[i] : routes[i].path // route may be an object containing a route or a route string itself
+
+    if (!regPath) {
+      i++
+      continue
+    }
+
     const { re, keys: k } = compilePath(regPath)
     match = re.exec(pathname)
     keys = k
