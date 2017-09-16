@@ -76,6 +76,8 @@ export type Options = {
   initialDispatch?: boolean,
   querySerializer?: QuerySerializer,
   displayConfirmLeave?: DisplayConfirmLeave,
+  basename?: string,
+  initialEntries?: string | Array<string>,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,

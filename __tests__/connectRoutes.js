@@ -496,10 +496,6 @@ describe('reducer', () => {
   })
 })
 
-it('connectRoutes(undefined): throw error if no history provided', () => {
-  expect(() => connectRoutes()).toThrowError()
-})
-
 it('title and location options as selector functions', () => {
   const { store } = setupAll('/first', {
     title: state => state.title,
@@ -585,4 +581,14 @@ it('QUERY: generated from pathToAction within <Link />', () => {
 
   const state = store.getState() /*? $.location */
   expect(state).toMatchSnapshot()
+})
+
+it('basename: memoryHistory can prefix paths with a basename', () => {
+  const { store, history } = setupAll('/base-foo/first', {
+    basename: '/base-foo'
+  })
+  expect(history.location.pathname).toEqual('/first')
+
+  store.dispatch({ type: 'THIRD' })
+  expect(history.location.pathname).toEqual('/third')
 })

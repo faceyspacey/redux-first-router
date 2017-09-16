@@ -1,6 +1,5 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import reduxThunk from 'redux-thunk'
-import createHistory from 'history/createMemoryHistory'
 import connectRoutes from '../src/connectRoutes'
 
 const setup = (
@@ -14,14 +13,10 @@ const setup = (
     THIRD: '/third'
   }
 
-  const history = createHistory({
-    initialEntries: [path],
-    initialIndex: 0,
-    keyLength: 6
-  })
+  options.initialEntries = path
 
   options.extra = 'extra-arg'
-  const tools = connectRoutes(history, routesMap, options)
+  const tools = connectRoutes(routesMap, options)
   return { ...tools, routesMap }
 }
 

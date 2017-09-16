@@ -86,42 +86,15 @@ export const confirmUI = (message: string, store: Store, action: Action) => {
   _displayConfirmLeave(message, cb)
 }
 
-// below is the equivalent of confirmUI triggered by the history package
-// via monkey patching :(
-// Notice they both call `_displayConfirmLeave`.
+export const getUserConfirmation = (message: string, cb: boolean => void) => {
+  _displayConfirmLeave(message, canLeave => {
+    if (canLeave) clearBlocking()
+    cb(canLeave)
+  })
+}
 
 export const setDisplayConfirmLeave = (
   displayConfirmLeave?: DisplayConfirmLeave
 ) => {
   _displayConfirmLeave = displayConfirmLeave || defaultDisplayConfirmLeave
 }
-
-const createBrowserHistory = require('history/createBrowserHistory').default
-
-// essentially we are intercepting the options passed to `createBrowserHistory`
-// and adding our own custom options which uses our own _displayConfirmLeave
-// via closures, and insures you can provide a custom one as an RFR option:
-
-require('history/createBrowserHistory').default = (options?: Object) =>
-  createBrowserHistory({
-    ...options,
-    getUserConfirmation: (message, cb) => {
-      _displayConfirmLeave(message, canLeave => {
-        if (canLeave) clearBlocking()
-        cb(canLeave)
-      })
-    }
-  })
-
-const createMemoryHistory = require('history/createMemoryHistory').default
-
-require('history/createMemoryHistory').default = (options?: Object) =>
-  createMemoryHistory({
-    ...options,
-    getUserConfirmation: (message, cb) => {
-      _displayConfirmLeave(message, canLeave => {
-        if (canLeave) clearBlocking()
-        cb(canLeave)
-      })
-    }
-  })

@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
   "dependencies": {
+    "rudy-history": "^1.0.0",
     "rudy-match-path": "^0.3.0"
   },
   "devDependencies": {

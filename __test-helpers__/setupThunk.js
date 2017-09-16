@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import createHistory from 'history/createMemoryHistory'
 import connectRoutes from '../src/connectRoutes'
 
 export default (path = '/', thunkArg) => {
@@ -9,17 +8,13 @@ export default (path = '/', thunkArg) => {
     THIRD: { path: '/third/:param' }
   }
 
-  const hist = createHistory({
-    initialEntries: [path]
-  })
-
   const {
     middleware,
     enhancer,
     thunk,
     reducer,
     history
-  } = connectRoutes(hist, routesMap, { extra: 'extra-arg' })
+  } = connectRoutes(routesMap, { extra: 'extra-arg', initialEntries: path })
 
   const rootReducer = combineReducers({
     location: reducer

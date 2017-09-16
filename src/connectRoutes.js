@@ -1,6 +1,8 @@
 // @flow
 import type { StoreEnhancer } from 'redux'
-
+import createBrowserHistory from 'rudy-history/createBrowserHistory'
+import createMemoryHistory from 'rudy-history/createMemoryHistory'
+import { stripTrailingSlash, addLeadingSlash } from 'rudy-history/PathUtils'
 import pathToAction from './pure-utils/pathToAction'
 import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
@@ -10,10 +12,13 @@ import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
 import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
 import createThunk from './pure-utils/createThunk'
 import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
+import canUseDom from './pure-utils/canUseDom'
+
 import {
   createConfirm,
   confirmUI,
-  setDisplayConfirmLeave
+  setDisplayConfirmLeave,
+  getUserConfirmation
 } from './pure-utils/confirmLeave'
 
 import historyCreateAction from './action-creators/historyCreateAction'
@@ -86,21 +91,8 @@ const __DEV__ = process.env.NODE_ENV !== 'production'
  *  near-pure utility functions.
 */
 
-export default (
-  history: History,
-  routesMap: RoutesMap = {},
-  options: Options = {}
-) => {
+export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   if (__DEV__) {
-    if (!history) {
-      throw new Error(
-        `[redux-first-router] invalid \`history\` agument. Using the 'history' package on NPM,
-        please provide a \`history\` object as a second parameter. The object will be the
-        return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
-        See: https://github.com/mjackson/history`
-      )
-    }
-
     if (options.restoreScroll && typeof options.restoreScroll !== 'function') {
       throw new Error(
         `[redux-first-router] invalid \`restoreScroll\` option. Using
@@ -112,16 +104,6 @@ export default (
   }
 
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
-
-  // very important: used for comparison to determine address bar changes
-  let currentPath: string = pathnamePlusSearch(history.location)
-
-  let prevLocation: Location = {
-    // maintains previous location state in location reducer
-    pathname: '',
-    type: '',
-    payload: {}
-  }
 
   const {
     notFoundPath = '/not-found',
@@ -139,6 +121,31 @@ export default (
   }: Options = options
 
   setDisplayConfirmLeave(displayConfirmLeave)
+
+  if (options.basename) {
+    options.basename = stripTrailingSlash(addLeadingSlash(options.basename))
+  }
+
+  const isBrowser = canUseDom && process.env.NODE_ENV !== 'test'
+  const createHistory = isBrowser ? createBrowserHistory : createMemoryHistory
+  const entries = options.initialEntries || '/' // fyi only memoryHistory needs initialEntries
+  const initialEntries = typeof entries === 'string' ? [entries] : entries
+
+  const history = createHistory({
+    basename: options.basename,
+    initialEntries,
+    getUserConfirmation
+  })
+
+  // very important: used for comparison to determine address bar changes
+  let currentPath: string = pathnamePlusSearch(history.location)
+
+  let prevLocation: Location = {
+    // maintains previous location state in location reducer
+    pathname: '',
+    type: '',
+    payload: {}
+  }
 
   const selectLocationState = typeof location === 'function'
     ? location
