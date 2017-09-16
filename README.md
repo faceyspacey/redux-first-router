@@ -18,6 +18,11 @@
 
 > **UPDATE (9/5):** you can now block user navigation via the `confirmLeave` route option (and customize its appearance via the `displayConfirmLeave` option). See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/27#issuecomment-327431413) for more info. Do `yarn upgrade redux-first-router@next` to get it.
 
+> **UPDATE (9/6):** MUCH ANTICIPATED FEATURE: you can now do all sorts of optional params in your paths, match multiple similar paths to the same type, use regexes, and use params that capture multiple segments. See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/83#issuecomment-327703226) for more info. Do `yarn upgrade redux-first-router@next` to get it.
+
+> **UPDATE (9/9):** *4 new thiings:* 1) route paths are now cached for better performance (less cycles wasted on parsing). 2) you can now do **pathless routes!**. I.e. you can use routes just for the purpose of the thunk feature, thereby achieving more uniformity across your async actions--just use RFR! Just dispatch the action type for which you have a thunk in your `routesMap` and it will be called like any other. To learn more about it: [check this example](https://gist.github.com/faceyspacey/2771c05a62a338fa6d3d23d76e6e7c5a). 3) now all thunks and callbacks (`onBeforeChange`, `onAfterChange`, etc) receive a 3rd *"bag"* argument which currently has a key for the current `action` and an `extra` key. More keys may be added later. The `extra` key is an option you provide to `connectRoutes` which is the equivalent of Redux-Thunk's *"extra argument"*. It just happens to be in our bag. That said, `onBeforeChange` used to receive just an `action` as a 3rd argument. So unfortunately this is a breaking change. Check the aforementioned example to learn more about this too. 4) lastly, now RFR skips actions with an `error` key; this should resolve a few quirks for developers using middleware that explicitly handle errors already. If it ever makes sense for RFR/Rudy to handle errors, we'll provide a robust solution. Half-assing as we've done doesn't make sense for now.
+
+
 # Redux-First Router
 
 <p align="center">
