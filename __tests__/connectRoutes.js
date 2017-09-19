@@ -1,4 +1,3 @@
-import { createStore, applyMiddleware, compose } from 'redux'
 import { createMemoryHistory } from 'history'
 import querySerializer from 'query-string'
 
@@ -6,7 +5,6 @@ import setup, { setupAll } from '../__test-helpers__/setup'
 import setupThunk from '../__test-helpers__/setupThunk'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
-import connectRoutes from '../src/connectRoutes'
 import { NOT_FOUND } from '../src/index'
 import redirect from '../src/action-creators/redirect'
 import pathToAction from '../src/pure-utils/pathToAction'
@@ -586,6 +584,16 @@ it('QUERY: generated from pathToAction within <Link />', () => {
 it('basename: memoryHistory can prefix paths with a basename', () => {
   const { store, history } = setupAll('/base-foo/first', {
     basename: '/base-foo'
+  })
+  expect(history.location.pathname).toEqual('/first')
+
+  store.dispatch({ type: 'THIRD' })
+  expect(history.location.pathname).toEqual('/third')
+})
+
+it('options.createHistory', () => {
+  const { store, history } = setupAll('/first', {
+    createHistory: createMemoryHistory
   })
   expect(history.location.pathname).toEqual('/first')
 

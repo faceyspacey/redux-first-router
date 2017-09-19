@@ -127,7 +127,8 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   }
 
   const isBrowser = canUseDom && process.env.NODE_ENV !== 'test'
-  const createHistory = isBrowser ? createBrowserHistory : createMemoryHistory
+  const standard = isBrowser ? createBrowserHistory : createMemoryHistory
+  const createHistory = options.createHistory || standard
   const entries = options.initialEntries || '/' // fyi only memoryHistory needs initialEntries
   const initialEntries = typeof entries === 'string' ? [entries] : entries
 
