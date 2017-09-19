@@ -1,7 +1,9 @@
 // @flow
 import { compilePath } from 'rudy-match-path'
-import { NOT_FOUND } from '../index'
+import { stripBasename } from 'rudy-history'
+import { NOT_FOUND, getOptions } from '../index'
 import objectValues from './objectValues'
+
 import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
 
 export default (
@@ -15,7 +17,11 @@ export default (
   const routes = objectValues(routesMap)
   const routeTypes = Object.keys(routesMap)
 
-  pathname = parts[0]
+  const options = getOptions()
+
+  pathname = options
+    ? options.basename ? stripBasename(parts[0], options.basename) : parts[0]
+    : parts[0]
 
   let i = 0
   let match

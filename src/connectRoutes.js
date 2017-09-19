@@ -120,6 +120,9 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     extra
   }: Options = options
 
+  // The options must be initialized ASAP to prevent empty options after the initial events emitted
+  _options = options
+
   setDisplayConfirmLeave(displayConfirmLeave)
 
   if (options.basename) {
@@ -558,7 +561,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   _history = history
   _scrollBehavior = scrollBehavior
   _selectLocationState = selectLocationState
-  _options = options
+
   let _initialDispatch
   let _confirm
 

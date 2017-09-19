@@ -1,4 +1,4 @@
-import { createMemoryHistory, createBrowserHistory } from 'history'
+import { createMemoryHistory, createBrowserHistory } from 'rudy-history'
 
 import setup, { setupAll } from '../__test-helpers__/setup'
 

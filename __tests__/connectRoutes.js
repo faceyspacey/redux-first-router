@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'rudy-history'
 import querySerializer from 'query-string'
 
 import setup, { setupAll } from '../__test-helpers__/setup'
