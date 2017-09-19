@@ -78,6 +78,7 @@ export type Options = {
   displayConfirmLeave?: DisplayConfirmLeave,
   basename?: string,
   initialEntries?: string | Array<string>,
+  createHistory?: (options?: Object) => History,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
