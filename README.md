@@ -26,7 +26,7 @@
 
 > **UPDATE (9/16):** There is now a `basename` option. Also, `history` is no longer passed to `connectRoutes`. The `history` package is handled internally. Yup, a breaking change, but a super quick fix in one place. Check [this comment](https://github.com/faceyspacey/redux-first-router/issues/103#issuecomment-329972201) for more info. Lastly, to upgrade now do this: `yarn upgrade redux-first-router@rudy redux-first-router-link@rudy` :) ...next and master branches are locked in forever basically and will never be touched again :). The `rudy` branch will become **Rudy**.
 
-
+> **UPDATE (9/18):** There is now a `createHistory` option. Get it from the `rudy` tag on NPM. This was specifically implemented for [people that want to use the hashHistory](https://github.com/faceyspacey/redux-first-router/issues/114#issuecomment-330499555) which I wasn't aware anyone wanted to do, plus it's also useful when testing your own implementation or forks.
 
 
 # Redux-First Router
