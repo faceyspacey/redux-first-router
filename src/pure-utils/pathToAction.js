@@ -32,30 +32,36 @@ export default (
   if (match) {
     i--
 
-    const capitalizedWords =
-      typeof routes[i] === 'object' && routes[i].capitalizedWords
-    const fromPath =
-      routes[i] &&
-      typeof routes[i].fromPath === 'function' &&
-      routes[i].fromPath
     const type = routeTypes[i]
+    let capitalizedWords = false
+    let fromPath = false
+    let noParseParams = false
+
+    // determine if we have a RouteString or RouteObject
+    if (typeof routes[i] === 'object') {
+      capitalizedWords = routes[i].capitalizedWords
+      fromPath = typeof routes[i].fromPath === 'function' && routes[i].fromPath
+      noParseParams = !!routes[i].noParseParams
+    }
 
     const payload = keys.reduce((payload, key, index) => {
       let value = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
 
-      value = typeof value === 'string' &&
-        !value.match(/^\s*$/) &&
-        !isNaN(value) // check that value is not a blank string, and is numeric
-        ? parseFloat(value) // make sure pure numbers aren't passed to reducers as strings
-        : value
+      if (!noParseParams) {
+        value = typeof value === 'string' &&
+          !value.match(/^\s*$/) &&
+          !isNaN(value) // check that value is not a blank string, and is numeric
+          ? parseFloat(value) // make sure pure numbers aren't passed to reducers as strings
+          : value
 
-      value = capitalizedWords && typeof value === 'string'
-        ? value.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
-        : value
+        value = capitalizedWords && typeof value === 'string'
+          ? value.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
+          : value
 
-      value = fromPath && typeof value === 'string'
-        ? fromPath(value, key.name)
-        : value
+        value = fromPath && typeof value === 'string'
+          ? fromPath(value, key.name)
+          : value
+      }
 
       payload[key.name] = value
 

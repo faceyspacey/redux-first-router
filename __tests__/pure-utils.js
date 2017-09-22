@@ -154,6 +154,21 @@ describe('pathToAction(path, routesMap)', () => {
     expect(action.payload.param).toEqual(69)
   })
 
+  describe('when the route has flag "noParseParams', () => {
+    it('should not parse the route', () => {
+      const path = '/info/0x12345'
+      const routesMap = {
+        INFO_NO_PARSE: {
+          path: '/info/:param',
+          noParseParams: true
+        }
+      }
+
+      const action = pathToAction(path, routesMap)
+      expect(action.payload.param).toEqual('0x12345')
+    })
+  })
+
   it('does not parse a blank string "" as NaN', () => {
     const path = '/info'
     const routesMap = {
