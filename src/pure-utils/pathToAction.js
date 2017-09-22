@@ -43,31 +43,30 @@ export default (
 
     const capitalizedWords =
       typeof routes[i] === 'object' && routes[i].capitalizedWords
+
     const fromPath =
       routes[i] &&
       typeof routes[i].fromPath === 'function' &&
       routes[i].fromPath
+
     const type = routeTypes[i]
 
     const payload = (keys || []).reduce((payload, key, index) => {
-      let value = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
+      let val = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
 
-      value = typeof value === 'string' &&
-        !value.match(/^\s*$/) &&
-        !isNaN(value) // check that value is not a blank string, and is numeric
-        ? parseFloat(value) // make sure pure numbers aren't passed to reducers as strings
-        : value
+      if (typeof val === 'string') {
+        if (fromPath) {
+          val = fromPath && fromPath(val, key.name)
+        }
+        else if (isNumber(val)) {
+          val = parseFloat(val)
+        }
+        else if (capitalizedWords) {
+          val = val.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
+        }
+      }
 
-      value = capitalizedWords && typeof value === 'string'
-        ? value.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
-        : value
-
-      value = fromPath && typeof value === 'string'
-        ? fromPath(value, key.name)
-        : value
-
-      payload[key.name] = value
-
+      payload[key.name] = val
       return payload
     }, {})
 
@@ -79,3 +78,5 @@ export default (
   const meta = { notFoundPath: pathname, ...(query ? { query } : {}) }
   return { type: NOT_FOUND, payload: {}, meta }
 }
+
+const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)

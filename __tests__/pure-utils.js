@@ -132,17 +132,20 @@ describe('pathToAction(path, routesMap)', () => {
   })
 
   it('parse path into action using route object containing fromPath() function', () => {
-    const path = '/info/foo-bar'
+    const path = '/info/foo-bar/1'
     const routesMap = {
       INFO_PARAM: {
-        path: '/info/:param/',
+        path: '/info/:param/:param2',
         fromPath: (segment, key) =>
-          `${segment} ${key}`.replace('-', ' ').toUpperCase()
+          (key === 'param2'
+            ? segment
+            : `${segment} ${key}`.replace('-', ' ').toUpperCase())
       }
     }
 
     const action = pathToAction(path, routesMap) /*? */
     expect(action.payload.param).toEqual('FOO BAR PARAM')
+    expect(action.payload.param2).toEqual('1')
   })
 
   it('parse path containing number param into action with payload value set as integer instead of string', () => {
