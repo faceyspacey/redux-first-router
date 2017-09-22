@@ -28,6 +28,7 @@
 
 > **UPDATE (9/18):** There is now a `createHistory` option. Get it from the `rudy` tag on NPM. This was specifically implemented for [people that want to use the hashHistory](https://github.com/faceyspacey/redux-first-router/issues/114#issuecomment-330499555) which I wasn't aware anyone wanted to do, plus it's also useful when testing your own implementation or forks.
 
+> **UPDATE (9/22):** BREAKING CHANGE: now `toPath` and `fromPath` on your routes are passed all path segments, even if they are numbers. No automatic transformations will happen if you provide these transformation functions. Get it **@rudy** on NPM.
 
 # Redux-First Router
 
