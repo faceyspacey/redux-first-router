@@ -120,7 +120,8 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     extra
   }: Options = options
 
-  // The options must be initialized ASAP to prevent empty options after the initial events emitted
+  // The options must be initialized ASAP to prevent empty options being
+  // received in `getOptions` after the initial events emitted
   _options = options
 
   setDisplayConfirmLeave(displayConfirmLeave)
@@ -656,4 +657,4 @@ export const updateScroll = () => _updateScroll && _updateScroll()
 export const selectLocationState = (state: Object) =>
   _selectLocationState(state)
 
-export const getOptions = (): Options => _options
+export const getOptions = (): Options => _options || {}

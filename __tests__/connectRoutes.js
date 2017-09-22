@@ -1,4 +1,3 @@
-import { createStore, applyMiddleware, compose } from 'redux'
 import { createMemoryHistory } from 'rudy-history'
 import querySerializer from 'query-string'
 
