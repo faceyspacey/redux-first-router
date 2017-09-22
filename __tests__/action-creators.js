@@ -1,4 +1,4 @@
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'rudy-history'
 
 import historyCreateAction from '../src/action-creators/historyCreateAction'
 import middlewareCreate from '../src/action-creators/middlewareCreateAction'

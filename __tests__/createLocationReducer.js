@@ -1,4 +1,4 @@
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'rudy-history'
 import createLocationReducer, {
   getInitialState
 } from '../src/reducer/createLocationReducer'

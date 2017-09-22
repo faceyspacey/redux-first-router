@@ -1,6 +1,6 @@
-import { createMemoryHistory, createBrowserHistory } from 'history'
+import { createMemoryHistory, createBrowserHistory } from 'rudy-history'
 
-import setup, { setupAll } from '../__test-helpers__/setup'
+import { setupAll } from '../__test-helpers__/setup'
 
 import isLocationAction from '../src/pure-utils/isLocationAction'
 import isServer from '../src/pure-utils/isServer'
@@ -174,6 +174,16 @@ describe('pathToAction(path, routesMap)', () => {
 
     const action = pathToAction(path, routesMap) /*? */
     expect(action.type).toEqual(NOT_FOUND)
+  })
+
+  it('strips basename if first segment in path', () => {
+    const path = '/base/foo/bar'
+    const routesMap = {
+      FOO: { path: '/foo/bar' }
+    }
+
+    const action = pathToAction(path, routesMap, undefined, '/base') /*? */
+    expect(action.type).toEqual('FOO')
   })
 })
 
