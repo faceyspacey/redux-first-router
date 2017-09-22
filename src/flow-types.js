@@ -11,7 +11,8 @@ export type RouteObject = {
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
   thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>,
-  navKey?: string
+  navKey?: string,
+  noParseParams?: boolean
 }
 
 export type Route = RouteString | RouteObject
