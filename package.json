@@ -54,7 +54,7 @@
     "flow-bin": "^0.54.1",
     "flow-copy-source": "^1.1.0",
     "husky": "^0.13.2",
-    "jest": "^21.0.1",
+    "jest": "^21.1.0",
     "lint-staged": "^3.4.0",
     "prettier": "^1.2.2",
     "query-string": "^4.3.4",
