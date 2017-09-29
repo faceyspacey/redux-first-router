@@ -13,8 +13,7 @@ import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
-import middlewareCreateNotFoundAction
-  from './action-creators/middlewareCreateNotFoundAction'
+import middlewareCreateNotFoundAction from './action-creators/middlewareCreateNotFoundAction'
 
 import createLocationReducer, {
   getInitialState
@@ -131,13 +130,15 @@ export default (
     querySerializer
   }: Options = options
 
-  const selectLocationState = typeof location === 'function'
-    ? location
-    : location ? state => state[location] : state => state.location
+  const selectLocationState =
+    typeof location === 'function'
+      ? location
+      : location ? state => state[location] : state => state.location
 
-  const selectTitleState = typeof title === 'function'
-    ? title
-    : title ? state => state[title] : state => state.title
+  const selectTitleState =
+    typeof title === 'function'
+      ? title
+      : title ? state => state[title] : state => state.title
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
@@ -221,7 +222,7 @@ export default (
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
       action = middlewareCreateNotFoundAction(
         action,
-        store.getState().location,
+        selectLocationState(store.getState()),
         prevLocation,
         history,
         notFoundPath
