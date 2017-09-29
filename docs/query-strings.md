@@ -78,6 +78,10 @@ If you would like to create your own, you can pass any object with a `stringify`
 
 Also note that the `query-string` package will produce strings for numbers. There's a [package](https://github.com/mariusc23/express-query-int) made for express that will format numbers into `ints`, which you may be interested in learning from if you want to achieve that goal. I couldn't find a general one identical to this one. If you make it, publish it to NPM and make a PR to this doc with a link to it. *I think it's a mistake that numbers aren't converted for you.*
 
+If you are using server side rendering you will need to make sure that `connectRoutes` receives proper configuration object containing full req.path including query in `initialEntries`.
+
+With Express `req.path` does not contain the query. In this case you need to use `initialEntries: [req.originalUrl]` instead of `initialEntries: [req.path]` or if your server of choice does not give you `req.originalUrl` then manually append query string to recreate full path. E.g. (#56).
+ 
 
 ## CodeSandBox
 You can test out query support on codesandbox here:
