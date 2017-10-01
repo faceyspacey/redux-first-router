@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`title and location options as selector functions 1`] = `
+Object {
+  "kind": "push",
+  "meta": Object {
+    "location": Object {
+      "current": Object {
+        "kind": "push",
+        "pathname": "/first",
+        "payload": Object {},
+        "type": "FIRST",
+      },
+      "history": undefined,
+      "kind": "push",
+      "prev": Object {
+        "kind": "load",
+        "pathname": "/first",
+        "payload": Object {},
+        "type": "FIRST",
+      },
+    },
+  },
+  "payload": Object {},
+  "type": "FIRST",
+}
+`;

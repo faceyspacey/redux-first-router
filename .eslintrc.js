@@ -27,7 +27,8 @@ module.exports = {
     test: true,
     it: true,
     expect: true,
-    beforeEach: true
+    beforeEach: true,
+    jestUtils: true
   },
   'import/resolver': {
     node: {
@@ -59,8 +60,10 @@ module.exports = {
     'no-nested-ternary': 1,
     'no-return-assign': 1,
     'no-continue': 1,
+    'arrow-body-style': 1,
+    'no-console': 1,
+    'no-return-await': 1,
     semi: [2, 'never'],
-    'no-console': [2, { allow: ['warn', 'error'] }],
     'flowtype/semi': [2, 'never'],
     'jsx-quotes': [2, 'prefer-single'],
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],

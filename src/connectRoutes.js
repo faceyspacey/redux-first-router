@@ -6,26 +6,26 @@ import { stripTrailingSlash, addLeadingSlash } from 'rudy-history/PathUtils'
 import pathToAction from './pure-utils/pathToAction'
 import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
-import isRedirectAction from './pure-utils/isRedirectAction'
 import isServer from './pure-utils/isServer'
 import isReactNative from './pure-utils/isReactNative'
-import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
-import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
-import createThunk from './pure-utils/createThunk'
+import callBeforeChange from './pure-utils/callBeforeChange'
+import callThunk, { execThunk } from './pure-utils/callThunk'
+import callAfterChange from './pure-utils/callAfterChange'
+import performPluginWork from './pure-utils/performPluginWork'
 import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
 import canUseDom from './pure-utils/canUseDom'
+import isClientLoadSSR from './pure-utils/isClientLoadSSR'
 
 import {
-  createConfirm,
-  confirmUI,
   setDisplayConfirmLeave,
-  getUserConfirmation
+  getUserConfirmation,
+  setConfirm,
+  showConfirm
 } from './pure-utils/confirmLeave'
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
-import middlewareCreateNotFoundAction
-  from './action-creators/middlewareCreateNotFoundAction'
+import middlewareCreateNotFoundAction from './action-creators/middlewareCreateNotFoundAction'
 
 import createLocationReducer, {
   getInitialState
@@ -50,7 +50,7 @@ import type {
 
 const __DEV__ = process.env.NODE_ENV !== 'production'
 
-/** PRIMARY EXPORT - `connectRoutes(history, routeMap, options)`:
+/** PRIMARY EXPORT - `connectRoutes(routeMap, options)`:
  *
  *  PURPOSE: to provide set-it-forget-it syncing of actions to the address bar and vice
  *  versa, using the pairing of action types to express-style routePaths bi-directionally.
@@ -70,7 +70,7 @@ const __DEV__ = process.env.NODE_ENV !== 'production'
  *  HOW: Firstly, the middleware listens to received actions and then converts them to the
  *  pathnames it applies to the address bar (via `history.push({ pathname })`. It also formats
  *  the action to be location-aware, primarily by including a matching pathname, which the
- *  location reducer listens to, and which user reducers can also make use of.
+ *  location reducer listens to, and which userland reducers can also make use of.
  *
  *  However, user reducers typically only need to  be concerned with the type
  *  and payload like they are accustomed to. That's the whole purpose of this package.
@@ -104,7 +104,9 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     }
   }
 
-  /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
+  /** SETUP VARIABLES (I.E. INTERNAL ENCLOSED STATE - PER INSTANCE FOR SSR!) */
+
+  // 1) OPTIONS SETUP
 
   const {
     notFoundPath = '/not-found',
@@ -112,10 +114,10 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     location,
     title,
     onBeforeChange,
+    thunk,
     onAfterChange,
     onBackNext,
     restoreScroll,
-    initialDispatch: shouldPerformInitialDispatch = true,
     querySerializer,
     displayConfirmLeave,
     extra
@@ -125,11 +127,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   // received in `getOptions` after the initial events emitted
   _options = options
 
-  setDisplayConfirmLeave(displayConfirmLeave)
-
-  if (options.basename) {
-    options.basename = stripTrailingSlash(addLeadingSlash(options.basename))
-  }
+  // 2) HISTORY PACKAGE STUFF
 
   const isBrowser = canUseDom && process.env.NODE_ENV !== 'test'
   const standard = isBrowser ? createBrowserHistory : createMemoryHistory
@@ -137,31 +135,33 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   const entries = options.initialEntries || '/' // fyi only memoryHistory needs initialEntries
   const initialEntries = typeof entries === 'string' ? [entries] : entries
 
+  if (options.basename) {
+    options.basename = stripTrailingSlash(addLeadingSlash(options.basename))
+  }
+
   const history = createHistory({
     basename: options.basename,
     initialEntries,
     getUserConfirmation
   })
 
-  // very important: used for comparison to determine address bar changes
+  // 3) SELECTORS
+
+  const selectLocationState =
+    typeof location === 'function'
+      ? location
+      : location ? state => state[location] : state => state.location
+
+  const selectTitleState =
+    typeof title === 'function'
+      ? title
+      : title ? state => state[title] : state => state.title
+
+  // 4) CURRENT PATH TRACKER (FOR COMPARISONS TO DETERMINE WHETHER TO DISPATCH OR CALL HISTORY.PUSH)
+
   let currentPath: string = pathnamePlusSearch(history.location)
 
-  let prevLocation: Location = {
-    // maintains previous location state in location reducer
-    pathname: '',
-    type: '',
-    payload: {}
-  }
-
-  const selectLocationState = typeof location === 'function'
-    ? location
-    : location ? state => state[location] : state => state.location
-
-  const selectTitleState = typeof title === 'function'
-    ? title
-    : title ? state => state[title] : state => state.title
-
-  const scrollBehavior = restoreScroll && restoreScroll(history)
+  // 5) INITIAL STATES
 
   const initialAction = pathToAction(currentPath, routesMap)
   const { type, payload, meta }: ReceivedAction = initialAction
@@ -175,25 +175,50 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     history
   )
 
-  let prevState = INITIAL_LOCATION_STATE // used only to pass  as 1st arg to `scrollBehavior.updateScroll` if used
-  let nextState = {} // used as 2nd arg to `scrollBehavior.updateScroll` and to change `document.title`
-  let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
+  // 4) PREVIOUS STATE TRACKING (ALSO FOR VARIOUS COMPARISONS, PLUS PROVIDING PREV STATE IN REDUCERS/ACTIONS)
+
+  let prevLength = history.length // used by `historyCreateAction` to calculate if moving along history.entries track in RN
+  let prevLocation: Location = {
+    // maintains previous location state in location reducer
+    pathname: '',
+    type: '',
+    payload: {},
+    kind: ''
+  }
+
+  // these values are used to hold temp state between consecutive runs through
+  // the middleware (i.e. from new dispatches triggered within the middleware)
+  const tempVals = {}
+
+  // 5) IMPORTANT EXPORTS
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
-  const initialBag = { action: initialAction, extra }
-  const thunk = createThunk(routesMap, selectLocationState, initialBag)
-  const initialDispatch = () => _initialDispatch && _initialDispatch()
+  const firstRoute = () => _firstRoute && _firstRoute()
 
-  const windowDocument: Document = getDocument() // get plain object for window.document if server side
+  // will be assigned by enhancer within `createStore` after `connectRoutes` returns
+  let _firstRoute
+
+  // 6) PLUGIN STUFF
+
+  // A) SCROLL BEAHVIOR
+  const scrollBehavior = restoreScroll && restoreScroll(history)
+
+  // B) CONFIRM LEAVE
+
+  setDisplayConfirmLeave(
+    displayConfirmLeave,
+    selectLocationState,
+    history,
+    querySerializer,
+    extra
+  )
+
+  // C) REACT NAVIGATION STUFF
 
   let navigators
   let patchNavigators
   let actionToNavigation
   let navigationToAction
-
-  // this value is used to hold temp state between consecutive runs through
-  // the middleware (i.e. from new dispatches triggered within the middleware)
-  let tempVal
 
   if (options.navigators) {
     // redux-first-router-navigation reformats the `navigators` option
@@ -218,22 +243,46 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   /** MIDDLEWARE
    *  1)  dispatches actions with location info in the `meta` key by matching the received action
    *      type + payload to express style routePaths (which also results in location reducer state updating)
-   *  2)  changes the address bar url and page title if the currentPathName changes, while
+   *  2)  changes the address bar url, page title, etc, if the currentPathName changes, while
    *      avoiding collisions with simultaneous browser history changes
   */
 
   const middleware = (store: Store) => (next: Next) => (action: Object) => {
+    // 1) DISCOVER ROUTE!
+    const route = routesMap[action.type]
+
+    // 2) SHORT-CIRCUIT SIMPLE NON-ROUTE ACTIONS:
+
+    // A) SKIP ERRORS
     // We have chosen to not change routes on errors, while letting other middleware
     // handle it. Perhaps in the future we will explicitly handle it (as an option)
     if (action.error) return next(action)
 
-    // code-splitting functionliaty to add routes after store is initially configured
+    // B) ADD ROUTES DYNAMICALLY
+    // code-splitting functionality to add routes after store is initially configured
     if (action.type === ADD_ROUTES) {
       routesMap = { ...routesMap, ...action.payload.routes }
       return next(action)
     }
 
-    // navigation transformation specific to React Navigation
+    // C) PATHLESS "ROUTES"
+    // We now support "routes" without paths for the purpose of dispatching thunks according
+    // to the same idiom as full-fledged routes. The purpose is uniformity of async actions.
+    // The URLs will NOT change.
+    if (route && !route.path && typeof route.thunk === 'function') {
+      const thunk = route.thunk
+      const nextAction = next(action)
+
+      const { dispatch, getState } = store
+      const bag = { action: nextAction, ...extra }
+      const thunkReturn = execThunk(dispatch, getState, thunk, bag)
+
+      return thunkReturn || nextAction
+    }
+
+    // 3) PLUGIN PRE-TRANSFORMS
+
+    // transformation specific to React Navigation
     let navigationAction
 
     if (navigators && action.type.indexOf('Navigation/') === 0) {
@@ -245,121 +294,127 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       ))
     }
 
-    const route = routesMap[action.type]
+    // 4) PRIMARY WORK - TRANSFORM ROUTE ACTIONS:
 
-    // We now support "routes" without paths for the purpose of dispatching thunks according
-    // to the same idiom as full-fledged routes. The purpose is uniformity of async actions.
-    // The URLs will NOT change.
-    if (typeof route === 'object' && !route.path) {
-      const nextAction = next(action)
+    if (!isLocationAction(action)) {
+      // only transform actions that aren't already transformed
+      // A) REGULAR ROUTE ACTION: generate a location-aware action
+      if (route) {
+        action = middlewareCreateAction(
+          action,
+          routesMap,
+          prevLocation,
+          history,
+          notFoundPath,
+          querySerializer
+        )
+      }
+      else if (action.type === NOT_FOUND) {
+        // B) NOT_FOUND ROUTE ACTION: user dispatched `NOT_FOUND`, so we add info to action
+        action = middlewareCreateNotFoundAction(
+          action,
+          selectLocationState(store.getState()),
+          prevLocation,
+          history,
+          notFoundPath
+        )
+      }
 
-      attemptCallRouteThunk(
-        store.dispatch,
-        store.getState,
-        route,
-        selectLocationState,
-        { action: nextAction, extra }
-      )
-
-      return nextAction
+      // C) OTHER ACTION: do nothing (let other middleware handle it)
     }
 
-    // START THE TYPICAL FLOW:
+    // 5) PLUGIN POST-TRANSFORMS
 
-    if (action.type === NOT_FOUND && !isLocationAction(action)) {
-      // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
-      action = middlewareCreateNotFoundAction(
-        action,
-        store.getState().location,
-        prevLocation,
-        history,
-        notFoundPath
-      )
-    }
-    else if (route && !isLocationAction(action)) {
-      // THE MAGIC: dispatched action matches a connected type, so we generate a
-      // location-aware action and also as a result update location reducer state.
-      action = middlewareCreateAction(
-        action,
-        routesMap,
-        prevLocation,
-        history,
-        notFoundPath,
-        querySerializer
-      )
-    }
-
+    // additional transformation specific to React Navigation
     if (navigators) {
       action = actionToNavigation(navigators, action, navigationAction, route)
     }
 
-    // DISPATCH LIFECYLE:
-    let skip
-    if ((route || action.type === NOT_FOUND) && action.meta) {
+    // 6) DISPATCH LIFECYLE:
+
+    // A) ON_BEFORE_CHANGE
+    const hasRoute = route || action.type === NOT_FOUND
+    if (hasRoute && action.meta) {
       // satisify flow with `action.meta` check
-      skip = _beforeRouteChange(store, history, action)
+      const skip = _beforeRouteChange(store, route, action, history)
+
+      // allows for redirects in `onBeforeChange` (redirect action or its thunk returned)
+      if (skip) return skip
+
+      // addressbar updated before action dispatched like in history.listener
+      _middlewareAttemptChangeUrl(action.meta.location, history)
     }
 
-    if (skip) return
+    // B) DISPATCH NEXT ACTION (STATE WILL UPDATE TO REFLECT ROUTE CHANGE)
     const nextAction = next(action)
+    let thunkReturn
 
+    // C) ON_AFTER_CHANGE, THUNKS + PLUGIN WORK
     if (route || action.type === NOT_FOUND) {
-      _afterRouteChange(store, route, nextAction)
+      thunkReturn = _afterRouteChange(store, route, nextAction)
     }
 
-    return nextAction
+    // 7) INTELLIGENT THUNK-AWARE RETURN
+    // return a route's thunk (its return) or the plain action object
+    return thunkReturn || nextAction
   }
 
   const _beforeRouteChange = (
     store: Store,
-    history: History,
-    action: Action
+    route: Route,
+    action: Action,
+    history: History
   ) => {
-    const location = action.meta.location
+    const { current } = action.meta.location
 
-    if (_confirm) {
-      const message = _confirm(location.current)
-
-      if (message) {
-        confirmUI(message, store, action)
-        return true // skip if there's a message to show in the confirm UI
-      }
-
-      _confirm = null
-    }
-
-    if (onBeforeChange) {
-      let skip
-
-      const redirectAwareDispatch = (action: Action) => {
-        if (isRedirectAction(action)) {
-          skip = true
-          prevLocation = location.current
-          const nextPath = pathnamePlusSearch(location.current)
-          const isHistoryChange = nextPath === currentPath
-
-          // this insures a `history.push` is called instead of `history.replace`
-          // even though it's a redirect, since unlike route changes triggered
-          // from the browser buttons, the URL did not change yet.
-          if (!isHistoryChange && !isServer()) {
-            tempVal = 'onBeforeChange'
-          }
-        }
-
-        store.dispatch(action)
-      }
-
-      const bag = { action, extra }
-      onBeforeChange(redirectAwareDispatch, store.getState, bag)
-      if (skip) return true
-    }
-
-    prevState = selectLocationState(store.getState())
-    prevLocation = location.current
+    // 1) SET PREVIOUS STATES FOR PROVIDING `prev` INFO + MAKING INTERNAL COMPARISONS
+    prevLocation = current
     prevLength = history.length
 
-    // addressbar updated before action dispatched like in history.listener
-    _middlewareAttemptChangeUrl(location, history)
+    // 2) SHORT-CIRCUIT IF CLIENT RECEIVED INITIAL STATE FROM SSR
+    if (isClientLoadSSR(store)) return
+
+    // 3) SHOW CONFIRM LEAVE & SHORT-CIRCUIT
+    const cantLeave = showConfirm(current, action)
+    if (cantLeave) return cantLeave
+
+    // 4) HANDLE REDIRECTS IN `onBeforeChange`
+    return callBeforeChange(
+      store,
+      route,
+      action,
+      routesMap,
+      tempVals,
+      currentPath,
+      extra,
+      onBeforeChange
+    )
+  }
+
+  const _middlewareAttemptChangeUrl = (
+    location: ActionMetaLocation,
+    history: History
+  ) => {
+    const nextPath = pathnamePlusSearch(location.current)
+
+    if (nextPath !== currentPath) {
+      currentPath = nextPath // IMPORTANT: insure history wasn't initiator
+
+      // for React Native, in the case `back` or `next` is  not called directly, `middlewareCreateAction` may emulate
+      // `history` backNext actions to support features such as scroll restoration. In those cases, we need to prevent
+      // pushing new routes on to the entries array. `stealth` is a React Navigation feature for changing StackNavigators
+      // without triggering other navigators (such as a TabNavigator) to change as well. It allows you to reset hidden StackNavigators.
+      const { kind } = location
+      const manuallyInvoked = kind && /back|next|pop|stealth/.test(kind)
+
+      if (!manuallyInvoked) {
+        const isRedirect = kind === 'redirect' && !tempVals.onBeforeChange
+        const method = isRedirect ? 'replace' : 'push'
+        history[method](currentPath) // URL CHANGES!
+
+        tempVals.onBeforeChange = false
+      }
+    }
 
     // now we can finally set the history on the action since we get its
     // value from the `history` whose value only changes after `push()`
@@ -369,94 +424,27 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   }
 
   const _afterRouteChange = (store: Store, route: Route, action: Action) => {
-    const dispatch = store.dispatch
-    const state = store.getState()
-    const kind = selectLocationState(state).kind
-    const title = selectTitleState(state)
-    const bag = { action, extra }
-    nextState = selectLocationState(state)
-
-    if (typeof route === 'object') {
-      let skip = false
-
-      const redirectAwareDispatch = (action: Action) => {
-        if (isRedirectAction(action)) skip = true
-        store.dispatch(action)
-      }
-
-      attemptCallRouteThunk(
-        redirectAwareDispatch,
-        store.getState,
-        route,
-        selectLocationState,
-        bag
-      )
-
-      if (skip) return
+    // 1) PREPARE CONFIRM LEAVE FOR FUTURE DISPATCH WHEN LEAVING ROUTE
+    if (!isServer() && typeof route === 'object' && route.confirmLeave) {
+      setConfirm(store, route.confirmLeave)
     }
 
-    if (onAfterChange) {
-      onAfterChange(dispatch, store.getState, bag)
+    // 2) SHORT-CIRCUIT IF CLIENT RECEIVED INITIAL STATE FROM SSR
+    if (isClientLoadSSR(store)) {
+      return setTimeout(_updateScroll)
     }
 
-    if (!isServer()) {
-      if (kind) {
-        if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
-          onBackNext(dispatch, store.getState, bag)
-        }
+    // 3) CALL ROUTE THUNK + ON_AFTER_CHANGE ETC
+    performPluginWork(store, bag, onBackNext, scrollTop)
 
-        setTimeout(() => {
-          changePageTitle(windowDocument, title)
+    const bag = { action, ...extra }
+    const info = callThunk(store, route, action, bag, thunk, routesMap)
+    const { skip, retrn } = info
+    if (skip) return retrn
 
-          if (scrollTop) {
-            return window.scrollTo(0, 0)
-          }
+    callAfterChange(store, route, action, bag, onAfterChange, onBackNext)
 
-          _updateScroll(false)
-        })
-      }
-
-      if (typeof route === 'object' && route.confirmLeave) {
-        _confirm = createConfirm(
-          route.confirmLeave,
-          store,
-          selectLocationState,
-          history,
-          querySerializer,
-          () => (_confirm = null)
-        )
-      }
-    }
-  }
-
-  const _middlewareAttemptChangeUrl = (
-    location: ActionMetaLocation,
-    history: History
-  ) => {
-    // IMPORTANT: insure history hasn't already handled location change
-    const nextPath = pathnamePlusSearch(location.current)
-    if (nextPath !== currentPath) {
-      // keep currentPath up to date for comparison to prevent double dispatches
-      // between BROWSER back/forward button usage vs middleware-generated actions
-      currentPath = nextPath // IMPORTANT: must happen before history.push() (to prevent double handling)
-
-      // for React Native, in the case `back` or `next` is
-      // not called directly, `middlewareCreateAction` may emulate
-      // `history` backNext actions to support features such
-      // as scroll restoration. In those cases, we need to prevent
-      // pushing new routes on to the entries array. `stealth` is
-      // a React Navigation feature for changing StackNavigators
-      // without triggering other navigators (such as a TabNavigator)
-      // to change as well. It allows you to reset hidden StackNavigators.
-      const { kind } = location
-      const manuallyInvoked = kind && /back|next|pop|stealth/.test(kind)
-
-      if (!manuallyInvoked) {
-        const isRedirect = kind === 'redirect' && tempVal !== 'onBeforeChange'
-        const method = isRedirect ? 'replace' : 'push'
-        history[method](currentPath) // change address bar corresponding to matched actions from middleware
-      }
-    }
+    return retrn
   }
 
   /** ENHANCER
@@ -470,8 +458,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     preloadedState,
     enhancer
   ): Store => {
-    // routesMap stored in location reducer will be stringified as it goes from the server to client
-    // and as a result functions in route objects will be removed--here's how we insure we bring them back
+    // insure routesMap is transferred from server to client (it cant be stringified during SSR)
     if (!isServer() && preloadedState && selectLocationState(preloadedState)) {
       selectLocationState(preloadedState).routesMap = routesMap
     }
@@ -481,56 +468,23 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     const location = state && selectLocationState(state)
 
     if (!location || !location.pathname) {
-      throw new Error(
-        `[redux-first-router] you must provide the key of the location
-        reducer state and properly assigned the location reducer to that key.`
-      )
+      throw new Error('[rudy] your location reducer is not setup.')
     }
 
     history.listen(_historyAttemptDispatchAction.bind(null, store))
 
-    // dispatch the first location-aware action so initial app state is based on the url on load
-    if (!location.hasSSR || isServer()) {
-      // only dispatch on client before SSR is setup, which passes state on to the client
-      _initialDispatch = () => {
-        const action = historyCreateAction(
-          currentPath,
-          routesMap,
-          prevLocation,
-          history,
-          'load',
-          querySerializer
-        )
+    // ACTION CREATOR: client code must call `dispatch(firstRoute())` to kick things off!
+    _firstRoute = () =>
+      historyCreateAction(
+        currentPath,
+        routesMap,
+        prevLocation,
+        history,
+        'load',
+        querySerializer
+      )
 
-        store.dispatch(action)
-      }
-
-      if (shouldPerformInitialDispatch !== false) {
-        _initialDispatch()
-      }
-    }
-    else {
-      // set correct prevLocation on client that has SSR so that it will be
-      // assigned to `action.meta.location.prev` and the corresponding state
-      prevLocation = location
-
-      const route = routesMap[location.type]
-
-      if (typeof route === 'object' && route.confirmLeave) {
-        _confirm = createConfirm(
-          route.confirmLeave,
-          store,
-          selectLocationState,
-          history,
-          querySerializer,
-          () => (_confirm = null)
-        )
-      }
-    }
-
-    // update the scroll position after initial rendering of page
-    if (!isServer()) setTimeout(() => _updateScroll(false))
-
+    _store = store
     return store
   }
 
@@ -539,9 +493,9 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     location: HistoryLocation,
     historyAction: string
   ) => {
-    // IMPORTANT: insure middleware hasn't already handled location change:
     const nextPath = pathnamePlusSearch(location)
 
+    // IMPORTANT: insure middleware hasn't already handled location change:
     if (nextPath !== currentPath) {
       const kind = historyAction === 'REPLACE' ? 'redirect' : historyAction
 
@@ -558,7 +512,6 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       )
 
       currentPath = nextPath // IMPORTANT: must happen before dispatch (to prevent double handling)
-
       store.dispatch(action) // dispatch route type + payload corresponding to browser back/forward usage
     }
   }
@@ -568,14 +521,16 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   _history = history
   _scrollBehavior = scrollBehavior
   _selectLocationState = selectLocationState
+  _selectTitleState = selectTitleState
+  let _store
 
-  let _initialDispatch
-  let _confirm
+  _updateScroll = (performedByUser: boolean = false) => {
+    if (isServer()) return
 
-  _updateScroll = (performedByUser: boolean = true) => {
     if (scrollBehavior) {
       if (!scrollBehavior.manual) {
-        scrollBehavior.updateScroll(prevState, nextState)
+        const nextLocation = _selectLocationState(_store.getState())
+        scrollBehavior.updateScroll(prevLocation, nextLocation)
       }
     }
     else if (__DEV__ && performedByUser) {
@@ -589,18 +544,16 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   /* RETURN  */
 
   return {
+    firstRoute,
     reducer,
     middleware,
     enhancer,
-    thunk,
-    initialDispatch,
+    history,
 
     // returned only for tests (not for use in application code)
     _middlewareAttemptChangeUrl,
     _afterRouteChange,
-    _historyAttemptDispatchAction,
-    windowDocument,
-    history
+    _historyAttemptDispatchAction
   }
 }
 
@@ -610,7 +563,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
  *  simulate clicking links server side--and dont do that, dispatch actions to setup state instead.
  *
  *  THE IDIOMATIC WAY: instead use https://github.com/faceyspacey/redux-first-router-link 's `<Link />`
- *  component to generate SEO friendly urls. As its `href` prop, you pass it a path, array of path
+ *  component to generate SEO friendly urls. As its `to` prop, you pass it a path, array of path
  *  segments or action, and internally it will use `connectRoutes` to change the address bar and
  *  dispatch the correct final action from middleware.
  *
@@ -624,6 +577,7 @@ let _history
 let _scrollBehavior
 let _updateScroll
 let _selectLocationState
+let _selectTitleState
 let _options
 
 export const push = (pathname: string) => _history.push(pathname)
@@ -657,9 +611,13 @@ export const history = () => _history
 
 export const scrollBehavior = () => _scrollBehavior
 
-export const updateScroll = () => _updateScroll && _updateScroll()
+export const updateScroll = (performedByUser?: boolean = true) =>
+  _updateScroll && _updateScroll(performedByUser)
+
+export const selectTitleState = (state: Object) =>
+  selectTitleState && _selectTitleState(state)
 
 export const selectLocationState = (state: Object) =>
-  _selectLocationState(state)
+  _selectLocationState && _selectLocationState(state)
 
 export const getOptions = (): Options => _options || {}

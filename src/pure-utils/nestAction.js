@@ -14,6 +14,7 @@ export default (
   const search = parts[1]
 
   return {
+    kind,
     ...action,
     ...(action.query && { query }),
     type,
@@ -26,6 +27,7 @@ export default (
           pathname: parts[0],
           type,
           payload,
+          kind,
           ...(query && { query, search })
         },
         prev,
@@ -37,10 +39,10 @@ export default (
 }
 
 export const nestHistory = (history: History) =>
-  (history.entries
+  history.entries
     ? {
       index: history.index,
       length: history.entries.length,
       entries: history.entries.slice(0) // history.entries.map(entry => entry.pathname)
     }
-    : undefined)
+    : undefined

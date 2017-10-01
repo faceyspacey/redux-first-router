@@ -1,3 +1,5 @@
+// @flow
+
 export {
   default as connectRoutes,
   push,

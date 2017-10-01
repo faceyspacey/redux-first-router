@@ -1,3 +1,5 @@
-export default typeof window !== 'undefined' &&
+import isServer from './isServer'
+
+export default typeof !isServer() &&
   window.document &&
   window.document.createElement

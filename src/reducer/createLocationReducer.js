@@ -68,7 +68,7 @@ export const getInitialState = (
     type: '',
     payload: {}
   },
-  kind: undefined,
+  kind: 'init',
   history: nestHistory(history),
   hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
   routesMap

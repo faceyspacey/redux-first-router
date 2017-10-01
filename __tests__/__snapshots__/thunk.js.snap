@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`simulate server side manual usage of thunk via \`await dispatch(firstRoute())\` 1`] = `
+Object {
+  "hasSSR": true,
+  "history": undefined,
+  "kind": "redirect",
+  "pathname": "/third",
+  "payload": Object {},
+  "prev": Object {
+    "kind": "load",
+    "pathname": "/second",
+    "payload": Object {},
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": Object {
+      "path": "/second",
+      "thunk": [Function],
+    },
+    "THIRD": Object {
+      "path": "/third",
+      "thunk": [Function],
+    },
+  },
+  "type": "THIRD",
+}
+`;

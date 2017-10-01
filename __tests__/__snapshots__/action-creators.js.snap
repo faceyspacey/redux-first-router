@@ -9,6 +9,7 @@ Object {
     "pathname": "/",
     "payload": Object {},
     "prev": Object {
+      "kind": "",
       "pathname": "",
       "payload": Object {},
       "type": "",
@@ -30,9 +31,11 @@ Object {
 
 exports[`historyCreateAction() - returns action created when history/address_bar chanages 1`] = `
 Object {
+  "kind": "pop",
   "meta": Object {
     "location": Object {
       "current": Object {
+        "kind": "pop",
         "pathname": "/info/foo",
         "payload": Object {
           "param": "foo",
@@ -57,9 +60,11 @@ Object {
 
 exports[`middlewareCreate() - [action not matched to any routePath] 1`] = `
 Object {
+  "kind": undefined,
   "meta": Object {
     "location": Object {
       "current": Object {
+        "kind": undefined,
         "pathname": "/not-found",
         "payload": Object {
           "someKey": "foo",
@@ -84,9 +89,11 @@ Object {
 
 exports[`middlewareCreate() - returns action created when middleware detects connected/matched action.type 1`] = `
 Object {
+  "kind": "push",
   "meta": Object {
     "location": Object {
       "current": Object {
+        "kind": "push",
         "pathname": "/info/foo",
         "payload": Object {
           "param": "foo",

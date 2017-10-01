@@ -1,11 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-
-import setup, { setupAll } from '../__test-helpers__/setup'
+import { setupAll } from '../__test-helpers__/setup'
 import { push, replace, back, next } from '../src/connectRoutes'
+import tempMock from '../__test-helpers__/tempMock'
 
 it('push: verify client-only `push` function calls `history.push()` using history from enclosed state', () => {
   jest.useFakeTimers()
-  const { store, history, windowDocument } = setupAll('/first')
+  const { store, history } = setupAll('/first')
 
   push('/second/bar') // THIS IS THE TARGET OF THE TEST. Notice `push` is imported
   const { location } = store.getState()
@@ -14,7 +13,7 @@ it('push: verify client-only `push` function calls `history.push()` using histor
   expect(location.pathname).toEqual('/second/bar')
 
   jest.runAllTimers() // title set in next tick
-  expect(windowDocument.title).toEqual('SECOND')
+  expect(document.title).toEqual('SECOND')
 
   expect(history.length).toEqual(2)
 })
@@ -51,17 +50,15 @@ it('back: verify client-only `back` and `next` functions call `history.goBack/go
 })
 
 it('verify window.document is not used server side', () => {
-  window.isSSR = true
+  tempMock('../src/pure-utils/isServer', () => () => true)
+  const { setupAll } = require('../__test-helpers__/setup')
+
   jest.useFakeTimers()
+  document.title = ''
 
-  const { store, windowDocument } = setupAll('/first')
-
+  const { store } = setupAll('/first')
   store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
 
-  const originalTitle = document.title
   jest.runAllTimers() // title set in next tick
-  expect(windowDocument.title).toEqual('SECOND') // fake document object used instead
-  expect(document.title).toEqual(originalTitle)
-
-  delete window.isSSR
+  expect(document.title).toEqual('')
 })

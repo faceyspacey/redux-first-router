@@ -45,7 +45,7 @@ exports[`getInitialState() returns state.history === undefined when using create
 Object {
   "hasSSR": undefined,
   "history": undefined,
-  "kind": undefined,
+  "kind": "init",
   "pathname": "/first",
   "payload": Object {},
   "prev": Object {

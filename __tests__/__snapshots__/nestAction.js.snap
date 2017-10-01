@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`nestAction(pathname, receivedAction, prevLocation, history, kind?) nestAction properly formats/nests action object 1`] = `
+exports[`nestAction properly formats/nests action object 1`] = `
 Object {
+  "kind": undefined,
   "meta": Object {
     "info": "something",
     "location": Object {
       "current": Object {
+        "kind": undefined,
         "pathname": "/path",
         "payload": Object {
           "bar": "baz",
@@ -30,7 +32,7 @@ Object {
 }
 `;
 
-exports[`nestAction(pathname, receivedAction, prevLocation, history, kind?) nestHistory formats simplified history object for action + state 1`] = `
+exports[`nestHistory formats simplified history object for action + state 1`] = `
 Object {
   "entries": Array [
     Object {

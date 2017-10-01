@@ -15,8 +15,9 @@ const setup = (
 
   options.initialEntries = path
 
-  options.extra = 'extra-arg'
+  options.extra = { arg: 'extra-arg' }
   const tools = connectRoutes(routesMap, options)
+
   return { ...tools, routesMap }
 }
 
@@ -25,10 +26,10 @@ export default setup
 export const setupAll = (
   path,
   options,
-  { rootReducer, preLoadedState, routesMap } = {}
+  { rootReducer, preLoadedState, routesMap, dispatchFirstRoute = true } = {}
 ) => {
   const tools = setup(path, options, routesMap)
-  const { middleware, reducer, enhancer } = tools
+  const { middleware, reducer, enhancer, firstRoute } = tools
   const middlewares = applyMiddleware(reduxThunk, middleware)
   const enhancers = compose(enhancer, middlewares)
 
@@ -40,6 +41,8 @@ export const setupAll = (
     }))
 
   const store = createStore(rootReducer, preLoadedState, enhancers)
+  if (dispatchFirstRoute) store.dispatch(firstRoute())
+
   return {
     ...tools,
     store

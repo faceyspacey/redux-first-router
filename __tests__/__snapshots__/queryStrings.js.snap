@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`currentPathName changes, but pathname stays the same (only query changes) 1`] = `
+Object {
+  "location": Object {
+    "hasSSR": undefined,
+    "history": undefined,
+    "kind": "push",
+    "pathname": "/first",
+    "payload": Object {},
+    "prev": Object {
+      "kind": "push",
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {
+        "baz": "69",
+        "foo": "bar",
+      },
+      "search": "foo=bar&baz=69",
+      "type": "FIRST",
+    },
+    "query": Object {
+      "baz": "70",
+      "foo": "car",
+    },
+    "routesMap": Object {
+      "FIRST": "/first",
+      "SECOND": "/second/:param",
+      "THIRD": "/third",
+    },
+    "search": "foo=car&baz=70",
+    "type": "FIRST",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatched as action.meta.query 1`] = `
+Object {
+  "location": Object {
+    "hasSSR": undefined,
+    "history": undefined,
+    "kind": "push",
+    "pathname": "/third",
+    "payload": Object {},
+    "prev": Object {
+      "kind": "push",
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {
+        "baz": 69,
+        "foo": "bar",
+      },
+      "search": "baz=69&foo=bar",
+      "type": "FIRST",
+    },
+    "query": Object {
+      "baz": 69,
+      "foo": "bar",
+    },
+    "routesMap": Object {
+      "FIRST": "/first",
+      "SECOND": "/second/:param",
+      "THIRD": "/third",
+    },
+    "search": "baz=69&foo=bar",
+    "type": "THIRD",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatched as action.payload.query 1`] = `
+Object {
+  "location": Object {
+    "hasSSR": undefined,
+    "history": undefined,
+    "kind": "back",
+    "pathname": "/third",
+    "payload": Object {},
+    "prev": Object {
+      "kind": "push",
+      "pathname": "/first",
+      "payload": Object {},
+      "type": "FIRST",
+    },
+    "routesMap": Object {
+      "FIRST": "/first",
+      "SECOND": "/second/:param",
+      "THIRD": "/third",
+    },
+    "type": "THIRD",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatched as action.query 1`] = `
+Object {
+  "location": Object {
+    "hasSSR": undefined,
+    "history": undefined,
+    "kind": "push",
+    "pathname": "/third",
+    "payload": Object {},
+    "prev": Object {
+      "kind": "push",
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {
+        "baz": 69,
+        "foo": "bar",
+      },
+      "search": "baz=69&foo=bar",
+      "type": "FIRST",
+    },
+    "query": Object {
+      "baz": 69,
+      "foo": "bar",
+    },
+    "routesMap": Object {
+      "FIRST": "/first",
+      "SECOND": "/second/:param",
+      "THIRD": "/third",
+    },
+    "search": "baz=69&foo=bar",
+    "type": "THIRD",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`generated from pathToAction within <Link /> 1`] = `
+Object {
+  "location": Object {
+    "hasSSR": undefined,
+    "history": undefined,
+    "kind": "push",
+    "pathname": "/first",
+    "payload": Object {},
+    "prev": Object {
+      "kind": "push",
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {
+        "baz": "69",
+        "foo": "bar",
+      },
+      "search": "baz=69&foo=bar",
+      "type": "FIRST",
+    },
+    "query": Object {
+      "baz": "70",
+      "foo": "car",
+    },
+    "routesMap": Object {
+      "FIRST": "/first",
+      "SECOND": "/second/:param",
+      "THIRD": "/third",
+    },
+    "search": "baz=70&foo=car",
+    "type": "FIRST",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`history.push("/path?search=foo") 1`] = `
+Object {
+  "location": Object {
+    "hasSSR": undefined,
+    "history": undefined,
+    "kind": "push",
+    "pathname": "/third",
+    "payload": Object {},
+    "prev": Object {
+      "kind": "push",
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {
+        "baz": "69",
+        "foo": "bar",
+      },
+      "search": "foo=bar&baz=69",
+      "type": "FIRST",
+    },
+    "query": Object {
+      "baz": "69",
+      "foo": "bar",
+    },
+    "routesMap": Object {
+      "FIRST": "/first",
+      "SECOND": "/second/:param",
+      "THIRD": "/third",
+    },
+    "search": "foo=bar&baz=69",
+    "type": "THIRD",
+  },
+  "title": "THIRD",
+}
+`;

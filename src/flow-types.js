@@ -4,23 +4,27 @@ import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
 export type RouteString = string
-export type ConfirmLeave = (state: Object, action: Object) => ?string
+export type ConfirmLeave = (state: Object, action: Object, bag: Bag) => ?string
 
 export type Bag = {
   action: ReceivedAction | Action,
   extra: any
 }
 
+export type StandardCallback = (
+  dispatch: Dispatch,
+  getState: GetState,
+  bag: Bag
+) => ?any | Promise<any>
+
 export type RouteObject = {
   path: string,
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (
-    dispatch: Dispatch,
-    getState: GetState,
-    bag: Bag
-  ) => any | Promise<any>,
+  onBeforeChange?: StandardCallback,
+  thunk?: StandardCallback,
+  onAfterChange?: StandardCallback,
   navKey?: string,
   confirmLeave?: ConfirmLeave
 }
@@ -69,11 +73,11 @@ export type Options = {
   location?: string | SelectLocationState,
   notFoundPath?: string,
   scrollTop?: boolean,
-  onBeforeChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
-  onAfterChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
-  onBackNext?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
+  onBeforeChange?: StandardCallback,
+  thunk?: StandardCallback,
+  onAfterChange?: StandardCallback,
+  onBackNext?: StandardCallback,
   restoreScroll?: History => ScrollBehavior,
-  initialDispatch?: boolean,
   querySerializer?: QuerySerializer,
   displayConfirmLeave?: DisplayConfirmLeave,
   basename?: string,
@@ -198,7 +202,8 @@ export type Go = number => void
 export type CanGo = number => boolean
 export type BlockFunction = (
   location: HistoryLocation,
-  action: string
+  action: string,
+  realAction?: Action
 ) => ?string
 
 export type History = {

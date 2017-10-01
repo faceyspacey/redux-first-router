@@ -25,7 +25,7 @@ it('historyCreateAction() - returns action created when history/address_bar chan
     history,
     kind
   ) /*? $.meta.location */
-
+  console.log(action)
   expect(action).toMatchSnapshot()
 
   expect(action.type).toEqual('INFO_PARAM')
@@ -38,7 +38,8 @@ it('historyCreateAction() - returns action created when history/address_bar chan
   expect(action.meta.location.current).toEqual({
     pathname,
     type: 'INFO_PARAM',
-    payload: { param: 'foo' }
+    payload: { param: 'foo' },
+    kind: 'pop'
   })
 
   expect(action.meta.location.kind).toEqual('pop')
@@ -70,7 +71,8 @@ it('middlewareCreate() - returns action created when middleware detects connecte
   expect(action.meta.location.current).toEqual({
     pathname: '/info/foo',
     type: 'INFO_PARAM',
-    payload: { param: 'foo' }
+    payload: { param: 'foo' },
+    kind: 'push'
   })
 
   expect(action.meta.location.kind).toEqual('push')

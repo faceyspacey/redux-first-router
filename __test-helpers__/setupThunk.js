@@ -1,16 +1,16 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import connectRoutes from '../src/connectRoutes'
 
-export default (path = '/', thunkArg, opts) => {
+export default (path = '/', thunkArg, opts, dispatchFirstRoute = true) => {
   const routesMap = {
     FIRST: '/first',
     SECOND: { path: '/second/:param', thunk: thunkArg },
     THIRD: { path: '/third/:param' }
   }
 
-  const options = { extra: 'extra-arg', initialEntries: path, ...opts }
+  const options = { extra: { arg: 'extra-arg' }, initialEntries: path, ...opts }
 
-  const { middleware, enhancer, thunk, reducer, history } = connectRoutes(
+  const { middleware, enhancer, reducer, history, firstRoute } = connectRoutes(
     routesMap,
     options
   )
@@ -20,8 +20,10 @@ export default (path = '/', thunkArg, opts) => {
   })
 
   const middlewares = applyMiddleware(middleware)
+  const enhancers = compose(enhancer, middlewares)
+  const store = createStore(rootReducer, enhancers)
 
-  const store = createStore(rootReducer, compose(enhancer, middlewares))
+  if (dispatchFirstRoute) store.dispatch(firstRoute())
 
-  return { store, thunk, history }
+  return { store, firstRoute, history }
 }
