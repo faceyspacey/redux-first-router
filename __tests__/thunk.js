@@ -69,11 +69,11 @@ it('middleware:callThunk does NOT call thunk + change callback if isClientLoadSS
 
   expect(beforeEnter).not.toBeCalled()
   expect(thunk).not.toBeCalled()
-  expect(onComplete).not.toBeCalled()
+  expect(onComplete).toBeCalled()
 
   expect(routeBeforeEnter).not.toBeCalled()
   expect(routeThunk).not.toBeCalled()
-  expect(routeOnComplete).not.toBeCalled()
+  expect(routeOnComplete).toBeCalled()
 })
 
 it('middleware:callThunk DOES call thunk if locationState.kind !== "load"', () => {

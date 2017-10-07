@@ -407,13 +407,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     // 1) PREPARE CONFIRM LEAVE FOR FUTURE DISPATCH WHEN LEAVING ROUTE
     setConfirm(store, route, beforeLeave) // beforeLeave
 
-    // 2) SHORT-CIRCUIT IF CLIENT RECEIVED INITIAL STATE FROM SSR
-    if (isClientLoadSSR(store)) {
-      setTimeout(_updateScroll)
-      return
-    }
-
-    // 3) CALL ROUTE THUNK + ON_AFTER_CHANGE ETC
+    // 2) CALL ROUTE THUNK + ON_AFTER_CHANGE ETC
     const bag = { action, ...extra }
     performPluginWork(
       store,

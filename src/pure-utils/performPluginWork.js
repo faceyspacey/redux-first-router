@@ -25,17 +25,18 @@ export default (
 
   const locationState = selectLocationState(state)
 
-  const routeOnLeave = typeof route === 'object' && route.onLeave
+  const { routesMap, prev } = locationState
+  const prevRoute = routesMap[prev.type]
+
+  const routeOnLeave = typeof prevRoute === 'object' && prevRoute.onLeave
   const routeOnEnter = typeof route === 'object' && route.onEnter
 
   if (onLeave) {
-    const onLeaveBag = { ...bag, action: locationState.prev }
-    onLeave(dispatch, getState, onLeaveBag)
+    onLeave(dispatch, getState, bag)
   }
 
   if (routeOnLeave) {
-    const onLeaveBag = { ...bag, action: locationState.prev }
-    routeOnLeave(dispatch, getState, onLeaveBag)
+    routeOnLeave(dispatch, getState, bag)
   }
 
   if (onEnter) {

@@ -6,37 +6,35 @@ it('calls route onLeave handler on route change', () => {
   const onLeave = jest.fn()
 
   const routesMap = {
-    FIRST: '/first',
-    SECOND: {
-      path: '/second',
+    FIRST: {
+      path: '/first',
       onLeave
     },
+    SECOND: '/second',
     THIRD: '/third'
   }
 
   const { store } = setupAll('/first', undefined, { routesMap })
-  const prevType = store.getState().location.type
 
   const action = { type: 'SECOND' }
   store.dispatch(action)
 
   expect(onLeave).toHaveBeenCalled()
   expect(onLeave.mock.calls[0][1]()).toEqual(store.getState())
-  expect(onLeave.mock.calls[0][2].action.type).toEqual(prevType)
+  expect(onLeave.mock.calls[0][2].action).toMatchObject(action)
   expect(onLeave.mock.calls[0][2].arg).toEqual('extra-arg')
 })
 
 it('calls global onLeave handler on route change', () => {
   const onLeave = jest.fn()
   const { store } = setupAll('/first', { onLeave })
-  const prevType = store.getState().location.type
 
   const action = { type: 'SECOND', payload: { param: 'bar' } }
   store.dispatch(action)
 
   expect(onLeave).toHaveBeenCalled()
   expect(onLeave.mock.calls[0][1]()).toEqual(store.getState())
-  expect(onLeave.mock.calls[1][2].action.type).toEqual(prevType)
+  expect(onLeave.mock.calls[1][2].action).toMatchObject(action)
   expect(onLeave.mock.calls[1][2].arg).toEqual('extra-arg')
 })
 

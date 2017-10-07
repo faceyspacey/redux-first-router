@@ -2,6 +2,7 @@
 import redirect from '../action-creators/redirect'
 import callOnComplete from './callOnComplete'
 import isPromise from './isPromise'
+import isClientLoadSSR from './isClientLoadSSR'
 
 import type {
   Route,
@@ -9,8 +10,6 @@ import type {
   Bag,
   Action,
   RoutesMap,
-  Dispatch,
-  GetState,
   StandardCallback
 } from '../flow-types'
 
@@ -26,7 +25,7 @@ export default (
   const routeThunk = typeof route === 'object' && route.thunk
   const hasThunk = thunk || routeThunk
 
-  if (!hasThunk) {
+  if (!hasThunk || isClientLoadSSR(store)) {
     callOnComplete(store, route, action, bag, onComplete)
     return
   }
