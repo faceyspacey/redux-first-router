@@ -11,23 +11,23 @@ import type {
   Action
 } from '../flow-types'
 
-// NOTE ON RETURNING PROMISES FROM `onBeforeChange`:
-// A) `onBeforeChange` when returning a promise triggers the action that does
+// NOTE ON RETURNING PROMISES FROM `beforeEnter`:
+// A) `beforeEnter` when returning a promise triggers the action that does
 // not redirect triggers the action to be re-dispatched and run through the
 // middleware a second time after the promise resolves!
 //
-// B) `onBeforeChange` should not be called again if it's the second time running
+// B) `beforeEnter` should not be called again if it's the second time running
 // through the middleware.
 //
-// C) WHY? This prevents infinite looping through the `onBeforeChange` handler.
+// C) WHY? This prevents infinite looping through the `beforeEnter` handler.
 //
-// D) If it does redirect, we need to run `onBeforeChange` on the next route too,
+// D) If it does redirect, we need to run `beforeEnter` on the next route too,
 // but it's different because we are starting fresh!. We can run through it all again.
 //
 // SUMMARY: Essentially we are using the middleware to re-dispatch the
-// same action after it passes any filters the user might put in `onBeforeChange`.
+// same action after it passes any filters the user might put in `beforeEnter`.
 // The first time through, the action passes through the `if` block guarded with
-// `!tempVals.onBeforeChangeHappenedAlready`, and the second time, it skips over and
+// `!tempVals.beforeEnterHappenedAlready`, and the second time, it skips over and
 // picks up where it left off.
 
 export default (
@@ -38,15 +38,15 @@ export default (
   tempVals: Object,
   currentPath: string,
   extra: any,
-  onBeforeChange: ?StandardCallback
-) => {
-  const routeBeforeChange = typeof route === 'object' && route.onBeforeChange
-  const hasBeforeChange = onBeforeChange || routeBeforeChange
+  beforeEnter: ?StandardCallback
+): Promise<any> | void => {
+  const routeBeforeChange = typeof route === 'object' && route.beforeEnter
+  const hasBeforeChange = beforeEnter || routeBeforeChange
   const { dispatch, getState } = store
   const location = action.meta.location
 
-  // A) CALL ONBEFORECHANGE IF FIRST TIME ACTION GOES THROUGHT MIDDLEWARE
-  if (hasBeforeChange && !tempVals.onBeforeChangeHappenedAlready) {
+  // A) CALL BEFORE_ENTER IF FIRST TIME ACTION GOES THROUGHT MIDDLEWARE
+  if (hasBeforeChange && !tempVals.beforeEnterHappenedAlready) {
     let skip
     let redirectThunkReturn
 
@@ -65,7 +65,7 @@ export default (
         // even though it's a redirect, since unlike route changes triggered
         // from the browser buttons or redirects in thunks, the URL did not change yet.
         if (!isHistoryChange && !isServer()) {
-          tempVals.onBeforeChange = true
+          tempVals.beforeEnter = true
         }
 
         // will SKIP this action and dispatch will return thunk of new route
@@ -75,32 +75,30 @@ export default (
       return dispatch(action)
     }
 
-    // 2) PREPAPRE + CALL `onBeforeChange`
+    // 2) PREPAPRE + CALL `beforeEnter`
     const bag = { action, ...extra }
-    const p1 = onBeforeChange && onBeforeChange(disp, getState, bag)
+    const p1 = beforeEnter && beforeEnter(disp, getState, bag)
     const p2 = routeBeforeChange && routeBeforeChange(disp, getState, bag)
     const promAll = (isPromise(p1) || isPromise(p2)) && Promise.all([p1, p2])
 
-    // 3) HANDLE ONBEFORECHANGE PROMISES
+    // 3) HANDLE BEFORE_ENTER PROMISES
     if (promAll) {
-      const retrn: Promise<*> = promAll.then(() => {
+      return promAll.then(() => {
         if (!skip) {
-          tempVals.onBeforeChangeHappenedAlready = true
+          tempVals.beforeEnterHappenedAlready = true
           return dispatch(action) // no redirect, but we need to perform re-dispatch
         }
 
         return redirectThunkReturn // redirect during promise resolution; resolve to new route
       })
-
-      return retrn
     }
 
-    // 3) HANDLE ONBEFORECHANGE THAT DOESN'T RETURN PROMISES
+    // 3) HANDLE BEFORE_ENTER THAT DOESN'T RETURN PROMISES
     if (skip) return redirectThunkReturn // short-circuit if a redirect
   }
 
-  // B) SKIP ABOVE IF 2ND TIME THROUGH MIDDLEWARE (BY RETURNING NOTHING, MIDDLEWARE CONTINUES TO THUNK/ONAFTERCHANGE/ETC)
+  // B) SKIP ABOVE IF 2ND TIME THROUGH MIDDLEWARE (BY RETURNING NOTHING, MIDDLEWARE CONTINUES TO THUNK/ON_COMPLETE/ETC)
   // iv. the re-dispatch will pick up below this line the 2nd time through the middleware
   // NOTE: this will also prevent the re-dispatch if a user quickly triggers the dispatch of another route, which is the correct UE
-  tempVals.onBeforeChangeHappenedAlready = false
+  tempVals.beforeEnterHappenedAlready = false
 }

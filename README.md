@@ -16,7 +16,7 @@
 
 > **UPDATE (8/15):** you can now add additional routes as part of your code splitting strategy. See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/62#issuecomment-322558836) for more info.
 
-> **UPDATE (9/5):** you can now block user navigation via the `confirmLeave` route option (and customize its appearance via the `displayConfirmLeave` option). See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/27#issuecomment-327431413) for more info. Do `yarn upgrade redux-first-router@next` to get it.
+> **UPDATE (9/5):** you can now block user navigation via the `beforeLeave` route option (and customize its appearance via the `displayConfirmLeave` option). See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/27#issuecomment-327431413) for more info. Do `yarn upgrade redux-first-router@next` to get it.
 
 > **UPDATE (9/6):** MUCH ANTICIPATED FEATURE: you can now do all sorts of optional params in your paths, match multiple similar paths to the same type, use regexes, and use params that capture multiple segments. See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/83#issuecomment-327703226) for more info. Do `yarn upgrade redux-first-router@next` to get it.
 

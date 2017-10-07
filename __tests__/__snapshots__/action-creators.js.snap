@@ -15,6 +15,7 @@ Object {
       "type": "",
     },
     "routesMap": Object {
+      "@@redux-first-router/NOT_FOUND": Object {},
       "BAR": Object {
         "path": "/bar",
       },

@@ -1,19 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`simulate server side manual usage of thunk via \`await dispatch(firstRoute())\` 1`] = `
+exports[`CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called 1`] = `
+Object {
+  "kind": "load",
+  "meta": Object {
+    "location": Object {
+      "current": Object {
+        "kind": "load",
+        "pathname": "/second",
+        "payload": Object {},
+        "type": "SECOND",
+      },
+      "history": undefined,
+      "kind": "load",
+      "prev": Object {
+        "kind": "",
+        "pathname": "",
+        "payload": Object {},
+        "type": "",
+      },
+    },
+  },
+  "payload": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called 2`] = `
+Object {
+  "hasSSR": undefined,
+  "history": undefined,
+  "kind": "load",
+  "pathname": "/second",
+  "payload": Object {},
+  "prev": Object {
+    "kind": "",
+    "pathname": "",
+    "payload": Object {},
+    "type": "",
+  },
+  "routesMap": Object {
+    "@@redux-first-router/NOT_FOUND": Object {},
+    "FIRST": "/first",
+    "SECOND": Object {
+      "beforeEnter": [Function],
+      "path": "/second",
+      "thunk": [Function],
+    },
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`SERVER: await dispatch(firstRoute()) -- redirected route not dispatched 1`] = `
+Object {
+  "kind": "redirect",
+  "meta": Object {
+    "location": Object {
+      "kind": "redirect",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`SERVER: await dispatch(firstRoute()) -- redirected route not dispatched 2`] = `
 Object {
   "hasSSR": true,
   "history": undefined,
-  "kind": "redirect",
-  "pathname": "/third",
+  "kind": "load",
+  "pathname": "/second",
   "payload": Object {},
   "prev": Object {
-    "kind": "load",
-    "pathname": "/second",
+    "kind": "",
+    "pathname": "",
     "payload": Object {},
-    "type": "SECOND",
+    "type": "",
   },
   "routesMap": Object {
+    "@@redux-first-router/NOT_FOUND": Object {},
     "FIRST": "/first",
     "SECOND": Object {
       "path": "/second",
@@ -24,6 +89,6 @@ Object {
       "thunk": [Function],
     },
   },
-  "type": "THIRD",
+  "type": "SECOND",
 }
 `;

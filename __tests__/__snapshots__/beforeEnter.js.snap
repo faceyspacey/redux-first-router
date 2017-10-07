@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`beforeEnter redirect on server results does not update state, and instead returns action (i.e. short-circuits) 1`] = `
+Object {
+  "hasSSR": true,
+  "history": undefined,
+  "kind": "load",
+  "pathname": "/first",
+  "payload": Object {},
+  "prev": Object {
+    "kind": "",
+    "pathname": "",
+    "payload": Object {},
+    "type": "",
+  },
+  "routesMap": Object {
+    "@@redux-first-router/NOT_FOUND": Object {},
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+    "THIRD": "/third",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`beforeEnter redirect on server results does not update state, and instead returns action (i.e. short-circuits) 2`] = `
+Object {
+  "kind": "redirect",
+  "meta": Object {
+    "location": Object {
+      "kind": "redirect",
+    },
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`if beforeEnter dispatches redirect, route changes with kind === "redirect" 1`] = `
+Object {
+  "hasSSR": undefined,
+  "history": undefined,
+  "kind": "redirect",
+  "pathname": "/third",
+  "payload": Object {},
+  "prev": Object {
+    "kind": "push",
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "routesMap": Object {
+    "@@redux-first-router/NOT_FOUND": Object {},
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+    "THIRD": "/third",
+  },
+  "type": "THIRD",
+}
+`;

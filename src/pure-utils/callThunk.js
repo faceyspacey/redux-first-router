@@ -1,6 +1,7 @@
 // @flow
-import { updateScroll } from '../connectRoutes'
 import redirect from '../action-creators/redirect'
+import callOnComplete from './callOnComplete'
+import isPromise from './isPromise'
 
 import type {
   Route,
@@ -18,13 +19,17 @@ export default (
   route: Route,
   action: Action,
   bag: Bag,
+  routesMap: RoutesMap,
   thunk: ?StandardCallback,
-  routesMap: RoutesMap
-): {
-  skip?: boolean,
-  retrn?: any
-} => {
-  if (typeof route !== 'object' || typeof route.thunk !== 'function') return {}
+  onComplete: ?StandardCallback
+): Promise<any> | any => {
+  const routeThunk = typeof route === 'object' && route.thunk
+  const hasThunk = thunk || routeThunk
+
+  if (!hasThunk) {
+    callOnComplete(store, route, action, bag, onComplete)
+    return
+  }
 
   const { dispatch, getState } = store
 
@@ -44,28 +49,22 @@ export default (
     return dispatch(action)
   }
 
-  const thunkReturn = execThunk(disp, getState, route.thunk, bag)
+  const p1 = thunk && thunk(disp, getState, bag)
+  const p2 = routeThunk && routeThunk(disp, getState, bag)
+  const promAll = (isPromise(p1) || isPromise(p2)) && Promise.all([p1, p2])
 
-  // A) If no redirect/skip, return result of regular thunk
-  // B) If there was a redirect, do the same for the redirect action:
-  const retrn = !skip ? thunkReturn : redirectThunkReturn
+  if (promAll) {
+    return promAll.then(([globalThunkReturn, routeThunkReturn]) => {
+      if (!skip) {
+        callOnComplete(store, route, action, bag, onComplete)
+        return routeThunkReturn || globalThunkReturn
+      }
 
-  return { skip, retrn }
-}
-
-export const execThunk = (
-  dispatch: Dispatch,
-  getState: GetState,
-  thunk: StandardCallback,
-  bag: Bag
-) => {
-  if (typeof thunk !== 'function') return
-
-  const thunkReturn = thunk(dispatch, getState, bag)
-
-  if (thunkReturn && typeof thunkReturn.next === 'function') {
-    thunkReturn.next(updateScroll)
+      return redirectThunkReturn
+    })
   }
 
-  return thunkReturn
+  // return whatever synchronous thunks return
+  // if nothing, the action itself will be returned from `dispatch` as always
+  return p2 || p1
 }

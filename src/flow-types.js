@@ -4,10 +4,14 @@ import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
 export type RouteString = string
-export type ConfirmLeave = (state: Object, action: Object, bag: Bag) => ?string
+export type BeforeLeave = (
+  state: Object,
+  action: Object,
+  bag: Bag
+) => any | Promise<any>
 
 export type Bag = {
-  action: ReceivedAction | Action,
+  action: ReceivedAction | Action | Location,
   extra: any
 }
 
@@ -18,15 +22,18 @@ export type StandardCallback = (
 ) => ?any | Promise<any>
 
 export type RouteObject = {
-  path: string,
+  path?: string,
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  onBeforeChange?: StandardCallback,
+  beforeLeave?: BeforeLeave,
+  beforeEnter?: StandardCallback,
+  onEnter?: StandardCallback,
+  onLeave?: StandardCallback,
   thunk?: StandardCallback,
-  onAfterChange?: StandardCallback,
-  navKey?: string,
-  confirmLeave?: ConfirmLeave
+  onComplete?: StandardCallback,
+  onFail?: StandardCallback,
+  navKey?: string
 }
 
 export type Route = RouteString | RouteObject
@@ -63,44 +70,46 @@ export type QuerySerializer = {
   parse: (queryString: string) => Object
 }
 
-export type DisplayConfirmLeave = (
-  message: string,
-  callback: (canLeave: boolean) => void
-) => void
+export type ActionToNavigation = (
+  navigators: Navigators,
+  action: Object,
+  navigationAction: ?NavigationAction,
+  route: ?Route
+) => Object
+
+export type NavigationToAction = (
+  navigators: Navigators,
+  store: Store,
+  routesMap: RoutesMap,
+  action: Object
+) => {
+  action: Object,
+  navigationAction: ?NavigationAction
+}
 
 export type Options = {
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
   notFoundPath?: string,
   scrollTop?: boolean,
-  onBeforeChange?: StandardCallback,
+  beforeLeave?: BeforeLeave,
+  beforeEnter?: StandardCallback,
+  onEnter?: StandardCallback,
+  onLeave?: StandardCallback,
   thunk?: StandardCallback,
-  onAfterChange?: StandardCallback,
+  onComplete?: StandardCallback,
+  onFail?: StandardCallback,
   onBackNext?: StandardCallback,
   restoreScroll?: History => ScrollBehavior,
   querySerializer?: QuerySerializer,
-  displayConfirmLeave?: DisplayConfirmLeave,
   basename?: string,
   initialEntries?: string | Array<string>,
   createHistory?: (options?: Object) => History,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
-    actionToNavigation: (
-      navigators: Navigators,
-      action: Object,
-      navigationAction: ?NavigationAction,
-      route: ?Route
-    ) => Object,
-    navigationToAction: (
-      navigators: Navigators,
-      store: Store,
-      routesMap: RoutesMap,
-      action: Object
-    ) => {
-      action: Object,
-      navigationAction: ?NavigationAction
-    }
+    actionToNavigation: ActionToNavigation,
+    navigationToAction: NavigationToAction
   },
   extra?: any
 }
@@ -168,7 +177,8 @@ export type Action = {
   payload: Payload,
   meta: Meta,
   query?: Object,
-  navKey?: ?string
+  navKey?: ?string,
+  kind?: ?string
 }
 
 export type ReceivedAction = {
@@ -194,17 +204,13 @@ export type ReceivedActionMeta = {
 
 export type Listener = (HistoryLocation, HistoryAction) => void
 export type Listen = Listener => void
-export type Push = (pathname: string) => void
-export type Replace = (pathname: string) => void
+export type Push = (pathname: string, state?: any) => void
+export type Replace = (pathname: string, state?: any) => void
 export type GoBack = () => void
 export type GoForward = () => void
 export type Go = number => void
 export type CanGo = number => boolean
-export type BlockFunction = (
-  location: HistoryLocation,
-  action: string,
-  realAction?: Action
-) => ?string
+export type BlockFunction = (location: HistoryLocation) => any | Promise<any>
 
 export type History = {
   listen: Listen,

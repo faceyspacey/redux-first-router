@@ -5,6 +5,7 @@ export default (action: Action, kind: string) => {
   action.meta = action.meta || {}
   action.meta.location = action.meta.location || {}
   action.meta.location.kind = kind
+  action.kind = kind
 
   return action
 }

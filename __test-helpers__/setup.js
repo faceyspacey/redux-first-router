@@ -26,11 +26,21 @@ export default setup
 export const setupAll = (
   path,
   options,
-  { rootReducer, preLoadedState, routesMap, dispatchFirstRoute = true } = {}
+  {
+    rootReducer,
+    preLoadedState,
+    routesMap,
+    dispatchFirstRoute = true,
+    additionalMiddleware = store => next => action => next(action)
+  } = {}
 ) => {
   const tools = setup(path, options, routesMap)
   const { middleware, reducer, enhancer, firstRoute } = tools
-  const middlewares = applyMiddleware(reduxThunk, middleware)
+  const middlewares = applyMiddleware(
+    reduxThunk,
+    middleware,
+    additionalMiddleware
+  )
   const enhancers = compose(enhancer, middlewares)
 
   rootReducer =

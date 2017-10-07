@@ -1,22 +1,24 @@
 // @flow
 import type { Route, Store, Bag, StandardCallback, Action } from '../flow-types'
+import { updateScroll } from '../connectRoutes'
 
 export default (
   store: Store,
   route: Route,
   action: Action,
   bag: Bag,
-  onAfterChange: ?StandardCallback,
-  onBackNext: ?StandardCallback
+  onComplete: ?StandardCallback
 ) => {
-  const routeAfterChange = typeof route === 'object' && route.onAfterChange
+  const routeAfterChange = typeof route === 'object' && route.onComplete
   const { dispatch, getState } = store
 
-  if (onAfterChange) {
-    onAfterChange(dispatch, getState, bag)
+  if (onComplete) {
+    onComplete(dispatch, getState, bag)
   }
 
   if (routeAfterChange) {
     routeAfterChange(dispatch, getState, bag)
   }
+
+  updateScroll(false)
 }

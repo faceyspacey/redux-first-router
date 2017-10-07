@@ -5,13 +5,32 @@ import tempMock from '../__test-helpers__/tempMock'
 
 import redirect from '../src/action-creators/redirect'
 
-it('middleware:callThunk', () => {
+it('middleware:callThunk global', () => {
   const thunk = jest.fn(dispatch => {
     dispatch({ type: 'NON_ROUTE_ACTION' })
   })
   const { store } = setupThunk('/second/bar', thunk)
   expect(thunk).toBeCalled()
   expect(store.getState().location.type).toEqual('SECOND') // route stays the same (i.e. no redirect)
+})
+
+it('middleware:callThunk route', () => {
+  const thunk = jest.fn()
+
+  const routesMap = {
+    FIRST: '/first',
+    SECOND: {
+      path: '/second',
+      thunk
+    },
+    THIRD: '/third'
+  }
+
+  const { store } = setupAll('/first', undefined, { routesMap })
+  store.dispatch({ type: 'SECOND' })
+
+  expect(thunk).toBeCalled()
+  expect(store.getState().location.type).toEqual('SECOND')
 })
 
 it('middleware:callThunk does NOT call thunk + change callback if isClientLoadSSR', () => {
@@ -21,26 +40,26 @@ it('middleware:callThunk does NOT call thunk + change callback if isClientLoadSS
   const { setupAll } = require('../__test-helpers__/setup')
 
   const thunk = jest.fn()
-  const onBeforeChange = jest.fn()
-  const onAfterChange = jest.fn()
+  const beforeEnter = jest.fn()
+  const onComplete = jest.fn()
 
   const routeThunk = jest.fn()
-  const routeOnBeforeChange = jest.fn()
-  const routeOnAfterChange = jest.fn()
+  const routeBeforeEnter = jest.fn()
+  const routeOnComplete = jest.fn()
 
   const routesMap = {
     FIRST: {
       path: '/first',
-      onBeforeChange: routeOnBeforeChange,
+      beforeEnter: routeBeforeEnter,
       thunk: routeThunk,
-      onAfterChange: routeOnAfterChange
+      onComplete: routeOnComplete
     }
   }
 
   const options = {
-    onBeforeChange,
+    beforeEnter,
     thunk,
-    onAfterChange
+    onComplete
   }
 
   const setupOptions = { routesMap, dispatchFirstRoute: false }
@@ -48,13 +67,13 @@ it('middleware:callThunk does NOT call thunk + change callback if isClientLoadSS
 
   store.dispatch(firstRoute())
 
-  expect(onBeforeChange).not.toBeCalled()
+  expect(beforeEnter).not.toBeCalled()
   expect(thunk).not.toBeCalled()
-  expect(onAfterChange).not.toBeCalled()
+  expect(onComplete).not.toBeCalled()
 
-  expect(routeOnBeforeChange).not.toBeCalled()
+  expect(routeBeforeEnter).not.toBeCalled()
   expect(routeThunk).not.toBeCalled()
-  expect(routeOnAfterChange).not.toBeCalled()
+  expect(routeOnComplete).not.toBeCalled()
 })
 
 it('middleware:callThunk DOES call thunk if locationState.kind !== "load"', () => {
@@ -146,18 +165,19 @@ it('pathless routes do not break history changes from real route dispatches', ()
   expect(type).toEqual('SECOND')
 })
 
-it('simulate server side manual usage of thunk via `await dispatch(firstRoute())`', async () => {
+it('CLIENT SPA: await dispatch(firstRoute())', async () => {
   jest.resetModules()
-  jest.dontMock('../src/pure-utils/isClientLoadSSR') // weird jest bug from above mocking of same module. you shouldnt need to do this after restModules
-  jest.doMock('../src/pure-utils/isServer', () => () => true)
+  jest.doMock('../src/pure-utils/isClientLoadSSR', () => () => false)
+  jest.doMock('../src/pure-utils/isServer', () => () => false)
+
   const { setupAll } = require('../__test-helpers__/setup')
 
-  const thunk1 = jest.fn(async (dispatch, getState) => {
+  const thunk1 = jest.fn(async dispatch => {
     await fakeAsyncWork()
     return dispatch({ type: 'THIRD' }) // key ingredient: users must insure their thunks await a redirect dispatch so its thunk (if also async) is awaited
   })
 
-  const thunk2 = jest.fn(async (dispatch, getState) => {
+  const thunk2 = jest.fn(async dispatch => {
     await fakeAsyncWork()
     return 'thunk2called'
   })
@@ -172,10 +192,10 @@ it('simulate server side manual usage of thunk via `await dispatch(firstRoute())
   const { store, firstRoute } = setupAll('/second', undefined, setupOptions)
 
   // verify first route (and its thunk) has not been dispatched
-  const { location } = store.getState() /*? */
+  const { location } = store.getState()
   expect(location.pathname).toEqual('/second') // pathname will be correct because initialReducer state
 
-  // but the thunk which rediects won't be called until now
+  // but the thunk which redirects won't be called until now
   const res = await store.dispatch(firstRoute())
   const state = store.getState()
 
@@ -183,13 +203,99 @@ it('simulate server side manual usage of thunk via `await dispatch(firstRoute())
   expect(state.location.pathname).toEqual('/third')
   expect(state.location.type).toEqual('THIRD')
   expect(state.location.kind).toEqual('redirect')
-  expect(state.location).toMatchSnapshot()
-  // verify second thunk is also called. This is dependent on the user returning their first thunk's
-  // dispatch, which isnt required, unless they want the result in the following line like here:
-  expect(res).toEqual('thunk2called')
+  // expect(state.location).toMatchSnapshot()
 
   expect(thunk1.mock.calls.length).toEqual(1)
   expect(thunk2.mock.calls.length).toEqual(1)
+
+  // verify second thunk is also called. This is dependent on the user returning their first thunk's
+  // dispatch, which isnt required, unless they want the result in the following line like here:
+  expect(res).toEqual('thunk2called')
+})
+
+it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async () => {
+  jest.resetModules()
+  jest.doMock('../src/pure-utils/isClientLoadSSR', () => () => true)
+  jest.doMock('../src/pure-utils/isServer', () => () => false)
+
+  const { setupAll } = require('../__test-helpers__/setup')
+
+  const thunk = jest.fn()
+  const beforeEnter = jest.fn()
+
+  const routesMap = {
+    FIRST: '/first',
+    SECOND: { path: '/second', thunk, beforeEnter }
+  }
+
+  const setupOptions = { routesMap, dispatchFirstRoute: false }
+  const { store, firstRoute } = setupAll('/second', undefined, setupOptions)
+
+  // verify first route (and its thunk) has not been dispatched
+  const { location } = store.getState()
+  expect(location.pathname).toEqual('/second') // pathname will be correct because initialReducer state
+  expect(location.kind).toEqual('init')
+
+  // but the thunk which redirects won't be called until now
+  const action = await store.dispatch(firstRoute())
+  const state = store.getState()
+
+  expect(state.location.kind).toEqual('load')
+
+  expect(beforeEnter.mock.calls.length).toEqual(0) // no beforeEnter called!
+  expect(thunk.mock.calls.length).toEqual(0) // no thunks called!
+
+  expect(action.kind).toEqual('load')
+  expect(action.type).toEqual('SECOND')
+
+  expect(action).toMatchSnapshot()
+  expect(state.location).toMatchSnapshot()
+})
+
+it('SERVER: await dispatch(firstRoute()) -- redirected route not dispatched', async () => {
+  jest.resetModules()
+  jest.dontMock('../src/pure-utils/isClientLoadSSR')
+  jest.doMock('../src/pure-utils/isServer', () => () => true)
+  const { setupAll } = require('../__test-helpers__/setup')
+
+  const thunk1 = jest.fn(async dispatch => {
+    await fakeAsyncWork()
+    return dispatch({ type: 'THIRD' })
+  })
+
+  const thunk2 = jest.fn()
+
+  const routesMap = {
+    FIRST: '/first',
+    SECOND: { path: '/second', thunk: thunk1 },
+    THIRD: { path: '/third', thunk: thunk2 }
+  }
+
+  const setupOptions = { routesMap, dispatchFirstRoute: false }
+  const { store, firstRoute } = setupAll('/second', undefined, setupOptions)
+
+  // verify first route (and its thunk) has not been dispatched
+  const { location } = store.getState()
+  expect(location.pathname).toEqual('/second') // pathname will be correct because initialReducer state
+
+  // but the thunk which redirects won't be called until now
+  const action = await store.dispatch(firstRoute())
+  const state = store.getState()
+
+  // since it was a redirect on the server, the state will never change to that of the redirect
+  expect(state.location.pathname).toEqual('/second')
+  expect(state.location.type).toEqual('SECOND')
+  expect(state.location.kind).toEqual('load')
+
+  expect(thunk1.mock.calls.length).toEqual(1)
+  expect(thunk2.mock.calls.length).toEqual(0) // second thunk never called!
+
+  // instead, we get the action with enough info to short-circuit and call `res.redirect` on the server
+  expect(action.kind).toEqual('redirect')
+  expect(action.type).toEqual('THIRD')
+
+  expect(action).toMatchSnapshot()
+  expect(state.location).toMatchSnapshot()
 })
 
 it('dispatched thunk performs redirect with history.replace(path)', () => {

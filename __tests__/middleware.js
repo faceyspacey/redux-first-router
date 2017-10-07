@@ -5,7 +5,6 @@ import redirect from '../src/action-creators/redirect'
 it('dispatches location-aware action, changes address bar + document.title', () => {
   const { store, history } = setupAll()
 
-  expect(document.title).toEqual('')
   expect(history.location.pathname).toEqual('/')
   expect(store.getState().location).toMatchSnapshot()
 
@@ -15,8 +14,25 @@ it('dispatches location-aware action, changes address bar + document.title', () 
   store.getState() /*? */
 
   expect(history.location.pathname).toEqual('/second/bar')
+  expect(document.title).toEqual('SECOND')
   expect(action).toMatchSnapshot()
   expect(store.getState()).toMatchSnapshot()
+})
+
+it('dont double dispatch the same action', () => {
+  const jestNext = jest.fn((next, action) => next(action))
+  const additionalMiddleware = store => next => action => jestNext(next, action)
+  const { store, history } = setupAll('/second/bar', undefined, {
+    additionalMiddleware
+  })
+
+  expect(history.location.pathname).toEqual('/second/bar')
+  expect(store.getState().location).toMatchSnapshot()
+
+  const payload = { param: 'bar' }
+  store.dispatch({ type: 'SECOND', payload })
+
+  expect(jestNext).toHaveBeenCalledTimes(1)
 })
 
 it('not matched received action dispatches the action as normal with no changes', () => {

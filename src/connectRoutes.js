@@ -8,20 +8,15 @@ import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
 import isServer from './pure-utils/isServer'
 import isReactNative from './pure-utils/isReactNative'
-import callBeforeChange from './pure-utils/callBeforeChange'
-import callThunk, { execThunk } from './pure-utils/callThunk'
-import callAfterChange from './pure-utils/callAfterChange'
+import callBeforeEnter from './pure-utils/callBeforeEnter'
+import callThunk from './pure-utils/callThunk'
+import isRedirect from './pure-utils/isRedirect'
 import performPluginWork from './pure-utils/performPluginWork'
 import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
 import canUseDom from './pure-utils/canUseDom'
 import isClientLoadSSR from './pure-utils/isClientLoadSSR'
 
-import {
-  setDisplayConfirmLeave,
-  getUserConfirmation,
-  setConfirm,
-  showConfirm
-} from './pure-utils/confirmLeave'
+import callBeforeLeave, { setConfirm } from './pure-utils/callBeforeLeave'
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
@@ -44,7 +39,6 @@ import type {
   LocationState,
   History,
   HistoryLocation,
-  Document,
   Store
 } from './flow-types'
 
@@ -113,19 +107,24 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     scrollTop = false,
     location,
     title,
-    onBeforeChange,
+    beforeLeave,
+    beforeEnter,
+    onEnter,
+    onLeave,
     thunk,
-    onAfterChange,
+    onComplete,
     onBackNext,
     restoreScroll,
     querySerializer,
-    displayConfirmLeave,
     extra
   }: Options = options
 
   // The options must be initialized ASAP to prevent empty options being
   // received in `getOptions` after the initial events emitted
   _options = options
+
+  // create an empty route for
+  routesMap[NOT_FOUND] = routesMap[NOT_FOUND] || {}
 
   // 2) HISTORY PACKAGE STUFF
 
@@ -141,8 +140,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
   const history = createHistory({
     basename: options.basename,
-    initialEntries,
-    getUserConfirmation
+    initialEntries
   })
 
   // 3) SELECTORS
@@ -203,17 +201,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   // A) SCROLL BEAHVIOR
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
-  // B) CONFIRM LEAVE
-
-  setDisplayConfirmLeave(
-    displayConfirmLeave,
-    selectLocationState,
-    history,
-    querySerializer,
-    extra
-  )
-
-  // C) REACT NAVIGATION STUFF
+  // B) REACT NAVIGATION STUFF
 
   let navigators
   let patchNavigators
@@ -248,58 +236,57 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   */
 
   const middleware = (store: Store) => (next: Next) => (action: Object) => {
-    // 1) DISCOVER ROUTE!
+    if (isServer() && isRedirect(action)) return action
+
+    // 1) PLUGIN PRE-TRANSFORMS
+
+    // transformation specific to React Navigation
+    let navigationAction
+
+    if (navigators && action.type.indexOf('Navigation/') === 0) {
+      const tools = navigationToAction(navigators, store, routesMap, action)
+      navigationAction = tools.navigationAction
+      action = tools.action
+    }
+
+    // 2) DISCOVER ROUTE!
     const route = routesMap[action.type]
 
-    // 2) SHORT-CIRCUIT SIMPLE NON-ROUTE ACTIONS:
+    // 3) SHORT-CIRCUIT SIMPLE NON-ROUTE ACTIONS:
 
-    // A) SKIP ERRORS
-    // We have chosen to not change routes on errors, while letting other middleware
-    // handle it. Perhaps in the future we will explicitly handle it (as an option)
-    if (action.error) return next(action)
-
-    // B) ADD ROUTES DYNAMICALLY
+    // A) ADD ROUTES DYNAMICALLY
     // code-splitting functionality to add routes after store is initially configured
     if (action.type === ADD_ROUTES) {
       routesMap = { ...routesMap, ...action.payload.routes }
       return next(action)
     }
 
+    // B) SKIP ERRORS AND NON-ROUTE ACTIONS
+    // We have chosen to not change routes on errors, while letting other middleware
+    // handle it. Perhaps in the future we will explicitly handle it (as an option)
+    if (action.error || !route) return next(action)
+
     // C) PATHLESS "ROUTES"
     // We now support "routes" without paths for the purpose of dispatching thunks according
     // to the same idiom as full-fledged routes. The purpose is uniformity of async actions.
     // The URLs will NOT change.
-    if (route && !route.path && typeof route.thunk === 'function') {
+    if (!route.path && typeof route.thunk === 'function') {
       const thunk = route.thunk
       const nextAction = next(action)
 
       const { dispatch, getState } = store
       const bag = { action: nextAction, ...extra }
-      const thunkReturn = execThunk(dispatch, getState, thunk, bag)
+      const thunkReturn = thunk(dispatch, getState, bag)
 
       return thunkReturn || nextAction
     }
 
-    // 3) PLUGIN PRE-TRANSFORMS
-
-    // transformation specific to React Navigation
-    let navigationAction
-
-    if (navigators && action.type.indexOf('Navigation/') === 0) {
-      ({ navigationAction, action } = navigationToAction(
-        navigators,
-        store,
-        routesMap,
-        action
-      ))
-    }
-
     // 4) PRIMARY WORK - TRANSFORM ROUTE ACTIONS:
 
-    if (!isLocationAction(action)) {
-      // only transform actions that aren't already transformed
+    // only transform actions that aren't already transformed
+    if (route && !isLocationAction(action)) {
       // A) REGULAR ROUTE ACTION: generate a location-aware action
-      if (route) {
+      if (action.type !== NOT_FOUND) {
         action = middlewareCreateAction(
           action,
           routesMap,
@@ -309,7 +296,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
           querySerializer
         )
       }
-      else if (action.type === NOT_FOUND) {
+      else {
         // B) NOT_FOUND ROUTE ACTION: user dispatched `NOT_FOUND`, so we add info to action
         action = middlewareCreateNotFoundAction(
           action,
@@ -320,7 +307,8 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
         )
       }
 
-      // C) OTHER ACTION: do nothing (let other middleware handle it)
+      // avoid double dispatch-ing the same route
+      if (action.meta.location.current.pathname === currentPath) return action
     }
 
     // 5) PLUGIN POST-TRANSFORMS
@@ -330,33 +318,25 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       action = actionToNavigation(navigators, action, navigationAction, route)
     }
 
-    // 6) DISPATCH LIFECYLE:
+    // 6) PRIMARY WORK - DISPATCH LIFECYLE:
 
-    // A) ON_BEFORE_CHANGE
-    const hasRoute = route || action.type === NOT_FOUND
-    if (hasRoute && action.meta) {
-      // satisify flow with `action.meta` check
-      const skip = _beforeRouteChange(store, route, action, history)
+    // A) ON_BEFORE_CHANGE + BEFORE_LEAVE (allows for redirets + route blocking respectively)
+    const skip = _beforeRouteChange(store, route, action, history)
+    if (skip) return skip === true ? false : skip // skip contains new redirected action + thunk's return
 
-      // allows for redirects in `onBeforeChange` (redirect action or its thunk returned)
-      if (skip) return skip
+    // B) UPDATE ADDRESS BAR (note: just like in history listener, we do this before updating state)
+    _middlewareAttemptChangeUrl(action.meta.location, history)
 
-      // addressbar updated before action dispatched like in history.listener
-      _middlewareAttemptChangeUrl(action.meta.location, history)
-    }
-
-    // B) DISPATCH NEXT ACTION (STATE WILL UPDATE TO REFLECT ROUTE CHANGE)
+    // C) DISPATCH NEXT ACTION (state will update to reflect route change)
     const nextAction = next(action)
-    let thunkReturn
 
-    // C) ON_AFTER_CHANGE, THUNKS + PLUGIN WORK
-    if (route || action.type === NOT_FOUND) {
-      thunkReturn = _afterRouteChange(store, route, nextAction)
-    }
+    // D) ON_AFTER_CHANGE, THUNKS + PLUGIN WORK
+    const thunkReturn = _afterRouteChange(store, route, nextAction)
 
-    // 7) INTELLIGENT THUNK-AWARE RETURN
-    // return a route's thunk (its return) or the plain action object
-    return thunkReturn || nextAction
+    // E) INTELLIGENT THUNK-AWARE RETURN (return a route thunk's return or the plain action object)
+    return typeof thunkReturn === 'object' && thunkReturn.then
+      ? thunkReturn.then(res => res || nextAction)
+      : thunkReturn || nextAction
   }
 
   const _beforeRouteChange = (
@@ -375,11 +355,11 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     if (isClientLoadSSR(store)) return
 
     // 3) SHOW CONFIRM LEAVE & SHORT-CIRCUIT
-    const cantLeave = showConfirm(current, action)
-    if (cantLeave) return cantLeave
+    const block = callBeforeLeave(current)
+    if (block) return block // skip
 
-    // 4) HANDLE REDIRECTS IN `onBeforeChange`
-    return callBeforeChange(
+    // 4) HANDLE REDIRECTS IN `beforeEnter`
+    return callBeforeEnter(
       store,
       route,
       action,
@@ -387,7 +367,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       tempVals,
       currentPath,
       extra,
-      onBeforeChange
+      beforeEnter
     )
   }
 
@@ -408,11 +388,11 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       const manuallyInvoked = kind && /back|next|pop|stealth/.test(kind)
 
       if (!manuallyInvoked) {
-        const isRedirect = kind === 'redirect' && !tempVals.onBeforeChange
+        const isRedirect = kind === 'redirect' && !tempVals.beforeEnter
         const method = isRedirect ? 'replace' : 'push'
         history[method](currentPath) // URL CHANGES!
 
-        tempVals.onBeforeChange = false
+        tempVals.beforeEnter = false
       }
     }
 
@@ -425,26 +405,26 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
   const _afterRouteChange = (store: Store, route: Route, action: Action) => {
     // 1) PREPARE CONFIRM LEAVE FOR FUTURE DISPATCH WHEN LEAVING ROUTE
-    if (!isServer() && typeof route === 'object' && route.confirmLeave) {
-      setConfirm(store, route.confirmLeave)
-    }
+    setConfirm(store, route, beforeLeave) // beforeLeave
 
     // 2) SHORT-CIRCUIT IF CLIENT RECEIVED INITIAL STATE FROM SSR
     if (isClientLoadSSR(store)) {
-      return setTimeout(_updateScroll)
+      setTimeout(_updateScroll)
+      return
     }
 
     // 3) CALL ROUTE THUNK + ON_AFTER_CHANGE ETC
-    performPluginWork(store, bag, onBackNext, scrollTop)
-
     const bag = { action, ...extra }
-    const info = callThunk(store, route, action, bag, thunk, routesMap)
-    const { skip, retrn } = info
-    if (skip) return retrn
-
-    callAfterChange(store, route, action, bag, onAfterChange, onBackNext)
-
-    return retrn
+    performPluginWork(
+      store,
+      route,
+      bag,
+      scrollTop,
+      onBackNext,
+      onEnter,
+      onLeave
+    )
+    return callThunk(store, route, action, bag, routesMap, thunk, onComplete)
   }
 
   /** ENHANCER
@@ -580,9 +560,11 @@ let _selectLocationState
 let _selectTitleState
 let _options
 
-export const push = (pathname: string) => _history.push(pathname)
+export const push = (pathname: string, state?: any) =>
+  _history.push(pathname, state)
 
-export const replace = (pathname: string) => _history.replace(pathname)
+export const replace = (pathname: string, state?: any) =>
+  _history.replace(pathname, state)
 
 export const back = () => _history.goBack()
 

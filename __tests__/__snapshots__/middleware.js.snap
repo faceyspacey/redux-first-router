@@ -14,6 +14,7 @@ Object {
     "type": "",
   },
   "routesMap": Object {
+    "@@redux-first-router/NOT_FOUND": Object {},
     "FIRST": "/first",
     "SECOND": "/second/:param",
     "THIRD": "/third",
@@ -69,6 +70,7 @@ Object {
       "type": "@@redux-first-router/NOT_FOUND",
     },
     "routesMap": Object {
+      "@@redux-first-router/NOT_FOUND": Object {},
       "FIRST": "/first",
       "SECOND": "/second/:param",
       "THIRD": "/third",
@@ -76,6 +78,31 @@ Object {
     "type": "SECOND",
   },
   "title": "SECOND",
+}
+`;
+
+exports[`dont double dispatch the same action 1`] = `
+Object {
+  "hasSSR": undefined,
+  "history": undefined,
+  "kind": "load",
+  "pathname": "/second/bar",
+  "payload": Object {
+    "param": "bar",
+  },
+  "prev": Object {
+    "kind": "",
+    "pathname": "",
+    "payload": Object {},
+    "type": "",
+  },
+  "routesMap": Object {
+    "@@redux-first-router/NOT_FOUND": Object {},
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+    "THIRD": "/third",
+  },
+  "type": "SECOND",
 }
 `;
 

@@ -17,6 +17,11 @@ export default (
   const route = routesMap[action.type]
   const routePath = typeof route === 'object' ? route.path : route
   const params = _payloadToParams(route, action.payload)
+
+  if (typeof routePath !== 'string') {
+    throw new Error('[rudy] invalid route path')
+  }
+
   const path = compileParamsToPath(routePath, params) || '/'
 
   const query =
