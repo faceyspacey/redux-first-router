@@ -16,9 +16,10 @@ export default (
 ): string => {
   const route = routesMap[action.type]
   const routePath = typeof route === 'object' ? route.path : route
-  const params = typeof route === 'object'
-    ? _payloadToParams(route, action.payload)
-    : action.payload
+  const params =
+    typeof route === 'object'
+      ? _payloadToParams(route, action.payload)
+      : action.payload
 
   const path = pathToRegexp.compile(routePath)(params || {}) || '/'
 
@@ -45,6 +46,12 @@ const _payloadToParams = (route: RouteObject, params: Payload = {}): Params =>
         sluggifedParams[key] = route.toPath(params[key], key)
       }
       else if (typeof params[key] === 'string') {
+        sluggifedParams[key] = params[key]
+      }
+      else if (
+        typeof params[key] === 'object' &&
+        Array.isArray(params[key])
+      ) {
         sluggifedParams[key] = params[key]
       }
     }
