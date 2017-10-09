@@ -198,6 +198,20 @@ describe('actionToPath(action, routesMap)', () => {
     expect(path).toEqual('/info/foo')
   })
 
+  it('parse action payload with array param into multiple path segments: /info/foo/bar/baz', () => {
+    const action = {
+      type: 'INFO_PARAM',
+      payload: { param: ['foo', 'bar', 'baz'] }
+    }
+    const routesMap = {
+      INFO: '/info',
+      INFO_PARAM: '/info/:param*'
+    }
+
+    const path = actionToPath(action, routesMap) /*? */
+    expect(path).toEqual('/info/foo/bar/baz')
+  })
+
   it('parse action into path with numerical payload key value: /info/69', () => {
     const action = { type: 'INFO_PARAM', payload: { param: 69 } }
     const routesMap = {
