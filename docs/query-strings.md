@@ -70,7 +70,7 @@ To enable query string serialization you must provide a `querySerializer` option
 ```js
 import queryString from 'query-string'
 
-connectRoutes(routesMap, {
+connectRoutes(history, routesMap, {
   querySerializer: queryString
 })
 ```
