@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
   "dependencies": {
-    "path-to-regexp": "^1.7.0"
+    "path-to-regexp": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
