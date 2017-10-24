@@ -57,7 +57,7 @@
     "jest": "^19.0.2",
     "lint-staged": "^3.4.0",
     "prettier": "^1.2.2",
-    "query-string": "^4.3.4",
+    "query-string": "^5.0.1",
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.2",
