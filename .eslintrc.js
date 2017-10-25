@@ -68,7 +68,7 @@ module.exports = {
     'jsx-quotes': [2, 'prefer-single'],
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
     'spaced-comment': [2, 'always', { markers: ['?'] }],
-    'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],
+    'arrow-parens': [1, 'as-needed', { requireForBlockBody: false }],
     'brace-style': [2, 'stroustrup'],
     'no-unused-expressions': [
       2,

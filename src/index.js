@@ -31,8 +31,7 @@ export { default as setKind } from './pure-utils/setKind'
 export { default as addRoutes } from './action-creators/addRoutes'
 
 export type {
-  RouteString,
-  RouteObject,
+  RouteInput,
   Route,
   RoutesMap,
   Routes,

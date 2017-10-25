@@ -3,7 +3,7 @@ import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
-export type RouteString = string
+
 export type BeforeLeave = (
   state: Object,
   action: Object,
@@ -21,7 +21,7 @@ export type StandardCallback = (
   bag: Bag
 ) => ?any | Promise<any>
 
-export type RouteObject = {
+export type Route = {
   path?: string,
   capitalizedWords?: boolean,
   toPath?: (param: string, key?: string) => string,
@@ -36,7 +36,11 @@ export type RouteObject = {
   navKey?: string
 }
 
-export type Route = RouteString | RouteObject
+export type RouteInput = string | Route
+
+export type RoutesMapInput = {
+  [key: string]: RouteInput
+}
 
 export type RoutesMap = {
   [key: string]: Route

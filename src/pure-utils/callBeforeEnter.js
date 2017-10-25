@@ -52,7 +52,8 @@ export default (
 
     // 1) CREATE REDIRECT-AWARE DISPATCH
     const disp = (action: Action) => {
-      const isRedirect = routesMap[action.type]
+      const route = routesMap[action.type]
+      const isRedirect = typeof route === 'object' && route.path
 
       // automatically treat dispatch to another route as a redirect
       if (isRedirect) {

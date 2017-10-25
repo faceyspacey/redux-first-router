@@ -237,6 +237,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
   const middleware = (store: Store) => (next: Next) => (action: Object) => {
     if (isServer() && isRedirect(action)) return action
+    // if (isLocationAction(action)) return next(action)
 
     // 1) PLUGIN PRE-TRANSFORMS
 
@@ -329,6 +330,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
     // C) DISPATCH NEXT ACTION (state will update to reflect route change)
     const nextAction = next(action)
+    // const nextAction = store.dispatch(action)
 
     // D) ON_AFTER_CHANGE, THUNKS + PLUGIN WORK
     const thunkReturn = _afterRouteChange(store, route, nextAction)
