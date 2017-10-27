@@ -1,7 +1,12 @@
 export default (listeners = []) => ({
-  notify: bag => {
+  notify: (bag, notify = true) => {
     bag.commit = once(bag.commit)
-    listeners.forEach(listener => listener(bag))
+
+    if (notify) {
+      // listeners.forEach(listener => listener(bag))
+      return listeners[0](bag)
+    }
+
     return bag
   },
   add: fn => {
@@ -10,7 +15,7 @@ export default (listeners = []) => ({
     let isActive = true
 
     const listener = (...args) => {
-      if (isActive) fn(...args)
+      if (isActive) return fn(...args)
     }
 
     listeners.push(listener)

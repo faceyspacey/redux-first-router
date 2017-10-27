@@ -20,7 +20,7 @@ export default class History {
 
   // API:
 
-  push(path, state = {}) {
+  push(path, state = {}, notify = true) {
     const key = createKey()
     const location = createLocation(path, state, key, this.location)
 
@@ -29,7 +29,7 @@ export default class History {
     const kind = back ? 'back' : next ? 'next' : 'push'
 
     if (/back|next/.test(kind)) {
-      return this.jump(back ? -1 : 1, state)
+      return this.jump(back ? -1 : 1, state, notify)
     }
 
     const index = back ? this.index - 1 : this.index + 1
@@ -42,13 +42,13 @@ export default class History {
       this._updateHistory(nextState)
     }
 
-    return this.listeners.notify({ history: this, nextHistory, commit })
+    return this.listeners.notify({ nextHistory, commit }, notify)
   }
 
-  redirect(path, state = {}, merge = true) {
+  redirect(path, state = {}, notify = true) {
     const key = createKey()
-    const prevState = merge && this.entries[this.index].state
-    const s = { ...prevState, ...state }
+    // const prevState = merge && this.entries[this.index].state
+    const s = { ...this.entries[this.index].state, ...state }
     const location = createLocation(path, s, key, this.location)
     const entries = this.entries.slice(0)
     const index = this.index
@@ -64,10 +64,10 @@ export default class History {
       this._updateHistory(nextState)
     }
 
-    return this.listeners.notify({ history: this, nextHistory, commit })
+    return this.listeners.notify({ nextHistory, commit }, notify)
   }
 
-  jump(n, state) {
+  jump(n, state, notify = true) {
     const kind = n === -1 ? 'back' : n === 1 ? 'next' : 'jump'
     const index = this.index + n
     const entries = this.entries.slice(0)
@@ -83,7 +83,7 @@ export default class History {
         this._updateHistory(nextState)
       )
 
-    return this.listeners.notify({ history: this, nextHistory, commit })
+    return this.listeners.notify({ nextHistory, commit }, notify)
   }
 
   back(state) {

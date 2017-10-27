@@ -56,13 +56,12 @@ export default (
 ) => {
   routesMapInput[NOT_FOUND] = routesMapInput[NOT_FOUND] || {}
 
-  const routesMap: RoutesMap = Object.keys(
-    routesMapInput
-  ).reduce((routesMap, type) => {
-    const path = routesMap[type]
-    routesMap[type] = typeof path === 'string' ? { path } : path
-    return routesMap
-  }, routesMapInput)
+  const routesMap: RoutesMap = Object.keys(routesMapInput)
+    .reduce((routesMap, type) => {
+      const path = routesMap[type]
+      routesMap[type] = typeof path === 'string' ? { path } : path
+      return routesMap
+    }, routesMapInput)
 
   const {
     location,
@@ -126,13 +125,14 @@ export default (
     }
 
     const routeDispatch = (action: Object) => {
-      console.log('routeDispatch', action)
       const route = routesMap[action.type]
 
-      if (isLocationAction(action) || !route) return dispatch(action)
+      console.log('ACT', (isLocationAction(action) || !route) && !action.nextHistory, action)
+      if ((isLocationAction(action) || !route) && !action.nextHistory) return dispatch(action)
 
       const bag = {
-        action,
+        history,
+        action: !action.nextHistory ? action : undefined,
         route,
         context,
         dispatch: action => {
@@ -146,19 +146,16 @@ export default (
         getState,
         routesMap,
         options,
+        getLocationState: () => selectLocationState(getState()),
+        ...(action.nextHistory && action),
         ...extra
       }
 
       return next(bag)
-          .then(res => {
-            context.temp = {}
-            console.log('YES', res)
-            return res
-          })
-          .catch(error => {
-            console.log('ERROR', error)
-            return error
-          })
+        .catch(error => {
+          console.log('ERROR!!!', error)
+          return error
+        })
     }
 
     return {
@@ -194,6 +191,7 @@ export default (
     }
 
     history.listen(store.dispatch)
+
     _store = store
 
     return store
@@ -201,10 +199,11 @@ export default (
 
   let _store
 
-  const firstRoute = () => _store.dispatch({ nextHistory: history })
+  const firstRoute = () => ({ nextHistory: history, commit() {} })
 
   return {
     enhancer,
-    firstRoute
+    firstRoute,
+    history
   }
 }

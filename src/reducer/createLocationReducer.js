@@ -35,8 +35,10 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
       payload: { ...action.payload },
       ...(query && { query, search }),
       prev: action.meta.location.prev,
-      kind: action.meta.location.kind,
-      history: action.meta.location.history,
+      kind: action.meta.location.history.kind,
+      entries: action.meta.location.history.entries,
+      index: action.meta.location.history.index,
+      length: action.meta.location.history.length,
       hasSSR: state.hasSSR,
       routesMap
     }

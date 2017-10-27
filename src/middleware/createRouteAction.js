@@ -1,8 +1,9 @@
 import pathToAction from '../pure-utils/pathToAction'
 import actionToPath from '../pure-utils/actionToPath'
+import isRedirect from '../pure-utils/isRedirect'
 import { NOT_FOUND } from '../index'
 
-export default (req, next) => {
+export default async (req, next) => {
   const {
     history,
     routesMap,
@@ -18,12 +19,17 @@ export default (req, next) => {
     if (nextHistory) {
       const { url } = nextHistory.location
       const action = pathToAction(url, routesMap, serializer)
+
       req.action = nestAction(url, action, prev, nextHistory)
     }
     else if (action && action.type !== NOT_FOUND) {
       const url = actionToPath(action, routesMap, serializer)
-      const nextHistory = history.create(url)
+      const method = isRedirect(action) ? 'redirect' : 'push'
+      const { nextHistory, commit } = history[method](url, {}, false)
+
       req.action = nestAction(url, action, prev, nextHistory)
+      req.nextHistory = nextHistory
+      req.commit = commit
     }
   }
   catch (e) {
@@ -35,7 +41,7 @@ export default (req, next) => {
     )
   }
 
-  return next()
+  await next()
 }
 
 const nestAction = (pathname, action, prev, nextHistory) => {
@@ -63,8 +69,7 @@ const nestAction = (pathname, action, prev, nextHistory) => {
           ...(query && { query, search })
         },
         prev,
-        kind,
-        entries: nextHistory.entries.slice(0)
+        history: nextHistory
       }
     }
   }
