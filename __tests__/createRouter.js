@@ -9,7 +9,12 @@ import createRouteAction from '../src/middleware/createRouteAction'
 const setup = (path = '/first', options = {}) => {
   const routesMap = {
     FIRST: '/first',
-    SECOND: '/second',
+    SECOND: {
+      path: '/second',
+      thunk: () => {
+        console.log(123)
+      }
+    },
     THIRD: '/third'
   }
 
@@ -18,7 +23,8 @@ const setup = (path = '/first', options = {}) => {
 
   const routerMiddlewares = [
     createRouteAction,
-    enter
+    enter,
+    call('thunk')
   ]
 
   const { enhancer, reducer, firstRoute, history } = createRouter(
@@ -46,10 +52,14 @@ test('store.dispatch', async () => {
 
   let res = await store.dispatch(action)
   expect(store.getState().location.type).toEqual('FIRST')
+  expect(res.type).toEqual('FIRST')
+  expect(history.location.pathname).toEqual('/first')
 
   res = await store.dispatch({ type: 'SECOND' })
   expect(store.getState().location.type).toEqual('SECOND')
   expect(res.type).toEqual('SECOND')
+  expect(history.location.pathname).toEqual('/second')
+
   console.log(store.getState())
 })
 
@@ -60,10 +70,14 @@ test('history.push', async () => {
 
   let res = await store.dispatch(action)
   expect(store.getState().location.type).toEqual('FIRST')
+  expect(res.type).toEqual('FIRST')
+  expect(history.location.pathname).toEqual('/first')
 
   res = await history.push('/second')
   expect(store.getState().location.type).toEqual('SECOND')
   expect(res.type).toEqual('SECOND')
+  expect(history.location.pathname).toEqual('/second')
+
   console.log(store.getState())
 })
 

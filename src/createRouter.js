@@ -6,7 +6,7 @@ import isServer from './pure-utils/isServer'
 import createSelector from './pure-utils/createSelector'
 import formatRoutesMap from './pure-utils/formatRoutesMap'
 
-import createLocationReducer, { getInitialState } from './reducer/createLocationReducer'
+import createLocationReducer from './reducer/createLocationReducer'
 
 import createSmartHistory from './smart-history'
 import composePromise from './composePromise'
@@ -33,8 +33,8 @@ export default (
   const createHistory = options.createHistory || createSmartHistory
   const history = createHistory({ basename: options.basename, initialEntries })
 
-  const INITIAL_STATE = getInitialState(history.url, routesMap, history)
-  const reducer = createLocationReducer(INITIAL_STATE, routesMap)
+  const createReducer = options.createReducer || createLocationReducer
+  const reducer = createReducer(routesMap, history)
 
   const applyMiddleware = (...middlewares) => createStore => (...args) => {
     const store = createStore(...args)
@@ -46,7 +46,6 @@ export default (
     const routeDispatch = (action: Object) => {
       const route = routesMap[action.type]
 
-      console.log('DISPATCH', 'handled:', (isLocationAction(action) || !route) && !action.nextHistory, action.nextHistory && 'nextHistory' || (action.type && action.type))
       if ((isLocationAction(action) || !route) && !action.nextHistory) return dispatch(action)
 
       const req = {
@@ -63,7 +62,7 @@ export default (
           const route = routesMap[action.type]
           const isRedirect = typeof route === 'object' && route.path
 
-          if (isRedirect) bag.stop = true
+          if (isRedirect) req.stop = true
 
           return routeDispatch(action)
         }
@@ -111,3 +110,8 @@ export default (
     firstRoute: () => ({ nextHistory: history, commit() {} })
   }
 }
+
+
+
+
+// console.log('DISPATCH', 'handled:', (isLocationAction(action) || !route) && !action.nextHistory, action.nextHistory && 'nextHistory' || (action.type && action.type))

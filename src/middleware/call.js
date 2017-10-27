@@ -1,4 +1,6 @@
-export default (name, { hasReturn, prev }) => async (req, next) => {
+export default (name, { hasReturn, prev } = {}) => async (req, next) => {
+  hasReturn = true
+
   const route = prev === 'prev' ? req.prevRoute : req.route
   const routeCb = route[name] || noop
   const globalCb = req.options[name] || noop

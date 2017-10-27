@@ -12,54 +12,58 @@ import type {
   ReceivedAction
 } from '../flow-types'
 
-export default (initialState: LocationState, routesMap: RoutesMap) => (
-  state: LocationState = initialState,
-  action: Action
-): LocationState => {
-  routesMap = state.routesMap || routesMap
-  const route = routesMap[action.type]
+export default (routesMap: RoutesMap, history: History) => {
+  const initialState = createInitialState(routesMap, history)
 
-  if (
-    action.type === NOT_FOUND ||
-    (route &&
-      !action.error &&
-      (typeof route === 'string' || route.path) &&
-      (action.meta.location.current.pathname !== state.pathname ||
-        action.meta.location.current.search !== state.search ||
-        action.meta.location.kind === 'load'))
-  ) {
-    const query = action.meta.location.current.query
-    const search = action.meta.location.current.search
+  return (
+    state: LocationState = initialState,
+    action: Action
+  ): LocationState => {
+    routesMap = state.routesMap || routesMap
+    const route = routesMap[action.type]
 
-    return {
-      pathname: action.meta.location.current.pathname,
-      type: action.type,
-      payload: { ...action.payload },
-      ...(query && { query, search }),
-      prev: action.meta.location.prev,
-      kind: action.meta.location.history.kind,
-      entries: action.meta.location.history.entries,
-      index: action.meta.location.history.index,
-      length: action.meta.location.history.length,
-      hasSSR: state.hasSSR,
-      routesMap
+    if (
+      action.type === NOT_FOUND ||
+      (route &&
+        !action.error &&
+        (typeof route === 'string' || route.path) &&
+        (action.meta.location.current.pathname !== state.pathname ||
+          action.meta.location.current.search !== state.search ||
+          action.meta.location.kind === 'load'))
+    ) {
+      const query = action.meta.location.current.query
+      const search = action.meta.location.current.search
+
+      return {
+        pathname: action.meta.location.current.pathname,
+        type: action.type,
+        payload: { ...action.payload },
+        ...(query && { query, search }),
+        prev: action.meta.location.prev,
+        kind: action.meta.location.history.kind,
+        entries: action.meta.location.history.entries,
+        index: action.meta.location.history.index,
+        length: action.meta.location.history.length,
+        hasSSR: state.hasSSR,
+        routesMap
+      }
     }
-  }
-  else if (action.type === ADD_ROUTES) {
-    return {
-      ...state,
-      routesMap: { ...state.routesMap, ...action.payload.routes }
+    else if (action.type === ADD_ROUTES) {
+      return {
+        ...state,
+        routesMap: { ...state.routesMap, ...action.payload.routes }
+      }
     }
-  }
 
-  return state
+    return state
+  }
 }
 
-export const getInitialState = (
-  path: string,
+const createInitialState = (
   routesMap: RoutesMap,
   history: History
 ): LocationState => {
+  const path = history.location.url
   const initialAction = pathToAction(path, routesMap)
   const { type, payload, meta }: ReceivedAction = initialAction
 

@@ -22,6 +22,7 @@ export default async (req, next) => {
       const action = pathToAction(url, routesMap, serializer)
 
       req.action = nestAction(url, action, prev, nextHistory)
+      req.route = routesMap[action.type]
     }
     else if (action && action.type !== NOT_FOUND) {
       const url = actionToPath(action, routesMap, serializer)
@@ -70,6 +71,7 @@ const nestAction = (pathname, action, prev, nextHistory) => {
           kind,
           ...(query && { query, search })
         },
+        kind,
         prev,
         history: nextHistory
       }
