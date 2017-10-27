@@ -13,7 +13,8 @@ export default async (req, next) => {
     action
   } = req
 
-  const { hasSSR, entries, routesMap: r, ...prev } = getLocationState()
+  const state = getLocationState()
+  const { hasSSR, routesMap: r, prev: p, entries: e, ...prev } = state
 
   try {
     if (nextHistory) {

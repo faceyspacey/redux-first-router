@@ -50,6 +50,7 @@ test('store.dispatch', async () => {
   res = await store.dispatch({ type: 'SECOND' })
   expect(store.getState().location.type).toEqual('SECOND')
   expect(res.type).toEqual('SECOND')
+  console.log(store.getState())
 })
 
 
@@ -63,6 +64,7 @@ test('history.push', async () => {
   res = await history.push('/second')
   expect(store.getState().location.type).toEqual('SECOND')
   expect(res.type).toEqual('SECOND')
+  console.log(store.getState())
 })
 
 
