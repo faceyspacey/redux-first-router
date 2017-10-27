@@ -42,6 +42,7 @@ export default async (req, next) => {
   }
 
   await next()
+  return req.action
 }
 
 const nestAction = (pathname, action, prev, nextHistory) => {

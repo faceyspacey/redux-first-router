@@ -105,13 +105,15 @@ export default (
     history
   )
 
-  const locationReducer = createLocationReducer(INITIAL_STATE, routesMap)
+  const reducer = createLocationReducer(INITIAL_STATE, routesMap)
 
   const applyMiddleware = (...middlewares) => createStore => (...args) => {
     const store = createStore(...args)
     const { dispatch, getState } = store
+    const getLocationState = () => selectLocationState(getState() || {})
 
     const next = composePromise(...middlewares)
+
     const context = {
       temp: {},
       prev: {
@@ -127,14 +129,20 @@ export default (
     const routeDispatch = (action: Object) => {
       const route = routesMap[action.type]
 
-      console.log('ACT', (isLocationAction(action) || !route) && !action.nextHistory, action)
+      console.log('DISPATCH', 'handled:', (isLocationAction(action) || !route) && !action.nextHistory, action.nextHistory && 'nextHistory' || (action.type && action.type))
       if ((isLocationAction(action) || !route) && !action.nextHistory) return dispatch(action)
 
       const bag = {
         history,
-        action: !action.nextHistory ? action : undefined,
         route,
         context,
+        getState,
+        routesMap,
+        options,
+        getLocationState,
+        ...extra,
+        ...(action.nextHistory && action),
+        action: !action.nextHistory ? action : undefined,
         dispatch: action => {
           const route = routesMap[action.type]
           const isRedirect = typeof route === 'object' && route.path
@@ -142,13 +150,7 @@ export default (
           if (isRedirect) bag.stop = true
 
           return routeDispatch(action)
-        },
-        getState,
-        routesMap,
-        options,
-        getLocationState: () => selectLocationState(getState()),
-        ...(action.nextHistory && action),
-        ...extra
+        }
       }
 
       return next(bag)
@@ -174,15 +176,9 @@ export default (
       selectLocationState(preloadedState).routesMap = routesMap
     }
 
-    const rootReducer = (state, action) => {
-      const nextState = reducer(state, action) || {}
-      nextState.location = locationReducer(state && state.location, action)
-      return nextState
-    }
-
     const routerEnhancer = applyMiddleware(...middlewares)
     // const enhancers = compose(routerEnhancer, enhancer)
-    const store = createStore(rootReducer, preloadedState, routerEnhancer)
+    const store = createStore(reducer, preloadedState, routerEnhancer)
     const state = store.getState()
     const locationState = state && selectLocationState(state)
 
@@ -192,17 +188,14 @@ export default (
 
     history.listen(store.dispatch)
 
-    _store = store
-
     return store
   }
-
-  let _store
 
   const firstRoute = () => ({ nextHistory: history, commit() {} })
 
   return {
     enhancer,
+    reducer,
     firstRoute,
     history
   }

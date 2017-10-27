@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, compose } from 'redux'
+import { applyMiddleware, createStore, compose, combineReducers } from 'redux'
 import reduxThunk from 'redux-thunk'
 import createRouter from '../src/createRouter'
 
@@ -16,23 +16,22 @@ const setup = (path = '/first', options = {}) => {
   options.initialEntries = [path]
   options.extra = { arg: 'extra-arg' }
 
-  const reducer = (state = {}, action = {}) => ({
-    title: action.type
-  })
-
   const routerMiddlewares = [
     createRouteAction,
     enter
   ]
 
-  const { enhancer, firstRoute, history } = createRouter(
+  const { enhancer, reducer, firstRoute, history } = createRouter(
     routesMap,
     options,
     routerMiddlewares
   )
+
   const middlewares = applyMiddleware(reduxThunk)
   const enhancers = compose(enhancer, middlewares)
-  const store = createStore(reducer, enhancers)
+  const title = (state = {}, action = {}) => action.type
+  const rootReducer = combineReducers({ title, location: reducer })
+  const store = createStore(rootReducer, enhancers)
 
   return {
     store,
@@ -50,6 +49,7 @@ test('store.dispatch', async () => {
 
   res = await store.dispatch({ type: 'SECOND' })
   expect(store.getState().location.type).toEqual('SECOND')
+  expect(res.type).toEqual('SECOND')
 })
 
 
@@ -62,6 +62,7 @@ test('history.push', async () => {
 
   res = await history.push('/second')
   expect(store.getState().location.type).toEqual('SECOND')
+  expect(res.type).toEqual('SECOND')
 })
 
 
