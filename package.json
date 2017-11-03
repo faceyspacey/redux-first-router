@@ -14,7 +14,6 @@
     "test": "jest",
     "lint": "eslint --fix ./",
     "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",
-
     "cm": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "prepublish": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min"
@@ -30,6 +29,7 @@
   },
   "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
   "dependencies": {
+    "resolve-pathname": "^2.2.0",
     "rudy-history": "^1.0.0",
     "rudy-match-path": "^0.3.0"
   },

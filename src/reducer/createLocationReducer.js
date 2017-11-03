@@ -75,7 +75,10 @@ const createInitialState = (
     prev: {
       pathname: '',
       type: '',
-      payload: {}
+      payload: {},
+      kind: '',
+      index: -1,
+      length: 0
     },
     kind: 'init',
     entries: history.entries,
@@ -86,27 +89,27 @@ const createInitialState = (
   }
 }
 
-// export const getInitialState = (
-//   currentPathname: string,
-//   meta: ?{ search?: string, query?: Object },
-//   type: string,
-//   payload: Payload,
-//   routesMap: RoutesMap,
-//   history: History
-// ): LocationState => ({
-//   pathname: currentPathname.split('?')[0],
-//   type,
-//   payload,
-//   ...meta,
-//   prev: {
-//     pathname: '',
-//     type: '',
-//     payload: {}
-//   },
-//   kind: 'init',
-//   entries: history.entries,
-//   index: history.index,
-//   length: history.length,
-//   hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
-//   routesMap
-// })
+export const getInitialState = (
+  currentPathname: string,
+  meta: ?{ search?: string, query?: Object },
+  type: string,
+  payload: Payload,
+  routesMap: RoutesMap,
+  history: History
+): LocationState => ({
+  pathname: currentPathname.split('?')[0],
+  type,
+  payload,
+  ...meta,
+  prev: {
+    pathname: '',
+    type: '',
+    payload: {}
+  },
+  kind: 'init',
+  entries: history.entries,
+  index: history.index,
+  length: history.length,
+  hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
+  routesMap
+})

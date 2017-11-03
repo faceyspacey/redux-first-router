@@ -1,4 +1,3 @@
-import { createMemoryHistory } from 'rudy-history'
 import { setupAll } from '../__test-helpers__/setup'
 
 it('basename: memoryHistory can prefix paths with a basename', () => {
@@ -12,9 +11,7 @@ it('basename: memoryHistory can prefix paths with a basename', () => {
 })
 
 it('options.createHistory', () => {
-  const { store, history } = setupAll('/first', {
-    createHistory: createMemoryHistory
-  })
+  const { store, history } = setupAll('/first')
   expect(history.location.pathname).toEqual('/first')
 
   store.dispatch({ type: 'THIRD' })

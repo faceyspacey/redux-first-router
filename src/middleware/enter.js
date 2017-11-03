@@ -1,7 +1,8 @@
 export default async (req, next) => {
   await fakeDelay()
-  const ret = req.dispatch(req.action)
+  const ret = req.routeDispatch(req.action)
   req.commit()
+  req.committed = true
   // req.setReturn(ret, false)
   await next()
   return ret
@@ -9,5 +10,5 @@ export default async (req, next) => {
 
 const fakeDelay = cb =>
   new Promise(resolve => {
-    setTimeout(() => resolve(cb), 10)
+    setTimeout(() => resolve(cb), 1)
   })

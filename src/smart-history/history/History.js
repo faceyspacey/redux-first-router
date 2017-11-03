@@ -1,20 +1,30 @@
 import createListeners from '../utils/createListeners'
 import { createLocation, createKey } from '../utils/location'
-import { createPath, stripSlashes } from '../utils/path'
+import { createPath } from '../utils/path'
 
 export default class History {
   constructor(opts) {
-    const { index, entries, basename, saveHistory } = opts
+    const { index, entries, saveHistory, basename } = opts
 
-    this.index = index
-    this.entries = entries
-    this.basename = basename ? stripSlashes(basename) : ''
     this.saveHistory = saveHistory || function () {}
-
+    this.basename = basename
     this.kind = 'load'
-    this.length = entries.length
+    this.location = { pathname: '', search: '', hash: '', url: '', state: {} }
     this.location = entries[index]
+    this.entries = entries
+    this.length = entries.length
+    this.index = index
 
+    const kind = 'load'
+    const location = entries[index]
+    const nextState = { kind, location, index, entries }
+    const nextHistory = this._createNextHistory(nextState)
+
+    const commit = () => {
+      // this._updateHistory(nextState)
+    }
+
+    this.initialBag = { nextHistory: this, commit }
     this.listeners = createListeners()
   }
 
@@ -79,9 +89,9 @@ export default class History {
     const nextState = { kind, location, index, entries }
     const nextHistory = this._createNextHistory(nextState)
 
-    const commit = () => this._replaceState(location, n, this.location).then(() =>
-        this._updateHistory(nextState)
-      )
+    const commit = () =>
+      this._replaceState(location, n, this.location)
+        .then(() => this._updateHistory(nextState))
 
     return this.listeners.notify({ nextHistory, commit }, notify)
   }

@@ -1,6 +1,7 @@
 import History from './History'
 import { getWindowLocation } from '../utils/location'
 import { isExtraneousPopstateEvent, createPopListenerFuncs } from '../utils/dom'
+import { stripSlashes } from '../utils/path'
 
 import {
   getHistoryState,
@@ -49,10 +50,12 @@ import {
 
 export default class BrowserHistory extends History {
   constructor(opts = {}) {
+    const { basename: bn } = opts
+    const basename = bn ? stripSlashes(bn) : ''
+
     const { id, ...initialHistoryState } = getInitialHistoryState()
     const defaultLocation = getWindowLocation(initialHistoryState, basename)
     const { index, entries } = restoreHistory(defaultLocation)
-    const { basename } = opts
 
     super({ index, entries, basename, saveHistory })
 

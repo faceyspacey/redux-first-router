@@ -1,6 +1,6 @@
 import History from './History'
 import { restoreHistory, saveHistory } from '../utils/sessionStorage'
-import { transformEntry } from '../utils/path'
+import { transformEntry, stripSlashes } from '../utils/path'
 
 // NOTE ON HISTORY STUBS:
 
@@ -29,11 +29,13 @@ export default class MemoryHistory extends History {
     const {
       initialEntries: ents,
       initialIndex = 0,
-      basename,
+      basename: bn,
       forceRefresh = false,
       useSessionStorage = false,
       hasBrowserHistory = false
     } = opts
+
+    const basename = bn ? stripSlashes(bn) : ''
 
     const initialEntries = !Array.isArray(ents) ? [ents] : ents || ['/']
 
@@ -82,9 +84,9 @@ export default class MemoryHistory extends History {
 
 // TRANSFORM ENTRIES ARRAY INTO PROPER LOCATION OBJECTS + INDEX
 
-const create = (initialIndex, initialEntries, basename) => {
+const create = (initialIndex, initialEntries, basename, createKey) => {
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
-  const entries = initialEntries.map(e => transformEntry(e, basename))
+  const entries = initialEntries.map(e => transformEntry(e, basename, createKey))
   return { index, entries }
 }
 
@@ -93,9 +95,9 @@ const create = (initialIndex, initialEntries, basename) => {
 // as solid as possible in older browsers. Basically, IE9 and IE8 won't have `history`
 // but will have `sessionStorage`, so why not give them the ability to restore history :)
 
-const restore = (initialEntries, basename) => {
+const restore = (initialEntries, basename, createKey) => {
   const entry = initialEntries[0]
-  const defaultLocation = transformEntry(entry, basename)
+  const defaultLocation = transformEntry(entry, basename, createKey)
   const { index, entries } = restoreHistory(defaultLocation) // impure
   return { index, entries, saveHistory }
 }

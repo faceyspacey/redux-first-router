@@ -78,5 +78,5 @@ export const getWindowLocation = (historyState, basename) => {
   return createLocation(path, state, key)
 }
 
-let _key = 0
-export const createKey = () => _key++
+export const createKey = () =>
+  Math.random().toString(36).substr(2, 6)

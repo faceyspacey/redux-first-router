@@ -1,5 +1,5 @@
-import { createKey } from './location'
 import { parsePath } from './path'
+import { createKey } from './location'
 
 // PREFIXING:
 
@@ -141,11 +141,6 @@ const getIndexAndEntries = history => {
   return { index, entries }
 }
 
-const createId = () =>
-  Math.random()
-    .toString(36)
-    .substr(2, 6)
-
 export const getHistoryState = () => {
   try {
     return window.history.state || {}
@@ -184,3 +179,6 @@ const getId = () => {
   _id = _id || getHistoryState().id || 'id' // sessions when using memory history won't be able to have unique IDs
   return `${_id}/`
 }
+
+const createId = () =>
+  Math.random().toString(36).substr(2, 6)

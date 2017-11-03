@@ -5,11 +5,17 @@ import isLocationAction from './pure-utils/isLocationAction'
 import isServer from './pure-utils/isServer'
 import createSelector from './pure-utils/createSelector'
 import formatRoutesMap from './pure-utils/formatRoutesMap'
+import formatOptions from './pure-utils/formatOptions'
+
+import redirect from './action-creators/redirect'
 
 import createLocationReducer from './reducer/createLocationReducer'
+import call from './middleware/call'
 
 import createSmartHistory from './smart-history'
 import composePromise from './composePromise'
+
+import { ADD_ROUTES } from './index'
 
 import type {
   Dispatch as Next,
@@ -24,8 +30,8 @@ export default (
   options: Options = {},
   middlewares: Array<Function>
 ) => {
-  const routesMap: RoutesMap = formatRoutesMap(routesMapInput)
-  const { location, title, initialEntries }: Options = options
+  let routesMap: RoutesMap = formatRoutesMap(routesMapInput)
+  const { location, title, initialEntries }: Options = formatOptions(options)
 
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
@@ -40,29 +46,57 @@ export default (
     const store = createStore(...args)
     const { dispatch, getState } = store
     const getLocationState = () => selectLocationState(getState() || {})
+    const getTitle = () => selectTitleState(getState() || {})
 
     const next = composePromise(...middlewares)
 
     const routeDispatch = (action: Object) => {
       const route = routesMap[action.type]
 
-      if ((isLocationAction(action) || !route) && !action.nextHistory) return dispatch(action)
+      if (action.type === ADD_ROUTES) {
+        routesMap = { ...routesMap, ...formatRoutesMap(action.payload.routes) }
+        return dispatch(action)
+      }
+
+      if (route && !route.path && typeof route.thunk === 'function') {
+        const thunk = route.thunk
+        const nextAction = dispatch(action)
+        const { dispatch, getState } = store
+        const bag = { action: nextAction, ...options.extra }
+
+        return thunk(dispatch, getState, bag) || nextAction
+      }
+
+      const prevRoute = routesMap[getLocationState().type]
+      const handled = isLocationAction(action) || !route
+      const fromHistory = !!action.nextHistory
+
+      if (handled && !fromHistory) return dispatch(action)
 
       const req = {
         history,
+        prevRoute,
         route,
         getState,
         routesMap,
         options,
         getLocationState,
+        getTitle,
         ...options.extra,
         ...(action.nextHistory && action),
         action: !action.nextHistory ? action : undefined,
+        committed: (action.nextHistory && action.nextHistory.kind === 'init') || action.committed,
+        routeDispatch,
         dispatch: action => {
           const route = routesMap[action.type]
           const isRedirect = typeof route === 'object' && route.path
 
-          if (isRedirect) req.stop = true
+          if (isRedirect) {
+            action = redirect(action)
+            action.committed = req.committed || action.committed
+            action.prev = req.action
+            return req.redirect = routeDispatch(action)
+          }
 
           return routeDispatch(action)
         }
@@ -70,8 +104,9 @@ export default (
 
       return next(req)
         .catch(error => {
-          console.log('ERROR!!!', error)
-          return error
+          console.log('ERROR!', error)
+          req.error = error
+          return call('onError')(req)
         })
     }
 
@@ -94,7 +129,7 @@ export default (
     const state = store.getState()
     const locationState = state && selectLocationState(state)
 
-    if (!locationState || !locationState.pathname) {
+    if (!locationState || locationState.pathname === undefined) {
       throw new Error('[rudy] your location reducer is not setup.')
     }
 
@@ -107,7 +142,7 @@ export default (
     enhancer,
     reducer,
     history,
-    firstRoute: () => ({ nextHistory: history, commit() {} })
+    firstRoute: () => history.initialBag
   }
 }
 
