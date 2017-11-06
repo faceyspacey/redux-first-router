@@ -2,13 +2,7 @@ import { applyMiddleware, createStore, compose, combineReducers } from 'redux'
 import reduxThunk from 'redux-thunk'
 import createRouter from '../src/createRouter'
 
-import createRouteAction from '../src/middleware/createRouteAction'
-import enter from '../src/middleware/enter'
-import call from '../src/middleware/call'
-import changePageTitle from '../src/middleware/changePageTitle'
-
 import { NOT_FOUND } from '../src'
-import redirect from '../src/action-creators/redirect'
 
 import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 
@@ -39,22 +33,9 @@ const setup = (path = '/first', options = {}, custom = {}) => {
   options.initialEntries = [path]
   options.extra = { arg: 'extra-arg' }
 
-  const routerMiddlewares = [
-    createRouteAction,
-    call('beforeLeave', { prev: true }),
-    call('beforeEnter'),
-    enter,
-    changePageTitle,
-    call('onLeave'),
-    call('onEnter'),
-    call('thunk'),
-    call('onComplete')
-  ]
-
   const { enhancer, reducer, firstRoute, history } = createRouter(
     routesMap,
-    options,
-    routerMiddlewares
+    options
   )
 
   const middlewares = applyMiddleware(reduxThunk)
@@ -83,6 +64,8 @@ test('store.dispatch', async () => {
   expect(store.getState().location.type).toEqual('SECOND')
   expect(res.type).toEqual('SECOND')
   expect(history.location.pathname).toEqual('/second')
+
+  expect(history.length).toEqual(2)
 
   log(store)
 })
@@ -283,8 +266,8 @@ test('firstRoute (delayed commit - redirect)', async () => {
   expect(history.location.pathname).toEqual('/fourth')
 
   // the key thing we're testing for:
-  expect(store.getState().location.entries.length).toEqual(2)
-  expect(store.getState().location.length).toEqual(2)
+  expect(history.entries.length).toEqual(2)
+  expect(history.length).toEqual(2)
 
   log(store)
 

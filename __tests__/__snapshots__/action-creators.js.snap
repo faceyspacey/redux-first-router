@@ -3,116 +3,52 @@
 exports[`addRoutes(routes) - adds routes to routesMap 1`] = `
 Object {
   "location": Object {
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+    ],
     "hasSSR": undefined,
-    "history": undefined,
+    "index": 0,
     "kind": "load",
+    "length": 1,
     "pathname": "/",
     "payload": Object {},
     "prev": Object {
+      "index": -1,
       "kind": "",
+      "length": 0,
       "pathname": "",
       "payload": Object {},
       "type": "",
     },
     "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {},
+      "@@redux-first-router/NOT_FOUND": Object {
+        "path": "/not-found",
+      },
       "BAR": Object {
         "path": "/bar",
       },
-      "FIRST": "/first",
-      "FOO": "/foo",
-      "SECOND": "/second/:param",
-      "THIRD": "/third",
+      "FIRST": Object {
+        "path": "/first",
+      },
+      "FOO": Object {
+        "path": "/foo",
+      },
+      "SECOND": Object {
+        "path": "/second/:param",
+      },
+      "THIRD": Object {
+        "path": "/third",
+      },
     },
     "type": "@@redux-first-router/NOT_FOUND",
   },
   "title": "@@redux-first-router/ADD_ROUTES",
-}
-`;
-
-exports[`historyCreateAction() - returns action created when history/address_bar chanages 1`] = `
-Object {
-  "kind": "pop",
-  "meta": Object {
-    "location": Object {
-      "current": Object {
-        "kind": "pop",
-        "pathname": "/info/foo",
-        "payload": Object {
-          "param": "foo",
-        },
-        "type": "INFO_PARAM",
-      },
-      "history": undefined,
-      "kind": "pop",
-      "prev": Object {
-        "pathname": "/prev",
-        "payload": Object {},
-        "type": "PREV",
-      },
-    },
-  },
-  "payload": Object {
-    "param": "foo",
-  },
-  "type": "INFO_PARAM",
-}
-`;
-
-exports[`middlewareCreate() - [action not matched to any routePath] 1`] = `
-Object {
-  "kind": undefined,
-  "meta": Object {
-    "location": Object {
-      "current": Object {
-        "kind": undefined,
-        "pathname": "/not-found",
-        "payload": Object {
-          "someKey": "foo",
-        },
-        "type": "@@redux-first-router/NOT_FOUND",
-      },
-      "history": undefined,
-      "kind": undefined,
-      "prev": Object {
-        "pathname": "/prev",
-        "payload": Object {},
-        "type": "PREV",
-      },
-    },
-  },
-  "payload": Object {
-    "someKey": "foo",
-  },
-  "type": "@@redux-first-router/NOT_FOUND",
-}
-`;
-
-exports[`middlewareCreate() - returns action created when middleware detects connected/matched action.type 1`] = `
-Object {
-  "kind": "push",
-  "meta": Object {
-    "location": Object {
-      "current": Object {
-        "kind": "push",
-        "pathname": "/info/foo",
-        "payload": Object {
-          "param": "foo",
-        },
-        "type": "INFO_PARAM",
-      },
-      "history": undefined,
-      "kind": "push",
-      "prev": Object {
-        "pathname": "/prev",
-        "payload": Object {},
-        "type": "PREV",
-      },
-    },
-  },
-  "payload": Object {
-    "param": "foo",
-  },
-  "type": "INFO_PARAM",
 }
 `;

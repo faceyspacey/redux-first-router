@@ -2,22 +2,43 @@
 
 exports[`dispatches location-aware action, changes address bar + document.title 1`] = `
 Object {
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/",
+      "search": "",
+      "state": Object {},
+      "url": "/",
+    },
+  ],
   "hasSSR": undefined,
-  "history": undefined,
+  "index": 0,
   "kind": "load",
+  "length": 1,
   "pathname": "/",
   "payload": Object {},
   "prev": Object {
+    "index": -1,
     "kind": "",
+    "length": 0,
     "pathname": "",
     "payload": Object {},
     "type": "",
   },
   "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {},
-    "FIRST": "/first",
-    "SECOND": "/second/:param",
-    "THIRD": "/third",
+    "@@redux-first-router/NOT_FOUND": Object {
+      "path": "/not-found",
+    },
+    "FIRST": Object {
+      "path": "/first",
+    },
+    "SECOND": Object {
+      "path": "/second/:param",
+    },
+    "THIRD": Object {
+      "path": "/third",
+    },
   },
   "type": "@@redux-first-router/NOT_FOUND",
 }
@@ -29,17 +50,43 @@ Object {
   "meta": Object {
     "location": Object {
       "current": Object {
+        "index": 1,
         "kind": "push",
+        "length": 2,
         "pathname": "/second/bar",
         "payload": Object {
           "param": "bar",
         },
         "type": "SECOND",
       },
-      "history": undefined,
+      "history": Object {
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/",
+            "search": "",
+            "state": Object {},
+            "url": "/",
+          },
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second/bar",
+            "search": "",
+            "state": Object {},
+            "url": "/second/bar",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+      },
       "kind": "push",
       "prev": Object {
+        "index": 0,
         "kind": "load",
+        "length": 1,
         "pathname": "/",
         "payload": Object {},
         "type": "@@redux-first-router/NOT_FOUND",
@@ -56,24 +103,53 @@ Object {
 exports[`dispatches location-aware action, changes address bar + document.title 3`] = `
 Object {
   "location": Object {
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second/bar",
+        "search": "",
+        "state": Object {},
+        "url": "/second/bar",
+      },
+    ],
     "hasSSR": undefined,
-    "history": undefined,
+    "index": 1,
     "kind": "push",
+    "length": 2,
     "pathname": "/second/bar",
     "payload": Object {
       "param": "bar",
     },
     "prev": Object {
+      "index": 0,
       "kind": "load",
+      "length": 1,
       "pathname": "/",
       "payload": Object {},
       "type": "@@redux-first-router/NOT_FOUND",
     },
     "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {},
-      "FIRST": "/first",
-      "SECOND": "/second/:param",
-      "THIRD": "/third",
+      "@@redux-first-router/NOT_FOUND": Object {
+        "path": "/not-found",
+      },
+      "FIRST": Object {
+        "path": "/first",
+      },
+      "SECOND": Object {
+        "path": "/second/:param",
+      },
+      "THIRD": Object {
+        "path": "/third",
+      },
     },
     "type": "SECOND",
   },
@@ -83,24 +159,45 @@ Object {
 
 exports[`dont double dispatch the same action 1`] = `
 Object {
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/second/bar",
+      "search": "",
+      "state": Object {},
+      "url": "/second/bar",
+    },
+  ],
   "hasSSR": undefined,
-  "history": undefined,
+  "index": 0,
   "kind": "load",
+  "length": 1,
   "pathname": "/second/bar",
   "payload": Object {
     "param": "bar",
   },
   "prev": Object {
+    "index": -1,
     "kind": "",
+    "length": 0,
     "pathname": "",
     "payload": Object {},
     "type": "",
   },
   "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {},
-    "FIRST": "/first",
-    "SECOND": "/second/:param",
-    "THIRD": "/third",
+    "@@redux-first-router/NOT_FOUND": Object {
+      "path": "/not-found",
+    },
+    "FIRST": Object {
+      "path": "/first",
+    },
+    "SECOND": Object {
+      "path": "/second/:param",
+    },
+    "THIRD": Object {
+      "path": "/third",
+    },
   },
   "type": "SECOND",
 }
@@ -108,19 +205,45 @@ Object {
 
 exports[`user dispatches NOT_FOUND and middleware adds missing info to action 1`] = `
 Object {
-  "kind": "load",
+  "kind": "push",
   "meta": Object {
     "location": Object {
       "current": Object {
-        "kind": "load",
-        "pathname": "/first",
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+        "pathname": "/not-found",
         "payload": Object {},
         "type": "@@redux-first-router/NOT_FOUND",
       },
-      "history": undefined,
-      "kind": "load",
+      "history": Object {
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/not-found",
+            "search": "",
+            "state": Object {},
+            "url": "/not-found",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+      },
+      "kind": "push",
       "prev": Object {
+        "index": 0,
         "kind": "load",
+        "length": 1,
         "pathname": "/first",
         "payload": Object {},
         "type": "FIRST",
@@ -138,15 +261,33 @@ Object {
   "meta": Object {
     "location": Object {
       "current": Object {
+        "index": 0,
         "kind": "redirect",
+        "length": 1,
         "pathname": "/not-found",
         "payload": Object {},
         "type": "@@redux-first-router/NOT_FOUND",
       },
-      "history": undefined,
+      "history": Object {
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/not-found",
+            "search": "",
+            "state": Object {},
+            "url": "/not-found",
+          },
+        ],
+        "index": 0,
+        "kind": "redirect",
+        "length": 1,
+      },
       "kind": "redirect",
       "prev": Object {
+        "index": 0,
         "kind": "load",
+        "length": 1,
         "pathname": "/first",
         "payload": Object {},
         "type": "FIRST",

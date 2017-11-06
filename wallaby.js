@@ -11,7 +11,31 @@ module.exports = wallaby => {
 
     filesWithNoCoverageCalculated: ['__test-helpers__/**/*.js'],
 
-    tests: ['__tests__/createRouter.js'],
+    tests: [
+      '__tests__/onComplete.js',
+      '__tests__/onEnter.js',
+      '__tests__/onLeave.js',
+      '__tests__/thunk.js',
+      '__tests__/beforeEnter.js',
+      '__tests__/beforeLeave.js',
+
+      '__tests__/middleware.js',
+      '__tests__/enhancer.js',
+
+      '__tests__/createRouter.js',
+
+      '__tests__/actionToPath.js',
+      '__tests__/pathToaction.js',
+      '__tests__/queryStrings.js',
+      '__tests__/action-creators.js',
+      '__tests__/pure-utils.js',
+
+      '__tests__/nestAction.js',
+      '__tests__/history.js',
+      '__tests__/createLocationReducer.js',
+      '__tests__/reducer.js',
+      '__tests__/clientOnlyApi.js'
+    ],
 
     env: {
       type: 'node',

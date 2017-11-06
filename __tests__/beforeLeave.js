@@ -3,12 +3,11 @@ import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 let setupAll
 
 beforeEach(() => {
-  jest.useRealTimers()
   jest.resetModules()
   setupAll = require('../__test-helpers__/setup').setupAll
 })
 
-it('return undefined (user can leave)', () => {
+it('return undefined (user can leave)', async () => {
   const beforeLeave = jest.fn()
   const routesMap = {
     FIRST: {
@@ -18,8 +17,9 @@ it('return undefined (user can leave)', () => {
     SECOND: '/second'
   }
 
-  const { store, history } = setupAll('/first', undefined, { routesMap })
-  store.dispatch({ type: 'SECOND' })
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
+
+  await store.dispatch({ type: 'SECOND' })
 
   const { type } = store.getState().location
   expect(type).toEqual('SECOND')
@@ -27,11 +27,11 @@ it('return undefined (user can leave)', () => {
   expect(beforeLeave).toHaveBeenCalledTimes(1)
 })
 
-it('return undefined (user can leave) -- global', () => {
+it('return undefined (user can leave) -- global', async () => {
   const beforeLeave = jest.fn()
 
-  const { store, history } = setupAll('/first', { beforeLeave })
-  store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  const { store, history } = await setupAll('/first', { beforeLeave })
+  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
 
   const { type } = store.getState().location
   expect(type).toEqual('SECOND')
@@ -39,38 +39,41 @@ it('return undefined (user can leave) -- global', () => {
   expect(beforeLeave).toHaveBeenCalledTimes(1)
 })
 
-it('return false (use cannot leave until manual re-dispatch in timeout)', () => {
-  jest.useFakeTimers()
-
+it('return false (use cannot leave until manual re-dispatch in timeout)', async () => {
+  let futureDispatch
+  let canLeave = false
   const routesMap = {
     FIRST: {
       path: '/first',
-      beforeLeave: (dispatch, getState, { action }) => {
-        setTimeout(() => dispatch(action), 1)
-        return false
+      beforeLeave: ({ dispatch, getState, action }) => {
+        futureDispatch = () => dispatch(action)
+        return canLeave
       }
     },
     SECOND: '/second'
   }
 
-  const { store, history } = setupAll('/first', undefined, { routesMap })
-  const res = store.dispatch({ type: 'SECOND' })
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
+  const res = await store.dispatch({ type: 'SECOND' })
   expect(res).toEqual(false)
 
   expect(store.getState().location.type).toEqual('FIRST')
   expect(history.location.pathname).toEqual('/first')
 
-  jest.runAllTimers()
+  // the idea is in a real app, a condition would be met (represented in state)
+  // that allows allowing by the time of the 2nd dispatch attempt.
+  canLeave = true
+  const res2 = await futureDispatch()
 
   expect(store.getState().location.type).toEqual('SECOND')
   expect(history.location.pathname).toEqual('/second')
 })
 
-it('return false (user cannot leave) -- global', () => {
+it('return false (user cannot leave) -- global', async () => {
   const beforeLeave = jest.fn(() => false)
 
-  const { store, history } = setupAll('/first', { beforeLeave })
-  store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  const { store, history } = await setupAll('/first', { beforeLeave })
+  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
 
   const { type } = store.getState().location
   expect(type).toEqual('FIRST')
@@ -86,7 +89,7 @@ it('return Promise<undefined> (user can leave, and action is re-dispatched)', as
     SECOND: '/second'
   }
 
-  const { store, history } = setupAll('/first', undefined, { routesMap })
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
   const action = await store.dispatch({ type: 'SECOND' })
 
   expect(action.type).toEqual('SECOND')
@@ -99,7 +102,7 @@ it('return Promise<undefined> (user can leave, and action is re-dispatched)', as
 it('return Promise<undefined> (user can leave, and action is re-dispatched) -- global', async () => {
   const beforeLeave = jest.fn(() => Promise.resolve())
 
-  const { store, history } = setupAll('/first', { beforeLeave })
+  const { store, history } = await setupAll('/first', { beforeLeave })
   await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
 
   const { type } = store.getState().location
@@ -116,7 +119,7 @@ it('return Promise<false> (user CANNOT leave)', async () => {
     SECOND: '/second'
   }
 
-  const { store, history } = setupAll('/first', undefined, { routesMap })
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
   const res = await store.dispatch({ type: 'SECOND' })
 
   expect(res).toEqual(false)
@@ -129,7 +132,7 @@ it('return Promise<false> (user CANNOT leave)', async () => {
 it('return Promise<false> (user CANNOT leave) -- global', async () => {
   const beforeLeave = jest.fn(() => Promise.resolve(false))
 
-  const { store, history } = setupAll('/first', { beforeLeave })
+  const { store, history } = await setupAll('/first', { beforeLeave })
   await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
 
   const { type } = store.getState().location
@@ -141,17 +144,15 @@ it('return Promise<undefined> but users dispatches manually (user can leave, and
   const routesMap = {
     FIRST: {
       path: '/first',
-      beforeLeave: async (dispatch, getState, { action }) => {
+      beforeLeave: async ({ dispatch, getState, action }) => {
         await fakeAsyncWork()
-        return dispatch(action)
       }
     },
     SECOND: '/second'
   }
 
-  const { store, history } = setupAll('/first', undefined, { routesMap })
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
   const action = await store.dispatch({ type: 'SECOND' })
-
   expect(action.type).toEqual('SECOND')
 
   const { type } = store.getState().location
@@ -159,7 +160,7 @@ it('return Promise<undefined> but users dispatches manually (user can leave, and
   expect(history.location.pathname).toEqual('/second')
 })
 
-it('HISTORY: return undefined (user can leave)', () => {
+it('HISTORY: return undefined (user can leave)', async () => {
   const routesMap = {
     FIRST: {
       path: '/first',
@@ -168,34 +169,37 @@ it('HISTORY: return undefined (user can leave)', () => {
     SECOND: '/second'
   }
 
-  const { history, store } = setupAll('/first', undefined, { routesMap })
-  history.push('/second')
+  const { history, store } = await setupAll('/first', undefined, { routesMap })
+  await history.push('/second')
 
   const { type } = store.getState().location
   expect(type).toEqual('SECOND')
+  expect(history.location.pathname).toEqual('/second')
 })
 
-it('HISTORY: return false (use cannot leave until manual re-dispatch in timeout)', () => {
-  jest.useFakeTimers()
+it('HISTORY: return false (use cannot leave until manual re-dispatch in timeout)', async () => {
+  let futureDispatch
+  let canLeave = false
 
   const routesMap = {
     FIRST: {
       path: '/first',
-      beforeLeave: (dispatch, getState, { action }) => {
-        setTimeout(() => dispatch(action), 1)
-        return false
+      beforeLeave: ({ dispatch, getState, action }) => {
+        futureDispatch = () => dispatch(action)
+        return canLeave
       }
     },
     SECOND: '/second'
   }
 
-  const { store, history } = setupAll('/first', undefined, { routesMap })
-  history.push('/second')
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
+  await history.push('/second')
 
   expect(store.getState().location.type).toEqual('FIRST')
   expect(history.location.pathname).toEqual('/first')
 
-  jest.runAllTimers()
+  canLeave = true
+  await futureDispatch()
 
   expect(store.getState().location.type).toEqual('SECOND')
   expect(history.location.pathname).toEqual('/second')
@@ -210,12 +214,8 @@ it('HISTORY: return Promise<undefined> (user can leave, and action is re-dispatc
     SECOND: '/second'
   }
 
-  const { store, history } = setupAll('/first', undefined, { routesMap })
-  history.push('/second') // you can't really await this, but it does happen in the next tick, which is good enough for the test
-
-  // fake way to wait until Promise.resolve() + Promise.all() (used by `callBeforeLeave`) are complete
-  await 1
-  await 1
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
+  await history.push('/second')
 
   const { type } = store.getState().location
   expect(type).toEqual('SECOND')

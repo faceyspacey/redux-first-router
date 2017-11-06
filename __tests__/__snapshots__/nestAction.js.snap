@@ -7,14 +7,29 @@ Object {
     "info": "something",
     "location": Object {
       "current": Object {
+        "index": 0,
         "kind": undefined,
+        "length": 1,
         "pathname": "/path",
         "payload": Object {
           "bar": "baz",
         },
         "type": "FOO",
       },
-      "history": undefined,
+      "history": Object {
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "index": 0,
+        "kind": undefined,
+        "length": 1,
+      },
       "kind": undefined,
       "prev": Object {
         "pathname": "previous",
@@ -29,35 +44,5 @@ Object {
     "bar": "baz",
   },
   "type": "FOO",
-}
-`;
-
-exports[`nestHistory formats simplified history object for action + state 1`] = `
-Object {
-  "entries": Array [
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/",
-      "search": "",
-      "state": undefined,
-    },
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/foo",
-      "search": "",
-      "state": undefined,
-    },
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/bar/baz",
-      "search": "",
-      "state": undefined,
-    },
-  ],
-  "index": 2,
-  "length": 3,
 }
 `;

@@ -2,20 +2,21 @@ import { setupAll } from '../__test-helpers__/setup'
 import setupThunk from '../__test-helpers__/setupThunk'
 import redirect from '../src/action-creators/redirect'
 
-it('calls handler on route change -- global', () => {
+it('calls handler on route change -- global', async () => {
   const onComplete = jest.fn()
-  const { store } = setupAll('/first', { onComplete })
+  const { store } = await setupAll('/first', { onComplete })
 
   const action = { type: 'SECOND', payload: { param: 'bar' } }
-  store.dispatch(action)
+  await store.dispatch(action)
+
+  expect(store.getState().location.type).toEqual('SECOND')
 
   expect(onComplete).toHaveBeenCalled()
-  expect(onComplete.mock.calls[0][1]()).toEqual(store.getState())
-  expect(onComplete.mock.calls[1][2].action).toMatchObject(action)
-  expect(onComplete.mock.calls[1][2].arg).toEqual('extra-arg')
+  expect(onComplete.mock.calls[1][0].action).toMatchObject(action)
+  expect(onComplete.mock.calls[1][0].arg).toEqual('extra-arg')
 })
 
-it('calls handler on route change -- route', () => {
+it('calls handler on route change -- route', async () => {
   const onComplete = jest.fn()
 
   const routesMap = {
@@ -27,28 +28,30 @@ it('calls handler on route change -- route', () => {
     THIRD: '/third'
   }
 
-  const { store } = setupAll('/first', undefined, { routesMap })
+  const { store } = await setupAll('/first', undefined, { routesMap })
   const action = { type: 'SECOND' }
-  store.dispatch(action)
+  await store.dispatch(action)
+
+  expect(store.getState().location.type).toEqual('SECOND')
 
   expect(onComplete).toHaveBeenCalled()
-  expect(onComplete.mock.calls[0][1]()).toEqual(store.getState())
-  expect(onComplete.mock.calls[0][2].action).toMatchObject(action)
-  expect(onComplete.mock.calls[0][2].arg).toEqual('extra-arg')
+  expect(onComplete.mock.calls[0][0].action).toMatchObject(action)
+  expect(onComplete.mock.calls[0][0].arg).toEqual('extra-arg')
 })
 
-it('skips onComplete on redirect', () => {
+
+it('skips onComplete on redirect', async () => {
   const redirectAction = { type: 'THIRD', payload: { param: 'bar' } }
-  const thunk = jest.fn(dispatch => {
-    const action = redirect({ ...redirectAction })
-    dispatch(action)
+  const thunk = jest.fn(({ dispatch }) => {
+    return dispatch({ ...redirectAction })
   })
   const onComplete = jest.fn()
 
-  const { store } = setupThunk('/first', thunk, { onComplete })
-  store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  const { store } = await setupThunk('/first', thunk, { onComplete })
+  await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
 
   const { location } = store.getState()
+
   expect(location).toMatchObject(redirectAction)
   expect(onComplete).toHaveBeenCalled()
   expect(onComplete.mock.calls.length).toEqual(2) // would otherwise be called 3x if onComplete from SECOND route was not skipped

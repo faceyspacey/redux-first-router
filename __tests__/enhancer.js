@@ -1,7 +1,7 @@
 import { setupAll } from '../__test-helpers__/setup'
 
-it('dispatches location-aware action when store is first created so app is location aware on load', () => {
-  const { store } = setupAll('/first')
+it('dispatches location-aware action when store is first created so app is location aware on load', async () => {
+  const { store } = await setupAll('/first')
   const location = store.getState().location
 
   expect(location).toMatchObject({
@@ -11,10 +11,10 @@ it('dispatches location-aware action when store is first created so app is locat
   })
 })
 
-it("listens to history changes and dispatches actions matching history's location.pathname", () => {
-  const { store, history } = setupAll('/first')
+it("listens to history changes and dispatches actions matching history's location.pathname", async () => {
+  const { store, history } = await setupAll('/first')
 
-  history.push('/second/bar')
+  await history.push('/second/bar')
   const location1 = store.getState().location
 
   expect(location1).toMatchObject({
@@ -24,7 +24,7 @@ it("listens to history changes and dispatches actions matching history's locatio
     kind: 'push' // IMPORTANT: only dispatched when using browser back/forward buttons
   })
 
-  history.goBack()
+  await history.back()
   const location2 = store.getState().location
 
   expect(location2.type).toEqual('FIRST')
@@ -36,13 +36,13 @@ it('throws when no location reducer provided', () => {
     locationFOO: 'bar'
   })
 
-  const createEnhancer = () => setupAll('/first', undefined, { rootReducer })
-  expect(createEnhancer).toThrowError()
+  const createEnhancer = setupAll('/first', undefined, { rootReducer })
+  return expect(createEnhancer.catch(e => e.message)).resolves.toBe('[rudy] your location reducer is not setup.')
 })
 
-it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', () => {
+it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', async () => {
   const preLoadedState = { location: { pathname: '/' } }
-  const { store } = setupAll('/first', undefined, { preLoadedState })
+  const { store } = await setupAll('/first', undefined, { preLoadedState })
 
   expect(store.getState().location.routesMap).toBeDefined()
 })

@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import reduxThunk from 'redux-thunk'
-import connectRoutes from '../src/connectRoutes'
+import createRouter from '../src/createRouter'
 
 const setup = (
   path = '/',
@@ -14,16 +14,16 @@ const setup = (
   }
 
   options.initialEntries = path
-
   options.extra = { arg: 'extra-arg' }
-  const tools = connectRoutes(routesMap, options)
+
+  const tools = createRouter(routesMap, options)
 
   return { ...tools, routesMap }
 }
 
 export default setup
 
-export const setupAll = (
+export const setupAll = async (
   path,
   options,
   {
@@ -35,12 +35,8 @@ export const setupAll = (
   } = {}
 ) => {
   const tools = setup(path, options, routesMap)
-  const { middleware, reducer, enhancer, firstRoute } = tools
-  const middlewares = applyMiddleware(
-    reduxThunk,
-    middleware,
-    additionalMiddleware
-  )
+  const { enhancer, reducer, firstRoute } = tools
+  const middlewares = applyMiddleware(reduxThunk, additionalMiddleware)
   const enhancers = compose(enhancer, middlewares)
 
   rootReducer =
@@ -51,7 +47,7 @@ export const setupAll = (
     }))
 
   const store = createStore(rootReducer, preLoadedState, enhancers)
-  if (dispatchFirstRoute) store.dispatch(firstRoute())
+  if (dispatchFirstRoute) await store.dispatch(firstRoute())
 
   return {
     ...tools,

@@ -3,7 +3,10 @@ import actionToPath from '../pure-utils/actionToPath'
 import isRedirect from '../pure-utils/isRedirect'
 import { NOT_FOUND } from '../index'
 
-const pick = (obj, keys) => keys.reduce((acc, k) => (acc[k] = obj[k], acc), {})
+const pick = (obj, keys) => keys.reduce((acc, k) => {
+  if (obj[k] !== undefined) acc[k] = obj[k]
+  return acc
+}, {})
 
 export default async (req, next) => {
   const {
@@ -16,8 +19,8 @@ export default async (req, next) => {
   } = req
 
   const state = getLocationState()
-  const keys = ['pathname', 'type', 'payload', 'kind', 'index', 'length']
-  const prev = pick(state, keys)
+  const keys = ['pathname', 'type', 'payload', 'kind', 'index', 'length', 'query', 'search']
+  const prev = pick(state.kind === 'init' ? state.prev : state, keys)
 
   const notFoundPath = routesMap[NOT_FOUND].path
 
@@ -31,12 +34,12 @@ export default async (req, next) => {
     }
     else if (action && action.type !== NOT_FOUND) {
       const url = actionToPath(action, routesMap, serializer)
-      const shouldRedirect = isRedirect(action) && action.committed
+      const shouldRedirect = isRedirect(action) && req.temp.committed
       const method = shouldRedirect ? 'redirect' : 'push'
       const { nextHistory, commit } = history[method](url, {}, false)
 
-      nextHistory.kind = isRedirect(action) ? 'redirect' : 'push'
-      const pre = isRedirect(action) ? action.prev.meta.location.current : prev
+      nextHistory.kind = isRedirect(action) ? 'redirect' : nextHistory.kind
+      const pre = isRedirect(action) && req.temp.prev ? req.temp.prev.meta.location.current : prev
 
       req.action = nestAction(url, action, pre, nextHistory)
       req.nextHistory = nextHistory
@@ -61,16 +64,20 @@ export default async (req, next) => {
     )
   }
 
-  // need to take into consideration full URL!:
-  if (req.action.meta.location.current.pathname === getLocationState().pathname && getLocationState().kind !== 'init') return req.action
+  // need to take into consideration hash??:
+  if (req.action.meta.location.current.pathname === getLocationState().pathname &&
+    req.action.meta.location.current.search === getLocationState().search &&
+    getLocationState().kind !== 'init') {
+      return req.action
+  }
 
   await next()
   return req.action
 }
 
 
-const nestAction = (pathname, action, prev, nextHistory) => {
-  const { kind } = nextHistory
+export const nestAction = (pathname, action, prev, nextHistory) => {
+  const { kind, entries, index, length } = nextHistory
   const { type, payload = {}, meta = {} } = action
   const query = action.query || meta.query || payload.query
   const parts = pathname.split('?')
@@ -97,7 +104,7 @@ const nestAction = (pathname, action, prev, nextHistory) => {
         },
         kind,
         prev,
-        history: nextHistory
+        history: { kind, entries, index, length }
       }
     }
   }

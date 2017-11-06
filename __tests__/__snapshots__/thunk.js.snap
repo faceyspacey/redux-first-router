@@ -6,15 +6,33 @@ Object {
   "meta": Object {
     "location": Object {
       "current": Object {
+        "index": 0,
         "kind": "load",
+        "length": 1,
         "pathname": "/second",
         "payload": Object {},
         "type": "SECOND",
       },
-      "history": undefined,
+      "history": Object {
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 0,
+        "kind": "load",
+        "length": 1,
+      },
       "kind": "load",
       "prev": Object {
+        "index": -1,
         "kind": "",
+        "length": 0,
         "pathname": "",
         "payload": Object {},
         "type": "",
@@ -28,20 +46,37 @@ Object {
 
 exports[`CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called 2`] = `
 Object {
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/second",
+      "search": "",
+      "state": Object {},
+      "url": "/second",
+    },
+  ],
   "hasSSR": undefined,
-  "history": undefined,
+  "index": 0,
   "kind": "load",
+  "length": 1,
   "pathname": "/second",
   "payload": Object {},
   "prev": Object {
+    "index": -1,
     "kind": "",
+    "length": 0,
     "pathname": "",
     "payload": Object {},
     "type": "",
   },
   "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {},
-    "FIRST": "/first",
+    "@@redux-first-router/NOT_FOUND": Object {
+      "path": "/not-found",
+    },
+    "FIRST": Object {
+      "path": "/first",
+    },
     "SECOND": Object {
       "beforeEnter": [Function],
       "path": "/second",
@@ -66,20 +101,37 @@ Object {
 
 exports[`SERVER: await dispatch(firstRoute()) -- redirected route not dispatched 2`] = `
 Object {
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/second",
+      "search": "",
+      "state": Object {},
+      "url": "/second",
+    },
+  ],
   "hasSSR": true,
-  "history": undefined,
+  "index": 0,
   "kind": "load",
+  "length": 1,
   "pathname": "/second",
   "payload": Object {},
   "prev": Object {
+    "index": -1,
     "kind": "",
+    "length": 0,
     "pathname": "",
     "payload": Object {},
     "type": "",
   },
   "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {},
-    "FIRST": "/first",
+    "@@redux-first-router/NOT_FOUND": Object {
+      "path": "/not-found",
+    },
+    "FIRST": Object {
+      "path": "/first",
+    },
     "SECOND": Object {
       "path": "/second",
       "thunk": [Function],

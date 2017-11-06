@@ -1,5 +1,5 @@
 import { createMemoryHistory, createBrowserHistory } from 'rudy-history'
-import nestAction, { nestHistory } from '../src/pure-utils/nestAction'
+import { nestAction } from '../src/middleware/createRouteAction'
 
 it('nestAction properly formats/nests action object', () => {
   const history = createMemoryHistory()
@@ -14,6 +14,8 @@ it('nestAction properly formats/nests action object', () => {
     type: 'PREV',
     payload: { bla: 'prev' }
   }
+
+  // history.kind = 'load'
 
   let action = nestAction(
     pathname,
@@ -35,24 +37,9 @@ it('nestAction properly formats/nests action object', () => {
   expect(action).toMatchSnapshot()
 
   expect(action.meta.location.kind).not.toBeDefined()
-  action = nestAction(pathname, receivedAction, location, history, 'load')
+
+  history.kind = 'load'
+  action = nestAction(pathname, receivedAction, location, history)
   expect(action.meta.location.kind).toEqual('load')
-
-  action = nestAction(pathname, receivedAction, location, history, 'pop')
-  expect(action.meta.location.kind).toEqual('pop')
 })
 
-it('nestHistory formats simplified history object for action + state', () => {
-  const history = createMemoryHistory() // still use `createMemoryHistory` for stability during tests
-  history.push('/foo')
-  history.push('/bar/baz')
-
-  const nestedHistory = nestHistory(history) /*? */
-  expect(nestedHistory).toMatchSnapshot()
-})
-
-it('nestHistory returns undefined when using createBrowserHistory', () => {
-  const history = createBrowserHistory()
-  const nestedHistory = nestHistory(history)
-  expect(nestedHistory).toEqual(undefined)
-})

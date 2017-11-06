@@ -2,22 +2,43 @@
 
 exports[`beforeEnter redirect on server results does not update state, and instead returns action (i.e. short-circuits) 1`] = `
 Object {
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "state": Object {},
+      "url": "/first",
+    },
+  ],
   "hasSSR": true,
-  "history": undefined,
+  "index": 0,
   "kind": "load",
+  "length": 1,
   "pathname": "/first",
   "payload": Object {},
   "prev": Object {
+    "index": -1,
     "kind": "",
+    "length": 0,
     "pathname": "",
     "payload": Object {},
     "type": "",
   },
   "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {},
-    "FIRST": "/first",
-    "SECOND": "/second/:param",
-    "THIRD": "/third",
+    "@@redux-first-router/NOT_FOUND": Object {
+      "path": "/not-found",
+    },
+    "FIRST": Object {
+      "path": "/first",
+    },
+    "SECOND": Object {
+      "path": "/second/:param",
+    },
+    "THIRD": Object {
+      "path": "/third",
+    },
   },
   "type": "FIRST",
 }
@@ -37,13 +58,34 @@ Object {
 
 exports[`if beforeEnter dispatches redirect, route changes with kind === "redirect" 1`] = `
 Object {
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "state": Object {},
+      "url": "/first",
+    },
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/third",
+      "search": "",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
   "hasSSR": undefined,
-  "history": undefined,
+  "index": 1,
   "kind": "redirect",
+  "length": 2,
   "pathname": "/third",
   "payload": Object {},
   "prev": Object {
+    "index": 1,
     "kind": "push",
+    "length": 2,
     "pathname": "/second/bar",
     "payload": Object {
       "param": "bar",
@@ -51,10 +93,18 @@ Object {
     "type": "SECOND",
   },
   "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {},
-    "FIRST": "/first",
-    "SECOND": "/second/:param",
-    "THIRD": "/third",
+    "@@redux-first-router/NOT_FOUND": Object {
+      "path": "/not-found",
+    },
+    "FIRST": Object {
+      "path": "/first",
+    },
+    "SECOND": Object {
+      "path": "/second/:param",
+    },
+    "THIRD": Object {
+      "path": "/third",
+    },
   },
   "type": "THIRD",
 }

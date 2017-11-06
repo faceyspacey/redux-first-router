@@ -2,7 +2,7 @@ import { setupAll } from '../__test-helpers__/setup'
 import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 import tempMock from '../__test-helpers__/tempMock'
 
-it('calls beforeEnter handler on route change -- route', () => {
+it('calls beforeEnter handler on route change -- route', async () => {
   const beforeEnter = jest.fn()
 
   const routesMap = {
@@ -14,35 +14,35 @@ it('calls beforeEnter handler on route change -- route', () => {
     THIRD: '/third'
   }
 
-  const { store } = setupAll('/first', undefined, { routesMap })
+  const { store } = await setupAll('/first', undefined, { routesMap })
 
   const action = { type: 'SECOND' }
-  store.dispatch(action)
+  await store.dispatch(action)
 
   expect(beforeEnter).toHaveBeenCalled()
-  expect(beforeEnter.mock.calls[0][2].action).toMatchObject(action)
-  expect(beforeEnter.mock.calls[0][2].arg).toEqual('extra-arg')
+  expect(beforeEnter.mock.calls[0][0].action).toMatchObject(action)
+  expect(beforeEnter.mock.calls[0][0].arg).toEqual('extra-arg')
 })
 
-it('calls beforeEnter handler on route change -- global', () => {
+it('calls beforeEnter handler on route change -- global', async () => {
   const beforeEnter = jest.fn()
-  const { store } = setupAll('/first', { beforeEnter })
+  const { store } = await setupAll('/first', { beforeEnter })
 
   const action = { type: 'SECOND', payload: { param: 'bar' } }
-  store.dispatch(action)
+  await store.dispatch(action)
 
   expect(beforeEnter).toHaveBeenCalled()
-  expect(beforeEnter.mock.calls[1][2].action).toMatchObject(action)
-  expect(beforeEnter.mock.calls[1][2].arg).toEqual('extra-arg')
+  expect(beforeEnter.mock.calls[1][0].action).toMatchObject(action)
+  expect(beforeEnter.mock.calls[1][0].arg).toEqual('extra-arg')
 })
 
 it('if beforeEnter dispatches redirect, route changes with kind === "redirect"', async () => {
-  const beforeEnter = jest.fn((dispatch, getState, { action }) => {
+  const beforeEnter = jest.fn(({dispatch, getState, action }) => {
     if (action.type !== 'SECOND') return
     dispatch({ type: 'THIRD' })
   })
 
-  const { store, history } = setupAll('/first', { beforeEnter })
+  const { store, history } = await setupAll('/first', { beforeEnter })
   await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
   const { location } = store.getState()
 
@@ -57,12 +57,12 @@ it('beforeEnter redirect on server results does not update state, and instead re
   tempMock('../src/pure-utils/isServer', () => () => true)
   const { setupAll } = require('../__test-helpers__/setup')
 
-  const beforeEnter = jest.fn((dispatch, getState, { action }) => {
+  const beforeEnter = jest.fn(({ dispatch, getState, action }) => {
     if (action.type !== 'SECOND') return
     dispatch({ type: 'THIRD' })
   })
 
-  const { store, history } = setupAll('/first', {
+  const { store, history } = await setupAll('/first', {
     beforeEnter
   })
 
@@ -81,7 +81,7 @@ it('beforeEnter redirect on server results does not update state, and instead re
 })
 
 it('beforeEnter delays route changes until beforeEnter promise resolves', async () => {
-  const beforeEnter = jest.fn(async (dispatch, getState, { action }) => {
+  const beforeEnter = jest.fn(async ({ dispatch, getState, action }) => {
     if (action.type !== 'SECOND') return
 
     await fakeAsyncWork()
@@ -92,14 +92,14 @@ it('beforeEnter delays route changes until beforeEnter promise resolves', async 
     FIRST: '/first',
     SECOND: {
       path: '/second',
-      thunk: async (dispatch, getState) => {
+      thunk: async ({ dispatch, getState }) => {
         await fakeAsyncWork()
         return 'thunkReturn'
       }
     }
   }
 
-  const { store } = setupAll('/first', { beforeEnter }, { routesMap })
+  const { store } = await setupAll('/first', { beforeEnter }, { routesMap })
 
   const prom = store.dispatch({ type: 'SECOND' })
   expect(store.getState().location.type).toEqual('FIRST')
@@ -118,7 +118,7 @@ it('beforeEnter delays route changes until beforeEnter promise resolves', async 
 })
 
 it('beforeEnter that returns a promise which redirects', async () => {
-  const beforeEnter = jest.fn(async (dispatch, getState, { action }) => {
+  const beforeEnter = jest.fn(async ({ dispatch, getState, action }) => {
     if (action.type !== 'SECOND') return
 
     await fakeAsyncWork()
@@ -137,7 +137,7 @@ it('beforeEnter that returns a promise which redirects', async () => {
     }
   }
 
-  const { store } = setupAll('/first', { beforeEnter }, { routesMap })
+  const { store } = await setupAll('/first', { beforeEnter }, { routesMap })
 
   expect(store.getState().location.type).toEqual('FIRST')
 

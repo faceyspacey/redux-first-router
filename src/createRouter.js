@@ -1,21 +1,26 @@
 // @flow
 import type { StoreEnhancer } from 'redux'
+import { compose } from 'redux'
 
 import isLocationAction from './pure-utils/isLocationAction'
 import isServer from './pure-utils/isServer'
+import isRedirect from './pure-utils/isRedirect'
 import createSelector from './pure-utils/createSelector'
 import formatRoutesMap from './pure-utils/formatRoutesMap'
-import formatOptions from './pure-utils/formatOptions'
 
 import redirect from './action-creators/redirect'
 
 import createLocationReducer from './reducer/createLocationReducer'
-import call from './middleware/call'
 
 import createSmartHistory from './smart-history'
 import composePromise from './composePromise'
 
 import { ADD_ROUTES } from './index'
+
+import createRouteAction from './middleware/createRouteAction'
+import enter from './middleware/enter'
+import call from './middleware/call'
+import changePageTitle from './middleware/changePageTitle'
 
 import type {
   Dispatch as Next,
@@ -28,10 +33,22 @@ import type {
 export default (
   routesMapInput: RoutesMapInput = {},
   options: Options = {},
-  middlewares: Array<Function>
+  mws: Array<Function>
 ) => {
+  const middlewares = mws || [
+    createRouteAction,
+    call('beforeLeave', { prev: true }),
+    call('beforeEnter'),
+    enter,
+    changePageTitle,
+    call('onLeave', { prev: true }),
+    call('onEnter'),
+    call('thunk'),
+    call('onComplete')
+  ]
+
   let routesMap: RoutesMap = formatRoutesMap(routesMapInput)
-  const { location, title, initialEntries }: Options = formatOptions(options)
+  const { location, title, initialEntries }: Options = options
 
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
@@ -40,18 +57,21 @@ export default (
   const history = createHistory({ basename: options.basename, initialEntries })
 
   const createReducer = options.createReducer || createLocationReducer
-  const reducer = createReducer(routesMap, history)
+  const reducer = createReducer(routesMapInput, history)
 
-  const applyMiddleware = (...middlewares) => createStore => (...args) => {
-    const store = createStore(...args)
+  const applyMiddleware = (...middlewares) => store => {
+    // const store = createStore(...args)
     const { dispatch, getState } = store
     const getLocationState = () => selectLocationState(getState() || {})
     const getTitle = () => selectTitleState(getState() || {})
 
     const next = composePromise(...middlewares)
+    let temp = {}
 
     const routeDispatch = (action: Object) => {
       const route = routesMap[action.type]
+
+      if (isServer() && isRedirect(action)) return action
 
       if (action.type === ADD_ROUTES) {
         routesMap = { ...routesMap, ...formatRoutesMap(action.payload.routes) }
@@ -61,17 +81,19 @@ export default (
       if (route && !route.path && typeof route.thunk === 'function') {
         const thunk = route.thunk
         const nextAction = dispatch(action)
-        const { dispatch, getState } = store
         const bag = { action: nextAction, ...options.extra }
 
         return thunk(dispatch, getState, bag) || nextAction
       }
 
       const prevRoute = routesMap[getLocationState().type]
-      const handled = isLocationAction(action) || !route
+      const handled = isLocationAction(action) || !route || action.error
       const fromHistory = !!action.nextHistory
 
       if (handled && !fromHistory) return dispatch(action)
+
+      // temp.committed = temp.committed || (action.nextHistory && action.nextHistory.kind === 'init')
+      let completed = false
 
       const req = {
         history,
@@ -82,20 +104,22 @@ export default (
         options,
         getLocationState,
         getTitle,
+        temp,
         ...options.extra,
         ...(action.nextHistory && action),
         action: !action.nextHistory ? action : undefined,
-        committed: (action.nextHistory && action.nextHistory.kind === 'init') || action.committed,
         routeDispatch,
         dispatch: action => {
           const route = routesMap[action.type]
           const isRedirect = typeof route === 'object' && route.path
 
-          if (isRedirect) {
+          if (isRedirect && !completed) {
             action = redirect(action)
-            action.committed = req.committed || action.committed
-            action.prev = req.action
+            req.temp.prev = req.action
             return req.redirect = routeDispatch(action)
+          }
+          else if (completed) {
+            delete action.meta.location
           }
 
           return routeDispatch(action)
@@ -104,9 +128,14 @@ export default (
 
       return next(req)
         .catch(error => {
-          console.log('ERROR!', error)
+          console.log('ERROR!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
           req.error = error
           return call('onError')(req)
+        })
+        .then(res => {
+          temp = {}
+          completed = true
+          return res
         })
     }
 
@@ -123,9 +152,11 @@ export default (
       selectLocationState(preloadedState).routesMap = routesMap
     }
 
-    const routerEnhancer = applyMiddleware(...middlewares)
-    // const enhancers = compose(routerEnhancer, enhancer)
-    const store = createStore(reducer, preloadedState, routerEnhancer)
+    // const router = applyMiddleware(...middlewares)
+    // const enhancers = enhancer ? compose(router, enhancer) : router
+    let store = createStore(reducer, preloadedState)
+    store = applyMiddleware(...middlewares)(store)
+
     const state = store.getState()
     const locationState = state && selectLocationState(state)
 

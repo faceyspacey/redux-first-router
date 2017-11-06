@@ -1,8 +1,8 @@
 // @flow
 import { NOT_FOUND, ADD_ROUTES } from '../index'
 import isServer from '../pure-utils/isServer'
-import { nestHistory } from '../pure-utils/nestAction'
 import pathToAction from '../pure-utils/pathToAction'
+
 import type {
   LocationState,
   RoutesMap,
@@ -40,7 +40,7 @@ export default (routesMap: RoutesMap, history: History) => {
         payload: { ...action.payload },
         ...(query && { query, search }),
         prev: action.meta.location.prev,
-        kind: action.meta.location.history.kind,
+        kind: action.meta.location.kind,
         entries: action.meta.location.history.entries,
         index: action.meta.location.history.index,
         length: action.meta.location.history.length,
@@ -59,7 +59,7 @@ export default (routesMap: RoutesMap, history: History) => {
   }
 }
 
-const createInitialState = (
+export const createInitialState = (
   routesMap: RoutesMap,
   history: History
 ): LocationState => {
@@ -89,27 +89,27 @@ const createInitialState = (
   }
 }
 
-export const getInitialState = (
-  currentPathname: string,
-  meta: ?{ search?: string, query?: Object },
-  type: string,
-  payload: Payload,
-  routesMap: RoutesMap,
-  history: History
-): LocationState => ({
-  pathname: currentPathname.split('?')[0],
-  type,
-  payload,
-  ...meta,
-  prev: {
-    pathname: '',
-    type: '',
-    payload: {}
-  },
-  kind: 'init',
-  entries: history.entries,
-  index: history.index,
-  length: history.length,
-  hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
-  routesMap
-})
+// export const getInitialState = (
+//   currentPathname: string,
+//   meta: ?{ search?: string, query?: Object },
+//   type: string,
+//   payload: Payload,
+//   routesMap: RoutesMap,
+//   history: History
+// ): LocationState => ({
+//   pathname: currentPathname.split('?')[0],
+//   type,
+//   payload,
+//   ...meta,
+//   prev: {
+//     pathname: '',
+//     type: '',
+//     payload: {}
+//   },
+//   kind: 'init',
+//   entries: history.entries,
+//   index: history.index,
+//   length: history.length,
+//   hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
+//   routesMap
+// })

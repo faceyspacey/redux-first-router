@@ -25,10 +25,11 @@ export default (name, config = {}) => async (req, next = noop) => {
 const defaultShouldCall = (req, name, config) => {
   const state = req.getLocationState()
 
-  if (isLoadSSR(state) && /beforeLeave|beforeEnter/.test(name)) return false
+  if (isLoadSSR(state, 'init') && /beforeLeave|beforeEnter/.test(name)) return false
   if (isServer() && /onLeave|onEnter/.test(name)) return false
   if (isLoadSSR(state) && name === 'thunk') return false
-  if (config.prev && req.getLocationState().kind === 'init') return false
+  if (name === 'beforeLeave' && state.kind === 'init') return false
+  if (name === 'onLeave' && state.kind === 'load') return false
 
   return true
 }

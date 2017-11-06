@@ -1,17 +1,18 @@
-import { createMemoryHistory } from 'rudy-history'
+import createSmartHistory from '../src/smart-history'
 
-import { getInitialState } from '../src/reducer/createLocationReducer'
+import { createInitialState } from '../src/reducer/createLocationReducer'
 
-export default (type, pathname) => {
+export default async (type, pathname) => {
   // eslint-disable-line import/prefer-default-export
-  const history = createMemoryHistory({ initialEntries: ['/first'] })
-  history.push(pathname)
+  const history = createSmartHistory({ initialEntries: ['/first'] })
+  history.listen(function() {})
+  await history.push(pathname)
 
   const current = { pathname, type, payload: { param: 'bar' } }
   const prev = { pathname: '/first', type: 'FIRST', payload: {} }
   const routesMap = {
-    FIRST: '/first',
-    SECOND: '/second/:param'
+    FIRST: { path: '/first' },
+    SECOND: { path: '/second/:param' }
   }
 
   return {
@@ -20,16 +21,13 @@ export default (type, pathname) => {
     current,
     prev,
 
-    initialState: getInitialState(
-      prev.pathname,
-      {},
-      prev.type,
-      prev.payload,
+    initialState: createInitialState(
       routesMap,
       history
     ),
 
     routesMap,
+    history,
 
     action: {
       type,
