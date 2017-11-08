@@ -23,7 +23,8 @@ export default async (type, pathname) => {
 
     initialState: createInitialState(
       routesMap,
-      history
+      history,
+      {}
     ),
 
     routesMap,

@@ -2,6 +2,7 @@
 
 export {
   default as createRouter,
+  history
   // push,
   // replace,
   // back,
@@ -15,9 +16,6 @@ export {
   // history,
   // scrollBehavior,
   // updateScroll,
-  getOptions,
-  history,
-  getLocationState,
 } from './createRouter'
 
 export const NOT_FOUND = '@@redux-first-router/NOT_FOUND'

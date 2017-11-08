@@ -89,6 +89,6 @@ it('strips basename if first segment in path', () => {
     FOO: { path: '/foo/bar' }
   }
 
-  const action = pathToAction(path, routesMap, undefined, '/base') /*? */
+  const action = pathToAction(path, routesMap, '/base') /*? */
   expect(action.type).toEqual('FOO')
 })

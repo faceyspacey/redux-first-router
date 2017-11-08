@@ -17,13 +17,12 @@ export default async (req, next) => {
   const basename = state.basename || bn
   const k = ['pathname', 'type', 'payload', 'kind', 'index', 'length', 'query']
   const prev = pick(state.kind === 'init' ? state.prev : state, k)
-
   const notFoundPath = routesMap[NOT_FOUND].path
 
   try {
     if (nextHistory) {
       const { url } = nextHistory.location
-      const action = pathToAction(url, routesMap, serializer, basename)
+      const action = pathToAction(url, routesMap, basename, serializer)
       req.route = routesMap[action.type]
       req.action = nestAction(url, action, prev, nextHistory, basename)
     }
@@ -64,19 +63,19 @@ const isDoubleDispatch = (req, state) =>
 
 
 const prepRequest = (url, action, prev, history, bn, req) => {
-  const basename = (action.meta && action.meta.basename) || bn // allow basenames to be changed along with any route change
+  const basename = (action.meta && action.meta.basename) || bn          // allow basenames to be changed along with any route change
   const method = isCommittedRedirect(action, req) ? 'redirect' : 'push' // redirects before committing are just pushes (since the original route was never pushed)
-  const { nextHistory, commit } = history[method](url, {}, false) // get returned the same "bag" as functions passed to `history.listen`
+  const { nextHistory, commit } = history[method](url, {}, false)       // get returned the same "bag" as functions passed to `history.listen`
   const redirect = isRedirect(action)
 
   // if multiple redirects in one pass, the latest LAST redirect becomes prev
   const tp = req.temp.prev
   prev = redirect && tp ? tp.meta.location.current : prev
 
-  nextHistory.kind = redirect ? 'redirect' : nextHistory.kind // the kind no matter what relfects the appropriate intent
+  nextHistory.kind = redirect ? 'redirect' : nextHistory.kind           // the kind no matter what relfects the appropriate intent
 
   req.action = nestAction(url, action, prev, nextHistory, basename)
-  req.nextHistory = nextHistory // put these here so `enter` middleware can commit the history, etc
+  req.nextHistory = nextHistory                                         // put these here so `enter` middleware can commit the history, etc
   req.commitHistory = commit
 
   return req

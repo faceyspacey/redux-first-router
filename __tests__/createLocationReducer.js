@@ -11,7 +11,7 @@ it('createLocationReducer() - maintains address bar pathname state and current +
     '/second/bar'
   )
 
-  const reducer = createLocationReducer(routesMap, history)
+  const reducer = createLocationReducer(routesMap, history, {})
   const state = reducer(undefined, action) /*? */
 
   expectState(state)
@@ -23,7 +23,7 @@ it('locationReducer() reduces action.type === NOT_FOUND', async () => {
     '/foo'
   )
 
-  const reducer = createLocationReducer(routesMap, history)
+  const reducer = createLocationReducer(routesMap, history, {})
   const state = reducer(undefined, action) /*? */
 
   expect(state.type).toEqual(NOT_FOUND)
@@ -36,7 +36,7 @@ it('locationReducer() reduces non matched action.type and returns initialState',
     '/third'
   )
 
-  const reducer = createLocationReducer(routesMap, history)
+  const reducer = createLocationReducer(routesMap, history, {})
   const state = reducer(undefined, action) /*? */
 
   expect(state).toEqual(initialState)
@@ -52,7 +52,7 @@ it('getInitialState() returns state.history === undefined when using createBrows
   }
 
   history.entries = undefined
-  const initialState = createInitialState(routesMap, history)
+  const initialState = createInitialState(routesMap, history, {})
 
   expect(initialState.history).not.toBeDefined()
   expect(initialState).toMatchSnapshot()

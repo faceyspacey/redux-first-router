@@ -8,8 +8,8 @@ import type { RoutesMap, ReceivedAction, QuerySerializer, Routes } from '../flow
 export default (
   pathname: string,
   routesMap: RoutesMap,
-  serializer?: QuerySerializer,
-  basename: ?string = getOptions().basename
+  basename: string = '',
+  serializer?: QuerySerializer
 ): ReceivedAction => {
   const parts = pathname.split('?')
   const search = parts[1]

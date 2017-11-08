@@ -1,7 +1,7 @@
 import redirect from '../action-creators/redirect'
 
 export default (getReq) => action => {
-  const req = getReq()
+  const req = getReq() // get full req object from closure, since both are defined at same time
   const { store, routesMap } = req
   const route = routesMap[action.type]
   const isRedirect = typeof route === 'object' && route.path // can't be a pathless thunk

@@ -41,6 +41,7 @@ it('generated from pathToAction within <Link />', async () => {
   let action = pathToAction(
     '/first?foo=bar&baz=69',
     routesMap,
+    '',
     querySerializer
   ) /*? */
   await store.dispatch(action)
@@ -48,6 +49,7 @@ it('generated from pathToAction within <Link />', async () => {
   action = pathToAction(
     '/first?foo=car&baz=70',
     routesMap,
+    '',
     querySerializer
   ) /*? */
   await store.dispatch(action)

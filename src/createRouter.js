@@ -39,7 +39,6 @@ export default (
   const {
     location,
     title,
-    querySerializer: serializer,
     createHistory = createSmartHistory,
     createReducer = createLocationReducer,
     shouldTransition = shouldTrans
@@ -49,29 +48,24 @@ export default (
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createHistory(options)
-  const reducer = createReducer(routesMap, history)
+  const reducer = createReducer(routesMap, history, options)
   const nextPromise = composePromise(middlewares)
 
   const middleware = (store: Store) => {
     const getTitle = () => selectTitleState(store.getState() || {})
     const getLocationState = () => selectLocationState(store.getState() || {})
-
     const context = {}
     let temp = {}
 
-    _getLocationState = getLocationState
-
     history.listen(store.dispatch)
+    store.getState.rudy = { history, routesMap, options, getLocationState }
 
     return (next: Dispatch) => (action: Object) => {
       if (!shouldTransition(action, routesMap)) return next(action)
 
       const req = {
         ...options.extra,
-        history,
-        routesMap,
-        options,
-        getLocationState,
+        ...store.getState.rudy,
         getTitle,
         context,
         temp,
@@ -100,7 +94,6 @@ export default (
     }
   }
 
-  _options = options
   _history = history
 
   return {
@@ -111,10 +104,5 @@ export default (
   }
 }
 
-let _options
 let _history
-let _getLocationState
-
-export const getOptions = (): Options => _options || {}
 export const history = () => _history
-export const getLocationState = () => _getLocationState()
