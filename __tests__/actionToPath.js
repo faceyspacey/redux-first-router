@@ -1,4 +1,4 @@
-import actionToPath from '../src/pure-utils/actionToPath'
+import actionToPath from '../src/utils/actionToPath'
 
 it('parse action into path without payload: /info', () => {
   const action = { type: 'INFO' }

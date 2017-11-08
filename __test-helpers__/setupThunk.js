@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import createRouter from '../src/createRouter'
 
 export default async (path = '/', thunkArg, opts, dispatchFirstRoute = true) => {
@@ -10,7 +10,7 @@ export default async (path = '/', thunkArg, opts, dispatchFirstRoute = true) => 
 
   const options = { extra: { arg: 'extra-arg' }, initialEntries: path, ...opts }
 
-  const { enhancer, reducer, history, firstRoute } = createRouter(
+  const { middleware, reducer, history, firstRoute } = createRouter(
     routesMap,
     options
   )
@@ -19,6 +19,7 @@ export default async (path = '/', thunkArg, opts, dispatchFirstRoute = true) => 
     location: reducer
   })
 
+  const enhancer = applyMiddleware(middleware)
   const store = createStore(rootReducer, enhancer)
 
   if (dispatchFirstRoute) await store.dispatch(firstRoute())

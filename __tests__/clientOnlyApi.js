@@ -47,7 +47,7 @@ it('back: verify client-only `back` and `next` functions call `history.back/next
 })
 
 it('verify window.document is not used server side', async () => {
-  tempMock('../src/pure-utils/isServer', () => () => true)
+  tempMock('../src/utils/isServer', () => () => true)
   const { setupAll } = require('../__test-helpers__/setup')
 
   document.title = ''

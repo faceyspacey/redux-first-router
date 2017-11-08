@@ -1,7 +1,7 @@
-import isLoadSSR from '../pure-utils/isClientLoadSSR'
-import isServer from '../pure-utils/isServer'
+import isLoadSSR from '../utils/isClientLoadSSR'
+import isServer from '../utils/isServer'
 
-const noop = function () {}
+const noop = function() {}
 const isFalse = (a, b) => a === false || b === false
 
 export default (name, config = {}) => async (req, next = noop) => {
@@ -33,20 +33,4 @@ const defaultShouldCall = (req, name, config) => {
 
   return true
 }
-
-// export const callAndForget = (name, { prev } = {}) => async (req, next) => {
-//   const route = prev ? req.prevRoute : req.route
-//   const routeCb = route[name] || noop
-//   const globalCb = req.options[name] || noop
-
-//   const a = routeCb(req)
-//   const b = globalCb(req)
-
-//   if (isFalse(a, b)) return false
-
-//   await next()
-
-//   return a || b
-// }
-
 

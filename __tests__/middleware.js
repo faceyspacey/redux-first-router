@@ -93,3 +93,12 @@ it('does nothing if action has error', async () => {
   store.dispatch(receivedAction) /*? */
   expect(store.getState().location.type).toEqual('FIRST')
 })
+
+it('user redirects', async () => {
+  const { store } = await setupAll('/first')
+  const action = await store.dispatch(redirect({ type: 'THIRD' })) /*? $.meta */
+
+  store.getState() /*? $.location */
+  expect(store.getState().location.length).toEqual(1)
+  expect(store.getState().location.type).toEqual('THIRD')
+})

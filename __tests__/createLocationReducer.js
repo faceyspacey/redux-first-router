@@ -1,7 +1,7 @@
 import createSmartHistory from '../src/smart-history'
 import createLocationReducer, {
   createInitialState
-} from '../src/reducer/createLocationReducer'
+} from '../src/createLocationReducer'
 import { NOT_FOUND } from '../src/index'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 

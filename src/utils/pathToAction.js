@@ -2,9 +2,8 @@
 import { compilePath } from 'rudy-match-path'
 import { stripBasename } from 'rudy-history/PathUtils'
 import { NOT_FOUND, getOptions } from '../index'
-import objectValues from './objectValues'
 
-import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
+import type { RoutesMap, ReceivedAction, QuerySerializer, Routes } from '../flow-types'
 
 export default (
   pathname: string,
@@ -70,13 +69,19 @@ export default (
       return payload
     }, {})
 
-    return { type, payload, meta: query ? { query } : {} }
+    if (query) payload.query = query
+
+    return { type, payload, meta: {} }
   }
 
   // This will basically will only end up being called if the developer is manually calling history.push().
   // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
-  const meta = { notFoundPath: pathname, ...(query ? { query } : {}) }
-  return { type: NOT_FOUND, payload: {}, meta }
+  const payload = query ? { query } : {}
+  const meta = { notFoundPath: pathname }
+  return { type: NOT_FOUND, payload, meta }
 }
 
 const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)
+
+const objectValues = (routes: RoutesMap): Routes =>
+  Object.keys(routes).map(key => routes[key])

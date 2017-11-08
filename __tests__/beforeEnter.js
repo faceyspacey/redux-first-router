@@ -1,6 +1,7 @@
 import { setupAll } from '../__test-helpers__/setup'
 import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 import tempMock from '../__test-helpers__/tempMock'
+import doesRedirect from '../src/utils/doesRedirect'
 
 it('calls beforeEnter handler on route change -- route', async () => {
   const beforeEnter = jest.fn()
@@ -54,7 +55,7 @@ it('if beforeEnter dispatches redirect, route changes with kind === "redirect"',
 })
 
 it('beforeEnter redirect on server results does not update state, and instead returns action (i.e. short-circuits)', async () => {
-  tempMock('../src/pure-utils/isServer', () => () => true)
+  tempMock('../src/utils/isServer', () => () => true)
   const { setupAll } = require('../__test-helpers__/setup')
 
   const beforeEnter = jest.fn(({ dispatch, getState, action }) => {
@@ -75,6 +76,13 @@ it('beforeEnter redirect on server results does not update state, and instead re
   expect(history.entries.length).toEqual(1)
   expect(action.kind).toEqual('redirect')
   expect(action.type).toEqual('THIRD')
+  expect(action.meta.location.status).toEqual(302)
+  expect(action.meta.location.url).toEqual('/third')
+
+  const redirect = jest.fn()
+  expect(doesRedirect(action, redirect)).toEqual(true)
+  expect(redirect).toBeCalledWith(302, '/third')
+
   expect(location.type).toEqual('FIRST')
   expect(location).toMatchSnapshot()
   expect(action).toMatchSnapshot()

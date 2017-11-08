@@ -1,29 +1,8 @@
 import querySerializer from 'query-string'
 
 import { setupAll } from '../__test-helpers__/setup'
-import pathToAction from '../src/pure-utils/pathToAction'
+import pathToAction from '../src/utils/pathToAction'
 
-it('dispatched as action.query', async () => {
-  const { store } = await setupAll('/third', { querySerializer })
-  const query = { foo: 'bar', baz: 69 }
-
-  await store.dispatch({ type: 'FIRST', query })
-  await store.dispatch({ type: 'THIRD', query })
-
-  const state = store.getState() /*? $.location */
-  expect(state).toMatchSnapshot()
-})
-
-it('dispatched as action.meta.query', async () => {
-  const { store } = await setupAll('/third', { querySerializer })
-  const query = { foo: 'bar', baz: 69 }
-
-  await store.dispatch({ type: 'FIRST', meta: { query } })
-  await store.dispatch({ type: 'THIRD', meta: { query } })
-
-  const state = store.getState() /*? $.location */
-  expect(state).toMatchSnapshot()
-})
 
 it('dispatched as action.payload.query', async () => {
   const { store } = await setupAll('/third', { querySerializer })

@@ -1,4 +1,4 @@
-import pathToAction from '../src/pure-utils/pathToAction'
+import pathToAction from '../src/utils/pathToAction'
 import { NOT_FOUND } from '../src/index'
 
 it('parse path into action using routePath without /:param segment', () => {

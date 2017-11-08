@@ -52,6 +52,7 @@ export default class BrowserHistory extends History {
   constructor(opts = {}) {
     const { basename: bn } = opts
     const basename = bn ? stripSlashes(bn) : ''
+    opts.basename = basename
 
     const { id, ...initialHistoryState } = getInitialHistoryState()
     const defaultLocation = getWindowLocation(initialHistoryState, basename)

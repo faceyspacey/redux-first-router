@@ -24,7 +24,7 @@ export default class History {
       // this._updateHistory(nextState)
     }
 
-    this.initialBag = { nextHistory: this, commit }
+    this.firstRoute = { nextHistory: this, commit }
     this.listeners = createListeners()
   }
 

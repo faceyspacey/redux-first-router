@@ -1,7 +1,7 @@
 // @flow
-import { NOT_FOUND, ADD_ROUTES } from '../index'
-import isServer from '../pure-utils/isServer'
-import pathToAction from '../pure-utils/pathToAction'
+import { NOT_FOUND, ADD_ROUTES } from './index'
+import isServer from './utils/isServer'
+import pathToAction from './utils/pathToAction'
 
 import type {
   LocationState,
@@ -10,7 +10,7 @@ import type {
   Payload,
   History,
   ReceivedAction
-} from '../flow-types'
+} from './flow-types'
 
 export default (routesMap: RoutesMap, history: History) => {
   const initialState = createInitialState(routesMap, history)
@@ -31,27 +31,23 @@ export default (routesMap: RoutesMap, history: History) => {
           action.meta.location.current.search !== state.search ||
           action.meta.location.kind === 'load'))
     ) {
-      const query = action.meta.location.current.query
+      const query = action.meta.location.current.payload.query
       const search = action.meta.location.current.search
+      const payload = { ...action.payload }
+      delete payload.query
 
       return {
         pathname: action.meta.location.current.pathname,
         type: action.type,
-        payload: { ...action.payload },
+        payload,
         ...(query && { query, search }),
         prev: action.meta.location.prev,
         kind: action.meta.location.kind,
+        basename: action.meta.location.basename,
         entries: action.meta.location.history.entries,
         index: action.meta.location.history.index,
         length: action.meta.location.history.length,
-        hasSSR: state.hasSSR,
-        routesMap
-      }
-    }
-    else if (action.type === ADD_ROUTES) {
-      return {
-        ...state,
-        routesMap: { ...state.routesMap, ...action.payload.routes }
+        hasSSR: state.hasSSR
       }
     }
 
@@ -84,32 +80,6 @@ export const createInitialState = (
     entries: history.entries,
     index: history.index,
     length: history.length,
-    hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
-    routesMap
+    hasSSR: isServer() ? true : undefined // client uses initial server `hasSSR` state setup here
   }
 }
-
-// export const getInitialState = (
-//   currentPathname: string,
-//   meta: ?{ search?: string, query?: Object },
-//   type: string,
-//   payload: Payload,
-//   routesMap: RoutesMap,
-//   history: History
-// ): LocationState => ({
-//   pathname: currentPathname.split('?')[0],
-//   type,
-//   payload,
-//   ...meta,
-//   prev: {
-//     pathname: '',
-//     type: '',
-//     payload: {}
-//   },
-//   kind: 'init',
-//   entries: history.entries,
-//   index: history.index,
-//   length: history.length,
-//   hasSSR: isServer() ? true : undefined, // client uses initial server `hasSSR` state setup here
-//   routesMap
-// })

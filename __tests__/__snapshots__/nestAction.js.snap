@@ -6,6 +6,7 @@ Object {
   "meta": Object {
     "info": "something",
     "location": Object {
+      "basename": undefined,
       "current": Object {
         "index": 0,
         "kind": undefined,

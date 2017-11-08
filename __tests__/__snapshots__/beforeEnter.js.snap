@@ -2,6 +2,7 @@
 
 exports[`beforeEnter redirect on server results does not update state, and instead returns action (i.e. short-circuits) 1`] = `
 Object {
+  "basename": "",
   "entries": Array [
     Object {
       "hash": "",
@@ -26,20 +27,6 @@ Object {
     "payload": Object {},
     "type": "",
   },
-  "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {
-      "path": "/not-found",
-    },
-    "FIRST": Object {
-      "path": "/first",
-    },
-    "SECOND": Object {
-      "path": "/second/:param",
-    },
-    "THIRD": Object {
-      "path": "/third",
-    },
-  },
   "type": "FIRST",
 }
 `;
@@ -49,7 +36,10 @@ Object {
   "kind": "redirect",
   "meta": Object {
     "location": Object {
+      "committed": false,
       "kind": "redirect",
+      "status": 302,
+      "url": "/third",
     },
   },
   "type": "THIRD",
@@ -58,6 +48,7 @@ Object {
 
 exports[`if beforeEnter dispatches redirect, route changes with kind === "redirect" 1`] = `
 Object {
+  "basename": "",
   "entries": Array [
     Object {
       "hash": "",
@@ -91,20 +82,6 @@ Object {
       "param": "bar",
     },
     "type": "SECOND",
-  },
-  "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {
-      "path": "/not-found",
-    },
-    "FIRST": Object {
-      "path": "/first",
-    },
-    "SECOND": Object {
-      "path": "/second/:param",
-    },
-    "THIRD": Object {
-      "path": "/third",
-    },
   },
   "type": "THIRD",
 }

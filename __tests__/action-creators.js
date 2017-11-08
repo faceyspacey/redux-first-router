@@ -1,10 +1,5 @@
-import { createMemoryHistory } from 'rudy-history'
-
-import historyCreateAction from '../src/action-creators/historyCreateAction'
-import middlewareCreate from '../src/action-creators/middlewareCreateAction'
 import redirect from '../src/action-creators/redirect'
 import addRoutes from '../src/action-creators/addRoutes'
-import { NOT_FOUND } from '../src/index'
 
 import { setupAll } from '../__test-helpers__/setup'
 
@@ -23,8 +18,8 @@ it('addRoutes(routes) - adds routes to routesMap', async () => {
 
   const { store } = await setupAll()
 
-  const thunk = addRoutes(newRoutes)
-  await store.dispatch(thunk)
+  const action = addRoutes(newRoutes)
+  await store.dispatch(action)
   expect(store.getState()).toMatchSnapshot()
 
   await store.dispatch({ type: 'FOO' })

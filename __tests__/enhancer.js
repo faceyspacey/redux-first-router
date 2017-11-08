@@ -31,18 +31,4 @@ it("listens to history changes and dispatches actions matching history's locatio
   expect(location2.pathname).toEqual('/first')
 })
 
-it('throws when no location reducer provided', () => {
-  const rootReducer = (state = {}, action = {}) => ({
-    locationFOO: 'bar'
-  })
 
-  const createEnhancer = setupAll('/first', undefined, { rootReducer })
-  return expect(createEnhancer.catch(e => e.message)).resolves.toBe('[rudy] your location reducer is not setup.')
-})
-
-it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', async () => {
-  const preLoadedState = { location: { pathname: '/' } }
-  const { store } = await setupAll('/first', undefined, { preLoadedState })
-
-  expect(store.getState().location.routesMap).toBeDefined()
-})

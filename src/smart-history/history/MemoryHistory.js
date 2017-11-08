@@ -36,6 +36,7 @@ export default class MemoryHistory extends History {
     } = opts
 
     const basename = bn ? stripSlashes(bn) : ''
+    opts.basename = basename
 
     const initialEntries = !Array.isArray(ents) ? [ents] : ents || ['/']
 

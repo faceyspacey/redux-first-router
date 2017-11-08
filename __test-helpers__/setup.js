@@ -35,9 +35,8 @@ export const setupAll = async (
   } = {}
 ) => {
   const tools = setup(path, options, routesMap)
-  const { enhancer, reducer, firstRoute } = tools
-  const middlewares = applyMiddleware(reduxThunk, additionalMiddleware)
-  const enhancers = compose(enhancer, middlewares)
+  const { middleware, reducer, firstRoute } = tools
+  const enhancer = applyMiddleware(middleware, reduxThunk, additionalMiddleware)
 
   rootReducer =
     rootReducer ||
@@ -46,7 +45,7 @@ export const setupAll = async (
       title: action.type
     }))
 
-  const store = createStore(rootReducer, preLoadedState, enhancers)
+  const store = createStore(rootReducer, preLoadedState, enhancer)
   if (dispatchFirstRoute) await store.dispatch(firstRoute())
 
   return {

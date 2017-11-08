@@ -1,6 +1,6 @@
 import createSmartHistory from '../src/smart-history'
 
-import { createInitialState } from '../src/reducer/createLocationReducer'
+import { createInitialState } from '../src/createLocationReducer'
 
 export default async (type, pathname) => {
   // eslint-disable-line import/prefer-default-export

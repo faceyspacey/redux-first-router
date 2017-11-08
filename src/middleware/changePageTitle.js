@@ -1,5 +1,4 @@
-import changePageTitle from '../pure-utils/changePageTitle'
-import isServer from '../pure-utils/isServer'
+import isServer from '../utils/isServer'
 
 export default async (req, next) => {
   const title = req.getTitle()

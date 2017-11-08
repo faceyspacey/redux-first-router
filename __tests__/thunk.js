@@ -35,8 +35,8 @@ it('middleware:callThunk route', async () => {
 
 it('middleware:callThunk does NOT call thunk + change callback if isClientLoadSSR', async () => {
   jest.resetModules()
-  jest.doMock('../src/pure-utils/isClientLoadSSR', () => () => true)
-  jest.doMock('../src/pure-utils/isServer', () => () => false)
+  jest.doMock('../src/utils/isClientLoadSSR', () => () => true)
+  jest.doMock('../src/utils/isServer', () => () => false)
   const { setupAll } = require('../__test-helpers__/setup')
 
   const thunk = jest.fn()
@@ -125,8 +125,8 @@ it('pathless route calls callThunk', async () => {
   await store.dispatch(action)
 
   expect(thunk).toHaveBeenCalled()
-  expect(thunk.mock.calls[0].length).toEqual(3) // 2 args: dispatch, getState
-  expect(thunk.mock.calls[0][2].action).toEqual(action)
+  expect(thunk.mock.calls[0].length).toEqual(1) // 1 arg1: req
+  expect(thunk.mock.calls[0][0].action).toEqual(action)
 })
 
 it('pathless routes do not break other real route dispatches', async () => {
@@ -165,8 +165,8 @@ it('pathless routes do not break history changes from real route dispatches', as
 
 it('CLIENT SPA: await dispatch(firstRoute())', async () => {
   jest.resetModules()
-  jest.doMock('../src/pure-utils/isClientLoadSSR', () => () => false)
-  jest.doMock('../src/pure-utils/isServer', () => () => false)
+  jest.doMock('../src/utils/isClientLoadSSR', () => () => false)
+  jest.doMock('../src/utils/isServer', () => () => false)
 
   const { setupAll } = require('../__test-helpers__/setup')
 
@@ -213,8 +213,8 @@ it('CLIENT SPA: await dispatch(firstRoute())', async () => {
 
 it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async () => {
   jest.resetModules()
-  jest.doMock('../src/pure-utils/isClientLoadSSR', () => () => true)
-  jest.doMock('../src/pure-utils/isServer', () => () => false)
+  jest.doMock('../src/utils/isClientLoadSSR', () => () => true)
+  jest.doMock('../src/utils/isServer', () => () => false)
 
   const { setupAll } = require('../__test-helpers__/setup')
 
@@ -252,8 +252,8 @@ it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async 
 
 it('SERVER: await dispatch(firstRoute()) -- redirected route not dispatched', async () => {
   jest.resetModules()
-  jest.dontMock('../src/pure-utils/isClientLoadSSR')
-  jest.doMock('../src/pure-utils/isServer', () => () => true)
+  jest.dontMock('../src/utils/isClientLoadSSR')
+  jest.doMock('../src/utils/isServer', () => () => true)
   const { setupAll } = require('../__test-helpers__/setup')
 
   const thunk1 = jest.fn(async ({ dispatch }) => {

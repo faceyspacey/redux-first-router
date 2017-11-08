@@ -2,6 +2,7 @@
 
 exports[`dispatches location-aware action, changes address bar + document.title 1`] = `
 Object {
+  "basename": "",
   "entries": Array [
     Object {
       "hash": "",
@@ -26,20 +27,6 @@ Object {
     "payload": Object {},
     "type": "",
   },
-  "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {
-      "path": "/not-found",
-    },
-    "FIRST": Object {
-      "path": "/first",
-    },
-    "SECOND": Object {
-      "path": "/second/:param",
-    },
-    "THIRD": Object {
-      "path": "/third",
-    },
-  },
   "type": "@@redux-first-router/NOT_FOUND",
 }
 `;
@@ -49,6 +36,7 @@ Object {
   "kind": "push",
   "meta": Object {
     "location": Object {
+      "basename": "",
       "current": Object {
         "index": 1,
         "kind": "push",
@@ -103,6 +91,7 @@ Object {
 exports[`dispatches location-aware action, changes address bar + document.title 3`] = `
 Object {
   "location": Object {
+    "basename": "",
     "entries": Array [
       Object {
         "hash": "",
@@ -137,20 +126,6 @@ Object {
       "payload": Object {},
       "type": "@@redux-first-router/NOT_FOUND",
     },
-    "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {
-        "path": "/not-found",
-      },
-      "FIRST": Object {
-        "path": "/first",
-      },
-      "SECOND": Object {
-        "path": "/second/:param",
-      },
-      "THIRD": Object {
-        "path": "/third",
-      },
-    },
     "type": "SECOND",
   },
   "title": "SECOND",
@@ -159,6 +134,7 @@ Object {
 
 exports[`dont double dispatch the same action 1`] = `
 Object {
+  "basename": "",
   "entries": Array [
     Object {
       "hash": "",
@@ -185,20 +161,6 @@ Object {
     "payload": Object {},
     "type": "",
   },
-  "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {
-      "path": "/not-found",
-    },
-    "FIRST": Object {
-      "path": "/first",
-    },
-    "SECOND": Object {
-      "path": "/second/:param",
-    },
-    "THIRD": Object {
-      "path": "/third",
-    },
-  },
   "type": "SECOND",
 }
 `;
@@ -208,6 +170,7 @@ Object {
   "kind": "push",
   "meta": Object {
     "location": Object {
+      "basename": "",
       "current": Object {
         "index": 1,
         "kind": "push",
@@ -260,6 +223,7 @@ Object {
   "kind": "redirect",
   "meta": Object {
     "location": Object {
+      "basename": "",
       "current": Object {
         "index": 0,
         "kind": "redirect",
@@ -282,6 +246,112 @@ Object {
         "index": 0,
         "kind": "redirect",
         "length": 1,
+      },
+      "kind": "redirect",
+      "prev": Object {
+        "index": 0,
+        "kind": "load",
+        "length": 1,
+        "pathname": "/first",
+        "payload": Object {},
+        "type": "FIRST",
+      },
+    },
+  },
+  "payload": Object {},
+  "type": "@@redux-first-router/NOT_FOUND",
+}
+`;
+
+exports[`user dispatches NOT_FOUND redirect and middleware adds missing info to action 2`] = `
+Object {
+  "kind": "redirect",
+  "meta": Object {
+    "location": Object {
+      "basename": "",
+      "current": Object {
+        "index": 1,
+        "kind": "redirect",
+        "length": 2,
+        "pathname": "/not-found",
+        "payload": Object {},
+        "type": "@@redux-first-router/NOT_FOUND",
+      },
+      "history": Object {
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/not-found",
+            "search": "",
+            "state": Object {},
+            "url": "/not-found",
+          },
+        ],
+        "index": 1,
+        "kind": "redirect",
+        "length": 2,
+      },
+      "kind": "redirect",
+      "prev": Object {
+        "index": 0,
+        "kind": "load",
+        "length": 1,
+        "pathname": "/first",
+        "payload": Object {},
+        "type": "FIRST",
+      },
+    },
+  },
+  "payload": Object {},
+  "type": "@@redux-first-router/NOT_FOUND",
+}
+`;
+
+exports[`user redirects 1`] = `
+Object {
+  "kind": "redirect",
+  "meta": Object {
+    "location": Object {
+      "basename": "",
+      "current": Object {
+        "index": 1,
+        "kind": "redirect",
+        "length": 2,
+        "pathname": "/not-found",
+        "payload": Object {},
+        "type": "@@redux-first-router/NOT_FOUND",
+      },
+      "history": Object {
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "hash": "",
+            "key": "345678",
+            "pathname": "/not-found",
+            "search": "",
+            "state": Object {},
+            "url": "/not-found",
+          },
+        ],
+        "index": 1,
+        "kind": "redirect",
+        "length": 2,
       },
       "kind": "redirect",
       "prev": Object {

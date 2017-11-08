@@ -5,6 +5,7 @@ Object {
   "kind": "load",
   "meta": Object {
     "location": Object {
+      "basename": "",
       "current": Object {
         "index": 0,
         "kind": "load",
@@ -46,6 +47,7 @@ Object {
 
 exports[`CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called 2`] = `
 Object {
+  "basename": "",
   "entries": Array [
     Object {
       "hash": "",
@@ -70,19 +72,6 @@ Object {
     "payload": Object {},
     "type": "",
   },
-  "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {
-      "path": "/not-found",
-    },
-    "FIRST": Object {
-      "path": "/first",
-    },
-    "SECOND": Object {
-      "beforeEnter": [Function],
-      "path": "/second",
-      "thunk": [Function],
-    },
-  },
   "type": "SECOND",
 }
 `;
@@ -92,7 +81,10 @@ Object {
   "kind": "redirect",
   "meta": Object {
     "location": Object {
+      "committed": false,
       "kind": "redirect",
+      "status": 302,
+      "url": "/third",
     },
   },
   "type": "THIRD",
@@ -101,6 +93,7 @@ Object {
 
 exports[`SERVER: await dispatch(firstRoute()) -- redirected route not dispatched 2`] = `
 Object {
+  "basename": "",
   "entries": Array [
     Object {
       "hash": "",
@@ -124,22 +117,6 @@ Object {
     "pathname": "",
     "payload": Object {},
     "type": "",
-  },
-  "routesMap": Object {
-    "@@redux-first-router/NOT_FOUND": Object {
-      "path": "/not-found",
-    },
-    "FIRST": Object {
-      "path": "/first",
-    },
-    "SECOND": Object {
-      "path": "/second",
-      "thunk": [Function],
-    },
-    "THIRD": Object {
-      "path": "/third",
-      "thunk": [Function],
-    },
   },
   "type": "SECOND",
 }

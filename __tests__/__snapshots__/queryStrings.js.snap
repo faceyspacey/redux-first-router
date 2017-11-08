@@ -3,6 +3,7 @@
 exports[`currentPathName changes, but pathname stays the same (only query changes) 1`] = `
 Object {
   "location": Object {
+    "basename": "",
     "entries": Array [
       Object {
         "hash": "",
@@ -45,26 +46,11 @@ Object {
         "baz": "69",
         "foo": "bar",
       },
-      "search": "foo=bar&baz=69",
       "type": "FIRST",
     },
     "query": Object {
       "baz": "70",
       "foo": "car",
-    },
-    "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {
-        "path": "/not-found",
-      },
-      "FIRST": Object {
-        "path": "/first",
-      },
-      "SECOND": Object {
-        "path": "/second/:param",
-      },
-      "THIRD": Object {
-        "path": "/third",
-      },
     },
     "search": "foo=car&baz=70",
     "type": "FIRST",
@@ -73,82 +59,10 @@ Object {
 }
 `;
 
-exports[`dispatched as action.meta.query 1`] = `
-Object {
-  "location": Object {
-    "entries": Array [
-      Object {
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third",
-        "search": "",
-        "state": Object {},
-        "url": "/third",
-      },
-      Object {
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "?baz=69&foo=bar",
-        "state": Object {},
-        "url": "/first?baz=69&foo=bar",
-      },
-      Object {
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third",
-        "search": "?baz=69&foo=bar",
-        "state": Object {},
-        "url": "/third?baz=69&foo=bar",
-      },
-    ],
-    "hasSSR": undefined,
-    "index": 2,
-    "kind": "push",
-    "length": 3,
-    "pathname": "/third",
-    "payload": Object {},
-    "prev": Object {
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "pathname": "/first",
-      "payload": Object {},
-      "query": Object {
-        "baz": 69,
-        "foo": "bar",
-      },
-      "search": "baz=69&foo=bar",
-      "type": "FIRST",
-    },
-    "query": Object {
-      "baz": 69,
-      "foo": "bar",
-    },
-    "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {
-        "path": "/not-found",
-      },
-      "FIRST": Object {
-        "path": "/first",
-      },
-      "SECOND": Object {
-        "path": "/second/:param",
-      },
-      "THIRD": Object {
-        "path": "/third",
-      },
-    },
-    "search": "baz=69&foo=bar",
-    "type": "THIRD",
-  },
-  "title": "THIRD",
-}
-`;
-
 exports[`dispatched as action.payload.query 1`] = `
 Object {
   "location": Object {
+    "basename": "",
     "entries": Array [
       Object {
         "hash": "",
@@ -181,93 +95,6 @@ Object {
       "payload": Object {},
       "type": "FIRST",
     },
-    "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {
-        "path": "/not-found",
-      },
-      "FIRST": Object {
-        "path": "/first",
-      },
-      "SECOND": Object {
-        "path": "/second/:param",
-      },
-      "THIRD": Object {
-        "path": "/third",
-      },
-    },
-    "type": "THIRD",
-  },
-  "title": "THIRD",
-}
-`;
-
-exports[`dispatched as action.query 1`] = `
-Object {
-  "location": Object {
-    "entries": Array [
-      Object {
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third",
-        "search": "",
-        "state": Object {},
-        "url": "/third",
-      },
-      Object {
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "?baz=69&foo=bar",
-        "state": Object {},
-        "url": "/first?baz=69&foo=bar",
-      },
-      Object {
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third",
-        "search": "?baz=69&foo=bar",
-        "state": Object {},
-        "url": "/third?baz=69&foo=bar",
-      },
-    ],
-    "hasSSR": undefined,
-    "index": 2,
-    "kind": "push",
-    "length": 3,
-    "pathname": "/third",
-    "payload": Object {},
-    "prev": Object {
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "pathname": "/first",
-      "payload": Object {},
-      "query": Object {
-        "baz": 69,
-        "foo": "bar",
-      },
-      "search": "baz=69&foo=bar",
-      "type": "FIRST",
-    },
-    "query": Object {
-      "baz": 69,
-      "foo": "bar",
-    },
-    "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {
-        "path": "/not-found",
-      },
-      "FIRST": Object {
-        "path": "/first",
-      },
-      "SECOND": Object {
-        "path": "/second/:param",
-      },
-      "THIRD": Object {
-        "path": "/third",
-      },
-    },
-    "search": "baz=69&foo=bar",
     "type": "THIRD",
   },
   "title": "THIRD",
@@ -277,6 +104,7 @@ Object {
 exports[`generated from pathToAction within <Link /> 1`] = `
 Object {
   "location": Object {
+    "basename": "",
     "entries": Array [
       Object {
         "hash": "",
@@ -319,26 +147,11 @@ Object {
         "baz": "69",
         "foo": "bar",
       },
-      "search": "baz=69&foo=bar",
       "type": "FIRST",
     },
     "query": Object {
       "baz": "70",
       "foo": "car",
-    },
-    "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {
-        "path": "/not-found",
-      },
-      "FIRST": Object {
-        "path": "/first",
-      },
-      "SECOND": Object {
-        "path": "/second/:param",
-      },
-      "THIRD": Object {
-        "path": "/third",
-      },
     },
     "search": "baz=70&foo=car",
     "type": "FIRST",
@@ -350,6 +163,7 @@ Object {
 exports[`history.push("/path?search=foo") 1`] = `
 Object {
   "location": Object {
+    "basename": "",
     "entries": Array [
       Object {
         "hash": "",
@@ -392,26 +206,11 @@ Object {
         "baz": "69",
         "foo": "bar",
       },
-      "search": "foo=bar&baz=69",
       "type": "FIRST",
     },
     "query": Object {
       "baz": "69",
       "foo": "bar",
-    },
-    "routesMap": Object {
-      "@@redux-first-router/NOT_FOUND": Object {
-        "path": "/not-found",
-      },
-      "FIRST": Object {
-        "path": "/first",
-      },
-      "SECOND": Object {
-        "path": "/second/:param",
-      },
-      "THIRD": Object {
-        "path": "/third",
-      },
     },
     "search": "foo=bar&baz=69",
     "type": "THIRD",

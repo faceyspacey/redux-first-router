@@ -63,6 +63,7 @@ module.exports = {
     'arrow-body-style': 1,
     'no-console': 1,
     'no-return-await': 1,
+    'no-multi-assign': 1,
     semi: [2, 'never'],
     'flowtype/semi': [2, 'never'],
     'jsx-quotes': [2, 'prefer-single'],

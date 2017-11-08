@@ -2,6 +2,7 @@
 
 exports[`createLocationReducer() - maintains address bar pathname state and current + previous matched location-aware actions 1`] = `
 Object {
+  "basename": undefined,
   "entries": Array [
     Object {
       "hash": "",
@@ -25,14 +26,6 @@ Object {
     "payload": Object {},
     "type": "FIRST",
   },
-  "routesMap": Object {
-    "FIRST": Object {
-      "path": "/first",
-    },
-    "SECOND": Object {
-      "path": "/second/:param",
-    },
-  },
   "type": "SECOND",
 }
 `;
@@ -53,9 +46,6 @@ Object {
     "pathname": "",
     "payload": Object {},
     "type": "",
-  },
-  "routesMap": Object {
-    "FIRST": "/first",
   },
   "type": "FIRST",
 }

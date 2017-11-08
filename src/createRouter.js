@@ -1,41 +1,30 @@
 // @flow
-import type { StoreEnhancer } from 'redux'
-import { compose } from 'redux'
-
-import isLocationAction from './pure-utils/isLocationAction'
-import isServer from './pure-utils/isServer'
-import isRedirect from './pure-utils/isRedirect'
-import createSelector from './pure-utils/createSelector'
-import formatRoutesMap from './pure-utils/formatRoutesMap'
-
-import redirect from './action-creators/redirect'
-
-import createLocationReducer from './reducer/createLocationReducer'
-
-import createSmartHistory from './smart-history'
 import composePromise from './composePromise'
+import createSmartHistory from './smart-history'
+import createLocationReducer from './createLocationReducer'
 
-import { ADD_ROUTES } from './index'
+import createSelector from './utils/createSelector'
+import createDispatch from './utils/createDispatch'
+import formatRoutesMap from './utils/formatRoutesMap'
+import shouldTrans from './utils/shouldTransition'
 
+import serverRedirect from './middleware/serverRedirect'
+import addRoutes from './middleware/addRoutes'
+import pathlessThunk from './middleware/pathlessThunk'
 import createRouteAction from './middleware/createRouteAction'
-import enter from './middleware/enter'
 import call from './middleware/call'
+import enter from './middleware/enter'
 import changePageTitle from './middleware/changePageTitle'
 
-import type {
-  Dispatch as Next,
-  RoutesMapInput,
-  RoutesMap,
-  Options,
-  Store
-} from './flow-types'
+import type { RoutesMapInput, Options, Store, Dispatch } from './flow-types'
 
 export default (
   routesMapInput: RoutesMapInput = {},
   options: Options = {},
-  mws: Array<Function>
-) => {
-  const middlewares = mws || [
+  middlewares: Array<Function> = [
+    serverRedirect,
+    addRoutes,
+    pathlessThunk,
     createRouteAction,
     call('beforeLeave', { prev: true }),
     call('beforeEnter'),
@@ -46,138 +35,86 @@ export default (
     call('thunk'),
     call('onComplete')
   ]
+) => {
+  const {
+    location,
+    title,
+    querySerializer: serializer,
+    createHistory = createSmartHistory,
+    createReducer = createLocationReducer,
+    shouldTransition = shouldTrans
+  } = options
 
-  let routesMap: RoutesMap = formatRoutesMap(routesMapInput)
-  const { location, title, initialEntries }: Options = options
-
+  const routesMap = formatRoutesMap(routesMapInput)
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
+  const history = createHistory(options)
+  const reducer = createReducer(routesMap, history)
+  const nextPromise = composePromise(middlewares)
 
-  const createHistory = options.createHistory || createSmartHistory
-  const history = createHistory({ basename: options.basename, initialEntries })
+  const middleware = (store: Store) => {
+    const getTitle = () => selectTitleState(store.getState() || {})
+    const getLocationState = () => selectLocationState(store.getState() || {})
 
-  const createReducer = options.createReducer || createLocationReducer
-  const reducer = createReducer(routesMapInput, history)
-
-  const applyMiddleware = (...middlewares) => store => {
-    // const store = createStore(...args)
-    const { dispatch, getState } = store
-    const getLocationState = () => selectLocationState(getState() || {})
-    const getTitle = () => selectTitleState(getState() || {})
-
-    const next = composePromise(...middlewares)
+    const context = {}
     let temp = {}
 
-    const routeDispatch = (action: Object) => {
-      const route = routesMap[action.type]
+    _getLocationState = getLocationState
 
-      if (isServer() && isRedirect(action)) return action
+    history.listen(store.dispatch)
 
-      if (action.type === ADD_ROUTES) {
-        routesMap = { ...routesMap, ...formatRoutesMap(action.payload.routes) }
-        return dispatch(action)
-      }
-
-      if (route && !route.path && typeof route.thunk === 'function') {
-        const thunk = route.thunk
-        const nextAction = dispatch(action)
-        const bag = { action: nextAction, ...options.extra }
-
-        return thunk(dispatch, getState, bag) || nextAction
-      }
-
-      const prevRoute = routesMap[getLocationState().type]
-      const handled = isLocationAction(action) || !route || action.error
-      const fromHistory = !!action.nextHistory
-
-      if (handled && !fromHistory) return dispatch(action)
-
-      // temp.committed = temp.committed || (action.nextHistory && action.nextHistory.kind === 'init')
-      let completed = false
+    return (next: Dispatch) => (action: Object) => {
+      if (!shouldTransition(action, routesMap)) return next(action)
 
       const req = {
+        ...options.extra,
         history,
-        prevRoute,
-        route,
-        getState,
         routesMap,
         options,
         getLocationState,
         getTitle,
+        context,
         temp,
-        ...options.extra,
-        ...(action.nextHistory && action),
-        action: !action.nextHistory ? action : undefined,
-        routeDispatch,
-        dispatch: action => {
-          const route = routesMap[action.type]
-          const isRedirect = typeof route === 'object' && route.path
-
-          if (isRedirect && !completed) {
-            action = redirect(action)
-            req.temp.prev = req.action
-            return req.redirect = routeDispatch(action)
-          }
-          else if (completed) {
-            delete action.meta.location
-          }
-
-          return routeDispatch(action)
-        }
+        store,
+        getState: store.getState,
+        dispatch: createDispatch(() => req),
+        route: routesMap[action.type],
+        prevRoute: routesMap[getLocationState().type],
+        action: !action.nextHistory ? action : null,
+        nextHistory: action.nextHistory || null,
+        commitHistory: action.commit || null,
+        commitDispatch: next,
+        completed: false
       }
 
-      return next(req)
+      return nextPromise(req)
         .catch(error => {
-          console.log('ERROR!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
           req.error = error
           return call('onError')(req)
         })
         .then(res => {
           temp = {}
-          completed = true
+          req.completed = true
           return res
         })
     }
-
-    return { ...store, dispatch: routeDispatch }
   }
 
-  const enhancer: StoreEnhancer<*, *> = createStore => (
-    reducer,
-    preloadedState,
-    enhancer
-  ): Store => {
-    // insure routesMap is transferred from server to client (it cant be stringified during SSR)
-    if (!isServer() && preloadedState && selectLocationState(preloadedState)) {
-      selectLocationState(preloadedState).routesMap = routesMap
-    }
-
-    // const router = applyMiddleware(...middlewares)
-    // const enhancers = enhancer ? compose(router, enhancer) : router
-    let store = createStore(reducer, preloadedState)
-    store = applyMiddleware(...middlewares)(store)
-
-    const state = store.getState()
-    const locationState = state && selectLocationState(state)
-
-    if (!locationState || locationState.pathname === undefined) {
-      throw new Error('[rudy] your location reducer is not setup.')
-    }
-
-    history.listen(store.dispatch)
-
-    return store
-  }
+  _options = options
+  _history = history
 
   return {
-    enhancer,
+    middleware,
     reducer,
     history,
-    firstRoute: () => history.initialBag
+    firstRoute: () => history.firstRoute
   }
 }
 
+let _options
+let _history
+let _getLocationState
 
-
-
-// console.log('DISPATCH', 'handled:', (isLocationAction(action) || !route) && !action.nextHistory, action.nextHistory && 'nextHistory' || (action.type && action.type))
+export const getOptions = (): Options => _options || {}
+export const history = () => _history
+export const getLocationState = () => _getLocationState()

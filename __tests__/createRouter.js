@@ -33,16 +33,15 @@ const setup = (path = '/first', options = {}, custom = {}) => {
   options.initialEntries = [path]
   options.extra = { arg: 'extra-arg' }
 
-  const { enhancer, reducer, firstRoute, history } = createRouter(
+  const { middleware, reducer, firstRoute, history } = createRouter(
     routesMap,
     options
   )
 
-  const middlewares = applyMiddleware(reduxThunk)
-  const enhancers = compose(enhancer, middlewares)
   const title = (state = {}, action = {}) => action.type
   const rootReducer = combineReducers({ title, location: reducer })
-  const store = createStore(rootReducer, enhancers)
+  const enhancer = applyMiddleware(middleware, reduxThunk)
+  const store = createStore(rootReducer, enhancer)
 
   return {
     store,
