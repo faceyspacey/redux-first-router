@@ -1,12 +1,12 @@
 // @flow
 import type { Action, RoutesMap } from '../flow-types'
 
-export default (routesMap: RoutesMap) => (
+export default (routes: RoutesMap) => (
   action: Action,
   name: string,
   ...args: Array<any>
 ) => {
-  const route = routesMap[action.type]
+  const route = routes[action.type]
   if (!route) return null
 
   if (!name) return route
@@ -15,4 +15,4 @@ export default (routesMap: RoutesMap) => (
 }
 
 // usage:
-// callRoute(routesMap)(action, name)
+// callRoute(routes)(action, name)

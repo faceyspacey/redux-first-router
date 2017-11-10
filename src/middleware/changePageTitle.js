@@ -1,6 +1,6 @@
 import isServer from '../utils/isServer'
 
-export default async (req, next) => {
+export default (api) => async (req, next) => {
   const title = req.getTitle()
 
   if (!isServer() && typeof title === 'string') {

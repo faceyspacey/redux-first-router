@@ -1,21 +1,21 @@
 // @flow
 import { compilePath } from 'rudy-match-path'
 import { stripBasename } from 'rudy-history/PathUtils'
-import { NOT_FOUND, getOptions } from '../index'
+import { NOT_FOUND } from '../index'
 
-import type { RoutesMap, ReceivedAction, QuerySerializer, Routes } from '../flow-types'
+import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
 
 export default (
   pathname: string,
-  routesMap: RoutesMap,
+  routes: RoutesMap,
   basename: string = '',
   serializer?: QuerySerializer
 ): ReceivedAction => {
   const parts = pathname.split('?')
   const search = parts[1]
   const query = search && serializer && serializer.parse(search)
-  const routes = objectValues(routesMap)
-  const routeTypes = Object.keys(routesMap)
+  const rVals = Object.keys(routes).map(key => routes[key])
+  const rTypes = Object.keys(routes)
 
   pathname = basename ? stripBasename(parts[0], basename) : parts[0]
 
@@ -23,8 +23,8 @@ export default (
   let match
   let keys
 
-  while (!match && i < routes.length) {
-    const regPath = typeof routes[i] === 'string' ? routes[i] : routes[i].path // route may be an object containing a route or a route string itself
+  while (!match && i < rVals.length) {
+    const regPath = typeof rVals[i] === 'string' ? rVals[i] : rVals[i].path // route may be an object containing a route or a route string itself
 
     if (!regPath) {
       i++
@@ -41,14 +41,14 @@ export default (
     i--
 
     const capitalizedWords =
-      typeof routes[i] === 'object' && routes[i].capitalizedWords
+      typeof rVals[i] === 'object' && rVals[i].capitalizedWords
 
     const fromPath =
-      routes[i] &&
-      typeof routes[i].fromPath === 'function' &&
-      routes[i].fromPath
+      rVals[i] &&
+      typeof rVals[i].fromPath === 'function' &&
+      rVals[i].fromPath
 
-    const type = routeTypes[i]
+    const type = rTypes[i]
 
     const payload = (keys || []).reduce((payload, key, index) => {
       let val = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
@@ -82,6 +82,3 @@ export default (
 }
 
 const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)
-
-const objectValues = (routes: RoutesMap): Routes =>
-  Object.keys(routes).map(key => routes[key])

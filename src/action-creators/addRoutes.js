@@ -1,7 +1,7 @@
 // @flow
 
 import { ADD_ROUTES } from '../index'
-import type { RoutesMap, Dispatch } from '../flow-types'
+import type { RoutesMap } from '../flow-types'
 
 export default (routes: RoutesMap) => ({
   type: ADD_ROUTES,

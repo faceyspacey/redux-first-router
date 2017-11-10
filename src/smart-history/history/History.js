@@ -1,4 +1,3 @@
-import createListeners from '../utils/createListeners'
 import { createLocation, createKey } from '../utils/location'
 import { createPath } from '../utils/path'
 
@@ -15,17 +14,16 @@ export default class History {
     this.length = entries.length
     this.index = index
 
-    const kind = 'load'
-    const location = entries[index]
-    const nextState = { kind, location, index, entries }
-    const nextHistory = this._createNextHistory(nextState)
+    // const kind = 'load'
+    // const location = entries[index]
+    // const nextState = { kind, location, index, entries }
+    // const nextHistory = this._createNextHistory(nextState)
 
     const commit = () => {
       // this._updateHistory(nextState)
     }
 
     this.firstRoute = { nextHistory: this, commit }
-    this.listeners = createListeners()
   }
 
   // API:
@@ -52,7 +50,7 @@ export default class History {
       this._updateHistory(nextState)
     }
 
-    return this.listeners.notify({ nextHistory, commit }, notify)
+    return this._notify({ nextHistory, commit }, notify)
   }
 
   redirect(path, state = {}, notify = true) {
@@ -74,7 +72,7 @@ export default class History {
       this._updateHistory(nextState)
     }
 
-    return this.listeners.notify({ nextHistory, commit }, notify)
+    return this._notify({ nextHistory, commit }, notify)
   }
 
   jump(n, state, notify = true) {
@@ -93,7 +91,7 @@ export default class History {
       this._replaceState(location, n, this.location)
         .then(() => this._updateHistory(nextState))
 
-    return this.listeners.notify({ nextHistory, commit }, notify)
+    return this._notify({ nextHistory, commit }, notify)
   }
 
   back(state) {
@@ -104,16 +102,33 @@ export default class History {
     return this.jump(1, state)
   }
 
-  canJunp(n) {
+  canJump(n) {
     const nextIndex = this.index + n
     return nextIndex >= 0 && nextIndex < this.entries.length
   }
 
   listen(fn) {
-    return this.listeners.add(fn)
+    this._listener = fn
+    return () => this._listener = null
   }
 
   // UTILS:
+
+  _notify(bag, notify = true) {
+    bag.commit = this._once(bag.commit)
+    if (notify && this._listener) return this._listener(bag)
+    return bag
+  }
+
+  _once(commit) {
+    let committed = false
+
+    return () => {
+      if (committed) return
+      committed = true
+      commit()
+    }
+  }
 
   _createHref(location) {
     return this.basename + createPath(location)

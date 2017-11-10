@@ -11,10 +11,10 @@ import type {
 
 export default (
   action: Action,
-  routesMap: RoutesMap,
+  routes: RoutesMap,
   serializer?: QuerySerializer
 ): string => {
-  const route = routesMap[action.type]
+  const route = routes[action.type]
   const routePath = typeof route === 'object' ? route.path : route
   const params = _payloadToParams(route, action.payload)
 

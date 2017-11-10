@@ -38,14 +38,16 @@ it('calls beforeEnter handler on route change -- global', async () => {
 })
 
 it('if beforeEnter dispatches redirect, route changes with kind === "redirect"', async () => {
-  const beforeEnter = jest.fn(({dispatch, getState, action }) => {
+  const beforeEnter = jest.fn(({ dispatch, getState, action }) => {
     if (action.type !== 'SECOND') return
-    dispatch({ type: 'THIRD' })
+    return { type: 'THIRD' } // returned plain objects automatically dispatched
   })
 
   const { store, history } = await setupAll('/first', { beforeEnter })
-  await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  const action = await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
   const { location } = store.getState()
+
+  expect(action.type).toEqual('THIRD')
 
   expect(location.kind).toEqual('redirect')
   expect(location.type).toEqual('THIRD')
@@ -130,7 +132,7 @@ it('beforeEnter that returns a promise which redirects', async () => {
     if (action.type !== 'SECOND') return
 
     await fakeAsyncWork()
-    dispatch({ type: 'THIRD' })
+    return { type: 'THIRD' } // returned plain objects automatically dispatched
   })
 
   const routesMap = {

@@ -20,6 +20,7 @@ it('addRoutes(routes) - adds routes to routesMap', async () => {
 
   const action = addRoutes(newRoutes)
   await store.dispatch(action)
+
   expect(store.getState()).toMatchSnapshot()
 
   await store.dispatch({ type: 'FOO' })

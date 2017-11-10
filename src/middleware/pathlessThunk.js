@@ -1,4 +1,4 @@
-export default (req, next) => {
+export default (api) => (req, next) => {
   if (req.route && !req.route.path && typeof req.route.thunk === 'function') {
     req.action = req.commitDispatch(req.action)
     const res = req.route.thunk(req)

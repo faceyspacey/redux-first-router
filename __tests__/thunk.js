@@ -6,7 +6,7 @@ import tempMock from '../__test-helpers__/tempMock'
 import redirect from '../src/action-creators/redirect'
 
 it('middleware:callThunk global', async () => {
-  const thunk = jest.fn(dispatch => {
+  const thunk = jest.fn(({ dispatch }) => {
     dispatch({ type: 'NON_ROUTE_ACTION' })
   })
   const { store } = await setupThunk('/second/bar', thunk)

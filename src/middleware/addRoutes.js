@@ -1,9 +1,9 @@
 import { ADD_ROUTES } from '../index'
-import formatRoutesMap from '../utils/formatRoutesMap'
+import formatRoutes from '../utils/formatRoutes'
 
-export default (req, next) => {
+export default (api) => (req, next) => {
   if (req.action && req.action.type === ADD_ROUTES) {
-    Object.assign(req.routesMap, formatRoutesMap(req.action.payload.routes))
+    Object.assign(req.routes, formatRoutes(req.action.payload.routes))
     return req.commitDispatch(req.action)
   }
 

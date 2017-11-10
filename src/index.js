@@ -18,8 +18,11 @@ export {
   // updateScroll,
 } from './createRouter'
 
-export const NOT_FOUND = '@@redux-first-router/NOT_FOUND'
-export const ADD_ROUTES = '@@redux-first-router/ADD_ROUTES'
+export const PREFIX = '@@redux-first-router'
+export const prefixType = (type: string) => `${PREFIX}/${type}`
+
+export const NOT_FOUND = prefixType('NOT_FOUND')
+export const ADD_ROUTES = prefixType('ADD_ROUTES')
 
 export { default as redirect } from './action-creators/redirect'
 

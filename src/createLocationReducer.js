@@ -12,15 +12,14 @@ import type {
   ReceivedAction
 } from './flow-types'
 
-export default (routesMap: RoutesMap, history: History, options: Options) => {
-  const initialState = createInitialState(routesMap, history, options)
+export default (routes: RoutesMap, history: History, options: Options) => {
+  const initialState = createInitialState(routes, history, options)
 
   return (
     state: LocationState = initialState,
     action: Action
   ): LocationState => {
-    routesMap = state.routesMap || routesMap
-    const route = routesMap[action.type]
+    const route = routes[action.type]
 
     if (
       action.type === NOT_FOUND ||
@@ -51,7 +50,7 @@ export default (routesMap: RoutesMap, history: History, options: Options) => {
       }
     }
     else if (action.type === ADD_ROUTES) {
-      const count = Object.keys(req.action.payload.routes).length // we need to be able to update Links when new routes are added
+      const count = Object.keys(action.payload.routes).length     // we need to be able to update Links when new routes are added
       const routesAdded = (state.routesAdded || 0) + count        // we could just increment a number, but this is more informative
       return { ...state, routesAdded }
     }
@@ -61,12 +60,12 @@ export default (routesMap: RoutesMap, history: History, options: Options) => {
 }
 
 export const createInitialState = (
-  routesMap: RoutesMap,
+  routes: RoutesMap,
   history: History,
   options: Options
 ): LocationState => {
   const path = history.location.url
-  const initialAction = pathToAction(path, routesMap, options.basename)
+  const initialAction = pathToAction(path, routes, options.basename)
   const { type, payload, meta }: ReceivedAction = initialAction
 
   return {
