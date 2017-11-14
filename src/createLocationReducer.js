@@ -32,7 +32,7 @@ export default (routes: RoutesMap, history: History, options: Options) => {
     ) {
       const query = action.meta.location.current.payload.query
       const search = action.meta.location.current.search
-      const payload = { ...action.payload }
+      const payload = action.payload || {}
       delete payload.query
 
       return {
@@ -53,6 +53,10 @@ export default (routes: RoutesMap, history: History, options: Options) => {
       const count = Object.keys(action.payload.routes).length     // we need to be able to update Links when new routes are added
       const routesAdded = (state.routesAdded || 0) + count        // we could just increment a number, but this is more informative
       return { ...state, routesAdded }
+    }
+    else if (action.type.indexOf('ERROR') > -1) {
+      const { error, type: errorType } = action
+      return { ...state, error, errorType }
     }
 
     return state

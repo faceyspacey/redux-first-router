@@ -1,4 +1,5 @@
 import { setupAll } from '../__test-helpers__/setup'
+import notFound from '../src/action-creators/notFound'
 import { NOT_FOUND } from '../src/index'
 import redirect from '../src/action-creators/redirect'
 
@@ -65,7 +66,7 @@ it('not matched received action dispatches the action as normal with no changes'
 
 it('user dispatches NOT_FOUND and middleware adds missing info to action', async () => {
   const { store } = await setupAll('/first')
-  const action = await store.dispatch({ type: NOT_FOUND }) /*? $.meta */
+  const action = await store.dispatch(notFound({ type: NOT_FOUND })) /*? $.meta */
 
   store.getState() /*? $.location */
 

@@ -1,12 +1,13 @@
 import resolvePathname from 'resolve-pathname'
 import { parsePath, createPath, stripBasename, hasBasename } from './path'
 
-export const createLocation = (path, state, key, currentLocation) => {
+export const createLocation = (path, state, key, currentLocation, basename) => {
   let location
 
   if (typeof path === 'string') {
     location = parsePath(path)
     location.state = state
+    // location.basename = basename
   }
   else {
     location = { ...path }

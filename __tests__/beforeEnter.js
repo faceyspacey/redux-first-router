@@ -115,7 +115,8 @@ it('beforeEnter delays route changes until beforeEnter promise resolves', async 
   expect(store.getState().location.type).toEqual('FIRST')
 
   const res = await prom
-  expect(res).toEqual('thunkReturn')
+  expect(res.payload).toEqual('thunkReturn')
+  expect(res.type).toEqual('SECOND_COMPLETE')
   expect(store.getState().location.type).toEqual('SECOND')
   expect(store.getState().location.kind).toEqual('push')
 
@@ -152,7 +153,8 @@ it('beforeEnter that returns a promise which redirects', async () => {
   expect(store.getState().location.type).toEqual('FIRST')
 
   const res = await store.dispatch({ type: 'SECOND' })
-  expect(res).toEqual('beforeEnterPlusThunkReturn')
+  expect(res.payload).toEqual('beforeEnterPlusThunkReturn')
+  expect(res.type).toEqual('THIRD_COMPLETE')
   expect(store.getState().location.type).toEqual('THIRD')
   expect(store.getState().location.kind).toEqual('redirect')
 

@@ -1,6 +1,7 @@
 // @flow
 import { compilePath } from 'rudy-match-path'
-import { stripBasename } from 'rudy-history/PathUtils'
+import { stripBasename } from '../smart-history/utils/path'
+import notFound from '../action-creators/notFound'
 import { NOT_FOUND } from '../index'
 
 import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
@@ -76,9 +77,7 @@ export default (
 
   // This will basically will only end up being called if the developer is manually calling history.push().
   // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
-  const payload = query ? { query } : {}
-  const meta = { notFoundPath: pathname }
-  return { type: NOT_FOUND, payload, meta }
+  return notFound(pathname, query ? { query } : {})
 }
 
 const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)

@@ -1,5 +1,5 @@
 import { createLocation, createKey } from '../utils/location'
-import { createPath } from '../utils/path'
+import { createPath, stripSlashes } from '../utils/path'
 
 export default class History {
   constructor(opts) {
@@ -30,8 +30,7 @@ export default class History {
 
   push(path, state = {}, notify = true) {
     const key = createKey()
-    const location = createLocation(path, state, key, this.location)
-
+    const location = createLocation(path, state, key, this.location, this.basename)
     const back = this._isBack(location)
     const next = this._isNext(location)
     const kind = back ? 'back' : next ? 'next' : 'push'
@@ -57,7 +56,7 @@ export default class History {
     const key = createKey()
     // const prevState = merge && this.entries[this.index].state
     const s = { ...this.entries[this.index].state, ...state }
-    const location = createLocation(path, s, key, this.location)
+    const location = createLocation(path, s, key, this.location, this.basename)
     const entries = this.entries.slice(0)
     const index = this.index
 
@@ -89,7 +88,10 @@ export default class History {
 
     const commit = () =>
       this._replaceState(location, n, this.location)
-        .then(() => this._updateHistory(nextState))
+        .then(() => {
+          // this.basename = location.basename
+          this._updateHistory(nextState)
+        })
 
     return this._notify({ nextHistory, commit }, notify)
   }
@@ -110,6 +112,10 @@ export default class History {
   listen(fn) {
     this._listener = fn
     return () => this._listener = null
+  }
+
+  setBasename(basename) {
+    this.basename = stripSlashes(basename)
   }
 
   // UTILS:

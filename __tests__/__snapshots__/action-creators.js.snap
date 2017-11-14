@@ -29,8 +29,8 @@ Object {
       "type": "",
     },
     "routesAdded": 3,
-    "type": "@@redux-first-router/NOT_FOUND",
+    "type": "@@rudy/NOT_FOUND",
   },
-  "title": "@@redux-first-router/ADD_ROUTES",
+  "title": "@@rudy/ADD_ROUTES",
 }
 `;

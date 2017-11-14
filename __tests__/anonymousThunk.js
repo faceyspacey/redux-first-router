@@ -1,6 +1,6 @@
 import { setupAll } from '../__test-helpers__/setup'
 
-it('dispatching thunk passes through standaloneThunk middleware', async () => {
+it('dispatching thunk passes through anonymousThunk middleware', async () => {
   const { store, history } = await setupAll('/first')
   const thunk = jest.fn(({ dispatch }) => {
     dispatch({ type: 'THIRD' })

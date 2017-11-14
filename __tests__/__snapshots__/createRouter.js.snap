@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createActions 1`] = `
+Object {
+  "FIRST": "SCENE/FIRST",
+  "FIRST_COMPLETE": "SCENE/FIRST_COMPLETE",
+  "FIRST_ERROR": "SCENE/FIRST_ERROR",
+  "FOURTH": "SCENE/FOURTH",
+  "FOURTH_COMPLETE": "SCENE/FOURTH_COMPLETE",
+  "FOURTH_ERROR": "SCENE/FOURTH_ERROR",
+  "NOT_FOUND": "SCENE/@@redux-first-router/NOT_FOUND",
+  "NOT_FOUND_COMPLETE": "SCENE/@@redux-first-router/NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "SCENE/@@redux-first-router/NOT_FOUND_ERROR",
+  "PLAIN": "SCENE/PLAIN",
+  "PLAIN_COMPLETE": "SCENE/PLAIN_COMPLETE",
+  "PLAIN_ERROR": "SCENE/PLAIN_ERROR",
+  "SECOND": "SCENE/SECOND",
+  "SECOND_COMPLETE": "SCENE/SECOND_COMPLETE",
+  "SECOND_ERROR": "SCENE/SECOND_ERROR",
+  "THIRD": "SCENE/THIRD",
+  "THIRD_COMPLETE": "SCENE/THIRD_COMPLETE",
+  "THIRD_ERROR": "SCENE/THIRD_ERROR",
+}
+`;
+
+exports[`createActions 2`] = `
+Object {
+  "first": [Function],
+  "firstComplete": [Function],
+  "firstError": [Function],
+  "fourth": [Function],
+  "fourthComplete": [Function],
+  "fourthError": [Function],
+  "notFound": undefined,
+  "notFoundComplete": undefined,
+  "notFoundError": undefined,
+  "plain": [Function],
+  "plainComplete": [Function],
+  "plainError": [Function],
+  "reduxFirstRouterNotFound": [Function],
+  "reduxFirstRouterNotFoundComplete": [Function],
+  "reduxFirstRouterNotFoundError": [Function],
+  "second": [Function],
+  "secondComplete": [Function],
+  "secondError": [Function],
+  "third": [Function],
+  "thirdComplete": [Function],
+  "thirdError": [Function],
+}
+`;
+
+exports[`createActions 3`] = `
+"const { types, actions } = createActions(routes)
+
+const { 
+	FIRST,
+	FIRST_COMPLETE,
+	FIRST_ERROR,
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+} = types
+
+const { 
+	first,
+	firstComplete,
+	firstError,
+	second,
+	secondComplete,
+	secondError,
+	third,
+	thirdComplete,
+	thirdError,
+	fourth,
+	fourthComplete,
+	fourthError,
+	plain,
+	plainComplete,
+	plainError,
+	reduxFirstRouterNotFound,
+	reduxFirstRouterNotFoundComplete,
+	reduxFirstRouterNotFoundError,
+	notFound,
+	notFoundComplete,
+	notFoundError
+} = actions
+
+export {
+	FIRST,
+	FIRST_COMPLETE,
+	FIRST_ERROR,
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+}
+
+export {
+	first,
+	firstComplete,
+	firstError,
+	second,
+	secondComplete,
+	secondError,
+	third,
+	thirdComplete,
+	thirdError,
+	fourth,
+	fourthComplete,
+	fourthError,
+	plain,
+	plainComplete,
+	plainError,
+	reduxFirstRouterNotFound,
+	reduxFirstRouterNotFoundComplete,
+	reduxFirstRouterNotFoundError,
+	notFound,
+	notFoundComplete,
+	notFoundError
+}"
+`;

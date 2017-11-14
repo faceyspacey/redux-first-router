@@ -1,54 +1,5 @@
-import { applyMiddleware, createStore, compose, combineReducers } from 'redux'
-import reduxThunk from 'redux-thunk'
-import createRouter from '../src/createRouter'
-
+import setup, { log } from '../__test-helpers__/rudySetup'
 import { NOT_FOUND } from '../src'
-
-import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
-
-const setup = (path = '/first', options = {}, custom = {}) => {
-  const routesMap = {
-    FIRST: '/first',
-    SECOND: '/second',
-    THIRD: {
-      path: '/third',
-      thunk: async () => {
-        await fakeAsyncWork()
-        return 'thunk'
-      }
-    },
-    FOURTH: {
-      path: '/fourth',
-      thunk: async () => {
-        await fakeAsyncWork()
-        return 'thunk'
-      },
-      onComplete: () => {
-        return 'onComplete'
-      }
-    },
-    ...custom.routesMap
-  }
-
-  options.initialEntries = [path]
-  options.extra = { arg: 'extra-arg' }
-
-  const { middleware, reducer, firstRoute, history } = createRouter(
-    routesMap,
-    options
-  )
-
-  const title = (state = {}, action = {}) => action.type
-  const rootReducer = combineReducers({ title, location: reducer })
-  const enhancer = applyMiddleware(middleware, reduxThunk)
-  const store = createStore(rootReducer, enhancer)
-
-  return {
-    store,
-    firstRoute,
-    history
-  }
-}
 
 test('store.dispatch', async () => {
   const { store, firstRoute, history } = setup()
@@ -100,7 +51,7 @@ test('thunk', async () => {
   res = await store.dispatch({ type: 'THIRD' })
   expect(store.getState().location.type).toEqual('THIRD')
   expect(window.document.title).toEqual('THIRD')
-  expect(res).toEqual('thunk')
+  expect(res.payload).toEqual('thunk')
   expect(history.location.pathname).toEqual('/third')
 
   log(store)
@@ -117,7 +68,7 @@ test('onComplete', async () => {
 
   res = await store.dispatch({ type: 'FOURTH' })
   expect(store.getState().location.type).toEqual('FOURTH')
-  expect(res).toEqual('onComplete')
+  expect(res.payload).toEqual('onComplete')
   expect(history.location.pathname).toEqual('/fourth')
 
   log(store)
@@ -136,12 +87,12 @@ test('onEnter', async () => {
 
   res = await store.dispatch({ type: 'FOURTH' })
   expect(store.getState().location.type).toEqual('FOURTH')
-  expect(res).toEqual('onComplete')
+  expect(res.payload).toEqual('onComplete')
   expect(history.location.pathname).toEqual('/fourth')
 
   log(store)
 
-  expect(onEnter).toBeCalled()
+  expect(onEnter).toHaveBeenCalledTimes(2)
 })
 
 test('beforeLeave return false', async () => {
@@ -190,7 +141,7 @@ test('beforeEnter redirect', async () => {
   res = await store.dispatch({ type: 'SECOND' })
   expect(store.getState().location.type).toEqual('THIRD')
   expect(history.location.pathname).toEqual('/third')
-  expect(res).toEqual('thunk')
+  expect(res.payload).toEqual('thunk')
 
   log(store)
 
@@ -233,10 +184,14 @@ it('firstRoute (delayed commit)', async () => {
   log(store)
 })
 
-test('firstRoute (delayed commit - redirect)', async () => {
+test('firstRoute (delayed commit - redirect) [/w inherited routes + callback array]', async () => {
   const onEnter = jest.fn(req => {
+    req.dispatch({ type: 'WRONG' })
+  })
+  const onEnter2 = jest.fn(req => {
     req.dispatch({ type: 'THIRD' })
   })
+  const onEnter3 = jest.fn()
 
   const beforeEnter = jest.fn(req => {
     req.dispatch({ type: 'FOURTH' })
@@ -245,11 +200,20 @@ test('firstRoute (delayed commit - redirect)', async () => {
   const routesMap = {
     SECOND: {
       path: '/second',
-      onEnter
+      onEnter: 'BAZ'
     },
     THIRD: {
       path: '/third',
+      inherit: 'FOO'
+    },
+    FOO: {
+      beforeEnter: 'BAR'
+    },
+    BAR: {
       beforeEnter
+    },
+    BAZ: {
+      onEnter: [onEnter, onEnter2, onEnter3]
     }
   }
 
@@ -261,6 +225,7 @@ test('firstRoute (delayed commit - redirect)', async () => {
   expect(history.location.pathname).toEqual('/first')
 
   res = await store.dispatch({ type: 'SECOND' })
+
   expect(store.getState().location.type).toEqual('FOURTH')
   expect(history.location.pathname).toEqual('/fourth')
 
@@ -270,8 +235,13 @@ test('firstRoute (delayed commit - redirect)', async () => {
 
   log(store)
 
-  expect(beforeEnter).toBeCalled()
   expect(onEnter).toBeCalled()
+  expect(onEnter2).toBeCalled()
+  expect(onEnter3).not.toBeCalled()
+  expect(beforeEnter).toBeCalled()
+
+  expect(res.payload).toEqual('onComplete')
+  expect(res.type).toEqual('FOURTH_COMPLETE')
 })
 
 
@@ -299,8 +269,7 @@ it('beforeEnter redirect (firstRoute)', async () => {
 
 test('onError', async () => {
   const onError = jest.fn(req => {
-    console.log(req.error.message)
-    return 'onError'
+    return req.error.message
   })
 
   const routesMap = {
@@ -319,11 +288,12 @@ test('onError', async () => {
   let res = await store.dispatch(action)
   expect(store.getState().location.type).toEqual('FIRST')
 
+  res = await store.dispatch({ type: 'SECOND' })
   log(store)
 
-  res = await store.dispatch({ type: 'SECOND' })
   expect(store.getState().location.type).toEqual('FIRST')
-  expect(res).toEqual('onError')
+  expect(res.payload).toEqual('fail!!')
+  expect(res.type).toEqual('SECOND_COMPLETE')
   expect(history.location.pathname).toEqual('/first')
 
   log(store)
@@ -331,6 +301,32 @@ test('onError', async () => {
   expect(onError).toBeCalled()
 })
 
+test('onError - with no onError callbacks provided (uses default)', async () => {
+  const routesMap = {
+    SECOND: {
+      path: '/second',
+      beforeEnter: () => {
+        throw new Error('fail!!')
+      }
+    }
+  }
+
+  const { store, firstRoute, history } = setup('/first', {}, { routesMap })
+  const action = firstRoute()
+
+  let res = await store.dispatch(action)
+  expect(store.getState().location.type).toEqual('FIRST')
+
+  res = await store.dispatch({ type: 'SECOND' })
+  log(store)
+
+  expect(store.getState().location.type).toEqual('FIRST')
+  expect(res.error.message).toEqual('fail!!')
+  expect(res.type).toEqual('SECOND_ERROR')
+  expect(history.location.pathname).toEqual('/first')
+
+  log(store)
+})
 
 test('notFound', async () => {
   const routesMap = {
@@ -373,18 +369,3 @@ test('notFound on firstLoad', async () => {
 
   log(store)
 })
-
-const log = store => {
-  const state = store.getState().location
-  delete state.routesMap
-  delete state.hasSSR
-  console.log(state)
-}
-// const routerMiddlewares = [
-//   async (bag, next) => {
-//     console.log('MIDDLEWARE 1!', bag)
-//     const res = bag.dispatch({ type: 'BLA' })
-//     await next()
-//     return res
-//   }
-// ]

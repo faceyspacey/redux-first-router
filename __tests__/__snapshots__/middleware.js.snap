@@ -27,7 +27,7 @@ Object {
     "payload": Object {},
     "type": "",
   },
-  "type": "@@redux-first-router/NOT_FOUND",
+  "type": "@@rudy/NOT_FOUND",
 }
 `;
 
@@ -77,7 +77,7 @@ Object {
         "length": 1,
         "pathname": "/",
         "payload": Object {},
-        "type": "@@redux-first-router/NOT_FOUND",
+        "type": "@@rudy/NOT_FOUND",
       },
     },
   },
@@ -124,7 +124,7 @@ Object {
       "length": 1,
       "pathname": "/",
       "payload": Object {},
-      "type": "@@redux-first-router/NOT_FOUND",
+      "type": "@@rudy/NOT_FOUND",
     },
     "type": "SECOND",
   },
@@ -169,6 +169,7 @@ exports[`user dispatches NOT_FOUND and middleware adds missing info to action 1`
 Object {
   "kind": "push",
   "meta": Object {
+    "basename": undefined,
     "location": Object {
       "basename": "",
       "current": Object {
@@ -177,7 +178,7 @@ Object {
         "length": 2,
         "pathname": "/not-found",
         "payload": Object {},
-        "type": "@@redux-first-router/NOT_FOUND",
+        "type": "@@rudy/NOT_FOUND",
       },
       "history": Object {
         "entries": Array [
@@ -212,9 +213,10 @@ Object {
         "type": "FIRST",
       },
     },
+    "notFoundPath": undefined,
   },
   "payload": Object {},
-  "type": "@@redux-first-router/NOT_FOUND",
+  "type": "@@rudy/NOT_FOUND",
 }
 `;
 
@@ -230,7 +232,7 @@ Object {
         "length": 1,
         "pathname": "/not-found",
         "payload": Object {},
-        "type": "@@redux-first-router/NOT_FOUND",
+        "type": "@@rudy/NOT_FOUND",
       },
       "history": Object {
         "entries": Array [
@@ -259,60 +261,7 @@ Object {
     },
   },
   "payload": Object {},
-  "type": "@@redux-first-router/NOT_FOUND",
-}
-`;
-
-exports[`user dispatches NOT_FOUND redirect and middleware adds missing info to action 2`] = `
-Object {
-  "kind": "redirect",
-  "meta": Object {
-    "location": Object {
-      "basename": "",
-      "current": Object {
-        "index": 1,
-        "kind": "redirect",
-        "length": 2,
-        "pathname": "/not-found",
-        "payload": Object {},
-        "type": "@@redux-first-router/NOT_FOUND",
-      },
-      "history": Object {
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "state": Object {},
-            "url": "/first",
-          },
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/not-found",
-            "search": "",
-            "state": Object {},
-            "url": "/not-found",
-          },
-        ],
-        "index": 1,
-        "kind": "redirect",
-        "length": 2,
-      },
-      "kind": "redirect",
-      "prev": Object {
-        "index": 0,
-        "kind": "load",
-        "length": 1,
-        "pathname": "/first",
-        "payload": Object {},
-        "type": "FIRST",
-      },
-    },
-  },
-  "payload": Object {},
-  "type": "@@redux-first-router/NOT_FOUND",
+  "type": "@@rudy/NOT_FOUND",
 }
 `;
 

@@ -1,6 +1,7 @@
 import pathToAction from '../utils/pathToAction'
 import actionToPath from '../utils/actionToPath'
 import isRedirect, { isCommittedRedirect } from '../utils/isRedirect'
+import isNotFound from '../utils/isNotFound'
 import { NOT_FOUND } from '../index'
 
 export default (api) => async (req, next) => {
@@ -17,27 +18,29 @@ export default (api) => async (req, next) => {
   const basename = state.basename || bn
   const k = ['pathname', 'type', 'payload', 'kind', 'index', 'length', 'query']
   const prev = pick(state.kind === 'init' ? state.prev : state, k)
-  const notFoundPath = routes[NOT_FOUND].path
 
   try {
     if (nextHistory) {
       const { url } = nextHistory.location
+      // const basename = nextHistory.basename
       const action = pathToAction(url, routes, basename, serializer)
       req = historyAction(req, url, action, prev, nextHistory, basename)
     }
-    else if (action && action.type !== NOT_FOUND) {
+    else if (action && !isNotFound(action)) {
       const url = actionToPath(action, routes, serializer)
       req = reduxAction(req, url, action, prev, history, basename)
     }
-    else if (action && action.type === NOT_FOUND) {
-      const url = (action.meta && action.meta.notFoundPath) || notFoundPath
+    else if (action && isNotFound(action)) {
+      const { type, url } = getNotFoundRoute(req, prev)
+      action.type = type
       req = reduxAction(req, url, action, prev, history, basename)
     }
     else throw new Error('no action or nextHistory')
   }
   catch (e) {
-    const url = notFoundPath || prev.pathname || '/'
-    const act = { ...action, type: NOT_FOUND, payload: { ...action.payload } }
+    const { type, url } = getNotFoundRoute(req, prev)
+    const payload = (action && action.payload) || {}
+    const act = { ...action, type, payload }
     req = reduxAction(req, url, act, prev, history, basename)
   }
 
@@ -50,6 +53,12 @@ export default (api) => async (req, next) => {
 
 const historyAction = (req, url, action, prev, nextHistory, basename) => {
   req.route = req.routes[action.type]
+
+  if (isNotFound(action)) {
+    req.action = action
+    action.type = getNotFoundRoute(req, prev).type // type may have changed to scene-level NOT_FOUND
+  }
+
   req.action = nestAction(url, action, prev, nextHistory, basename)
   return req
 }
@@ -57,6 +66,8 @@ const historyAction = (req, url, action, prev, nextHistory, basename) => {
 
 const reduxAction = (req, url, action, prev, history, bn) => {
   const basename = (action.meta && action.meta.basename) || bn          // allow basenames to be changed along with any route change
+  if (basename !== bn) history.setBasename(basename)
+
   const method = isCommittedRedirect(action, req) ? 'redirect' : 'push' // redirects before committing are just pushes (since the original route was never pushed)
   const { nextHistory, commit } = history[method](url, {}, false)       // get returned the same "bag" as functions passed to `history.listen`
   const redirect = isRedirect(action)
@@ -117,4 +128,39 @@ const isDoubleDispatch = (req, state) =>
   req.action.meta.location.current.pathname === state.pathname &&
   req.action.meta.location.current.search === state.search &&
   req.action.meta.location.basename === state.basename &&
-  state.kind !== 'init'
+  state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
+
+
+export const getNotFoundRoute = (req, prev) => {
+  const { action = {}, routes, route, prevRoute } = req
+
+  // NOT_FOUND action dispatched by user
+  if (isNotFound(action)) {
+    const scene = route.scene || prevRoute.scene
+    const type = action.type.indexOf('/NOT_FOUND') > -1
+      ? action.type
+      : scene && routes[`${scene}/NOT_FOUND`] // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
+        ? `${scene}/NOT_FOUND`
+        : NOT_FOUND
+
+    return {
+      type,
+      url: resolvePath(route, prev, action.meta && action.meta.notFoundPath)
+    }
+  }
+
+  // error thrown in createRouteAction (probably from actionToPath)
+  const scene = route.scene || prevRoute.scene
+  const type = scene && routes[`${scene}/NOT_FOUND`]
+    ? `${scene}/NOT_FOUND`
+    : NOT_FOUND
+
+  return {
+    type,
+    url: resolvePath(routes[type], prev, null, routes)
+  }
+}
+
+const resolvePath = (route, prev, pathOverride, routes) =>
+  pathOverride || route.path || routes[NOT_FOUND].path
+

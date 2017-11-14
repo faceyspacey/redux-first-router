@@ -11,13 +11,15 @@ import shouldTrans from './utils/shouldTransition'
 import serverRedirect from './middleware/serverRedirect'
 import addRoutes from './middleware/addRoutes'
 import pathlessThunk from './middleware/pathlessThunk'
-import standaloneThunk from './middleware/standaloneThunk'
+import plainActionRoute from './middleware/plainActionRoute'
+import anonymousThunk from './middleware/anonymousThunk'
 import createRouteAction from './middleware/createRouteAction'
 import call from './middleware/call'
 import enter from './middleware/enter'
 import changePageTitle from './middleware/changePageTitle'
 
 import type { RoutesMapInput, Options, Store, Dispatch } from './flow-types'
+import { ERROR } from './index'
 
 export default (
   routesInput: RoutesMapInput = {},
@@ -26,7 +28,8 @@ export default (
     serverRedirect,     // short-circuiting middleware
     addRoutes,
     pathlessThunk,
-    standaloneThunk,
+    plainActionRoute,
+    anonymousThunk,
     createRouteAction,  // pipeline starts here
     call('beforeLeave', { prev: true }),
     call('beforeEnter'),
@@ -91,6 +94,7 @@ export default (
       return nextPromise(req) // start middleware pipeline
         .catch(error => {
           req.error = error
+          req.errorType = req.route ? `${req.action.type}_ERROR` : ERROR
           console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
           return onError(req)
         })

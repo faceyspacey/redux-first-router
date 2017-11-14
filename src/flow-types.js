@@ -241,3 +241,9 @@ export type HistoryAction = string
 export type Document = Object
 
 export type Store = ReduxStore<*, *>
+
+export type CreateActionsOptions = {
+  logExports: ?boolean,
+  scene: ?string,
+  basename: ?string
+}

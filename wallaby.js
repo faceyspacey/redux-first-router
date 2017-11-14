@@ -13,6 +13,9 @@ module.exports = wallaby => {
 
     tests: [
       '__tests__/**/*.js'
+      // '__tests__/createRouter.js',
+      // '__tests__/createScene.js',
+
       // '__tests__/standaloneThunk.js',
       // '__tests__/beforeEnter.js',
       // '__tests__/beforeLeave.js',
@@ -23,8 +26,6 @@ module.exports = wallaby => {
 
       // '__tests__/middleware.js',
       // '__tests__/enhancer.js',
-
-      // '__tests__/createRouter.js',
 
       // '__tests__/actionToPath.js',
       // '__tests__/pathToaction.js',
