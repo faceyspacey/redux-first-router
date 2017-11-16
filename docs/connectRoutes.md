@@ -132,10 +132,11 @@ type Options = {
   selectTitleState?: (state: Object) => string,
   scrollTop?: boolean,
   restoreScroll?: ((PrevLocationState, LocationState) => boolean | string | array) => ScrollBehavior,
-  onBeforeChange?: (Dispatch, GetState) => void,
-  onAfterChange?: (Dispatch, GetState) => void,
+  onBeforeChange?: (Dispatch, GetState, Bag) => void,
+  onAfterChange?: (Dispatch, GetState, Bag) => void,
+  onBackNext?: (Dispatch, GetState, Bag) => void,
   initialDispatch?: boolean, // default: true
-  onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void
+  extra?: any
 }
 ```
 
@@ -150,13 +151,12 @@ restoration, and should be fine while developing, especially if you're using Chr
 
 * **restoreScroll** - the `restoreScroll` is a call to `redux-first-router-restore-scroll`'s restoreScroll` function, with a `shouldUpdateScroll` callback passed a single argument. See the [scroll restoration doc](./scroll-restoration.md) for more info.
 
-* **onAfterChange** - `onAfterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments
-like a thunk.
-
-* **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `action` as a third parameter. Keep in mind unlike `onAfterChange`, the action has not been dispatched yet. Therefore,
+* **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as `bag` as a third parameter. The `bag` argument contains the `action` as well as the `extra` attribute optionally specified in the router options. Keep in mind unlike `onAfterChange`, the action has not been dispatched yet. Therefore,
 the state won't reflect it. So you need to use the action to extract URL params from the `payload`. You can use this function to efficiently short-circuit the middleware by calling `dispatch(redirect(newAction))`, where `newAction` has the matching `type` and `payload` of the route you would like to redirect to. Using `onBeforeChange` and `location.kind === 'redirect'` + `res.redirect(301, pathname)` in your `serverRender` function is the idiom here for handling redirects server-side. See [server-rendering docs](.server-rendering.md) for more info.
 
-* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk. Actions with kinds `back`, `next`, and `pop` trigger this.
+* **onAfterChange** - `onAfterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as a `bag` argument (see `onBeforeChange`).
+
+* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well a `bag` argument (see `onBeforeChange`). Actions with kinds `back`, `next`, and `pop` trigger this.
 
 * **initialDispatch** - `initialDispatch` can be set to `false` to bypass the initial dispatch, so you can do it manually, perhaps after running sagas. An `initialDispatch` function will exist in the object returned by `connectRoutes`. Simply call `initialDispatch()` when you are ready.
 
