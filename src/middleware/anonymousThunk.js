@@ -8,7 +8,7 @@ export default ({ options }) => {
 
   return (req, next) => {
     if (typeof req.action === 'function') {
-      req.isStandaloneThunk = true
+      req.isAnonymousThunk = true
 
       return Promise.resolve(req.action(req)).then(potentialAction => {
         if (potentialAction && !req.manuallyDispatched) {

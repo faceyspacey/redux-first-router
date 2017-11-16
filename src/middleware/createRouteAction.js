@@ -72,8 +72,7 @@ const reduxAction = (req, url, action, prev, history, bn) => {
   const { nextHistory, commit } = history[method](url, {}, false)       // get returned the same "bag" as functions passed to `history.listen`
   const redirect = isRedirect(action)
 
-  const tp = req.tmp.prev                                              // if multiple redirects in one pass, the latest LAST redirect becomes prev
-  prev = redirect && tp ? tp.meta.location.current : prev
+  prev = (redirect && req.tmp.prev) || prev                             // if multiple redirects in one pass, the latest LAST redirect becomes prev; otherwise, just use prev state
 
   nextHistory.kind = redirect ? 'redirect' : nextHistory.kind           // the kind no matter what relfects the appropriate intent
 

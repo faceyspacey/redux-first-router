@@ -15,7 +15,10 @@ export default (path = '/first', options = {}, custom = {}) => {
   options.initialEntries = [path]
   options.extra = { arg: 'extra-arg' }
 
-  const { types, actions, routes, exportString } = createScene(routesMap, custom)
+  const { types, actions, routes, exportString } = custom.createScene !== false
+    ? createScene(routesMap, custom)
+    : { routes: custom.routesMap }
+
   const { middleware, reducer, firstRoute, history } = createRouter(
     routes,
     options
@@ -33,18 +36,26 @@ export default (path = '/first', options = {}, custom = {}) => {
     types,
     actions,
     exportString,
-    routes
+    routes,
+    location: () => store.getState().location
   }
 }
 
 export const defaultRoutes = {
   FIRST: '/first',
-  SECOND: '/second',
+  SECOND: {
+    path: '/second',
+    error: (payload) => ({ ...payload, bla: 'boo' })
+  },
   THIRD: {
     path: '/third',
     thunk: async () => {
       await fakeAsyncWork()
       return 'thunk'
+    },
+    action: ['', 'customCreator'],
+    customCreator: (arg) => (req, type) => {
+      return { payload: { foo: arg }, type }
     }
   },
   FOURTH: {
@@ -73,4 +84,9 @@ export const log = store => {
   delete state.routesMap
   delete state.hasSSR
   console.log(state)
+}
+
+const merkaba = 1
+export {
+  merkaba
 }

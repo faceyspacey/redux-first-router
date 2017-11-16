@@ -63,7 +63,7 @@ export default (
     const ctx = {}
     const tmp = {}
     const api = { store, history, routes, options, locationState, ctx, tmp }
-    const nextPromise = composePromise(middlewares, api)
+    const nextPromise = composePromise(middlewares, api, true)
     const shouldTransition = options.shouldTransition
     const onError = call('onError')(api)
 
@@ -91,6 +91,8 @@ export default (
         error: null
       }
 
+      ctx.startAction = ctx.startAction || action
+
       return nextPromise(req) // start middleware pipeline
         .catch(error => {
           req.error = error
@@ -101,6 +103,8 @@ export default (
         .then(res => {
           for (const key in tmp) delete tmp[key]
           req.completed = true
+          ctx.committed = false
+          ctx.startAction = null
           return res
         })
     }

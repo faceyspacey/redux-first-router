@@ -37,6 +37,7 @@ Object {
   "meta": Object {
     "location": Object {
       "committed": false,
+      "current": null,
       "kind": "redirect",
       "status": 302,
       "url": "/third",
@@ -73,6 +74,90 @@ Object {
   "length": 2,
   "pathname": "/third",
   "payload": Object {},
+  "prev": Object {
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`if beforeEnter dispatches redirect, route changes with kind === "redirect" 2`] = `
+Object {
+  "basename": "",
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "state": Object {},
+      "url": "/first",
+    },
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/third",
+      "search": "",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "hasSSR": undefined,
+  "index": 1,
+  "kind": "redirect",
+  "length": 2,
+  "pathname": "/third",
+  "payload": Object {},
+  "prev": Object {
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second/bar",
+    "payload": Object {
+      "param": "bar",
+    },
+    "type": "SECOND",
+  },
+  "type": "THIRD",
+}
+`;
+
+exports[`route.redirect - automatic 302 redirect 1`] = `
+Object {
+  "basename": "",
+  "entries": Array [
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "state": Object {},
+      "url": "/first",
+    },
+    Object {
+      "hash": "",
+      "key": "345678",
+      "pathname": "/third",
+      "search": "",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "hasSSR": undefined,
+  "index": 1,
+  "kind": "redirect",
+  "length": 2,
+  "pathname": "/third",
+  "payload": Object {
+    "param": "bar",
+  },
   "prev": Object {
     "index": 1,
     "kind": "push",

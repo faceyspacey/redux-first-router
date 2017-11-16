@@ -111,22 +111,34 @@ it('callThunk calls thunk with same `dispatch` argument as in middleware chain',
   expect(thunk.mock.calls[0][0].arg).toEqual('extra-arg')
 })
 
-it('pathless route calls callThunk', async () => {
-  const thunk = jest.fn()
+it.only('pathless route calls callThunk', async () => {
+  const thunk = jest.fn(() => 'cat')
   const routesMap = {
     FIRST: '/',
     PATHLESS: {
-      thunk
+      thunk,
+      onComplete: () => ({
+        type: 'FOO'
+      })
     }
   }
 
-  const { store, history } = await setupAll('/', undefined, { routesMap })
+  const globalThunk = jest.fn() // won't be called by default
+  const options = { thunk: globalThunk }
+
+  const { store, history } = await setupAll('/', options, { routesMap })
   const action = { type: 'PATHLESS' }
-  await store.dispatch(action)
+  const res = await store.dispatch(action)
+
+  expect(res).toEqual({ type: 'FOO' })
 
   expect(thunk).toHaveBeenCalled()
   expect(thunk.mock.calls[0].length).toEqual(1) // 1 arg1: req
   expect(thunk.mock.calls[0][0].action).toEqual(action)
+
+  expect(globalThunk).toHaveBeenCalledTimes(1)
+
+  expect(store.getState().title).toEqual('FOO')
 })
 
 it('pathless routes do not break other real route dispatches', async () => {

@@ -134,28 +134,16 @@ Object {
 exports[`createScene 2`] = `
 Object {
   "first": [Function],
-  "firstComplete": [Function],
-  "firstError": [Function],
   "fourth": [Function],
-  "fourthComplete": [Function],
-  "fourthError": [Function],
   "notFound": [Function],
-  "notFoundComplete": [Function],
-  "notFoundError": [Function],
   "plain": [Function],
-  "plainComplete": [Function],
-  "plainError": [Function],
   "second": [Function],
-  "secondComplete": [Function],
-  "secondError": [Function],
   "third": [Function],
-  "thirdComplete": [Function],
-  "thirdError": [Function],
 }
 `;
 
 exports[`createScene 3`] = `
-"const { types, actions } = createActions(routes)
+"const { types, actions } = createScene(routes, { scene: 'SCENE' })
 
 const { 
 	FIRST,
@@ -180,23 +168,11 @@ const {
 
 const { 
 	first,
-	firstComplete,
-	firstError,
 	second,
-	secondComplete,
-	secondError,
 	third,
-	thirdComplete,
-	thirdError,
 	fourth,
-	fourthComplete,
-	fourthError,
 	plain,
-	plainComplete,
-	plainError,
-	notFound,
-	notFoundComplete,
-	notFoundError
+	notFound
 } = actions
 
 export {
@@ -222,184 +198,157 @@ export {
 
 export {
 	first,
-	firstComplete,
-	firstError,
 	second,
-	secondComplete,
-	secondError,
 	third,
-	thirdComplete,
-	thirdError,
 	fourth,
-	fourthComplete,
-	fourthError,
 	plain,
-	plainComplete,
-	plainError,
-	notFound,
-	notFoundComplete,
-	notFoundError
+	notFound
 }"
-`;
-
-exports[`d 1`] = `
-Object {
-  "meta": Object {
-    "basename": undefined,
-    "notFoundPath": "cat",
-  },
-  "payload": Object {
-    "foo": "bar",
-  },
-  "type": "SCENE/@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`d 2`] = `
-Object {
-  "basename": "",
-  "entries": Array [
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/first",
-      "search": "",
-      "state": Object {},
-      "url": "/first",
-    },
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/cat",
-      "search": "",
-      "state": Object {},
-      "url": "/cat",
-    },
-  ],
-  "hasSSR": undefined,
-  "index": 1,
-  "kind": "push",
-  "length": 2,
-  "pathname": "cat",
-  "payload": Object {
-    "foo": "bar",
-  },
-  "prev": Object {
-    "index": 0,
-    "kind": "load",
-    "length": 1,
-    "pathname": "/first",
-    "payload": Object {},
-    "type": "SCENE/FIRST",
-  },
-  "type": "SCENE/@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`double create 1`] = `
-Object {
-  "meta": Object {
-    "basename": undefined,
-    "notFoundPath": "cat",
-  },
-  "payload": Object {
-    "foo": "bar",
-  },
-  "type": "SCENE/@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`double create 2`] = `
-Object {
-  "basename": "",
-  "entries": Array [
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/first",
-      "search": "",
-      "state": Object {},
-      "url": "/first",
-    },
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/cat",
-      "search": "",
-      "state": Object {},
-      "url": "/cat",
-    },
-  ],
-  "hasSSR": undefined,
-  "index": 1,
-  "kind": "push",
-  "length": 2,
-  "pathname": "cat",
-  "payload": Object {
-    "foo": "bar",
-  },
-  "prev": Object {
-    "index": 0,
-    "kind": "load",
-    "length": 1,
-    "pathname": "/first",
-    "payload": Object {},
-    "type": "SCENE/FIRST",
-  },
-  "type": "SCENE/@@rudy/NOT_FOUND",
-}
 `;
 
 exports[`double createScene 1`] = `
 Object {
-  "meta": Object {
-    "basename": undefined,
-    "notFoundPath": "cat",
-  },
-  "payload": Object {
-    "foo": "bar",
-  },
-  "type": "SCENE/@@rudy/NOT_FOUND",
+  "FIRST": "double/scene/FIRST",
+  "FIRST_COMPLETE": "double/scene/FIRST_COMPLETE",
+  "FIRST_ERROR": "double/scene/FIRST_ERROR",
+  "FOURTH": "double/scene/FOURTH",
+  "FOURTH_COMPLETE": "double/scene/FOURTH_COMPLETE",
+  "FOURTH_ERROR": "double/scene/FOURTH_ERROR",
+  "NOT_FOUND": "double/scene/@@rudy/NOT_FOUND",
+  "NOT_FOUND_COMPLETE": "double/scene/@@rudy/NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "double/scene/@@rudy/NOT_FOUND_ERROR",
+  "PLAIN": "double/scene/PLAIN",
+  "PLAIN_COMPLETE": "double/scene/PLAIN_COMPLETE",
+  "PLAIN_ERROR": "double/scene/PLAIN_ERROR",
+  "SECOND": "double/scene/SECOND",
+  "SECOND_COMPLETE": "double/scene/SECOND_COMPLETE",
+  "SECOND_ERROR": "double/scene/SECOND_ERROR",
+  "THIRD": "double/scene/THIRD",
+  "THIRD_COMPLETE": "double/scene/THIRD_COMPLETE",
+  "THIRD_ERROR": "double/scene/THIRD_ERROR",
 }
 `;
 
 exports[`double createScene 2`] = `
 Object {
-  "basename": "",
-  "entries": Array [
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/first",
-      "search": "",
-      "state": Object {},
-      "url": "/first",
-    },
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/cat",
-      "search": "",
-      "state": Object {},
-      "url": "/cat",
-    },
-  ],
-  "hasSSR": undefined,
-  "index": 1,
-  "kind": "push",
-  "length": 2,
-  "pathname": "cat",
-  "payload": Object {
-    "foo": "bar",
-  },
-  "prev": Object {
-    "index": 0,
-    "kind": "load",
-    "length": 1,
-    "pathname": "/first",
-    "payload": Object {},
-    "type": "SCENE/FIRST",
-  },
-  "type": "SCENE/@@rudy/NOT_FOUND",
+  "first": [Function],
+  "fourth": [Function],
+  "notFound": [Function],
+  "plain": [Function],
+  "second": [Function],
+  "third": [Function],
 }
+`;
+
+exports[`double createScene 3`] = `
+Object {
+  "@@rudy/NOT_FOUND": Object {
+    "path": "/not-found",
+    "type": "@@rudy/NOT_FOUND",
+  },
+  "double/scene/@@rudy/NOT_FOUND": Object {
+    "path": "/not-found-foo",
+    "scene": "double/scene",
+    "type": "double/scene/@@rudy/NOT_FOUND",
+  },
+  "double/scene/FIRST": Object {
+    "path": "/first",
+    "scene": "double/scene",
+    "type": "double/scene/FIRST",
+  },
+  "double/scene/FOURTH": Object {
+    "action": [Function],
+    "onComplete": [Function],
+    "path": "/fourth",
+    "scene": "double/scene",
+    "thunk": [Function],
+    "type": "double/scene/FOURTH",
+  },
+  "double/scene/PLAIN": Object {
+    "action": [Function],
+    "scene": "double/scene",
+    "type": "double/scene/PLAIN",
+  },
+  "double/scene/SECOND": Object {
+    "error": [Function],
+    "path": "/second",
+    "scene": "double/scene",
+    "type": "double/scene/SECOND",
+  },
+  "double/scene/THIRD": Object {
+    "action": Array [
+      "",
+      "customCreator",
+    ],
+    "customCreator": [Function],
+    "path": "/third",
+    "scene": "double/scene",
+    "thunk": [Function],
+    "type": "double/scene/THIRD",
+  },
+}
+`;
+
+exports[`double createScene 4`] = `
+"const { types, actions } = createScene(routes, { scene: 'double/scene' })
+
+const { 
+	FIRST,
+	FIRST_COMPLETE,
+	FIRST_ERROR,
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+} = types
+
+const { 
+	first,
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+} = actions
+
+export {
+	FIRST,
+	FIRST_COMPLETE,
+	FIRST_ERROR,
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+}
+
+export {
+	first,
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+}"
 `;

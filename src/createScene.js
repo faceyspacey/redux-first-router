@@ -5,8 +5,8 @@ import { NOT_FOUND } from './index'
 import isFSRA from './utils/isFSRA'
 import isNotFound from './utils/isNotFound'
 
-export default (r: RoutesMapInput, options: CreateActionsOptions = {}) => {
-  const { scene: sc, basename: bn, logExports } = options
+export default (r: RoutesMapInput, opts: CreateActionsOptions = {}) => {
+  const { scene: sc, basename: bn, logExports } = opts
 
   const scene = sc || ''
   const prefix = scene ? `${scene}/` : ''
@@ -15,21 +15,34 @@ export default (r: RoutesMapInput, options: CreateActionsOptions = {}) => {
   const result = keys.reduce((result, t) => {
     const { types, actions, routes } = result
 
-    const type = `${prefix}${t}`
-    const typeComplete = `${prefix}${t}_COMPLETE`
-    const typeError = `${prefix}${t}_ERROR`
+    const t2 = `${prefix}${t}`
+    const tc = `${prefix}${t}_COMPLETE`
+    const te = `${prefix}${t}_ERROR`
 
-    const route = routes[type] = routeToObject(r[t], type)
-    const tClean = route.scene ? type.replace(`${route.scene}/`, '') : t // strip the scene so keys/exports are un-prefixed
+    const route = routes[t2] = routeToObject(r[t], t2)
+    const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so keys/exports are un-prefixed
     const name = camelCase(tClean)
 
-    types[tClean] = type
+    types[tClean] = t2
     types[`${tClean}_COMPLETE`] = `${prefix}${t}_COMPLETE`
     types[`${tClean}_ERROR`] = `${prefix}${t}_ERROR`
 
-    actions[name] = makeActionCreator(type, routes, bn)
-    actions[`${name}Complete`] = makeActionCreator(typeComplete, routes, bn)
-    actions[`${name}Error`] = makeErrorActionCreator(typeError, bn)
+    // allow for creating custom action creators (whose names are an array assigned to route.action)
+    if (Array.isArray(route.action)) {
+      const key = route.action[0]
+      actions[name] = makeAC(route, t2, key, bn) // the first name in the array becomes the primary action creator
+
+      // all are tacked on like name.complete, name.error
+      route.action.forEach((key: string) => {
+        actions[name][key] = makeAC(route, t2, key, bn)
+      })
+    }
+    else {
+      actions[name] = makeAC(route, t2, 'action', bn)
+    }
+
+    actions[name].complete = makeAC(route, tc, 'complete', bn)
+    actions[name].error = makeAC(route, te, 'error', bn)
 
     return result
   }, { types: {}, actions: {}, routes: {} })
@@ -46,15 +59,11 @@ export default (r: RoutesMapInput, options: CreateActionsOptions = {}) => {
     delete types[`${NOT_FOUND}_ERROR`]
 
     actions.notFound = actions.rudyNotFound
-    actions.notFoundComplete = actions.rudyNotFoundComplete
-    actions.notFoundError = actions.rudyNotFoundError
     delete actions.rudyNotFound
-    delete actions.rudyNotFoundComplete
-    delete actions.rudyNotFoundError
   }
 
   if (logExports && /development|test/.test(process.env.NODE_ENV)) {
-    result.exportString = logExportString(types, actions)
+    result.exportString = logExportString(types, actions, result.routes, opts)
   }
 
   return result
@@ -82,8 +91,13 @@ const getScene = (type: string) => {
   return type.substr(0, i).replace(/\/?@@rudy/, '')
 }
 
-const makeActionCreator = (type: string, routes: RoutesMapInput, basename: ?string) => {
-  const ac = routes[type] && routes[type].action
+const makeAC = (
+  route: Object, // primary type
+  type: string,
+  key: ?string,
+  basename: ?string
+) => {
+  const ac = typeof route[key] === 'function' ? route[key] : null // look for action creators on route
 
   // `info` arg contains 'isThunk' or optional `path` for `notFound` action creators
   const defaultCreator = (arg: Object | Function, info: ?string) => {
@@ -106,6 +120,9 @@ const makeActionCreator = (type: string, routes: RoutesMapInput, basename: ?stri
       return notFound(arg, notFoundPath, basename, t)
     }
 
+    // handle error action creator
+    if (key === 'error') return handleError(arg, t, basename)
+
     // the default behavior of transforming an `arg` object into an action with its type
     if (isFSRA(arg)) return { type, ...arg, meta: { basename, ...arg.meta } }
 
@@ -123,7 +140,25 @@ const makeActionCreator = (type: string, routes: RoutesMapInput, basename: ?stri
 }
 
 
-const logExportString = (types, actions) => {
+const handleError = (o: Object, type: string, basename: ?string) =>
+  o && o.error
+    ? { type, ...o, meta: { basename, ...o.meta } }
+    : { type, error: o, meta: { basename } }
+
+
+const logExportString = (types, actions, routes, options) => {
+  const opts = { ...options }
+  opts.scene = getScene(Object.keys(routes)[0])
+  delete opts.logExports
+
+  const optsString = JSON.stringify(opts)
+    .replace(/"scene":/, 'scene: ')
+    .replace(/"basename":/, 'basename: ')
+    .replace(/"/g, "'")
+    .replace('{', '{ ')
+    .replace('}', ' }')
+    .replace(/,/g, ', ')
+
   let t = ''
   for (const type in types) t += `\n\t${type},`
 
@@ -131,7 +166,7 @@ const logExportString = (types, actions) => {
   for (const action in actions) a += `\n\t${action},`
 
   // destructure createActions()
-  let exports = 'const { types, actions } = createActions(routes)'
+  let exports = `const { types, actions } = createScene(routes, ${optsString})`
   exports += '\n\nconst { ' + t.slice(0, -1) + '\n} = types'
   exports += '\n\nconst { ' + a.slice(0, -1) + '\n} = actions'
 
@@ -147,11 +182,6 @@ const logExportString = (types, actions) => {
   return exports
 }
 
-const makeErrorActionCreator = (type: string, basename: ?string) => {
-  return (o: Object) => o && o.error
-    ? { type, ...o, meta: { basename, ...o.meta } }
-    : { type, error: o, meta: { basename } }
-}
 
 const camelCase = (type: string) => {
   const matches = type.match(wordPattern)

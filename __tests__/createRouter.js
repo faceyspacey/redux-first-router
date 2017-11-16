@@ -229,7 +229,8 @@ test('firstRoute (delayed commit - redirect) [/w inherited routes + callback arr
   expect(store.getState().location.type).toEqual('FOURTH')
   expect(history.location.pathname).toEqual('/fourth')
 
-  // the key thing we're testing for:
+  // the key thing we're testing for (that only 2 entries are recorded even though multiple redirects happened):
+  console.log(history.entries)
   expect(history.entries.length).toEqual(2)
   expect(history.length).toEqual(2)
 

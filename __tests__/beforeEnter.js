@@ -2,6 +2,7 @@ import { setupAll } from '../__test-helpers__/setup'
 import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 import tempMock from '../__test-helpers__/tempMock'
 import doesRedirect from '../src/utils/doesRedirect'
+import redirect from '../src/action-creators/redirect'
 
 it('calls beforeEnter handler on route change -- route', async () => {
   const beforeEnter = jest.fn()
@@ -54,6 +55,26 @@ it('if beforeEnter dispatches redirect, route changes with kind === "redirect"',
   expect(history.entries.length).toEqual(2)
   expect(location).toMatchSnapshot()
   expect(beforeEnter.mock.calls.length).toEqual(3)
+})
+
+it('route.redirect - automatic 301 redirect', async () => {
+  const routesMap = {
+    SECOND: {
+      path: '/second/:param',
+      redirect: 'THIRD'
+    },
+    THIRD: '/third'
+  }
+  const { store, history } = await setupAll('/first', undefined, { routesMap })
+  const action = await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  const { location } = store.getState()
+
+  expect(action.type).toEqual('THIRD')
+
+  expect(location.kind).toEqual('redirect')
+  expect(location.type).toEqual('THIRD')
+  expect(history.entries.length).toEqual(2)
+  expect(location).toMatchSnapshot()
 })
 
 it('beforeEnter redirect on server results does not update state, and instead returns action (i.e. short-circuits)', async () => {

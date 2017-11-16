@@ -96,10 +96,16 @@ it('does nothing if action has error', async () => {
 })
 
 it('user redirects', async () => {
-  const { store } = await setupAll('/first')
+  const beforeEnter = ({ action, dispatch }) => {
+    if (action.type === 'THIRD') { // also test that a second redirect only results in one entry
+      dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+    }
+  }
+
+  const { store, history } = await setupAll('/first', { beforeEnter })
   const action = await store.dispatch(redirect({ type: 'THIRD' })) /*? $.meta */
 
   store.getState() /*? $.location */
   expect(store.getState().location.length).toEqual(1)
-  expect(store.getState().location.type).toEqual('THIRD')
+  expect(store.getState().location.type).toEqual('SECOND')
 })

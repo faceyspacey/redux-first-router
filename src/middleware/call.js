@@ -16,7 +16,7 @@ export default (name, config = {}) => (api) => {
     const { prev } = config
     const route = prev ? prevRoute : req.route
     const routeCb = (route && route[name]) || noop
-    const optsCb = isFallback(name, req, routeCb) ? noop : opts[name] || noop
+    const optsCb = skipOpt(name, req, routeCb) ? noop : opts[name] || noop
     const needsErr = name === 'onError' && routeCb === noop && optsCb === noop
     const proms = needsErr ? onError(req) : [routeCb(req), optsCb(req)]
 
@@ -53,19 +53,50 @@ const defaultShouldCall = (req, name, config) => {
   return true
 }
 
+const skipOpt = (name, req, routeCb) =>
+  isSkipGlobalCallbacks(name, req) || isFallback(name, req, routeCb)
+
 const isFallback = (name, req, routeCb) => {
-  const rFb = req.route && req.route.fallbackMode
-  const fb = req.options.fallbackMode
+  const r = req.route && req.route.fallbackMode
+  const g = req.options.fallbackMode
 
   if (routeCb === noop) return false
-  if (!rFb && !fb) return false
+  if (!r && !g) return false
 
-  if (rFb && rFb[name] !== undefined) return rFb[name]
-  if (rFb && rFb.all !== undefined) return rFb.all
+  if (typeof r === 'boolean') return r
+  if (r && typeof r === 'object') {
+    if (r[name] !== undefined) return r[name]
+    if (r.all !== undefined) return r.all
+  }
 
-  if (!fb) return false
-  if (fb[name] !== undefined) return fb[name]
-  return fb.all
+  if (typeof g === 'boolean') return g
+  if (g && typeof g === 'object') {
+    if (g[name] !== undefined) return g[name]
+    return g.all
+  }
+
+  return false
+}
+
+const isSkipGlobalCallbacks = (name, req) => {
+  const r = req.route && req.route.skipGlobalCallbacks
+  const g = req.options.skipGlobalCallbacks
+
+  if (!r && !g) return false
+
+  if (typeof r === 'boolean') return r
+  else if (r && typeof r === 'object') {
+    if (r[name] !== undefined) return r[name]
+    if (r.all !== undefined) return r.all
+  }
+
+  if (typeof g === 'boolean') return g
+  else if (g && typeof g === 'object') {
+    if (g[name] !== undefined) return g[name]
+    return g.all
+  }
+
+  return false
 }
 
 const isAutoDispatch = (req) => {
@@ -108,7 +139,7 @@ const findCallback = (name, routes, callback, route) => {
       prom.then(complete(next))
     })
 
-    return composePromise(pipeline)
+    return composePromise(pipeline, null, true)
   }
   else if (typeof callback === 'string') {
     const type = callback
