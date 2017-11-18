@@ -1,6 +1,6 @@
 import createSmartHistory from '../src/smart-history'
-
 import { createInitialState } from '../src/createLocationReducer'
+import { NOT_FOUND } from '../src/index'
 
 export default async (type, pathname) => {
   // eslint-disable-line import/prefer-default-export
@@ -8,11 +8,14 @@ export default async (type, pathname) => {
   history.listen(function() {})
   await history.push(pathname)
 
-  const current = { pathname, type, payload: { param: 'bar' } }
+  const current = { pathname, url: pathname, type, payload: { param: 'bar' } }
   const prev = { pathname: '/first', type: 'FIRST', payload: {} }
   const routesMap = {
     FIRST: { path: '/first' },
-    SECOND: { path: '/second/:param' }
+    SECOND: { path: '/second/:param' },
+    [NOT_FOUND]: {
+      path: '/not-found'
+    }
   }
 
   return {

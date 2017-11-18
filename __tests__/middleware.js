@@ -82,7 +82,7 @@ it('user dispatches NOT_FOUND redirect and middleware adds missing info to actio
   expect(action).toMatchSnapshot()
 })
 
-it('does nothing if action has error', async () => {
+it.skip('does nothing if action has error', async () => {
   const { store } = await setupAll('/first')
 
   const receivedAction = {

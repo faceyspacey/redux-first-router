@@ -7,19 +7,17 @@ export default ({ options }) => {
   }
 
   return (req, next) => {
-    if (typeof req.action === 'function') {
-      req.isAnonymousThunk = true
+    if (typeof req.action !== 'function') return next()
 
-      return Promise.resolve(req.action(req)).then(potentialAction => {
-        if (potentialAction && !req.manuallyDispatched) {
-          return req.store.dispatch(potentialAction)
-        }
+    req._dispatched = false
 
-        return potentialAction
-      })
-    }
+    const thunkResult = Promise.resolve(req.action(req))
 
-    return next()
+    return thunkResult.then(action =>
+      action && !req._dispatched
+        ? req.dispatch(action)
+        : action
+    )
   }
 }
 

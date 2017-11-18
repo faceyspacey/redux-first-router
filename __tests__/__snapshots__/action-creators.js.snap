@@ -30,6 +30,7 @@ Object {
     },
     "routesAdded": 3,
     "type": "@@rudy/NOT_FOUND",
+    "url": "/",
   },
   "title": "@@rudy/ADD_ROUTES",
 }

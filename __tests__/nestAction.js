@@ -1,7 +1,7 @@
 import { createMemoryHistory, createBrowserHistory } from 'rudy-history'
 import { nestAction } from '../src/middleware/createRouteAction'
 
-it('nestAction properly formats/nests action object', () => {
+it.skip('nestAction properly formats/nests action object', () => {
   const history = createMemoryHistory()
   const pathname = '/path'
   const receivedAction = {

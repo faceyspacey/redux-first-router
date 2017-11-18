@@ -15,7 +15,9 @@ Object {
         "payload": Object {
           "bar": "baz",
         },
+        "search": "",
         "type": "FOO",
+        "url": "/path",
       },
       "history": Object {
         "entries": Array [

@@ -54,6 +54,7 @@ Object {
     },
     "search": "foo=car&baz=70",
     "type": "FIRST",
+    "url": "/first?foo=car&baz=70",
   },
   "title": "FIRST",
 }
@@ -96,6 +97,7 @@ Object {
       "type": "FIRST",
     },
     "type": "THIRD",
+    "url": "/third",
   },
   "title": "THIRD",
 }
@@ -155,6 +157,7 @@ Object {
     },
     "search": "baz=70&foo=car",
     "type": "FIRST",
+    "url": "/first?baz=70&foo=car",
   },
   "title": "FIRST",
 }
@@ -214,6 +217,7 @@ Object {
     },
     "search": "foo=bar&baz=69",
     "type": "THIRD",
+    "url": "/third?foo=bar&baz=69",
   },
   "title": "THIRD",
 }

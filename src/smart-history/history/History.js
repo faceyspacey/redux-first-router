@@ -1,5 +1,6 @@
 import { createLocation, createKey } from '../utils/location'
 import { createPath, stripSlashes } from '../utils/path'
+import { UPDATE_HISTORY } from '../../index'
 
 export default class History {
   constructor(opts) {
@@ -23,7 +24,7 @@ export default class History {
       // this._updateHistory(nextState)
     }
 
-    this.firstRoute = { nextHistory: this, commit }
+    this.firstRoute = { nextHistory: this, commit, type: UPDATE_HISTORY }
   }
 
   // API:
@@ -121,6 +122,7 @@ export default class History {
   // UTILS:
 
   _notify(bag, notify = true) {
+    bag.type = UPDATE_HISTORY
     bag.commit = this._once(bag.commit)
     if (notify && this._listener) return this._listener(bag)
     return bag
@@ -157,7 +159,7 @@ export default class History {
   }
 
   _createNextHistory(state) {
-    const next = Object.assign({}, this, state)
+    const next = Object.assign({ type: UPDATE_HISTORY }, this, state)
     next.length = state.entries ? state.entries.length : this.length
     return next
   }

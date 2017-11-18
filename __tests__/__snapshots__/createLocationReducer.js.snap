@@ -27,6 +27,7 @@ Object {
     "type": "FIRST",
   },
   "type": "SECOND",
+  "url": "/second/bar",
 }
 `;
 
@@ -48,5 +49,6 @@ Object {
     "type": "",
   },
   "type": "FIRST",
+  "url": "/first",
 }
 `;

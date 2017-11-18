@@ -28,6 +28,7 @@ Object {
     "type": "",
   },
   "type": "FIRST",
+  "url": "/first",
 }
 `;
 
@@ -82,54 +83,16 @@ Object {
     "payload": Object {
       "param": "bar",
     },
+    "search": "",
     "type": "SECOND",
+    "url": "/second/bar",
   },
   "type": "THIRD",
+  "url": "/third",
 }
 `;
 
-exports[`if beforeEnter dispatches redirect, route changes with kind === "redirect" 2`] = `
-Object {
-  "basename": "",
-  "entries": Array [
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/first",
-      "search": "",
-      "state": Object {},
-      "url": "/first",
-    },
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/third",
-      "search": "",
-      "state": Object {},
-      "url": "/third",
-    },
-  ],
-  "hasSSR": undefined,
-  "index": 1,
-  "kind": "redirect",
-  "length": 2,
-  "pathname": "/third",
-  "payload": Object {},
-  "prev": Object {
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second/bar",
-    "payload": Object {
-      "param": "bar",
-    },
-    "type": "SECOND",
-  },
-  "type": "THIRD",
-}
-`;
-
-exports[`route.redirect - automatic 302 redirect 1`] = `
+exports[`route.redirect - automatic 301 redirect 1`] = `
 Object {
   "basename": "",
   "entries": Array [
@@ -166,8 +129,11 @@ Object {
     "payload": Object {
       "param": "bar",
     },
+    "search": "",
     "type": "SECOND",
+    "url": "/second/bar",
   },
   "type": "THIRD",
+  "url": "/third",
 }
 `;

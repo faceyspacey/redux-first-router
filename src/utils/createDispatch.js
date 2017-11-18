@@ -1,37 +1,59 @@
 import redirect from '../action-creators/redirect'
 import isRedirect from '../utils/isRedirect'
+import isLocationAction from '../utils/isLocationAction'
 
 export default (getReq) => (action) => {
   const req = getReq() // get full req object from closure, since both are defined at same time
   const { store, routes } = req
-
-  if (req.isAnonymousThunk) return store.dispatch(action)
-
   const route = routes[action.type]
-  const isSwitchingRoutes = typeof route === 'object' && route.path // can't be a pathless thunk
+  const isPathlessThunk = !route || !route.path                   // routes are not actually changing if route has no `path` (aka "pathless thunks")
+  const fromShortCircuitingPhase = !isLocationAction(req.action)  // middleware like `anonymousThunk` dispatch early (before "pipeline phase") and need to go back through middleware normally
+  const isSwitchingRoutes = !isPathlessThunk && !fromShortCircuitingPhase
 
-  req.manuallyDispatched = true // tell `middleware/call.js` to not automatically dispatch callback returns
+  req._dispatched = true // tell `middleware/call.js` + middleware/anonymousThunk.js` to not automatically dispatch callback returns
 
   if (isSwitchingRoutes && !req.completed) {
     action = redirect(action, 302)
 
-    // honor committed status of context and incoming redirects, but don't let redirects during pipeline dictate committed status
-    // this allows for properly determining whether to push or replace/redirect on the `history.entries` array.
-    // (see `isCommittedRedirect()` call in `middleware/createRouteAction.js`)
-    action.meta.location.committed = req.ctx.committed || isRedirect(req.ctx.startAction)
+    // HISTORY ENTRIES PUSH/REPLACE LOGIC:
+    //
+    // The following allows for determining whether to push or redirect (aka "replace") on the `history.entries` array.
+    //
+    // The goal is to honor both `tmp.committed` and incoming redirects (prior to pipeline), but without letting
+    // redirects during the pipeline dictate committed status, as it can result in replacing the previous entry.
+    // Real replacing in the form of redirects is only at the discretion of the user outside of the pipeline.
+    //
+    // Once the pipeline starts, there is at least one new entry already being attempted to be pushed. So redirects
+    // during the pipeline make the decision whether the redirect results in a replace (after comitting) or an
+    // ALTERNATE PUSH (before committing).
+    //
+    // See the following files for additional info on the logic:
+    //
+    // - utils/isRedirect.js
+    // - actions/redirect.js
+    // - middleware/createRouteAction.js -- look for call to `isCommittedRedirect`
+    action.meta.location.committed = req.tmp.committed || isRedirect(req.tmp.startAction)
 
-    req.tmp.prev = req.action.meta.location.current // if multiple redirects in one pass, the latest last redirect becomes prev
-    return req.redirect = store.dispatch(action)    // assign redirect action to req.redirect so composePromise can properly return the new action
+    req.tmp.prev = req.action.meta.location.current // if multiple redirects in one pass, the latest redirect becomes `prev`
+    return req.redirect = store.dispatch(action)    // assign redirect action to `req.redirect` so `composePromise` can properly return the new action
   }
-  else if (req.completed) {
-    // delete the location in case `dispatch` is used outside of pipline
-    // e.g. if beforeLeave returned false, and `dispatch` escaped the closure and
-    // was used to re-dispatch an action in a confirm-leave modal. This way
-    // it goes through the pipeline as normal, and isn't immediately sent through
-    // the rest of the redux middleware after `shouldTransition` returns `false`
-    if (action.meta) delete action.meta.location
+  else if (req.completed && action.meta) {
+    // ESCAPED `dispatch` (USE CASE: CONFIRM LEAVE MODAL)
+    //
+    // Delete the location in case `dispatch` is used outside of pipline.
+    //
+    // The use case is if `beforeLeave` returned `false`, and `dispatch` escaped the closure
+    // and was used to re-dispatch an action in a modal (or other UI component) confirming
+    // the user's intent to leave.
+    //
+    // This way it goes through the pipeline as normal, and isn't immediately sent through
+    // the rest of the redux middleware after `shouldTransition` returns `false`. The reason
+    // is because `shouldTransition` calls `islocationAction(action)` to determine whether
+    // the action already passed through the pipeline based on the presence of this key. The
+    // value of this key will be re-built by the pipeline on next pass obviously :)
+    delete action.meta.location
   }
 
-  return store.dispatch(action)
+  return store.dispatch(action) // dispatch transformed action
 }
 

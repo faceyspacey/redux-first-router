@@ -1,11 +1,11 @@
 import isLocationAction from './isLocationAction'
-import { PREFIX } from '../index'
+import { PREFIX, UPDATE_HISTORY } from '../index'
 
 export default (action, { routes }) => {
   const { type } = action
   const route = routes[type] || (type && type.indexOf(PREFIX) === 0)
   const handled = isLocationAction(action) || !route || action.error
-  const fromHistory = !!action.nextHistory
+  const fromHistory = action.type === UPDATE_HISTORY
 
   return !handled || fromHistory
 }

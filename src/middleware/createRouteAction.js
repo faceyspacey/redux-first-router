@@ -2,17 +2,20 @@ import pathToAction from '../utils/pathToAction'
 import actionToPath from '../utils/actionToPath'
 import isRedirect, { isCommittedRedirect } from '../utils/isRedirect'
 import isNotFound from '../utils/isNotFound'
-import { NOT_FOUND } from '../index'
+import typeToScene from '../utils/typeToScene'
+import { NOT_FOUND, UPDATE_HISTORY } from '../index'
 
 export default (api) => async (req, next) => {
   const {
-    history,
+    route,
     routes,
-    options: { basename: bn, querySerializer: serializer },
+    action,
+    history,
     locationState,
-    nextHistory,
-    action
+    options: { basename: bn, querySerializer: serializer }
   } = req
+
+  if (action.type !== UPDATE_HISTORY && !route.path) return next() // only create route actions if from history or routes with paths
 
   const state = locationState()
   const basename = state.basename || bn
@@ -20,22 +23,21 @@ export default (api) => async (req, next) => {
   const prev = pick(state.kind === 'init' ? state.prev : state, k)
 
   try {
-    if (nextHistory) {
-      const { url } = nextHistory.location
-      // const basename = nextHistory.basename
-      const action = pathToAction(url, routes, basename, serializer)
-      req = historyAction(req, url, action, prev, nextHistory, basename)
+    if (action.type === UPDATE_HISTORY) {
+      const { url } = action.nextHistory.location
+      // const basename = action.nextHistory.basename
+      const act = pathToAction(url, routes, basename, serializer)
+      req = historyAction(req, act, prev, basename)
     }
-    else if (action && !isNotFound(action)) {
+    else if (!isNotFound(action)) {
       const url = actionToPath(action, routes, serializer)
       req = reduxAction(req, url, action, prev, history, basename)
     }
-    else if (action && isNotFound(action)) {
+    else {
       const { type, url } = getNotFoundRoute(req, prev)
       action.type = type
       req = reduxAction(req, url, action, prev, history, basename)
     }
-    else throw new Error('no action or nextHistory')
   }
   catch (e) {
     const { type, url } = getNotFoundRoute(req, prev)
@@ -51,15 +53,16 @@ export default (api) => async (req, next) => {
 }
 
 
-const historyAction = (req, url, action, prev, nextHistory, basename) => {
+const historyAction = (req, action, prev, basename) => {
   req.route = req.routes[action.type]
+  const { nextHistory } = req.action
 
   if (isNotFound(action)) {
     req.action = action
-    action.type = getNotFoundRoute(req, prev).type // type may have changed to scene-level NOT_FOUND
+    action.type = getNotFoundRoute(req, prev).type                      // type may have changed to scene-level NOT_FOUND
   }
 
-  req.action = nestAction(url, action, prev, nextHistory, basename)
+  req.action = nestAction(action, prev, nextHistory, basename)          // replace history-triggered action with real action intended for reducers
   return req
 }
 
@@ -76,19 +79,19 @@ const reduxAction = (req, url, action, prev, history, bn) => {
 
   nextHistory.kind = redirect ? 'redirect' : nextHistory.kind           // the kind no matter what relfects the appropriate intent
 
-  req.action = nestAction(url, action, prev, nextHistory, basename)
-  req.nextHistory = nextHistory                                         // put these here so `enter` middleware can commit the history, etc
-  req.commitHistory = commit
+  req.action = nestAction(action, prev, nextHistory, basename)
+  req.commitHistory = commit                                            // put these here so `enter` middleware can commit the history, etc
 
   return req
 }
 
 
-export const nestAction = (url, action, prev, nextHistory, basename) => {
-  const { kind, entries, index, length } = nextHistory
+export const nestAction = (action, prev, history, basename) => {
+  const { kind, entries, index, length, location: { url } } = history
   const { type, payload = {}, meta = {} } = action
   const parts = url.split('?')
-  const search = parts[1]
+  const pathname = parts[0]
+  const search = parts[1] || ''
 
   return {
     kind,
@@ -99,13 +102,14 @@ export const nestAction = (url, action, prev, nextHistory, basename) => {
       ...meta,
       location: {
         current: {
-          pathname: parts[0],
+          pathname,
           type,
           payload,
           kind,
-          index: nextHistory.index,
-          length: nextHistory.length,
-          ...(search && { search })
+          index,
+          length,
+          url,
+          search
         },
         kind,
         prev,
@@ -116,6 +120,35 @@ export const nestAction = (url, action, prev, nextHistory, basename) => {
   }
 }
 
+export const nestAction2 = (action, prev, history, basename) => {
+  const { kind, entries, index, length, location } = history
+  const { url, pathname, search } = location
+  const { type, payload = {}, query = {}, state = {}, hash = '' } = action
+  const scene = typeToScene(type)
+
+  return {
+    ...action,
+    type,
+    payload,
+    query,
+    state,
+    hash,
+    location: {
+      url,
+      pathname,
+      search,
+      basename,
+      scene,
+
+      prev,
+
+      kind,
+      entries,
+      index,
+      length
+    }
+  }
+}
 
 const pick = (obj, keys) => keys.reduce((acc, k) => {
   if (obj[k] !== undefined) acc[k] = obj[k]
@@ -124,9 +157,7 @@ const pick = (obj, keys) => keys.reduce((acc, k) => {
 
 
 const isDoubleDispatch = (req, state) =>
-  req.action.meta.location.current.pathname === state.pathname &&
-  req.action.meta.location.current.search === state.search &&
-  req.action.meta.location.basename === state.basename &&
+  req.action.meta.location.current.url === state.url &&
   state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
 
 

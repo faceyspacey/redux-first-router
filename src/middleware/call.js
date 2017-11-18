@@ -2,31 +2,31 @@ import composePromise from '../composePromise'
 import isLoadSSR from '../utils/isClientLoadSSR'
 import isServer from '../utils/isServer'
 
-const noop = () => Promise.resolve()
+const noOp = () => Promise.resolve()
 const isFalse = (a, b) => a === false || b === false
 
 export default (name, config = {}) => (api) => {
   enhanceRoutes(name, api.routes)
 
-  return (req, next = noop) => {
+  return (req, next = noOp) => {
     const shouldCall = req.options.shouldCall || defaultShouldCall
     if (!shouldCall(req, name, config)) return next()
 
     const { prevRoute, dispatch, options: opts } = req
     const { prev } = config
     const route = prev ? prevRoute : req.route
-    const routeCb = (route && route[name]) || noop
-    const optsCb = skipOpt(name, req, routeCb) ? noop : opts[name] || noop
-    const needsErr = name === 'onError' && routeCb === noop && optsCb === noop
+    const routeCb = (route && route[name]) || noOp
+    const optsCb = skipOpt(name, req, routeCb) ? noOp : opts[name] || noOp
+    const needsErr = name === 'onError' && routeCb === noOp && optsCb === noOp
     const proms = needsErr ? onError(req) : [routeCb(req), optsCb(req)]
 
-    delete req.manuallyDispatched
+    req._dispatched = false                                 // `dispatch` used by callbacks will set this to `true` (see utils/createDispatch.js)
 
     return Promise.all(proms).then(([a, b]) => {
       if (isFalse(a, b)) return false
       const res = a || b
 
-      if (res && !req.manuallyDispatched && isAutoDispatch(req)) {
+      if (res && !req._dispatched && isAutoDispatch(req)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
         const action = res.type || res.payload ? res : { payload: res }
         action.type = action.type || `${req.action.type}_COMPLETE`
 
@@ -60,7 +60,7 @@ const isFallback = (name, req, routeCb) => {
   const r = req.route && req.route.fallbackMode
   const g = req.options.fallbackMode
 
-  if (routeCb === noop) return false
+  if (routeCb === noOp) return false
   if (!r && !g) return false
 
   if (typeof r === 'boolean') return r

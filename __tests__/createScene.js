@@ -65,7 +65,7 @@ test('NOT_FOUND', async () => {
   let res = await store.dispatch(action)
   expect(store.getState().location.type).toEqual('SCENE/FIRST')
 
-  action = actions.notFound({ foo: 'bar' }, 'cat')
+  action = actions.notFound({ foo: 'bar' }, '/cat')
   res = await store.dispatch(action)
 
   expect(store.getState().location.type).toEqual('SCENE/@@rudy/NOT_FOUND')

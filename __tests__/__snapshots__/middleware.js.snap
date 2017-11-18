@@ -28,6 +28,7 @@ Object {
     "type": "",
   },
   "type": "@@rudy/NOT_FOUND",
+  "url": "/",
 }
 `;
 
@@ -45,7 +46,9 @@ Object {
         "payload": Object {
           "param": "bar",
         },
+        "search": "",
         "type": "SECOND",
+        "url": "/second/bar",
       },
       "history": Object {
         "entries": Array [
@@ -127,6 +130,7 @@ Object {
       "type": "@@rudy/NOT_FOUND",
     },
     "type": "SECOND",
+    "url": "/second/bar",
   },
   "title": "SECOND",
 }
@@ -162,6 +166,7 @@ Object {
     "type": "",
   },
   "type": "SECOND",
+  "url": "/second/bar",
 }
 `;
 
@@ -178,7 +183,9 @@ Object {
         "length": 2,
         "pathname": "/not-found",
         "payload": Object {},
+        "search": "",
         "type": "@@rudy/NOT_FOUND",
+        "url": "/not-found",
       },
       "history": Object {
         "entries": Array [
@@ -232,7 +239,9 @@ Object {
         "length": 1,
         "pathname": "/not-found",
         "payload": Object {},
+        "search": "",
         "type": "@@rudy/NOT_FOUND",
+        "url": "/not-found",
       },
       "history": Object {
         "entries": Array [

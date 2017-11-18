@@ -11,7 +11,6 @@ import shouldTrans from './utils/shouldTransition'
 import serverRedirect from './middleware/serverRedirect'
 import addRoutes from './middleware/addRoutes'
 import pathlessThunk from './middleware/pathlessThunk'
-import plainActionRoute from './middleware/plainActionRoute'
 import anonymousThunk from './middleware/anonymousThunk'
 import createRouteAction from './middleware/createRouteAction'
 import call from './middleware/call'
@@ -19,7 +18,7 @@ import enter from './middleware/enter'
 import changePageTitle from './middleware/changePageTitle'
 
 import type { RoutesMapInput, Options, Store, Dispatch } from './flow-types'
-import { ERROR } from './index'
+import { ERROR, UPDATE_HISTORY } from './index'
 
 export default (
   routesInput: RoutesMapInput = {},
@@ -28,7 +27,6 @@ export default (
     serverRedirect,     // short-circuiting middleware
     addRoutes,
     pathlessThunk,
-    plainActionRoute,
     anonymousThunk,
     createRouteAction,  // pipeline starts here
     call('beforeLeave', { prev: true }),
@@ -61,11 +59,12 @@ export default (
     const getTitle = () => selectTitleState(store.getState() || {})
     const locationState = () => selectLocationState(store.getState() || {})
     const ctx = {}
-    const tmp = {}
-    const api = { store, history, routes, options, locationState, ctx, tmp }
+    const api = { store, history, routes, options, locationState, ctx }
     const nextPromise = composePromise(middlewares, api, true)
     const shouldTransition = options.shouldTransition
     const onError = call('onError')(api)
+    const noOp = function() {}
+    let tmp = {}
 
     history.listen(store.dispatch)
     store.getState.rudy = api // make rudy available via `context` (see <Link />)
@@ -76,22 +75,22 @@ export default (
       const req = {
         ...options.extra,
         ...api,
+        tmp,
         getTitle,
+        action,
         state: store.getState(),
         getState: store.getState,
         location: locationState(),
         dispatch: createDispatch(() => req),
-        action: !action.nextHistory ? action : null,
         prevRoute: routes[locationState().type],
-        route: routes[action.type],
-        nextHistory: action.nextHistory || null,
-        commitHistory: action.commit || null,
+        route: routes[action.type] || {},
+        commitHistory: action.type === UPDATE_HISTORY ? action.commit : noOp,
         commitDispatch: next,
         completed: false,
         error: null
       }
 
-      ctx.startAction = ctx.startAction || action
+      tmp.startAction = tmp.startAction || action // stays consistent across redirects (see utils/createDispatch.js)
 
       return nextPromise(req) // start middleware pipeline
         .catch(error => {
@@ -101,10 +100,8 @@ export default (
           return onError(req)
         })
         .then(res => {
-          for (const key in tmp) delete tmp[key]
+          tmp = {}
           req.completed = true
-          ctx.committed = false
-          ctx.startAction = null
           return res
         })
     }
