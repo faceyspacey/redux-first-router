@@ -8,7 +8,7 @@ it('parse path into action using routePath without /:param segment', () => {
   }
 
   const action = pathToAction('/info', routesMap)
-  expect(action).toEqual({ type: 'INFO', payload: {}, meta: {} }) /*? */
+  expect(action).toMatchObject({ type: 'INFO', payload: {} }) /*? */
 })
 
 it('parse path into action using routePath with /:param segment', () => {
@@ -18,10 +18,9 @@ it('parse path into action using routePath with /:param segment', () => {
   }
 
   const action = pathToAction('/info/foo', routesMap)
-  expect(action).toEqual({
+  expect(action).toMatchObject({
     type: 'INFO_PARAM',
-    payload: { param: 'foo' },
-    meta: {}
+    payload: { param: 'foo' }
   }) /*? */
 })
 

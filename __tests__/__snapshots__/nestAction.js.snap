@@ -2,50 +2,42 @@
 
 exports[`nestAction properly formats/nests action object 1`] = `
 Object {
-  "kind": undefined,
-  "meta": Object {
-    "info": "something",
-    "location": Object {
-      "basename": undefined,
-      "current": Object {
-        "index": 0,
-        "kind": undefined,
-        "length": 1,
+  "hash": "",
+  "location": Object {
+    "basename": undefined,
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
         "pathname": "/path",
-        "payload": Object {
-          "bar": "baz",
-        },
         "search": "",
-        "type": "FOO",
+        "state": Object {},
         "url": "/path",
       },
-      "history": Object {
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/",
-            "search": "",
-            "state": undefined,
-          },
-        ],
-        "index": 0,
-        "kind": undefined,
-        "length": 1,
+    ],
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "pathname": "/path",
+    "prev": Object {
+      "pathname": "previous",
+      "payload": Object {
+        "bla": "prev",
       },
-      "kind": undefined,
-      "prev": Object {
-        "pathname": "previous",
-        "payload": Object {
-          "bla": "prev",
-        },
-        "type": "PREV",
-      },
+      "type": "PREV",
     },
+    "scene": "",
+    "search": "",
+    "url": "/path",
+  },
+  "meta": Object {
+    "info": "something",
   },
   "payload": Object {
     "bar": "baz",
   },
+  "query": Object {},
+  "state": Object {},
   "type": "FOO",
 }
 `;

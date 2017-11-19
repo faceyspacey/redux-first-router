@@ -2,8 +2,10 @@
 
 exports[`NOT_FOUND 1`] = `
 Object {
-  "meta": Object {
+  "location": Object {
     "basename": undefined,
+  },
+  "meta": Object {
     "notFoundPath": "/cat",
   },
   "payload": Object {
@@ -35,6 +37,7 @@ Object {
     },
   ],
   "hasSSR": undefined,
+  "hash": "",
   "index": 1,
   "kind": "push",
   "length": 2,
@@ -43,13 +46,35 @@ Object {
     "foo": "bar",
   },
   "prev": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": undefined,
+    "hash": "",
     "index": 0,
     "kind": "load",
     "length": 1,
     "pathname": "/first",
     "payload": Object {},
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
     "type": "SCENE/FIRST",
+    "url": "/first",
   },
+  "query": Object {},
+  "scene": "SCENE",
+  "search": "",
+  "state": Object {},
   "type": "SCENE/@@rudy/NOT_FOUND",
   "url": "/cat",
 }

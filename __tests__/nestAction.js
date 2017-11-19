@@ -1,9 +1,10 @@
-import { createMemoryHistory, createBrowserHistory } from 'rudy-history'
+import createSmartHistory from '../src/smart-history'
 import { nestAction } from '../src/middleware/createRouteAction'
 
-it.skip('nestAction properly formats/nests action object', () => {
-  const history = createMemoryHistory()
+it('nestAction properly formats/nests action object', () => {
   const pathname = '/path'
+  const initialEntries = [pathname]
+  const history = createSmartHistory({ initialEntries })
   const receivedAction = {
     type: 'FOO',
     payload: { bar: 'baz' },
@@ -18,28 +19,24 @@ it.skip('nestAction properly formats/nests action object', () => {
   // history.kind = 'load'
 
   let action = nestAction(
-    pathname,
     receivedAction,
     location,
     history
-  ) /*? $.meta */
+  )
 
   expect(action.type).toEqual('FOO')
   expect(action.payload).toEqual({ bar: 'baz' })
 
-  expect(action.type).toEqual(action.meta.location.current.type)
-  expect(action.payload).toEqual(action.meta.location.current.payload)
-
-  expect(action.meta.location.prev).toEqual(location)
-  expect(action.meta).toMatchObject(receivedAction.meta)
-  expect(action.meta.location.current.pathname).toEqual(pathname)
+  expect(action.location.prev).toEqual(location)
+  expect(action).toMatchObject(receivedAction)
+  expect(action.location.pathname).toEqual(pathname)
 
   expect(action).toMatchSnapshot()
 
-  expect(action.meta.location.kind).not.toBeDefined()
+  expect(action.location.kind).toEqual('load')
 
-  history.kind = 'load'
-  action = nestAction(pathname, receivedAction, location, history)
-  expect(action.meta.location.kind).toEqual('load')
+  history.kind = 'redirect'
+  action = nestAction(receivedAction, location, history)
+  expect(action.location.kind).toEqual('redirect')
 })
 

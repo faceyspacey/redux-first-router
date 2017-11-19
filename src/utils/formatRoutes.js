@@ -3,8 +3,8 @@ import { NOT_FOUND } from '../index'
 import type { RoutesMap, RoutesMapInput } from '../flow-types'
 import redirect from '../action-creators/redirect'
 
-export default (routes: RoutesMapInput): RoutesMap => {
-  routes[NOT_FOUND] = routes[NOT_FOUND] || {}
+export default (routes: RoutesMapInput, isMore): RoutesMap => {
+  if (!isMore) routes[NOT_FOUND] = routes[NOT_FOUND] || {}
 
   for (const type in routes) {
     let route = routes[type]
@@ -17,7 +17,7 @@ export default (routes: RoutesMapInput): RoutesMap => {
     if (route.redirect) createRedirect(route, routes)
   }
 
-  routes[NOT_FOUND].path = routes[NOT_FOUND].path || '/not-found'
+  if (!isMore) routes[NOT_FOUND].path = routes[NOT_FOUND].path || '/not-found'
 
   return routes
 }

@@ -33,6 +33,7 @@ it('calls beforeEnter handler on route change -- global', async () => {
   const action = { type: 'SECOND', payload: { param: 'bar' } }
   await store.dispatch(action)
 
+  expect(store.getState().location.type).toEqual('SECOND')
   expect(beforeEnter).toHaveBeenCalled()
   expect(beforeEnter.mock.calls[1][0].action).toMatchObject(action)
   expect(beforeEnter.mock.calls[1][0].arg).toEqual('extra-arg')
@@ -97,10 +98,10 @@ it('beforeEnter redirect on server results does not update state, and instead re
 
   const { location } = store.getState()
   expect(history.entries.length).toEqual(1)
-  expect(action.kind).toEqual('redirect')
+  expect(action.location.kind).toEqual('redirect')
   expect(action.type).toEqual('THIRD')
-  expect(action.meta.location.status).toEqual(302)
-  expect(action.meta.location.url).toEqual('/third')
+  expect(action.location.status).toEqual(302)
+  expect(action.location.url).toEqual('/third')
 
   const redirect = jest.fn()
   expect(doesRedirect(action, redirect)).toEqual(true)

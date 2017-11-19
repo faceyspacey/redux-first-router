@@ -17,28 +17,24 @@ export const stripTrailingSlash = path =>
 
 export const stripSlashes = path => stripTrailingSlash(addLeadingSlash(path))
 
-export const parsePath = path => {
+export const parsePath = (path) => {
   let pathname = path || '/'
   let search = ''
   let hash = ''
 
   const hashIndex = pathname.indexOf('#')
   if (hashIndex !== -1) {
-    hash = pathname.substr(hashIndex)
+    hash = pathname.substr(hashIndex + 1)
     pathname = pathname.substr(0, hashIndex)
   }
 
   const searchIndex = pathname.indexOf('?')
   if (searchIndex !== -1) {
-    search = pathname.substr(searchIndex)
+    search = pathname.substr(searchIndex + 1)
     pathname = pathname.substr(0, searchIndex)
   }
 
-  return {
-    pathname,
-    search: search === '?' ? '' : search,
-    hash: hash === '#' ? '' : hash
-  }
+  return { pathname, search, hash }
 }
 
 export const createPath = location => {

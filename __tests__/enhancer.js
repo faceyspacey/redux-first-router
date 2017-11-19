@@ -14,13 +14,14 @@ it('dispatches location-aware action when store is first created so app is locat
 it("listens to history changes and dispatches actions matching history's location.pathname", async () => {
   const { store, history } = await setupAll('/first')
 
-  await history.push('/second/bar')
+  await history.push('/second/bar', { foo: 'bar' })
   const location1 = store.getState().location
 
   expect(location1).toMatchObject({
     type: 'SECOND',
     pathname: '/second/bar',
     payload: { param: 'bar' },
+    state: { foo: 'bar' },
     kind: 'push' // IMPORTANT: only dispatched when using browser back/forward buttons
   })
 

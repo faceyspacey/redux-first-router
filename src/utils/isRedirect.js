@@ -4,18 +4,16 @@ import type { Action } from '../flow-types'
 export default (action: Action): boolean =>
   !!(
     action &&
-    action.meta &&
-    action.meta.location &&
-    action.meta.location.kind === 'redirect'
+    action.location &&
+    action.location.kind === 'redirect'
   )
 
 export const isCommittedRedirect = (action: Action, req) =>
   !!(
     action &&
-    action.meta &&
-    action.meta.location &&
-    action.meta.location.kind === 'redirect' &&
-    (req.tmp.committed || action.meta.location.committed)
+    action.location &&
+    action.location.kind === 'redirect' &&
+    (req.tmp.committed || action.location.committed)
   )
 
 // HISTORY ENTRIES PUSH/REPLACE LOGIC:
@@ -25,7 +23,7 @@ export const isCommittedRedirect = (action: Action, req) =>
 //
 // This will happen in 2 cases:
 // A) user dispatched a route action in the middleware pipeline after `enter` (`req.tmp.committed`)
-// B) user dispatched a redirect manually using the `redirect` action creator prior to pipeline (`action.meta.location.committed`)
+// B) user dispatched a redirect manually using the `redirect` action creator prior to pipeline (`action.location.committed`)
 //
 // Its primary purpose is case A) where the route will have already changed, and we need to replace it.
 // For the latter case see actionCreators/redirect.js for how `.committed` is set to `true` by default.

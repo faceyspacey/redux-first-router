@@ -4,12 +4,12 @@ import { setupAll } from '../__test-helpers__/setup'
 import pathToAction from '../src/utils/pathToAction'
 
 
-it('dispatched as action.payload.query', async () => {
+it('dispatched as action.query', async () => {
   const { store } = await setupAll('/third', { querySerializer })
-  const payload = { foo: 'bar', baz: 69 }
+  const query = { foo: 'bar', baz: 69 }
 
-  await store.dispatch({ type: 'FIRST', meta: { payload } })
-  await store.dispatch({ type: 'THIRD', meta: { payload } })
+  await store.dispatch({ type: 'FIRST', query })
+  await store.dispatch({ type: 'THIRD', query })
 
   const state = store.getState() /*? $.location */
   expect(state).toMatchSnapshot()
@@ -39,7 +39,7 @@ it('generated from pathToAction within <Link />', async () => {
   const { store, history, routesMap } = await setupAll('/third', { querySerializer })
 
   let action = pathToAction(
-    '/first?foo=bar&baz=69',
+    { url: '/first?foo=bar&baz=69' },
     routesMap,
     '',
     querySerializer
@@ -47,7 +47,7 @@ it('generated from pathToAction within <Link />', async () => {
   await store.dispatch(action)
 
   action = pathToAction(
-    '/first?foo=car&baz=70',
+    { url: '/first?foo=car&baz=70#bla' },
     routesMap,
     '',
     querySerializer

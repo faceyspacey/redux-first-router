@@ -1,24 +1,23 @@
 // @flow
 import { compilePath } from 'rudy-match-path'
-import { stripBasename } from '../smart-history/utils/path'
+import { stripBasename, parsePath } from '../smart-history/utils/path'
 import notFound from '../action-creators/notFound'
 import { NOT_FOUND } from '../index'
 
 import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
 
 export default (
-  pathname: string,
+  loc: Object | string,
   routes: RoutesMap,
   basename: string = '',
   serializer?: QuerySerializer
 ): ReceivedAction => {
-  const parts = pathname.split('?')
-  const search = parts[1]
-  const query = search && serializer && serializer.parse(search)
+  const { url, state } = typeof loc === 'string' ? { url: loc } : loc
+  const { pathname, search, hash } = parsePath(url)
+  const path = basename ? stripBasename(pathname, basename) : pathname
+  const query = (search && serializer && serializer.parse(search)) || {}
   const rVals = Object.keys(routes).map(key => routes[key])
   const rTypes = Object.keys(routes)
-
-  pathname = basename ? stripBasename(parts[0], basename) : parts[0]
 
   let i = 0
   let match
@@ -33,7 +32,7 @@ export default (
     }
 
     const { re, keys: k } = compilePath(regPath)
-    match = re.exec(pathname)
+    match = re.exec(path)
     keys = k
     i++
   }
@@ -41,15 +40,10 @@ export default (
   if (match) {
     i--
 
-    const capitalizedWords =
-      typeof rVals[i] === 'object' && rVals[i].capitalizedWords
-
-    const fromPath =
-      rVals[i] &&
-      typeof rVals[i].fromPath === 'function' &&
-      rVals[i].fromPath
-
     const type = rTypes[i]
+    const v = rVals[i]
+    const capitalizedWords = typeof v === 'object' && v.capitalizedWords
+    const fromPath = v && typeof v.fromPath === 'function' && v.fromPath
 
     const payload = (keys || []).reduce((payload, key, index) => {
       let val = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
@@ -70,14 +64,13 @@ export default (
       return payload
     }, {})
 
-    if (query) payload.query = query
 
-    return { type, payload, meta: {} }
+    return { type, payload, query, hash, state }
   }
 
-  // This will basically will only end up being called if the developer is manually calling history.push().
+  // This will basically only end up being called if the developer is manually calling history.push().
   // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
-  return notFound(pathname, query ? { query } : {})
+  return notFound({ query, hash, state }, url)
 }
 
 const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)

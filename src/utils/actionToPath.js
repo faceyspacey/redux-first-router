@@ -23,15 +23,13 @@ export default (
   }
 
   const path = compileParamsToPath(routePath, params) || '/'
+  const query = action.query
+  const hash = action.hash ? `#${action.hash}` : ''
 
-  const query =
-    action.query ||
-    (action.meta && action.meta.query) ||
-    (action.payload && action.payload.query)
+  let search = query && serializer && serializer.stringify(query)
+  search = search ? `?${search}` : ''
 
-  const search = query && serializer && serializer.stringify(query)
-
-  return search ? `${path}?${search}` : path
+  return `${path}${search}${hash}`
 }
 
 const _payloadToParams = (route: Route, params: Payload = {}): Params =>

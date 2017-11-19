@@ -36,17 +36,14 @@ export default async (type, pathname) => {
     action: {
       type,
       payload: { param: 'bar' },
-      meta: {
-        location: {
-          current,
-          prev,
-          kind: 'load',
-          history: {
-            entries: history.entries.slice(0), // history.entries.map(entry => entry.pathname)
-            index: history.index,
-            length: history.length
-          }
-        }
+      location: {
+        url: pathname,
+        pathname,
+        prev,
+        kind: 'load',
+        entries: history.entries.slice(0), // history.entries.map(entry => entry.pathname)
+        index: history.index,
+        length: history.length
       }
     },
 

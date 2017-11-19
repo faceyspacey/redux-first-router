@@ -10,6 +10,7 @@ import shouldTrans from './utils/shouldTransition'
 
 import serverRedirect from './middleware/serverRedirect'
 import addRoutes from './middleware/addRoutes'
+import setState from './middleware/setState'
 import pathlessThunk from './middleware/pathlessThunk'
 import anonymousThunk from './middleware/anonymousThunk'
 import createRouteAction from './middleware/createRouteAction'
@@ -26,6 +27,7 @@ export default (
   middlewares: Array<Function> = [
     serverRedirect,     // short-circuiting middleware
     addRoutes,
+    setState,
     pathlessThunk,
     anonymousThunk,
     createRouteAction,  // pipeline starts here
@@ -53,7 +55,7 @@ export default (
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createHistory(options)
-  const reducer = createReducer(routes, history, options)
+  const reducer = createReducer(routes, history)
 
   const middleware = (store: Store) => {
     const getTitle = () => selectTitleState(store.getState() || {})

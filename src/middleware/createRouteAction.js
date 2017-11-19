@@ -19,14 +19,13 @@ export default (api) => async (req, next) => {
 
   const state = locationState()
   const basename = state.basename || bn
-  const k = ['pathname', 'type', 'payload', 'kind', 'index', 'length', 'query']
-  const prev = pick(state.kind === 'init' ? state.prev : state, k)
+  const prev = state.kind === 'init' ? state.prev : state
 
   try {
     if (action.type === UPDATE_HISTORY) {
-      const { url } = action.nextHistory.location
-      // const basename = action.nextHistory.basename
-      const act = pathToAction(url, routes, basename, serializer)
+      const { location } = action.nextHistory
+      // const basename = location.basename
+      const act = pathToAction(location, routes, basename, serializer)
       req = historyAction(req, act, prev, basename)
     }
     else if (!isNotFound(action)) {
@@ -55,6 +54,7 @@ export default (api) => async (req, next) => {
 
 const historyAction = (req, action, prev, basename) => {
   req.route = req.routes[action.type]
+
   const { nextHistory } = req.action
 
   if (isNotFound(action)) {
@@ -68,11 +68,12 @@ const historyAction = (req, action, prev, basename) => {
 
 
 const reduxAction = (req, url, action, prev, history, bn) => {
-  const basename = (action.meta && action.meta.basename) || bn          // allow basenames to be changed along with any route change
+  const basename = (action.location && action.location.basename) || bn  // allow basenames to be changed along with any route change
   if (basename !== bn) history.setBasename(basename)
 
+  const state = action.state
   const method = isCommittedRedirect(action, req) ? 'redirect' : 'push' // redirects before committing are just pushes (since the original route was never pushed)
-  const { nextHistory, commit } = history[method](url, {}, false)       // get returned the same "bag" as functions passed to `history.listen`
+  const { nextHistory, commit } = history[method](url, state, false)       // get returned the same "bag" as functions passed to `history.listen`
   const redirect = isRedirect(action)
 
   prev = (redirect && req.tmp.prev) || prev                             // if multiple redirects in one pass, the latest LAST redirect becomes prev; otherwise, just use prev state
@@ -86,45 +87,13 @@ const reduxAction = (req, url, action, prev, history, bn) => {
 }
 
 
-export const nestAction = (action, prev, history, basename) => {
-  const { kind, entries, index, length, location: { url } } = history
-  const { type, payload = {}, meta = {} } = action
-  const parts = url.split('?')
-  const pathname = parts[0]
-  const search = parts[1] || ''
-
-  return {
-    kind,
-    ...action,
-    type,
-    payload,
-    meta: {
-      ...meta,
-      location: {
-        current: {
-          pathname,
-          type,
-          payload,
-          kind,
-          index,
-          length,
-          url,
-          search
-        },
-        kind,
-        prev,
-        history: { kind, entries, index, length },
-        basename
-      }
-    }
-  }
-}
-
-export const nestAction2 = (action, prev, history, basename) => {
+export const nestAction = (action, previous, history, basename) => {
   const { kind, entries, index, length, location } = history
   const { url, pathname, search } = location
   const { type, payload = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
+  const prev = { ...previous }
+  delete prev.prev
 
   return {
     ...action,
@@ -134,6 +103,7 @@ export const nestAction2 = (action, prev, history, basename) => {
     state,
     hash,
     location: {
+      ...action.location,
       url,
       pathname,
       search,
@@ -157,8 +127,7 @@ const pick = (obj, keys) => keys.reduce((acc, k) => {
 
 
 const isDoubleDispatch = (req, state) =>
-  req.action.meta.location.current.url === state.url &&
-  state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
+  req.action.location.url === state.url && state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
 
 
 export const getNotFoundRoute = (req, prev) => {

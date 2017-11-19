@@ -10,12 +10,15 @@ it('dispatches location-aware action, changes address bar + document.title', asy
   expect(store.getState().location).toMatchSnapshot()
 
   const payload = { param: 'bar' }
-  const action = await store.dispatch({ type: 'SECOND', payload }) /*? $.meta */
+  const action = await store.dispatch({ type: 'SECOND', payload, state: { foo: 'bar' }, hash: 'foo' })
 
   store.getState() /*? */
 
   expect(history.location.pathname).toEqual('/second/bar')
+  expect(history.location.state).toEqual({ foo: 'bar' })
+
   expect(document.title).toEqual('SECOND')
+
   expect(action).toMatchSnapshot()
   expect(store.getState()).toMatchSnapshot()
 })
@@ -66,7 +69,7 @@ it('not matched received action dispatches the action as normal with no changes'
 
 it('user dispatches NOT_FOUND and middleware adds missing info to action', async () => {
   const { store } = await setupAll('/first')
-  const action = await store.dispatch(notFound({ type: NOT_FOUND })) /*? $.meta */
+  const action = await store.dispatch(notFound({ type: NOT_FOUND }))
 
   store.getState() /*? $.location */
 
@@ -75,23 +78,22 @@ it('user dispatches NOT_FOUND and middleware adds missing info to action', async
 
 it('user dispatches NOT_FOUND redirect and middleware adds missing info to action', async () => {
   const { store } = await setupAll('/first')
-  const action = await store.dispatch(redirect({ type: NOT_FOUND })) /*? $.meta */
+  const action = await store.dispatch(redirect({ type: NOT_FOUND }))
 
   store.getState() /*? $.location */
 
   expect(action).toMatchSnapshot()
 })
 
-it.skip('does nothing if action has error', async () => {
+it('does nothing if action has error', async () => {
   const { store } = await setupAll('/first')
 
-  const receivedAction = {
+  const action = {
     error: true,
-    type: 'SECOND',
-    meta: { location: { current: {} } }
+    type: 'SECOND'
   }
 
-  store.dispatch(receivedAction) /*? */
+  store.dispatch(action) /*? */
   expect(store.getState().location.type).toEqual('FIRST')
 })
 
@@ -103,7 +105,7 @@ it('user redirects', async () => {
   }
 
   const { store, history } = await setupAll('/first', { beforeEnter })
-  const action = await store.dispatch(redirect({ type: 'THIRD' })) /*? $.meta */
+  const action = await store.dispatch(redirect({ type: 'THIRD' }))
 
   store.getState() /*? $.location */
   expect(store.getState().location.length).toEqual(1)

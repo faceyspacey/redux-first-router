@@ -124,10 +124,10 @@ const makeAC = (
     if (key === 'error') return handleError(arg, t, basename)
 
     // the default behavior of transforming an `arg` object into an action with its type
-    if (isFSRA(arg)) return { type, ...arg, meta: { basename, ...arg.meta } }
+    if (isFSRA(arg)) return { type, ...arg, location: { basename, ...arg.location } }
 
     // if no `payload`, `query`, etc, treat arg as a `payload` for convenience
-    return { type, payload: arg || {}, meta: { basename } }
+    return { type, payload: arg || {}, location: { basename } }
   }
 
   // optionally allow custom action creators
@@ -142,8 +142,8 @@ const makeAC = (
 
 const handleError = (o: Object, type: string, basename: ?string) =>
   o && o.error
-    ? { type, ...o, meta: { basename, ...o.meta } }
-    : { type, error: o, meta: { basename } }
+    ? { type, ...o, location: { basename, ...o.location } }
+    : { type, error: o, location: { basename } }
 
 
 const logExportString = (types, actions, routes, options) => {

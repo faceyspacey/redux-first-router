@@ -1,9 +1,11 @@
 import isRedirect from './isRedirect'
 
-export default (action, redirectFunc) => {
+const noOp = function() {}
+
+export default (action, redirectFunc = noOp) => {
   if (isRedirect(action)) {
-    const url = action.meta.location.url
-    const status = action.meta.location.status || 302
+    const url = action.location.url
+    const status = action.location.status || 302
     redirectFunc(status, url)
     return true
   }

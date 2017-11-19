@@ -34,7 +34,7 @@ export default class History {
     const location = createLocation(path, state, key, this.location, this.basename)
     const back = this._isBack(location)
     const next = this._isNext(location)
-    const kind = back ? 'back' : next ? 'next' : 'push'
+    const kind = back ? 'back' : (next ? 'next' : 'push')
 
     if (/back|next/.test(kind)) {
       return this.jump(back ? -1 : 1, state, notify)
@@ -54,10 +54,9 @@ export default class History {
   }
 
   redirect(path, state = {}, notify = true) {
-    const key = createKey()
-    // const prevState = merge && this.entries[this.index].state
-    const s = { ...this.entries[this.index].state, ...state }
-    const location = createLocation(path, s, key, this.location, this.basename)
+    const k = createKey()
+    const bn = this.basename
+    const location = createLocation(path, state, k, this.location, bn)
     const entries = this.entries.slice(0)
     const index = this.index
 
@@ -76,7 +75,7 @@ export default class History {
   }
 
   jump(n, state, notify = true) {
-    const kind = n === -1 ? 'back' : n === 1 ? 'next' : 'jump'
+    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'jump')
     const index = this.index + n
     const entries = this.entries.slice(0)
     const location = { ...this.entries[index] }
@@ -95,6 +94,15 @@ export default class History {
         })
 
     return this._notify({ nextHistory, commit }, notify)
+  }
+
+  setState(state) {
+    if (typeof state === 'function') {
+      const nextState = state(this.location.state, this)
+      return this.jump(0, nextState, false)
+    }
+
+    return this.jump(0, state, false)
   }
 
   back(state) {

@@ -32,12 +32,12 @@ export default (getReq) => (action) => {
     // - utils/isRedirect.js
     // - actions/redirect.js
     // - middleware/createRouteAction.js -- look for call to `isCommittedRedirect`
-    action.meta.location.committed = req.tmp.committed || isRedirect(req.tmp.startAction)
+    action.location.committed = req.tmp.committed || isRedirect(req.tmp.startAction)
 
-    req.tmp.prev = req.action.meta.location.current // if multiple redirects in one pass, the latest redirect becomes `prev`
+    req.tmp.prev = req.action.location // if multiple redirects in one pass, the latest redirect becomes `prev`
     return req.redirect = store.dispatch(action)    // assign redirect action to `req.redirect` so `composePromise` can properly return the new action
   }
-  else if (req.completed && action.meta) {
+  else if (req.completed) {
     // ESCAPED `dispatch` (USE CASE: CONFIRM LEAVE MODAL)
     //
     // Delete the location in case `dispatch` is used outside of pipline.
@@ -51,7 +51,7 @@ export default (getReq) => (action) => {
     // is because `shouldTransition` calls `islocationAction(action)` to determine whether
     // the action already passed through the pipeline based on the presence of this key. The
     // value of this key will be re-built by the pipeline on next pass obviously :)
-    delete action.meta.location
+    delete action.location
   }
 
   return store.dispatch(action) // dispatch transformed action
