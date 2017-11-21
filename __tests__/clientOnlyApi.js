@@ -1,10 +1,11 @@
 import { setupAll } from '../__test-helpers__/setup'
 import tempMock from '../__test-helpers__/tempMock'
+import * as h from '../src/action-creators/history'
 
 it('push: verify client-only `push` function calls `history.push()` using history from enclosed state', async () => {
   const { store, history } = await setupAll('/first')
 
-  await history.push('/second/bar') // THIS IS THE TARGET OF THE TEST. Notice `push` is imported
+  await store.dispatch(h.push('/second/bar')) // THIS IS THE TARGET OF THE TEST. Notice `push` is imported
   const { location } = store.getState()
 
   expect(location.type).toEqual('SECOND')
@@ -18,7 +19,7 @@ it('push: verify client-only `push` function calls `history.push()` using histor
 it('replace: verify client-only `replace` function calls `history.redirect()` using history from enclosed state', async () => {
   const { store, history } = await setupAll('/first')
 
-  await history.redirect('/second/bar')
+  await store.dispatch(h.redirect('/second/bar'))
   const { location } = store.getState()
 
   expect(location.type).toEqual('SECOND')

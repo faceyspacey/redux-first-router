@@ -15,12 +15,8 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
 
     if (pathname === undefined) location.pathname = ''
 
-    location.search = !search
-      ? ''
-      : search.charAt(0) !== '?' ? `?${search}` : search
-
-    location.hash = !hash ? '' : hash.charAt(0) !== '#' ? `#${hash}` : hash
-
+    location.search = !search ? '' : search
+    location.hash = !hash ? '' : hash
     location.state = { ...location.state, ...state }
   }
 
@@ -57,7 +53,7 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
     location.pathname = '/'
   }
 
-  location.key = key
+  location.key = location.key || key || createKey()
   location.url = createPath(location)
 
   return location

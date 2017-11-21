@@ -49,7 +49,7 @@ Object {
 }
 `;
 
-exports[`addRoutes(routes) - adds routes to routesMap 2`] = `
+exports[`back/next/jump 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -57,44 +57,584 @@ Object {
       Object {
         "hash": "",
         "key": "345678",
-        "pathname": "/",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
         "search": "",
         "state": Object {},
-        "url": "/",
+        "url": "/third",
       },
     ],
     "hasSSR": undefined,
     "hash": "",
     "index": 0,
-    "kind": "load",
-    "length": 1,
-    "pathname": "/",
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
     "payload": Object {},
     "prev": Object {
       "basename": "",
-      "entries": Array [],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": undefined,
       "hash": "",
-      "index": -1,
-      "kind": "",
-      "length": 0,
-      "pathname": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "pathname": "/third",
       "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
       "state": Object {},
-      "type": "",
-      "url": "",
+      "type": "THIRD",
+      "url": "/third",
     },
     "query": Object {},
-    "routesAdded": 2,
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`back/next/jump 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {
+          "baz": "bla",
+        },
+        "url": "/third",
+      },
+    ],
+    "hasSSR": undefined,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/third",
+    "payload": Object {},
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": undefined,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "baz": "bla",
+    },
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`back/next/jump 3`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+          "uno": 1,
+        },
+        "url": "/first",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {
+          "baz": "bla",
+        },
+        "url": "/third",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second/yo",
+        "search": "",
+        "state": Object {},
+        "url": "/second/yo",
+      },
+    ],
+    "hasSSR": undefined,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 3,
+    "pathname": "/first",
+    "payload": Object {},
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {
+            "baz": "bla",
+          },
+          "url": "/third",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second/yo",
+          "search": "",
+          "state": Object {},
+          "url": "/second/yo",
+        },
+      ],
+      "hasSSR": undefined,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 3,
+      "pathname": "/second/yo",
+      "payload": Object {},
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "baz": "bla",
+      },
+      "type": "THIRD",
+      "url": "/second/yo",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+      "uno": 1,
+    },
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`back/next/jump 4`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+          "uno": 1,
+        },
+        "url": "/first",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {
+          "baz": "bla",
+        },
+        "url": "/third",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second/yo",
+        "search": "",
+        "state": Object {
+          "dos": 2,
+        },
+        "url": "/second/yo",
+      },
+    ],
+    "hasSSR": undefined,
+    "hash": "",
+    "index": 2,
+    "kind": "next",
+    "length": 3,
+    "pathname": "/second/yo",
+    "payload": Object {
+      "param": "yo",
+    },
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+            "uno": 1,
+          },
+          "url": "/first",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {
+            "baz": "bla",
+          },
+          "url": "/third",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second/yo",
+          "search": "",
+          "state": Object {},
+          "url": "/second/yo",
+        },
+      ],
+      "hasSSR": undefined,
+      "hash": "",
+      "index": 1,
+      "kind": "back",
+      "length": 3,
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "baz": "bla",
+      },
+      "type": "THIRD",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "dos": 2,
+    },
+    "type": "SECOND",
+    "url": "/second/yo",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`back/next/jump 5`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+          "uno": 4,
+        },
+        "url": "/first",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {
+          "baz": "bla",
+        },
+        "url": "/third",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second/yo",
+        "search": "",
+        "state": Object {
+          "dos": 2,
+        },
+        "url": "/second/yo",
+      },
+    ],
+    "hasSSR": undefined,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 3,
+    "pathname": "/first",
+    "payload": Object {},
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+            "uno": 1,
+          },
+          "url": "/first",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {
+            "baz": "bla",
+          },
+          "url": "/third",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second/yo",
+          "search": "",
+          "state": Object {
+            "dos": 2,
+          },
+          "url": "/second/yo",
+        },
+      ],
+      "hasSSR": undefined,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 3,
+      "pathname": "/second/yo",
+      "payload": Object {},
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "baz": "bla",
+      },
+      "type": "THIRD",
+      "url": "/second/yo",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+      "uno": 4,
+    },
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`reset 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second/foo",
+        "search": "",
+        "state": undefined,
+        "url": "/second/foo",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+        "url": "/first",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+        "url": "/first",
+      },
+    ],
+    "hasSSR": undefined,
+    "hash": "",
+    "index": 3,
+    "kind": "next",
+    "length": 4,
+    "pathname": "/first",
+    "payload": Object {},
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second/foo",
+          "search": "",
+          "state": undefined,
+          "url": "/second/foo",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": undefined,
+          "url": "/first",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": undefined,
+          "url": "/first",
+        },
+      ],
+      "hasSSR": undefined,
+      "hash": "",
+      "index": 2,
+      "kind": "load",
+      "length": 4,
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "THIRD",
+      "url": "/first",
+    },
+    "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
-    "type": "@@rudy/NOT_FOUND",
-    "url": "/",
+    "type": "FIRST",
+    "url": "/first",
   },
-  "title": "@@rudy/ADD_ROUTES",
+  "title": "FIRST",
 }
 `;
 
@@ -146,6 +686,74 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "@@rudy/SET_STATE",
+  "title": "FIRST",
+}
+`;
+
+exports[`setState for another route 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": undefined,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/third",
+    "payload": Object {},
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": undefined,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "pathname": "/first",
+      "payload": Object {},
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "title": "THIRD",
 }
 `;

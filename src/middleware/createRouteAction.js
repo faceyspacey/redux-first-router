@@ -62,7 +62,60 @@ const historyAction = (req, action, prev, basename) => {
     action.type = getNotFoundRoute(req, prev).type                      // type may have changed to scene-level NOT_FOUND
   }
 
+  // for specialty `history.reset` and `history.jump` methods/actionCreators, we gotta jump through a few
+  // hoops to reconcile actions and state to match what would be logical. Basically the below code in
+  // combination with History.js re-creates the previous entry based on which direction (back or next)
+  // was determined to be going.
+  if (req.action.info) {
+    action.info = req.action.info // will === 'jump' || or 'reset' (used by `isDoubleDispatch` in this middleware and location reducer to allow processing)
+
+    // find previous location entry based on the desired direction to pretend to be going
+    const { entries, index, length, kind } = nextHistory
+    const prevIndex = kind === 'back' ? index + 1 : index - 1
+    const prevLocation = entries[prevIndex]
+
+    if (!prevLocation) {
+      prev = {
+        type: '',
+        payload: {},
+        query: {},
+        state: {},
+        hash: '',
+
+        url: '',
+        pathname: '',
+        search: '',
+        basename: '',
+        scene: '',
+
+        kind: '',
+        entries: [],
+        index: -1,
+        length: 0,
+
+        hasSSR: req.locationState().hasSSR
+      }
+    }
+    else {
+      // build the action for that entry, and create what the resulting state shape would have looked like
+      const { routes, history, options: { querySerializer: qz } } = req
+      const prevAction = pathToAction(prevLocation, routes, basename, qz)
+      const state = nestAction(prevAction, null, history, basename)
+
+      // do what the location reducer does where it maps `...action.location` flatly on to `action`
+      prev = Object.assign(state, state.location)
+      prev.entries = action.info === 'reset' ? entries : history.entries // on reset, use next history's entries for previous state, or the entries may not match
+      prev.length = length
+      prev.index = prevIndex
+      prev.hasSSR = req.locationState().hasSSR
+      delete prev.location
+      delete prev.prev
+      console.log(prev)
+    }
+  }
+
   req.action = nestAction(action, prev, nextHistory, basename)          // replace history-triggered action with real action intended for reducers
+
   return req
 }
 
@@ -73,7 +126,7 @@ const reduxAction = (req, url, action, prev, history, bn) => {
 
   const state = action.state
   const method = isCommittedRedirect(action, req) ? 'redirect' : 'push' // redirects before committing are just pushes (since the original route was never pushed)
-  const { nextHistory, commit } = history[method](url, state, false)       // get returned the same "bag" as functions passed to `history.listen`
+  const { nextHistory, commit } = history[method](url, state, false)    // get returned the same action as functions passed to `history.listen`
   const redirect = isRedirect(action)
 
   prev = (redirect && req.tmp.prev) || prev                             // if multiple redirects in one pass, the latest LAST redirect becomes prev; otherwise, just use prev state
@@ -128,7 +181,14 @@ const pick = (obj, keys) => keys.reduce((acc, k) => {
 
 const isDoubleDispatch = (req, state) =>
   req.action.location.url === state.url && state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
+  && req.action.location.kind !== 'setState'
+  && req.action.info !== 'reset'
 
+// const isUniqueDispatch = (req, state) =>
+//   req.action.location.url !== state.url
+//   || state.kind === 'init'  // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
+//   || (req.action.type === state.type && req.action.state !== state.state) // setting state has the same URL, but with different state
+//   // && req.action.location.kind !== 'setState'
 
 export const getNotFoundRoute = (req, prev) => {
   const { action = {}, routes, route, prevRoute } = req

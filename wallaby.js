@@ -12,7 +12,7 @@ module.exports = wallaby => {
     filesWithNoCoverageCalculated: ['__test-helpers__/**/*.js'],
 
     tests: [
-      '__tests__/**/*.js'
+      // '__tests__/**/*.js'
       // '__tests__/createRouter.js',
       // '__tests__/createScene.js',
 
@@ -30,7 +30,7 @@ module.exports = wallaby => {
       // '__tests__/actionToPath.js',
       // '__tests__/pathToaction.js',
       // '__tests__/queryStrings.js',
-      // '__tests__/action-creators.js',
+      '__tests__/action-creators.js',
       // '__tests__/utils.js',
 
       // '__tests__/nestAction.js',

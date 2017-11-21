@@ -1,5 +1,5 @@
 import { createLocation, createKey } from '../utils/location'
-import { createPath, stripSlashes } from '../utils/path'
+import { createPath, stripSlashes, transformEntry } from '../utils/path'
 import { UPDATE_HISTORY } from '../../index'
 
 export default class History {
@@ -74,11 +74,35 @@ export default class History {
     return this._notify({ nextHistory, commit }, notify)
   }
 
-  jump(n, state, notify = true) {
-    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'jump')
+  jump(n, state, kind, byIndex = false, notify = true) {
+    if (typeof n === 'string') {
+      const index = this.entries.findIndex(e => e.key === n)
+      n = index - this.index
+    }
+    else if (byIndex) {
+      n -= this.index
+    }
+
+    if (!kind) kind = n < 0 ? 'back' : 'next'
+
     const index = this.index + n
     const entries = this.entries.slice(0)
-    const location = { ...this.entries[index] }
+    const prevLocation = this.entries[index]
+
+    if (!prevLocation) {
+      throw new Error(
+        `[rudy] no location entry at index: ${index}. Consider using
+        \`history.canJump()\` prior to dispatching this action.
+        Best practice is to do so within a thunk, where \`history\`
+        can be destructured from the arg passed to your thunk.`
+      )
+    }
+
+    const location = { ...prevLocation }
+
+    if (typeof state === 'function') {
+      state = state(location.state)
+    }
 
     location.state = { ...location.state, ...state }
     entries[index] = location
@@ -93,29 +117,64 @@ export default class History {
           this._updateHistory(nextState)
         })
 
-    return this._notify({ nextHistory, commit }, notify)
+    return this._notify({ nextHistory, commit, info: 'jump' }, notify)
   }
 
-  setState(state) {
-    if (typeof state === 'function') {
-      const nextState = state(this.location.state, this)
-      return this.jump(0, nextState, false)
+  setState(state, n, byIndex, notify = true) {
+    if (!n && !byIndex) return this.jump(0, state, 'setState', byIndex, notify) // setState on current entry (primary use-case)
+
+    const currentIndex = this.index
+    const { commit } = this.jump(n, state, 'setState', byIndex, false)          // jump to different entry and set state on it
+
+    return commit().then(() => {
+      return this.jump(currentIndex, undefined, 'setState', true, notify)       // jump back to the original entry, so current index is passed along to action
+    })
+  }
+
+  back(state, notify = true) {
+    return this.jump(-1, state, 'back', false, notify)
+  }
+
+  next(state, notify = true) {
+    return this.jump(1, state, 'next', false, notify)
+  }
+
+  reset(entries, index, kind, notify = true) {
+    entries = entries.map(e => createLocation(e))
+    index = index !== undefined ? index : entries.length - 1
+
+    if (!kind) {
+      if (entries.length > 1) {
+        if (index === entries.length - 1) kind = 'next'   // assume the user would be going forward in the new entries stack, i.e. if at head
+        else kind = index < this.index ? 'back' : 'next'  // assume the user is going 'back' if lower than current index, and 'next' otherwise
+      }
+      else kind = 'load'                                  // if one entry, set kind to 'load' so app can behave as if it's loaded for the first time
     }
 
-    return this.jump(0, state, false)
+    const prevLocation = entries[index]
+    const location = { ...prevLocation }
+    const nextState = { kind, location, index, entries }
+    const nextHistory = this._createNextHistory(nextState)
+
+    const commit = () => {
+      this._resetState(location)
+      this._updateHistory(nextState)
+    }
+
+    return this._notify({ nextHistory, commit, info: 'reset' }, notify)
   }
 
-  back(state) {
-    return this.jump(-1, state)
-  }
+  canJump(n, byIndex) {
+    if (typeof n === 'string') {
+      const index = this.entries.findIndex(e => e.key === n)
+      n = index - this.index
+    }
+    else if (byIndex) {
+      n -= this.index
+    }
 
-  next(state) {
-    return this.jump(1, state)
-  }
-
-  canJump(n) {
     const nextIndex = this.index + n
-    return nextIndex >= 0 && nextIndex < this.entries.length
+    return !!this.entries[nextIndex]
   }
 
   listen(fn) {
@@ -129,11 +188,11 @@ export default class History {
 
   // UTILS:
 
-  _notify(bag, notify = true) {
-    bag.type = UPDATE_HISTORY
-    bag.commit = this._once(bag.commit)
-    if (notify && this._listener) return this._listener(bag)
-    return bag
+  _notify(action, notify = true) {
+    action.type = UPDATE_HISTORY
+    action.commit = this._once(action.commit)
+    if (notify && this._listener) return this._listener(action)
+    return action
   }
 
   _once(commit) {
@@ -142,7 +201,7 @@ export default class History {
     return () => {
       if (committed) return
       committed = true
-      commit()
+      return commit()
     }
   }
 

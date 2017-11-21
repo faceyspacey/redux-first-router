@@ -20,22 +20,20 @@ export default (routes: RoutesMap, history: History) => {
     st: LocationState = initialState,
     action: Action
   ): LocationState => {
-    const route = !action.error && routes[action.type]
-    const loc = action.location
+    const r = !action.error && routes[action.type]
+    const l = action.location
 
-    if (route && route.path && (loc.url !== st.url || loc.kind === 'load')) {
+    if (r && r.path && (l.url !== st.url || l.kind === 'load' || action.info === 'reset')) {
       const { type, payload, query, state, hash } = action
-      return { type, payload, query, state, hash, hasSSR: st.hasSSR, ...loc }
+      return { type, payload, query, state, hash, hasSSR: st.hasSSR, ...l }
     }
     else if (action.type === ADD_ROUTES) {
-      const count = Object.keys(action.payload.routes).length     // we need to be able to update Links when new routes are added
+      const count = Object.keys(action.payload.routes).length  // we need to be able to update Links when new routes are added
       const routesAdded = (st.routesAdded || 0) + count        // we could just increment a number, but why not at least off some info
       return { ...st, routesAdded }
     }
-    else if (action.type === SET_STATE) {
-      const { state } = action
-      const entries = st.entries.slice(0)
-      entries[st.index] = { ...entries[st.index], state }
+    else if (l && l.kind === 'setState') {
+      const { state, location: { entries } } = action
       return { ...st, state, entries }
     }
     else if (action.type.indexOf('ERROR') > -1) {

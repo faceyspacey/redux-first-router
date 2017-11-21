@@ -51,17 +51,7 @@ export default class MemoryHistory extends History {
   }
 
   _pushState(location) {
-    if (typeof window === 'undefined') return
-
-    const href = this._createHref(location)
-
-    if (this._hasBrowserHistory) {
-      const { key, state } = location
-      window.history.replaceState({ key, state }, null, href)
-    }
-    else if (this._forceRefresh) {
-      window.location.href = href
-    }
+    return this._replaceState(location)
   }
 
   _replaceState(location) {
@@ -78,6 +68,10 @@ export default class MemoryHistory extends History {
     }
 
     return Promise.resolve()
+  }
+
+  _resetState(location) {
+    return this._replaceState(location)
   }
 }
 

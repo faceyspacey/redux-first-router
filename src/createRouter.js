@@ -10,7 +10,6 @@ import shouldTrans from './utils/shouldTransition'
 
 import serverRedirect from './middleware/serverRedirect'
 import addRoutes from './middleware/addRoutes'
-import setState from './middleware/setState'
 import pathlessThunk from './middleware/pathlessThunk'
 import anonymousThunk from './middleware/anonymousThunk'
 import createRouteAction from './middleware/createRouteAction'
@@ -27,7 +26,6 @@ export default (
   middlewares: Array<Function> = [
     serverRedirect,     // short-circuiting middleware
     addRoutes,
-    setState,
     pathlessThunk,
     anonymousThunk,
     createRouteAction,  // pipeline starts here
@@ -95,12 +93,12 @@ export default (
       tmp.startAction = tmp.startAction || action // stays consistent across redirects (see utils/createDispatch.js)
 
       return nextPromise(req) // start middleware pipeline
-        .catch(error => {
-          req.error = error
-          req.errorType = req.route ? `${req.action.type}_ERROR` : ERROR
-          console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
-          return onError(req)
-        })
+        // .catch(error => {
+        //   req.error = error
+        //   req.errorType = req.route ? `${req.action.type}_ERROR` : ERROR
+        //   console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
+        //   return onError(req)
+        // })
         .then(res => {
           tmp = {}
           req.completed = true

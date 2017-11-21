@@ -44,6 +44,7 @@ const complete = (next) => (res) => next().then(() => res) // insure response is
 const defaultShouldCall = (req, name, config) => {
   const state = req.locationState()
 
+  if (/setState|reset/.test(req.action.location.kind)) return false
   if (isLoadSSR(state, 'init') && /beforeLeave|beforeEnter/.test(name)) return false
   if (isServer() && /onLeave|onEnter/.test(name)) return false
   if (isLoadSSR(state) && name === 'thunk') return false
