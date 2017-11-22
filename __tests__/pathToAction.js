@@ -3,8 +3,8 @@ import { NOT_FOUND } from '../src/index'
 
 it('parse path into action using routePath without /:param segment', () => {
   const routesMap = {
-    INFO: '/info',
-    INFO_PARAM: '/info/:param'
+    INFO: { path: '/info' },
+    INFO_PARAM: { path: '/info/:param' }
   }
 
   const action = pathToAction('/info', routesMap)
@@ -13,15 +13,15 @@ it('parse path into action using routePath without /:param segment', () => {
 
 it('parse path into action using routePath with /:param segment', () => {
   const routesMap = {
-    INFO: '/info',
-    INFO_PARAM: '/info/:param'
+    INFO: { path: '/info' },
+    INFO_PARAM: { path: '/info/:param' }
   }
 
   const action = pathToAction('/info/foo', routesMap)
   expect(action).toMatchObject({
     type: 'INFO_PARAM',
     payload: { param: 'foo' }
-  }) /*? */
+  })
 })
 
 it('parse path (/info/foo-bar) into action using route object containing capitalizedWords: true: payload: { param: "Foo Bar" }', () => {

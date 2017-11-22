@@ -24,7 +24,7 @@ export const prefixType = (type: string) => `${PREFIX}/${type}`
 export const UPDATE_HISTORY = prefixType('UPDATE_HISTORY')
 export const NOT_FOUND = prefixType('NOT_FOUND')
 export const ADD_ROUTES = prefixType('ADD_ROUTES')
-export const SET_STATE = prefixType('SET_STATE')
+export const COMPLETE = prefixType('COMPLETE')
 export const ERROR = prefixType('ERROR')
 
 export { default as redirect } from './action-creators/redirect'

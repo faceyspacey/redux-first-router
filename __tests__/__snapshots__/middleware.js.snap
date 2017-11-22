@@ -291,9 +291,6 @@ Object {
     "search": "",
     "url": "/not-found",
   },
-  "meta": Object {
-    "notFoundPath": undefined,
-  },
   "payload": Object {},
   "query": Object {},
   "state": Object {},

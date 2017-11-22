@@ -221,7 +221,7 @@ it('CLIENT SPA: await dispatch(firstRoute())', async () => {
   // verify second thunk is also called. This is dependent on the user returning their first thunk's
   // dispatch, which isnt required, unless they want the result in the following line like here:
   expect(res.payload).toEqual('thunk2called')
-  expect(res.type).toEqual('THIRD_COMPLETE')
+  expect(res.type).toEqual('THIRD/@@rudy/COMPLETE')
 })
 
 it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async () => {

@@ -5,22 +5,21 @@ import isFSRA from '../utils/isFSRA'
 
 export default (
   act: ?(Object | string),
-  notFoundPath: ?string,
+  url: ?string, // optional alternate url to display in address bar
   basename: ?string,
   type: ?string
 ) => {
-  if (typeof act === 'string' && typeof notFoundPath !== 'string') {
-    notFoundPath = act
+  if (typeof act === 'string' && typeof url !== 'string') {
+    url = act
     act = null
   }
 
   const action = isFSRA(act)
-    ? { ...act, location: { basename, ...act.location } }
-    : { payload: act || {}, location: { basename } } // if not FSRA, treat as a `payload` for convenience
+    ? { ...act, location: { url, basename, ...act.location } }
+    : { payload: act || {}, location: { url, basename } } // if not FSRA, treat as a `payload` for convenience
 
   return {
     ...action,
-    type: type || NOT_FOUND, // type not meant for user to supply; it's passed by generated action creators
-    meta: { notFoundPath }
+    type: type || NOT_FOUND // type not meant for user to supply; it's passed by generated action creators
   }
 }

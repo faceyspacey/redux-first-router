@@ -1,5 +1,5 @@
 // @flow
-import { NOT_FOUND, ADD_ROUTES, SET_STATE } from './index'
+import { ADD_ROUTES, ERROR } from './index'
 import isServer from './utils/isServer'
 import pathToAction from './utils/pathToAction'
 import typeToScene from './utils/typeToScene'
@@ -20,7 +20,7 @@ export default (routes: RoutesMap, history: History) => {
     st: LocationState = initialState,
     action: Action
   ): LocationState => {
-    const r = !action.error && routes[action.type]
+    const r = routes[action.type]
     const l = action.location
 
     if (r && r.path && (l.url !== st.url || l.kind === 'load' || action.info === 'reset')) {
@@ -36,7 +36,7 @@ export default (routes: RoutesMap, history: History) => {
       const { state, location: { entries } } = action
       return { ...st, state, entries }
     }
-    else if (action.type.indexOf('ERROR') > -1) {
+    else if (action.type.indexOf(ERROR) > -1) {
       const { error, type: errorType } = action
       return { ...st, error, errorType }
     }

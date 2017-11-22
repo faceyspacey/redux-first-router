@@ -93,12 +93,12 @@ export default (
       tmp.startAction = tmp.startAction || action // stays consistent across redirects (see utils/createDispatch.js)
 
       return nextPromise(req) // start middleware pipeline
-        // .catch(error => {
-        //   req.error = error
-        //   req.errorType = req.route ? `${req.action.type}_ERROR` : ERROR
-        //   console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
-        //   return onError(req)
-        // })
+        .catch(error => {
+          req.error = error
+          req.errorType = req.route ? `${req.action.type}_ERROR` : ERROR
+          console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
+          return onError(req)
+        })
         .then(res => {
           tmp = {}
           req.completed = true

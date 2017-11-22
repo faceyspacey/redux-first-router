@@ -1,7 +1,7 @@
 // @flow
 import type { RoutesMapInput, CreateActionsOptions } from './flow-types'
 import notFound from './action-creators/notFound'
-import { NOT_FOUND } from './index'
+import { NOT_FOUND, ERROR, COMPLETE } from './index'
 import isFSRA from './utils/isFSRA'
 import isNotFound from './utils/isNotFound'
 
@@ -16,16 +16,16 @@ export default (r: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     const { types, actions, routes } = result
 
     const t2 = `${prefix}${t}`
-    const tc = `${prefix}${t}_COMPLETE`
-    const te = `${prefix}${t}_ERROR`
+    const tc = `${prefix}${t}/${COMPLETE}`
+    const te = `${prefix}${t}/${ERROR}`
 
     const route = routes[t2] = routeToObject(r[t], t2)
     const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so keys/exports are un-prefixed
     const name = camelCase(tClean)
 
     types[tClean] = t2
-    types[`${tClean}_COMPLETE`] = `${prefix}${t}_COMPLETE`
-    types[`${tClean}_ERROR`] = `${prefix}${t}_ERROR`
+    types[`${tClean}_COMPLETE`] = tc
+    types[`${tClean}_ERROR`] = te
 
     // allow for creating custom action creators (whose names are an array assigned to route.action)
     if (Array.isArray(route.action)) {

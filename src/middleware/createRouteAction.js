@@ -110,7 +110,6 @@ const historyAction = (req, action, prev, basename) => {
       prev.hasSSR = req.locationState().hasSSR
       delete prev.location
       delete prev.prev
-      console.log(prev)
     }
   }
 
@@ -184,12 +183,6 @@ const isDoubleDispatch = (req, state) =>
   && req.action.location.kind !== 'setState'
   && req.action.info !== 'reset'
 
-// const isUniqueDispatch = (req, state) =>
-//   req.action.location.url !== state.url
-//   || state.kind === 'init'  // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
-//   || (req.action.type === state.type && req.action.state !== state.state) // setting state has the same URL, but with different state
-//   // && req.action.location.kind !== 'setState'
-
 export const getNotFoundRoute = (req, prev) => {
   const { action = {}, routes, route, prevRoute } = req
 
@@ -204,7 +197,7 @@ export const getNotFoundRoute = (req, prev) => {
 
     return {
       type,
-      url: resolvePath(route, prev, action.meta && action.meta.notFoundPath)
+      url: resolvePath(route, prev, action.location && action.location.url)
     }
   }
 
@@ -220,6 +213,6 @@ export const getNotFoundRoute = (req, prev) => {
   }
 }
 
-const resolvePath = (route, prev, pathOverride, routes) =>
-  pathOverride || route.path || routes[NOT_FOUND].path
+const resolvePath = (route, prev, urlOverride, routes) =>
+  urlOverride || route.path || routes[NOT_FOUND].path
 

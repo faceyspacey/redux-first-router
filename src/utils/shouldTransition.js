@@ -4,5 +4,5 @@ import { PREFIX, UPDATE_HISTORY } from '../index'
 export default (action, { routes }) => {
   const { type } = action
   const route = routes[type] || (type && type.indexOf(PREFIX) > -1)
-  return route && !isLocationAction(action) && !action.error
+  return route && !isLocationAction(action)
 }

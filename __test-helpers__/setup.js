@@ -8,7 +8,13 @@ const setup = (
   routesMap
 ) => {
   routesMap = routesMap || {
-    FIRST: '/first',
+    FIRST: {
+      path: '/first',
+      // hash: () => false
+      query: {
+        dog: /(ff)?/
+      }
+    },
     SECOND: '/second/:param',
     THIRD: '/third'
   }

@@ -16,34 +16,35 @@ export default (
   const { pathname, search, hash } = parsePath(url)
   const path = basename ? stripBasename(pathname, basename) : pathname
   const query = (search && serializer && serializer.parse(search)) || {}
-  const rVals = Object.keys(routes).map(key => routes[key])
-  const rTypes = Object.keys(routes)
+  const types = Object.keys(routes).filter(type => routes[type].path)
 
   let i = 0
   let match
   let keys
+  let route
+  let type
 
-  while (!match && i < rVals.length) {
-    const regPath = typeof rVals[i] === 'string' ? rVals[i] : rVals[i].path // route may be an object containing a route or a route string itself
+  while (!match && i < types.length) {
+    type = types[i]
+    route = routes[type]
 
-    if (!regPath) {
-      i++
-      continue
+    const result = isPathMatch(path, route.path)
+    match = result.match
+    keys = result.keys
+
+    if (match && route.query && !isQueryMatch(query, route.query)) {
+      match = null
     }
 
-    const { re, keys: k } = compilePath(regPath)
-    match = re.exec(path)
-    keys = k
+    if (match && route.hash && !isMatch(hash, route.hash)) {
+      match = null
+    }
+
     i++
   }
 
-  if (match) {
-    i--
-
-    const type = rTypes[i]
-    const v = rVals[i]
-    const capitalizedWords = typeof v === 'object' && v.capitalizedWords
-    const fromPath = v && typeof v.fromPath === 'function' && v.fromPath
+  if (match && route) {
+    const { capitalizedWords, fromPath } = route
 
     const payload = (keys || []).reduce((payload, key, index) => {
       let val = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
@@ -73,4 +74,40 @@ export default (
   return notFound({ query, hash, state }, url)
 }
 
+
 const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)
+
+const isPathMatch = (path, matcher) => {
+  const { re, keys } = compilePath(matcher)
+  const match = re.exec(path)
+  return { match, keys }
+}
+
+const isQueryMatch = (query, matcher) => {
+  for (const key in matcher) {
+    const val = query[key]
+    const expected = matcher[key]
+    if (!isMatch(val, expected)) return false
+  }
+
+  return true
+}
+
+const isMatch = (val, expected) => {
+  const type = typeof expected
+
+  if (type === 'boolean') {
+    return val !== '' && val !== undefined
+  }
+  else if (type === 'string') {
+    return expected === val
+  }
+  else if (type === 'function') {
+    return expected(val)
+  }
+  else if (expected instanceof RegExp) {
+    return expected.test(val)
+  }
+
+  return true
+}

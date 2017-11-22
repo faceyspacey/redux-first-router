@@ -23,7 +23,7 @@ test('createScene', async () => {
   res = await store.dispatch(action)
   console.log(action)
   expect(store.getState().location.type).toEqual('SCENE/FOURTH')
-  expect(res).toEqual({ type: 'SCENE/FOURTH_COMPLETE', payload: 'onComplete' })
+  expect(res).toEqual({ type: 'SCENE/FOURTH/@@rudy/COMPLETE', payload: 'onComplete' })
 
   expect(store.getState().location.payload).toEqual({ foo: 'baz' })
 
@@ -38,10 +38,10 @@ test('createScene', async () => {
   console.log('RES', res)
   expect(store.getState().location.type).toEqual('SCENE/SECOND')
   expect(store.getState().location.error).toEqual(new Error('fail'))
-  expect(store.getState().location.errorType).toEqual('SCENE/THIRD_ERROR')
+  expect(store.getState().location.errorType).toEqual('SCENE/THIRD/@@rudy/ERROR')
 
   res = await store.dispatch(actions.third.complete({ foo: 'bar' }))
-  expect(res.type).toEqual('SCENE/THIRD_COMPLETE')
+  expect(res.type).toEqual('SCENE/THIRD/@@rudy/COMPLETE')
   expect(res.payload).toEqual({ foo: 'bar' })
 
   res = await store.dispatch(actions.plain('bar'))
@@ -59,8 +59,6 @@ test('NOT_FOUND', async () => {
   const tools = setup(undefined, undefined, { scene: 'SCENE', logExports: true })
   const { store, firstRoute, types, actions, exportString, routes } = tools
   let action = firstRoute()
-
-  console.log(routes)
 
   let res = await store.dispatch(action)
   expect(store.getState().location.type).toEqual('SCENE/FIRST')
@@ -100,13 +98,13 @@ test('double createScene', async () => {
   action = { type: types.THIRD }
   res = await store.dispatch(action)
   expect(res.type).toEqual(types.THIRD_COMPLETE)
-  expect(res.type).toEqual('double/scene/THIRD_COMPLETE')
+  expect(res.type).toEqual('double/scene/THIRD/@@rudy/COMPLETE')
   expect(location().type).toEqual('double/scene/THIRD')
 
   action = actions.fourth('bar')
   res = await store.dispatch(action)
   expect(res.type).toEqual(types.FOURTH_COMPLETE)
-  expect(res.type).toEqual('double/scene/FOURTH_COMPLETE')
+  expect(res.type).toEqual('double/scene/FOURTH/@@rudy/COMPLETE')
   expect(location().type).toEqual('double/scene/FOURTH')
   expect(location().payload).toEqual({ foo: 'bar' })
 
@@ -121,30 +119,30 @@ test('double createScene', async () => {
   action = actions.second.error({ foo: 'bar' })
   res = await store.dispatch(action)
   expect(res.type).toEqual(types.SECOND_ERROR)
-  expect(res.type).toEqual('double/scene/SECOND_ERROR')
+  expect(res.type).toEqual('double/scene/SECOND/@@rudy/ERROR')
   expect(location().error).toEqual({ foo: 'bar', bla: 'boo' })
-  expect(store.getState().title).toEqual('double/scene/SECOND_ERROR')
+  expect(store.getState().title).toEqual('double/scene/SECOND/@@rudy/ERROR')
 
   action = actions.third.complete(() => ({ foo: 'bar' }))
   res = await store.dispatch(action)
   expect(res.type).toEqual(types.THIRD_COMPLETE)
-  expect(res.type).toEqual('double/scene/THIRD_COMPLETE')
+  expect(res.type).toEqual('double/scene/THIRD/@@rudy/COMPLETE')
   expect(res.payload).toEqual({ foo: 'bar' })
-  expect(store.getState().title).toEqual('double/scene/THIRD_COMPLETE')
+  expect(store.getState().title).toEqual('double/scene/THIRD/@@rudy/COMPLETE')
 
   expect(location().type).toEqual('double/scene/@@rudy/NOT_FOUND') // check that previous actions didn't change routes
 
   action = actions.third.customCreator('bar')
   res = await store.dispatch(action)
   expect(res.type).toEqual(types.THIRD_COMPLETE)
-  expect(res.type).toEqual('double/scene/THIRD_COMPLETE')
+  expect(res.type).toEqual('double/scene/THIRD/@@rudy/COMPLETE')
   expect(location().type).toEqual('double/scene/THIRD')
   expect(location().payload).toEqual({ foo: 'bar' })
 
   action = actions.notFound.complete('bar')
   res = await store.dispatch(action)
   expect(res.type).toEqual(types.NOT_FOUND_COMPLETE)
-  expect(res.type).toEqual('double/scene/@@rudy/NOT_FOUND_COMPLETE')
+  expect(res.type).toEqual('double/scene/@@rudy/NOT_FOUND/@@rudy/COMPLETE')
 
   // location state equals previous state, since COMPLETE doesn't change routes
   expect(location().type).toEqual('double/scene/THIRD')
