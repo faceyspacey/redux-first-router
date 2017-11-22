@@ -65,6 +65,7 @@ module.exports = {
     'no-return-await': 1,
     'no-multi-assign': 1,
     'guard-for-in': 1,
+    'jsx-a11y/aria-props': 1,
     semi: [2, 'never'],
     'flowtype/semi': [2, 'never'],
     'jsx-quotes': [2, 'prefer-single'],
@@ -111,7 +112,7 @@ module.exports = {
       }
     ],
     'react/sort-comp': [
-      2,
+      1,
       {
         order: [
           'propTypes',

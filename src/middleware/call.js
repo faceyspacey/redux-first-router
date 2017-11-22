@@ -1,7 +1,6 @@
 import composePromise from '../composePromise'
 import isLoadSSR from '../utils/isClientLoadSSR'
 import isServer from '../utils/isServer'
-import { COMPLETE } from '../index'
 
 const noOp = () => Promise.resolve()
 const isFalse = (a, b) => a === false || b === false
@@ -29,7 +28,7 @@ export default (name, config = {}) => (api) => {
 
       if (res && !req._dispatched && isAutoDispatch(req)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
         const action = res.type || res.payload ? res : { payload: res }
-        action.type = action.type || `${req.action.type}/${COMPLETE}`
+        action.type = action.type || `${req.action.type}_COMPLETE`
 
         return Promise.resolve(dispatch(action))
           .then(complete(next))

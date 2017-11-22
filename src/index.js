@@ -2,7 +2,8 @@
 
 export {
   default as createRouter,
-  history
+  history,
+  selectLocationState
   // push,
   // replace,
   // back,

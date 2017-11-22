@@ -1,33 +1,27 @@
 // @flow
-import { compileParamsToPath } from 'rudy-match-path'
+import qs from 'query-string'
+import { compileParamsToPath } from './matchPath'
 import type {
   Route,
   Payload,
   Params,
   RoutesMap,
-  ReceivedAction as Action,
-  QuerySerializer
+  ReceivedAction as Action
 } from '../flow-types'
 
 export default (
   action: Action,
-  routes: RoutesMap,
-  serializer?: QuerySerializer
+  routes: RoutesMap
 ): string => {
   const route = routes[action.type]
-  const routePath = typeof route === 'object' ? route.path : route
+  const p = typeof route === 'object' ? route.path : route
   const params = _payloadToParams(route, action.payload)
 
-  if (typeof routePath !== 'string') {
-    throw new Error('[rudy] invalid route path')
-  }
+  if (typeof p !== 'string') throw new Error('[rudy] invalid route path')
 
-  const path = compileParamsToPath(routePath, params) || '/'
-  const query = action.query
+  const path = compileParamsToPath(p, params) || '/'
+  const search = action.query ? `?${qs.stringify(action.query)}` : ''
   const hash = action.hash ? `#${action.hash}` : ''
-
-  let search = query && serializer && serializer.stringify(query)
-  search = search ? `?${search}` : ''
 
   return `${path}${search}${hash}`
 }

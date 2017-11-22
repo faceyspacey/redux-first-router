@@ -1,5 +1,5 @@
 // @flow
-import { ADD_ROUTES, ERROR } from './index'
+import { ADD_ROUTES } from './index'
 import isServer from './utils/isServer'
 import pathToAction from './utils/pathToAction'
 import typeToScene from './utils/typeToScene'
@@ -8,9 +8,7 @@ import type {
   LocationState,
   RoutesMap,
   Action,
-  Options,
-  History,
-  ReceivedAction
+  History
 } from './flow-types'
 
 export default (routes: RoutesMap, history: History) => {
@@ -36,7 +34,7 @@ export default (routes: RoutesMap, history: History) => {
       const { state, location: { entries } } = action
       return { ...st, state, entries }
     }
-    else if (action.type.indexOf(ERROR) > -1) {
+    else if (action.type.indexOf('_ERROR') > -1) {
       const { error, type: errorType } = action
       return { ...st, error, errorType }
     }

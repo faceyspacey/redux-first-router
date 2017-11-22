@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
   "dependencies": {
+    "path-to-regexp": "^2.1.0",
+    "prop-types": "^15.6.0",
     "resolve-pathname": "^2.2.0",
     "rudy-history": "^1.0.0",
     "rudy-match-path": "^0.3.0"
@@ -58,6 +60,9 @@
     "lint-staged": "^3.4.0",
     "prettier": "^1.7.0",
     "query-string": "^4.3.4",
+    "react": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "react-test-renderer": "^16.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "rimraf": "^2.5.4",
@@ -66,6 +71,8 @@
     "webpack": "2.4.1"
   },
   "peerDependencies": {
+    "react": "*",
+    "react-redux": "*",
     "redux": "*"
   },
   "jest": {

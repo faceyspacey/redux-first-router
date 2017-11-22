@@ -111,7 +111,7 @@ it('callThunk calls thunk with same `dispatch` argument as in middleware chain',
   expect(thunk.mock.calls[0][0].arg).toEqual('extra-arg')
 })
 
-it.only('pathless route calls callThunk', async () => {
+it('pathless route calls callThunk', async () => {
   const thunk = jest.fn(() => 'cat')
   const routesMap = {
     FIRST: '/',
@@ -221,7 +221,7 @@ it('CLIENT SPA: await dispatch(firstRoute())', async () => {
   // verify second thunk is also called. This is dependent on the user returning their first thunk's
   // dispatch, which isnt required, unless they want the result in the following line like here:
   expect(res.payload).toEqual('thunk2called')
-  expect(res.type).toEqual('THIRD/@@rudy/COMPLETE')
+  expect(res.type).toEqual('THIRD_COMPLETE')
 })
 
 it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async () => {
@@ -256,7 +256,7 @@ it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async 
   expect(beforeEnter.mock.calls.length).toEqual(0) // no beforeEnter called!
   expect(thunk.mock.calls.length).toEqual(0) // no thunks called!
 
-  expect(action.kind).toEqual('load')
+  expect(action.location.kind).toEqual('load')
   expect(action.type).toEqual('SECOND')
 
   expect(action).toMatchSnapshot()
@@ -302,7 +302,7 @@ it('SERVER: await dispatch(firstRoute()) -- redirected route not dispatched', as
   expect(thunk2.mock.calls.length).toEqual(0) // second thunk never called!
 
   // instead, we get the action with enough info to short-circuit and call `res.redirect` on the server
-  expect(action.kind).toEqual('redirect')
+  expect(action.location.kind).toEqual('redirect')
   expect(action.type).toEqual('THIRD')
 
   expect(action).toMatchSnapshot()

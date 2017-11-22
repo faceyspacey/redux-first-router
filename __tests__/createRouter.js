@@ -50,7 +50,7 @@ test('thunk', async () => {
 
   res = await store.dispatch({ type: 'THIRD' })
   expect(store.getState().location.type).toEqual('THIRD')
-  expect(window.document.title).toEqual('THIRD/@@rudy/COMPLETE')
+  expect(window.document.title).toEqual('THIRD')
   expect(res.payload).toEqual('thunk')
   expect(history.location.pathname).toEqual('/third')
 
@@ -242,7 +242,7 @@ test('firstRoute (delayed commit - redirect) [/w inherited routes + callback arr
   expect(beforeEnter).toBeCalled()
 
   expect(res.payload).toEqual('onComplete')
-  expect(res.type).toEqual('FOURTH/@@rudy/COMPLETE')
+  expect(res.type).toEqual('FOURTH_COMPLETE')
 })
 
 
@@ -294,7 +294,7 @@ test('onError', async () => {
 
   expect(store.getState().location.type).toEqual('FIRST')
   expect(res.payload).toEqual('fail!!')
-  expect(res.type).toEqual('SECOND/@@rudy/COMPLETE')
+  expect(res.type).toEqual('SECOND_COMPLETE')
   expect(history.location.pathname).toEqual('/first')
 
   log(store)

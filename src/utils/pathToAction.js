@@ -1,21 +1,20 @@
 // @flow
-import { compilePath } from 'rudy-match-path'
+import qs from 'query-string'
+import { compilePath } from './matchPath'
 import { stripBasename, parsePath } from '../smart-history/utils/path'
 import notFound from '../action-creators/notFound'
-import { NOT_FOUND } from '../index'
 
-import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
+import type { RoutesMap, ReceivedAction } from '../flow-types'
 
 export default (
   loc: Object | string,
   routes: RoutesMap,
-  basename: string = '',
-  serializer?: QuerySerializer
+  basename: string = ''
 ): ReceivedAction => {
   const { url, state } = typeof loc === 'string' ? { url: loc } : loc
   const { pathname, search, hash } = parsePath(url)
   const path = basename ? stripBasename(pathname, basename) : pathname
-  const query = (search && serializer && serializer.parse(search)) || {}
+  const query = search ? qs.parse(search) : {}
   const types = Object.keys(routes).filter(type => routes[type].path)
 
   let i = 0

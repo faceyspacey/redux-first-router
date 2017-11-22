@@ -12,7 +12,7 @@ export default (api) => async (req, next) => {
     action,
     history,
     locationState,
-    options: { basename: bn, querySerializer: serializer }
+    options: { basename: bn }
   } = req
 
   if (action.type !== UPDATE_HISTORY && !route.path) return next() // only create route actions if from history or routes with paths
@@ -25,11 +25,11 @@ export default (api) => async (req, next) => {
     if (action.type === UPDATE_HISTORY) {
       const { location } = action.nextHistory
       // const basename = location.basename
-      const act = pathToAction(location, routes, basename, serializer)
+      const act = pathToAction(location, routes, basename)
       req = historyAction(req, act, prev, basename)
     }
     else if (!isNotFound(action)) {
-      const url = actionToPath(action, routes, serializer)
+      const url = actionToPath(action, routes)
       req = reduxAction(req, url, action, prev, history, basename)
     }
     else {
@@ -171,12 +171,6 @@ export const nestAction = (action, previous, history, basename) => {
     }
   }
 }
-
-const pick = (obj, keys) => keys.reduce((acc, k) => {
-  if (obj[k] !== undefined) acc[k] = obj[k]
-  return acc
-}, {})
-
 
 const isDoubleDispatch = (req, state) =>
   req.action.location.url === state.url && state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
