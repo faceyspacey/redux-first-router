@@ -1,6 +1,5 @@
 // @flow
-import qs from 'query-string'
-import { compileParamsToPath } from './matchPath'
+import { compileToUrl } from './matchUrl'
 import type {
   Route,
   Payload,
@@ -13,23 +12,19 @@ export default (
   action: Action,
   routes: RoutesMap
 ): string => {
-  const route = routes[action.type]
+  const { type, payload, query, hash } = action
+  const route = routes[type]
   const p = typeof route === 'object' ? route.path : route
-  const params = _payloadToParams(route, action.payload)
+  const params = _payloadToParams(route, payload)
 
   if (typeof p !== 'string') throw new Error('[rudy] invalid route path')
 
-  const path = compileParamsToPath(p, params) || '/'
-  const search = action.query ? `?${qs.stringify(action.query)}` : ''
-  const hash = action.hash ? `#${action.hash}` : ''
-
-  return `${path}${search}${hash}`
+  return compileToUrl(p, params, query, hash) || '/'
 }
 
 const _payloadToParams = (route: Route, params: Payload = {}): Params =>
   Object.keys(params).reduce((sluggifedParams, key) => {
-    const segment = params[key]
-    sluggifedParams[key] = transformSegment(segment, route, key)
+    sluggifedParams[key] = transformSegment(params[key], route, key)
     return sluggifedParams
   }, {})
 

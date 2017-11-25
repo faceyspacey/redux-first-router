@@ -81,19 +81,19 @@ Object {
 exports[`createScene 1`] = `
 Object {
   "FIRST": "SCENE/FIRST",
-  "FIRST_COMPLETE": "SCENE/FIRST_/COMPLETE",
-  "FIRST_ERROR": "SCENE/FIRST/@@rudy/ERROR",
+  "FIRST_COMPLETE": "SCENE/FIRST_COMPLETE",
+  "FIRST_ERROR": "SCENE/FIRST_ERROR",
   "FOURTH": "SCENE/FOURTH",
-  "FOURTH_COMPLETE": "SCENE/FOURTH_/COMPLETE",
-  "FOURTH_ERROR": "SCENE/FOURTH/@@rudy/ERROR",
+  "FOURTH_COMPLETE": "SCENE/FOURTH_COMPLETE",
+  "FOURTH_ERROR": "SCENE/FOURTH_ERROR",
   "NOT_FOUND": "SCENE/@@rudy/NOT_FOUND",
   "NOT_FOUND_COMPLETE": "SCENE/@@rudy/NOT_FOUND_COMPLETE",
-  "NOT_FOUND_ERROR": "SCENE/@@rudy/NOT_FOUND/@@rudy/ERROR",
+  "NOT_FOUND_ERROR": "SCENE/@@rudy/NOT_FOUND_ERROR",
   "PLAIN": "SCENE/PLAIN",
-  "PLAIN_COMPLETE": "SCENE/PLAIN_/COMPLETE",
-  "PLAIN_ERROR": "SCENE/PLAIN/@@rudy/ERROR",
+  "PLAIN_COMPLETE": "SCENE/PLAIN_COMPLETE",
+  "PLAIN_ERROR": "SCENE/PLAIN_ERROR",
   "SECOND": "SCENE/SECOND",
-  "SECOND_COMPLETE": "SCENE/SECOND_/COMPLETE",
+  "SECOND_COMPLETE": "SCENE/SECOND_COMPLETE",
   "SECOND_ERROR": "SCENE/SECOND_ERROR",
   "THIRD": "SCENE/THIRD",
   "THIRD_COMPLETE": "SCENE/THIRD_COMPLETE",
@@ -115,7 +115,7 @@ Object {
 exports[`createScene 3`] = `
 "const { types, actions } = createScene(routes, { scene: 'SCENE' })
 
-const {
+const { 
 	FIRST,
 	FIRST_COMPLETE,
 	FIRST_ERROR,
@@ -136,7 +136,7 @@ const {
 	NOT_FOUND_ERROR
 } = types
 
-const {
+const { 
 	first,
 	second,
 	third,
@@ -179,19 +179,19 @@ export {
 exports[`double createScene 1`] = `
 Object {
   "FIRST": "double/scene/FIRST",
-  "FIRST_COMPLETE": "double/scene/FIRST_/COMPLETE",
-  "FIRST_ERROR": "double/scene/FIRST/@@rudy/ERROR",
+  "FIRST_COMPLETE": "double/scene/FIRST_COMPLETE",
+  "FIRST_ERROR": "double/scene/FIRST_ERROR",
   "FOURTH": "double/scene/FOURTH",
-  "FOURTH_COMPLETE": "double/scene/FOURTH_/COMPLETE",
-  "FOURTH_ERROR": "double/scene/FOURTH/@@rudy/ERROR",
+  "FOURTH_COMPLETE": "double/scene/FOURTH_COMPLETE",
+  "FOURTH_ERROR": "double/scene/FOURTH_ERROR",
   "NOT_FOUND": "double/scene/@@rudy/NOT_FOUND",
   "NOT_FOUND_COMPLETE": "double/scene/@@rudy/NOT_FOUND_COMPLETE",
-  "NOT_FOUND_ERROR": "double/scene/@@rudy/NOT_FOUND/@@rudy/ERROR",
+  "NOT_FOUND_ERROR": "double/scene/@@rudy/NOT_FOUND_ERROR",
   "PLAIN": "double/scene/PLAIN",
-  "PLAIN_COMPLETE": "double/scene/PLAIN_/COMPLETE",
-  "PLAIN_ERROR": "double/scene/PLAIN/@@rudy/ERROR",
+  "PLAIN_COMPLETE": "double/scene/PLAIN_COMPLETE",
+  "PLAIN_ERROR": "double/scene/PLAIN_ERROR",
   "SECOND": "double/scene/SECOND",
-  "SECOND_COMPLETE": "double/scene/SECOND_/COMPLETE",
+  "SECOND_COMPLETE": "double/scene/SECOND_COMPLETE",
   "SECOND_ERROR": "double/scene/SECOND_ERROR",
   "THIRD": "double/scene/THIRD",
   "THIRD_COMPLETE": "double/scene/THIRD_COMPLETE",
@@ -262,7 +262,7 @@ Object {
 exports[`double createScene 4`] = `
 "const { types, actions } = createScene(routes, { scene: 'double/scene' })
 
-const {
+const { 
 	FIRST,
 	FIRST_COMPLETE,
 	FIRST_ERROR,
@@ -283,7 +283,7 @@ const {
 	NOT_FOUND_ERROR
 } = types
 
-const {
+const { 
 	first,
 	second,
 	third,

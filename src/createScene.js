@@ -16,8 +16,8 @@ export default (r: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     const { types, actions, routes } = result
 
     const t2 = `${prefix}${t}`
-    const tc = `${prefix}${t}/_COMPLETE`
-    const te = `${prefix}${t}/_ERROR`
+    const tc = `${prefix}${t}_COMPLETE`
+    const te = `${prefix}${t}_ERROR`
 
     const route = routes[t2] = routeToObject(r[t], t2)
     const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so keys/exports are un-prefixed

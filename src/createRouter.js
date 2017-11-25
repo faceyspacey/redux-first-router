@@ -55,8 +55,6 @@ export default (
   const history = createHistory(options)
   const reducer = createReducer(routes, history)
 
-  _selectLocationState = selectLocationState
-
   const middleware = (store: Store) => {
     const getTitle = () => selectTitleState(store.getState() || {})
     const locationState = (s) => selectLocationState(s || store.getState() || {})
@@ -121,6 +119,3 @@ export default (
 
 let _history
 export const history = () => _history
-
-let _selectLocationState
-export const selectLocationState = (s) => _selectLocationState(s)

@@ -1,22 +1,23 @@
-import { NOT_FOUND } from '../../src/index'
 import { createNavLink, event } from '../../__test-helpers__/createLink'
 
-test('NON-EXACT: show active class', async () => {
-  const { tree } = await createNavLink('/first', {
-    to: '/first',
+
+test('EXACT (true): DONT show active class', async () => {
+  const { tree } = await createNavLink('/second/dog', {
+    to: '/second',
+    // partial: false, // this is the default
     activeClassName: 'active'
   })
-
+  console.log(tree)
   expect(tree).toMatchSnapshot()
 })
 
-test('EXACT: DONT show active class', async () => {
+test('EXACT (false): SHOW active class', async () => {
   const { tree } = await createNavLink('/second/dog', {
     to: '/second',
-    exact: true,
+    partial: true,
     activeClassName: 'active'
   })
-
+  console.log(tree)
   expect(tree).toMatchSnapshot()
 })
 
@@ -57,7 +58,7 @@ test('reacts to state changes (onClick)', async () => {
     activeClassName: 'active'
   })
 
-  expect(tree.props.className).not.toBeDefined()
+  expect(tree.props.className).toEqual('')
   expect(tree).toMatchSnapshot() /*? tree */
 
   // store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
@@ -94,6 +95,7 @@ test('isActive return false', async () => {
     }
   })
 
+  console.log('tree', tree)
   expect(tree).toMatchSnapshot()
 
   await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
@@ -104,7 +106,7 @@ it('supports custom HTML tag name', async () => {
   const { tree, store } = await createNavLink('/first', {
     to: '/second',
     activeClassName: 'active',
-    tagName: 'div'
+    component: 'div'
   })
 
   expect(tree).toMatchSnapshot()
@@ -114,7 +116,7 @@ it('supports custom HTML tag name in active mode', async () => {
   const { tree, store } = await createNavLink('/first', {
     to: '/first',
     activeClassName: 'active-foo',
-    tagName: 'div'
+    component: 'div'
   })
 
   expect(tree).toMatchSnapshot()
@@ -123,9 +125,10 @@ it('supports custom HTML tag name in active mode', async () => {
 it('supports custom HTML tag name which is still a link', async () => {
   const { tree, store } = await createNavLink('/first', {
     to: 'somewhere',
-    tagName: 'a'
+    component: 'a',
+    activeClassName: 'active-foo'
   })
-
+  console.log(tree)
   expect(tree).toMatchSnapshot()
 })
 

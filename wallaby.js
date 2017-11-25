@@ -13,7 +13,7 @@ module.exports = wallaby => {
 
     tests: [
       // '__tests__/**/*.js'
-      '__tests__/components/**/*.js',
+      '__tests__/Link/**/*.js',
       // '__tests__/createRouter.js',
       // '__tests__/createScene.js',
 

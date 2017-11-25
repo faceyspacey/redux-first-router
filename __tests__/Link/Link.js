@@ -183,7 +183,7 @@ it('converts invalid href to "#" for path', async () => {
 it('supports custom HTML tag name', async () => {
   const { tree, store } = await createLink({
     to: 'somewhere',
-    tagName: 'div'
+    component: 'div'
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot()
@@ -192,7 +192,7 @@ it('supports custom HTML tag name', async () => {
 it('supports custom HTML tag name which is still a link', async () => {
   const { tree, store } = await createLink({
     to: 'somewhere',
-    tagName: 'a'
+    component: 'a'
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot()

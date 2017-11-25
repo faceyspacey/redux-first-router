@@ -27,7 +27,7 @@ it('parse path into action using routePath with /:param segment', () => {
 it('parse path (/info/foo-bar) into action using route object containing capitalizedWords: true: payload: { param: "Foo Bar" }', () => {
   const path = '/info/foo-bar'
   const routesMap = {
-    INFO_PARAM: { path: '/info/:param/', capitalizedWords: true }
+    INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
   }
 
   const action = pathToAction(path, routesMap) /*? */
@@ -54,7 +54,7 @@ it('parse path into action using route object containing fromPath() function', (
 it('parse path containing number param into action with payload value set as integer instead of string', () => {
   const path = '/info/69'
   const routesMap = {
-    INFO_PARAM: { path: '/info/:param/' }
+    INFO_PARAM: { path: '/info/:param' }
   }
 
   const action = pathToAction(path, routesMap) /*? */

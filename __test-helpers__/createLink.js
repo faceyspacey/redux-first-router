@@ -5,8 +5,8 @@ import { Provider } from 'react-redux'
 
 import { createRouter } from '../src/index'
 
-import Link from '../src/components/Link'
-import NavLink from '../src/components/NavLink'
+import Link, { NavLink } from '../src/Link'
+
 
 const createLink = async (props, initialPath, options, isNavLink) => {
   const link = isNavLink ? <NavLink {...props} /> : <Link {...props} />
