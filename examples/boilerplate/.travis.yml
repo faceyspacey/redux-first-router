@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - stable
+notifications:
+  email: false
+cache: yarn
+script:
+  - node_modules/.bin/travis-github-status lint

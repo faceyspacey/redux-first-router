@@ -1,0 +1,21 @@
+.list {
+  background: #141414;
+  border: 1px solid rgb(30,30,30);
+  box-sizing: border-box;
+  display: block !important;
+  padding: 10px;
+}
+
+.title {
+  color: rgb(255, 44, 49);
+  font-size: 34px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}

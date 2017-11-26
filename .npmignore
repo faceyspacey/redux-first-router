@@ -5,6 +5,8 @@ docs
 flow-typed
 src
 *.log
+examples
+node_modules
 
 .babelrc
 .codeclimate.yml

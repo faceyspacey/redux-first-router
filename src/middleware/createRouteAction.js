@@ -3,6 +3,7 @@ import actionToPath from '../utils/actionToPath'
 import isRedirect, { isCommittedRedirect } from '../utils/isRedirect'
 import isNotFound from '../utils/isNotFound'
 import typeToScene from '../utils/typeToScene'
+import { createPrev } from '../createLocationReducer'
 import { NOT_FOUND, UPDATE_HISTORY } from '../index'
 
 export default (api) => async (req, next) => {
@@ -63,40 +64,18 @@ const historyAction = (req, action, prev, basename) => {
   }
 
   // for specialty `history.reset` and `history.jump` methods/actionCreators, we gotta jump through a few
-  // hoops to reconcile actions and state to match what would be logical. Basically the below code in
-  // combination with History.js re-creates the previous entry based on which direction (back or next)
-  // was determined to be going.
-  if (req.action.info) {
+  // hoops to reconcile actions and state to match what would be logical. The below code in combination with
+  // History.js re-creates the previous entry based on which direction (back or next) was determined to be going.
+  if (/jump|reset/.test(req.action.info)) {
     action.info = req.action.info // will === 'jump' || or 'reset' (used by `isDoubleDispatch` in this middleware and location reducer to allow processing)
 
     // find previous location entry based on the desired direction to pretend to be going
     const { entries, index, length, kind } = nextHistory
     const prevIndex = kind === 'back' ? index + 1 : index - 1
     const prevLocation = entries[prevIndex]
+    const hasSSR = !!req.locationState().hasSSR
 
-    if (!prevLocation) {
-      prev = {
-        type: '',
-        payload: {},
-        query: {},
-        state: {},
-        hash: '',
-
-        url: '',
-        pathname: '',
-        search: '',
-        basename: '',
-        scene: '',
-
-        kind: '',
-        entries: [],
-        index: -1,
-        length: 0,
-
-        hasSSR: req.locationState().hasSSR
-      }
-    }
-    else {
+    if (prevLocation) {
       // build the action for that entry, and create what the resulting state shape would have looked like
       const { routes, history, options: { querySerializer: qz } } = req
       const prevAction = pathToAction(prevLocation, routes, basename, qz)
@@ -107,10 +86,11 @@ const historyAction = (req, action, prev, basename) => {
       prev.entries = action.info === 'reset' ? entries : history.entries // on reset, use next history's entries for previous state, or the entries may not match
       prev.length = length
       prev.index = prevIndex
-      prev.hasSSR = req.locationState().hasSSR
+      prev.hasSSR = hasSSR
       delete prev.location
       delete prev.prev
     }
+    else prev = createPrev(hasSSR)
   }
 
   req.action = nestAction(action, prev, nextHistory, basename)          // replace history-triggered action with real action intended for reducers

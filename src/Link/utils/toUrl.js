@@ -21,6 +21,7 @@ export default (to?: ?To, routes: RoutesMap, basename: ?string): string => {
       return basename ? basename + path : path
     }
     catch (e) {
+      console.log('ERROR', e)
       console.warn(
         '[redux-first-router-link] could not create path from action:',
         action,

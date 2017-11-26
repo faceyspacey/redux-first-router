@@ -133,10 +133,10 @@ it('supports custom HTML tag name which is still a link', async () => {
 })
 
 test('query params are ommitted', async () => {
-  const { tree } = await createNavLink('/first', {
+  const { tree, store } = await createNavLink('/first', {
     to: '/first?foo=123',
     activeClassName: 'active'
   })
-
+  console.log('STATE', store.getState().location)
   expect(tree).toMatchSnapshot()
 })

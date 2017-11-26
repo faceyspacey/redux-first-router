@@ -23,6 +23,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": true,
     "hash": "",
     "index": -1,
     "kind": "",
@@ -53,14 +54,15 @@ Object {
     "status": 302,
     "url": "/third",
   },
+  "status": 302,
   "type": "THIRD",
+  "url": "/third",
 }
 `;
 
 exports[`if beforeEnter dispatches redirect, route changes with kind === "redirect" 1`] = `
 Object {
   "basename": "",
-  "committed": false,
   "entries": Array [
     Object {
       "hash": "",
@@ -79,7 +81,7 @@ Object {
       "url": "/third",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 1,
   "kind": "redirect",
@@ -127,7 +129,6 @@ Object {
 exports[`route.redirect - automatic 301 redirect 1`] = `
 Object {
   "basename": "",
-  "committed": false,
   "entries": Array [
     Object {
       "hash": "",
@@ -146,7 +147,7 @@ Object {
       "url": "/third",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 1,
   "kind": "redirect",

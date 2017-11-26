@@ -6,7 +6,7 @@ export default (action, redirectFunc = noOp) => {
   if (isRedirect(action)) {
     const url = action.location.url
     const status = action.location.status || 302
-    redirectFunc(status, url)
+    redirectFunc(status, url, action)
     return true
   }
 }

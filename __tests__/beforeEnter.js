@@ -105,7 +105,7 @@ it('beforeEnter redirect on server results does not update state, and instead re
 
   const redirect = jest.fn()
   expect(doesRedirect(action, redirect)).toEqual(true)
-  expect(redirect).toBeCalledWith(302, '/third')
+  expect(redirect).toBeCalledWith(302, '/third', action)
 
   expect(location.type).toEqual('FIRST')
   expect(location).toMatchSnapshot()

@@ -27,7 +27,7 @@ import { transformEntry, stripSlashes } from '../utils/path'
 export default class MemoryHistory extends History {
   constructor(opts = {}) {
     const {
-      initialEntries: ents,
+      initialEntries: ents = ['/'],
       initialIndex = 0,
       basename: bn,
       forceRefresh = false,
@@ -38,7 +38,7 @@ export default class MemoryHistory extends History {
     const basename = bn ? stripSlashes(bn) : ''
     opts.basename = basename
 
-    const initialEntries = !Array.isArray(ents) ? [ents] : ents || ['/']
+    const initialEntries = !Array.isArray(ents) ? [ents] : ents
 
     const { index, entries, saveHistory } = !useSessionStorage
       ? create(initialIndex, initialEntries, basename) // this happens 99% of the time

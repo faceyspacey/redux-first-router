@@ -52,6 +52,7 @@ export const createInitialState = (
   const action = pathToAction(location, routes, basename)
   const { type, payload = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
+  const hasSSR = isServer()
 
   return {
     type,
@@ -71,26 +72,29 @@ export const createInitialState = (
     index,
     length,
 
-    hasSSR: isServer() ? true : undefined,
+    hasSSR,
 
-    prev: {
-      type: '',
-      payload: {},
-      query: {},
-      state: {},
-      hash: '',
-
-      url: '',
-      pathname: '',
-      search: '',
-      basename: '',
-      scene: '',
-
-      kind: '',
-      entries: [],
-      index: -1,
-      length: 0
-    }
+    prev: createPrev(hasSSR)
   }
 }
 
+export const createPrev = (hasSSR: boolean) => ({
+  type: '',
+  payload: {},
+  query: {},
+  state: {},
+  hash: '',
+
+  url: '',
+  pathname: '',
+  search: '',
+  basename: '',
+  scene: '',
+
+  kind: '',
+  entries: [],
+  index: -1,
+  length: 0,
+
+  hasSSR
+})

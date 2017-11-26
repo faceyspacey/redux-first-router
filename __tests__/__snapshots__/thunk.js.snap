@@ -22,6 +22,7 @@ Object {
     "prev": Object {
       "basename": "",
       "entries": Array [],
+      "hasSSR": false,
       "hash": "",
       "index": -1,
       "kind": "",
@@ -59,7 +60,7 @@ Object {
       "url": "/second",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 0,
   "kind": "load",
@@ -69,6 +70,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": false,
     "hash": "",
     "index": -1,
     "kind": "",
@@ -99,7 +101,9 @@ Object {
     "status": 302,
     "url": "/third",
   },
+  "status": 302,
   "type": "THIRD",
+  "url": "/third",
 }
 `;
 
@@ -126,6 +130,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": true,
     "hash": "",
     "index": -1,
     "kind": "",

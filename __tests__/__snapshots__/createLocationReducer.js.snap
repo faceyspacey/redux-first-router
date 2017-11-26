@@ -12,7 +12,7 @@ Object {
       "url": "/first",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": undefined,
   "index": 0,
   "kind": "load",
@@ -37,7 +37,7 @@ exports[`getInitialState() returns state.history === undefined when using create
 Object {
   "basename": "",
   "entries": undefined,
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 0,
   "kind": "init",
@@ -47,6 +47,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": false,
     "hash": "",
     "index": -1,
     "kind": "",

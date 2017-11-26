@@ -5,7 +5,7 @@ import { supportsHistory, canUseDOM } from './utils/dom'
 import { createPath } from './utils/path'
 
 export default opts => {
-  if (true || !canUseDOM) {
+  if (process.env.NODE_ENV === 'test' || !canUseDOM) {
     return new MemoryHistory(opts)
   }
 

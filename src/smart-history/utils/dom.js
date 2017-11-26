@@ -57,11 +57,11 @@ export const isExtraneousPopstateEvent = event =>
 
 // LISTENING UTILS:
 
-const useHash = !supportsPopStateOnHashChange()
-
 let listenerCount = 0
 
 export const createPopListenerFuncs = (onPop, onHash) => {
+  const useHash = !supportsPopStateOnHashChange()
+
   const toggleListeners = delta => {
     listenerCount += delta
 

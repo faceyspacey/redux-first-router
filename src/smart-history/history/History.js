@@ -37,7 +37,7 @@ export default class History {
     const kind = back ? 'back' : (next ? 'next' : 'push')
 
     if (/back|next/.test(kind)) {
-      return this.jump(back ? -1 : 1, state, notify)
+      return this.jump(back ? -1 : 1, state, undefined, undefined, notify)
     }
 
     const index = back ? this.index - 1 : this.index + 1
@@ -117,7 +117,8 @@ export default class History {
           this._updateHistory(nextState)
         })
 
-    return this._notify({ nextHistory, commit, info: 'jump' }, notify)
+    const info = n === -1 || n === 1 ? null : 'jump' // info === jump will tell middleware/createRouteAction.js to create custom `prev`
+    return this._notify({ nextHistory, commit, info }, notify)
   }
 
   setState(state, n, byIndex, notify = true) {

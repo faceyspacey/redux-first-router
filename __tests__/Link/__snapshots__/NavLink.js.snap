@@ -2,14 +2,12 @@
 
 exports[`EXACT (false): SHOW active class 1`] = `
 <a
-  activeClassName="active"
   aria-current="true"
   className="active"
   href="/second"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
-  partial={true}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={Object {}}
   target={undefined}
 />
@@ -17,13 +15,12 @@ exports[`EXACT (false): SHOW active class 1`] = `
 
 exports[`EXACT (true): DONT show active class 1`] = `
 <a
-  activeClassName="active"
   aria-current={false}
   className=""
   href="/second"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={undefined}
   target={undefined}
 />
@@ -31,14 +28,12 @@ exports[`EXACT (true): DONT show active class 1`] = `
 
 exports[`STRICT: DONT show active class 1`] = `
 <a
-  activeClassName="active"
   aria-current={false}
   className=""
   href="/first/"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
-  strict={true}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={undefined}
   target={undefined}
 />
@@ -46,18 +41,12 @@ exports[`STRICT: DONT show active class 1`] = `
 
 exports[`combine with existing styles and class 1`] = `
 <a
-  activeClassName="active"
-  activeStyle={
-    Object {
-      "color": "red",
-    }
-  }
   aria-current="true"
   className="foo active"
   href="/first"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={
     Object {
       "color": "red",
@@ -97,7 +86,7 @@ Object {
       "url": "/first",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 0,
   "kind": "load",
@@ -107,6 +96,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": false,
     "hash": "",
     "index": -1,
     "kind": "",
@@ -131,14 +121,12 @@ Object {
 
 exports[`isActive return false 3`] = `
 <a
-  activeClassName="active"
   aria-current={false}
   className=""
   href="/first"
-  isActive={[Function]}
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={undefined}
   target={undefined}
 />
@@ -167,7 +155,7 @@ Object {
       "url": "/second/foo",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 1,
   "kind": "push",
@@ -188,7 +176,7 @@ Object {
         "url": "/first",
       },
     ],
-    "hasSSR": undefined,
+    "hasSSR": false,
     "hash": "",
     "index": 0,
     "kind": "load",
@@ -213,170 +201,14 @@ Object {
 
 exports[`isActive return false 6`] = `
 <a
-  activeClassName="active"
   aria-current="true"
   className="active"
   href="/first"
-  isActive={[Function]}
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={Object {}}
   target={undefined}
-/>
-`;
-
-exports[`isActive return false 7`] = `
-Object {
-  "basename": "",
-  "entries": Array [
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/first",
-      "search": "",
-      "state": Object {},
-      "url": "/first",
-    },
-    Object {
-      "hash": "",
-      "key": "345678",
-      "pathname": "/second/foo",
-      "search": "",
-      "state": Object {},
-      "url": "/second/foo",
-    },
-  ],
-  "hasSSR": undefined,
-  "hash": "",
-  "index": 1,
-  "kind": "push",
-  "length": 2,
-  "pathname": "/second/foo",
-  "payload": Object {
-    "param": "foo",
-  },
-  "prev": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-    ],
-    "hasSSR": undefined,
-    "hash": "",
-    "index": 0,
-    "kind": "load",
-    "length": 1,
-    "pathname": "/first",
-    "payload": Object {},
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "query": Object {},
-  "scene": "",
-  "search": "",
-  "state": Object {},
-  "type": "SECOND",
-  "url": "/second/foo",
-}
-`;
-
-exports[`isActive return false 8`] = `
-<a
-  activeClassName="active"
-  aria-current="true"
-  basename=""
-  className="active"
-  dispatch={[Function]}
-  href="/first"
-  isActive={[Function]}
-  onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
-  routesAdded={undefined}
-  rudy={
-    Object {
-      "ctx": Object {},
-      "history": MemoryHistory {
-        "_forceRefresh": false,
-        "_hasBrowserHistory": false,
-        "_listener": [Function],
-        "basename": "",
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "state": Object {},
-            "url": "/first",
-          },
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/second/foo",
-            "search": "",
-            "state": Object {},
-            "url": "/second/foo",
-          },
-        ],
-        "firstRoute": Object {
-          "commit": [Function],
-          "nextHistory": [Circular],
-          "type": "@@rudy/UPDATE_HISTORY",
-        },
-        "index": 1,
-        "kind": "push",
-        "length": 2,
-        "location": Object {
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second/foo",
-          "search": "",
-          "state": Object {},
-          "url": "/second/foo",
-        },
-        "saveHistory": [Function],
-      },
-      "locationState": [Function],
-      "options": Object {
-        "basename": "",
-        "initialEntries": "/first",
-        "shouldTransition": [Function],
-      },
-      "routes": Object {
-        "@@rudy/NOT_FOUND": Object {
-          "path": "/not-found",
-          "type": "@@rudy/NOT_FOUND",
-        },
-        "FIRST": Object {
-          "path": "/first",
-          "type": "FIRST",
-        },
-        "SECOND": Object {
-          "path": "/second/:param",
-          "type": "SECOND",
-        },
-      },
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-      },
-    }
-  }
-  style={Object {}}
-  target={undefined}
-  url="/second/foo"
 />
 `;
 
@@ -409,7 +241,7 @@ Object {
       "url": "/first",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 0,
   "kind": "load",
@@ -419,6 +251,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": false,
     "hash": "",
     "index": -1,
     "kind": "",
@@ -443,14 +276,12 @@ Object {
 
 exports[`isActive returns true 3`] = `
 <a
-  activeClassName="active"
   aria-current="true"
   className="active"
   href="/first"
-  isActive={[Function]}
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={Object {}}
   target={undefined}
 />
@@ -458,13 +289,12 @@ exports[`isActive returns true 3`] = `
 
 exports[`query params are ommitted 1`] = `
 <a
-  activeClassName="active"
   aria-current="true"
   className="active"
   href="/first?foo=123"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={Object {}}
   target={undefined}
 />
@@ -472,13 +302,12 @@ exports[`query params are ommitted 1`] = `
 
 exports[`reacts to state changes (onClick) 1`] = `
 <a
-  activeClassName="active"
   aria-current={false}
   className=""
   href="/second/bar"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={undefined}
   target={undefined}
 />
@@ -486,13 +315,12 @@ exports[`reacts to state changes (onClick) 1`] = `
 
 exports[`reacts to state changes (onClick) 2`] = `
 <a
-  activeClassName="active"
   aria-current="true"
   className="active"
   href="/second/bar"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={Object {}}
   target={undefined}
 />
@@ -500,18 +328,12 @@ exports[`reacts to state changes (onClick) 2`] = `
 
 exports[`show activeStyle 1`] = `
 <a
-  activeClassName="active"
-  activeStyle={
-    Object {
-      "color": "red",
-    }
-  }
   aria-current="true"
   className="active"
   href="/first"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={
     Object {
       "color": "red",
@@ -523,13 +345,12 @@ exports[`show activeStyle 1`] = `
 
 exports[`supports custom HTML tag name 1`] = `
 <div
-  activeClassName="active"
   aria-current={false}
   className=""
   href="/second"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={undefined}
   target={undefined}
 />
@@ -537,13 +358,12 @@ exports[`supports custom HTML tag name 1`] = `
 
 exports[`supports custom HTML tag name in active mode 1`] = `
 <div
-  activeClassName="active-foo"
   aria-current="true"
   className="active-foo"
   href="/first"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={Object {}}
   target={undefined}
 />
@@ -551,13 +371,12 @@ exports[`supports custom HTML tag name in active mode 1`] = `
 
 exports[`supports custom HTML tag name which is still a link 1`] = `
 <a
-  activeClassName="active-foo"
   aria-current={false}
   className=""
   href="somewhere"
   onClick={[Function]}
-  onMouseDown={false}
-  onTouchStart={false}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
   style={undefined}
   target={undefined}
 />

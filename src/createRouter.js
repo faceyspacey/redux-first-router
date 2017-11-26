@@ -96,7 +96,7 @@ export default (
         .catch(error => {
           req.error = error
           req.errorType = req.route ? `${req.action.type}_ERROR` : ERROR
-          console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
+          // console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
           return onError(req)
         })
         .then(res => {
@@ -107,8 +107,6 @@ export default (
     }
   }
 
-  _history = history
-
   return {
     middleware,
     reducer,
@@ -117,5 +115,3 @@ export default (
   }
 }
 
-let _history
-export const history = () => _history

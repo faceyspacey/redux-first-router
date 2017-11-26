@@ -64,7 +64,17 @@ const LinkInner = (props) => {
     basename,
     rudy,
     routesAdded,
+
     url: u,
+    isActive,
+    partial,
+    strict,
+    query,
+    hash,
+    activeStyle,
+    activeClassName,
+    ariaCurrent,
+
     ...p
   } = props
 
@@ -86,8 +96,8 @@ const LinkInner = (props) => {
       onClick={(!down && handler) || preventDefault}
       href={url}
       target={target}
-      onMouseDown={down && handler}
-      onTouchStart={down && handler}
+      onMouseDown={down ? handler : undefined}
+      onTouchStart={down ? handler : undefined}
       {...p}
       {...navLinkProps(props)}
     >
@@ -121,6 +131,7 @@ const navLinkProps = (props: Props) => {
   const loc = parsePath(toUrl(to, routes))
   const matchers = { ...loc, query: q && loc.query, hash: h && loc.hash }
   const match = matchUrl(url, matchers, { partial, strict })
+  console.log('MATCH', url, matchers)
   const active = !!(isActive ? isActive(match, locationState()) : match)
 
   return {
@@ -143,9 +154,7 @@ const LinkConnected = connector(LinkInner)
 const Link = (props: OwnProps, context: Context) =>
   <LinkConnected rudy={context.store.getState.rudy} {...props} />
 
-Link.contextTypes = {
-  store: PropTypes.object.isRequired
-}
+Link.contextTypes = { store: PropTypes.object.isRequired }
 
 export default Link
 

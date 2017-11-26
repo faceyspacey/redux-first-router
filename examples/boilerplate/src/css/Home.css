@@ -1,0 +1,41 @@
+.home {
+  background: #141414;
+  border: 1px solid rgb(30,30,30);
+  box-sizing: border-box;
+  padding: 10px;
+  display: block !important;
+}
+
+.title {
+  color: rgb(255, 44, 49);
+  font-size: 34px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.caption {
+  color: rgb(150, 44, 49);
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 10px;
+  text-shadow: 1px 1px 1px #2A0C0C;
+}
+
+.nico {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: pink;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+}
+.nico:hover {
+  text-decoration: underline;
+}

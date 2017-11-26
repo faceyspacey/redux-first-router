@@ -13,7 +13,7 @@ Object {
       "url": "/",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 0,
   "kind": "load",
@@ -23,6 +23,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": false,
     "hash": "",
     "index": -1,
     "kind": "",
@@ -86,7 +87,7 @@ Object {
           "url": "/",
         },
       ],
-      "hasSSR": undefined,
+      "hasSSR": false,
       "hash": "",
       "index": 0,
       "kind": "load",
@@ -139,7 +140,7 @@ Object {
         "url": "/second/bar#foo",
       },
     ],
-    "hasSSR": undefined,
+    "hasSSR": false,
     "hash": "foo",
     "index": 1,
     "kind": "push",
@@ -160,7 +161,7 @@ Object {
           "url": "/",
         },
       ],
-      "hasSSR": undefined,
+      "hasSSR": false,
       "hash": "",
       "index": 0,
       "kind": "load",
@@ -200,7 +201,7 @@ Object {
       "url": "/second/bar",
     },
   ],
-  "hasSSR": undefined,
+  "hasSSR": false,
   "hash": "",
   "index": 0,
   "kind": "load",
@@ -212,6 +213,7 @@ Object {
   "prev": Object {
     "basename": "",
     "entries": Array [],
+    "hasSSR": false,
     "hash": "",
     "index": -1,
     "kind": "",
@@ -273,7 +275,7 @@ Object {
           "url": "/first",
         },
       ],
-      "hasSSR": undefined,
+      "hasSSR": false,
       "hash": "",
       "index": 0,
       "kind": "load",
@@ -303,7 +305,6 @@ Object {
   "hash": "",
   "location": Object {
     "basename": "",
-    "committed": true,
     "entries": Array [
       Object {
         "hash": "",
@@ -330,7 +331,7 @@ Object {
           "url": "/first",
         },
       ],
-      "hasSSR": undefined,
+      "hasSSR": false,
       "hash": "",
       "index": 0,
       "kind": "load",
@@ -353,58 +354,5 @@ Object {
   "query": Object {},
   "state": Object {},
   "type": "@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`user redirects 1`] = `
-Object {
-  "kind": "redirect",
-  "meta": Object {
-    "location": Object {
-      "basename": "",
-      "current": Object {
-        "index": 1,
-        "kind": "redirect",
-        "length": 2,
-        "pathname": "/not-found",
-        "payload": Object {},
-        "type": "@@redux-first-router/NOT_FOUND",
-      },
-      "history": Object {
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "state": Object {},
-            "url": "/first",
-          },
-          Object {
-            "hash": "",
-            "key": "345678",
-            "pathname": "/not-found",
-            "search": "",
-            "state": Object {},
-            "url": "/not-found",
-          },
-        ],
-        "index": 1,
-        "kind": "redirect",
-        "length": 2,
-      },
-      "kind": "redirect",
-      "prev": Object {
-        "index": 0,
-        "kind": "load",
-        "length": 1,
-        "pathname": "/first",
-        "payload": Object {},
-        "type": "FIRST",
-      },
-    },
-  },
-  "payload": Object {},
-  "type": "@@redux-first-router/NOT_FOUND",
 }
 `;

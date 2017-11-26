@@ -54,7 +54,7 @@ export const createPath = location => {
 }
 
 export const transformEntry = (e, basename) =>
-  createLocation(stripPath(e, basename), {}, e.key || createKey())
+  createLocation(stripPath(e, basename), {}, e ? e.key : createKey())
 
 export const stripPath = (path, basename) => {
   if (typeof path === 'string') {

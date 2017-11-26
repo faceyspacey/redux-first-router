@@ -6,7 +6,8 @@ export default (api) => (req, next) => {
   if (isServer() && isRedirect(req.action)) {
     const { action, routes, options } = req
     const url = actionToPath(action, routes, options.querySerializer)
-    action.location.url = url
+    action.url = action.location.url = url
+    action.status = action.location.status || 302
     return action
   }
 

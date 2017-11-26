@@ -31,9 +31,7 @@
   "dependencies": {
     "path-to-regexp": "^2.1.0",
     "prop-types": "^15.6.0",
-    "resolve-pathname": "^2.2.0",
-    "rudy-history": "^1.0.0",
-    "rudy-match-path": "^0.3.0"
+    "resolve-pathname": "^2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
