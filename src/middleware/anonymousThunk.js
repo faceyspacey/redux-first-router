@@ -13,11 +13,11 @@ export default ({ options }) => {
 
     const thunkResult = Promise.resolve(req.action(req))
 
-    return thunkResult.then(action =>
+    return thunkResult.then(action => (
       action && !req._dispatched
         ? req.dispatch(action)
         : action
-    )
+    ))
   }
 }
 

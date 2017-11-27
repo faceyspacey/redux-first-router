@@ -3,9 +3,9 @@ import { createKey } from './location'
 
 // PREFIXING:
 
-const PREFIX = '@@History/'
+export const PREFIX = '@@History/'
 
-const prefixKey = key => PREFIX + getId() + key
+export const prefixKey = key => PREFIX + getId() + key
 
 // BASIC SESSIONSTORAGE WRAPPER METHODS:
 

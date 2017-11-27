@@ -127,12 +127,12 @@ const navLinkProps = (props: Props) => {
     rudy
   } = props
 
-  const { routes, locationState } = rudy
+  const { routes, getLocation } = rudy
   const loc = parsePath(toUrl(to, routes))
   const matchers = { ...loc, query: q && loc.query, hash: h && loc.hash }
   const match = matchUrl(url, matchers, { partial, strict })
-  console.log('MATCH', url, matchers)
-  const active = !!(isActive ? isActive(match, locationState()) : match)
+
+  const active = !!(isActive ? isActive(match, getLocation()) : match)
 
   return {
     style: active ? { ...style, ...activeStyle } : style,
@@ -142,7 +142,7 @@ const navLinkProps = (props: Props) => {
 }
 
 const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
-  const { url, basename, routesAdded } = rudy.locationState()
+  const { url, basename, routesAdded } = rudy.getLocation()
   const isNav = props.activeClassName || props.activeStyle
   return { rudy, basename, routesAdded, url: isNav && url }
 }

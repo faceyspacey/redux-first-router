@@ -1,24 +1,29 @@
 // @flow
+import type { RoutesMapInput, Options, Store, Dispatch } from './flow-types'
+
+import { ERROR, UPDATE_HISTORY } from './index'
 import composePromise from './composePromise'
 import createSmartHistory from './smart-history'
 import createLocationReducer from './createLocationReducer'
 
-import createSelector from './utils/createSelector'
-import createDispatch from './utils/createDispatch'
-import formatRoutes from './utils/formatRoutes'
-import shouldTrans from './utils/shouldTransition'
+import {
+  createSelector,
+  createDispatch,
+  formatRoutes,
+  shouldTransition as shouldTrans
+} from './utils'
 
-import serverRedirect from './middleware/serverRedirect'
-import addRoutes from './middleware/addRoutes'
-import pathlessThunk from './middleware/pathlessThunk'
-import anonymousThunk from './middleware/anonymousThunk'
-import createRouteAction from './middleware/createRouteAction'
-import call from './middleware/call'
-import enter from './middleware/enter'
-import changePageTitle from './middleware/changePageTitle'
+import {
+  serverRedirect,
+  addRoutes,
+  pathlessThunk,
+  anonymousThunk,
+  createRouteAction,
+  call,
+  enter,
+  changePageTitle
+} from './middleware'
 
-import type { RoutesMapInput, Options, Store, Dispatch } from './flow-types'
-import { ERROR, UPDATE_HISTORY } from './index'
 
 export default (
   routesInput: RoutesMapInput = {},
@@ -57,9 +62,9 @@ export default (
 
   const middleware = (store: Store) => {
     const getTitle = () => selectTitleState(store.getState() || {})
-    const locationState = (s) => selectLocationState(s || store.getState() || {})
+    const getLocation = (s) => selectLocationState(s || store.getState() || {})
     const ctx = {}
-    const api = { store, history, routes, options, locationState, ctx }
+    const api = { store, history, routes, options, getLocation, ctx }
     const nextPromise = composePromise(middlewares, api, true)
     const shouldTransition = options.shouldTransition
     const onError = call('onError')(api)
@@ -78,11 +83,11 @@ export default (
         tmp,
         getTitle,
         action,
-        state: store.getState(),
+        initialState: store.getState(),
+        initialLocation: getLocation(),
         getState: store.getState,
-        location: locationState(),
         dispatch: createDispatch(() => req),
-        prevRoute: routes[locationState().type],
+        prevRoute: routes[getLocation().type],
         route: routes[action.type] || {},
         commitHistory: action.type === UPDATE_HISTORY ? action.commit : noOp,
         commitDispatch: next,

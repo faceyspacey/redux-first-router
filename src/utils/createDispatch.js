@@ -29,7 +29,7 @@ export default (getReq) => (action) => {
     //
     // See the following files for additional info on the logic:
     //
-    // - utils/isRedirect.js
+    // - utils/isCommittedRedirect.js
     // - actions/redirect.js
     // - middleware/createRouteAction.js -- look for call to `isCommittedRedirect`
     action.location.committed = req.tmp.committed || isRedirect(req.tmp.startAction)
