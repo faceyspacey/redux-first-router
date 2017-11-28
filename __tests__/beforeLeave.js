@@ -31,7 +31,7 @@ it('return undefined (user can leave) -- global', async () => {
   const beforeLeave = jest.fn()
 
   const { store, history } = await setupAll('/first', { beforeLeave })
-  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'foo' } })
 
   const { type } = store.getState().location
   expect(type).toEqual('SECOND')
@@ -73,7 +73,7 @@ it('return false (user cannot leave) -- global', async () => {
   const beforeLeave = jest.fn(() => false)
 
   const { store, history } = await setupAll('/first', { beforeLeave })
-  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'foo' } })
 
   const { type } = store.getState().location
   expect(type).toEqual('FIRST')
@@ -103,7 +103,7 @@ it('return Promise<undefined> (user can leave, and action is re-dispatched) -- g
   const beforeLeave = jest.fn(() => Promise.resolve())
 
   const { store, history } = await setupAll('/first', { beforeLeave })
-  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'foo' } })
 
   const { type } = store.getState().location
   expect(type).toEqual('SECOND')
@@ -133,7 +133,7 @@ it('return Promise<false> (user CANNOT leave) -- global', async () => {
   const beforeLeave = jest.fn(() => Promise.resolve(false))
 
   const { store, history } = await setupAll('/first', { beforeLeave })
-  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'foo' } })
 
   const { type } = store.getState().location
   expect(type).toEqual('FIRST')

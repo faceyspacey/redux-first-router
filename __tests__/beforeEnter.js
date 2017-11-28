@@ -29,7 +29,7 @@ it('calls beforeEnter handler on route change -- global', async () => {
   const beforeEnter = jest.fn()
   const { store } = await setupAll('/first', { beforeEnter })
 
-  const action = { type: 'SECOND', payload: { param: 'bar' } }
+  const action = { type: 'SECOND', params: { param: 'bar' } }
   await store.dispatch(action)
 
   expect(store.getState().location.type).toEqual('SECOND')
@@ -45,7 +45,7 @@ it('if beforeEnter dispatches redirect, route changes with kind === "redirect"',
   })
 
   const { store, history } = await setupAll('/first', { beforeEnter })
-  const action = await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  const action = await store.dispatch({ type: 'SECOND', params: { param: 'bar' } })
   const { location } = store.getState()
 
   expect(action.type).toEqual('THIRD')
@@ -66,7 +66,7 @@ it('route.redirect - automatic 301 redirect', async () => {
     THIRD: '/third'
   }
   const { store, history } = await setupAll('/first', undefined, { routesMap })
-  const action = await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  const action = await store.dispatch({ type: 'SECOND', params: { param: 'bar' } })
   const { location } = store.getState()
 
   expect(action.type).toEqual('THIRD')
@@ -92,7 +92,7 @@ it('beforeEnter redirect on server results does not update state, and instead re
 
   const action = await store.dispatch({
     type: 'SECOND',
-    payload: { param: 'bar' }
+    params: { param: 'bar' }
   })
 
   const { location } = store.getState()

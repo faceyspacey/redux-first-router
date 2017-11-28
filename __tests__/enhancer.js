@@ -6,7 +6,7 @@ it('dispatches location-aware action when store is first created so app is locat
 
   expect(location).toMatchObject({
     type: 'FIRST',
-    payload: {},
+    params: {},
     kind: 'load' // IMPORTANT: only dispatched on load
   })
 })
@@ -20,7 +20,7 @@ it("listens to history changes and dispatches actions matching history's locatio
   expect(location1).toMatchObject({
     type: 'SECOND',
     pathname: '/second/bar',
-    payload: { param: 'bar' },
+    params: { param: 'bar' },
     state: { foo: 'bar' },
     kind: 'push' // IMPORTANT: only dispatched when using browser back/forward buttons
   })

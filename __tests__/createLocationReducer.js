@@ -46,7 +46,7 @@ it('getInitialState() returns state.history === undefined when using createBrows
   const pathname = '/first'
   const history = createSmartHistory({ initialEntries: ['/first'] })
   history.listen(function() {})
-  const current = { pathname, type: 'FIRST', payload: {} }
+  const current = { pathname, type: 'FIRST', params: {} }
   const routesMap = {
     FIRST: { path: '/first' }
   }

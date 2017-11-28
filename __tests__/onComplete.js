@@ -6,7 +6,7 @@ it('calls handler on route change -- global', async () => {
   const onComplete = jest.fn()
   const { store } = await setupAll('/first', { onComplete })
 
-  const action = { type: 'SECOND', payload: { param: 'bar' } }
+  const action = { type: 'SECOND', params: { param: 'bar' } }
   await store.dispatch(action)
 
   expect(store.getState().location.type).toEqual('SECOND')
@@ -41,14 +41,14 @@ it('calls handler on route change -- route', async () => {
 
 
 it('skips onComplete on redirect', async () => {
-  const redirectAction = { type: 'THIRD', payload: { param: 'bar' } }
+  const redirectAction = { type: 'THIRD', params: { param: 'bar' } }
   const thunk = jest.fn(({ dispatch }) => {
     return dispatch({ ...redirectAction })
   })
   const onComplete = jest.fn()
 
   const { store } = await setupThunk('/first', thunk, { onComplete })
-  await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'bar' } })
 
   const { location } = store.getState()
 

@@ -48,15 +48,15 @@ export default (api) => async (req, next) => {
   }
   catch (e) {
     const { type, url } = createNotFoundRoute(req, prev)
-    const payload = (action && action.payload) || {}
-    const act = { ...action, type, payload }
+    const params = (action && action.params) || {}
+    const act = { ...action, type, params }
     req = reduxAction(req, url, act, prev, history, basename)
   }
 
   if (isDoubleDispatch(req, state)) return req.action
 
-  const { type, payload, query, hash, state: st } = req.action
-  Object.assign(req, { type, payload, query, hash, state: st })
+  const { type, params, query, hash, state: st } = req.action
+  Object.assign(req, { type, params, query, hash, state: st })
 
   await next()
   return req.action

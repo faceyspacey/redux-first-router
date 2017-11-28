@@ -44,7 +44,7 @@ export const defaultRoutes = {
   FIRST: '/first',
   SECOND: {
     path: '/second',
-    error: (payload) => ({ ...payload, bla: 'boo' })
+    error: (error) => ({ ...error, bla: 'boo' })
   },
   THIRD: {
     path: '/third',
@@ -54,7 +54,7 @@ export const defaultRoutes = {
     },
     action: ['', 'customCreator'],
     customCreator: (arg) => (req, type) => {
-      return { payload: { foo: arg }, type }
+      return { params: { foo: arg }, type }
     }
   },
   FOURTH: {
@@ -67,7 +67,7 @@ export const defaultRoutes = {
       return 'onComplete'
     },
     action: (arg) => (req, type) => {
-      return { payload: { foo: arg }, type }
+      return { params: { foo: arg }, type }
     }
   },
   PLAIN: {

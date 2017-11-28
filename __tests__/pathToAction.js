@@ -8,7 +8,7 @@ it('parse path into action using routePath without /:param segment', () => {
   }
 
   const action = urlToAction('/info', routesMap)
-  expect(action).toMatchObject({ type: 'INFO', payload: {} }) /*? */
+  expect(action).toMatchObject({ type: 'INFO', params: {} }) /*? */
 })
 
 it('parse path into action using routePath with /:param segment', () => {
@@ -20,18 +20,18 @@ it('parse path into action using routePath with /:param segment', () => {
   const action = urlToAction('/info/foo', routesMap)
   expect(action).toMatchObject({
     type: 'INFO_PARAM',
-    payload: { param: 'foo' }
+    params: { param: 'foo' }
   })
 })
 
-it('parse path (/info/foo-bar) into action using route object containing capitalizedWords: true: payload: { param: "Foo Bar" }', () => {
+it('parse path (/info/foo-bar) into action using route object containing capitalizedWords: true: params: { param: "Foo Bar" }', () => {
   const path = '/info/foo-bar'
   const routesMap = {
     INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
   }
 
   const action = urlToAction(path, routesMap) /*? */
-  expect(action.payload.param).toEqual('Foo Bar')
+  expect(action.params.param).toEqual('Foo Bar')
 })
 
 it('parse path into action using route object containing fromPath() function', () => {
@@ -47,19 +47,19 @@ it('parse path into action using route object containing fromPath() function', (
   }
 
   const action = urlToAction(path, routesMap) /*? */
-  expect(action.payload.param).toEqual('FOO BAR PARAM')
-  expect(action.payload.param2).toEqual('1')
+  expect(action.params.param).toEqual('FOO BAR PARAM')
+  expect(action.params.param2).toEqual('1')
 })
 
-it('parse path containing number param into action with payload value set as integer instead of string', () => {
+it('parse path containing number param into action with params value set as integer instead of string', () => {
   const path = '/info/69'
   const routesMap = {
     INFO_PARAM: { path: '/info/:param' }
   }
 
   const action = urlToAction(path, routesMap) /*? */
-  expect(typeof action.payload.param).toEqual('number')
-  expect(action.payload.param).toEqual(69)
+  expect(typeof action.params.param).toEqual('number')
+  expect(action.params.param).toEqual(69)
 })
 
 it('does not parse a blank string "" as NaN', () => {
@@ -69,7 +69,7 @@ it('does not parse a blank string "" as NaN', () => {
   }
 
   const action = urlToAction(path, routesMap)
-  expect(action.payload[0]).toEqual('')
+  expect(action.params[0]).toEqual('')
 })
 
 it('parsed path not found and return NOT_FOUND action.type: "@@redux-first-router/NOT_FOUND"', () => {

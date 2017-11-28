@@ -30,7 +30,7 @@ it('calls global onLeave handler on route change', async () => {
   const onLeave = jest.fn()
   const { store } = await setupAll('/first', { onLeave })
 
-  const action = { type: 'SECOND', payload: { param: 'bar' } }
+  const action = { type: 'SECOND', params: { param: 'bar' } }
   await store.dispatch(action)
 
   expect(store.getState().location.type).toEqual('SECOND')
@@ -41,7 +41,7 @@ it('calls global onLeave handler on route change', async () => {
 })
 
 it('skips onLeave on redirect', async () => {
-  const redirectAction = { type: 'THIRD', payload: { param: 'bar' } }
+  const redirectAction = { type: 'THIRD', params: { param: 'bar' } }
   const beforeEnter = jest.fn(({ dispatch, action }) => {
     if (action.type !== 'SECOND') return
     dispatch({ ...redirectAction })
@@ -49,7 +49,7 @@ it('skips onLeave on redirect', async () => {
   const onLeave = jest.fn()
 
   const { store } = await setupAll('/first', { beforeEnter, onLeave })
-  await store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'bar' } })
 
   const { location } = store.getState()
   expect(location.type).toEqual('THIRD')

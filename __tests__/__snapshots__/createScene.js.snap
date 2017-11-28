@@ -6,7 +6,7 @@ Object {
     "basename": undefined,
     "url": "/cat",
   },
-  "payload": Object {
+  "params": Object {
     "foo": "bar",
   },
   "type": "SCENE/@@rudy/NOT_FOUND",
@@ -39,10 +39,10 @@ Object {
   "index": 1,
   "kind": "push",
   "length": 2,
-  "pathname": "/cat",
-  "payload": Object {
+  "params": Object {
     "foo": "bar",
   },
+  "pathname": "/cat",
   "prev": Object {
     "basename": "",
     "entries": Array [
@@ -60,8 +60,8 @@ Object {
     "index": 0,
     "kind": "load",
     "length": 1,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "query": Object {},
     "scene": "SCENE",
     "search": "",

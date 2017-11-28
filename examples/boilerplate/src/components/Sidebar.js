@@ -14,14 +14,14 @@ const Sidebar = ({ path, dispatch }) => (
 
     <NavLink
       activeClassName={styles.active}
-      to={{ type: 'LIST', payload: { category: 'redux' } }}
+      to={{ type: 'LIST', params: { category: 'redux' } }}
     >
       Redux
     </NavLink>
 
     <Link
       className={isActive(path, '/list/react')}
-      to={{ type: 'LIST', payload: { category: 'react' } }}
+      to={{ type: 'LIST', params: { category: 'react' } }}
     >
       React
     </Link>
@@ -43,7 +43,7 @@ const Sidebar = ({ path, dispatch }) => (
       role='link'
       tabIndex='0'
       className={isActive(path, '/list/redux')}
-      onClick={() => dispatch({ type: 'LIST', payload: { category: 'redux' } })}
+      onClick={() => dispatch({ type: 'LIST', params: { category: 'redux' } })}
     >
       Redux
     </span>
@@ -52,7 +52,7 @@ const Sidebar = ({ path, dispatch }) => (
       role='link'
       tabIndex='0'
       className={isActive(path, '/list/react')}
-      onClick={() => dispatch({ type: 'LIST', payload: { category: 'react' } })}
+      onClick={() => dispatch({ type: 'LIST', params: { category: 'react' } })}
     >
       React
     </span>

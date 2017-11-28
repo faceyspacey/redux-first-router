@@ -3,7 +3,7 @@ export default (state = 'RFR Demo', action = {}) => {
     case 'HOME':
       return 'RFR Boilerplate'
     case 'LIST':
-      return `RFR: ${capitalize(action.payload.category)}`
+      return `RFR: ${capitalize(action.params.category)}`
     default:
       return state
   }

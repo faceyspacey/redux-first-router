@@ -80,7 +80,7 @@ it('middleware:callThunk DOES call thunk if locationState.kind !== "load"', asyn
   const thunk = jest.fn()
   const { store } = await setupThunk('/first', thunk)
 
-  const action = { type: 'SECOND', payload: { param: 'bar' } }
+  const action = { type: 'SECOND', params: { param: 'bar' } }
   await store.dispatch(action)
 
   store.getState() /*? */
@@ -90,7 +90,7 @@ it('middleware:callThunk DOES call thunk if locationState.kind !== "load"', asyn
 
 it('callThunk calls thunk with same `dispatch` argument as in middleware chain', async () => {
   const thunk = jest.fn(({ dispatch, getState }) => {
-    const action = { type: 'THIRD', payload: { param: 'hurray' } }
+    const action = { type: 'THIRD', params: { param: 'hurray' } }
     dispatch(action)
     return getState()
   })
@@ -98,7 +98,7 @@ it('callThunk calls thunk with same `dispatch` argument as in middleware chain',
   const { store } = await setupThunk('/first', thunk)
 
   // thunk will be called
-  const action = { type: 'SECOND', payload: { param: 'bar' } }
+  const action = { type: 'SECOND', params: { param: 'bar' } }
   await store.dispatch(action)
 
   const { location } = store.getState() /*? $.location */
@@ -313,13 +313,13 @@ it('dispatched thunk performs redirect with history.replace(path)', async () => 
   const thunk = jest.fn(({ dispatch }) => {
     const action = redirect({
       type: 'THIRD',
-      payload: { param: 'hurray' }
+      params: { param: 'hurray' }
     })
     dispatch(action)
   })
   const { store, history } = await setupThunk('/first', thunk)
 
-  const action = { type: 'SECOND', payload: { param: 'bar' } }
+  const action = { type: 'SECOND', params: { param: 'bar' } }
   await store.dispatch(action)
 
   const { location } = store.getState() /*? */

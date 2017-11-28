@@ -67,8 +67,8 @@ Object {
     "query": undefined,
     "search": "",
   },
+  "params": Object {},
   "partial": false,
-  "payload": Object {},
   "query": Object {},
 }
 `;
@@ -91,8 +91,8 @@ Object {
   "index": 0,
   "kind": "load",
   "length": 1,
+  "params": Object {},
   "pathname": "/first",
-  "payload": Object {},
   "prev": Object {
     "basename": "",
     "entries": Array [],
@@ -101,8 +101,8 @@ Object {
     "index": -1,
     "kind": "",
     "length": 0,
+    "params": Object {},
     "pathname": "",
-    "payload": Object {},
     "query": Object {},
     "scene": "",
     "search": "",
@@ -161,10 +161,10 @@ Object {
   "index": 1,
   "kind": "push",
   "length": 2,
-  "pathname": "/second/foo",
-  "payload": Object {
+  "params": Object {
     "param": "foo",
   },
+  "pathname": "/second/foo",
   "prev": Object {
     "basename": "",
     "entries": Array [
@@ -182,8 +182,8 @@ Object {
     "index": 0,
     "kind": "load",
     "length": 1,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "query": Object {},
     "scene": "",
     "search": "",
@@ -225,8 +225,8 @@ Object {
     "query": undefined,
     "search": "",
   },
+  "params": Object {},
   "partial": false,
-  "payload": Object {},
   "query": Object {},
 }
 `;
@@ -249,8 +249,8 @@ Object {
   "index": 0,
   "kind": "load",
   "length": 1,
+  "params": Object {},
   "pathname": "/first",
-  "payload": Object {},
   "prev": Object {
     "basename": "",
     "entries": Array [],
@@ -259,8 +259,8 @@ Object {
     "index": -1,
     "kind": "",
     "length": 0,
+    "params": Object {},
     "pathname": "",
-    "payload": Object {},
     "query": Object {},
     "scene": "",
     "search": "",

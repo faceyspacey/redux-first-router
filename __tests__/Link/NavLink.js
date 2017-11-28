@@ -61,7 +61,7 @@ test('reacts to state changes (onClick)', async () => {
   expect(tree.props.className).toEqual('')
   expect(tree).toMatchSnapshot() /*? tree */
 
-  // store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+  // store.dispatch({ type: 'SECOND', params: { param: 'bar' } })
   await tree.props.onClick(event) // this dispatches above action (obviously)
 
   const tree2 = component.toJSON() /*? */
@@ -98,7 +98,7 @@ test('isActive return false', async () => {
   console.log('tree', tree)
   expect(tree).toMatchSnapshot()
 
-  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'foo' } })
   expect(component.toJSON()).toMatchSnapshot()
 })
 

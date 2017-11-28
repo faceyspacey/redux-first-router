@@ -8,8 +8,8 @@ it('dispatches location-aware action, changes address bar + document.title', asy
   expect(history.location.pathname).toEqual('/')
   expect(store.getState().location).toMatchSnapshot()
 
-  const payload = { param: 'bar' }
-  const action = await store.dispatch({ type: 'SECOND', payload, state: { foo: 'bar' }, hash: 'foo' })
+  const params = { param: 'bar' }
+  const action = await store.dispatch({ type: 'SECOND', params, state: { foo: 'bar' }, hash: 'foo' })
 
   store.getState() /*? */
 
@@ -32,8 +32,8 @@ it('dont double dispatch the same action', async () => {
   expect(history.location.pathname).toEqual('/second/bar')
   expect(store.getState().location).toMatchSnapshot()
 
-  const payload = { param: 'bar' }
-  await store.dispatch({ type: 'SECOND', payload })
+  const params = { param: 'bar' }
+  await store.dispatch({ type: 'SECOND', params })
 
   console.log(store.getState())
   expect(history.length).toEqual(1)
@@ -47,7 +47,7 @@ it('not matched received action dispatches the action as normal with no changes'
   expect(store.getState().location).toMatchObject({
     type: 'FIRST',
     pathname: '/first',
-    payload: {}
+    params: {}
   })
 
   const beforeState = store.getState().location
@@ -60,7 +60,7 @@ it('not matched received action dispatches the action as normal with no changes'
     // location state has not changed because action not matched
     type: 'FIRST',
     pathname: '/first',
-    payload: {}
+    params: {}
   })
 
   expect(afterState).toEqual(beforeState)
@@ -99,7 +99,7 @@ it('does nothing if action has error', async () => {
 it('user redirects', async () => {
   const beforeEnter = ({ action, dispatch }) => {
     if (action.type === 'THIRD') { // also test that a second redirect only results in one entry
-      dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+      dispatch({ type: 'SECOND', params: { param: 'foo' } })
     }
   }
 

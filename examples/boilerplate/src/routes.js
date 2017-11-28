@@ -6,13 +6,13 @@ export default {
   LIST: {
     path: '/list/:category',
     thunk: async ({ action }) => {
-      const { payload: { category } } = action
+      const { params: { category } } = action
       const packages = await fetch(`/api/category/${category}`)
 
       if (packages.length === 0) {
         return {
           type: 'LIST',
-          payload: { category: 'redux' }
+          params: { category: 'redux' }
         }
       }
 

@@ -142,7 +142,7 @@ it('converts href as array of strings to path', async () => {
 })
 
 it('converts href as action object to path', async () => {
-  const action = { type: 'SECOND', payload: { param: 'bar' } }
+  const action = { type: 'SECOND', params: { param: 'bar' } }
   const { tree, store } = await createLink({ to: action }) /*? $.tree */
 
   expect(tree).toMatchSnapshot() /*? store.getState() */

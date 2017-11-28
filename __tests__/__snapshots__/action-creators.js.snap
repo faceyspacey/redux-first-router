@@ -19,8 +19,8 @@ Object {
     "index": 0,
     "kind": "load",
     "length": 1,
+    "params": Object {},
     "pathname": "/",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [],
@@ -29,8 +29,8 @@ Object {
       "index": -1,
       "kind": "",
       "length": 0,
+      "params": Object {},
       "pathname": "",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -80,8 +80,8 @@ Object {
     "index": 0,
     "kind": "back",
     "length": 2,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -107,8 +107,8 @@ Object {
       "index": 1,
       "kind": "push",
       "length": 2,
+      "params": Object {},
       "pathname": "/third",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -162,8 +162,8 @@ Object {
     "index": 1,
     "kind": "next",
     "length": 2,
+    "params": Object {},
     "pathname": "/third",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -191,8 +191,8 @@ Object {
       "index": 0,
       "kind": "back",
       "length": 2,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -257,8 +257,8 @@ Object {
     "index": 0,
     "kind": "back",
     "length": 3,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -296,8 +296,8 @@ Object {
       "index": 1,
       "kind": "push",
       "length": 3,
+      "params": Object {},
       "pathname": "/second/yo",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -365,10 +365,10 @@ Object {
     "index": 2,
     "kind": "next",
     "length": 3,
-    "pathname": "/second/yo",
-    "payload": Object {
+    "params": Object {
       "param": "yo",
     },
+    "pathname": "/second/yo",
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -407,8 +407,8 @@ Object {
       "index": 1,
       "kind": "back",
       "length": 3,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -475,8 +475,8 @@ Object {
     "index": 0,
     "kind": "back",
     "length": 3,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -517,8 +517,8 @@ Object {
       "index": 1,
       "kind": "next",
       "length": 3,
+      "params": Object {},
       "pathname": "/second/yo",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -587,8 +587,8 @@ Object {
     "index": 3,
     "kind": "next",
     "length": 4,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -630,8 +630,8 @@ Object {
       "index": 2,
       "kind": "load",
       "length": 4,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -673,8 +673,8 @@ Object {
     "index": 0,
     "kind": "load",
     "length": 1,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [],
@@ -683,8 +683,8 @@ Object {
       "index": -1,
       "kind": "",
       "length": 0,
+      "params": Object {},
       "pathname": "",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",
@@ -735,8 +735,8 @@ Object {
     "index": 1,
     "kind": "push",
     "length": 2,
+    "params": Object {},
     "pathname": "/third",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -754,8 +754,8 @@ Object {
       "index": 0,
       "kind": "load",
       "length": 1,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {},
       "scene": "",
       "search": "",

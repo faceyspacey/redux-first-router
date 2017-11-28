@@ -18,8 +18,8 @@ Object {
   "index": 0,
   "kind": "load",
   "length": 1,
+  "params": Object {},
   "pathname": "/first",
-  "payload": Object {},
   "prev": Object {
     "basename": "",
     "entries": Array [],
@@ -28,8 +28,8 @@ Object {
     "index": -1,
     "kind": "",
     "length": 0,
+    "params": Object {},
     "pathname": "",
-    "payload": Object {},
     "query": Object {},
     "scene": "",
     "search": "",
@@ -87,8 +87,8 @@ Object {
   "index": 1,
   "kind": "redirect",
   "length": 2,
+  "params": Object {},
   "pathname": "/third",
-  "payload": Object {},
   "prev": Object {
     "basename": "",
     "entries": Array [
@@ -154,10 +154,10 @@ Object {
   "index": 1,
   "kind": "redirect",
   "length": 2,
-  "pathname": "/third",
-  "payload": Object {
+  "params": Object {
     "param": "bar",
   },
+  "pathname": "/third",
   "prev": Object {
     "basename": "",
     "entries": Array [

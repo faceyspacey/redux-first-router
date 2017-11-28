@@ -8,8 +8,8 @@ export default async (type, pathname) => {
   history.listen(function() {})
   await history.push(pathname)
 
-  const current = { pathname, url: pathname, type, payload: { param: 'bar' } }
-  const prev = { pathname: '/first', type: 'FIRST', payload: {} }
+  const current = { pathname, url: pathname, type, params: { param: 'bar' } }
+  const prev = { pathname: '/first', type: 'FIRST', params: {} }
   const routesMap = {
     FIRST: { path: '/first' },
     SECOND: { path: '/second/:param' },
@@ -33,7 +33,7 @@ export default async (type, pathname) => {
 
     action: {
       type,
-      payload: { param: 'bar' },
+      params: { param: 'bar' },
       location: {
         url: pathname,
         pathname,
@@ -48,7 +48,7 @@ export default async (type, pathname) => {
     expectState(state) {
       expect(state.pathname).toEqual(pathname)
       expect(state.type).toEqual(type)
-      expect(state.payload).toEqual({ param: 'bar' })
+      expect(state.params).toEqual({ param: 'bar' })
       expect(state.prev).toEqual(prev)
       expect(state.kind).toEqual('load')
 

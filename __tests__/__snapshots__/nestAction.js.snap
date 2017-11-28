@@ -20,10 +20,10 @@ Object {
     "length": 1,
     "pathname": "/path",
     "prev": Object {
-      "pathname": "previous",
-      "payload": Object {
+      "params": Object {
         "bla": "prev",
       },
+      "pathname": "previous",
       "type": "PREV",
     },
     "scene": "",
@@ -34,7 +34,7 @@ Object {
   "meta": Object {
     "info": "something",
   },
-  "payload": Object {
+  "params": Object {
     "bar": "baz",
   },
   "query": Object {},

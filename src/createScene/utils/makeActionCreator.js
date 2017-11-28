@@ -39,8 +39,9 @@ export default (
     // the default behavior of transforming an `arg` object into an action with its type
     if (isAction(arg)) return { type, ...arg, location: { basename, ...arg.location } }
 
-    // if no `payload`, `query`, etc, treat arg as a `payload` for convenience
-    return { type, payload: arg || {}, location: { basename } }
+    // if no `payload`, `query`, etc, treat arg as a `params/payload` for convenience
+    const name = key === 'complete' ? 'payload' : 'params'
+    return { type, [name]: arg || {}, location: { basename } }
   }
 
   // optionally allow custom action creators

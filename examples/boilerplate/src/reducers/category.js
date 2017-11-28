@@ -1,2 +1,2 @@
 export default (state = '', action = {}) =>
-  action.type === 'LIST' ? action.payload.category : state
+  action.type === 'LIST' ? action.params.category : state

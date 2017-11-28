@@ -23,17 +23,17 @@ export default (
     const match = matchUrl(l, route, { transform })
 
     if (match) {
-      const { payload, query, hash } = match
-      return { type, state, payload, query, hash }
+      const { params, query, hash } = match
+      return { type, params, query, hash, state }
     }
   }
 
   // This will basically only end up being called if the developer is manually calling history.push().
   // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
   const { search, hash } = l
-  const payload = {}
+  const params = {}
   const query = search ? qs.parse(search) : {}
-  return notFound({ payload, query, hash, state }, url)
+  return notFound({ params, query, hash, state }, url)
 }
 
 const transformValue = (

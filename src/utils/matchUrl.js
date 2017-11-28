@@ -62,7 +62,7 @@ export default (
   }, {})
 
   return {
-    payload: params,
+    params,
     query,
     hash,
     matchedPath: matchers.path === '/' && path === '' ? '/' : path, // the matched portion of the URL

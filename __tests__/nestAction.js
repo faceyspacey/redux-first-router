@@ -7,13 +7,13 @@ it('nestAction properly formats/nests action object', () => {
   const history = createSmartHistory({ initialEntries })
   const receivedAction = {
     type: 'FOO',
-    payload: { bar: 'baz' },
+    params: { bar: 'baz' },
     meta: { info: 'something' }
   }
   const location = {
     pathname: 'previous',
     type: 'PREV',
-    payload: { bla: 'prev' }
+    params: { bla: 'prev' }
   }
 
   // history.kind = 'load'
@@ -25,7 +25,7 @@ it('nestAction properly formats/nests action object', () => {
   )
 
   expect(action.type).toEqual('FOO')
-  expect(action.payload).toEqual({ bar: 'baz' })
+  expect(action.params).toEqual({ bar: 'baz' })
 
   expect(action.location.prev).toEqual(location)
   expect(action).toMatchObject(receivedAction)

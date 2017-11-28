@@ -16,7 +16,7 @@ export default (
 
   const action = isAction(act)
     ? { ...act, location: { url, basename, ...act.location } }
-    : { payload: act || {}, location: { url, basename } } // if not FSRA, treat as a `payload` for convenience
+    : { params: act || {}, location: { url, basename } } // if not action, treat as  `params` for convenience
 
   return {
     ...action,

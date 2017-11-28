@@ -35,8 +35,8 @@ Object {
     "index": 2,
     "kind": "push",
     "length": 3,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -62,8 +62,8 @@ Object {
       "index": 1,
       "kind": "push",
       "length": 2,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {
         "baz": "69",
         "foo": "bar",
@@ -125,8 +125,8 @@ Object {
     "index": 2,
     "kind": "push",
     "length": 3,
+    "params": Object {},
     "pathname": "/third",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -152,8 +152,8 @@ Object {
       "index": 1,
       "kind": "push",
       "length": 2,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {
         "baz": 69,
         "foo": "bar",
@@ -215,8 +215,8 @@ Object {
     "index": 2,
     "kind": "push",
     "length": 3,
+    "params": Object {},
     "pathname": "/first",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -242,8 +242,8 @@ Object {
       "index": 1,
       "kind": "push",
       "length": 2,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {
         "baz": "69",
         "foo": "bar",
@@ -305,8 +305,8 @@ Object {
     "index": 2,
     "kind": "push",
     "length": 3,
+    "params": Object {},
     "pathname": "/third",
-    "payload": Object {},
     "prev": Object {
       "basename": "",
       "entries": Array [
@@ -332,8 +332,8 @@ Object {
       "index": 1,
       "kind": "push",
       "length": 2,
+      "params": Object {},
       "pathname": "/first",
-      "payload": Object {},
       "query": Object {
         "baz": "69",
         "foo": "bar",

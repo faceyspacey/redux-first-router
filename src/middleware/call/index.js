@@ -8,7 +8,7 @@ import {
   isFalse
 } from './utils'
 
-import { noOp } from '../../utils'
+import { noOp, isAction } from '../../utils'
 
 export default (name, config = {}) => (api) => {
   enhanceRoutes(name, api.routes)
@@ -32,7 +32,7 @@ export default (name, config = {}) => (api) => {
       const res = a || b
 
       if (res && !req._dispatched && isAutoDispatch(req)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
-        const action = res.type || res.payload ? res : { payload: res }
+        const action = isAction(res) ? res : { payload: res }
         action.type = action.type || `${req.action.type}_COMPLETE`
 
         return Promise.resolve(dispatch(action))

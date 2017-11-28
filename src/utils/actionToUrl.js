@@ -12,17 +12,17 @@ export default (
   action: Action,
   routes: RoutesMap
 ): string => {
-  const { type, payload, query, hash } = action
+  const { type, params: p, query, hash } = action
   const route = routes[type]
-  const p = typeof route === 'object' ? route.path : route
-  const params = _payloadToParams(route, payload)
+  const path = typeof route === 'object' ? route.path : route
+  const params = transformParams(route, p)
 
-  if (typeof p !== 'string') throw new Error('[rudy] invalid route path')
+  if (typeof path !== 'string') throw new Error('[rudy] invalid route path')
 
-  return compileUrl(p, params, query, hash) || '/'
+  return compileUrl(path, params, query, hash) || '/'
 }
 
-const _payloadToParams = (route: Route, params: Payload = {}): Params =>
+const transformParams = (route: Route, params: Payload = {}): Params =>
   Object.keys(params).reduce((sluggifedParams, key) => {
     sluggifedParams[key] = transformSegment(params[key], route, key)
     return sluggifedParams

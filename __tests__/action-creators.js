@@ -109,7 +109,7 @@ it('back/next/jump', async () => {
   expect(store.getState().location.kind).toEqual('next')
   expect(store.getState()).toMatchSnapshot()
 
-  await store.dispatch({ type: 'SECOND', payload: { param: 'yo' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'yo' } })
 
   action = jump(-2, (prevState) => ({ uno: 1 })) // optionally can be a function like in components
   await store.dispatch(action)

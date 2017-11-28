@@ -54,7 +54,7 @@ it('verify window.document is not used server side', async () => {
   document.title = ''
 
   const { store } = await setupAll('/first')
-  await store.dispatch({ type: 'SECOND', payload: { param: 'foo' } })
+  await store.dispatch({ type: 'SECOND', params: { param: 'foo' } })
 
   expect(document.title).toEqual('')
 })

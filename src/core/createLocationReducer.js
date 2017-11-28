@@ -20,8 +20,8 @@ export default (routes: RoutesMap, history: History) => {
     const l = action.location
 
     if (r && r.path && (l.url !== st.url || l.kind === 'load' || action.info === 'reset')) {
-      const { type, payload, query, state, hash } = action
-      return { type, payload, query, state, hash, hasSSR: st.hasSSR, ...l }
+      const { type, params, query, state, hash } = action
+      return { type, params, query, state, hash, hasSSR: st.hasSSR, ...l }
     }
     else if (action.type === ADD_ROUTES) {
       const count = Object.keys(action.payload.routes).length  // we need to be able to update Links when new routes are added
@@ -48,13 +48,13 @@ export const createInitialState = (
   const { kind, entries, index, length, location, basename } = history
   const { url, pathname, search } = location
   const action = urlToAction(location, routes, basename)
-  const { type, payload = {}, query = {}, state = {}, hash = '' } = action
+  const { type, params = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
   const hasSSR = isServer()
 
   return {
     type,
-    payload,
+    params,
     query,
     state,
     hash,
@@ -78,7 +78,7 @@ export const createInitialState = (
 
 export const createPrev = (hasSSR: boolean) => ({
   type: '',
-  payload: {},
+  params: {},
   query: {},
   state: {},
   hash: '',

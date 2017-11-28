@@ -24,11 +24,11 @@ test('createScene', async () => {
   expect(store.getState().location.type).toEqual('SCENE/FOURTH')
   expect(res).toEqual({ type: 'SCENE/FOURTH_COMPLETE', payload: 'onComplete' })
 
-  expect(store.getState().location.payload).toEqual({ foo: 'baz' })
+  expect(store.getState().location.params).toEqual({ foo: 'baz' })
 
-  res = await store.dispatch(actions.second({ payload: { foo: 'bar' } }))
+  res = await store.dispatch(actions.second({ params: { foo: 'bar' } }))
   expect(store.getState().location.type).toEqual('SCENE/SECOND')
-  expect(store.getState().location.payload).toEqual({ foo: 'bar' })
+  expect(store.getState().location.params).toEqual({ foo: 'bar' })
 
   res = await store.dispatch(actions.third({ type: 'WRONG' }))
   expect(store.getState().location.type).toEqual('SCENE/SECOND')
@@ -45,7 +45,7 @@ test('createScene', async () => {
 
   res = await store.dispatch(actions.plain('bar'))
   expect(res.type).toEqual('SCENE/PLAIN')
-  expect(res.payload).toEqual({ foo: 'bar' })
+  expect(res.params).toEqual({ foo: 'bar' })
 
   log(store)
 
@@ -92,7 +92,7 @@ test('double createScene', async () => {
   expect(res.type).toEqual(types.SECOND)
   expect(res.type).toEqual('double/scene/SECOND')
   expect(location().type).toEqual('double/scene/SECOND')
-  expect(location().payload).toEqual({ foo: 'bar' })
+  expect(location().params).toEqual({ foo: 'bar' })
 
   action = { type: types.THIRD }
   res = await store.dispatch(action)
@@ -105,14 +105,14 @@ test('double createScene', async () => {
   expect(res.type).toEqual(types.FOURTH_COMPLETE)
   expect(res.type).toEqual('double/scene/FOURTH_COMPLETE')
   expect(location().type).toEqual('double/scene/FOURTH')
-  expect(location().payload).toEqual({ foo: 'bar' })
+  expect(location().params).toEqual({ foo: 'bar' })
 
   action = actions.notFound(() => ({ foo: 'bar' }))
   res = await store.dispatch(action)
   expect(res.type).toEqual(types.NOT_FOUND)
   expect(res.type).toEqual('double/scene/@@rudy/NOT_FOUND')
   expect(location().type).toEqual('double/scene/@@rudy/NOT_FOUND')
-  expect(location().payload).toEqual({ foo: 'bar' })
+  expect(location().params).toEqual({ foo: 'bar' })
   expect(location().pathname).toEqual('/not-found-foo')
 
   action = actions.second.error({ foo: 'bar' })
@@ -136,7 +136,7 @@ test('double createScene', async () => {
   expect(res.type).toEqual(types.THIRD_COMPLETE)
   expect(res.type).toEqual('double/scene/THIRD_COMPLETE')
   expect(location().type).toEqual('double/scene/THIRD')
-  expect(location().payload).toEqual({ foo: 'bar' })
+  expect(location().params).toEqual({ foo: 'bar' })
 
   action = actions.notFound.complete('bar')
   res = await store.dispatch(action)
@@ -145,7 +145,7 @@ test('double createScene', async () => {
 
   // location state equals previous state, since COMPLETE doesn't change routes
   expect(location().type).toEqual('double/scene/THIRD')
-  expect(location().payload).toEqual({ foo: 'bar' })
+  expect(location().params).toEqual({ foo: 'bar' })
 
   expect(types).toMatchSnapshot()
   expect(actions).toMatchSnapshot()
