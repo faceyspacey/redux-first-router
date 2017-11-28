@@ -75,6 +75,7 @@ const LinkInner = (props) => {
   } = props
 
   const url = toUrl(to, rudy.routes, basename)
+  const hasHref = (Component === 'a' || typeof Component !== 'string') && url
   const handler = handlePress.bind(
     null,
     url,
@@ -90,7 +91,7 @@ const LinkInner = (props) => {
   return (
     <Component
       onClick={(!down && handler) || preventDefault}
-      href={url}
+      href={hasHref ? url : undefined}
       target={target}
       onMouseDown={down ? handler : undefined}
       onTouchStart={down ? handler : undefined}
