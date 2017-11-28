@@ -14,8 +14,8 @@ export default (action, { prev: p, ...prev }, history, basename) => {
     type,
     params,
     query,
-    state,
     hash,
+    state,
     location: {
       ...action.location,
       url,

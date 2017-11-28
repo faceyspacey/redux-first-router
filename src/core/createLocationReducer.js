@@ -56,8 +56,8 @@ export const createInitialState = (
     type,
     params,
     query,
-    state,
     hash,
+    state,
 
     url,
     pathname,
@@ -80,8 +80,8 @@ export const createPrev = (hasSSR: boolean) => ({
   type: '',
   params: {},
   query: {},
-  state: {},
   hash: '',
+  state: {},
 
   url: '',
   pathname: '',

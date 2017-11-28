@@ -34,7 +34,7 @@ test('createScene', async () => {
   expect(store.getState().location.type).toEqual('SCENE/SECOND')
 
   res = await store.dispatch(actions.third.error(new Error('fail')))
-  console.log('RES', res)
+
   expect(store.getState().location.type).toEqual('SCENE/SECOND')
   expect(store.getState().location.error).toEqual(new Error('fail'))
   expect(store.getState().location.errorType).toEqual('SCENE/THIRD_ERROR')
