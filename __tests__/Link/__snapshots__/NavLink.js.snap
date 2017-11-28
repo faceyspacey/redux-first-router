@@ -114,6 +114,7 @@ Object {
   "scene": "",
   "search": "",
   "state": Object {},
+  "status": 200,
   "type": "FIRST",
   "url": "/first",
 }
@@ -187,6 +188,7 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
+    "status": 200,
     "type": "FIRST",
     "url": "/first",
   },
@@ -194,6 +196,7 @@ Object {
   "scene": "",
   "search": "",
   "state": Object {},
+  "status": 200,
   "type": "SECOND",
   "url": "/second/foo",
 }
@@ -269,6 +272,7 @@ Object {
   "scene": "",
   "search": "",
   "state": Object {},
+  "status": 200,
   "type": "FIRST",
   "url": "/first",
 }

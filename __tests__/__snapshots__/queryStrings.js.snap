@@ -71,6 +71,7 @@ Object {
       "scene": "",
       "search": "foo=bar&baz=69",
       "state": Object {},
+      "status": 200,
       "type": "FIRST",
       "url": "/first?foo=bar&baz=69",
     },
@@ -81,6 +82,7 @@ Object {
     "scene": "",
     "search": "foo=car&baz=70",
     "state": Object {},
+    "status": 200,
     "type": "FIRST",
     "url": "/first?foo=car&baz=70",
   },
@@ -159,6 +161,7 @@ Object {
       "scene": "",
       "search": "baz=69&foo=bar",
       "state": Object {},
+      "status": 200,
       "type": "FIRST",
       "url": "/first?baz=69&foo=bar",
     },
@@ -169,6 +172,7 @@ Object {
     "scene": "",
     "search": "baz=69&foo=bar",
     "state": Object {},
+    "status": 200,
     "type": "THIRD",
     "url": "/third?baz=69&foo=bar",
   },
@@ -176,7 +180,7 @@ Object {
 }
 `;
 
-exports[`generated from pathToAction within <Link /> 1`] = `
+exports[`generated from urlToAction within <Link /> 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -247,6 +251,7 @@ Object {
       "scene": "",
       "search": "baz=69&foo=bar",
       "state": Object {},
+      "status": 200,
       "type": "FIRST",
       "url": "/first?baz=69&foo=bar",
     },
@@ -257,6 +262,7 @@ Object {
     "scene": "",
     "search": "baz=70&foo=car",
     "state": Object {},
+    "status": 200,
     "type": "FIRST",
     "url": "/first?baz=70&foo=car#bla",
   },
@@ -335,6 +341,7 @@ Object {
       "scene": "",
       "search": "foo=bar&baz=69",
       "state": Object {},
+      "status": 200,
       "type": "FIRST",
       "url": "/first?foo=bar&baz=69",
     },
@@ -345,6 +352,7 @@ Object {
     "scene": "",
     "search": "foo=bar&baz=69",
     "state": Object {},
+    "status": 200,
     "type": "THIRD",
     "url": "/third?foo=bar&baz=69",
   },

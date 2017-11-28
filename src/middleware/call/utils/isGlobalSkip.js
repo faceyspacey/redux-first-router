@@ -1,4 +1,4 @@
-import { noOp } from './index'
+import { noOp } from '../../../utils'
 
 export default (name, req, routeCb) =>
   isSkipGlobalCallbacks(name, req) || isFallback(name, req, routeCb)

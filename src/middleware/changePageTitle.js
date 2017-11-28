@@ -1,4 +1,4 @@
-import isServer from '../utils/isServer'
+import { isServer } from '../utils'
 
 export default (api) => async (req, next) => {
   const title = req.getTitle()

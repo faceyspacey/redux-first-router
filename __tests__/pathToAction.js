@@ -1,5 +1,5 @@
-import pathToAction from '../src/utils/pathToAction'
-import { NOT_FOUND } from '../src/index'
+import { urlToAction } from '../src/utils'
+import { NOT_FOUND } from '../src/types'
 
 it('parse path into action using routePath without /:param segment', () => {
   const routesMap = {
@@ -7,7 +7,7 @@ it('parse path into action using routePath without /:param segment', () => {
     INFO_PARAM: { path: '/info/:param' }
   }
 
-  const action = pathToAction('/info', routesMap)
+  const action = urlToAction('/info', routesMap)
   expect(action).toMatchObject({ type: 'INFO', payload: {} }) /*? */
 })
 
@@ -17,7 +17,7 @@ it('parse path into action using routePath with /:param segment', () => {
     INFO_PARAM: { path: '/info/:param' }
   }
 
-  const action = pathToAction('/info/foo', routesMap)
+  const action = urlToAction('/info/foo', routesMap)
   expect(action).toMatchObject({
     type: 'INFO_PARAM',
     payload: { param: 'foo' }
@@ -30,7 +30,7 @@ it('parse path (/info/foo-bar) into action using route object containing capital
     INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
   }
 
-  const action = pathToAction(path, routesMap) /*? */
+  const action = urlToAction(path, routesMap) /*? */
   expect(action.payload.param).toEqual('Foo Bar')
 })
 
@@ -46,7 +46,7 @@ it('parse path into action using route object containing fromPath() function', (
     }
   }
 
-  const action = pathToAction(path, routesMap) /*? */
+  const action = urlToAction(path, routesMap) /*? */
   expect(action.payload.param).toEqual('FOO BAR PARAM')
   expect(action.payload.param2).toEqual('1')
 })
@@ -57,7 +57,7 @@ it('parse path containing number param into action with payload value set as int
     INFO_PARAM: { path: '/info/:param' }
   }
 
-  const action = pathToAction(path, routesMap) /*? */
+  const action = urlToAction(path, routesMap) /*? */
   expect(typeof action.payload.param).toEqual('number')
   expect(action.payload.param).toEqual(69)
 })
@@ -68,7 +68,7 @@ it('does not parse a blank string "" as NaN', () => {
     INFO_WILDCARD: { path: '/info(.*)' }
   }
 
-  const action = pathToAction(path, routesMap)
+  const action = urlToAction(path, routesMap)
   expect(action.payload[0]).toEqual('')
 })
 
@@ -78,7 +78,7 @@ it('parsed path not found and return NOT_FOUND action.type: "@@redux-first-route
     INFO_PARAM: { path: '/info/:param/' }
   }
 
-  const action = pathToAction(path, routesMap) /*? */
+  const action = urlToAction(path, routesMap) /*? */
   expect(action.type).toEqual(NOT_FOUND)
 })
 
@@ -88,6 +88,6 @@ it('strips basename if first segment in path', () => {
     FOO: { path: '/foo/bar' }
   }
 
-  const action = pathToAction(path, routesMap, '/base') /*? */
+  const action = urlToAction(path, routesMap, '/base') /*? */
   expect(action.type).toEqual('FOO')
 })

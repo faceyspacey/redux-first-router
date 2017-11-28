@@ -38,6 +38,7 @@ Object {
     },
     "scene": "",
     "search": "",
+    "status": 200,
     "url": "/second",
   },
   "payload": Object {},
@@ -88,6 +89,7 @@ Object {
   "scene": "",
   "search": "",
   "state": Object {},
+  "status": 200,
   "type": "SECOND",
   "url": "/second",
 }
@@ -148,6 +150,7 @@ Object {
   "scene": "",
   "search": "",
   "state": Object {},
+  "status": 200,
   "type": "SECOND",
   "url": "/second",
 }

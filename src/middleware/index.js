@@ -1,4 +1,4 @@
-export { default as createRouteAction } from './createRouteAction'
+export { default as transformAction } from './transformAction'
 export { default as call } from './call'
 export { default as enter } from './enter'
 

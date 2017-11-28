@@ -1,24 +1,7 @@
 // @flow
-import * as history from './action-creators/history'
 
-export { history }
-
-export const PREFIX = '@@rudy'
-export const prefixType = (type: string) => `${PREFIX}/${type}`
-
-export const UPDATE_HISTORY = prefixType('UPDATE_HISTORY')
-export const NOT_FOUND = prefixType('NOT_FOUND')
-export const ADD_ROUTES = prefixType('ADD_ROUTES')
-export const COMPLETE = prefixType('COMPLETE')
-export const ERROR = prefixType('ERROR')
-
-export { default as createRouter } from './createRouter'
-
-export { default as redirect } from './action-creators/redirect'
-export { default as notFound } from './action-creators/notFound'
-export { default as addRoutes } from './action-creators/addRoutes'
-export { default as changeBasename } from './action-creators/changeBasename'
-
+export { default as createRouter } from './core/createRouter'
+export { default as createScene } from './createScene'
 
 export type {
   RouteInput,

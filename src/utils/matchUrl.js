@@ -1,7 +1,7 @@
 // @flow
 import pathToRegexp from 'path-to-regexp'
 import qs from 'query-string'
-import { stripBasename, parsePath } from '../smart-history/utils/path'
+import { stripBasename, parsePath } from '../history/utils'
 
 type CompileOptions = {
   partial?: boolean,
@@ -38,7 +38,7 @@ type Location = {
   hash: string
 }
 
-export const matchUrl = (
+export default (
   l: string | Location,
   matchers: Matchers,
   options?: Object = {}
@@ -116,12 +116,11 @@ const parseSearch = (search: string) =>
 
 const queries = {}
 const patternCache = {}
-const toPathCache = {}
 
 const cacheLimit = 10000
 let cacheCount = 0
 
-export const compilePath = (
+const compilePath = (
   pattern: string,
   options: CompileOptions = {}
 ): Compiled => {
@@ -143,18 +142,3 @@ export const compilePath = (
   return compiledPattern
 }
 
-export const compileToUrl = (
-  path: string,
-  params: Object = {},
-  query: ?Object,
-  hash: ?string
-) => {
-  const toPath = toPathCache[path] || pathToRegexp.compile(path)
-  toPathCache[path] = toPath
-
-  const pathname = toPath(params)
-  const search = query ? `?${qs.stringify(query)}` : ''
-  const h = hash ? `#${hash}` : ''
-
-  return `${pathname}${search}${h}`
-}

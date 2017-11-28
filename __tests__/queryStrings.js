@@ -1,7 +1,7 @@
 import querySerializer from 'query-string'
 
 import { setupAll } from '../__test-helpers__/setup'
-import pathToAction from '../src/utils/pathToAction'
+import { urlToAction } from '../src/utils'
 
 
 it('dispatched as action.query', async () => {
@@ -35,10 +35,10 @@ it('currentPathName changes, but pathname stays the same (only query changes)', 
   expect(state).toMatchSnapshot()
 })
 
-it('generated from pathToAction within <Link />', async () => {
+it('generated from urlToAction within <Link />', async () => {
   const { store, history, routesMap } = await setupAll('/third', { querySerializer })
 
-  let action = pathToAction(
+  let action = urlToAction(
     { url: '/first?foo=bar&baz=69' },
     routesMap,
     '',
@@ -46,7 +46,7 @@ it('generated from pathToAction within <Link />', async () => {
   ) /*? */
   await store.dispatch(action)
 
-  action = pathToAction(
+  action = urlToAction(
     { url: '/first?foo=car&baz=70#bla' },
     routesMap,
     '',

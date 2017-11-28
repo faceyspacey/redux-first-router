@@ -1,8 +1,8 @@
-import createSmartHistory from '../src/smart-history'
+import createSmartHistory from '../src/history'
 import createLocationReducer, {
   createInitialState
-} from '../src/createLocationReducer'
-import { NOT_FOUND } from '../src/index'
+} from '../src/core/createLocationReducer'
+import { NOT_FOUND } from '../src/types'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
 it('createLocationReducer() - maintains address bar pathname state and current + previous matched location-aware actions', async () => {

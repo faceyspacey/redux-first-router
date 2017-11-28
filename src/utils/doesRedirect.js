@@ -1,12 +1,17 @@
-import isRedirect from './isRedirect'
+import { isRedirect } from './index'
 
-const noOp = function() {}
-
-export default (action, redirectFunc = noOp) => {
+export default (action, redirectFunc) => {
   if (isRedirect(action)) {
     const url = action.location.url
     const status = action.location.status || 302
-    redirectFunc(status, url, action)
+
+    if (typeof redirectFunc === 'function') {
+      redirectFunc(status, url, action)
+    }
+    else if (redirectFunc && typeof redirectFunc.redirect === 'function') {
+      redirectFunc.redirect(status, url)
+    }
+
     return true
   }
 }

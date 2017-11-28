@@ -41,6 +41,7 @@ Object {
   "scene": "",
   "search": "",
   "state": Object {},
+  "status": 200,
   "type": "FIRST",
   "url": "/first",
 }
@@ -114,6 +115,7 @@ Object {
     "pathname": "/second/bar",
     "scene": "",
     "search": "",
+    "status": 200,
     "url": "/second/bar",
   },
   "query": Object {},
@@ -182,6 +184,7 @@ Object {
     "pathname": "/second/bar",
     "scene": "",
     "search": "",
+    "status": 200,
     "url": "/second/bar",
   },
   "query": Object {},

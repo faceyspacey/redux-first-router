@@ -1,4 +1,4 @@
-import actionToPath from '../src/utils/actionToPath'
+import { actionToUrl } from '../src/utils'
 
 it('parse action into path without payload: /info', () => {
   const action = { type: 'INFO' }
@@ -7,7 +7,7 @@ it('parse action into path without payload: /info', () => {
     INFO_PARAM: '/info/:param'
   }
 
-  const path = actionToPath(action, routesMap) /*? */
+  const path = actionToUrl(action, routesMap) /*? */
   expect(path).toEqual('/info')
 })
 
@@ -18,7 +18,7 @@ it('parse action payload into path segment: /info/foo', () => {
     INFO_PARAM: '/info/:param'
   }
 
-  const path = actionToPath(action, routesMap) /*? */
+  const path = actionToUrl(action, routesMap) /*? */
   expect(path).toEqual('/info/foo')
 })
 
@@ -29,7 +29,7 @@ it('parse action into path with numerical payload key value: /info/69', () => {
     INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
   }
 
-  const path = actionToPath(action, routesMap) /*? */
+  const path = actionToUrl(action, routesMap) /*? */
   expect(path).toEqual('/info/69')
 })
 
@@ -39,7 +39,7 @@ it('parse action into path with parameters using route object containing capital
     INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
   }
 
-  const path = actionToPath(action, routesMap) /*? */
+  const path = actionToUrl(action, routesMap) /*? */
   expect(path).toEqual('/info/foo-bar')
 })
 
@@ -52,7 +52,7 @@ it('parse action into path with parameters using route object containing toPath(
     }
   }
 
-  const path = actionToPath(action, routesMap) /*? */
+  const path = actionToUrl(action, routesMap) /*? */
   expect(path).toEqual('/info/foo-param-bar')
 })
 
@@ -62,7 +62,7 @@ it('perform no formatting when route object contains ONLY path key: /info/FooBar
     INFO_PARAM: { path: '/info/:param' }
   }
 
-  const path = actionToPath(action, routesMap) /*? */
+  const path = actionToUrl(action, routesMap) /*? */
   expect(path).toEqual('/info/FooBar')
 })
 
@@ -71,16 +71,16 @@ it('throw error when parsing non-matched action', () => {
     INFO: { path: '/info' }
   }
 
-  let performMatch = () => actionToPath({ type: 'MISSED' }, routesMap)
+  let performMatch = () => actionToUrl({ type: 'MISSED' }, routesMap)
   expect(performMatch).toThrowError()
 
-  performMatch = () => actionToPath({ type: 'INFO' }, routesMap)
+  performMatch = () => actionToUrl({ type: 'INFO' }, routesMap)
   expect(performMatch).not.toThrowError()
 })
 
 it('never returns an empty string when path has single optional param that is undefined', () => {
   const action = { type: 'INFO_PARAM', payload: { param: undefined } }
   const routesMap = { INFO_PARAM: '/:param?' }
-  const path = actionToPath(action, routesMap) /*? */
+  const path = actionToUrl(action, routesMap) /*? */
   expect(path).toEqual('/')
 })

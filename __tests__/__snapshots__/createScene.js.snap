@@ -66,6 +66,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "state": Object {},
+    "status": 200,
     "type": "SCENE/FIRST",
     "url": "/first",
   },
@@ -73,6 +74,7 @@ Object {
   "scene": "SCENE",
   "search": "",
   "state": Object {},
+  "status": 404,
   "type": "SCENE/@@rudy/NOT_FOUND",
   "url": "/cat",
 }

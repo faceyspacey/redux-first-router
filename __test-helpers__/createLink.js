@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
-import { createRouter } from '../src/index'
+import { createRouter } from '../src'
 
 import Link, { NavLink } from '../src/Link'
 

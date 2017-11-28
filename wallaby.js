@@ -28,10 +28,10 @@ module.exports = wallaby => {
       // '__tests__/middleware.js',
       // '__tests__/enhancer.js',
 
-      // '__tests__/actionToPath.js',
-      // '__tests__/pathToaction.js',
+      // '__tests__/actionToUrl.js',
+      // '__tests__/urlToAction.js',
       // '__tests__/queryStrings.js',
-      // '__tests__/action-creators.js',
+      // '__tests__/actions.js',
       // '__tests__/utils.js',
 
       // '__tests__/nestAction.js',

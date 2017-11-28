@@ -1,19 +1,19 @@
-import redirect from '../action-creators/redirect'
-import isRedirect from '../utils/isRedirect'
-import isLocationAction from '../utils/isLocationAction'
+import { isRedirect, isTransformed } from './index'
+import { redirect } from '../actions'
 
 export default (getReq) => (action) => {
   const req = getReq() // get full req object from closure, since both are defined at same time
   const { store, routes } = req
   const route = routes[action.type]
   const isPathlessThunk = !route || !route.path                   // routes are not actually changing if route has no `path` (aka "pathless thunks")
-  const fromShortCircuitingPhase = !isLocationAction(req.action)  // middleware like `anonymousThunk` dispatch early (before "pipeline phase") and need to go back through middleware normally
+  const fromShortCircuitingPhase = !isTransformed(req.action)  // middleware like `anonymousThunk` dispatch early (before "pipeline phase") and need to go back through middleware normally
   const isSwitchingRoutes = !isPathlessThunk && !fromShortCircuitingPhase
 
   req._dispatched = true // tell `middleware/call.js` + middleware/anonymousThunk.js` to not automatically dispatch callback returns
 
   if (isSwitchingRoutes && !req.completed) {
-    action = redirect(action, 302)
+    const status = action.location && action.location.status
+    action = redirect(action, status || 302)
 
     // HISTORY ENTRIES PUSH/REPLACE LOGIC:
     //
@@ -31,7 +31,7 @@ export default (getReq) => (action) => {
     //
     // - utils/isCommittedRedirect.js
     // - actions/redirect.js
-    // - middleware/createRouteAction.js -- look for call to `isCommittedRedirect`
+    // - middleware/transformAction.js -- look for call to `isCommittedRedirect`
     action.location.committed = req.tmp.committed || isRedirect(req.tmp.startAction)
 
     req.tmp.prev = req.action.location // if multiple redirects in one pass, the latest redirect becomes `prev`
@@ -48,7 +48,7 @@ export default (getReq) => (action) => {
     //
     // This way it goes through the pipeline as normal, and isn't immediately sent through
     // the rest of the redux middleware after `shouldTransition` returns `false`. The reason
-    // is because `shouldTransition` calls `islocationAction(action)` to determine whether
+    // is because `shouldTransition` calls `isTransformed(action)` to determine whether
     // the action already passed through the pipeline based on the presence of this key. The
     // value of this key will be re-built by the pipeline on next pass obviously :)
     delete action.location

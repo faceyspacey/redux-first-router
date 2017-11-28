@@ -1,5 +1,5 @@
-import call from './call'
-import composePromise from '../composePromise'
+import { call } from './index'
+import composePromise from '../core/composePromise'
 
 export default (api) => {
   const middlewares = [call('thunk'), call('onComplete')]

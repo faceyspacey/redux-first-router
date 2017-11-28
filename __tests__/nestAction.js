@@ -1,5 +1,5 @@
-import createSmartHistory from '../src/smart-history'
-import { nestAction } from '../src/middleware/createRouteAction/utils'
+import createSmartHistory from '../src/history'
+import { nestAction } from '../src/middleware/transformAction/utils'
 
 it('nestAction properly formats/nests action object', () => {
   const pathname = '/path'

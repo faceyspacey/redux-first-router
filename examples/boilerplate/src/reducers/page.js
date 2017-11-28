@@ -1,4 +1,4 @@
-import { NOT_FOUND } from 'redux-first-router'
+import { NOT_FOUND } from 'redux-first-router/types'
 
 export default (state = 'HOME', action = {}) => components[action.type] || state
 

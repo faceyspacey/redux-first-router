@@ -1,6 +1,6 @@
-import createSmartHistory from '../src/smart-history'
-import { createInitialState } from '../src/createLocationReducer'
-import { NOT_FOUND } from '../src/index'
+import createSmartHistory from '../src/history'
+import { createInitialState } from '../src/core/createLocationReducer'
+import { NOT_FOUND } from '../src/types'
 
 export default async (type, pathname) => {
   // eslint-disable-line import/prefer-default-export
@@ -13,9 +13,7 @@ export default async (type, pathname) => {
   const routesMap = {
     FIRST: { path: '/first' },
     SECOND: { path: '/second/:param' },
-    [NOT_FOUND]: {
-      path: '/not-found'
-    }
+    [NOT_FOUND]: { path: '/not-found' }
   }
 
   return {

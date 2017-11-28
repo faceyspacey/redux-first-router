@@ -1,5 +1,5 @@
 import { setupAll } from '../__test-helpers__/setup'
-import createHistory from '../src/smart-history'
+import createHistory from '../src/history'
 
 it('basename: memoryHistory can prefix paths with a basename', async () => {
   const { store, history } = await setupAll('/base-foo/first', {

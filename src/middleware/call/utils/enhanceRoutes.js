@@ -1,4 +1,4 @@
-import composePromise from '../../../composePromise'
+import composePromise from '../../../core/composePromise'
 import { complete } from './index'
 
 export default (name, routes) => {

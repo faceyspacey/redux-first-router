@@ -3,7 +3,7 @@ import setupThunk from '../__test-helpers__/setupThunk'
 import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 import tempMock from '../__test-helpers__/tempMock'
 
-import redirect from '../src/action-creators/redirect'
+import redirect from '../src/actions/redirect'
 
 it('middleware:callThunk global', async () => {
   const thunk = jest.fn(({ dispatch }) => {
@@ -33,9 +33,9 @@ it('middleware:callThunk route', async () => {
   expect(store.getState().location.type).toEqual('SECOND')
 })
 
-it('middleware:callThunk does NOT call thunk + change callback if isClientLoadSSR', async () => {
+it('middleware:callThunk does NOT call thunk + change callback if isHydrate', async () => {
   jest.resetModules()
-  jest.doMock('../src/utils/isClientLoadSSR', () => () => true)
+  jest.doMock('../src/utils/isHydrate', () => () => true)
   jest.doMock('../src/utils/isServer', () => () => false)
   const { setupAll } = require('../__test-helpers__/setup')
 
@@ -177,7 +177,7 @@ it('pathless routes do not break history changes from real route dispatches', as
 
 it('CLIENT SPA: await dispatch(firstRoute())', async () => {
   jest.resetModules()
-  jest.doMock('../src/utils/isClientLoadSSR', () => () => false)
+  jest.doMock('../src/utils/isHydrate', () => () => false)
   jest.doMock('../src/utils/isServer', () => () => false)
 
   const { setupAll } = require('../__test-helpers__/setup')
@@ -226,7 +226,7 @@ it('CLIENT SPA: await dispatch(firstRoute())', async () => {
 
 it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async () => {
   jest.resetModules()
-  jest.doMock('../src/utils/isClientLoadSSR', () => () => true)
+  jest.doMock('../src/utils/isHydrate', () => () => true)
   jest.doMock('../src/utils/isServer', () => () => false)
 
   const { setupAll } = require('../__test-helpers__/setup')
@@ -265,7 +265,7 @@ it('CLIENT /w SSR: await dispatch(firstRoute()) -- no thunks etc called', async 
 
 it('SERVER: await dispatch(firstRoute()) -- redirected route not dispatched', async () => {
   jest.resetModules()
-  jest.dontMock('../src/utils/isClientLoadSSR')
+  jest.dontMock('../src/utils/isHydrate')
   jest.doMock('../src/utils/isServer', () => () => true)
   const { setupAll } = require('../__test-helpers__/setup')
 

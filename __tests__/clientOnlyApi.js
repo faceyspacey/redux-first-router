@@ -1,6 +1,6 @@
 import { setupAll } from '../__test-helpers__/setup'
 import tempMock from '../__test-helpers__/tempMock'
-import * as h from '../src/action-creators/history'
+import * as h from '../src/actions/history'
 
 it('push: verify client-only `push` function calls `history.push()` using history from enclosed state', async () => {
   const { store, history } = await setupAll('/first')
@@ -19,7 +19,7 @@ it('push: verify client-only `push` function calls `history.push()` using histor
 it('replace: verify client-only `replace` function calls `history.redirect()` using history from enclosed state', async () => {
   const { store, history } = await setupAll('/first')
 
-  await store.dispatch(h.redirect('/second/bar'))
+  await store.dispatch(h.replace('/second/bar'))
   const { location } = store.getState()
 
   expect(location.type).toEqual('SECOND')

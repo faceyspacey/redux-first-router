@@ -1,6 +1,6 @@
 // @flow
 
-import actionToPath from '../../utils/actionToPath'
+import { actionToUrl } from '../../utils'
 import type { RoutesMap } from '../../flow-types'
 
 export type To = string | Array<string> | Object
@@ -17,7 +17,7 @@ export default (to?: ?To, routes: RoutesMap, basename: ?string): string => {
     const action = to
 
     try {
-      const path = actionToPath(action, routes)
+      const path = actionToUrl(action, routes)
       return basename ? basename + path : path
     }
     catch (e) {

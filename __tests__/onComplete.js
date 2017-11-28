@@ -1,6 +1,6 @@
 import { setupAll } from '../__test-helpers__/setup'
 import setupThunk from '../__test-helpers__/setupThunk'
-import redirect from '../src/action-creators/redirect'
+import redirect from '../src/actions/redirect'
 
 it('calls handler on route change -- global', async () => {
   const onComplete = jest.fn()

@@ -1,8 +1,7 @@
 import { setupAll } from '../__test-helpers__/setup'
 import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 import tempMock from '../__test-helpers__/tempMock'
-import doesRedirect from '../src/utils/doesRedirect'
-import redirect from '../src/action-creators/redirect'
+import { doesRedirect } from '../src/utils'
 
 it('calls beforeEnter handler on route change -- route', async () => {
   const beforeEnter = jest.fn()

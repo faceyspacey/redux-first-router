@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux'
 import reduxThunk from 'redux-thunk'
-import createRouter from '../src/createRouter'
+import { createRouter } from '../src'
 
 const setup = (
   path = '/',
@@ -23,6 +23,7 @@ const setup = (
   options.extra = { arg: 'extra-arg' }
 
   const tools = createRouter(routesMap, options)
+  tools.history = tools.rudy.history
 
   return { ...tools, routesMap }
 }

@@ -1,7 +1,6 @@
 import { setupAll } from '../__test-helpers__/setup'
-import notFound from '../src/action-creators/notFound'
-import { NOT_FOUND } from '../src/index'
-import redirect from '../src/action-creators/redirect'
+import { NOT_FOUND } from '../src/types'
+import { redirect, notFound } from '../src/actions'
 
 it('dispatches location-aware action, changes address bar + document.title', async () => {
   const { store, history } = await setupAll()

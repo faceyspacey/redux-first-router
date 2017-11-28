@@ -28,6 +28,7 @@ Object {
     },
     "scene": "",
     "search": "",
+    "status": 200,
     "url": "/path",
   },
   "meta": Object {

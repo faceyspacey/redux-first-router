@@ -1,7 +1,6 @@
-import setup, { defaultRoutes, log, me } from '../__test-helpers__/rudySetup'
-import { NOT_FOUND } from '../src'
-import createScene from '../src/createScene'
-import formatRoutes from '../src/utils/formatRoutes'
+import setup, { defaultRoutes, log } from '../__test-helpers__/rudySetup'
+import { createScene } from '../src'
+import { formatRoutesMap } from '../src/utils'
 
 test('createScene', async () => {
   const tools = setup(undefined, undefined, { scene: 'SCENE', logExports: true })
@@ -76,7 +75,7 @@ test('NOT_FOUND', async () => {
 test('double createScene', async () => {
   const { routes: r } = createScene(defaultRoutes, { scene: 'scene' })
   const { types, actions, routes: r2, exportString } = createScene(r, { scene: 'double', logExports: true })
-  const routes = formatRoutes(r2)
+  const routes = formatRoutesMap(r2)
 
   const custom = { createScene: false, routesMap: routes }
   const { store, firstRoute, location } = setup('/first', undefined, custom)

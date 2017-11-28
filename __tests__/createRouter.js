@@ -1,5 +1,5 @@
 import setup, { log } from '../__test-helpers__/rudySetup'
-import { NOT_FOUND } from '../src'
+import { NOT_FOUND } from '../src/types'
 
 test('store.dispatch', async () => {
   const { store, firstRoute, history } = setup()

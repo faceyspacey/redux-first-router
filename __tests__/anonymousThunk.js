@@ -1,7 +1,7 @@
 import { setupAll } from '../__test-helpers__/setup'
 
 it('dispatching thunk passes through anonymousThunk middleware', async () => {
-  const { store, history } = await setupAll('/first')
+  const { store, rudy: { history }  } = await setupAll('/first')
   const thunk = jest.fn(({ dispatch }) => {
     return dispatch({ type: 'THIRD' })
   })
@@ -14,7 +14,7 @@ it('dispatching thunk passes through anonymousThunk middleware', async () => {
 })
 
 it('dispatching thunk which returns action is automatically dispatched', async () => {
-  const { store, history } = await setupAll('/first')
+  const { store, rudy: { history }  } = await setupAll('/first')
   const thunk = jest.fn(() => {
     return { type: 'THIRD' }
   })

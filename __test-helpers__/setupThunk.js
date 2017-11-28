@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import createRouter from '../src/createRouter'
+import createRouter from '../src/core/createRouter'
 
 export default async (path = '/', thunkArg, opts, dispatchFirstRoute = true) => {
   const routesMap = {
@@ -10,7 +10,7 @@ export default async (path = '/', thunkArg, opts, dispatchFirstRoute = true) => 
 
   const options = { extra: { arg: 'extra-arg' }, initialEntries: path, ...opts }
 
-  const { middleware, reducer, history, firstRoute } = createRouter(
+  const { middleware, reducer, rudy, firstRoute } = createRouter(
     routesMap,
     options
   )
@@ -24,5 +24,5 @@ export default async (path = '/', thunkArg, opts, dispatchFirstRoute = true) => 
 
   if (dispatchFirstRoute) await store.dispatch(firstRoute())
 
-  return { store, firstRoute, history }
+  return { store, firstRoute, history: rudy.history }
 }

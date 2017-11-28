@@ -1,7 +1,7 @@
 // @flow
 
-import pathToAction from '../../utils/pathToAction'
-import redirect from '../../action-creators/redirect'
+import { urlToAction } from '../../utils'
+import { redirect } from '../../actions'
 import type { RoutesMap } from '../../index'
 import type { To } from './toUrl'
 
@@ -38,7 +38,7 @@ export default (
     e.button === 0 &&
     !isModified(e)
   ) {
-    let action = isAction(to) ? to : pathToAction(url, routes)
+    let action = isAction(to) ? to : urlToAction(url, routes)
     action = dispatchRedirect ? redirect(action) : action
     return dispatch(action)
   }

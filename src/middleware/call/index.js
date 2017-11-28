@@ -4,11 +4,11 @@ import {
   isGlobalSkip,
   isAutoDispatch,
   complete,
-  onError
+  onError,
+  isFalse
 } from './utils'
 
-const noOp = () => Promise.resolve()
-const isFalse = (a, b) => a === false || b === false
+import { noOp } from '../../utils'
 
 export default (name, config = {}) => (api) => {
   enhanceRoutes(name, api.routes)

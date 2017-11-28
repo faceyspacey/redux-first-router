@@ -7,8 +7,8 @@ export default (action: Action, req) =>
 
 // HISTORY ENTRIES PUSH/REPLACE LOGIC:
 //
-// `isCommittedRedirect` if `true` triggers the `createRouteAction` middleware to
-// do `history.redirect` (resulting in a replace on the entries array) instead of `history.push`.
+// `isCommittedRedirect` if `true` triggers the `transformAction` middleware to
+// do `history.replace` (resulting in a replace on the entries array) instead of `history.push`.
 //
 // This will happen in 2 cases:
 // A) user dispatched a route action in the middleware pipeline after `enter` (`req.tmp.committed`)

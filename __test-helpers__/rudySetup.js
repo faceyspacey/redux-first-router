@@ -1,8 +1,7 @@
-import { applyMiddleware, createStore, compose, combineReducers } from 'redux'
+import { applyMiddleware, createStore, combineReducers } from 'redux'
 import reduxThunk from 'redux-thunk'
-import createRouter from '../src/createRouter'
-import createScene from '../src/createScene'
-import { NOT_FOUND } from '../src/index'
+import { createRouter, createScene } from '../src'
+import { NOT_FOUND } from '../src/types'
 
 import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 
@@ -19,7 +18,7 @@ export default (path = '/first', options = {}, custom = {}) => {
     ? createScene(routesMap, custom)
     : { routes: custom.routesMap }
 
-  const { middleware, reducer, firstRoute, history } = createRouter(
+  const { middleware, reducer, firstRoute, rudy } = createRouter(
     routes,
     options
   )
@@ -32,7 +31,7 @@ export default (path = '/first', options = {}, custom = {}) => {
   return {
     store,
     firstRoute,
-    history,
+    history: rudy.history,
     types,
     actions,
     exportString,

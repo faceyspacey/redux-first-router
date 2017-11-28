@@ -5,15 +5,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 
-import { matchUrl } from '../utils/matchUrl'
-import { stripBasename, parsePath } from '../smart-history/utils/path'
+import { matchUrl } from '../utils'
+import { stripBasename, parsePath } from '../history/utils'
 
-import toUrl from './utils/toUrl'
-import handlePress from './utils/handlePress'
-import preventDefault from './utils/preventDefault'
-
-import type { To } from './utils/toUrl'
-import type { OnClick } from './utils/handlePress'
+import { toUrl, handlePress, preventDefault } from './utils'
+import type { To, OnClick } from './utils'
 
 type OwnProps = {
   to: To,

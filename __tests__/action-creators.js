@@ -1,6 +1,12 @@
-import redirect from '../src/action-creators/redirect'
-import addRoutes from '../src/action-creators/addRoutes'
-import * as h from '../src/action-creators/history'
+import {
+  redirect,
+  addRoutes,
+  setState,
+  back,
+  next,
+  jump,
+  reset
+} from '../src/actions'
 
 import { setupAll } from '../__test-helpers__/setup'
 
@@ -41,7 +47,7 @@ it('setState', async () => {
 
   const { store, history } = await setupAll('/first', undefined, custom)
 
-  const action = h.setState({ foo: 'bar' })
+  const action = setState({ foo: 'bar' })
   await store.dispatch(action)
 
   expect(history.location.state).toEqual({ foo: 'bar' })
@@ -57,7 +63,7 @@ it('setState for another route', async () => {
   const { store, history } = await setupAll('/first')
   await store.dispatch({ type: 'THIRD' })
 
-  const action = h.setState({ foo: 'bar' }, -1)
+  const action = setState({ foo: 'bar' }, -1)
   await store.dispatch(action)
 
   const { location } = store.getState()
@@ -75,7 +81,7 @@ it('reset', async () => {
   const { store, history } = await setupAll('/first')
   console.log(store.getState().location)
   const entries = ['/second/foo', '/first', '/third', '/first']
-  const action = h.reset(entries)
+  const action = reset(entries)
   await store.dispatch(action)
 
   expect(history.entries.length).toEqual(4)
@@ -89,14 +95,14 @@ it('back/next/jump', async () => {
   const { store, history } = await setupAll('/first')
   await store.dispatch({ type: 'THIRD' })
 
-  let action = h.back((prevState) => ({ foo: 'bar' })) // optionally can be a function like in components
+  let action = back((prevState) => ({ foo: 'bar' })) // optionally can be a function like in components
   await store.dispatch(action)
 
   expect(history.location.state).toEqual({ foo: 'bar' })
   expect(store.getState().location.kind).toEqual('back')
   expect(store.getState()).toMatchSnapshot()
 
-  action = h.next((prevState) => ({ baz: 'bla' })) // optionally can be a function like in components
+  action = next((prevState) => ({ baz: 'bla' })) // optionally can be a function like in components
   await store.dispatch(action)
 
   expect(history.location.state).toEqual({ baz: 'bla' })
@@ -105,7 +111,7 @@ it('back/next/jump', async () => {
 
   await store.dispatch({ type: 'SECOND', payload: { param: 'yo' } })
 
-  action = h.jump(-2, (prevState) => ({ uno: 1 })) // optionally can be a function like in components
+  action = jump(-2, (prevState) => ({ uno: 1 })) // optionally can be a function like in components
   await store.dispatch(action)
 
   expect(store.getState().location.type).toEqual('FIRST')
@@ -113,7 +119,7 @@ it('back/next/jump', async () => {
   expect(store.getState().location.kind).toEqual('back')
   expect(store.getState()).toMatchSnapshot()
 
-  action = h.jump(2, (prevState) => ({ dos: 2 })) // optionally can be a function like in components
+  action = jump(2, (prevState) => ({ dos: 2 })) // optionally can be a function like in components
   await store.dispatch(action)
 
   expect(store.getState().location.type).toEqual('SECOND')
@@ -123,7 +129,7 @@ it('back/next/jump', async () => {
 
   await store.dispatch(({ history }) => {
     if (history.canJump('345678')) {
-      return h.jump('345678', (prev) => ({ uno: prev.foo.length + 1 }))
+      return jump('345678', (prev) => ({ uno: prev.foo.length + 1 }))
     }
   })
 

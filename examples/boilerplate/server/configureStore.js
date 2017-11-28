@@ -1,16 +1,13 @@
-import { NOT_FOUND, doesRedirect } from 'redux-first-router'
+import { doesRedirect } from 'redux-first-router/utils'
 import configureStore from '../src/configureStore'
 
 export default async (req, res) => {
   const { store, firstRoute } = configureStore(undefined, req.path)
+  const result = await store.dispatch(firstRoute())
 
-  const result = await store.dispatch(firstRoute()) // THE PAYOFF BABY!
+  if (doesRedirect(result, res)) return false
 
-  const cb = (status, url) => res.redirect(status, url)
-  if (doesRedirect(result, cb)) return false
-
-  const { location: { type } } = store.getState()
-  const status = type === NOT_FOUND ? 404 : 200
+  const { status } = store.getState().location
   res.status(status)
 
   return store

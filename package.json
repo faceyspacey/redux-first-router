@@ -10,7 +10,7 @@
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "clean": "rimraf dist && rimraf coverage && rimraf examples/boilerplate/buildClient && imraf examples/boilerplate/buildServer && rimraf examples/demo/buildClient && imraf examples/demo/buildServer",
+    "clean": "rimraf dist && rimraf coverage && rimraf examples/boilerplate/buildClient && rimraf examples/boilerplate/buildServer && rimraf examples/demo/buildClient && rimraf examples/demo/buildServer",
     "test": "jest",
     "lint": "eslint --fix ./",
     "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",

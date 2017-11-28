@@ -1,4 +1,4 @@
-import { NOT_FOUND } from '../../src/index'
+import { NOT_FOUND } from '../../src/types'
 import createLink, { event } from '../../__test-helpers__/createLink'
 
 test('ON_CLICK: dispatches location-aware action', async () => {
