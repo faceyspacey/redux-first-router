@@ -7,7 +7,7 @@ import createRequest from './createRequest'
 
 import createSmartHistory from '../history'
 
-import { createSelector, formatRoutesMap, shouldTransition } from '../utils'
+import { createSelector, formatRoutes, shouldTransition } from '../utils'
 
 import {
   serverRedirect,
@@ -35,14 +35,14 @@ export default (
     changePageTitle,
     call('onLeave', { prev: true }),
     call('onEnter'),
-    call('thunk'),
+    call('thunk', { cache: true }),
     call('onComplete')
   ]
 ) => {
   const {
     location,
     title,
-    formatRoutes = formatRoutesMap,
+    formatRoute,
     createHistory = createSmartHistory,
     createReducer = createLocationReducer,
     compose = composePromise,
@@ -51,7 +51,7 @@ export default (
   options.shouldTransition = options.shouldTransition || shouldTransition
   options.createRequest = options.createRequest || createRequest
 
-  const routes = formatRoutes(routesInput)
+  const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createHistory(options)

@@ -3,7 +3,7 @@
 import { ADD_ROUTES } from '../types'
 import type { RoutesMap } from '../flow-types'
 
-export default (routes: RoutesMap) => ({
+export default (routes: RoutesMap, formatRoute: ?Function) => ({
   type: ADD_ROUTES,
-  payload: { routes }
+  payload: { routes, formatRoute }
 })

@@ -92,9 +92,9 @@ const LinkInner = (props) => {
     <Component
       onClick={(!down && handler) || preventDefault}
       href={hasHref ? url : undefined}
-      target={target}
       onMouseDown={down ? handler : undefined}
       onTouchStart={down ? handler : undefined}
+      target={target}
       {...p}
       {...navLinkProps(props)}
     >

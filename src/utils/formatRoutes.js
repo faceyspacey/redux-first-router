@@ -3,21 +3,32 @@ import { NOT_FOUND } from '../types'
 import { redirect } from '../actions'
 import type { RoutesMap, RoutesMapInput } from '../flow-types'
 
-export default (routes: RoutesMapInput, isAddRoutes: boolean = false): RoutesMap => {
+export default (
+  routes: RoutesMapInput,
+  formatRoute: ?Function,
+  isAddRoutes: boolean = false
+): RoutesMap => {
   if (!isAddRoutes) routes[NOT_FOUND] = routes[NOT_FOUND] || {}
 
   for (const type in routes) {
     let route = routes[type]
 
+    if (typeof route === 'string') routes[type] = { path: route }
+
+    if (formatRoute) {
+      route = routes[type] = formatRoute(routes[type], type, routes)
+    }
+
     if (typeof route === 'function') routes[type] = { thunk: route }
-    else if (typeof route === 'string') routes[type] = { path: route }
 
     route = routes[type]
     route.type = type
     if (route.redirect) createRedirect(route, routes)
   }
 
-  if (!isAddRoutes) routes[NOT_FOUND].path = routes[NOT_FOUND].path || '/not-found'
+  if (!isAddRoutes) {
+    routes[NOT_FOUND].path = routes[NOT_FOUND].path || '/not-found'
+  }
 
   return routes
 }

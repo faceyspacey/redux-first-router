@@ -351,7 +351,7 @@ exports[`supports custom HTML tag name 1`] = `
 <div
   aria-current={false}
   className=""
-  href="/second"
+  href={undefined}
   onClick={[Function]}
   onMouseDown={undefined}
   onTouchStart={undefined}
@@ -364,7 +364,7 @@ exports[`supports custom HTML tag name in active mode 1`] = `
 <div
   aria-current="true"
   className="active-foo"
-  href="/first"
+  href={undefined}
   onClick={[Function]}
   onMouseDown={undefined}
   onTouchStart={undefined}

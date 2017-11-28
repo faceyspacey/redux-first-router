@@ -126,7 +126,7 @@ exports[`converts invalid href to "#" for path 1`] = `
 
 exports[`supports custom HTML tag name 1`] = `
 <div
-  href="somewhere"
+  href={undefined}
   onClick={[Function]}
   onMouseDown={undefined}
   onTouchStart={undefined}
