@@ -20,7 +20,7 @@ test('createScene', async () => {
 
   action = actions.fourth('baz')
   res = await store.dispatch(action)
-  console.log(action)
+  console.log(res)
   expect(store.getState().location.type).toEqual('SCENE/FOURTH')
   expect(res).toEqual({ type: 'SCENE/FOURTH_COMPLETE', payload: 'onComplete' })
 
@@ -48,6 +48,24 @@ test('createScene', async () => {
   expect(res.params).toEqual({ foo: 'bar' })
 
   log(store)
+
+  // test caching
+  res = await store.dispatch({ type: 'FOURTH' })
+  expect(res.type).toEqual('FOURTH') // callbacks won't be called because of thunk caching (type should be FOURTH_COMPLETE)
+
+  // test cache clearing
+  await store.dispatch(req => {
+    req.clearCache((cache, api, opts) => {
+      expect(Object.keys(cache).length).toEqual(4)
+    })
+
+    const action = actions.second()
+    req.clearCache(action)
+
+    req.clearCache((cache, api, opts) => {
+      expect(Object.keys(cache).length).toEqual(3)
+    })
+  })
 
   expect(types).toMatchSnapshot()
   expect(actions).toMatchSnapshot()

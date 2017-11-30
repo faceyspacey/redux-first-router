@@ -1,5 +1,7 @@
 import 'babel-polyfill'
+import path from 'path'
 import express from 'express'
+import favicon from 'serve-favicon'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
@@ -11,6 +13,8 @@ const DEV = process.env.NODE_ENV === 'development'
 const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
 const app = express()
+
+app.use(favicon(path.resolve(__dirname, '../public', 'favicon.ico')))
 
 // UNIVERSAL HMR + STATS HANDLING GOODNESS:
 

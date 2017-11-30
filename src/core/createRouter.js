@@ -3,11 +3,14 @@ import type { RoutesMapInput, Options, Store, Dispatch } from '../flow-types'
 
 import composePromise from './composePromise'
 import createLocationReducer from './createLocationReducer'
-import createRequest from './createRequest'
-
 import createSmartHistory from '../history'
 
-import { createSelector, formatRoutes, shouldTransition } from '../utils'
+import {
+  createSelector,
+  formatRoutes,
+  shouldTransition,
+  createRequest
+} from '../utils'
 
 import {
   serverRedirect,
@@ -81,7 +84,6 @@ export default (
         .catch(error => {
           req.error = error
           req.errorType = `${req.action.type}_ERROR`
-          // console.log('ERROR!!', error.stack.replace(new RegExp('/Users/jamesgillmore/.vscode/extensions/WallabyJs.wallaby-vscode-1.0.64/projects/2c9e7f1cfb906e5d/instrumented', 'g'), ''))
           return onError(req)
         })
         .then(res => {

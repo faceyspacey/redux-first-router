@@ -28,6 +28,7 @@
     "react-universal-component": "^2.7.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "serve-favicon": "^2.4.5",
     "webpack-flush-chunks": "^1.2.2"
   },
   "devDependencies": {

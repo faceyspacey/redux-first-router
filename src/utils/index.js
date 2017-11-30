@@ -8,6 +8,7 @@ export { default as isTransformed } from './isTransformed'
 
 export { default as createDispatch } from './createDispatch'
 export { default as createSelector } from './createSelector'
+export { default as createRequest } from './createRequest'
 
 export { default as actionToUrl } from './actionToUrl'
 export { default as urlToAction } from './urlToAction'

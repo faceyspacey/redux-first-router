@@ -5,7 +5,8 @@ import {
   isAutoDispatch,
   complete,
   onError,
-  isFalse
+  isFalse,
+  createCache
 } from './utils'
 
 import { noOp, isAction } from '../../utils'
@@ -13,8 +14,15 @@ import { noOp, isAction } from '../../utils'
 export default (name, config = {}) => (api) => {
   enhanceRoutes(name, api.routes)
 
+  api.options.shouldCall = api.options.shouldCall || defaultShouldCall
+
+  if (config.cache) {
+    api.clearCache = createCache(api, name)
+  }
+
   return (req, next = noOp) => {
-    const shouldCall = req.options.shouldCall || defaultShouldCall
+    const { shouldCall } = req.options
+
     if (!shouldCall(req, name, config)) return next()
 
     const { prevRoute, dispatch, options: opts } = req

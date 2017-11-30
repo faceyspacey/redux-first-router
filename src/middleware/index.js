@@ -1,6 +1,6 @@
 export { default as transformAction } from './transformAction'
-export { default as call } from './call'
 export { default as enter } from './enter'
+export { default as call } from './call'
 
 export { default as pathlessThunk } from './pathlessThunk'
 export { default as anonymousThunk } from './anonymousThunk'
