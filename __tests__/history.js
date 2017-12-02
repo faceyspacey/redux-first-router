@@ -3,7 +3,7 @@ import createHistory from '../src/history'
 
 it('basename: memoryHistory can prefix paths with a basename', async () => {
   const { store, history } = await setupAll('/base-foo/first', {
-    basename: '/base-foo'
+    basenames: ['/base-foo']
   })
   expect(history.location.pathname).toEqual('/first')
 

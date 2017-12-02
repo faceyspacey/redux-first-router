@@ -16,6 +16,7 @@ export {
   stripSlashes,
   hasBasename,
   stripBasename,
+  findBasename,
   parsePath,
   createPath,
   transformEntry

@@ -52,15 +52,14 @@ import {
 
 export default class BrowserHistory extends History {
   constructor(opts = {}) {
-    const { basename: bn } = opts
-    const basename = bn ? stripSlashes(bn) : ''
-    opts.basename = basename
+    const { basenames: bns = [] } = opts
+    const basenames = bns.map(bn => stripSlashes(bn))
 
     const { id, ...initialHistoryState } = getInitialHistoryState()
-    const defaultLocation = getWindowLocation(initialHistoryState, basename)
+    const defaultLocation = getWindowLocation(initialHistoryState, basenames)
     const { index, entries } = restoreHistory(defaultLocation)
 
-    super({ index, entries, basename, saveHistory })
+    super({ index, entries, basenames, saveHistory })
 
     this._id = id
     this._setupPopHandling()
@@ -90,11 +89,13 @@ export default class BrowserHistory extends History {
 
     const onPopState = event => {
       if (isExtraneousPopstateEvent(event)) return // Ignore extraneous popstate events in WebKit.
-      handlePop(getWindowLocation(event.state, this.basename))
+      const loc = getWindowLocation(event.state, this.basenames)
+      console.log("HELP", event.state, this.basenames, loc)
+      handlePop(getWindowLocation(event.state, this.basenames))
     }
 
     const onHashChange = () => {
-      handlePop(getWindowLocation(getHistoryState(), this.basename))
+      handlePop(getWindowLocation(getHistoryState(), this.basenames))
     }
 
     const funcs = createPopListenerFuncs(onPopState, onHashChange)

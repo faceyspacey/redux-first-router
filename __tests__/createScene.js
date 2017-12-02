@@ -149,8 +149,10 @@ test('double createScene', async () => {
 
   expect(location().type).toEqual('double/scene/@@rudy/NOT_FOUND') // check that previous actions didn't change routes
 
+  store.dispatch(({ clearCache }) => clearCache()) // clear cache so THIRD thunk is called again
   action = actions.third.customCreator('bar')
   res = await store.dispatch(action)
+
   expect(res.type).toEqual(types.THIRD_COMPLETE)
   expect(res.type).toEqual('double/scene/THIRD_COMPLETE')
   expect(location().type).toEqual('double/scene/THIRD')

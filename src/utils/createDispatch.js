@@ -34,7 +34,10 @@ export default (getReq) => (action) => {
     // - middleware/transformAction.js -- look for call to `isCommittedRedirect`
     action.location.committed = req.tmp.committed || isRedirect(req.tmp.startAction)
 
-    req.tmp.prev = req.action.location // if multiple redirects in one pass, the latest redirect becomes `prev`
+    // if multiple redirects in one pass, the last redirect becomes `prev`
+    const { type, params, query, state, hash, location } = req.action
+    req.tmp.prev = { type, params, query, state, hash, ...location }
+
     return req.redirect = store.dispatch(action)    // assign redirect action to `req.redirect` so `composePromise` can properly return the new action
   }
   else if (req.completed) {

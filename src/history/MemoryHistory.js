@@ -34,25 +34,20 @@ export default class MemoryHistory extends History {
     const {
       initialEntries: ents = ['/'],
       initialIndex = 0,
-      basename: bn,
+      basenames: bns = [],
       forceRefresh = false,
-      useSessionStorage = false,
-      hasBrowserHistory = false
+      useSessionStorage = false
     } = opts
 
-    const basename = bn ? stripSlashes(bn) : ''
-    opts.basename = basename
-
+    const basenames = bns.map(bn => stripSlashes(bn))
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
-
     const { index, entries, saveHistory } = !useSessionStorage
-      ? create(initialIndex, initialEntries, basename) // this happens 99% of the time
-      : restore(initialEntries, basename) // only used when in browser environment
+      ? create(initialIndex, initialEntries, basenames) // this happens 99% of the time
+      : restore(initialEntries, basenames) // only used when in browser environment (as a fallback)
 
-    super({ index, entries, basename, saveHistory })
+    super({ index, entries, basenames, saveHistory })
 
     this._forceRefresh = forceRefresh
-    this._hasBrowserHistory = hasBrowserHistory
   }
 
   _pushState(location) {
@@ -60,15 +55,8 @@ export default class MemoryHistory extends History {
   }
 
   _replaceState(location) {
-    if (typeof window === 'undefined') return Promise.resolve()
-
-    const href = this._createHref(location)
-
-    if (this._hasBrowserHistory) {
-      const { key, state } = location
-      window.history.replaceState({ key, state }, null, href)
-    }
-    else if (this._forceRefresh) {
+    if (this._forceRefresh) {
+      const href = this._createHref(location)
       window.location.href = href
     }
 
@@ -84,9 +72,9 @@ export default class MemoryHistory extends History {
 
 // TRANSFORM ENTRIES ARRAY INTO PROPER LOCATION OBJECTS + INDEX
 
-const create = (initialIndex, initialEntries, basename, createKey) => {
+const create = (initialIndex, initialEntries, basenames) => {
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
-  const entries = initialEntries.map(e => transformEntry(e, basename, createKey))
+  const entries = initialEntries.map(e => transformEntry(e, basenames))
   return { index, entries }
 }
 
@@ -95,9 +83,9 @@ const create = (initialIndex, initialEntries, basename, createKey) => {
 // as solid as possible in older browsers. Basically, IE9 and IE8 won't have `history`
 // but will have `sessionStorage`, so why not give them the ability to restore history :)
 
-const restore = (initialEntries, basename, createKey) => {
+const restore = (initialEntries, basenames) => {
   const entry = initialEntries[0]
-  const defaultLocation = transformEntry(entry, basename, createKey)
+  const defaultLocation = transformEntry(entry, basenames)
   const { index, entries } = restoreHistory(defaultLocation) // impure
   return { index, entries, saveHistory }
 }

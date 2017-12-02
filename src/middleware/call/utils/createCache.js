@@ -3,8 +3,8 @@ import { createLocation } from '../../../history/utils'
 
 const defaultCreateCacheKey = (action, name) => {
   const { type, location } = action
-  const { pathname, search } = location
-  return `${name}|${type}|${pathname}|${search}` // don't cache using URL hash, as in most apps its the same route
+  const { basename, pathname, search } = location
+  return `${name}|${type}|${basename}|${pathname}|${search}` // don't cache using URL hash, as in most apps its the same route
 }
 
 const callbacks = []
@@ -38,7 +38,10 @@ export default (api, name) => {
   }
 
   const clearCache = (action, opts = {}) => {
-    if (typeof action === 'function') {     // allow user to customize cache clearing algo
+    if (!action) {
+      cache = {}
+    }
+    else if (typeof action === 'function') {     // allow user to customize cache clearing algo
       cache = action(cache, api, opts) || cache
     }
     else if (typeof action === 'string') {  // delete all cached items for TYPE or other string

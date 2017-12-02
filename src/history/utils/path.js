@@ -8,12 +8,6 @@ const stripTrailingSlash = path =>
 
 export const stripSlashes = path => stripTrailingSlash(addLeadingSlash(path))
 
-export const hasBasename = (path, prefix) =>
-  new RegExp(`^${prefix}(\\/|\\?|#|$)`, 'i').test(path)
-
-export const stripBasename = (path, prefix) =>
-  hasBasename(path, prefix) ? path.substr(prefix.length) : path
-
 export const parsePath = (path) => {
   let pathname = path || '/'
   let search = ''
@@ -50,17 +44,30 @@ export const createPath = location => {
   return path
 }
 
-export const transformEntry = (e, basename) =>
-  createLocation(stripPath(e, basename), {}, e ? e.key : createKey())
+export const transformEntry = (e, bns) => {
+  const { entry, basename } = stripPath(e, bns)
+  const state = entry.state || {}
+  const key = e ? e.key : createKey()
+  return createLocation(entry, state, key, null, basename)
+}
 
-const stripPath = (path, basename) => {
+const stripPath = (path, basenames) => {
   if (typeof path === 'string') {
-    return basename ? stripBasename(path, basename) : path
+    const basename = findBasename(path, basenames)
+    const entry = basename ? stripBasename(path, basename) : path
+    return { entry, basename }
   }
 
-  // path is entry object:
-  const entry = { ...path }
-  entry.path = basename ? stripBasename(entry.path, basename) : entry.path
-  entry.url = basename ? stripBasename(entry.url, basename) : entry.url
-  return entry
+  const entry = path
+  return { entry, basename: entry.basename }
+}
+
+export const hasBasename = (path, prefix) =>
+  new RegExp(`^${prefix}(\\/|\\?|#|$)`, 'i').test(path)
+
+export const stripBasename = (path, bn) =>
+  hasBasename(path, bn) ? path.substr(bn.length) : path
+
+export const findBasename = (path, bns = []) => {
+  return bns.find(bn => path.indexOf(bn) === 0)
 }

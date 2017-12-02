@@ -1,20 +1,18 @@
 // @flow
 import qs from 'query-string'
 import { matchUrl } from './index'
-import { stripBasename, parsePath } from '../history/utils'
+import { parsePath } from '../history/utils'
 import { notFound } from '../actions'
 
 import type { RoutesMap, ReceivedAction } from '../flow-types'
 
 export default (
   loc: Object | string,
-  routes: RoutesMap,
-  basename: string = ''
+  routes: RoutesMap
 ): ReceivedAction => {
   const { url, state } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
   const l = parsePath(url)
-  l.pathname = basename ? stripBasename(l.pathname, basename) : l.pathname
 
   for (let i = 0; i < types.length; i++) {
     const type = types[i]

@@ -19,38 +19,35 @@ export default (api) => async (req, next) => {
     routes,
     action,
     history,
-    getLocation,
-    options: { basename: bn }
+    getLocation
   } = req
 
   if (action.type !== UPDATE_HISTORY && !route.path) return next() // only create route actions if from history or routes with paths
 
   const state = getLocation()
-  const basename = state.basename || bn
   const prev = state.kind === 'init' ? state.prev : state
 
   try {
     if (action.type === UPDATE_HISTORY) {
       const { location } = action.nextHistory
-      // const basename = location.basename
-      const act = urlToAction(location, routes, basename)
-      req = historyAction(req, act, prev, basename)
+      const act = urlToAction(location, routes)
+      req = historyAction(req, act, prev)
     }
     else if (!isNotFound(action)) {
       const url = actionToUrl(action, routes)
-      req = reduxAction(req, url, action, prev, history, basename)
+      req = reduxAction(req, url, action, prev, history)
     }
     else {
       const { type, url } = createNotFoundRoute(req, prev)
       action.type = type
-      req = reduxAction(req, url, action, prev, history, basename)
+      req = reduxAction(req, url, action, prev, history)
     }
   }
   catch (e) {
     const { type, url } = createNotFoundRoute(req, prev)
     const params = (action && action.params) || {}
     const act = { ...action, type, params }
-    req = reduxAction(req, url, act, prev, history, basename)
+    req = reduxAction(req, url, act, prev, history)
   }
 
   if (isDoubleDispatch(req, state)) return req.action

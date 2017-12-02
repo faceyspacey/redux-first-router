@@ -1,8 +1,8 @@
 import { typeToScene, isNotFound } from '../../../utils'
 
-export default (action, { prev: p, ...prev }, history, basename) => {
+export default (action, { prev: p, ...prev }, history) => {
   const { kind, entries, index, length, location } = history
-  const { url, pathname, search } = location
+  const { url, pathname, search, basename } = location
   const { type, params = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
   const status = kind === 'redirect'

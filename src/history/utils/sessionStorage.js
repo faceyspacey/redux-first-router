@@ -42,8 +42,8 @@ const getSetItem = (key, val) => {
 // PRIMARY FACADE METHODS:
 
 // Below is the facade around both `sessionStorage` and our `history-storage` fallback.
-// essentially the idea is that if there is no `sessionStorage`, we maintain the entire
-// storage object on each and every history entry's `state`. I.e. `history.state` on
+// Essentially the idea is that if there is no `sessionStorage`, we maintain the entire
+// storage object on EACH AND EVERY history entry's `state`. I.e. `history.state` on
 // every page will have the `index` and `entries` array. That way when browsers disable
 // cookies/sessionStorage, we can still grab the data we need off off of history state :)
 //
@@ -54,7 +54,13 @@ const getSetItem = (key, val) => {
 
 // called every time the history entries or index changes
 export const saveHistory = ({ index, entries }) => {
-  entries = entries.map(e => ({ url: e.url, key: e.key, state: e.state }))
+  entries = entries.map(e => ({
+    url: e.url,
+    key: e.key,
+    state: e.state,
+    basename: e.basename
+  }))
+
   const history = { index, entries }
 
   // here's the key aspect of the fallback. essentially we keep updating history state
@@ -62,6 +68,7 @@ export const saveHistory = ({ index, entries }) => {
   if (!hasSessionStorage()) {
     const state = getHistoryState()
     const newState = { ...state, history }
+
     window.history.replaceState(newState, null, window.location.href)
     return
   }
@@ -71,8 +78,8 @@ export const saveHistory = ({ index, entries }) => {
 
 // called on startup
 export const restoreHistory = defaultLocation => {
-  const { url, key, state } = defaultLocation // used if first time visiting site during session
-  const defaultHistory = { index: 0, entries: [{ url, key, state }] }
+  const { url, key, state, basename } = defaultLocation // used if first time visiting site during session
+  const defaultHistory = { index: 0, entries: [{ url, key, state, basename }] }
 
   if (!hasSessionStorage()) {
     const state = getHistoryState()

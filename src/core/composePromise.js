@@ -17,7 +17,7 @@ export default (middlewares, curryArg, handleRedirects = false) => {
       }
 
       index = i
-      let fn = pipeline[i]
+      const fn = pipeline[i]
 
       if (!fn) return Promise.resolve()
 

@@ -4,9 +4,10 @@ exports[`nestAction properly formats/nests action object 1`] = `
 Object {
   "hash": "",
   "location": Object {
-    "basename": undefined,
+    "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/path",

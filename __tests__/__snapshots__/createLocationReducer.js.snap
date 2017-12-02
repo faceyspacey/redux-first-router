@@ -4,6 +4,7 @@ exports[`createLocationReducer() - maintains address bar pathname state and curr
 Object {
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/first",

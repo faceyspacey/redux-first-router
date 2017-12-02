@@ -159,7 +159,7 @@ it('converts href as non-matched action object to "#" for path', async () => {
   const action = { type: 'MISSED' }
   const { tree, store } = await createLink({ to: action }) /*? $.tree */
 
-  expect(tree.props.href).toEqual('#')
+  expect(tree.props.href).toEqual('/#')
   expect(tree).toMatchSnapshot()
 
   await tree.props.onClick(event)
@@ -171,7 +171,7 @@ it('converts href as non-matched action object to "#" for path', async () => {
 it('converts invalid href to "#" for path', async () => {
   const { tree, store } = await createLink({ to: '' }) /*? $.tree */
 
-  expect(tree.props.href).toEqual('#')
+  expect(tree.props.href).toEqual('/#')
   expect(tree).toMatchSnapshot()
 
   await tree.props.onClick(event)
@@ -199,15 +199,20 @@ it('supports custom HTML tag name which is still a link', async () => {
 })
 
 test('with basename options generates url with basename', async () => {
-  const options = { basename: '/base-foo' }
+  const options = { basenames: ['/base-foo'] }
   const { tree, store } = await createLink(
     {
       to: '/first',
       children: 'CLICK ME'
     },
-    '/',
+    '/base-foo/third', // basename will be automatically disovered based on initial entry's path and the basenames array
     options
   )
 
   expect(tree.props.href).toEqual('/base-foo/first')
+  await tree.props.onClick(event)
+
+  expect(store.getState().location.type).toEqual('FIRST')
+  expect(store.getState().location.basename).toEqual('/base-foo')
+  expect(store.getState().location).toMatchSnapshot()
 })

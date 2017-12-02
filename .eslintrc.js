@@ -74,6 +74,7 @@ module.exports = {
     'space-before-function-paren': 0,
     'guard-for-in': 0,
     'no-restricted-syntax': 0,
+    'class-methods-use-this': 0,
     'object-curly-newline': [2, { "multiline": true }],
     semi: [2, 'never'],
     'no-multi-spaces': [2, { ignoreEOLComments: true }],

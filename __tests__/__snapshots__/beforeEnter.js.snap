@@ -5,6 +5,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/first",
@@ -66,6 +67,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/first",
@@ -74,6 +76,7 @@ Object {
       "url": "/first",
     },
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/third",
@@ -93,6 +96,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/first",
@@ -101,6 +105,7 @@ Object {
         "url": "/first",
       },
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/second/bar",
@@ -109,13 +114,20 @@ Object {
         "url": "/second/bar",
       },
     ],
+    "hash": "",
     "index": 1,
     "kind": "push",
     "length": 2,
+    "params": Object {
+      "param": "bar",
+    },
     "pathname": "/second/bar",
+    "query": Object {},
     "scene": "",
     "search": "",
+    "state": Object {},
     "status": 200,
+    "type": "SECOND",
     "url": "/second/bar",
   },
   "query": Object {},
@@ -133,6 +145,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/first",
@@ -141,6 +154,7 @@ Object {
       "url": "/first",
     },
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/third",
@@ -162,6 +176,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/first",
@@ -170,6 +185,7 @@ Object {
         "url": "/first",
       },
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/second/bar",
@@ -178,13 +194,20 @@ Object {
         "url": "/second/bar",
       },
     ],
+    "hash": "",
     "index": 1,
     "kind": "push",
     "length": 2,
+    "params": Object {
+      "param": "bar",
+    },
     "pathname": "/second/bar",
+    "query": Object {},
     "scene": "",
     "search": "",
+    "state": Object {},
     "status": 200,
+    "type": "SECOND",
     "url": "/second/bar",
   },
   "query": Object {},

@@ -3,25 +3,18 @@ import { stripSlashes, createPath, createLocation, createKey } from './utils'
 
 export default class History {
   constructor(opts) {
-    const { index, entries, saveHistory, basename } = opts
+    const { index, entries, saveHistory, basenames } = opts
 
-    this.saveHistory = saveHistory || function () {}
-    this.basename = basename
+    this.saveHistory = saveHistory || function() {}
+    this.basename = entries[index].basename
+    this.basenames = basenames
     this.kind = 'load'
-    this.location = { pathname: '', search: '', hash: '', url: '', state: {} }
     this.location = entries[index]
     this.entries = entries
     this.length = entries.length
     this.index = index
 
-    // const kind = 'load'
-    // const location = entries[index]
-    // const nextState = { kind, location, index, entries }
-    // const nextHistory = this._createNextHistory(nextState)
-
-    const commit = () => {
-      // this._updateHistory(nextState)
-    }
+    const commit = function() {}
 
     this.firstRoute = { nextHistory: this, commit, type: UPDATE_HISTORY }
   }
@@ -30,7 +23,8 @@ export default class History {
 
   push(path, state = {}, notify = true) {
     const key = createKey()
-    const location = createLocation(path, state, key, this.location, this.basename)
+    const bn = this.basename
+    const location = createLocation(path, state, key, this.location, bn)
     const back = this._isBack(location)
     const next = this._isNext(location)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -114,7 +108,7 @@ export default class History {
           this._updateHistory(nextState)
         })
 
-    const info = n === -1 || n === 1 || kind === 'setState' ? null : 'jump' // info === jump will tell middleware/transformAction.js to create custom `prev`
+    const info = n === -1 || n === 1 || kind === 'setState' ? null : 'jump'     // info === jump will tell middleware/transformAction.js to create custom `prev`
     return this._notify({ nextHistory, commit, info }, notify)
   }
 

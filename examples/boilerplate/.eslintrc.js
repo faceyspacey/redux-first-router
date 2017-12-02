@@ -71,6 +71,7 @@ module.exports = {
     'no-console': 1,
     'jsx-a11y/no-static-element-interactions': 1,
     'no-case-declarations': 1,
+    'class-methods-use-this': 0,
     semi: [2, 'never'],
     'flowtype/semi': [2, 'never'],
     'jsx-quotes': [2, 'prefer-single'],

@@ -63,13 +63,14 @@ Object {
   "matchedPath": "/first",
   "matchers": Object {
     "hash": undefined,
-    "pathname": "/first",
+    "path": "/first",
     "query": undefined,
-    "search": "",
   },
   "params": Object {},
   "partial": false,
   "query": Object {},
+  "state": undefined,
+  "type": "FIRST",
 }
 `;
 
@@ -78,6 +79,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/first",
@@ -140,6 +142,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/first",
@@ -148,6 +151,7 @@ Object {
       "url": "/first",
     },
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/second/foo",
@@ -169,6 +173,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/first",
@@ -221,13 +226,14 @@ Object {
   "matchedPath": "/first",
   "matchers": Object {
     "hash": undefined,
-    "pathname": "/first",
+    "path": "/first",
     "query": undefined,
-    "search": "",
   },
   "params": Object {},
   "partial": false,
   "query": Object {},
+  "state": undefined,
+  "type": "FIRST",
 }
 `;
 
@@ -236,6 +242,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/first",
@@ -377,7 +384,7 @@ exports[`supports custom HTML tag name which is still a link 1`] = `
 <a
   aria-current={false}
   className=""
-  href="somewhere"
+  href="/somewhere"
   onClick={[Function]}
   onMouseDown={undefined}
   onTouchStart={undefined}

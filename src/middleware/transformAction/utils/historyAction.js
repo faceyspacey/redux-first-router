@@ -2,7 +2,7 @@ import { createPrev } from '../../../core/createLocationReducer'
 import { urlToAction, isNotFound } from '../../../utils'
 import { nestAction, createNotFoundRoute } from './index'
 
-export default (req, action, prev, basename) => {
+export default (req, action, prev) => {
   req.route = req.routes[action.type]
 
   const { nextHistory } = req.action
@@ -26,9 +26,10 @@ export default (req, action, prev, basename) => {
 
     if (prevLocation) {
       // build the action for that entry, and create what the resulting state shape would have looked like
-      const { routes, history, options: { querySerializer: qz } } = req
-      const prevAction = urlToAction(prevLocation, routes, basename, qz)
-      const state = nestAction(prevAction, {}, history, basename)
+      const { routes, history } = req
+      const prevAction = urlToAction(prevLocation, routes)
+      const state = nestAction(prevAction, {}, history)
+      state.location.basename = prevLocation.basename
 
       // do what the location reducer does where it maps `...action.location` flatly on to `action`
       prev = Object.assign(state, state.location)
@@ -42,7 +43,7 @@ export default (req, action, prev, basename) => {
     else prev = createPrev(hasSSR)
   }
 
-  req.action = nestAction(action, prev, nextHistory, basename)          // replace history-triggered action with real action intended for reducers
+  req.action = nestAction(action, prev, nextHistory)          // replace history-triggered action with real action intended for reducers
 
   return req
 }

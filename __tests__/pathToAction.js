@@ -82,12 +82,13 @@ it('parsed path not found and return NOT_FOUND action.type: "@@redux-first-route
   expect(action.type).toEqual(NOT_FOUND)
 })
 
-it('strips basename if first segment in path', () => {
+// urlToAction no longer handles basenames
+it.skip('strips basename if first segment in path', () => {
   const path = '/base/foo/bar'
   const routesMap = {
     FOO: { path: '/foo/bar' }
   }
 
-  const action = urlToAction(path, routesMap, '/base') /*? */
+  const action = urlToAction(path, routesMap) /*? */
   expect(action.type).toEqual('FOO')
 })

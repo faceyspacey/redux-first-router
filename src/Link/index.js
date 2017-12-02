@@ -6,10 +6,11 @@ import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 
 import { matchUrl } from '../utils'
-import { stripBasename, parsePath } from '../history/utils'
+import { parsePath } from '../history/utils'
 
-import { toUrl, handlePress, preventDefault } from './utils'
+import { toUrlAndAction, handlePress, preventDefault } from './utils'
 import type { To, OnClick } from './utils'
+import type { ReceivedAction } from '../flow-types'
 
 type OwnProps = {
   to: To,
@@ -39,6 +40,7 @@ type Props = {
   basename: string,
   routesAdded?: number,
   url?: string,
+  currentPathname?: string
 } & OwnProps
 
 type Context = {
@@ -57,7 +59,8 @@ const LinkInner = (props) => {
     shouldDispatch = true,
     target,
     dispatch,
-    basename,
+    basename: bn,
+    currentPathname: cp, // used only for relative URLs
     rudy,
     routesAdded,
 
@@ -74,41 +77,43 @@ const LinkInner = (props) => {
     ...p
   } = props
 
-  const url = toUrl(to, rudy.routes, basename)
-  const hasHref = (Component === 'a' || typeof Component !== 'string') && url
+  const { routes, getLocation, options: { basenames } } = rudy
+  const curr = cp || getLocation().pathname // for relative paths and incorrect actions (incorrect actions don't waste re-renderings and just get current pathname from context)
+  const { fullUrl, action } = toUrlAndAction(to, routes, basenames, bn, curr)
+  const hasHref = Component === 'a' || typeof Component !== 'string'
+
   const handler = handlePress.bind(
     null,
-    url,
+    action,
     rudy.routes,
-    onPress || onClick,
     shouldDispatch,
-    target,
     dispatch,
-    to,
+    onPress || onClick,
+    target,
     redirect
   )
 
   return (
     <Component
       onClick={(!down && handler) || preventDefault}
-      href={hasHref ? url : undefined}
+      href={hasHref ? fullUrl : undefined}
       onMouseDown={down ? handler : undefined}
       onTouchStart={down ? handler : undefined}
       target={target}
       {...p}
-      {...navLinkProps(props)}
+      {...navLinkProps(props, fullUrl, action)}
     >
       {children}
     </Component>
   )
 }
 
-const navLinkProps = (props: Props) => {
+const navLinkProps = (props: Props, fullUrl: string, action: ?ReceivedAction) => {
   if (!props.url) return
 
   const {
+    basename,
     url,
-    to,
     isActive,
     partial,
     strict,
@@ -124,10 +129,15 @@ const navLinkProps = (props: Props) => {
     rudy
   } = props
 
-  const { routes, getLocation } = rudy
-  const loc = parsePath(toUrl(to, routes))
-  const matchers = { ...loc, query: q && loc.query, hash: h && loc.hash }
-  const match = matchUrl(url, matchers, { partial, strict })
+  const { getLocation } = rudy
+  const { pathname, query, hash } = parsePath(fullUrl)
+  const matchers = { path: pathname, query: q && query, hash: h && hash }
+  const currentFullUrl = basename + url
+  const match = matchUrl(currentFullUrl, matchers, { partial, strict })
+
+  if (match) {
+    Object.assign(match, action)
+  }
 
   const active = !!(isActive ? isActive(match, getLocation()) : match)
 
@@ -139,9 +149,19 @@ const navLinkProps = (props: Props) => {
 }
 
 const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
-  const { url, basename, routesAdded } = rudy.getLocation()
-  const isNav = props.activeClassName || props.activeStyle
-  return { rudy, basename, routesAdded, url: isNav && url }
+  const { url, pathname, basename, routesAdded } = rudy.getLocation()
+  const isNav = props.activeClassName || props.activeStyle // only NavLinks re-render when the URL changes
+
+  // We are very precise about what we want to cause re-renderings, as perf is
+  // important! So only pass currentPathname if the user will in fact be making
+  // use of it for relative paths.
+  let currentPathname
+
+  if (typeof props.to === 'string' && props.to.charAt(0) !== '/') {
+    currentPathname = pathname
+  }
+
+  return { rudy, basename, routesAdded, url: isNav && url, currentPathname: pathname }
 }
 
 const connector: Connector<OwnProps, Props> = connect(mapState)

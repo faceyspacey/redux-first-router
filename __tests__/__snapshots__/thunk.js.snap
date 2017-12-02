@@ -7,6 +7,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/second",
@@ -53,6 +54,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/second",
@@ -114,6 +116,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/second",

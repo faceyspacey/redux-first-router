@@ -19,7 +19,12 @@ export default (routes: RoutesMap, history: History) => {
     const r = routes[action.type]
     const l = action.location
 
-    if (r && r.path && (l.url !== st.url || l.kind === 'load' || action.info === 'reset')) {
+    if (r && r.path && (
+      l.url !== st.url
+      || (l.basename && l.basename !== st.basename)
+      || l.kind === 'load'
+      || action.info === 'reset')
+    ) {
       const { type, params, query, state, hash } = action
       return { type, params, query, state, hash, hasSSR: st.hasSSR, ...l }
     }
@@ -45,9 +50,9 @@ export const createInitialState = (
   routes: RoutesMap,
   history: History
 ): LocationState => {
-  const { kind, entries, index, length, location, basename } = history
-  const { url, pathname, search } = location
-  const action = urlToAction(location, routes, basename)
+  const { kind, entries, index, length, location } = history
+  const { url, pathname, search, basename } = location
+  const action = urlToAction(location, routes)
   const { type, params = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
   const hasSSR = isServer()

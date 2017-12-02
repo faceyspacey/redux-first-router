@@ -5,6 +5,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/",
@@ -54,6 +55,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/",
@@ -62,6 +64,7 @@ Object {
         "url": "/",
       },
       Object {
+        "basename": "",
         "hash": "foo",
         "key": "345678",
         "pathname": "/second/bar",
@@ -80,6 +83,7 @@ Object {
       "basename": "",
       "entries": Array [
         Object {
+          "basename": "",
           "hash": "",
           "key": "345678",
           "pathname": "/",
@@ -125,6 +129,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/",
@@ -133,6 +138,7 @@ Object {
         "url": "/",
       },
       Object {
+        "basename": "",
         "hash": "foo",
         "key": "345678",
         "pathname": "/second/bar",
@@ -156,6 +162,7 @@ Object {
       "basename": "",
       "entries": Array [
         Object {
+          "basename": "",
           "hash": "",
           "key": "345678",
           "pathname": "/",
@@ -198,6 +205,7 @@ Object {
   "basename": "",
   "entries": Array [
     Object {
+      "basename": "",
       "hash": "",
       "key": "345678",
       "pathname": "/second/bar",
@@ -249,6 +257,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/first",
@@ -257,6 +266,7 @@ Object {
         "url": "/first",
       },
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/not-found",
@@ -273,6 +283,7 @@ Object {
       "basename": "",
       "entries": Array [
         Object {
+          "basename": "",
           "hash": "",
           "key": "345678",
           "pathname": "/first",
@@ -315,6 +326,7 @@ Object {
     "basename": "",
     "entries": Array [
       Object {
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/not-found",
@@ -331,6 +343,7 @@ Object {
       "basename": "",
       "entries": Array [
         Object {
+          "basename": "",
           "hash": "",
           "key": "345678",
           "pathname": "/first",

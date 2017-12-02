@@ -13,7 +13,8 @@ const createLink = async (props, initialPath, options, isNavLink) => {
 
   const routes = {
     FIRST: '/first',
-    SECOND: '/second/:param'
+    SECOND: '/second/:param',
+    THIRD: '/third'
   }
 
   const { middleware, reducer, firstRoute } = createRouter(routes, {

@@ -1,5 +1,5 @@
 import resolvePathname from 'resolve-pathname'
-import { parsePath, createPath, stripBasename, hasBasename } from './index'
+import { parsePath, createPath, stripBasename } from './index'
 
 export const createLocation = (path, state, key, currentLocation, basename) => {
   let location
@@ -7,7 +7,6 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
   if (typeof path === 'string') {
     location = parsePath(path)
     location.state = state
-    // location.basename = basename
   }
   else {
     location = { ...path }
@@ -25,12 +24,8 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
   }
   catch (e) {
     if (e instanceof URIError) {
-      throw new URIError(
-        `Pathname "${
-          location.pathname
-          }" could not be decoded. ` +
-          'This is likely caused by an invalid percent-encoding.'
-      )
+      throw new URIError(`Pathname "${location.pathname}" could not be decoded.
+        This is likely caused by an invalid percent-encoding.`)
     }
     else {
       throw e
@@ -55,24 +50,20 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
 
   location.key = location.key || key || createKey()
   location.url = createPath(location)
+  location.basename = basename || ''
 
   return location
 }
 
-export const getWindowLocation = (historyState, basename) => {
+export const getWindowLocation = (historyState, basenames = []) => {
   const { key, state } = historyState || {}
   const { pathname, search, hash } = window.location
   let path = pathname + search + hash
 
-  if (basename && hasBasename(path, basename)) {
-    console.warn(`
-      [rudy] You are attempting to use a basename on a page whose URL path does not begin
-      with the basename. Expected path ${path} to begin with ${basename}.
-    `)
-  }
+  const basename = basenames.find(bn => path.indexOf(bn) === 0)
 
   if (basename) path = stripBasename(path, basename)
-  return createLocation(path, state, key)
+  return createLocation(path, state, key, null, basename)
 }
 
 export const createKey = () =>

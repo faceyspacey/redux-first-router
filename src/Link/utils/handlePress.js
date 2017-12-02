@@ -1,50 +1,46 @@
 // @flow
-
-import { urlToAction } from '../../utils'
 import { redirect } from '../../actions'
-import type { RoutesMap } from '../../index'
+import type { RoutesMap, ReceivedAction } from '../../index'
 import type { To } from './toUrl'
 
 export type OnClick = false | ((SyntheticEvent) => ?boolean)
 export default (
-  url: string,
+  action: ?ReceivedAction,
   routes: RoutesMap,
-  onClick?: ?OnClick,
   shouldDispatch: boolean,
-  target: ?string,
   dispatch: Function,
-  to?: ?To,
-  dispatchRedirect?: boolean,
+  onClick?: ?OnClick,
+  target: ?string,
+  isRedirect?: boolean,
   e: SyntheticEvent
 ) => {
+  const prevented = e.defaultPrevented
+  const notModified = !isModified(e)
   let shouldGo = true
 
   if (onClick) {
-    shouldGo = onClick(e) // onClick can return false to prevent dispatch
-    shouldGo = typeof shouldGo === 'undefined' ? true : shouldGo
+    shouldGo = onClick(e) !== false // onClick can return false to prevent dispatch
   }
 
-  const prevented = e.defaultPrevented
-
-  if (!target && e && e.preventDefault && !isModified(e)) {
+  if (!target && e && e.preventDefault && notModified) {
     e.preventDefault()
   }
 
+
   if (
+    action &&
     shouldGo &&
     shouldDispatch &&
     !target &&
     !prevented &&
-    e.button === 0 &&
-    !isModified(e)
+    notModified &&
+    e.button === 0
   ) {
-    let action = isAction(to) ? to : urlToAction(url, routes)
-    action = dispatchRedirect ? redirect(action) : action
+    action = isRedirect ? redirect(action) : action
     return dispatch(action)
   }
 }
 
-const isAction = (to: ?To) => typeof to === 'object' && !Array.isArray(to)
 
 const isModified = (e: Object) =>
   !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)
