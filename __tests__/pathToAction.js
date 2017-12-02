@@ -54,7 +54,7 @@ it('parse path into action using route object containing fromPath() function', (
 it('parse path containing number param into action with params value set as integer instead of string', () => {
   const path = '/info/69'
   const routesMap = {
-    INFO_PARAM: { path: '/info/:param' }
+    INFO_PARAM: { path: '/info/:param', convertNumbers: true }
   }
 
   const action = urlToAction(path, routesMap) /*? */

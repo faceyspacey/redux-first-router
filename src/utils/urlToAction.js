@@ -43,7 +43,7 @@ const transformValue = (
     if (route.fromPath) {
       return route.fromPath && route.fromPath(val, name)
     }
-    else if (true && isNumber(val)) { // route.convertNumbers
+    else if (route.convertNumbers && isNumber(val)) {
       return parseFloat(val)
     }
     else if (route.capitalizedWords) {

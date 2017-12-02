@@ -2,6 +2,7 @@ import History from './History'
 
 import {
   stripSlashes,
+  createPath,
   getWindowLocation,
   isExtraneousPopstateEvent,
   createPopListenerFuncs,
@@ -89,8 +90,6 @@ export default class BrowserHistory extends History {
 
     const onPopState = event => {
       if (isExtraneousPopstateEvent(event)) return // Ignore extraneous popstate events in WebKit.
-      const loc = getWindowLocation(event.state, this.basenames)
-      console.log("HELP", event.state, this.basenames, loc)
       handlePop(getWindowLocation(event.state, this.basenames))
     }
 
@@ -122,14 +121,21 @@ export default class BrowserHistory extends History {
   _replaceState(location, n, prevLocation) {
     if (!n) return this._replaceStateReal(location)
 
-    const ready = () => prevLocation.pathname === window.location.pathname
+    const ready = () => {
+      console.log('REVERT', prevLocation.basename + prevLocation.url === createPath(window.location), prevLocation.basename + prevLocation.url, createPath(window.location))
+      return prevLocation.basename + prevLocation.url === createPath(window.location)
+    }
     const complete = () => this._forceGo(n)
     tryChange(ready, complete)
 
-    const ready2 = () => location.pathname === window.location.pathname
-    return new Promise(res => tryChange(ready2, res)).then(() =>
-      this._replaceStateReal(location)
-    )
+    const ready2 = () => {
+      console.log('JUMP', location.basename + location.url === createPath(window.location), location.basename + location.url, createPath(window.location))
+      return location.basename + location.url === createPath(window.location)
+    }
+    return new Promise(res => tryChange(ready2, res)).then(() => {
+      console.log('REPLACE', location.basename + location.url)
+      return this._replaceStateReal(location)
+    })
   }
 }
 
@@ -138,7 +144,7 @@ export default class BrowserHistory extends History {
 // change happened first, before executing the next
 
 let tries = 0
-const maxTries = 20
+const maxTries = 5
 const queue = []
 
 const tryChange = (ready, complete) => {
@@ -148,10 +154,10 @@ const tryChange = (ready, complete) => {
 
 const rapidChangeWorkaround = (ready, complete) => {
   tries++
-  console.log('TRIES', tries)
+  console.log('tries', tries)
 
   if (!ready() && tries < maxTries) {
-    setTimeout(() => rapidChangeWorkaround(ready, complete), 150)
+    setTimeout(() => rapidChangeWorkaround(ready, complete), 9)
   }
   else {
     complete()
@@ -161,7 +167,7 @@ const rapidChangeWorkaround = (ready, complete) => {
     const [again, com] = queue.shift() || []
 
     if (again) {
-      console.log('QUEUE WORKED', queue.length, again)
+      // console.log('QUEUE WORKED', queue.length, again)
       rapidChangeWorkaround(again, com)
     }
   }

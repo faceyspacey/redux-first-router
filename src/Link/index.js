@@ -175,5 +175,7 @@ Link.contextTypes = { store: PropTypes.object.isRequired }
 
 export default Link
 
+export { Link }
+
 export const NavLink = ({ activeClassName = 'active', ...props }: Object) =>
   <Link activeClassName={activeClassName} {...props} />

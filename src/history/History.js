@@ -103,10 +103,7 @@ export default class History {
 
     const commit = () =>
       this._replaceState(location, n, this.location)
-        .then(() => {
-          // this.basename = location.basename
-          this._updateHistory(nextState)
-        })
+        .then(() => this._updateHistory(nextState))
 
     const info = n === -1 || n === 1 || kind === 'setState' ? null : 'jump'     // info === jump will tell middleware/transformAction.js to create custom `prev`
     return this._notify({ nextHistory, commit, info }, notify)
@@ -198,7 +195,7 @@ export default class History {
   }
 
   _createHref(location) {
-    return this.basename + createPath(location)
+    return location.basename + createPath(location)
   }
 
   _isBack(location) {

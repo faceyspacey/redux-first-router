@@ -4,7 +4,7 @@ import { createLocation } from '../../../history/utils'
 const defaultCreateCacheKey = (action, name) => {
   const { type, location } = action
   const { basename, pathname, search } = location
-  return `${name}|${type}|${basename}|${pathname}|${search}` // don't cache using URL hash, as in most apps its the same route
+  return `${name}|${type}|${basename}|${pathname}|${search}` // don't cache using URL hash, as in 99.999% of all apps its the same route
 }
 
 const callbacks = []
