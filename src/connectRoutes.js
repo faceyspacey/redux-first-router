@@ -270,7 +270,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
       action = middlewareCreateNotFoundAction(
         action,
-        store.getState().location,
+        selectLocationState(store.getState()),
         prevLocation,
         history,
         notFoundPath
