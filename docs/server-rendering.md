@@ -5,11 +5,11 @@ Since the middleware handles the actions it receives asyncronously, on the serve
 
 *server/configureStore.js:*
 ```js
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import createHistory from 'history/createMemoryHistory'
 import { connectRoutes } from 'redux-first-router'
 
-export async function configureStore(req) {
+export default async function configureStore(req) {
   const history = createHistory({ initialEntries: [req.path] }) // match initial route to express path
 
   const routesMap = {
@@ -21,9 +21,9 @@ export async function configureStore(req) {
         const data = await fetch(`/api/entity/${slug}`)
         const entity = await data.json()
         const action = { type: 'ENTITY_FOUND', payload: { entity } } // you handle this action type
-        
+
         dispatch(action)
-      }  
+      }
     },
   }
 
@@ -43,13 +43,15 @@ export async function configureStore(req) {
 
 *server/serverRender.js:*
 ```javascript
+import ReactDom from 'react-dom/server'
+import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 import App from './components/App'
 
-export default async function serverRender(req, res) => {
+export default async function serverRender(req, res) {
   const store = await configureStore(req)
 
-  const app = ReactDOM.renderToString(<Provider store={store}><App /></Provider>)
+  const appString = ReactDOM.renderToString(<Provider store={store}><App /></Provider>)
   const stateJson = JSON.stringify(store.getState())
 
   // in a real app, you would use webpack-flush-chunks to pass a prop
@@ -84,7 +86,7 @@ http.createServer(app).listen(3000)
 
 *server/configureStore.js:*
 ```js
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import createHistory from 'history/createMemoryHistory'
 import { connectRoutes, redirect, NOT_FOUND } from 'redux-first-router'
 
@@ -137,6 +139,8 @@ const doesRedirect = ({ kind, pathname }, res) => {
 
 *server/serverRender.js:*
 ```javascript
+import ReactDom from 'react-dom/server'
+import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 import App from './components/App'
 
@@ -144,7 +148,7 @@ export default async function serverRender(req, res) {
   const store = await configureStore(req, res) // pass res now too
   if (!store) return // no store means redirect was already served
 
-  const app = ReactDOM.renderToString(<Provider store={store}><App /></Provider>)
+  const appString = ReactDOM.renderToString(<Provider store={store}><App /></Provider>)
   const stateJson = JSON.stringify(store.getState())
 
   return res.send(
