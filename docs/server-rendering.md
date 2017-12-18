@@ -43,7 +43,7 @@ export default async function configureStore(req) {
 
 *server/serverRender.js:*
 ```javascript
-import ReactDom from 'react-dom/server'
+import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 import App from './components/App'
@@ -139,7 +139,7 @@ const doesRedirect = ({ kind, pathname }, res) => {
 
 *server/serverRender.js:*
 ```javascript
-import ReactDom from 'react-dom/server'
+import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 import App from './components/App'
