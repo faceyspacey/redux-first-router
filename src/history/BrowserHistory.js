@@ -137,6 +137,10 @@ export default class BrowserHistory extends History {
       return this._replaceStateReal(location)
     })
   }
+
+  _resetState() {
+
+  }
 }
 
 // CHROME WORKAROUND:
@@ -144,7 +148,7 @@ export default class BrowserHistory extends History {
 // change happened first, before executing the next
 
 let tries = 0
-const maxTries = 5
+const maxTries = 10
 const queue = []
 
 const tryChange = (ready, complete) => {
@@ -163,11 +167,9 @@ const rapidChangeWorkaround = (ready, complete) => {
     complete()
     tries = 0
 
-    // try another if queue is full
-    const [again, com] = queue.shift() || []
+    const [again, com] = queue.shift() || [] // try another if queue is full
 
     if (again) {
-      // console.log('QUEUE WORKED', queue.length, again)
       rapidChangeWorkaround(again, com)
     }
   }
