@@ -1,0 +1,19 @@
+{
+  "presets": [
+    "env",
+    "react",
+    "stage-2"
+  ],
+  
+  "plugins": [
+    "universal-import"
+  ],
+  
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    }
+  }
+}
