@@ -492,7 +492,7 @@ export default (
 
   _updateScroll = (performedByUser: boolean = true) => {
     if (scrollBehavior) {
-      if (!scrollBehavior.manual) {
+      if (!scrollBehavior.manual || performedByUser) {
         scrollBehavior.updateScroll(prevState, nextState)
       }
     }
