@@ -6,13 +6,13 @@ module.exports = wallaby => {
       { pattern: 'src/**/*.js', load: false },
       { pattern: 'package.json', load: false },
       { pattern: '__tests__/**/*.snap', load: false },
-      { pattern: '__test-helpers__/**/*.js', load: false }
+      { pattern: '__helpers__/**/*.js', load: false }
     ],
 
-    filesWithNoCoverageCalculated: ['__test-helpers__/**/*.js'],
+    filesWithNoCoverageCalculated: ['__helpers__/**/*.js'],
 
     tests: [
-      '__tests__/**/*.js'
+      '__tests__/integration/**/*.js'
       // '__tests__/Link/**/*.js',
       // '__tests__/createRouter.js',
       // '__tests__/createScene.js',

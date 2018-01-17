@@ -1,3 +1,7 @@
 // @flow
 
-export default (): boolean => typeof window === 'undefined'
+export default (): boolean => !(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+)

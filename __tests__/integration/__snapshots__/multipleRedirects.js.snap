@@ -1,0 +1,405 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`action_SECOND 1`] = `
+Object {
+  "type": "SECOND",
+}
+`;
+
+exports[`action_THIRD 1`] = `
+Object {
+  "type": "THIRD",
+}
+`;
+
+exports[`beforeEnter_REDIRECTED 1`] = `1`;
+
+exports[`beforeEnter_SECOND 1`] = `1`;
+
+exports[`history_entries_SECOND 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/redirected-again",
+    "search": "",
+    "state": Object {},
+    "url": "/redirected-again",
+  },
+]
+`;
+
+exports[`history_entries_THIRD 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/redirected-again-after",
+    "search": "",
+    "state": Object {},
+    "url": "/redirected-again-after",
+  },
+]
+`;
+
+exports[`history_index_SECOND 1`] = `1`;
+
+exports[`history_index_THIRD 1`] = `1`;
+
+exports[`onComplete_REDIRECTED_AFTER 1`] = `0`;
+
+exports[`onComplete_REDIRECTED_AGAIN_AFTER 1`] = `1`;
+
+exports[`onComplete_THIRD 1`] = `0`;
+
+exports[`options 1`] = `Object {}`;
+
+exports[`options 2`] = `Object {}`;
+
+exports[`response_SECOND 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected-again",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected-again",
+      },
+    ],
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "pathname": "/redirected-again",
+    "prev": Object {
+      "basename": "",
+      "committed": false,
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/redirected",
+          "search": "",
+          "state": Object {},
+          "url": "/redirected",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "redirect",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/redirected",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 302,
+      "type": "REDIRECTED",
+      "url": "/redirected",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/redirected-again",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "REDIRECTED_AGAIN",
+}
+`;
+
+exports[`response_THIRD 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected-again-after",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected-again-after",
+      },
+    ],
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "pathname": "/redirected-again-after",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/redirected-after",
+          "search": "",
+          "state": Object {},
+          "url": "/redirected-after",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "redirect",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/redirected-after",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 302,
+      "type": "REDIRECTED_AFTER",
+      "url": "/redirected-after",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/redirected-again-after",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "REDIRECTED_AGAIN_AFTER",
+}
+`;
+
+exports[`state_SECOND 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected-again",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected-again",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected-again",
+    "prev": Object {
+      "basename": "",
+      "committed": false,
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/redirected",
+          "search": "",
+          "state": Object {},
+          "url": "/redirected",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "redirect",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/redirected",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 302,
+      "type": "REDIRECTED",
+      "url": "/redirected",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED_AGAIN",
+    "url": "/redirected-again",
+  },
+  "title": "REDIRECTED_AGAIN",
+}
+`;
+
+exports[`state_THIRD 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected-again-after",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected-again-after",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected-again-after",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/redirected-after",
+          "search": "",
+          "state": Object {},
+          "url": "/redirected-after",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "redirect",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/redirected-after",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 302,
+      "type": "REDIRECTED_AFTER",
+      "url": "/redirected-after",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED_AGAIN_AFTER",
+    "url": "/redirected-again-after",
+  },
+  "title": "REDIRECTED_AGAIN_AFTER",
+}
+`;
+
+exports[`thunk_REDIRECTED 1`] = `0`;
+
+exports[`thunk_REDIRECTED_AFTER 1`] = `1`;
+
+exports[`thunk_REDIRECTED_AGAIN 1`] = `1`;
+
+exports[`thunk_SECOND 1`] = `0`;
+
+exports[`thunk_THIRD 1`] = `1`;
+
+exports[`title_SECOND 1`] = `"REDIRECTED_AGAIN"`;
+
+exports[`title_THIRD 1`] = `"REDIRECTED_AGAIN_AFTER"`;

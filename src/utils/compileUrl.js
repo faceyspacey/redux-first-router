@@ -1,6 +1,7 @@
 // @flow
 import pathToRegexp from 'path-to-regexp'
 import qs from 'query-string'
+import { matchQuery, matchVal } from './matchUrl'
 
 const toPathCache = {}
 
@@ -8,14 +9,26 @@ export default (
   path: string,
   params: Object = {},
   query: ?Object,
-  hash: ?string
+  hash: ?string,
+  route: Object = {}
 ) => {
+  const search = qs.stringify(query)
+
+  if (route.query && !matchQuery(search, route.query)) {
+    throw new Error('[rudy] invalid query object')
+  }
+
+  if (route.hash && !matchVal(hash, route.hash)) {
+    throw new Error('[rudy] invalid hash value')
+  }
+
   const toPath = toPathCache[path] || pathToRegexp.compile(path)
   toPathCache[path] = toPath
 
-  const pathname = toPath(params)
-  const search = query ? `?${qs.stringify(query)}` : ''
+  const p = toPath(params)
+  const s = query ? `?${search}` : ''
   const h = hash ? `#${hash}` : ''
 
-  return `${pathname}${search}${h}`
+  return p + s + h
 }
+

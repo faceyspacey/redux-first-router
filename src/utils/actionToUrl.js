@@ -19,7 +19,7 @@ export default (
 
   if (typeof path !== 'string') throw new Error('[rudy] invalid route path')
 
-  return compileUrl(path, params, query, hash) || '/'
+  return compileUrl(path, params, query, hash, route) || '/'
 }
 
 const transformParams = (route: Route, params: Payload = {}): Params =>

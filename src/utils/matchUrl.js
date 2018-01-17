@@ -86,7 +86,7 @@ const matchPath = (path, matcher, options = {}) => {
   return { match, keys }
 }
 
-const matchQuery = (search, matcher) => {
+export const matchQuery = (search, matcher) => {
   const query = search ? parseSearch(search) : {}
 
   if (!matcher) return query
@@ -100,11 +100,15 @@ const matchQuery = (search, matcher) => {
   return query
 }
 
-const matchVal = (val, expected) => {
+export const matchVal = (val, expected) => {
   const type = typeof expected
 
   if (type === 'boolean') {
-    return val !== '' && val !== undefined
+    if (type === true) {
+      return val !== '' && val !== undefined
+    }
+
+    return val === undefined
   }
   else if (type === 'string') {
     return expected === val
