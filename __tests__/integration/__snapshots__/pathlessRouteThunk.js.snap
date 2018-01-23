@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`action_PATHLESS 1`] = `
-Object {
-  "type": "PATHLESS",
-}
-`;
-
-exports[`history_entries_PATHLESS 1`] = `
+exports[`pathless route thunk called : 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -29,17 +23,21 @@ Array [
 ]
 `;
 
-exports[`history_index_PATHLESS 1`] = `1`;
+exports[`pathless route thunk called : 1 - history_index 1`] = `1`;
 
-exports[`options 1`] = `Object {}`;
-
-exports[`response_PATHLESS 1`] = `
+exports[`pathless route thunk called : 1 - response 1`] = `
 Object {
   "type": "PATHLESS",
 }
 `;
 
-exports[`state_PATHLESS 1`] = `
+exports[`pathless route thunk called : 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`pathless route thunk called : 1 - routes - PATHLESS - thunk 1`] = `1`;
+
+exports[`pathless route thunk called : 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`pathless route thunk called : 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -110,6 +108,4 @@ Object {
 }
 `;
 
-exports[`thunk_PATHLESS 1`] = `1`;
-
-exports[`title_PATHLESS 1`] = `"REDIRECTED"`;
+exports[`pathless route thunk called : 1 - title 1`] = `"REDIRECTED"`;

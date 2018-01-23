@@ -1,45 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`action_SECOND 1`] = `
-Object {
-  "type": "SECOND",
-}
-`;
-
-exports[`action_THIRD 1`] = `
-Object {
-  "type": "THIRD",
-}
-`;
-
-exports[`beforeEnter_SECOND 1`] = `1`;
-
-exports[`beforeEnter_THIRD 1`] = `1`;
-
-exports[`history_entries_SECOND 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`history_entries_THIRD 1`] = `
+exports[`callbacks sequentially run as promises /w redirect: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -62,33 +23,149 @@ Array [
 ]
 `;
 
-exports[`history_index_SECOND 1`] = `1`;
+exports[`callbacks sequentially run as promises /w redirect: 1 - history_index 1`] = `1`;
 
-exports[`history_index_THIRD 1`] = `1`;
-
-exports[`onComplete_SECOND 1`] = `1`;
-
-exports[`onComplete_THIRD 1`] = `0`;
-
-exports[`options 1`] = `Object {}`;
-
-exports[`options 2`] = `Object {}`;
-
-exports[`response_SECOND 1`] = `
-Object {
-  "payload": "payload",
-  "type": "SECOND_COMPLETE",
-}
-`;
-
-exports[`response_THIRD 1`] = `
+exports[`callbacks sequentially run as promises /w redirect: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
   "type": "REDIRECTED_COMPLETE",
 }
 `;
 
-exports[`state_SECOND 1`] = `
+exports[`callbacks sequentially run as promises /w redirect: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`callbacks sequentially run as promises /w redirect: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`callbacks sequentially run as promises /w redirect: 1 - routes - SECOND - beforeEnter 1`] = `1`;
+
+exports[`callbacks sequentially run as promises /w redirect: 1 - routes - SECOND - onComplete 1`] = `0`;
+
+exports[`callbacks sequentially run as promises /w redirect: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`callbacks sequentially run as promises /w redirect: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED",
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE_\\"redirect_complete\\"",
+}
+`;
+
+exports[`callbacks sequentially run as promises /w redirect: 1 - title 1`] = `"REDIRECTED"`;
+
+exports[`callbacks sequentially run as promises: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`callbacks sequentially run as promises: 1 - history_index 1`] = `1`;
+
+exports[`callbacks sequentially run as promises: 1 - response 1`] = `
+Object {
+  "payload": "payload",
+  "type": "SECOND_COMPLETE",
+}
+`;
+
+exports[`callbacks sequentially run as promises: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`callbacks sequentially run as promises: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`callbacks sequentially run as promises: 1 - routes - SECOND - beforeEnter 1`] = `1`;
+
+exports[`callbacks sequentially run as promises: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`callbacks sequentially run as promises: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`callbacks sequentially run as promises: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -159,89 +236,4 @@ Object {
 }
 `;
 
-exports[`state_THIRD 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/redirected",
-        "search": "",
-        "state": Object {},
-        "url": "/redirected",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "redirect",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/redirected",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/third",
-          "search": "",
-          "state": Object {},
-          "url": "/third",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/third",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "THIRD",
-      "url": "/third",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 302,
-    "type": "REDIRECTED",
-    "url": "/redirected",
-  },
-  "title": "REDIRECTED_COMPLETE_\\"redirect_complete\\"",
-}
-`;
-
-exports[`thunk_SECOND 1`] = `1`;
-
-exports[`thunk_THIRD 1`] = `1`;
-
-exports[`title_SECOND 1`] = `"SECOND"`;
-
-exports[`title_THIRD 1`] = `"REDIRECTED"`;
+exports[`callbacks sequentially run as promises: 1 - title 1`] = `"SECOND"`;

@@ -6,17 +6,29 @@ export default class History {
     const { index, entries, saveHistory, basenames } = opts
 
     this.saveHistory = saveHistory || function() {}
+
     this.basename = entries[index].basename
     this.basenames = basenames
-    this.kind = 'load'
-    this.location = entries[index]
-    this.entries = entries
-    this.length = entries.length
-    this.index = index
 
-    const commit = function() {}
+    this.entries = []
+    this.index = -1
+    this.length = 0
+    this.location = null
 
-    this.firstRoute = { nextHistory: this, commit, type: UPDATE_HISTORY }
+    const nextState = {
+      kind: 'load',
+      entries,
+      index,
+      location: entries[index]
+    }
+
+    const nextHistory = this._createNextHistory(nextState)
+
+    const commit = () => {
+      this._updateHistory(nextState)
+    }
+
+    this.firstRoute = { nextHistory, commit, type: UPDATE_HISTORY }
   }
 
   // API:

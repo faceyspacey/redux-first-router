@@ -1,136 +1,243 @@
 import createTest from '../../__helpers__/createTest'
 
-test('bi-directional params transformation', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param1/:param2'
-    },
-    SECOND: {
-      path: '/second/:param1/:param2'
-    }
-  }, [
-    '/first/foo/bar',
-    { type: 'SECOND', params: { param1: 'foo', param2: 'bar' } }
-  ])
-})
+createTest('bi-directional params transformation', {
+  SECOND: {
+    path: '/second/:param1/:param2'
+  },
+  THIRD: {
+    path: '/third/:param1/:param2'
+  }
+}, [
+  { type: 'SECOND', params: { param1: 'foo', param2: 'bar' } },
+  '/third/foo/bar'
+])
 
-test('capitalizedWords', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param',
-      capitalizedWords: true
-    },
-    SECOND: {
-      path: '/second/:param',
-      capitalizedWords: true
-    }
-  }, [
-    '/first/james-gillmore',
-    { type: 'SECOND', params: { param: 'James Gillmore' } }
-  ])
-})
+createTest('capitalizedWords', {
+  SECOND: {
+    path: '/second/:param',
+    capitalizedWords: true
+  },
+  THIRD: {
+    path: '/third/:param',
+    capitalizedWords: true
+  }
+}, [
+  { type: 'SECOND', params: { param: 'James Gillmore' } },
+  '/third/james-gillmore'
+])
 
-test('convertNumbers', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param',
-      convertNumbers: true
-    },
-    SECOND: {
-      path: '/second/:param',
-      convertNumbers: true
-    }
-  }, [
-    '/first/100',
-    { type: 'SECOND', params: { param: 100 } }
-  ])
-})
+createTest('convertNumbers', {
+  SECOND: {
+    path: '/second/:param',
+    convertNumbers: true
+  },
+  THIRD: {
+    path: '/third/:param',
+    convertNumbers: true
+  }
+}, [
+  { type: 'SECOND', params: { param: 100 } },
+  '/third/100'
+])
 
-test('numbers not converted without convertNumbers option', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param'
-    },
-    SECOND: {
-      path: '/second/:param'
-    }
-  }, [
-    '/first/100',
-    { type: 'SECOND', params: { param: 100 } }
-  ])
-})
+createTest('numbers NOT converted without convertNumbers option', {
+  SECOND: {
+    path: '/second/:param'
+  },
+  THIRD: {
+    path: '/third/:param'
+  }
+}, [
+  { type: 'SECOND', params: { param: 100 } },
+  '/third/100'
+])
 
-test('fromPath + toPath', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param',
-      fromPath: (val) => val.toUpperCase(),
-      toPath: (val) => val.toLowerCase()
-    },
-    SECOND: {
-      path: '/second/:param',
-      fromPath: (val) => val.toUpperCase(),
-      toPath: (val) => val.toLowerCase()
+createTest('fromPath + toPath', {
+  SECOND: {
+    path: '/second/:param',
+    fromPath: (val) => val.toUpperCase(),
+    toPath: (val) => val.toLowerCase()
+  },
+  THIRD: {
+    path: '/third/:param',
+    fromPath: (val) => val.toUpperCase(),
+    toPath: (val) => val.toLowerCase()
+  }
+}, [
+  { type: 'SECOND', params: { param: 'bar' } },
+  '/third/foo'
+])
+
+createTest('does not parse a blank string "" as NaN', {
+  SECOND: {
+    path: '/second(.*)'
+  },
+  THIRD: {
+    path: '/third(.*)'
+  }
+}, [
+  { type: 'SECOND' },
+  '/third'
+])
+
+createTest('dispatch NOT_FOUND if not matched', {
+  SECOND: {
+    path: '/second/:param'
+  },
+  THIRD: {
+    path: '/third/:param'
+  }
+}, [
+  { type: 'SECOND', params: { missed: 'foo' } },
+  '/third/foo/bar'
+])
+
+createTest('match optional params', {
+  SECOND: {
+    path: '/second/:param?'
+  },
+  THIRD: {
+    path: '/third/:param?'
+  }
+}, [
+  { type: 'SECOND', params: { param: 'foo' } },
+  '/third/foo',
+  { type: 'SECOND' },
+  '/third'
+])
+
+createTest('never returns an empty string when path has single optional param that is undefined', {
+  SECOND: {
+    path: '/second/:param?'
+  },
+  THIRD: {
+    path: '/third/:param?'
+  }
+}, [
+  { type: 'SECOND', params: { param: undefined } },
+  '/third'
+])
+
+createTest('match "multi segment params" as single param', {
+  REPO1: {
+    path: '/repo1/:user/:repo/blob/:branch/:filePath+'
+  },
+  REPO2: {
+    path: '/repo2/:user/:repo/blob/:branch/:filePath+'
+  }
+}, [
+  {
+    type: 'REPO1',
+    params: {
+      user: 'faceyspacey',
+      repo: 'rudy',
+      branch: 'master',
+      filePath: 'core/createRouter.js'
     }
-  }, [
-    '/first/foo',
-    { type: 'SECOND', params: { param: 'bar' } }
-  ])
-})
+  },
+  '/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js',
+  {
+    type: 'REPO1',
+    params: {
+      user: 'faceyspacey',
+      repo: 'rudy',
+      branch: 'missed'
+    }
+  }
+])
+
+createTest('optionally match "multi segment params" as single param', {
+  REPO1: {
+    path: '/repo1/:user/:repo/blob/:branch/:filePath*'
+  },
+  REPO2: {
+    path: '/repo2/:user/:repo/blob/:branch/:filePath*'
+  }
+}, [
+  {
+    type: 'REPO1',
+    params: {
+      user: 'faceyspacey',
+      repo: 'rudy',
+      branch: 'master'
+    }
+  },
+  '/repo2/faceyspacey/rudy/blob/master'
+])
+
+createTest('match MULTIPLE "multi segment params" as single param', {
+  SECOND: {
+    path: '/second/:segments1+/bla/:segments2+'
+  },
+  THIRD: {
+    path: '/third/:segments1+/bla/:segments2+'
+  }
+}, [
+  {
+    type: 'SECOND',
+    params: {
+      segments1: 'foo/bar',
+      segments2: 'baz/yo/sdf'
+    }
+  },
+  '/third/foo/bar/bla/baz/yo/sdf'
+])
+
+createTest('match MULTIPLE "multi segment params" as single param (using regex)', {
+  SECOND: {
+    path: '/second/:segments1(.*)/bla/:segments2(.*)'
+  },
+  THIRD: {
+    path: '/third/:segments1(.*)/bla/:segments2(.*)'
+  }
+}, [
+  {
+    type: 'SECOND',
+    params: {
+      segments1: 'foo/bar',
+      segments2: 'baz/yo/sdf'
+    }
+  },
+  '/third/foo/bar/bla/baz/yo/sdf'
+])
 
 
-test('does not parse a blank string "" as NaN', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first(.*)'
-    },
-    SECOND: {
-      path: '/second(.*)'
-    }
-  }, [
-    '/first',
-    { type: 'SECOND' }
-  ])
-})
+createTest('optional static segments ("aliases")', {
+  SECOND: {
+    path: '/second/(list)?'
+  },
+  THIRD: {
+    path: '/third/(list)*'
+  }
+}, [
+  { type: 'SECOND' },
+  '/third/list',
+  '/third'
+])
 
-test('dispatch NOT_FOUND if not matched', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param'
-    },
-    SECOND: {
-      path: '/second/:param'
-    }
-  }, [
-    '/first/foo/bar',
-    { type: 'SECOND', params: { missed: 'foo' } }
-  ])
-})
+createTest('static regexes', {
+  SECOND: {
+    path: '/second/(list|all)'
+  },
+  THIRD: {
+    path: '/third/(list|all)'
+  }
+}, [
+  { type: 'SECOND' }, // this won't match unfortunately, as the compiled URL can't choose "list" or "all"
+  '/third/list',
+  '/third/all'
+])
 
-test('match optional params', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param?'
-    },
-    SECOND: {
-      path: '/second/:param?'
-    }
-  }, [
-    '/first/foo',
-    { type: 'SECOND', params: { param: 'foo' } }
-  ])
-})
-
-test('never returns an empty string when path has single optional param that is undefined', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first/:param?'
-    },
-    SECOND: {
-      path: '/second/:param?'
-    }
-  }, [
-    '/first',
-    { type: 'SECOND', params: { param: undefined } }
-  ])
-})
+createTest('regex parameters', {
+  SECOND: {
+    path: '/second/:id(\\d+)'
+  },
+  THIRD: {
+    path: '/third/:id(\\d+)'
+  }
+}, [
+  { type: 'SECOND', params: { id: 100 } }, // but these will match (CONCLUSION: give them dynamic segments so you can choose in `action.params`)
+  { type: 'SECOND', params: { id: 'foo' } },
+  '/third/100',
+  '/third/foo'
+])

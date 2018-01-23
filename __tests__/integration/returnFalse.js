@@ -1,47 +1,59 @@
 import createTest from '../../__helpers__/createTest'
 
-test('beforeLeave return false', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first',
-      beforeLeave: jest.fn(() => false)
-    },
-    SECOND: {
-      path: '/second',
-      thunk: jest.fn()
-    }
-  })
+createTest('beforeLeave return false', {
+  FIRST: {
+    path: '/first',
+    beforeLeave: ({ dispatch, action }) => false
+  },
+  SECOND: {
+    path: '/second',
+    thunk: function() {}
+  }
 })
 
-test('beforeLeave return undefined', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first',
-      beforeLeave: jest.fn()
-    },
-    THIRD: {
-      path: '/third',
-      thunk: jest.fn()
+let confirmModal
+
+createTest('beforeLeave return false and user confirms action in modal', {
+  FIRST: {
+    path: '/first',
+    beforeLeave: ({ dispatch, action }) => {
+      confirmModal = () => dispatch({ ...action, params: { canLeave: true } })
+
+      return !!action.params.canLeave // a real app can do anything to determine if the user can leave (e.g. check if a purchase form is complete)
     }
-  })
+  }
+}, async ({ dispatch, getState }) => {
+  await dispatch({ type: 'REDIRECTED' }) // not used as a redirect, but just an available default action type
+  expect(getState()).toMatchSnapshot('action blocked')
+
+  const res = await confirmModal() // user dispatches later in a modal (i.e. if a user confirmed the action)
+  expect(res).toMatchSnapshot()
+  expect(getState()).toMatchSnapshot('action confirmed')
 })
 
-test('beforeEnter return false', async () => {
-  await createTest({
-    FOURTH: {
-      path: '/fourth',
-      beforeEnter: jest.fn(() => false),
-      thunk: jest.fn()
-    }
-  })
+createTest('beforeLeave return undefined', {
+  FIRST: {
+    path: '/first',
+    beforeLeave: function() {}
+  },
+  SECOND: {
+    path: '/second',
+    thunk: function() {}
+  }
 })
 
-test('thunk return false', async () => {
-  await createTest({
-    FIFTH: {
-      path: '/fifth',
-      thunk: jest.fn(() => false),
-      onComplete: jest.fn()
-    }
-  })
+createTest('beforeEnter return false', {
+  SECOND: {
+    path: '/second',
+    beforeEnter: () => false,
+    thunk: function() {}
+  }
+})
+
+createTest('thunk return false', {
+  SECOND: {
+    path: '/second',
+    thunk: () => false,
+    onComplete: function() {}
+  }
 })

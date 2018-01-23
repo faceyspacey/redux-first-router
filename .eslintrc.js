@@ -33,6 +33,7 @@ module.exports = {
     it: true,
     expect: true,
     beforeEach: true,
+    beforeAll: true,
     jestUtils: true
   },
   // 'import/resolver': {
@@ -77,6 +78,7 @@ module.exports = {
     'no-restricted-syntax': 0,
     'class-methods-use-this': 0,
     'object-curly-newline': 0,
+    'object-shorthand': 0,
     semi: [2, 'never'],
     'no-multi-spaces': [2, { ignoreEOLComments: true }],
     'flowtype/semi': [2, 'never'],

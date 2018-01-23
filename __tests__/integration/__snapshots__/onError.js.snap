@@ -1,24 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`action_FOURTH 1`] = `
-Object {
-  "type": "FOURTH",
-}
-`;
-
-exports[`action_SECOND 1`] = `
-Object {
-  "type": "SECOND",
-}
-`;
-
-exports[`action_THIRD 1`] = `
-Object {
-  "type": "THIRD",
-}
-`;
-
-exports[`history_entries_FOURTH 1`] = `
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -41,85 +23,22 @@ Array [
 ]
 `;
 
-exports[`history_entries_SECOND 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - history_index 1`] = `1`;
 
-exports[`history_entries_THIRD 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/redirected",
-    "search": "",
-    "state": Object {},
-    "url": "/redirected",
-  },
-]
-`;
-
-exports[`history_index_FOURTH 1`] = `1`;
-
-exports[`history_index_SECOND 1`] = `1`;
-
-exports[`history_index_THIRD 1`] = `1`;
-
-exports[`onError_SECOND 1`] = `1`;
-
-exports[`onError_THIRD 1`] = `1`;
-
-exports[`options 1`] = `Object {}`;
-
-exports[`options 2`] = `Object {}`;
-
-exports[`options 3`] = `Object {}`;
-
-exports[`response_FOURTH 1`] = `
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - response 1`] = `
 Object {
   "error": [Error: thunk-failed],
-  "type": "FOURTH_ERROR",
+  "type": "SECOND_ERROR",
 }
 `;
 
-exports[`response_SECOND 1`] = `undefined`;
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`response_THIRD 1`] = `
-Object {
-  "payload": "redirect_complete",
-  "type": "REDIRECTED_COMPLETE",
-}
-`;
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`state_FOURTH 1`] = `
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -144,7 +63,7 @@ Object {
       },
     ],
     "error": [Error: thunk-failed],
-    "errorType": "FOURTH_ERROR",
+    "errorType": "SECOND_ERROR",
     "hasSSR": false,
     "hash": "",
     "index": 1,
@@ -185,14 +104,51 @@ Object {
     "search": "",
     "state": Object {},
     "status": 200,
-    "type": "FOURTH",
+    "type": "SECOND",
     "url": "/second",
   },
-  "title": "FOURTH_ERROR",
+  "title": "SECOND_ERROR",
 }
 `;
 
-exports[`state_SECOND 1`] = `
+exports[`currentType_ERROR dispatched if no onError callback provided: 1 - title 1`] = `"SECOND"`;
+
+exports[`route onError called if other callbacks throw: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`route onError called if other callbacks throw: 1 - history_index 1`] = `1`;
+
+exports[`route onError called if other callbacks throw: 1 - response 1`] = `undefined`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - SECOND - onError 1`] = `1`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`route onError called if other callbacks throw: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -263,7 +219,49 @@ Object {
 }
 `;
 
-exports[`state_THIRD 1`] = `
+exports[`route onError called if other callbacks throw: 1 - title 1`] = `"SECOND"`;
+
+exports[`route onError dispatches redirect: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/redirected",
+    "search": "",
+    "state": Object {},
+    "url": "/redirected",
+  },
+]
+`;
+
+exports[`route onError dispatches redirect: 1 - history_index 1`] = `1`;
+
+exports[`route onError dispatches redirect: 1 - response 1`] = `
+Object {
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
+}
+`;
+
+exports[`route onError dispatches redirect: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`route onError dispatches redirect: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`route onError dispatches redirect: 1 - routes - SECOND - onError 1`] = `1`;
+
+exports[`route onError dispatches redirect: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`route onError dispatches redirect: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -310,10 +308,10 @@ Object {
           "basename": "",
           "hash": "",
           "key": "345678",
-          "pathname": "/third",
+          "pathname": "/second",
           "search": "",
           "state": Object {},
-          "url": "/third",
+          "url": "/second",
         },
       ],
       "hash": "",
@@ -321,14 +319,14 @@ Object {
       "kind": "push",
       "length": 2,
       "params": Object {},
-      "pathname": "/third",
+      "pathname": "/second",
       "query": Object {},
       "scene": "",
       "search": "",
       "state": Object {},
       "status": 200,
-      "type": "THIRD",
-      "url": "/third",
+      "type": "SECOND",
+      "url": "/second",
     },
     "query": Object {},
     "scene": "",
@@ -342,14 +340,4 @@ Object {
 }
 `;
 
-exports[`thunk_FOURTH 1`] = `1`;
-
-exports[`thunk_SECOND 1`] = `1`;
-
-exports[`thunk_THIRD 1`] = `1`;
-
-exports[`title_FOURTH 1`] = `"FOURTH"`;
-
-exports[`title_SECOND 1`] = `"SECOND"`;
-
-exports[`title_THIRD 1`] = `"REDIRECTED"`;
+exports[`route onError dispatches redirect: 1 - title 1`] = `"REDIRECTED"`;

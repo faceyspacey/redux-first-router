@@ -1,46 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`beforeEnter_FIRST 1`] = `1`;
+exports[`redirect on server not dispatched; instead redirect info returned: 1 - routes - FIRST - beforeEnter 1`] = `1`;
 
-exports[`first_action 1`] = `
-Object {
-  "commit": [Function],
-  "nextHistory": MemoryHistory {
-    "_forceRefresh": false,
-    "_listener": [Function],
-    "basename": "",
-    "basenames": Array [],
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-    ],
-    "firstRoute": [Circular],
-    "index": 0,
-    "kind": "load",
-    "length": 1,
-    "location": Object {
-      "basename": "",
-      "hash": "",
-      "key": "345678",
-      "pathname": "/first",
-      "search": "",
-      "state": Object {},
-      "url": "/first",
-    },
-    "saveHistory": [Function],
-  },
-  "type": "@@rudy/UPDATE_HISTORY",
-}
-`;
+exports[`redirect on server not dispatched; instead redirect info returned: 1 - routes - FIRST - thunk 1`] = `1`;
 
-exports[`first_history_entries 1`] = `
+exports[`redirect on server not dispatched; instead redirect info returned: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`redirect on server not dispatched; instead redirect info returned: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`redirect on server not dispatched; instead redirect info returned: firstRoute - /first - 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -54,9 +22,59 @@ Array [
 ]
 `;
 
-exports[`first_history_index 1`] = `0`;
+exports[`redirect on server not dispatched; instead redirect info returned: firstRoute - /first - 1 - history_index 1`] = `0`;
 
-exports[`first_response 1`] = `
+exports[`redirect on server not dispatched; instead redirect info returned: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": true,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": true,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`redirect on server not dispatched; instead redirect info returned: firstRoute - /first - 1 - response 1`] = `
 Object {
   "location": Object {
     "committed": true,
@@ -70,7 +88,7 @@ Object {
 }
 `;
 
-exports[`first_state 1`] = `
+exports[`redirect on server not dispatched; instead redirect info returned: firstRoute - /first - 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -121,58 +139,4 @@ Object {
 }
 `;
 
-exports[`first_title 1`] = `""`;
-
-exports[`initial_state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-    ],
-    "hasSSR": true,
-    "hash": "",
-    "index": 0,
-    "kind": "init",
-    "length": 1,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [],
-      "hasSSR": true,
-      "hash": "",
-      "index": -1,
-      "kind": "",
-      "length": 0,
-      "params": Object {},
-      "pathname": "",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "type": "",
-      "url": "",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "@@redux/INIT",
-}
-`;
-
-exports[`options 1`] = `Object {}`;
-
-exports[`thunk_FIRST 1`] = `1`;
+exports[`redirect on server not dispatched; instead redirect info returned: firstRoute - /first - 1 - title 1`] = `""`;

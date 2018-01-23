@@ -17,4 +17,4 @@ export default (action: Action, req) =>
 // Its primary purpose is case A) where the route will have already changed, and we need to replace it.
 // For the latter case see actionCreators/redirect.js for how `.committed` is set to `true` by default.
 //
-// FINAL NOTE: see `utils/createDispatch.js` for comlete info.
+// FINAL NOTE: see `utils/createDispatch.js` for complete info.

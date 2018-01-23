@@ -54,7 +54,7 @@
     "flow-bin": "^0.55.0",
     "flow-copy-source": "^1.1.0",
     "husky": "^0.13.2",
-    "jest": "^21.1.0",
+    "jest": "^22.1.2",
     "lint-staged": "^3.4.0",
     "prettier": "^1.7.0",
     "query-string": "^4.3.4",
@@ -77,6 +77,9 @@
     "verbose": true,
     "silent": true,
     "testURL": "http://localhost:3000",
+    "testMatch": [
+      "**/__tests__/integration/**/*.js?(x)"
+    ],
     "setupTestFrameworkScriptFile": "./__test-helpers__/setupJest.js",
     "moduleFileExtensions": [
       "js"

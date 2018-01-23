@@ -58,7 +58,7 @@ export default (
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createHistory(options)
-  const reducer = createReducer(routes, history)
+  const reducer = createReducer(routes, history.firstRoute.nextHistory)
   const api = { routes, history, options }
 
   const middleware = (store: Store) => {

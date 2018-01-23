@@ -94,17 +94,17 @@ export const matchQuery = (search, matcher) => {
   for (const key in matcher) {
     const val = query[key]
     const expected = matcher[key]
-    if (!matchVal(val, expected)) return null
+    if (!matchVal(val, expected, key)) return null
   }
 
   return query
 }
 
-export const matchVal = (val, expected) => {
+export const matchVal = (val, expected, key) => {
   const type = typeof expected
 
   if (type === 'boolean') {
-    if (type === true) {
+    if (expected === true) {
       return val !== '' && val !== undefined
     }
 
@@ -114,7 +114,7 @@ export const matchVal = (val, expected) => {
     return expected === val
   }
   else if (type === 'function') {
-    return expected(val)
+    return expected(val, key)
   }
   else if (expected instanceof RegExp) {
     return expected.test(val)

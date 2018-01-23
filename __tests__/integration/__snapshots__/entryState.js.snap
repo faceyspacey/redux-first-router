@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`automatically dispatch action object returned from thunk: 1 - history_entries 1`] = `
+exports[`action.state as function: {"type":"SECOND"} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -17,29 +17,108 @@ Array [
     "key": "345678",
     "pathname": "/second",
     "search": "",
-    "state": Object {},
+    "state": Object {
+      "baz": "bla",
+      "foo": undefined,
+    },
     "url": "/second",
   },
 ]
 `;
 
-exports[`automatically dispatch action object returned from thunk: 1 - history_index 1`] = `1`;
+exports[`action.state as function: {"type":"SECOND"} - history_index 1`] = `1`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - response 1`] = `
+exports[`action.state as function: {"type":"SECOND"} - response 1`] = `
 Object {
-  "type": "FOO",
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "baz": "bla",
+          "foo": undefined,
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "baz": "bla",
+    "foo": undefined,
+  },
+  "type": "SECOND",
 }
 `;
 
-exports[`automatically dispatch action object returned from thunk: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`action.state as function: {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`action.state as function: {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - routes - SECOND - onComplete 1`] = `1`;
-
-exports[`automatically dispatch action object returned from thunk: 1 - routes - SECOND - thunk 1`] = `1`;
-
-exports[`automatically dispatch action object returned from thunk: 1 - state 1`] = `
+exports[`action.state as function: {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -59,14 +138,17 @@ Object {
         "key": "345678",
         "pathname": "/second",
         "search": "",
-        "state": Object {},
+        "state": Object {
+          "baz": "bla",
+          "foo": undefined,
+        },
         "url": "/second",
       },
     ],
     "hasSSR": false,
     "hash": "",
     "index": 1,
-    "kind": "push",
+    "kind": "next",
     "length": 2,
     "params": Object {},
     "pathname": "/second",
@@ -82,125 +164,23 @@ Object {
           "state": Object {},
           "url": "/first",
         },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "FOO",
-}
-`;
-
-exports[`automatically dispatch action object returned from thunk: 1 - title 1`] = `"SECOND"`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - history_index 1`] = `1`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - response 1`] = `
-Object {
-  "payload": "payload",
-  "type": "SECOND_COMPLETE",
-}
-`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - routes - SECOND - onComplete 1`] = `1`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - routes - SECOND - thunk 1`] = `1`;
-
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
         Object {
           "basename": "",
           "hash": "",
           "key": "345678",
-          "pathname": "/first",
+          "pathname": "/second",
           "search": "",
-          "state": Object {},
-          "url": "/first",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/second",
         },
       ],
       "hasSSR": false,
       "hash": "",
       "index": 0,
-      "kind": "load",
-      "length": 1,
+      "kind": "back",
+      "length": 2,
       "params": Object {},
       "pathname": "/first",
       "query": Object {},
@@ -214,13 +194,16 @@ Object {
     "query": Object {},
     "scene": "",
     "search": "",
-    "state": Object {},
+    "state": Object {
+      "baz": "bla",
+      "foo": undefined,
+    },
     "status": 200,
     "type": "SECOND",
     "url": "/second",
   },
-  "title": "SECOND_COMPLETE_\\"payload\\"",
+  "title": "SECOND",
 }
 `;
 
-exports[`create action /w payload + set type to currentActionType + _COMPLETE: 1 - title 1`] = `"SECOND"`;
+exports[`action.state as function: {"type":"SECOND"} - title 1`] = `"SECOND"`;

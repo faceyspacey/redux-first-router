@@ -1,23 +1,19 @@
 import createTest from '../../__helpers__/createTest'
 
-test('automatically dispatch action object returned from thunk', async () => {
-  await createTest({
-    SECOND: {
-      path: '/second',
-      thunk: jest.fn(() => ({
-        type: 'FOO'
-      })),
-      onComplete: jest.fn()
-    }
-  })
+createTest('automatically dispatch action object returned from thunk', {
+  SECOND: {
+    path: '/second',
+    thunk: () => ({
+      type: 'FOO'
+    }),
+    onComplete: function() {}
+  }
 })
 
-test('create action /w payload + set type to currentActionType + _COMPLETE', async () => {
-  await createTest({
-    SECOND: {
-      path: '/second',
-      thunk: jest.fn(() => 'payload'),
-      onComplete: jest.fn()
-    }
-  })
+createTest('create action /w payload + set type to currentActionType + _COMPLETE', {
+  SECOND: {
+    path: '/second',
+    thunk: () => 'payload',
+    onComplete: function() {}
+  }
 })

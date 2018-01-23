@@ -1,47 +1,43 @@
 import createTest from '../../__helpers__/createTest'
 
-test('multiple redirects are honored', async () => {
-  await createTest({
-    SECOND: {
-      path: '/second',
-      beforeEnter: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED' })
-      }),
-      thunk: jest.fn()
+createTest('multiple redirects are honored', {
+  SECOND: {
+    path: '/second',
+    beforeEnter: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED' })
     },
-    REDIRECTED: {
-      path: '/redirected',
-      beforeEnter: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED_AGAIN' })
-      }),
-      thunk: jest.fn()
+    thunk: function() {}
+  },
+  REDIRECTED: {
+    path: '/redirected',
+    beforeEnter: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED_AGAIN' })
     },
-    REDIRECTED_AGAIN: {
-      path: '/redirected-again',
-      thunk: jest.fn()
-    }
-  })
+    thunk: function() {}
+  },
+  REDIRECTED_AGAIN: {
+    path: '/redirected-again',
+    thunk: function() {}
+  }
 })
 
-test('multiple redirects are honored after enter', async () => {
-  await createTest({
-    THIRD: {
-      path: '/third',
-      thunk: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED_AFTER' })
-      }),
-      onComplete: jest.fn()
+createTest('multiple redirects are honored after enter', {
+  SECOND: {
+    path: '/second',
+    thunk: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED_AFTER' })
     },
-    REDIRECTED_AFTER: {
-      path: '/redirected-after',
-      thunk: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED_AGAIN_AFTER' })
-      }),
-      onComplete: jest.fn()
+    onComplete: function() {}
+  },
+  REDIRECTED_AFTER: {
+    path: '/redirected-after',
+    thunk: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED_AGAIN_AFTER' })
     },
-    REDIRECTED_AGAIN_AFTER: {
-      path: '/redirected-again-after',
-      onComplete: jest.fn()
-    }
-  })
+    onComplete: function() {}
+  },
+  REDIRECTED_AGAIN_AFTER: {
+    path: '/redirected-again-after',
+    onComplete: function() {}
+  }
 })

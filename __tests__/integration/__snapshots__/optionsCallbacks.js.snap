@@ -1,34 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`action_SECOND 1`] = `
-Object {
-  "type": "SECOND",
-}
-`;
-
-exports[`action_SECOND 2`] = `
-Object {
-  "type": "SECOND",
-}
-`;
-
-exports[`action_THIRD 1`] = `
-Object {
-  "type": "THIRD",
-}
-`;
-
-exports[`beforeEnter_options 1`] = `2`;
-
-exports[`beforeEnter_options 2`] = `2`;
-
-exports[`beforeEnter_options 3`] = `3`;
-
-exports[`beforeLeave_options 1`] = `1`;
-
-exports[`beforeLeave_options 2`] = `1`;
-
-exports[`history_entries_SECOND 1`] = `
+exports[`all options callbacks are called: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -51,117 +23,29 @@ Array [
 ]
 `;
 
-exports[`history_entries_SECOND 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
+exports[`all options callbacks are called: 1 - history_index 1`] = `1`;
 
-exports[`history_entries_THIRD 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/redirected",
-    "search": "",
-    "state": Object {},
-    "url": "/redirected",
-  },
-]
-`;
+exports[`all options callbacks are called: 1 - options - beforeEnter 1`] = `2`;
 
-exports[`history_index_SECOND 1`] = `1`;
+exports[`all options callbacks are called: 1 - options - beforeLeave 1`] = `1`;
 
-exports[`history_index_SECOND 2`] = `1`;
+exports[`all options callbacks are called: 1 - options - onComplete 1`] = `2`;
 
-exports[`history_index_THIRD 1`] = `1`;
+exports[`all options callbacks are called: 1 - options - onEnter 1`] = `2`;
 
-exports[`onComplete_options 1`] = `2`;
+exports[`all options callbacks are called: 1 - options - onError 1`] = `1`;
 
-exports[`onComplete_options 2`] = `2`;
+exports[`all options callbacks are called: 1 - options - onLeave 1`] = `1`;
 
-exports[`onEnter_options 1`] = `2`;
+exports[`all options callbacks are called: 1 - options - thunk 1`] = `2`;
 
-exports[`onEnter_options 2`] = `2`;
+exports[`all options callbacks are called: 1 - response 1`] = `undefined`;
 
-exports[`onError_options 1`] = `1`;
+exports[`all options callbacks are called: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`onError_options 2`] = `1`;
+exports[`all options callbacks are called: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`onLeave_options 1`] = `1`;
-
-exports[`onLeave_options 2`] = `1`;
-
-exports[`options 1`] = `
-Object {
-  "beforeEnter": [Function],
-  "beforeLeave": [Function],
-  "onComplete": [Function],
-  "onEnter": [Function],
-  "onError": [Function],
-  "onLeave": [Function],
-  "thunk": [Function],
-}
-`;
-
-exports[`options 2`] = `
-Object {
-  "beforeEnter": [Function],
-  "beforeLeave": [Function],
-  "onComplete": [Function],
-  "onEnter": [Function],
-  "onError": [Function],
-  "onLeave": [Function],
-  "thunk": [Function],
-}
-`;
-
-exports[`options 3`] = `
-Object {
-  "beforeEnter": [Function],
-  "thunk": [Function],
-}
-`;
-
-exports[`response_SECOND 1`] = `undefined`;
-
-exports[`response_SECOND 2`] = `undefined`;
-
-exports[`response_THIRD 1`] = `
-Object {
-  "payload": "redirect_complete",
-  "type": "REDIRECTED_COMPLETE",
-}
-`;
-
-exports[`state_SECOND 1`] = `
+exports[`all options callbacks are called: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -232,164 +116,4 @@ Object {
 }
 `;
 
-exports[`state_SECOND 2`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`state_THIRD 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/redirected",
-        "search": "",
-        "state": Object {},
-        "url": "/redirected",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "redirect",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/redirected",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/third",
-          "search": "",
-          "state": Object {},
-          "url": "/third",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/third",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "THIRD",
-      "url": "/third",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 302,
-    "type": "REDIRECTED",
-    "url": "/redirected",
-  },
-  "title": "REDIRECTED_COMPLETE_\\"redirect_complete\\"",
-}
-`;
-
-exports[`thunk_options 1`] = `2`;
-
-exports[`thunk_options 2`] = `2`;
-
-exports[`thunk_options 3`] = `2`;
-
-exports[`title_SECOND 1`] = `"SECOND"`;
-
-exports[`title_SECOND 2`] = `"SECOND"`;
-
-exports[`title_THIRD 1`] = `"REDIRECTED"`;
+exports[`all options callbacks are called: 1 - title 1`] = `"SECOND"`;

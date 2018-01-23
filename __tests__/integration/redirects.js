@@ -1,25 +1,41 @@
 import createTest from '../../__helpers__/createTest'
 
-test('redirect before enter', async () => {
-  await createTest({
-    SECOND: {
-      path: '/second',
-      beforeEnter: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED' })
-      }),
-      thunk: jest.fn()
-    }
-  })
+createTest('redirect before enter', {
+  SECOND: {
+    path: '/second',
+    beforeEnter: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED' })
+    },
+    thunk: function() {}
+  }
 })
 
-test('redirect after enter', async () => {
-  await createTest({
-    THIRD: {
-      path: '/third',
-      thunk: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED' })
-      }),
-      onComplete: jest.fn()
-    }
-  })
+createTest('redirect after enter', {
+  SECOND: {
+    path: '/second',
+    thunk: jest.fn(({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED' })
+    }),
+    onComplete: jest.fn()
+  }
+})
+
+createTest('redirect before enter (on firstRoute)', {
+  FIRST: {
+    path: '/first',
+    beforeEnter: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED' })
+    },
+    thunk: function() {}
+  }
+})
+
+createTest('redirect after enter (on firstRoute)', {
+  FIRST: {
+    path: '/first',
+    thunk: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED' })
+    },
+    onComplete: function() {}
+  }
 })

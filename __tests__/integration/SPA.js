@@ -3,14 +3,12 @@ import createTest from '../../__helpers__/createTest'
 jest.mock('../../src/utils/isHydrate', () => () => false)
 jest.mock('../../src/utils/isServer', () => () => false)
 
-test('callbacks called on load if SPA', async () => {
-  await createTest({
-    FIRST: {
-      path: '/first',
-      beforeEnter: jest.fn(),
-      thunk: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED' })
-      })
+createTest('callbacks called on load if SPA', {
+  FIRST: {
+    path: '/first',
+    beforeEnter: function() {},
+    thunk: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED' })
     }
-  })
+  }
 })

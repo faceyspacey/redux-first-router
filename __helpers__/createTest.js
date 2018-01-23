@@ -1,19 +1,204 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux'
 import { createRouter } from '../src'
 
-export default async (routesMap, actions, options = {}) => {
-  if (actions && !Array.isArray(actions)) {
-    options = actions
-    actions = undefined
+export default async (...allArgs) => {
+  const args = allArgs.filter(arg => typeof arg !== 'function')
+  const callbacks = allArgs.filter(arg => typeof arg === 'function')
+  const hasCallbacks = callbacks.length > 0
+
+  const [testName, routesMap] = args
+  let [,, options = {}, actions] = args
+
+  if (Array.isArray(options)) {
+    actions = options
+    options = {}
   }
 
   if (!actions) {
     actions = Object.keys(routesMap).filter(type => !/FIRST|REDIRECTED/.test(type))
   }
 
-  expect(options).toMatchSnapshot('options')
+  const initialPath = typeof actions[0] === 'string' && actions[0].charAt(0) === '/'
+    ? actions.shift()
+    : '/first'
 
-  const routes = {
+  const hasMultipleTests = actions.length > 1
+  let num = 1
+
+  if (hasMultipleTests) {
+    describe(testName, () => {
+      for (const action of actions) {
+        const name = JSON.stringify(action)
+        createTest(name, routesMap, initialPath, action, options, num++)
+      }
+
+      if (hasCallbacks) {
+        callbacks.forEach((cb, index) => {
+          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + (++index)
+          createSnipes(name, routesMap, initialPath, options, cb)
+        })
+      }
+    })
+  }
+  else {
+    const isSnipesOnly = initialPath === '/first' && actions.length === 0
+
+    if (hasCallbacks && isSnipesOnly) {
+      callbacks.forEach((cb, index) => {
+        const name = callbacks.length === 1 ? testName : 'snipes ' + (++index)
+        createSnipes(name, routesMap, initialPath, options, cb)
+      })
+    }
+    else if (hasCallbacks) {
+      describe(testName, () => {
+        const name = actions[0] ? JSON.stringify(actions[0]) : 'firstRoute - ' + initialPath
+
+        createTest(name, routesMap, initialPath, actions[0], options, num)
+
+        callbacks.forEach((cb, index) => {
+          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + (++index)
+          createSnipes(name, routesMap, initialPath, options, cb)
+        })
+      })
+    }
+    else {
+      createTest(testName, routesMap, initialPath, actions[0], options, num)
+    }
+  }
+}
+
+const createTest = (testName, routesMap, initialPath, item, opts, num) => {
+  test(testName, async () => {
+    const {
+      store,
+      history,
+      routes,
+      options,
+      firstRoute,
+      initialState
+    } = setupStore(routesMap, initialPath, opts)
+
+    const firstAction = firstRoute()
+    const res = await store.dispatch(firstAction)
+
+    if (routesMap.FIRST || initialPath !== '/first') {
+      const prefix = 'firstRoute - ' + initialPath + ' - ' + num
+      snapChange(prefix, res, store, history, initialState)
+    }
+
+    if (typeof item === 'string' && item.charAt(0) === '/') {
+      const url = item
+      const res = await history.push(url)
+
+      snapChange(num, res, store, history)
+    }
+    else if (item) {
+      const action = typeof item === 'object' ? item : { type: item }
+      const res = await store.dispatch(action)
+
+      snapChange(num, res, store, history)
+    }
+
+    snapRoutes(num, routes)
+    snapOptions(num, options)
+  })
+}
+
+const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
+  test(testName, async () => {
+    const {
+      store,
+      history,
+      routes,
+      options,
+      firstRoute
+    } = setupStore(routesMap, initialPath, opts)
+
+    await store.dispatch(firstRoute())
+
+    await callback({
+      history,
+      routes,
+      options,
+      dispatch: store.dispatch,
+      getState: store.getState,
+      location: () => store.getState().location,
+      snap: async (action, prefix = '') => {
+        const res = typeof action === 'function'
+          ? await action() // used if user wants to do custom things like: `await history.replace()`
+          : await store.dispatch(action)
+
+        prefix = prefix || JSON.stringify(action) || 'function'
+
+        snapChange(prefix, res, store, history)
+        snapRoutes(prefix, routes)
+        snapOptions(prefix, options)
+        return res
+      }
+    })
+  })
+}
+
+const setupStore = (routesMap, initialPath, opts) => {
+  const routes = createRoutes(routesMap)
+  const options = createOptions(opts)
+
+  options.initialEntries = [initialPath]
+  options.extra = { arg: 'extra-arg' }
+
+  const title = (state, action = {}) => {
+    return action.payload
+      ? action.type + '_' + JSON.stringify(action.payload)
+      : action.type
+  }
+
+  const { middleware, reducer, firstRoute, rudy } = createRouter(
+    routes,
+    options
+  )
+
+  const rootReducer = combineReducers({ title, location: reducer })
+  const enhancer = applyMiddleware(middleware)
+  const store = createStore(rootReducer, enhancer)
+
+  const initialState = store.getState()
+
+  return {
+    store,
+    firstRoute,
+    initialState,
+    routes,
+    options,
+    history: rudy.history
+  }
+}
+
+const callbacks = [
+  'beforeLeave',
+  'beforeEnter',
+  'onLeave',
+  'onLeave',
+  'onEnter',
+  'thunk',
+  'onComplete',
+  'onError'
+]
+
+const createRoutes = (routesMap) => {
+  const routes = {}
+
+  for (const type in routesMap) {
+    routes[type] = { ...routesMap[type] }
+    const route = routes[type]
+
+    for (const cb of callbacks) {
+      if (route[cb]) {
+        route[cb] = jest.fn(route[cb])
+      }
+    }
+  }
+
+  return {
     FIRST: '/first',
     NEVER_USED_PATHLESS: { // insures pathless routes can co-exist with regular routes
       thunk: jest.fn()
@@ -22,145 +207,93 @@ export default async (routesMap, actions, options = {}) => {
       path: '/redirected',
       onComplete: jest.fn(() => 'redirect_complete')
     },
-    ...routesMap
+    ...routes
   }
+}
 
-  const path = typeof actions[0] === 'string' && actions[0].charAt(0) === '/'
-    ? actions.shift()
-    : '/first'
+const createOptions = (opts) => {
+  const options = { ...opts }
 
-  options.initialEntries = [path]
-  options.extra = { arg: 'extra-arg' }
-
-  const { middleware, reducer, firstRoute, rudy } = createRouter(
-    routes,
-    options
-  )
-
-  const title = (state, action = {}) => {
-    return action.payload
-      ? action.type + '_' + JSON.stringify(action.payload)
-      : action.type
-  }
-  const rootReducer = combineReducers({ title, location: reducer })
-  const enhancer = applyMiddleware(middleware)
-  const store = createStore(rootReducer, enhancer)
-
-  if (routesMap.FIRST) {
-    expect(store.getState()).toMatchSnapshot('initial_state')
-  }
-
-  const firstAction = firstRoute()
-  const res = await store.dispatch(firstAction)
-
-  if (routesMap.FIRST) {
-    expect(firstAction).toMatchSnapshot('first_action')
-    expect(res).toMatchSnapshot('first_response')
-    expect(store.getState()).toMatchSnapshot('first_state')
-    expect(rudy.history.entries).toMatchSnapshot('first_history_entries')
-    expect(rudy.history.index).toMatchSnapshot('first_history_index')
-    expect(document.title).toMatchSnapshot('first_title')
-  }
-
-  for (const item of actions) {
-    let res
-    let postfix
-
-    if (typeof item === 'string' && item.charAt(0) === '/') {
-      res = await rudy.history.push(item)
-      postfix = item
+  for (const cb of callbacks) {
+    if (opts[cb]) {
+      options[cb] = jest.fn(opts[cb])
     }
-    else {
-      const act = typeof item === 'object' ? item : { type: item }
-      const { type, params, query, hash, state, snipes } = act
-      const action = { type }
-
-      if (params) action.params = params
-      if (query) action.query = query
-      if (hash) action.hash = hash
-      if (state) action.state = state
-
-      res = await store.dispatch(action)
-      postfix = '_' + type
-
-      expect(action).toMatchSnapshot('action' + postfix)
-    }
-
-    expect(res).toMatchSnapshot('response' + postfix)
-    expect(store.getState()).toMatchSnapshot('state' + postfix)
-    expect(rudy.history.entries).toMatchSnapshot('history_entries' + postfix)
-    expect(rudy.history.index).toMatchSnapshot('history_index' + postfix)
-    expect(document.title).toMatchSnapshot('title' + postfix)
   }
 
-  const types = Object.keys(routesMap)
+  return options
+}
 
-  for (const type of types) {
+const snapRoutes = (prefix, routes) => {
+  for (const type in routes) {
     const route = routes[type]
-    const postfix = '_' + type
+    snapCallbacks(prefix + ' - routes - ' + type, route)
+  }
+}
 
-    if (route.beforeLeave) {
-      expect(route.beforeLeave.mock.calls.length).toMatchSnapshot('beforeLeave' + postfix)
-    }
+const snapOptions = (prefix, options) => {
+  snapCallbacks(prefix + ' - options', options)
+}
 
-    if (route.beforeEnter && route.beforeEnter.mock) { // allow redirect shortcut route options to work
-      expect(route.beforeEnter.mock.calls.length).toMatchSnapshot('beforeEnter' + postfix)
-    }
-
-    if (route.onLeave) {
-      expect(route.onLeave.mock.calls.length).toMatchSnapshot('onLeave' + postfix)
-    }
-
-    if (route.onEnter) {
-      expect(route.onEnter.mock.calls.length).toMatchSnapshot('onEnter' + postfix)
-    }
-
-    if (route.thunk) {
-      expect(route.thunk.mock.calls.length).toMatchSnapshot('thunk' + postfix)
-    }
-
-    if (route.onComplete) {
-      expect(route.onComplete.mock.calls.length).toMatchSnapshot('onComplete' + postfix)
-    }
-
-    if (route.onError) {
-      expect(route.onError.mock.calls.length).toMatchSnapshot('onError' + postfix)
-    }
+const snapCallbacks = (prefix, obj) => {
+  if (obj.beforeLeave) {
+    expect(obj.beforeLeave.mock.calls.length).toMatchSnapshot(prefix + ' - beforeLeave')
   }
 
-  if (options.beforeLeave) {
-    expect(options.beforeLeave.mock.calls.length).toMatchSnapshot('beforeLeave_options')
+  if (obj.beforeEnter && obj.beforeEnter.mock) { // allow redirect shortcut route options to work
+    expect(obj.beforeEnter.mock.calls.length).toMatchSnapshot(prefix + ' - beforeEnter')
   }
 
-  if (options.beforeEnter) {
-    expect(options.beforeEnter.mock.calls.length).toMatchSnapshot('beforeEnter_options')
+  if (obj.onLeave) {
+    expect(obj.onLeave.mock.calls.length).toMatchSnapshot(prefix + ' - onLeave')
   }
 
-  if (options.onLeave) {
-    expect(options.onLeave.mock.calls.length).toMatchSnapshot('onLeave_options')
+  if (obj.onEnter) {
+    expect(obj.onEnter.mock.calls.length).toMatchSnapshot(prefix + ' - onEnter')
   }
 
-  if (options.onEnter) {
-    expect(options.onEnter.mock.calls.length).toMatchSnapshot('onEnter_options')
+  if (obj.thunk) {
+    expect(obj.thunk.mock.calls.length).toMatchSnapshot(prefix + ' - thunk')
   }
 
-  if (options.thunk) {
-    expect(options.thunk.mock.calls.length).toMatchSnapshot('thunk_options')
+  if (obj.onComplete) {
+    expect(obj.onComplete.mock.calls.length).toMatchSnapshot(prefix + ' - onComplete')
   }
 
-  if (options.onComplete) {
-    expect(options.onComplete.mock.calls.length).toMatchSnapshot('onComplete_options')
+  if (obj.onError) {
+    expect(obj.onError.mock.calls.length).toMatchSnapshot(prefix + ' - onError')
   }
+}
 
-  if (options.onError) {
-    expect(options.onError.mock.calls.length).toMatchSnapshot('onError_options')
-  }
+const snapChange = (prefix, res, store, history, initialState) => {
+  if (initialState) expectInitialState(initialState, prefix)
 
-  return {
-    store,
-    firstRoute,
-    history: rudy.history,
-    routes,
-    location: () => store.getState().location
-  }
+  expectResponse(res, prefix)
+  expectState(store, prefix)
+  expectEntries(history, prefix)
+  expectIndex(history, prefix)
+  expectTitle(prefix)
+}
+
+const expectInitialState = (initialState, prefix) => {
+  expect(initialState).toMatchSnapshot(prefix + ' - initial_state')
+}
+
+const expectResponse = (res, prefix) => {
+  expect(res).toMatchSnapshot(prefix + ' - response')
+}
+
+const expectState = (store, prefix) => {
+  expect(store.getState()).toMatchSnapshot(prefix + ' - state')
+}
+
+const expectEntries = (history, prefix) => {
+  expect(history.entries).toMatchSnapshot(prefix + ' - history_entries')
+}
+
+const expectIndex = (history, prefix) => {
+  expect(history.index).toMatchSnapshot(prefix + ' - history_index')
+}
+
+const expectTitle = (prefix) => {
+  expect(document.title).toMatchSnapshot(prefix + ' - title')
 }
