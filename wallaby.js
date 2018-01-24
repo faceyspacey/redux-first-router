@@ -12,7 +12,7 @@ module.exports = wallaby => {
     filesWithNoCoverageCalculated: ['__helpers__/**/*.js'],
 
     tests: [
-      '__tests__/integration/dontDoubleDispatch.js'
+      '__tests__/integration/arrayCallback.js'
       // '__tests__/integration/**/*.js',
       // '__tests__/Link/**/*.js',
       // '__tests__/createRouter.js',

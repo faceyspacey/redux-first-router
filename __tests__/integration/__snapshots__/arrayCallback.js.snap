@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`callback can be array of functions: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`callback can be array of functions: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`callback can be array of functions: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`callback can be array of functions: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`callback can be array of functions: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`callback can be array of functions: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "payload": "abc",
+  "type": "FIRST_COMPLETE",
+}
+`;
+
+exports[`callback can be array of functions: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST_COMPLETE - \\"abc\\"",
+}
+`;
+
+exports[`callback can be array of functions: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
+
+exports[`callback can be array of inherited callbacks: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`callback can be array of inherited callbacks: 1 - routes - REDIRECTED - thunk 1`] = `1`;
+
+exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "payload": "aZZZc",
+  "type": "FIRST_COMPLETE",
+}
+`;
+
+exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST_COMPLETE - \\"aZZZc\\"",
+}
+`;
+
+exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 - title 1`] = `"FIRST"`;

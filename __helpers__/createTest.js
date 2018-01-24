@@ -80,7 +80,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
 
     const firstAction = firstRoute()
     const res = await store.dispatch(firstAction)
-
+    console.log(res)
     if (routesMap.FIRST || initialPath !== '/first') {
       const prefix = 'firstRoute - ' + initialPath + ' - ' + num
       snapChange(prefix, res, store, history, initialState)
@@ -148,7 +148,7 @@ const setupStore = (routesMap, initialPath, opts) => {
 
   const title = (state, action = {}) => {
     return action.payload
-      ? action.type + '_' + JSON.stringify(action.payload)
+      ? action.type + ' - ' + JSON.stringify(action.payload)
       : action.type
   }
 
@@ -192,7 +192,7 @@ const createRoutes = (routesMap) => {
     const route = routes[type]
 
     for (const cb of callbacks) {
-      if (route[cb]) {
+      if (typeof route[cb] === 'function') {
         route[cb] = jest.fn(route[cb])
       }
     }
@@ -215,7 +215,7 @@ const createOptions = (opts) => {
   const options = { ...opts }
 
   for (const cb of callbacks) {
-    if (opts[cb]) {
+    if (typeof opts[cb] === 'function') {
       options[cb] = jest.fn(opts[cb])
     }
   }
@@ -235,31 +235,31 @@ const snapOptions = (prefix, options) => {
 }
 
 const snapCallbacks = (prefix, obj) => {
-  if (obj.beforeLeave) {
+  if (typeof obj.beforeLeave === 'function' && obj.beforeLeave.mock) {
     expect(obj.beforeLeave.mock.calls.length).toMatchSnapshot(prefix + ' - beforeLeave')
   }
 
-  if (obj.beforeEnter && obj.beforeEnter.mock) { // allow redirect shortcut route options to work
+  if (typeof obj.beforeEnter === 'function' && obj.beforeEnter.mock) {
     expect(obj.beforeEnter.mock.calls.length).toMatchSnapshot(prefix + ' - beforeEnter')
   }
 
-  if (obj.onLeave) {
+  if (typeof obj.onLeave === 'function' && obj.onLeave.mock) {
     expect(obj.onLeave.mock.calls.length).toMatchSnapshot(prefix + ' - onLeave')
   }
 
-  if (obj.onEnter) {
+  if (typeof obj.onEnter === 'function' && obj.onEnter.mock) {
     expect(obj.onEnter.mock.calls.length).toMatchSnapshot(prefix + ' - onEnter')
   }
 
-  if (obj.thunk) {
+  if (typeof obj.thunk === 'function' && obj.thunk.mock) {
     expect(obj.thunk.mock.calls.length).toMatchSnapshot(prefix + ' - thunk')
   }
 
-  if (obj.onComplete) {
+  if (typeof obj.onComplete === 'function' && obj.onComplete.mock) {
     expect(obj.onComplete.mock.calls.length).toMatchSnapshot(prefix + ' - onComplete')
   }
 
-  if (obj.onError) {
+  if (typeof obj.onError === 'function' && obj.onError.mock) {
     expect(obj.onError.mock.calls.length).toMatchSnapshot(prefix + ' - onError')
   }
 }

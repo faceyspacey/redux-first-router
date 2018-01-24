@@ -15,9 +15,12 @@ const findCallback = (name, routes, callback, route) => {
     return callback
   }
   else if (Array.isArray(callback)) {
-    const pipeline = callback.map(cb => (req, next) => {
+    const callbacks = callback
+    const pipeline = callbacks.map(cb => (req, next) => {
+      cb = findCallback(name, routes, cb, route)
+
       const prom = Promise.resolve(cb(req))
-      prom.then(complete(next))
+      return prom.then(complete(next))
     })
 
     return composePromise(pipeline, null, true)

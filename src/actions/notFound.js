@@ -9,7 +9,9 @@ export default (
   basename: ?string,
   type: ?string
 ) => {
-  if (typeof act === 'string' && typeof url !== 'string') {
+  if (typeof act === 'string') {
+    type = basename
+    basename = url
     url = act
     act = null
   }

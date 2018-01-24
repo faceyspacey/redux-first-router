@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`skip actions with errors: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`skip actions with errors: 1 - history_index 1`] = `0`;
+
+exports[`skip actions with errors: 1 - response 1`] = `
+Object {
+  "error": [Error: foo],
+  "type": "REDIRECTED",
+}
+`;
+
+exports[`skip actions with errors: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`skip actions with errors: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`skip actions with errors: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "REDIRECTED",
+}
+`;
+
+exports[`skip actions with errors: 1 - title 1`] = `"FIRST"`;
+
+exports[`skip ractions with errors: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`skip ractions with errors: 1 - history_index 1`] = `0`;
+
+exports[`skip ractions with errors: 1 - response 1`] = `
+Object {
+  "error": [Error: foo],
+  "type": "REDIRECTED",
+}
+`;
+
+exports[`skip ractions with errors: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`skip ractions with errors: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`skip ractions with errors: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "REDIRECTED",
+}
+`;
+
+exports[`skip ractions with errors: 1 - title 1`] = `"FIRST"`;
+
+exports[`skip route actions with errors: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`skip route actions with errors: 1 - history_index 1`] = `0`;
+
+exports[`skip route actions with errors: 1 - response 1`] = `
+Object {
+  "error": [Error: foo],
+  "type": "REDIRECTED",
+}
+`;
+
+exports[`skip route actions with errors: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`skip route actions with errors: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`skip route actions with errors: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "REDIRECTED",
+}
+`;
+
+exports[`skip route actions with errors: 1 - title 1`] = `"FIRST"`;

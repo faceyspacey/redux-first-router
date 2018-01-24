@@ -109,3 +109,198 @@ Object {
 `;
 
 exports[`pathless route thunk called : 1 - title 1`] = `"REDIRECTED"`;
+
+exports[`pathless route thunk called: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/redirected",
+    "search": "",
+    "state": Object {},
+    "url": "/redirected",
+  },
+]
+`;
+
+exports[`pathless route thunk called: 1 - history_index 1`] = `1`;
+
+exports[`pathless route thunk called: 1 - response 1`] = `
+Object {
+  "type": "PATHLESS",
+}
+`;
+
+exports[`pathless route thunk called: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`pathless route thunk called: 1 - routes - PATHLESS - beforeEnter 1`] = `0`;
+
+exports[`pathless route thunk called: 1 - routes - PATHLESS - onComplete 1`] = `1`;
+
+exports[`pathless route thunk called: 1 - routes - PATHLESS - thunk 1`] = `1`;
+
+exports[`pathless route thunk called: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`pathless route thunk called: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "REDIRECTED",
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE_\\"redirect_complete\\"",
+}
+`;
+
+exports[`pathless route thunk called: 1 - title 1`] = `"REDIRECTED"`;
+
+exports[`pathless route thunk errors trigger onError: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`pathless route thunk errors trigger onError: 1 - history_index 1`] = `0`;
+
+exports[`pathless route thunk errors trigger onError: 1 - response 1`] = `undefined`;
+
+exports[`pathless route thunk errors trigger onError: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`pathless route thunk errors trigger onError: 1 - routes - PATHLESS - onComplete 1`] = `0`;
+
+exports[`pathless route thunk errors trigger onError: 1 - routes - PATHLESS - onError 1`] = `1`;
+
+exports[`pathless route thunk errors trigger onError: 1 - routes - PATHLESS - thunk 1`] = `1`;
+
+exports[`pathless route thunk errors trigger onError: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`pathless route thunk errors trigger onError: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "PATHLESS",
+}
+`;
+
+exports[`pathless route thunk errors trigger onError: 1 - title 1`] = `"FIRST"`;
