@@ -6,15 +6,15 @@ import {
   camelCase,
   logExports,
   makeActionCreator,
-  routeToObject
+  formatRoute
 } from './utils'
 
-export default (r: RoutesMapInput, opts: CreateActionsOptions = {}) => {
-  const { scene: sc, basename: bn, logExports: log } = opts
+export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
+  const { scene: sc, basename: bn, formatRoute: format, logExports: log } = opts
 
   const scene = sc || ''
   const prefix = scene ? `${scene}/` : ''
-  const keys = Object.keys(r)
+  const keys = Object.keys(routesMap)
 
   const result = keys.reduce((result, t) => {
     const { types, actions, routes } = result
@@ -23,9 +23,11 @@ export default (r: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     const tc = `${prefix}${t}_COMPLETE`
     const te = `${prefix}${t}_ERROR`
 
-    const route = routes[t2] = routeToObject(r[t], t2)
-    const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so keys/exports are un-prefixed
-    const name = camelCase(tClean)
+    routes[t2] = formatRoute(routesMap[t], t2, routesMap, format)
+
+    const route = routes[t2]
+    const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so types will be un-prefixed
+    const action = camelCase(tClean)
 
     types[tClean] = t2
     types[`${tClean}_COMPLETE`] = tc
@@ -34,26 +36,26 @@ export default (r: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     // allow for creating custom action creators (whose names are an array assigned to route.action)
     if (Array.isArray(route.action)) {
       const key = route.action[0]
-      actions[name] = makeActionCreator(route, t2, key, bn) // the first name in the array becomes the primary action creator
+      actions[action] = makeActionCreator(route, t2, key, bn) // the first action in the array becomes the primary action creator
 
-      // all are tacked on like name.complete, name.error
+      // all are tacked on like action.complete, action.error
       route.action.forEach((key: string) => {
-        actions[name][key] = makeActionCreator(route, t2, key, bn)
+        actions[action][key] = makeActionCreator(route, t2, key, bn)
       })
     }
     else {
-      actions[name] = makeActionCreator(route, t2, 'action', bn)
+      actions[action] = makeActionCreator(route, t2, 'action', bn)
     }
 
-    actions[name].complete = makeActionCreator(route, tc, 'complete', bn)
-    actions[name].error = makeActionCreator(route, te, 'error', bn)
+    actions[action].complete = makeActionCreator(route, tc, 'complete', bn)
+    actions[action].error = makeActionCreator(route, te, 'error', bn)
 
     return result
   }, { types: {}, actions: {}, routes: {} })
 
   const { types, actions } = result
 
-  // insure @@rudy/NOT_FOUND keys/exports are also un-prefixed, eg: NOT_FOUND, notFound, etc
+  // insure @@rudy/NOT_FOUND routes are also un-prefixed, eg: NOT_FOUND, notFound, etc
   if (types[NOT_FOUND]) {
     types.NOT_FOUND = types[NOT_FOUND]
     types.NOT_FOUND_COMPLETE = types[`${NOT_FOUND}_COMPLETE`]
@@ -66,7 +68,7 @@ export default (r: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     delete actions.rudyNotFound
   }
 
-  if (log && /development|test/.test(process.env.NODE_ENV)) {
+  if (log && /^(development|test)$/.test(process.env.NODE_ENV)) {
     result.exportString = logExports(types, actions, result.routes, opts)
   }
 

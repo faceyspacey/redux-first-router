@@ -28,8 +28,15 @@ export default async (...allArgs) => {
   if (hasMultipleTests) {
     describe(testName, () => {
       for (const action of actions) {
-        const name = JSON.stringify(action)
-        createTest(name, routesMap, initialPath, action, options, num++)
+        if (Array.isArray(action)) {
+          const name = action[0]
+          const act = action[1]
+          createTest(name, routesMap, initialPath, act, options, num++)
+        }
+        else {
+          const name = JSON.stringify(action)
+          createTest(name, routesMap, initialPath, action, options, num++)
+        }
       }
 
       if (hasCallbacks) {
@@ -80,7 +87,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
 
     const firstAction = firstRoute()
     const res = await store.dispatch(firstAction)
-    console.log(res)
+
     if (routesMap.FIRST || initialPath !== '/first') {
       const prefix = 'firstRoute - ' + initialPath + ' - ' + num
       snapChange(prefix, res, store, history, initialState)
@@ -93,7 +100,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
       snapChange(num, res, store, history)
     }
     else if (item) {
-      const action = typeof item === 'object' ? item : { type: item }
+      const action = typeof item === 'string' ? { type: item } : item
       const res = await store.dispatch(action)
 
       snapChange(num, res, store, history)
@@ -188,7 +195,10 @@ const createRoutes = (routesMap) => {
   const routes = {}
 
   for (const type in routesMap) {
-    routes[type] = { ...routesMap[type] }
+    routes[type] = typeof routesMap[type] === 'object'
+      ? { ...routesMap[type] }
+      : routesMap[type]
+
     const route = routes[type]
 
     for (const cb of callbacks) {
@@ -199,7 +209,9 @@ const createRoutes = (routesMap) => {
   }
 
   return {
-    FIRST: '/first',
+    FIRST: {
+      path: '/first'
+    },
     NEVER_USED_PATHLESS: { // insures pathless routes can co-exist with regular routes
       thunk: jest.fn()
     },

@@ -21,3 +21,6 @@ createTest('dispatch(notFound(action, alternatePath, basename))', {}, [
   notFound({ type: 'SECOND', params: { foo: 'bar' } }, '/does-not-exist', '/basename')
 ])
 
+createTest('notFound on first load', {}, [
+  '/non-existent'
+])

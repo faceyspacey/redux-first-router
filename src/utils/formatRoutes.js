@@ -11,17 +11,8 @@ export default (
   if (!isAddRoutes) routes[NOT_FOUND] = routes[NOT_FOUND] || {}
 
   for (const type in routes) {
-    let route = routes[type]
+    const route = format(routes[type], type, routes, formatRoute, isAddRoutes)
 
-    if (typeof route === 'string') routes[type] = { path: route }
-
-    if (formatRoute) {
-      route = routes[type] = formatRoute(routes[type], type, routes)
-    }
-
-    if (typeof route === 'function') routes[type] = { thunk: route }
-
-    route = routes[type]
     route.type = type
     if (route.redirect) createRedirect(route, routes)
   }
@@ -31,6 +22,19 @@ export default (
   }
 
   return routes
+}
+
+export const format = (r, type, routes, formatRoute, isAddRoutes) => {
+  const route = typeof r === 'string' ? { path: r } : r
+
+  if (formatRoute) {
+    return formatRoute(route, type, routes, formatRoute, isAddRoutes)
+  }
+  else if (typeof route === 'function') {
+    return { thunk: route }
+  }
+
+  return route
 }
 
 const createRedirect = (route, routes) => {

@@ -1,31 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dispatch(notFound()): 1 - history_entries 1`] = `
+exports[`notFound on first load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`notFound on first load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`notFound on first load: firstRoute - /non-existent - 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
     "hash": "",
     "key": "345678",
-    "pathname": "/first",
+    "pathname": "/non-existent",
     "search": "",
     "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/not-found",
-    "search": "",
-    "state": Object {},
-    "url": "/not-found",
+    "url": "/non-existent",
   },
 ]
 `;
 
-exports[`dispatch(notFound()): 1 - history_index 1`] = `1`;
+exports[`notFound on first load: firstRoute - /non-existent - 1 - history_index 1`] = `0`;
 
-exports[`dispatch(notFound()): 1 - response 1`] = `
+exports[`notFound on first load: firstRoute - /non-existent - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/non-existent",
+        "search": "",
+        "state": Object {},
+        "url": "/non-existent",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/non-existent",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "@@rudy/NOT_FOUND",
+    "url": "/non-existent",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`notFound on first load: firstRoute - /non-existent - 1 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -35,57 +80,37 @@ Object {
         "basename": "",
         "hash": "",
         "key": "345678",
-        "pathname": "/first",
+        "pathname": "/non-existent",
         "search": "",
         "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/not-found",
-        "search": "",
-        "state": Object {},
-        "url": "/not-found",
+        "url": "/non-existent",
       },
     ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/not-found",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "pathname": "/non-existent",
     "prev": Object {
       "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
+      "entries": Array [],
       "hasSSR": false,
       "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
+      "index": -1,
+      "kind": "",
+      "length": 0,
       "params": Object {},
-      "pathname": "/first",
+      "pathname": "",
       "query": Object {},
       "scene": "",
       "search": "",
       "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
+      "type": "",
+      "url": "",
     },
     "scene": "",
     "search": "",
     "status": 404,
-    "url": "/not-found",
+    "url": "/non-existent",
   },
   "params": Object {},
   "query": Object {},
@@ -94,11 +119,7 @@ Object {
 }
 `;
 
-exports[`dispatch(notFound()): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`dispatch(notFound()): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`dispatch(notFound()): 1 - state 1`] = `
+exports[`notFound on first load: firstRoute - /non-existent - 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -107,55 +128,35 @@ Object {
         "basename": "",
         "hash": "",
         "key": "345678",
-        "pathname": "/first",
+        "pathname": "/non-existent",
         "search": "",
         "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/not-found",
-        "search": "",
-        "state": Object {},
-        "url": "/not-found",
+        "url": "/non-existent",
       },
     ],
     "hasSSR": false,
     "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
+    "index": 0,
+    "kind": "load",
+    "length": 1,
     "params": Object {},
-    "pathname": "/not-found",
+    "pathname": "/non-existent",
     "prev": Object {
       "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
+      "entries": Array [],
       "hasSSR": false,
       "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
+      "index": -1,
+      "kind": "",
+      "length": 0,
       "params": Object {},
-      "pathname": "/first",
+      "pathname": "",
       "query": Object {},
       "scene": "",
       "search": "",
       "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
+      "type": "",
+      "url": "",
     },
     "query": Object {},
     "scene": "",
@@ -163,356 +164,10 @@ Object {
     "state": Object {},
     "status": 404,
     "type": "@@rudy/NOT_FOUND",
-    "url": "/not-found",
+    "url": "/non-existent",
   },
   "title": "@@rudy/NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound()): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
-
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "/basename",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/does-not-exist",
-    "search": "",
-    "state": Object {},
-    "url": "/does-not-exist",
-  },
-]
-`;
-
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - history_index 1`] = `1`;
-
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "/basename",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "/basename",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/does-not-exist",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 404,
-    "url": "/does-not-exist",
-  },
-  "params": Object {
-    "foo": "bar",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "/basename",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "/basename",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
-      "foo": "bar",
-    },
-    "pathname": "/does-not-exist",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 404,
-    "type": "@@rudy/NOT_FOUND",
-    "url": "/does-not-exist",
-  },
-  "title": "@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/does-not-exist",
-    "search": "",
-    "state": Object {},
-    "url": "/does-not-exist",
-  },
-]
-`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - history_index 1`] = `1`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/does-not-exist",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 404,
-    "url": "/does-not-exist",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/does-not-exist",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 404,
-    "type": "@@rudy/NOT_FOUND",
-    "url": "/does-not-exist",
-  },
-  "title": "@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`notFound on first load: firstRoute - /non-existent - 1 - title 1`] = `"@@rudy/NOT_FOUND"`;

@@ -1,0 +1,352 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`call createScene twice on same routes 1`] = `
+Object {
+  "FOURTH": "double/scene/FOURTH",
+  "FOURTH_COMPLETE": "double/scene/FOURTH_COMPLETE",
+  "FOURTH_ERROR": "double/scene/FOURTH_ERROR",
+  "NOT_FOUND": "double/scene/@@rudy/NOT_FOUND",
+  "NOT_FOUND_COMPLETE": "double/scene/@@rudy/NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "double/scene/@@rudy/NOT_FOUND_ERROR",
+  "PLAIN": "double/scene/PLAIN",
+  "PLAIN_COMPLETE": "double/scene/PLAIN_COMPLETE",
+  "PLAIN_ERROR": "double/scene/PLAIN_ERROR",
+  "SECOND": "double/scene/SECOND",
+  "SECOND_COMPLETE": "double/scene/SECOND_COMPLETE",
+  "SECOND_ERROR": "double/scene/SECOND_ERROR",
+  "THIRD": "double/scene/THIRD",
+  "THIRD_COMPLETE": "double/scene/THIRD_COMPLETE",
+  "THIRD_ERROR": "double/scene/THIRD_ERROR",
+}
+`;
+
+exports[`call createScene twice on same routes 2`] = `
+Object {
+  "fourth": [Function],
+  "notFound": [Function],
+  "plain": [Function],
+  "second": [Function],
+  "third": [Function],
+}
+`;
+
+exports[`call createScene twice on same routes 3`] = `
+Object {
+  "double/scene/@@rudy/NOT_FOUND": Object {
+    "path": "/not-found-foo",
+    "scene": "double/scene",
+  },
+  "double/scene/FOURTH": Object {
+    "action": Array [
+      "customCreator",
+    ],
+    "customCreator": [Function],
+    "path": "/fourth",
+    "scene": "double/scene",
+  },
+  "double/scene/PLAIN": Object {
+    "action": [Function],
+    "scene": "double/scene",
+  },
+  "double/scene/SECOND": Object {
+    "error": [Function],
+    "path": "/second",
+    "scene": "double/scene",
+  },
+  "double/scene/THIRD": Object {
+    "action": [Function],
+    "path": "/third",
+    "scene": "double/scene",
+  },
+}
+`;
+
+exports[`call createScene twice on same routes 4`] = `
+"const { types, actions } = createScene(routes, { scene: 'double/scene' })
+
+const { 
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+} = types
+
+const { 
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+} = actions
+
+export {
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+}
+
+export {
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+}"
+`;
+
+exports[`createScene returns types, actions, routes, exportString (/w scene + basename options) 1`] = `
+Object {
+  "FOURTH": "SCENE/FOURTH",
+  "FOURTH_COMPLETE": "SCENE/FOURTH_COMPLETE",
+  "FOURTH_ERROR": "SCENE/FOURTH_ERROR",
+  "NOT_FOUND": "SCENE/@@rudy/NOT_FOUND",
+  "NOT_FOUND_COMPLETE": "SCENE/@@rudy/NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "SCENE/@@rudy/NOT_FOUND_ERROR",
+  "PLAIN": "SCENE/PLAIN",
+  "PLAIN_COMPLETE": "SCENE/PLAIN_COMPLETE",
+  "PLAIN_ERROR": "SCENE/PLAIN_ERROR",
+  "SECOND": "SCENE/SECOND",
+  "SECOND_COMPLETE": "SCENE/SECOND_COMPLETE",
+  "SECOND_ERROR": "SCENE/SECOND_ERROR",
+  "THIRD": "SCENE/THIRD",
+  "THIRD_COMPLETE": "SCENE/THIRD_COMPLETE",
+  "THIRD_ERROR": "SCENE/THIRD_ERROR",
+}
+`;
+
+exports[`createScene returns types, actions, routes, exportString (/w scene + basename options) 2`] = `
+Object {
+  "fourth": [Function],
+  "notFound": [Function],
+  "plain": [Function],
+  "second": [Function],
+  "third": [Function],
+}
+`;
+
+exports[`createScene returns types, actions, routes, exportString (/w scene + basename options) 3`] = `
+Object {
+  "SCENE/@@rudy/NOT_FOUND": Object {
+    "path": "/not-found-foo",
+    "scene": "SCENE",
+  },
+  "SCENE/FOURTH": Object {
+    "action": Array [
+      "customCreator",
+    ],
+    "customCreator": [Function],
+    "path": "/fourth",
+    "scene": "SCENE",
+  },
+  "SCENE/PLAIN": Object {
+    "action": [Function],
+    "scene": "SCENE",
+  },
+  "SCENE/SECOND": Object {
+    "error": [Function],
+    "path": "/second",
+    "scene": "SCENE",
+  },
+  "SCENE/THIRD": Object {
+    "action": [Function],
+    "path": "/third",
+    "scene": "SCENE",
+  },
+}
+`;
+
+exports[`createScene returns types, actions, routes, exportString (/w scene + basename options) 4`] = `
+"const { types, actions } = createScene(routes, { scene: 'SCENE', basename: '/base-name' })
+
+const { 
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+} = types
+
+const { 
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+} = actions
+
+export {
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+}
+
+export {
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+}"
+`;
+
+exports[`createScene returns types, actions, routes, exportString 1`] = `
+Object {
+  "FOURTH": "FOURTH",
+  "FOURTH_COMPLETE": "FOURTH_COMPLETE",
+  "FOURTH_ERROR": "FOURTH_ERROR",
+  "NOT_FOUND": "@@rudy/NOT_FOUND",
+  "NOT_FOUND_COMPLETE": "@@rudy/NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "@@rudy/NOT_FOUND_ERROR",
+  "PLAIN": "PLAIN",
+  "PLAIN_COMPLETE": "PLAIN_COMPLETE",
+  "PLAIN_ERROR": "PLAIN_ERROR",
+  "SECOND": "SECOND",
+  "SECOND_COMPLETE": "SECOND_COMPLETE",
+  "SECOND_ERROR": "SECOND_ERROR",
+  "THIRD": "THIRD",
+  "THIRD_COMPLETE": "THIRD_COMPLETE",
+  "THIRD_ERROR": "THIRD_ERROR",
+}
+`;
+
+exports[`createScene returns types, actions, routes, exportString 2`] = `
+Object {
+  "fourth": [Function],
+  "notFound": [Function],
+  "plain": [Function],
+  "second": [Function],
+  "third": [Function],
+}
+`;
+
+exports[`createScene returns types, actions, routes, exportString 3`] = `
+Object {
+  "@@rudy/NOT_FOUND": Object {
+    "path": "/not-found-foo",
+    "scene": "",
+  },
+  "FOURTH": Object {
+    "action": Array [
+      "customCreator",
+    ],
+    "customCreator": [Function],
+    "path": "/fourth",
+    "scene": "",
+  },
+  "PLAIN": Object {
+    "action": [Function],
+    "scene": "",
+  },
+  "SECOND": Object {
+    "error": [Function],
+    "path": "/second",
+    "scene": "",
+  },
+  "THIRD": Object {
+    "action": [Function],
+    "path": "/third",
+    "scene": "",
+  },
+}
+`;
+
+exports[`createScene returns types, actions, routes, exportString 4`] = `
+"const { types, actions } = createScene(routes, { scene: '' })
+
+const { 
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+} = types
+
+const { 
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+} = actions
+
+export {
+	SECOND,
+	SECOND_COMPLETE,
+	SECOND_ERROR,
+	THIRD,
+	THIRD_COMPLETE,
+	THIRD_ERROR,
+	FOURTH,
+	FOURTH_COMPLETE,
+	FOURTH_ERROR,
+	PLAIN,
+	PLAIN_COMPLETE,
+	PLAIN_ERROR,
+	NOT_FOUND,
+	NOT_FOUND_COMPLETE,
+	NOT_FOUND_ERROR
+}
+
+export {
+	second,
+	third,
+	fourth,
+	plain,
+	notFound
+}"
+`;

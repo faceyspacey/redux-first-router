@@ -1,0 +1,792 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`custom NOT_FOUND route: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/missed",
+    "search": "",
+    "state": Object {},
+    "url": "/missed",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/not-available",
+    "search": "",
+    "state": Object {},
+    "url": "/not-available",
+  },
+]
+`;
+
+exports[`custom NOT_FOUND route: 1 - history_index 1`] = `1`;
+
+exports[`custom NOT_FOUND route: 1 - response 1`] = `
+Object {
+  "payload": "thunk done",
+  "type": "@@rudy/NOT_FOUND_COMPLETE",
+}
+`;
+
+exports[`custom NOT_FOUND route: 1 - routes - @@rudy/NOT_FOUND - thunk 1`] = `2`;
+
+exports[`custom NOT_FOUND route: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`custom NOT_FOUND route: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`custom NOT_FOUND route: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/missed",
+        "search": "",
+        "state": Object {},
+        "url": "/missed",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/not-available",
+        "search": "",
+        "state": Object {},
+        "url": "/not-available",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/not-available",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/missed",
+          "search": "",
+          "state": Object {},
+          "url": "/missed",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/missed",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 404,
+      "type": "@@rudy/NOT_FOUND",
+      "url": "/missed",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 404,
+    "type": "@@rudy/NOT_FOUND",
+    "url": "/not-available",
+  },
+  "title": "@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\"",
+}
+`;
+
+exports[`custom NOT_FOUND route: 1 - title 1`] = `"@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\""`;
+
+exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/missed",
+    "search": "",
+    "state": Object {},
+    "url": "/missed",
+  },
+]
+`;
+
+exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - history_index 1`] = `0`;
+
+exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/missed",
+        "search": "",
+        "state": Object {},
+        "url": "/missed",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/missed",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "@@rudy/NOT_FOUND",
+    "url": "/missed",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - response 1`] = `
+Object {
+  "payload": "thunk done",
+  "type": "@@rudy/NOT_FOUND_COMPLETE",
+}
+`;
+
+exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/missed",
+        "search": "",
+        "state": Object {},
+        "url": "/missed",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/missed",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 404,
+    "type": "@@rudy/NOT_FOUND",
+    "url": "/missed",
+  },
+  "title": "@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\"",
+}
+`;
+
+exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - title 1`] = `"@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\""`;
+
+exports[`options.formatRoute 1`] = `
+Array [
+  Object {
+    "foo": "/first",
+  },
+  "FIRST",
+  Object {
+    "@@rudy/NOT_FOUND": Object {},
+    "FIRST": Object {
+      "foo": "/first",
+    },
+    "NEVER_USED_PATHLESS": Object {
+      "thunk": [MockFunction],
+    },
+    "REDIRECTED": Object {
+      "onComplete": [MockFunction],
+      "path": "/redirected",
+    },
+  },
+  false,
+]
+`;
+
+exports[`options.formatRoute 2`] = `
+Array [
+  Object {
+    "thunk": [MockFunction],
+  },
+  "NEVER_USED_PATHLESS",
+  Object {
+    "@@rudy/NOT_FOUND": Object {},
+    "FIRST": Object {
+      "foo": "/first",
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "NEVER_USED_PATHLESS": Object {
+      "thunk": [MockFunction],
+    },
+    "REDIRECTED": Object {
+      "onComplete": [MockFunction],
+      "path": "/redirected",
+    },
+  },
+  false,
+]
+`;
+
+exports[`options.formatRoute 3`] = `
+Array [
+  Object {
+    "onComplete": [MockFunction],
+    "path": "/redirected",
+  },
+  "REDIRECTED",
+  Object {
+    "@@rudy/NOT_FOUND": Object {},
+    "FIRST": Object {
+      "foo": "/first",
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "NEVER_USED_PATHLESS": Object {
+      "path": undefined,
+      "thunk": [MockFunction],
+      "type": "NEVER_USED_PATHLESS",
+    },
+    "REDIRECTED": Object {
+      "onComplete": [MockFunction],
+      "path": "/redirected",
+    },
+  },
+  false,
+]
+`;
+
+exports[`options.formatRoute 4`] = `
+Array [
+  Object {},
+  "@@rudy/NOT_FOUND",
+  Object {
+    "@@rudy/NOT_FOUND": Object {},
+    "FIRST": Object {
+      "foo": "/first",
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "NEVER_USED_PATHLESS": Object {
+      "path": undefined,
+      "thunk": [MockFunction],
+      "type": "NEVER_USED_PATHLESS",
+    },
+    "REDIRECTED": Object {
+      "onComplete": [MockFunction],
+      "path": undefined,
+      "type": "REDIRECTED",
+    },
+  },
+  false,
+]
+`;
+
+exports[`options.formatRoute: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`options.formatRoute: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`options.formatRoute: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`options.formatRoute: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`options.formatRoute: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`options.formatRoute: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`options.formatRoute: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`options.formatRoute: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
+
+exports[`route as thunk function (pathless route): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/redirected",
+    "search": "",
+    "state": Object {},
+    "url": "/redirected",
+  },
+]
+`;
+
+exports[`route as thunk function (pathless route): 1 - history_index 1`] = `1`;
+
+exports[`route as thunk function (pathless route): 1 - response 1`] = `
+Object {
+  "type": "PATHLESS",
+}
+`;
+
+exports[`route as thunk function (pathless route): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`route as thunk function (pathless route): 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`route as thunk function (pathless route): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "REDIRECTED",
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
+}
+`;
+
+exports[`route as thunk function (pathless route): 1 - title 1`] = `"REDIRECTED"`;
+
+exports[`routes as path string: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`routes as path string: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`routes as path string: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`routes as path string: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`routes as path string: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`routes as path string: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`routes as path string: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`routes as path string: firstRoute - /first - 1 - title 1`] = `"FIRST"`;

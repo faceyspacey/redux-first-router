@@ -25,6 +25,9 @@ export default (api, name) => {
     if (!config.cache || isServer()) return false
 
     const { route, options, action } = req
+    const noCallback = !req.route[name] && !options[name]
+
+    if (noCallback) return true
 
     if (!route.path || route.cache === false) return false
     if (options.cache === false && route.cache === undefined) return false
@@ -41,15 +44,15 @@ export default (api, name) => {
     if (!action) {
       cache = {}
     }
-    else if (typeof action === 'function') {     // allow user to customize cache clearing algo
+    else if (typeof action === 'function') {      // allow user to customize cache clearing algo
       cache = action(cache, api, opts) || cache
     }
-    else if (typeof action === 'string') {  // delete all cached items for TYPE or other string
+    else if (typeof action === 'string') {        // delete all cached items for TYPE or other string
       for (const k in cache) {
         if (k.indexOf(action) > -1) delete cache[k]
       }
     }
-    else {                                  // delete all/some callbacks for precise item (default)
+    else {                                        // delete all/some callbacks for precise item (default)
       const loc = createLocation(actionToUrl(action, api.routes))
       const act = { ...action, location: { ...action.location, ...loc } }
 

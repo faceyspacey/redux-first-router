@@ -1,0 +1,1814 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cached thunk only called once actions.notFound(params, path): 13 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/cat",
+    "search": "",
+    "state": Object {},
+    "url": "/cat",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.notFound(params, path): 13 - history_index 1`] = `1`;
+
+exports[`cached thunk only called once actions.notFound(params, path): 13 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/cat",
+        "search": "",
+        "state": Object {},
+        "url": "/cat",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/cat",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 404,
+    "url": "/cat",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {},
+  "state": Object {},
+  "type": "SCENE/@@rudy/NOT_FOUND",
+}
+`;
+
+exports[`cached thunk only called once actions.notFound(params, path): 13 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.notFound(params, path): 13 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.notFound(params, path): 13 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/cat",
+        "search": "",
+        "state": Object {},
+        "url": "/cat",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/cat",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 404,
+    "type": "SCENE/@@rudy/NOT_FOUND",
+    "url": "/cat",
+  },
+  "title": "SCENE/@@rudy/NOT_FOUND",
+}
+`;
+
+exports[`cached thunk only called once actions.notFound(params, path): 13 - title 1`] = `"SCENE/@@rudy/NOT_FOUND"`;
+
+exports[`cached thunk only called once actions.notFound.complete(payload): 14 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.notFound.complete(payload): 14 - history_index 1`] = `0`;
+
+exports[`cached thunk only called once actions.notFound.complete(payload): 14 - response 1`] = `
+Object {
+  "location": Object {
+    "basename": undefined,
+    "url": "foo",
+  },
+  "params": Object {},
+  "type": "/base-name",
+}
+`;
+
+exports[`cached thunk only called once actions.notFound.complete(payload): 14 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.notFound.complete(payload): 14 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.notFound.complete(payload): 14 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "/base-name",
+}
+`;
+
+exports[`cached thunk only called once actions.notFound.complete(payload): 14 - title 1`] = `"FIRST"`;
+
+exports[`cached thunk only called once actions.second(): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.second(): 1 - history_index 1`] = `1`;
+
+exports[`cached thunk only called once actions.second(): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SCENE/SECOND",
+    "url": "/second",
+  },
+  "title": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(): 1 - title 1`] = `"SCENE/SECOND"`;
+
+exports[`cached thunk only called once actions.second(action with wrong type): 5 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.second(action with wrong type): 5 - history_index 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(action with wrong type): 5 - response 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+  },
+  "type": "WRONG",
+}
+`;
+
+exports[`cached thunk only called once actions.second(action with wrong type): 5 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(action with wrong type): 5 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(action with wrong type): 5 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "WRONG",
+}
+`;
+
+exports[`cached thunk only called once actions.second(action with wrong type): 5 - title 1`] = `"FIRST"`;
+
+exports[`cached thunk only called once actions.second(params): 3 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.second(params): 3 - history_index 1`] = `1`;
+
+exports[`cached thunk only called once actions.second(params): 3 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {},
+  "state": Object {},
+  "type": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(params): 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(params): 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(params): 3 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SCENE/SECOND",
+    "url": "/second",
+  },
+  "title": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(params): 3 - title 1`] = `"SCENE/SECOND"`;
+
+exports[`cached thunk only called once actions.second(partialAction): 2 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.second(partialAction): 2 - history_index 1`] = `1`;
+
+exports[`cached thunk only called once actions.second(partialAction): 2 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {},
+  "state": Object {},
+  "type": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(partialAction): 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(partialAction): 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(partialAction): 2 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SCENE/SECOND",
+    "url": "/second",
+  },
+  "title": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(partialAction): 2 - title 1`] = `"SCENE/SECOND"`;
+
+exports[`cached thunk only called once actions.second(thunk): 4 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.second(thunk): 4 - history_index 1`] = `1`;
+
+exports[`cached thunk only called once actions.second(thunk): 4 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "testReq": "FIRST",
+  "type": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(thunk): 4 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(thunk): 4 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.second(thunk): 4 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SCENE/SECOND",
+    "url": "/second",
+  },
+  "title": "SCENE/SECOND",
+}
+`;
+
+exports[`cached thunk only called once actions.second(thunk): 4 - title 1`] = `"SCENE/SECOND"`;
+
+exports[`cached thunk only called once actions.second.complete(thunk): 11 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.second.complete(thunk): 11 - history_index 1`] = `0`;
+
+exports[`cached thunk only called once actions.second.complete(thunk): 11 - response 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+  },
+  "payload": Object {
+    "foo": "bar",
+  },
+  "type": "SCENE/SECOND_COMPLETE",
+}
+`;
+
+exports[`cached thunk only called once actions.second.complete(thunk): 11 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.second.complete(thunk): 11 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.second.complete(thunk): 11 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "SCENE/SECOND_COMPLETE - {\\"foo\\":\\"bar\\"}",
+}
+`;
+
+exports[`cached thunk only called once actions.second.complete(thunk): 11 - title 1`] = `"FIRST"`;
+
+exports[`cached thunk only called once actions.third.complete(payload): 10 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.third.complete(payload): 10 - history_index 1`] = `0`;
+
+exports[`cached thunk only called once actions.third.complete(payload): 10 - response 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+  },
+  "payload": Object {
+    "foo": "bar",
+  },
+  "type": "SCENE/THIRD_COMPLETE",
+}
+`;
+
+exports[`cached thunk only called once actions.third.complete(payload): 10 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.third.complete(payload): 10 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.third.complete(payload): 10 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "SCENE/THIRD_COMPLETE - {\\"foo\\":\\"bar\\"}",
+}
+`;
+
+exports[`cached thunk only called once actions.third.complete(payload): 10 - title 1`] = `"FIRST"`;
+
+exports[`cached thunk only called once actions.third.error(new Error): 8 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`cached thunk only called once actions.third.error(new Error): 8 - history_index 1`] = `0`;
+
+exports[`cached thunk only called once actions.third.error(new Error): 8 - response 1`] = `
+Object {
+  "error": [Error: fail],
+  "location": Object {
+    "basename": "/base-name",
+  },
+  "type": "SCENE/THIRD_ERROR",
+}
+`;
+
+exports[`cached thunk only called once actions.third.error(new Error): 8 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once actions.third.error(new Error): 8 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once actions.third.error(new Error): 8 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "error": [Error: fail],
+    "errorType": "SCENE/THIRD_ERROR",
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "SCENE/THIRD_ERROR",
+}
+`;
+
+exports[`cached thunk only called once actions.third.error(new Error): 8 - title 1`] = `"FIRST"`;
+
+exports[`cached thunk only called once route with just action creator: 12 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`cached thunk only called once route with just action creator: 12 - history_index 1`] = `0`;
+
+exports[`cached thunk only called once route with just action creator: 12 - response 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "type": "SCENE/PLAIN",
+}
+`;
+
+exports[`cached thunk only called once route with just action creator: 12 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once route with just action creator: 12 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once route with just action creator: 12 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "SCENE/PLAIN",
+}
+`;
+
+exports[`cached thunk only called once route with just action creator: 12 - title 1`] = `"SCENE/PLAIN"`;
+
+exports[`cached thunk only called once route.action - custom action creator: 6 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`cached thunk only called once route.action - custom action creator: 6 - history_index 1`] = `1`;
+
+exports[`cached thunk only called once route.action - custom action creator: 6 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {
+    "foo": "baz",
+  },
+  "query": Object {},
+  "state": Object {},
+  "type": "SCENE/THIRD",
+}
+`;
+
+exports[`cached thunk only called once route.action - custom action creator: 6 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once route.action - custom action creator: 6 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once route.action - custom action creator: 6 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {
+      "foo": "baz",
+    },
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SCENE/THIRD",
+    "url": "/third",
+  },
+  "title": "SCENE/THIRD",
+}
+`;
+
+exports[`cached thunk only called once route.action - custom action creator: 6 - title 1`] = `"SCENE/THIRD"`;
+
+exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/fourth",
+    "search": "",
+    "state": Object {},
+    "url": "/fourth",
+  },
+]
+`;
+
+exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_index 1`] = `1`;
+
+exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": Object {},
+        "url": "/fourth",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/fourth",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 200,
+    "url": "/fourth",
+  },
+  "params": Object {
+    "foo": "baz",
+  },
+  "query": Object {},
+  "state": Object {},
+  "type": "SCENE/FOURTH",
+}
+`;
+
+exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": Object {},
+        "url": "/fourth",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {
+      "foo": "baz",
+    },
+    "pathname": "/fourth",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SCENE/FOURTH",
+    "url": "/fourth",
+  },
+  "title": "SCENE/FOURTH",
+}
+`;
+
+exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - title 1`] = `"SCENE/FOURTH"`;
+
+exports[`cached thunk only called once route.error - custom error action creator: 9 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`cached thunk only called once route.error - custom error action creator: 9 - history_index 1`] = `0`;
+
+exports[`cached thunk only called once route.error - custom error action creator: 9 - response 1`] = `
+Object {
+  "error": Object {
+    "foo": "bar",
+  },
+  "location": Object {
+    "basename": "/base-name",
+  },
+  "type": "SCENE/SECOND_ERROR",
+}
+`;
+
+exports[`cached thunk only called once route.error - custom error action creator: 9 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cached thunk only called once route.error - custom error action creator: 9 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cached thunk only called once route.error - custom error action creator: 9 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "error": Object {
+      "foo": "bar",
+    },
+    "errorType": "SCENE/SECOND_ERROR",
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "SCENE/SECOND_ERROR",
+}
+`;
+
+exports[`cached thunk only called once route.error - custom error action creator: 9 - title 1`] = `"FIRST"`;
