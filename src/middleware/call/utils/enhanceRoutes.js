@@ -8,6 +8,8 @@ export default (name, routes) => {
     const callback = findCallback(name, routes, cb, route)
     if (callback) route[name] = callback
   }
+
+  return routes
 }
 
 const findCallback = (name, routes, callback, route) => {

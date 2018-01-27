@@ -31,7 +31,7 @@ const routesMap = {
 
 const { actions, routes } = createScene(routesMap)
 
-createTest('cached thunk only called once', routes, [
+createTest('createScene()', routes, [
   ['actions.second()', actions.second()],
   ['actions.second(partialAction)', actions.second({ params: { foo: 'bar' } })],
   ['actions.second(params)', actions.second({ foo: 'bar' })],

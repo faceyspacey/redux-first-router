@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cached thunk only called once actions.notFound(params, path): 13 - history_entries 1`] = `
+exports[`createScene() actions.notFound(params, path): 13 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -23,9 +23,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.notFound(params, path): 13 - history_index 1`] = `1`;
+exports[`createScene() actions.notFound(params, path): 13 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once actions.notFound(params, path): 13 - response 1`] = `
+exports[`createScene() actions.notFound(params, path): 13 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -96,11 +96,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.notFound(params, path): 13 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.notFound(params, path): 13 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.notFound(params, path): 13 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.notFound(params, path): 13 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.notFound(params, path): 13 - state 1`] = `
+exports[`createScene() actions.notFound(params, path): 13 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -173,9 +173,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.notFound(params, path): 13 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`createScene() actions.notFound(params, path): 13 - title 1`] = `"@@rudy/NOT_FOUND"`;
 
-exports[`cached thunk only called once actions.notFound.complete(payload): 14 - history_entries 1`] = `
+exports[`createScene() actions.notFound.complete(payload): 14 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -189,9 +189,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.notFound.complete(payload): 14 - history_index 1`] = `0`;
+exports[`createScene() actions.notFound.complete(payload): 14 - history_index 1`] = `0`;
 
-exports[`cached thunk only called once actions.notFound.complete(payload): 14 - response 1`] = `
+exports[`createScene() actions.notFound.complete(payload): 14 - response 1`] = `
 Object {
   "location": Object {
     "basename": undefined,
@@ -201,11 +201,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.notFound.complete(payload): 14 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.notFound.complete(payload): 14 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.notFound.complete(payload): 14 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.notFound.complete(payload): 14 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.notFound.complete(payload): 14 - state 1`] = `
+exports[`createScene() actions.notFound.complete(payload): 14 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -256,9 +256,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.notFound.complete(payload): 14 - title 1`] = `"@@rudy/NOT_FOUND_COMPLETE - \\"foo\\""`;
+exports[`createScene() actions.notFound.complete(payload): 14 - title 1`] = `"@@rudy/NOT_FOUND_COMPLETE - \\"foo\\""`;
 
-exports[`cached thunk only called once actions.second(): 1 - history_entries 1`] = `
+exports[`createScene() actions.second(): 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -281,9 +281,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.second(): 1 - history_index 1`] = `1`;
+exports[`createScene() actions.second(): 1 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once actions.second(): 1 - response 1`] = `
+exports[`createScene() actions.second(): 1 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -352,11 +352,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.second(): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.second(): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(): 1 - state 1`] = `
+exports[`createScene() actions.second(): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -427,9 +427,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(): 1 - title 1`] = `"SECOND"`;
+exports[`createScene() actions.second(): 1 - title 1`] = `"SECOND"`;
 
-exports[`cached thunk only called once actions.second(action with wrong type): 5 - history_entries 1`] = `
+exports[`createScene() actions.second(action with wrong type): 5 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -443,9 +443,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.second(action with wrong type): 5 - history_index 1`] = `0`;
+exports[`createScene() actions.second(action with wrong type): 5 - history_index 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(action with wrong type): 5 - response 1`] = `
+exports[`createScene() actions.second(action with wrong type): 5 - response 1`] = `
 Object {
   "location": Object {
     "basename": undefined,
@@ -454,11 +454,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(action with wrong type): 5 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.second(action with wrong type): 5 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(action with wrong type): 5 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.second(action with wrong type): 5 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(action with wrong type): 5 - state 1`] = `
+exports[`createScene() actions.second(action with wrong type): 5 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -509,9 +509,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(action with wrong type): 5 - title 1`] = `"FIRST"`;
+exports[`createScene() actions.second(action with wrong type): 5 - title 1`] = `"FIRST"`;
 
-exports[`cached thunk only called once actions.second(params): 3 - history_entries 1`] = `
+exports[`createScene() actions.second(params): 3 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -534,9 +534,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.second(params): 3 - history_index 1`] = `1`;
+exports[`createScene() actions.second(params): 3 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once actions.second(params): 3 - response 1`] = `
+exports[`createScene() actions.second(params): 3 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -607,11 +607,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(params): 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.second(params): 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(params): 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.second(params): 3 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(params): 3 - state 1`] = `
+exports[`createScene() actions.second(params): 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -684,9 +684,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(params): 3 - title 1`] = `"SECOND"`;
+exports[`createScene() actions.second(params): 3 - title 1`] = `"SECOND"`;
 
-exports[`cached thunk only called once actions.second(partialAction): 2 - history_entries 1`] = `
+exports[`createScene() actions.second(partialAction): 2 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -709,9 +709,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.second(partialAction): 2 - history_index 1`] = `1`;
+exports[`createScene() actions.second(partialAction): 2 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once actions.second(partialAction): 2 - response 1`] = `
+exports[`createScene() actions.second(partialAction): 2 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -782,11 +782,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(partialAction): 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.second(partialAction): 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(partialAction): 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.second(partialAction): 2 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(partialAction): 2 - state 1`] = `
+exports[`createScene() actions.second(partialAction): 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -859,9 +859,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(partialAction): 2 - title 1`] = `"SECOND"`;
+exports[`createScene() actions.second(partialAction): 2 - title 1`] = `"SECOND"`;
 
-exports[`cached thunk only called once actions.second(thunk): 4 - history_entries 1`] = `
+exports[`createScene() actions.second(thunk): 4 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -884,9 +884,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.second(thunk): 4 - history_index 1`] = `1`;
+exports[`createScene() actions.second(thunk): 4 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once actions.second(thunk): 4 - response 1`] = `
+exports[`createScene() actions.second(thunk): 4 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -956,11 +956,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(thunk): 4 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.second(thunk): 4 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(thunk): 4 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.second(thunk): 4 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.second(thunk): 4 - state 1`] = `
+exports[`createScene() actions.second(thunk): 4 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1031,9 +1031,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second(thunk): 4 - title 1`] = `"SECOND"`;
+exports[`createScene() actions.second(thunk): 4 - title 1`] = `"SECOND"`;
 
-exports[`cached thunk only called once actions.second.complete(thunk): 11 - history_entries 1`] = `
+exports[`createScene() actions.second.complete(thunk): 11 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1047,9 +1047,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.second.complete(thunk): 11 - history_index 1`] = `0`;
+exports[`createScene() actions.second.complete(thunk): 11 - history_index 1`] = `0`;
 
-exports[`cached thunk only called once actions.second.complete(thunk): 11 - response 1`] = `
+exports[`createScene() actions.second.complete(thunk): 11 - response 1`] = `
 Object {
   "location": Object {
     "basename": undefined,
@@ -1061,11 +1061,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second.complete(thunk): 11 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.second.complete(thunk): 11 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.second.complete(thunk): 11 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.second.complete(thunk): 11 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.second.complete(thunk): 11 - state 1`] = `
+exports[`createScene() actions.second.complete(thunk): 11 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1116,9 +1116,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.second.complete(thunk): 11 - title 1`] = `"FIRST"`;
+exports[`createScene() actions.second.complete(thunk): 11 - title 1`] = `"FIRST"`;
 
-exports[`cached thunk only called once actions.third.complete(payload): 10 - history_entries 1`] = `
+exports[`createScene() actions.third.complete(payload): 10 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1132,9 +1132,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.third.complete(payload): 10 - history_index 1`] = `0`;
+exports[`createScene() actions.third.complete(payload): 10 - history_index 1`] = `0`;
 
-exports[`cached thunk only called once actions.third.complete(payload): 10 - response 1`] = `
+exports[`createScene() actions.third.complete(payload): 10 - response 1`] = `
 Object {
   "location": Object {
     "basename": undefined,
@@ -1146,11 +1146,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.third.complete(payload): 10 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.third.complete(payload): 10 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.third.complete(payload): 10 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.third.complete(payload): 10 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.third.complete(payload): 10 - state 1`] = `
+exports[`createScene() actions.third.complete(payload): 10 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1201,9 +1201,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.third.complete(payload): 10 - title 1`] = `"FIRST"`;
+exports[`createScene() actions.third.complete(payload): 10 - title 1`] = `"FIRST"`;
 
-exports[`cached thunk only called once actions.third.error(new Error): 8 - history_entries 1`] = `
+exports[`createScene() actions.third.error(new Error): 8 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1217,9 +1217,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once actions.third.error(new Error): 8 - history_index 1`] = `0`;
+exports[`createScene() actions.third.error(new Error): 8 - history_index 1`] = `0`;
 
-exports[`cached thunk only called once actions.third.error(new Error): 8 - response 1`] = `
+exports[`createScene() actions.third.error(new Error): 8 - response 1`] = `
 Object {
   "error": [Error: fail],
   "location": Object {
@@ -1229,11 +1229,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.third.error(new Error): 8 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() actions.third.error(new Error): 8 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once actions.third.error(new Error): 8 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() actions.third.error(new Error): 8 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once actions.third.error(new Error): 8 - state 1`] = `
+exports[`createScene() actions.third.error(new Error): 8 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1286,9 +1286,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once actions.third.error(new Error): 8 - title 1`] = `"FIRST"`;
+exports[`createScene() actions.third.error(new Error): 8 - title 1`] = `"FIRST"`;
 
-exports[`cached thunk only called once route with just action creator: 12 - history_entries 1`] = `
+exports[`createScene() route with just action creator: 12 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1302,9 +1302,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once route with just action creator: 12 - history_index 1`] = `0`;
+exports[`createScene() route with just action creator: 12 - history_index 1`] = `0`;
 
-exports[`cached thunk only called once route with just action creator: 12 - response 1`] = `
+exports[`createScene() route with just action creator: 12 - response 1`] = `
 Object {
   "location": Object {
     "basename": undefined,
@@ -1316,11 +1316,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route with just action creator: 12 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() route with just action creator: 12 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once route with just action creator: 12 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() route with just action creator: 12 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once route with just action creator: 12 - state 1`] = `
+exports[`createScene() route with just action creator: 12 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1371,9 +1371,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route with just action creator: 12 - title 1`] = `"PLAIN"`;
+exports[`createScene() route with just action creator: 12 - title 1`] = `"PLAIN"`;
 
-exports[`cached thunk only called once route.action - custom action creator: 6 - history_entries 1`] = `
+exports[`createScene() route.action - custom action creator: 6 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1396,9 +1396,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once route.action - custom action creator: 6 - history_index 1`] = `1`;
+exports[`createScene() route.action - custom action creator: 6 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once route.action - custom action creator: 6 - response 1`] = `
+exports[`createScene() route.action - custom action creator: 6 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -1469,11 +1469,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route.action - custom action creator: 6 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() route.action - custom action creator: 6 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once route.action - custom action creator: 6 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() route.action - custom action creator: 6 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once route.action - custom action creator: 6 - state 1`] = `
+exports[`createScene() route.action - custom action creator: 6 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1546,9 +1546,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route.action - custom action creator: 6 - title 1`] = `"THIRD"`;
+exports[`createScene() route.action - custom action creator: 6 - title 1`] = `"THIRD"`;
 
-exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_entries 1`] = `
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1571,9 +1571,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_index 1`] = `1`;
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - response 1`] = `
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -1644,11 +1644,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - state 1`] = `
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1721,9 +1721,9 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - title 1`] = `"FOURTH"`;
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - title 1`] = `"FOURTH"`;
 
-exports[`cached thunk only called once route.error - custom error action creator: 9 - history_entries 1`] = `
+exports[`createScene() route.error - custom error action creator: 9 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1737,9 +1737,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once route.error - custom error action creator: 9 - history_index 1`] = `0`;
+exports[`createScene() route.error - custom error action creator: 9 - history_index 1`] = `0`;
 
-exports[`cached thunk only called once route.error - custom error action creator: 9 - response 1`] = `
+exports[`createScene() route.error - custom error action creator: 9 - response 1`] = `
 Object {
   "error": Object {
     "foo": "bar",
@@ -1751,11 +1751,11 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route.error - custom error action creator: 9 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene() route.error - custom error action creator: 9 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once route.error - custom error action creator: 9 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene() route.error - custom error action creator: 9 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once route.error - custom error action creator: 9 - state 1`] = `
+exports[`createScene() route.error - custom error action creator: 9 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1810,4 +1810,4 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once route.error - custom error action creator: 9 - title 1`] = `"FIRST"`;
+exports[`createScene() route.error - custom error action creator: 9 - title 1`] = `"FIRST"`;

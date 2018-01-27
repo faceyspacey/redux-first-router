@@ -13,6 +13,8 @@ import { noOp, isAction } from '../../utils'
 
 export default (name, config = {}) => (api) => {
   enhanceRoutes(name, api.routes)
+  api.options.callbacks = api.options.callbacks || []
+  api.options.callbacks.push(name)
 
   api.options.shouldCall = api.options.shouldCall || defaultShouldCall
 

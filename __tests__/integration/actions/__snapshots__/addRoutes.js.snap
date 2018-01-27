@@ -1,0 +1,468 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - history_index 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - response 1`] = `
+Object {
+  "payload": Object {
+    "formatRoute": undefined,
+    "routes": Object {
+      "FOO": Object {
+        "path": "/foo",
+        "type": "FOO",
+      },
+    },
+  },
+  "type": "@@rudy/ADD_ROUTES",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "routesAdded": 1,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\",\\"type\\":\\"FOO\\"}}}",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/foo",
+    "search": "",
+    "state": Object {},
+    "url": "/foo",
+  },
+]
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_index 1`] = `1`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/foo",
+        "search": "",
+        "state": Object {},
+        "url": "/foo",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/foo",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "routesAdded": 1,
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/foo",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FOO",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/foo",
+        "search": "",
+        "state": Object {},
+        "url": "/foo",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/foo",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "routesAdded": 1,
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FOO",
+    "url": "/foo",
+  },
+  "title": "FOO",
+}
+`;
+
+exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - title 1`] = `"FOO"`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - history_index 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - response 1`] = `
+Object {
+  "payload": Object {
+    "formatRoute": [Function],
+    "routes": Object {
+      "BAZ": Object {
+        "path": "/bar",
+        "thunk": [Function],
+        "type": "BAZ",
+      },
+      "FOO": Object {
+        "path": "/bar",
+        "thunk": [Function],
+        "type": "FOO",
+      },
+    },
+  },
+  "type": "@@rudy/ADD_ROUTES",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "routesAdded": 2,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"FOO\\"},\\"BAZ\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"BAZ\\"}}}",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/bar",
+    "search": "",
+    "state": Object {},
+    "url": "/bar",
+  },
+]
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_index 1`] = `1`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - response 1`] = `
+Object {
+  "payload": "payload",
+  "type": "FOO_COMPLETE",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/bar",
+        "search": "",
+        "state": Object {},
+        "url": "/bar",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/bar",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "routesAdded": 2,
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FOO",
+    "url": "/bar",
+  },
+  "title": "FOO_COMPLETE - \\"payload\\"",
+}
+`;
+
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - title 1`] = `"FOO"`;

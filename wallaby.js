@@ -7,13 +7,13 @@ module.exports = wallaby => {
       { pattern: 'package.json', load: false },
       { pattern: '__tests__/**/*.snap', load: false },
       { pattern: '__helpers__/**/*.js', load: false },
-      { pattern: '__test-helpers__/**/*.js', load: false }
+      // { pattern: '__test-helpers__/**/*.js', load: false }
     ],
 
     filesWithNoCoverageCalculated: ['__helpers__/**/*.js'],
 
     tests: [
-      '__tests__/integration/createScene/**/*.js',
+      '__tests__/integration/actions/addRoutes.js',
       // '__tests__/createScene.js',
       // '__tests__/integration/actions/notFound.js',
       // '__tests__/integration/**/*.js',

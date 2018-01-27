@@ -15,6 +15,7 @@ export default (
 
     route.type = type
     if (route.redirect) createRedirect(route, routes)
+    routes[type] = route
   }
 
   if (!isAddRoutes) {
