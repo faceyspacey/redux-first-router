@@ -79,7 +79,7 @@ export default class History {
     return this._notify({ nextHistory, commit }, notify)
   }
 
-  jump(n, state, kind, byIndex = false, notify = true) {
+  jump(n, state, byIndex = false, kind, notify = true) {
     if (typeof n === 'string') {
       const index = this.entries.findIndex(e => e.key === n)
       n = index - this.index
@@ -122,22 +122,22 @@ export default class History {
   }
 
   setState(state, n, byIndex, notify = true) {
-    if (!n && !byIndex) return this.jump(0, state, 'setState', byIndex, notify) // setState on current entry (primary use-case)
+    if (!n && !byIndex) return this.jump(0, state, byIndex, 'setState', notify) // setState on current entry (primary use-case)
 
     const currentIndex = this.index
-    const { commit } = this.jump(n, state, 'setState', byIndex, false)          // jump to different entry and set state on it
+    const { commit } = this.jump(n, state, byIndex, 'setState', false)          // jump to different entry and set state on it
 
     return commit().then(() => {
-      return this.jump(currentIndex, undefined, 'setState', true, notify)       // jump back to the original entry, so current index is passed along to action
+      return this.jump(currentIndex, undefined, true, 'setState', notify)       // jump back to the original entry, so current index is passed along to action
     })
   }
 
   back(state, notify = true) {
-    return this.jump(-1, state, 'back', false, notify)
+    return this.jump(-1, state, false, 'back', notify)
   }
 
   next(state, notify = true) {
-    return this.jump(1, state, 'next', false, notify)
+    return this.jump(1, state, false, 'next', notify)
   }
 
   reset(entries, index, kind, notify = true) {
@@ -147,6 +147,7 @@ export default class History {
     if (!kind) {
       if (entries.length > 1) {
         if (index === entries.length - 1) kind = 'next'   // assume the user would be going forward in the new entries stack, i.e. if at head
+        else if (index === this.index) kind = 'redirect'
         else kind = index < this.index ? 'back' : 'next'  // assume the user is going 'back' if lower than current index, and 'next' otherwise
       }
       else kind = 'load'                                  // if one entry, set kind to 'load' so app can behave as if it's loaded for the first time

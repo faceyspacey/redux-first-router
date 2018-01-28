@@ -1,5 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`do NOT dispatch actions with identical URLs more than once 1`] = `
+Object {
+  "hash": "bla",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "bla",
+        "key": "345678",
+        "pathname": "/second/foo",
+        "search": "foo=bar",
+        "state": Object {},
+        "url": "/second/foo?foo=bar#bla",
+      },
+      Object {
+        "basename": "",
+        "hash": "bla",
+        "key": "345678",
+        "pathname": "/second/foo",
+        "search": "foo=bar",
+        "state": Object {},
+        "url": "/second/foo?foo=bar#bla",
+      },
+    ],
+    "index": 2,
+    "kind": "push",
+    "length": 3,
+    "pathname": "/second/foo",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "bla",
+          "key": "345678",
+          "pathname": "/second/foo",
+          "search": "foo=bar",
+          "state": Object {},
+          "url": "/second/foo?foo=bar#bla",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "bla",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {
+        "param": "foo",
+      },
+      "pathname": "/second/foo",
+      "query": Object {
+        "foo": "bar",
+      },
+      "scene": "",
+      "search": "foo=bar",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second/foo?foo=bar#bla",
+    },
+    "scene": "",
+    "search": "foo=bar",
+    "status": 200,
+    "url": "/second/foo?foo=bar#bla",
+  },
+  "params": Object {
+    "param": "foo",
+  },
+  "query": Object {
+    "foo": "bar",
+  },
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
 exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - history_entries 1`] = `
 Array [
   Object {

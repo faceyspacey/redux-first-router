@@ -29,14 +29,18 @@ export default (req, action, prev) => {
       const { routes, history } = req
       const prevAction = urlToAction(prevLocation, routes)
       const state = nestAction(prevAction, {}, history)
-      state.location.basename = prevLocation.basename
 
       // do what the location reducer does where it maps `...action.location` flatly on to `action`
       prev = Object.assign(state, state.location)
+
       prev.entries = action.info === 'reset' ? entries : history.entries // on reset, use next history's entries for previous state, or the entries may not match
       prev.length = length
-      prev.index = prevIndex
       prev.hasSSR = hasSSR
+      prev.index = prevIndex
+      prev.url = prevLocation.url
+      prev.basename = prevLocation.basename
+      prev.state = prevLocation.state || {}
+
       delete prev.location
       delete prev.prev
     }

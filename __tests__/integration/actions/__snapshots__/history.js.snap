@@ -1,0 +1,5884 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dispatch(back/next()): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): function - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): function - history_entries 3`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): function - history_entries 4`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): function - history_entries 5`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): function - history_index 1`] = `0`;
+
+exports[`dispatch(back/next()): function - history_index 2`] = `1`;
+
+exports[`dispatch(back/next()): function - history_index 3`] = `0`;
+
+exports[`dispatch(back/next()): function - history_index 4`] = `1`;
+
+exports[`dispatch(back/next()): function - history_index 5`] = `0`;
+
+exports[`dispatch(back/next()): function - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): function - response 2`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "yo": "dog",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): function - response 3`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "clear": "old state",
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): function - response 4`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "clear": "old state",
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "bla": "sdf",
+    "yo": "dog",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): function - response 5`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "clear": "old state",
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - NEVER_USED_PATHLESS - thunk 3`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - NEVER_USED_PATHLESS - thunk 4`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - NEVER_USED_PATHLESS - thunk 5`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - REDIRECTED - onComplete 3`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - REDIRECTED - onComplete 4`] = `0`;
+
+exports[`dispatch(back/next()): function - routes - REDIRECTED - onComplete 5`] = `0`;
+
+exports[`dispatch(back/next()): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): function - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "yo": "dog",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): function - state 3`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): function - state 4`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "clear": "old state",
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+      "yo": "dog",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): function - state 5`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): function - title 1`] = `"FIRST"`;
+
+exports[`dispatch(back/next()): function - title 2`] = `"SECOND"`;
+
+exports[`dispatch(back/next()): function - title 3`] = `"FIRST"`;
+
+exports[`dispatch(back/next()): function - title 4`] = `"SECOND"`;
+
+exports[`dispatch(back/next()): function - title 5`] = `"FIRST"`;
+
+exports[`dispatch(jump(-2)): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(jump(-2)): function - history_index 1`] = `0`;
+
+exports[`dispatch(jump(-2)): function - response 1`] = `
+Object {
+  "hash": "",
+  "info": "jump",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 3,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(-2)): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(-2)): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(-2)): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(-2)): function - title 1`] = `"FIRST"`;
+
+exports[`dispatch(jump(n)): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n)): function - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n)): function - history_index 1`] = `0`;
+
+exports[`dispatch(jump(n)): function - history_index 2`] = `1`;
+
+exports[`dispatch(jump(n)): function - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n)): function - response 2`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n)): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n)): function - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`dispatch(jump(n)): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n)): function - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`dispatch(jump(n)): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n)): function - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n)): function - title 1`] = `"FIRST"`;
+
+exports[`dispatch(jump(n)): function - title 2`] = `"SECOND"`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - history_index 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - history_index 2`] = `1`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - response 2`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - title 1`] = `"FIRST"`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): function - title 2`] = `"SECOND"`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - history_index 1`] = `1`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - history_index 2`] = `1`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 3,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 2,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - response 2`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+    "kind": "back",
+    "length": 3,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 2,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "back",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - title 1`] = `"SECOND"`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): function - title 2`] = `"SECOND"`;
+
+exports[`dispatch(push/replace()) dispatch(push(path)): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(push/replace()) dispatch(push(path)): 1 - history_index 1`] = `1`;
+
+exports[`dispatch(push/replace()) dispatch(push(path)): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(push(path)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(push(path)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(push(path)): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(push(path)): 1 - title 1`] = `"SECOND"`;
+
+exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - history_index 1`] = `1`;
+
+exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - title 1`] = `"SECOND"`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - history_index 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "redirect",
+    "length": 1,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "redirect",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - title 1`] = `"SECOND"`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - history_index 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "redirect",
+    "length": 1,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "redirect",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 302,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - title 1`] = `"SECOND"`;
+
+exports[`dispatch(reset(actions)) - entries as action objects: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "/first-base",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+    },
+    "url": "/second",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "something",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "baz=yo&foo=bar",
+    "state": Object {},
+    "url": "/third?baz=yo&foo=bar#something",
+  },
+]
+`;
+
+exports[`dispatch(reset(actions)) - entries as action objects: 1 - history_index 1`] = `1`;
+
+exports[`dispatch(reset(actions)) - entries as action objects: 1 - response 1`] = `
+Object {
+  "hash": "something",
+  "info": "reset",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "/first-base",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "something",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "baz=yo&foo=bar",
+        "state": Object {},
+        "url": "/third?baz=yo&foo=bar#something",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "/first-base",
+      "entries": Array [
+        Object {
+          "basename": "/first-base",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "/base-name",
+          "hash": "something",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "baz=yo&foo=bar",
+          "state": Object {},
+          "url": "/third?baz=yo&foo=bar#something",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "baz=yo&foo=bar",
+    "status": 200,
+    "url": "/third?baz=yo&foo=bar#something",
+  },
+  "params": Object {},
+  "query": Object {
+    "baz": "yo",
+    "foo": "bar",
+  },
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(actions)) - entries as action objects: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(actions)) - entries as action objects: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(actions)) - entries as action objects: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "/first-base",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "something",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "baz=yo&foo=bar",
+        "state": Object {},
+        "url": "/third?baz=yo&foo=bar#something",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "something",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "/first-base",
+      "entries": Array [
+        Object {
+          "basename": "/first-base",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "/base-name",
+          "hash": "something",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "baz=yo&foo=bar",
+          "state": Object {},
+          "url": "/third?baz=yo&foo=bar#something",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {
+      "baz": "yo",
+      "foo": "bar",
+    },
+    "scene": "",
+    "search": "baz=yo&foo=bar",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third?baz=yo&foo=bar#something",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(actions)) - entries as action objects: 1 - title 1`] = `"THIRD"`;
+
+exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - history_index 1`] = `1`;
+
+exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - response 1`] = `
+Object {
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - title 1`] = `"THIRD"`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: function - history_index 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: function - response 1`] = `
+Object {
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: function - title 1`] = `"SECOND"`;
+
+exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/fourth",
+    "search": "",
+    "state": undefined,
+    "url": "/fourth",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - history_index 1`] = `1`;
+
+exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": undefined,
+        "url": "/fourth",
+      },
+    ],
+    "index": 1,
+    "kind": "back",
+    "length": 3,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/fourth",
+          "search": "",
+          "state": undefined,
+          "url": "/fourth",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 2,
+      "kind": "load",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FOURTH",
+      "url": "/fourth",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": undefined,
+        "url": "/fourth",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "back",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/fourth",
+          "search": "",
+          "state": undefined,
+          "url": "/fourth",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 2,
+      "kind": "load",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FOURTH",
+      "url": "/fourth",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - title 1`] = `"THIRD"`;
+
+exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - history_index 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - title 1`] = `"SECOND"`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/fourth",
+    "search": "",
+    "state": undefined,
+    "url": "/fourth",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": undefined,
+    "url": "/first",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - history_index 1`] = `2`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - response 1`] = `
+Object {
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": undefined,
+        "url": "/fourth",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+        "url": "/first",
+      },
+    ],
+    "index": 2,
+    "kind": "next",
+    "length": 4,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/fourth",
+          "search": "",
+          "state": undefined,
+          "url": "/fourth",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": undefined,
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 4,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": undefined,
+        "url": "/fourth",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 2,
+    "kind": "next",
+    "length": 4,
+    "params": Object {},
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/fourth",
+          "search": "",
+          "state": undefined,
+          "url": "/fourth",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": undefined,
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 4,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - title 1`] = `"THIRD"`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - history_index 1`] = `1`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - title 1`] = `"THIRD"`;
+
+exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - history_index 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "index": 0,
+    "kind": "redirect",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "redirect",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - title 1`] = `"SECOND"`;
+
+exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "/first-base",
+    "hash": "",
+    "key": "123456",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+    },
+    "url": "/second",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "something",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "foo=bar&baz=yo",
+    "state": Object {},
+    "url": "/third?foo=bar&baz=yo#something",
+  },
+]
+`;
+
+exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - history_index 1`] = `1`;
+
+exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - response 1`] = `
+Object {
+  "hash": "something",
+  "info": "reset",
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "/first-base",
+        "hash": "",
+        "key": "123456",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "something",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "foo=bar&baz=yo",
+        "state": Object {},
+        "url": "/third?foo=bar&baz=yo#something",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "/first-base",
+      "entries": Array [
+        Object {
+          "basename": "/first-base",
+          "hash": "",
+          "key": "123456",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "/base-name",
+          "hash": "something",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "foo=bar&baz=yo",
+          "state": Object {},
+          "url": "/third?foo=bar&baz=yo#something",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "foo=bar&baz=yo",
+    "status": 200,
+    "url": "/third?foo=bar&baz=yo#something",
+  },
+  "params": Object {},
+  "query": Object {
+    "baz": "yo",
+    "foo": "bar",
+  },
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "/base-name",
+    "entries": Array [
+      Object {
+        "basename": "/first-base",
+        "hash": "",
+        "key": "123456",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "something",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "foo=bar&baz=yo",
+        "state": Object {},
+        "url": "/third?foo=bar&baz=yo#something",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "something",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "/first-base",
+      "entries": Array [
+        Object {
+          "basename": "/first-base",
+          "hash": "",
+          "key": "123456",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "/base-name",
+          "hash": "something",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "foo=bar&baz=yo",
+          "state": Object {},
+          "url": "/third?foo=bar&baz=yo#something",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {
+      "baz": "yo",
+      "foo": "bar",
+    },
+    "scene": "",
+    "search": "foo=bar&baz=yo",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third?foo=bar&baz=yo#something",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - title 1`] = `"THIRD"`;
+
+exports[`dispatch(setState()) dispatch(setState(state)): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state)): 1 - history_index 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state)): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+    ],
+    "index": 0,
+    "kind": "setState",
+    "length": 1,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state)): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state)): 1 - title 1`] = `"FIRST"`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - history_index 1`] = `1`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "setState",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - title 1`] = `"SECOND"`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - history_index 1`] = `1`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "setState",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - title 1`] = `"SECOND"`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): function - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): function - history_index 1`] = `1`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): function - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "setState",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): function - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): function - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): function - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): function - title 1`] = `"SECOND"`;
+
+exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - history_index 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+    ],
+    "index": 0,
+    "kind": "setState",
+    "length": 1,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - title 1`] = `"FIRST"`;

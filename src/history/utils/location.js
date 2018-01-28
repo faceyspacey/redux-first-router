@@ -50,7 +50,7 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
 
   location.key = location.key || key || createKey()
   location.url = createPath(location)
-  location.basename = basename || ''
+  location.basename = location.basename || basename || ''
 
   return location
 }

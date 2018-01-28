@@ -5,8 +5,12 @@ createTest('do NOT dispatch actions with identical URLs more than once', {
     path: '/second/:param',
     beforeEnter: function() {}
   }
-}, [], async ({ history, snap }) => {
+}, [], async ({ history, snap, getState }) => {
   await snap({ type: 'SECOND', params: { param: 'foo' }, query: { foo: 'bar' }, hash: 'bla' })
   await snap({ type: 'SECOND', params: { param: 'foo' }, query: { foo: 'bar' }, hash: 'bla' })
-  await snap(() => history.push('/second/foo?foo=bar#bla'))
+
+  const state = getState()
+  const res = await history.push('/second/foo?foo=bar#bla')
+  expect(res).toMatchSnapshot()
+  expect(state).toEqual(getState())
 })

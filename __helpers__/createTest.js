@@ -68,6 +68,12 @@ export default async (...allArgs) => {
         })
       })
     }
+    else if (Array.isArray(actions[0])) {
+      const name = actions[0][0]
+      const act = actions[0][1]
+
+      createTest(name, routesMap, initialPath, act, options, num)
+    }
     else {
       createTest(testName, routesMap, initialPath, actions[0], options, num)
     }
@@ -108,6 +114,8 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
 
     snapRoutes(num, routes)
     snapOptions(num, options)
+
+    if (opts.log) console.log(store.getState().location)
   })
 }
 
@@ -131,9 +139,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       getState: store.getState,
       location: () => store.getState().location,
       snap: async (action, prefix = '') => {
-        const res = typeof action === 'function'
-          ? await action() // used if user wants to do custom things like: `await history.replace()`
-          : await store.dispatch(action)
+        const res = await store.dispatch(action)
 
         prefix = prefix || JSON.stringify(action) || 'function'
 
@@ -143,6 +149,8 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         return res
       }
     })
+
+    if (opts.log) console.log(store.getState().location)
   })
 }
 
