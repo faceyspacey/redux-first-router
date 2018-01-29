@@ -45,14 +45,6 @@
     <img src="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/badges/coverage.svg" alt="Coverage Status"/>
   </a>
 
-  <a href="https://greenkeeper.io">
-    <img src="https://badges.greenkeeper.io/faceyspacey/redux-first-router.svg" alt="Green Keeper" />
-  </a>
-
-  <a href="https://lima.codeclimate.com/github/faceyspacey/redux-first-router">
-    <img src="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/badges/gpa.svg" alt="GPA" />
-  </a>
-
   <a href="https://www.npmjs.com/package/redux-first-router">
     <img src="https://img.shields.io/npm/dt/redux-first-router.svg" alt="Downloads" />
   </a>
