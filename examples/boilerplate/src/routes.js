@@ -5,11 +5,14 @@ export default {
 
   LIST: {
     path: '/list/:category',
+    toPath: param => (param),
+    fromPath: param => (param),
     thunk: async ({ action }) => {
       const { params: { category } } = action
       const packages = await fetch(`/api/category/${category}`)
 
       if (packages.length === 0) {
+        return
         return {
           type: 'LIST',
           params: { category: 'redux' }

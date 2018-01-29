@@ -5,6 +5,8 @@ it('nestAction properly formats/nests action object', () => {
   const pathname = '/path'
   const initialEntries = [pathname]
   const history = createSmartHistory({ initialEntries })
+  history.firstRoute.commit()
+
   const receivedAction = {
     type: 'FOO',
     params: { bar: 'baz' },

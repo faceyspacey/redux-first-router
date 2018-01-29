@@ -5,12 +5,14 @@ import type {
   Payload,
   Params,
   RoutesMap,
-  ReceivedAction as Action
+  ReceivedAction as Action,
+  Options
 } from '../flow-types'
 
 export default (
   action: Action,
-  routes: RoutesMap
+  routes: RoutesMap,
+  options: Options
 ): string => {
   const { type, params: p, query, hash } = action
   const route = routes[type]
@@ -28,22 +30,24 @@ const transformParams = (route: Route, params: Payload = {}): Params =>
     return sluggifedParams
   }, {})
 
-const transformSegment = (segment: string, route: Route, key: string) => {
+const transformSegment = (segment: string, route: Route, key: string): string => {
   if (typeof route.toPath === 'function') {
     return route.toPath(segment, key)
   }
   else if (typeof segment === 'string') {
-    if (segment.indexOf('/') > -1) {
-      return segment.split('/')
+    if (segment.indexOf('/') > -1) { // support a parameter that for example is a file path with slashes (like on github)
+      return segment.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
     }
 
     if (route.capitalizedWords === true) {
       return segment.replace(/ /g, '-').toLowerCase()
     }
 
-    return segment
+    return encodeURIComponent(String(segment))
   }
   else if (typeof segment === 'number') {
-    return segment
+    return String(segment)
   }
+
+  return encodeURIComponent(String(segment))
 }

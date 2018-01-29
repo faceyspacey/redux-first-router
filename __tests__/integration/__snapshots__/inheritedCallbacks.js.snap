@@ -1,0 +1,497 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`inherit all callbacks from another route: 1 - routes - FIRST - beforeEnter 1`] = `1`;
+
+exports[`inherit all callbacks from another route: 1 - routes - FIRST - onComplete 1`] = `1`;
+
+exports[`inherit all callbacks from another route: 1 - routes - FIRST - thunk 1`] = `1`;
+
+exports[`inherit all callbacks from another route: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`inherit all callbacks from another route: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`inherit all callbacks from another route: 1 - routes - SECOND - beforeEnter 1`] = `1`;
+
+exports[`inherit all callbacks from another route: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`inherit all callbacks from another route: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`inherit all callbacks from another route: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`inherit all callbacks from another route: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`inherit all callbacks from another route: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`inherit all callbacks from another route: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`inherit all callbacks from another route: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`inherit all callbacks from another route: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
+
+exports[`inherit individual callback from another route: 1 - routes - FIRST - thunk 1`] = `1`;
+
+exports[`inherit individual callback from another route: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`inherit individual callback from another route: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`inherit individual callback from another route: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`inherit individual callback from another route: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`inherit individual callback from another route: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`inherit individual callback from another route: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`inherit individual callback from another route: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "hash": "",
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`inherit individual callback from another route: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`inherit individual callback from another route: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
+
+exports[`recursively inherit callback: 1 - routes - FIRST - thunk 1`] = `1`;
+
+exports[`recursively inherit callback: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`recursively inherit callback: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`recursively inherit callback: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`recursively inherit callback: 1 - routes - THIRD - thunk 1`] = `1`;
+
+exports[`recursively inherit callback: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+]
+`;
+
+exports[`recursively inherit callback: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`recursively inherit callback: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`recursively inherit callback: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "payload": "FIRST - payload",
+  "type": "FIRST_COMPLETE",
+}
+`;
+
+exports[`recursively inherit callback: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hasSSR": false,
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST_COMPLETE - \\"FIRST - payload\\"",
+}
+`;
+
+exports[`recursively inherit callback: firstRoute - /first - 1 - title 1`] = `"FIRST"`;

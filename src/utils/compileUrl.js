@@ -25,7 +25,7 @@ export default (
   const toPath = toPathCache[path] || pathToRegexp.compile(path)
   toPathCache[path] = toPath
 
-  const p = toPath(params)
+  const p = toPath(params, { encode: x => x })
   const s = query ? `?${search}` : ''
   const h = hash ? `#${hash}` : ''
 

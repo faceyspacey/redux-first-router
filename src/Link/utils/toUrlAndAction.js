@@ -3,17 +3,18 @@ import resolvePathname from 'resolve-pathname'
 import { actionToUrl, urlToAction } from '../../utils'
 import { stripBasename, findBasename } from '../../history/utils'
 import { changeBasename } from '../../actions'
-import type { RoutesMap } from '../../flow-types'
+import type { RoutesMap, Options } from '../../flow-types'
 
 export type To = string | Array<string> | Object
 
 export default (
   to?: ?To,
   routes: RoutesMap,
-  basenames: ?Array<string>,
   basename: ?string = '',
-  currentPathname: string
+  currentPathname: string,
+  options: Options
 ): string => {
+  const { basenames } = options
   let url = ''
   let action
 
@@ -34,7 +35,7 @@ export default (
     action = to
 
     try {
-      url = actionToUrl(action, routes)
+      url = actionToUrl(action, routes, options)
       basename = (action.location && action.location.basename) || basename
     }
     catch (e) {
@@ -63,7 +64,7 @@ export default (
   const isExternal = url.indexOf('http') === 0
 
   if (!action && !isExternal) {
-    action = urlToAction(url, routes)
+    action = urlToAction(url, routes, options)
   }
 
   if (basename) {

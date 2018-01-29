@@ -151,6 +151,3 @@ createTest('dispatch(reset(actions)) - entries as action objects', routes, [
     query: { foo: 'bar', baz: 'yo' }
   }])
 ])
-// export const reset = (entries: Array<string | Object>, index: ?number, kind: ?string) => ({ history }) =>
-//   history.reset(entries, index, kind, false)
-

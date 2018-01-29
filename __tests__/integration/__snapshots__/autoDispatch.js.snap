@@ -219,7 +219,7 @@ Object {
     "type": "SECOND",
     "url": "/second",
   },
-  "title": "SECOND_COMPLETE_\\"payload\\"",
+  "title": "SECOND_COMPLETE - \\"payload\\"",
 }
 `;
 

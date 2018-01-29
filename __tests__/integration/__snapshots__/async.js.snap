@@ -117,7 +117,7 @@ Object {
     "type": "REDIRECTED",
     "url": "/redirected",
   },
-  "title": "REDIRECTED_COMPLETE_\\"redirect_complete\\"",
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
 }
 `;
 
@@ -232,7 +232,7 @@ Object {
     "type": "SECOND",
     "url": "/second",
   },
-  "title": "SECOND_COMPLETE_\\"payload\\"",
+  "title": "SECOND_COMPLETE - \\"payload\\"",
 }
 `;
 

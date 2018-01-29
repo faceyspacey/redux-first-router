@@ -167,7 +167,7 @@ Object {
     "type": "REDIRECTED",
     "url": "/redirected",
   },
-  "title": "REDIRECTED_COMPLETE_\\"redirect_complete\\"",
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
 }
 `;
 
@@ -460,7 +460,7 @@ Object {
     "type": "REDIRECTED",
     "url": "/redirected",
   },
-  "title": "REDIRECTED_COMPLETE_\\"redirect_complete\\"",
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
 }
 `;
 

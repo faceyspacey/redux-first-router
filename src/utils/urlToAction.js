@@ -4,11 +4,12 @@ import { matchUrl } from './index'
 import { parsePath } from '../history/utils'
 import { notFound } from '../actions'
 
-import type { RoutesMap, ReceivedAction } from '../flow-types'
+import type { RoutesMap, ReceivedAction, Options } from '../flow-types'
 
 export default (
   loc: Object | string,
-  routes: RoutesMap
+  routes: RoutesMap,
+  options: Options
 ): ReceivedAction => {
   const { url, state } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
@@ -49,9 +50,11 @@ const transformValue = (
     else if (route.capitalizedWords) {
       return val.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
     }
+
+    return decodeURIComponent(String(val))
   }
 
-  return val
+  return decodeURIComponent(val)
 }
 
 const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)

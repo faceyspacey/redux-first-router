@@ -26,8 +26,8 @@ export default (req, action, prev) => {
 
     if (prevLocation) {
       // build the action for that entry, and create what the resulting state shape would have looked like
-      const { routes, history } = req
-      const prevAction = urlToAction(prevLocation, routes)
+      const { routes, history, options } = req
+      const prevAction = urlToAction(prevLocation, routes, options)
       const state = nestAction(prevAction, {}, history)
 
       // do what the location reducer does where it maps `...action.location` flatly on to `action`

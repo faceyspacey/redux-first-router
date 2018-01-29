@@ -140,3 +140,14 @@ test('query params are ommitted', async () => {
   console.log('STATE', store.getState().location)
   expect(tree).toMatchSnapshot()
 })
+
+
+test.only('paths with spaces', async () => {
+  const { tree } = await createNavLink('/second', {
+    to: '/second',
+    activeClassName: 'active'
+  })
+
+  // console.log(tree)
+  expect(tree).toMatchSnapshot()
+})

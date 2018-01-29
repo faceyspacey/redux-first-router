@@ -12,7 +12,7 @@ export const jump = (n: number | string, state: ?Object, byIndex: ?boolean, kind
   history.jump(n, state, byIndex, kind, false)
 
 export const reset = (entries: Array<string | Object>, index: ?number, kind: ?string) => ({ history, routes }) => {
-  if (isAction(entries[0])) {
+  if (typeof entries[0] === 'object' && entries[0].type) {
     const locations = entries.map(action => {
       const url = actionToUrl(action, routes)
       return createLocation(url, action.state, undefined, undefined, action.basename)
@@ -32,3 +32,4 @@ export const back = (state: ?(Object | Function)) => ({ history }) =>
 
 export const next = (state: ?(Object | Function)) => ({ history }) =>
   history.next(state, false)
+

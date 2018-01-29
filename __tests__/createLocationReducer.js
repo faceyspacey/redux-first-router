@@ -45,7 +45,8 @@ it('locationReducer() reduces non matched action.type and returns initialState',
 it('getInitialState() returns state.history === undefined when using createBrowserHistory', async () => {
   const pathname = '/first'
   const history = createSmartHistory({ initialEntries: ['/first'] })
-  history.listen(function() {})
+  history.firstRoute.commit()
+
   const current = { pathname, type: 'FIRST', params: {} }
   const routesMap = {
     FIRST: { path: '/first' }

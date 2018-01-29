@@ -6,11 +6,12 @@ import type {
   LocationState,
   RoutesMap,
   Action,
-  History
+  History,
+  Options
 } from '../flow-types'
 
-export default (routes: RoutesMap, history: History) => {
-  const initialState = createInitialState(routes, history)
+export default (routes: RoutesMap, history: History, options: Options) => {
+  const initialState = createInitialState(routes, history, options)
 
   return (
     st: LocationState = initialState,
@@ -50,11 +51,12 @@ export default (routes: RoutesMap, history: History) => {
 
 export const createInitialState = (
   routes: RoutesMap,
-  history: History
+  history: History,
+  options: Options
 ): LocationState => {
   const { kind, entries, index, length, location } = history
   const { url, pathname, search, basename } = location
-  const action = urlToAction(location, routes)
+  const action = urlToAction(location, routes, options)
   const { type, params = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
   const hasSSR = isServer()

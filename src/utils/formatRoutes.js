@@ -29,7 +29,7 @@ export const format = (r, type, routes, formatRoute, isAddRoutes) => {
   const route = typeof r === 'string' ? { path: r } : r
 
   if (formatRoute) {
-    return formatRoute(route, type, routes, formatRoute, isAddRoutes)
+    return formatRoute(route, type, routes, isAddRoutes)
   }
   else if (typeof route === 'function') {
     return { thunk: route }

@@ -17,6 +17,7 @@ export default (api) => async (req, next) => {
   const {
     route,
     routes,
+    options,
     action,
     history,
     getLocation
@@ -30,11 +31,11 @@ export default (api) => async (req, next) => {
   try {
     if (action.type === UPDATE_HISTORY) {
       const { location } = action.nextHistory
-      const act = urlToAction(location, routes)
+      const act = urlToAction(location, routes, options)
       req = historyAction(req, act, prev)
     }
     else if (!isNotFound(action)) {
-      const url = actionToUrl(action, routes)
+      const url = actionToUrl(action, routes, options)
       req = reduxAction(req, url, action, prev, history)
     }
     else {

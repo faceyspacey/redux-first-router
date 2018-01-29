@@ -5,8 +5,7 @@ import { NOT_FOUND } from '../src/types'
 export default async (type, pathname) => {
   // eslint-disable-line import/prefer-default-export
   const history = createSmartHistory({ initialEntries: ['/first'] })
-  history.listen(function() {})
-  await history.push(pathname)
+  history.firstRoute.commit()
 
   const current = { pathname, url: pathname, type, params: { param: 'bar' } }
   const prev = { pathname: '/first', type: 'FIRST', params: {} }

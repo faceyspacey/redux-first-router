@@ -410,6 +410,17 @@ Object {
     "title": "FIRST",
   },
   "options": Object {
+    "callbacks": Array [
+      "thunk",
+      "onComplete",
+      "beforeLeave",
+      "beforeEnter",
+      "onLeave",
+      "onEnter",
+      "thunk",
+      "onComplete",
+      "onError",
+    ],
     "createRequest": [Function],
     "extra": Object {
       "arg": "extra-arg",

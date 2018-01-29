@@ -7,13 +7,21 @@ module.exports = wallaby => {
       { pattern: 'package.json', load: false },
       { pattern: '__tests__/**/*.snap', load: false },
       { pattern: '__helpers__/**/*.js', load: false },
-      // { pattern: '__test-helpers__/**/*.js', load: false }
+      { pattern: '__test-helpers__/**/*.js', load: false }
     ],
 
-    filesWithNoCoverageCalculated: ['__helpers__/**/*.js'],
+    filesWithNoCoverageCalculated: [
+      '__helpers__/**/*.js',
+      '__test-helpers__/**/*.js',
+      'src/history/BrowserHistory.js',
+      'src/history/utils/sessionStorage.js'
+    ],
 
     tests: [
-      '__tests__/integration/actions/history.js',
+      // '__tests__/**/*.js',
+      // '__tests__/Link/NavLink.js',
+
+      // '__tests__/integration/actions/history.js',
       // '__tests__/integration/dontDoubleDispatch.js',
       // '__tests__/createScene.js',
       // '__tests__/integration/actions/notFound.js',

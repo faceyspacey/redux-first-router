@@ -77,9 +77,9 @@ const LinkInner = (props) => {
     ...p
   } = props
 
-  const { routes, getLocation, options: { basenames } } = rudy
+  const { routes, getLocation, options } = rudy
   const curr = cp || getLocation().pathname // for relative paths and incorrect actions (incorrect actions don't waste re-renderings and just get current pathname from context)
-  const { fullUrl, action } = toUrlAndAction(to, routes, basenames, bn, curr)
+  const { fullUrl, action } = toUrlAndAction(to, routes, bn, curr, options)
   const hasHref = Component === 'a' || typeof Component !== 'string'
 
   const handler = handlePress.bind(
