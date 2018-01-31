@@ -3,8 +3,9 @@ import qs from 'query-string'
 import { matchUrl } from './index'
 import { parsePath } from '../history/utils'
 import { notFound } from '../actions'
+import { NOT_FOUND } from '../types'
 
-import type { RoutesMap, ReceivedAction, Options } from '../flow-types'
+import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
 export default (
   loc: Object | string,
@@ -18,8 +19,7 @@ export default (
   for (let i = 0; i < types.length; i++) {
     const type = types[i]
     const route = routes[type]
-    const transform = transformValue.bind(null, route)
-    const match = matchUrl(l, route, { transform })
+    const match = matchUrl(l, route, transformers, route, options)
 
     if (match) {
       const { params, query, hash } = match
@@ -31,30 +31,76 @@ export default (
   // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
   const { search, hash } = l
   const params = {}
-  const query = search ? qs.parse(search) : {}
+  const query = search
+    ? (routes[NOT_FOUND].parseQuery || options.parseQuery || qs.parse)(search)
+    : {}
+
   return notFound({ params, query, hash, state }, url)
 }
 
-const transformValue = (
-  route: Object = {},
-  val: string,
-  name
-) => {
-  if (typeof val === 'string') {
-    if (route.fromPath) {
-      return route.fromPath && route.fromPath(val, name)
-    }
-    else if (route.convertNumbers && isNumber(val)) {
-      return parseFloat(val)
-    }
-    else if (route.capitalizedWords) {
-      return val.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
-    }
+const fromParams = (params: Object, route: Route, options: Options) => {
+  const from = route.fromParam || (route.capitalizedWords && defaultFromParam) ||
+    (route.convertNumbers && defaultFromParam) || options.fromParam || defaultFromParam
 
-    return decodeURIComponent(String(val))
+  for (const key in params) {
+    const val = params[key]
+    const decodedVal = decodeURIComponent(val)
+    params[key] = from(decodedVal, key, route, val, options)
   }
 
-  return decodeURIComponent(val)
+  const def = route.defaultParams || options.defaultParams
+  return def
+    ? typeof def === 'function' ? def(params, route) : { ...def, params }
+    : params
 }
+
+const defaultFromParam = (
+  decodedVal: string,
+  key: string,
+  route: Route,
+  val: string,
+  options: Options
+) => {
+  const convert = route.convertNumbers || options.convertNumbers
+
+  if (convert && isNumber(decodedVal)) {
+    return parseFloat(decodedVal)
+  }
+
+  const capitalize = route.capitalizedWords || options.capitalizedWords
+
+  if (capitalize) {
+    return decodedVal.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
+  }
+
+  return decodedVal
+}
+
+const fromQuery = (query: Object, route: Route, options: Options) => {
+  const from = route.fromQuery || options.fromQuery
+
+  if (from) {
+    for (const key in query) {
+      query[key] = from(query[key], key, route)
+    }
+  }
+
+  const def = route.defaultQuery || options.defaultQuery
+  return def
+    ? typeof def === 'function' ? def(query, route) : { ...def, query }
+    : query
+}
+
+const fromHash = (hash: string, route: Route, options: Options) => {
+  const from = route.fromHash || options.fromHash
+  hash = from ? from(hash, route) : hash
+
+  const def = route.defaultHash || options.defaultHash
+  return def
+    ? typeof def === 'function' ? def(hash, route) : (hash || def)
+    : hash
+}
+
+const transformers = { fromParams, fromQuery, fromHash }
 
 const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)

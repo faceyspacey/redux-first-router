@@ -10,7 +10,9 @@ import { parsePath } from '../history/utils'
 
 import { toUrlAndAction, handlePress, preventDefault } from './utils'
 import type { To, OnClick } from './utils'
-import type { ReceivedAction } from '../flow-types'
+import type {
+  ReceivedAction
+} from '../flow-types'
 
 type OwnProps = {
   to: To,
@@ -129,11 +131,13 @@ const navLinkProps = (props: Props, fullUrl: string, action: ?ReceivedAction) =>
     rudy
   } = props
 
-  const { getLocation } = rudy
+  const { getLocation, options, routes } = rudy
   const { pathname, query, hash } = parsePath(fullUrl)
   const matchers = { path: pathname, query: q && query, hash: h && hash }
   const currentFullUrl = basename + url
-  const match = matchUrl(currentFullUrl, matchers, { partial, strict })
+  const opts = { partial, strict }
+  const route = routes[action.type] || {}
+  const match = matchUrl(currentFullUrl, matchers, opts, route, options)
 
   if (match) {
     Object.assign(match, action)

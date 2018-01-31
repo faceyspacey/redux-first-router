@@ -48,7 +48,7 @@ it('parse action into path with parameters using route object containing toPath(
   const routesMap = {
     INFO_PARAM: {
       path: '/info/:param',
-      toPath: (value, key) => value.replace(' ', `-${key}-`).toLowerCase()
+      toParam: (value, key) => value.replace(' ', `-${key}-`).toLowerCase()
     }
   }
 

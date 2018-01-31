@@ -298,6 +298,19 @@ exports[`isActive returns true 3`] = `
 />
 `;
 
+exports[`paths with spaces 1`] = `
+<a
+  aria-current="true"
+  className="active"
+  href="/second"
+  onClick={[Function]}
+  onMouseDown={undefined}
+  onTouchStart={undefined}
+  style={Object {}}
+  target={undefined}
+/>
+`;
+
 exports[`query params are ommitted 1`] = `
 <a
   aria-current="true"

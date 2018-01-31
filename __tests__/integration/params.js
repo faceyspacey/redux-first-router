@@ -55,13 +55,13 @@ createTest('numbers NOT converted without convertNumbers option', {
 createTest('fromPath + toPath', {
   SECOND: {
     path: '/second/:param',
-    fromPath: (val) => val.toUpperCase(),
-    toPath: (val) => val.toLowerCase()
+    fromParam: (val) => val.toUpperCase(),
+    toParam: (val) => val.toLowerCase()
   },
   THIRD: {
     path: '/third/:param',
-    fromPath: (val) => val.toUpperCase(),
-    toPath: (val) => val.toLowerCase()
+    fromParam: (val) => val.toUpperCase(),
+    toParam: (val) => val.toLowerCase()
   }
 }, [
   { type: 'SECOND', params: { param: 'bar' } },
@@ -182,25 +182,6 @@ createTest('match MULTIPLE "multi segment params" as single param', {
   },
   '/third/foo/bar/bla/baz/yo/sdf'
 ])
-
-createTest('match MULTIPLE "multi segment params" as single param (using regex)', {
-  SECOND: {
-    path: '/second/:segments1(.*)/bla/:segments2(.*)'
-  },
-  THIRD: {
-    path: '/third/:segments1(.*)/bla/:segments2(.*)'
-  }
-}, [
-  {
-    type: 'SECOND',
-    params: {
-      segments1: 'foo/bar',
-      segments2: 'baz/yo/sdf'
-    }
-  },
-  '/third/foo/bar/bla/baz/yo/sdf'
-])
-
 
 createTest('optional static segments ("aliases")', {
   SECOND: {

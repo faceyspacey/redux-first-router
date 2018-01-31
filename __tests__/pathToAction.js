@@ -39,7 +39,7 @@ it('parse path into action using route object containing fromPath() function', (
   const routesMap = {
     INFO_PARAM: {
       path: '/info/:param/:param2',
-      fromPath: (segment, key) =>
+      fromParam: (segment, key) =>
         key === 'param2'
           ? segment
           : `${segment} ${key}`.replace('-', ' ').toUpperCase()

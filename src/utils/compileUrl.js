@@ -3,6 +3,11 @@ import pathToRegexp from 'path-to-regexp'
 import qs from 'query-string'
 import { matchQuery, matchVal } from './matchUrl'
 
+import type {
+  Route,
+  Options
+} from '../flow-types'
+
 const toPathCache = {}
 
 export default (
@@ -10,9 +15,10 @@ export default (
   params: Object = {},
   query: ?Object,
   hash: ?string,
-  route: Object = {}
+  route: Route = {},
+  opts: Options
 ) => {
-  const search = qs.stringify(query)
+  const search = stringify(query, route, opts)
 
   if (route.query && !matchQuery(search, route.query)) {
     throw new Error('[rudy] invalid query object')
@@ -31,4 +37,11 @@ export default (
 
   return p + s + h
 }
+
+const stringify = (query, route: Route, opts: Options) =>
+  query
+    ? (route.stringifyQuery || opts.stringifyQuery || qs.stringify)(query, {
+        encode: true
+      })
+    : ''
 
