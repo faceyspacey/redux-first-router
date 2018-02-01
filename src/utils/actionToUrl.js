@@ -14,7 +14,7 @@ import type {
 export default (
   action: Action,
   routes: RoutesMap,
-  options: Options = {}
+  opts: Options = {}
 ): string => {
   const { type, params, query, hash } = action
   const route = routes[type]
@@ -24,77 +24,87 @@ export default (
 
   return compileUrl(
     path,
-    toParams(params, route, options),
-    toQuery(query, route, options),
-    toHash(hash, route, options),
+    toParams(params, route, opts),
+    toQuery(query, route, opts),
+    toHash(hash, route, opts, action),
     route,
-    options
+    opts
   ) || '/'
 }
 
-const toParams = (params: Object, route: Route, options: Options) => {
-  const def = route.defaultParams || options.defaultParams
+const toParams = (params: ?Object, route: Route, opts: Options) => {
+  const def = route.defaultParams || opts.defaultParams
   params = def
     ? typeof def === 'function' ? def(params, route) : { ...def, params }
     : params
 
-  const to = route.toParam || (route.capitalizedWords && defaultToParam) ||
-    options.toParam || defaultToParam
+  if (params) {
+    const newParams = {}
+    const to = route.toParam || defaultToParam
 
-  const newParams = {}
+    for (const key in params) {
+      const val = params[key]
+      const encodedVal = encodeURIComponent(val)
+      const res = to(val, key, encodedVal, route, opts)
+      newParams[key] = res
+    }
 
-  for (const key in params) {
-    const val = params[key]
-    const encodedVal = encodeURIComponent(val)
-    newParams[key] = to(val, key, route, encodedVal, options)
+    return newParams
   }
-
-  return newParams
 }
 
 const defaultToParam = (
   val: string,
   key: string,
-  route: Route,
   encodedVal: string,
-  options: Options
+  route: Route,
+  opts: Options
 ) => {
-  if (typeof val === 'number') return String(val)
-
-  if (encodedVal.indexOf('/') > -1) { // support a parameter that for example is a file path with slashes (like on github)
-    return encodedVal.split('/') // path-to-regexp supports arrays for this use case
+  if (typeof val === 'string' && val.indexOf('/') > -1) { // support a parameter that for example is a file path with slashes (like on github)
+    return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
   }
 
-  if (route.capitalizedWords === true) {
+  const capitalize = route.capitalizedWords ||
+    (opts.capitalizedWords && route.capitalizedWords !== false)
+
+  if (capitalize && typeof val === 'string') {
     return val.replace(/ /g, '-').toLowerCase()
   }
 
-  return encodedVal
+  return opts.toParam
+    ? opts.toParam(val, key, encodedVal, route, opts)
+    : val === undefined ? undefined : encodedVal
 }
 
-const toQuery = (query: ?Object, route: Route, options: Options) => {
-  const def = route.defaultQuery || options.defaultQuery
+const toQuery = (query: ?Object, route: Route, opts: Options) => {
+  const def = route.defaultQuery || opts.defaultQuery
   query = def
-    ? typeof def === 'function' ? def(query, route) : { ...def, query }
+    ? typeof def === 'function' ? def(query, route, opts) : { ...def, query }
     : query
 
-  const to = route.toQuery || options.toQuery
+  const to = route.toQuery || opts.toQuery
 
   if (to && query) {
+    const newQuery = {}
+
     for (const key in query) {
-      query[key] = to(query[key], key, route)
+      newQuery[key] = to(query[key], key, route, opts)
     }
+
+    return newQuery
   }
 
   return query
 }
 
-const toHash = (hash: ?string, route: Route, options: Options) => {
-  const def = route.defaultHash || options.defaultHash
+const toHash = (hash: ?string, route: Route, opts: Options, action) => {
+  const def = route.defaultHash || opts.defaultHash
   hash = def
-    ? typeof def === 'function' ? def(hash, route) : (hash || def)
+    ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
     : hash
 
-  const to = route.toHash || options.toHash
-  return to ? to(hash, route) : hash
+  if (hash) action.hash = hash
+
+  const to = route.toHash || opts.toHash
+  return to ? to(hash, route, opts) : hash
 }

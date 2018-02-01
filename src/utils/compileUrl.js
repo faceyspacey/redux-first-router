@@ -20,11 +20,11 @@ export default (
 ) => {
   const search = stringify(query, route, opts)
 
-  if (route.query && !matchQuery(search, route.query)) {
+  if (route.query && !matchQuery(search, route.query, route, opts)) {
     throw new Error('[rudy] invalid query object')
   }
 
-  if (route.hash && !matchVal(hash, route.hash)) {
+  if (route.hash && !matchVal(hash, route.hash, 'hash', route, opts)) {
     throw new Error('[rudy] invalid hash value')
   }
 

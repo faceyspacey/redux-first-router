@@ -79,3 +79,36 @@ createTest('hash matched by regex', {
   '/third#correct',
   '/third#missed'
 ])
+
+createTest('route.toHash/fromHash', {
+  SECOND: {
+    path: '/second',
+    toHash: hash => hash.toUpperCase()
+  },
+  THIRD: {
+    path: '/third',
+    fromHash: hash => hash.toLowerCase()
+  }
+}, [
+  { type: 'SECOND', hash: 'correct' },
+  { type: 'SECOND' },
+  '/third#CORRECT',
+  '/third'
+])
+
+createTest('route.defaultHash', {
+  SECOND: {
+    path: '/second',
+    defaultHash: 'defaultHash'
+  },
+  THIRD: {
+    path: '/third',
+    defaultHash: hash => hash || 'defaultHash'
+  }
+}, [
+  { type: 'SECOND', hash: 'correct' },
+  { type: 'SECOND' },
+  '/third#CORRECT',
+  '/third'
+])
+

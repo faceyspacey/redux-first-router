@@ -10,7 +10,7 @@ import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 export default (
   loc: Object | string,
   routes: RoutesMap,
-  options: Options
+  opts: Options
 ): ReceivedAction => {
   const { url, state } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
@@ -19,7 +19,7 @@ export default (
   for (let i = 0; i < types.length; i++) {
     const type = types[i]
     const route = routes[type]
-    const match = matchUrl(l, route, transformers, route, options)
+    const match = matchUrl(l, route, transformers, route, opts)
 
     if (match) {
       const { params, query, hash } = match
@@ -32,23 +32,22 @@ export default (
   const { search, hash } = l
   const params = {}
   const query = search
-    ? (routes[NOT_FOUND].parseQuery || options.parseQuery || qs.parse)(search)
+    ? (routes[NOT_FOUND].parseQuery || opts.parseQuery || qs.parse)(search)
     : {}
 
   return notFound({ params, query, hash, state }, url)
 }
 
-const fromParams = (params: Object, route: Route, options: Options) => {
-  const from = route.fromParam || (route.capitalizedWords && defaultFromParam) ||
-    (route.convertNumbers && defaultFromParam) || options.fromParam || defaultFromParam
+const fromParams = (params: Object, route: Route, opts: Options) => {
+  const from = route.fromParam || defaultFromParam
 
   for (const key in params) {
     const val = params[key]
-    const decodedVal = decodeURIComponent(val)
-    params[key] = from(decodedVal, key, route, val, options)
+    const decodedVal = val && decodeURIComponent(val) // don't decode undefined values from optional params
+    params[key] = from(decodedVal, key, val, route, opts)
   }
 
-  const def = route.defaultParams || options.defaultParams
+  const def = route.defaultParams || opts.defaultParams
   return def
     ? typeof def === 'function' ? def(params, route) : { ...def, params }
     : params
@@ -57,27 +56,31 @@ const fromParams = (params: Object, route: Route, options: Options) => {
 const defaultFromParam = (
   decodedVal: string,
   key: string,
-  route: Route,
   val: string,
-  options: Options
+  route: Route,
+  opts: Options
 ) => {
-  const convert = route.convertNumbers || options.convertNumbers
+  const convert = route.convertNumbers ||
+    (opts.convertNumbers && route.convertNumbers !== false)
 
   if (convert && isNumber(decodedVal)) {
     return parseFloat(decodedVal)
   }
 
-  const capitalize = route.capitalizedWords || options.capitalizedWords
+  const capitalize = route.capitalizedWords ||
+    (opts.capitalizedWords && route.capitalizedWords !== false)
 
   if (capitalize) {
     return decodedVal.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
   }
 
-  return decodedVal
+  return opts.fromParam
+    ? opts.fromParam(decodedVal, key, val, route, opts)
+    : decodedVal
 }
 
-const fromQuery = (query: Object, route: Route, options: Options) => {
-  const from = route.fromQuery || options.fromQuery
+const fromQuery = (query: Object, route: Route, opts: Options) => {
+  const from = route.fromQuery || opts.fromQuery
 
   if (from) {
     for (const key in query) {
@@ -85,17 +88,17 @@ const fromQuery = (query: Object, route: Route, options: Options) => {
     }
   }
 
-  const def = route.defaultQuery || options.defaultQuery
+  const def = route.defaultQuery || opts.defaultQuery
   return def
     ? typeof def === 'function' ? def(query, route) : { ...def, query }
     : query
 }
 
-const fromHash = (hash: string, route: Route, options: Options) => {
-  const from = route.fromHash || options.fromHash
+const fromHash = (hash: string, route: Route, opts: Options) => {
+  const from = route.fromHash || opts.fromHash
   hash = from ? from(hash, route) : hash
 
-  const def = route.defaultHash || options.defaultHash
+  const def = route.defaultHash || opts.defaultHash
   return def
     ? typeof def === 'function' ? def(hash, route) : (hash || def)
     : hash

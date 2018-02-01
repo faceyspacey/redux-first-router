@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cached thunk only called once 1`] = `
+exports[`core capabilities can be overriden as options 1`] = `
 Array [
   Object {
     "compose": [Function],
@@ -21,7 +21,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 2`] = `
+exports[`core capabilities can be overriden as options 2`] = `
 Array [
   Object {
     "@@rudy/NOT_FOUND": Object {
@@ -76,10 +76,26 @@ Array [
     "saveHistory": [Function],
     "type": "@@rudy/UPDATE_HISTORY",
   },
+  Object {
+    "compose": [Function],
+    "createHistory": [Function],
+    "createReducer": [Function],
+    "createRequest": [Function],
+    "extra": Object {
+      "arg": "extra-arg",
+    },
+    "initialEntries": Array [
+      "/first",
+    ],
+    "location": "location",
+    "shouldCall": [Function],
+    "shouldTransition": [Function],
+    "title": [Function],
+  },
 ]
 `;
 
-exports[`cached thunk only called once 3`] = `
+exports[`core capabilities can be overriden as options 3`] = `
 Array [
   Array [
     [Function],
@@ -191,7 +207,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 4`] = `
+exports[`core capabilities can be overriden as options 4`] = `
 Array [
   Object {
     "commit": [Function],
@@ -333,7 +349,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 5`] = `
+exports[`core capabilities can be overriden as options 5`] = `
 Array [
   Object {
     "commit": [Function],
@@ -477,7 +493,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 6`] = `
+exports[`core capabilities can be overriden as options 6`] = `
 Array [
   Object {
     "action": Object {
@@ -782,7 +798,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 7`] = `
+exports[`core capabilities can be overriden as options 7`] = `
 Array [
   Object {
     "action": Object {
@@ -1085,7 +1101,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 8`] = `
+exports[`core capabilities can be overriden as options 8`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -1411,7 +1427,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 9`] = `
+exports[`core capabilities can be overriden as options 9`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -1735,7 +1751,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 10`] = `
+exports[`core capabilities can be overriden as options 10`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -2059,7 +2075,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 11`] = `
+exports[`core capabilities can be overriden as options 11`] = `
 Array [
   Object {
     "type": "SECOND",
@@ -2190,7 +2206,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 12`] = `
+exports[`core capabilities can be overriden as options 12`] = `
 Array [
   Object {
     "type": "SECOND",
@@ -2323,7 +2339,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 13`] = `
+exports[`core capabilities can be overriden as options 13`] = `
 Array [
   Object {
     "action": Object {
@@ -2640,7 +2656,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 14`] = `
+exports[`core capabilities can be overriden as options 14`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -2956,7 +2972,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 15`] = `
+exports[`core capabilities can be overriden as options 15`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -3284,7 +3300,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 16`] = `
+exports[`core capabilities can be overriden as options 16`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -3610,7 +3626,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 17`] = `
+exports[`core capabilities can be overriden as options 17`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -3938,7 +3954,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once 18`] = `
+exports[`core capabilities can be overriden as options 18`] = `
 Array [
   Object {
     "_dispatched": false,
@@ -4276,7 +4292,7 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once: 1 - history_entries 1`] = `
+exports[`core capabilities can be overriden as options: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -4299,9 +4315,9 @@ Array [
 ]
 `;
 
-exports[`cached thunk only called once: 1 - history_index 1`] = `1`;
+exports[`core capabilities can be overriden as options: 1 - history_index 1`] = `1`;
 
-exports[`cached thunk only called once: 1 - response 1`] = `
+exports[`core capabilities can be overriden as options: 1 - response 1`] = `
 Object {
   "hash": "",
   "location": Object {
@@ -4370,13 +4386,13 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`core capabilities can be overriden as options: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`cached thunk only called once: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`core capabilities can be overriden as options: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`cached thunk only called once: 1 - routes - SECOND - thunk 1`] = `1`;
+exports[`core capabilities can be overriden as options: 1 - routes - SECOND - thunk 1`] = `1`;
 
-exports[`cached thunk only called once: 1 - state 1`] = `
+exports[`core capabilities can be overriden as options: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4447,4 +4463,4 @@ Object {
 }
 `;
 
-exports[`cached thunk only called once: 1 - title 1`] = `"SECOND"`;
+exports[`core capabilities can be overriden as options: 1 - title 1`] = `"SECOND"`;

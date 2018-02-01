@@ -11,10 +11,10 @@ export const replace = (path: string, state: ?Object) => ({ history }) =>
 export const jump = (n: number | string, state: ?Object, byIndex: ?boolean, kind: ?string) => ({ history }) =>
   history.jump(n, state, byIndex, kind, false)
 
-export const reset = (entries: Array<string | Object>, index: ?number, kind: ?string) => ({ history, routes }) => {
+export const reset = (entries: Array<string | Object>, index: ?number, kind: ?string) => ({ history, routes, options }) => {
   if (typeof entries[0] === 'object' && entries[0].type) {
     const locations = entries.map(action => {
-      const url = actionToUrl(action, routes)
+      const url = actionToUrl(action, routes, options)
       return createLocation(url, action.state, undefined, undefined, action.basename)
     })
 

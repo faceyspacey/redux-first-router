@@ -7,7 +7,7 @@ import shouldTransition from '../../src/utils/shouldTransition'
 import createRequest from '../../src/utils/createRequest'
 import shouldCall from '../../src/middleware/call/utils/shouldCall'
 
-createTest('cached thunk only called once', {
+createTest('core capabilities can be overriden as options', {
   SECOND: {
     path: '/second',
     thunk: function() {}

@@ -287,8 +287,8 @@ const snapCallbacks = (prefix, obj) => {
 const snapChange = (prefix, res, store, history, initialState) => {
   if (initialState) expectInitialState(initialState, prefix)
 
-  expectResponse(res, prefix)
   expectState(store, prefix)
+  expectResponse(res, prefix)
   expectEntries(history, prefix)
   expectIndex(history, prefix)
   expectTitle(prefix)

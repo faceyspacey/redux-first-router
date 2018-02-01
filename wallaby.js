@@ -18,7 +18,8 @@ module.exports = wallaby => {
     ],
 
     tests: [
-      '__tests__/**/*.js',
+      // '__tests__/**/*.js',
+      '__tests__/integration/hashes.js',
       // '__tests__/Link/NavLink.js',
 
       // '__tests__/integration/actions/history.js',
