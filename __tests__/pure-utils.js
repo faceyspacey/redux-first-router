@@ -122,7 +122,7 @@ describe('pathToAction(path, routesMap)', () => {
   it('parse path (/info/foo-bar) into action using route object containing capitalizedWords: true: payload: { param: "Foo Bar" }', () => {
     const path = '/info/foo-bar'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/', capitalizedWords: true }
+      INFO_PARAM: { path: '/info/:param', capitalizedWords: true }
     }
 
     const action = pathToAction(path, routesMap) /*? */
@@ -130,10 +130,10 @@ describe('pathToAction(path, routesMap)', () => {
   })
 
   it('parse path into action using route object containing fromPath() function', () => {
-    const path = '/info/foo-bar'
+    const path = '/info/foo-bar/'
     const routesMap = {
       INFO_PARAM: {
-        path: '/info/:param/',
+        path: '/info/:param',
         fromPath: (segment, key) =>
           `${segment} ${key}`.replace('-', ' ').toUpperCase()
       }
@@ -144,9 +144,9 @@ describe('pathToAction(path, routesMap)', () => {
   })
 
   it('parse path containing number param into action with payload value set as integer instead of string', () => {
-    const path = '/info/69'
+    const path = '/info/69/'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/' }
+      INFO_PARAM: { path: '/info/:param' }
     }
 
     const action = pathToAction(path, routesMap) /*? */
@@ -259,6 +259,20 @@ describe('actionToPath(action, routesMap)', () => {
     const routesMap = { INFO_PARAM: '/:param?' }
     const path = actionToPath(action, routesMap) /*? */
     expect(path).toEqual('/')
+  })
+
+  it('forwards toPathOptions to path-to-regexp toPath', () => {
+    const action = { type: 'INFO', payload: { param: '1,2' } }
+    const routesMap = {
+      INFO: {
+        path: '/info/:param',
+        toPathOptions: {
+          encode: param => param
+        }
+      }
+    }
+    const path = actionToPath(action, routesMap) /*? */
+    expect(path).toEqual('/info/1,2')
   })
 })
 
