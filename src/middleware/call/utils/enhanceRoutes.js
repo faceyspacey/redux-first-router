@@ -1,5 +1,4 @@
 import composePromise from '../../../core/composePromise'
-import { complete } from './index'
 
 export default (name, routes) => {
   for (const type in routes) {
@@ -40,3 +39,5 @@ const findCallback = (name, routes, callback, route) => {
     return findCallback(name, routes, cb, inheritedRoute)
   }
 }
+
+const complete = (next) => (res) => next().then(() => res)

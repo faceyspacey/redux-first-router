@@ -14,6 +14,7 @@ Array [
       "/first",
     ],
     "location": "location",
+    "onError": [Function],
     "shouldCall": [Function],
     "shouldTransition": [Function],
     "title": [Function],
@@ -88,6 +89,7 @@ Array [
       "/first",
     ],
     "location": "location",
+    "onError": [Function],
     "shouldCall": [Function],
     "shouldTransition": [Function],
     "title": [Function],
@@ -170,6 +172,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -313,6 +316,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -455,6 +459,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -495,6 +500,11 @@ Array [
 
 exports[`core capabilities can be overriden as options 6`] = `
 Array [
+  "beforeLeave",
+  Object {
+    "path": "/first",
+    "type": "FIRST",
+  },
   Object {
     "action": Object {
       "hash": "",
@@ -711,6 +721,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -791,7 +802,6 @@ Array [
     },
     "type": "FIRST",
   },
-  "beforeLeave",
   Object {
     "prev": true,
   },
@@ -800,6 +810,11 @@ Array [
 
 exports[`core capabilities can be overriden as options 7`] = `
 Array [
+  "beforeEnter",
+  Object {
+    "path": "/first",
+    "type": "FIRST",
+  },
   Object {
     "action": Object {
       "hash": "",
@@ -1016,6 +1031,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -1096,15 +1112,18 @@ Array [
     },
     "type": "FIRST",
   },
-  "beforeEnter",
   Object {},
 ]
 `;
 
 exports[`core capabilities can be overriden as options 8`] = `
 Array [
+  "onLeave",
   Object {
-    "_dispatched": false,
+    "path": "/first",
+    "type": "FIRST",
+  },
+  Object {
     "action": Object {
       "hash": "",
       "location": Object {
@@ -1339,6 +1358,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -1420,7 +1440,6 @@ Array [
     },
     "type": "FIRST",
   },
-  "onLeave",
   Object {
     "prev": true,
   },
@@ -1429,8 +1448,12 @@ Array [
 
 exports[`core capabilities can be overriden as options 9`] = `
 Array [
+  "onEnter",
   Object {
-    "_dispatched": false,
+    "path": "/first",
+    "type": "FIRST",
+  },
+  Object {
     "action": Object {
       "hash": "",
       "location": Object {
@@ -1665,6 +1688,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -1746,15 +1770,18 @@ Array [
     },
     "type": "FIRST",
   },
-  "onEnter",
   Object {},
 ]
 `;
 
 exports[`core capabilities can be overriden as options 10`] = `
 Array [
+  "onComplete",
   Object {
-    "_dispatched": false,
+    "path": "/first",
+    "type": "FIRST",
+  },
+  Object {
     "action": Object {
       "hash": "",
       "location": Object {
@@ -1989,6 +2016,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -2070,7 +2098,6 @@ Array [
     },
     "type": "FIRST",
   },
-  "onComplete",
   Object {},
 ]
 `;
@@ -2170,6 +2197,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -2301,6 +2329,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -2341,6 +2370,11 @@ Array [
 
 exports[`core capabilities can be overriden as options 13`] = `
 Array [
+  "beforeLeave",
+  Object {
+    "path": "/first",
+    "type": "FIRST",
+  },
   Object {
     "action": Object {
       "hash": "",
@@ -2598,6 +2632,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -2649,7 +2684,6 @@ Array [
     },
     "type": "SECOND",
   },
-  "beforeLeave",
   Object {
     "prev": true,
   },
@@ -2658,8 +2692,13 @@ Array [
 
 exports[`core capabilities can be overriden as options 14`] = `
 Array [
+  "beforeEnter",
   Object {
-    "_dispatched": false,
+    "path": "/second",
+    "thunk": [MockFunction],
+    "type": "SECOND",
+  },
+  Object {
     "action": Object {
       "hash": "",
       "location": Object {
@@ -2916,6 +2955,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -2967,15 +3007,18 @@ Array [
     },
     "type": "SECOND",
   },
-  "beforeEnter",
   Object {},
 ]
 `;
 
 exports[`core capabilities can be overriden as options 15`] = `
 Array [
+  "onLeave",
   Object {
-    "_dispatched": false,
+    "path": "/first",
+    "type": "FIRST",
+  },
+  Object {
     "action": Object {
       "hash": "",
       "location": Object {
@@ -3241,6 +3284,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -3293,7 +3337,6 @@ Array [
     },
     "type": "SECOND",
   },
-  "onLeave",
   Object {
     "prev": true,
   },
@@ -3302,8 +3345,13 @@ Array [
 
 exports[`core capabilities can be overriden as options 16`] = `
 Array [
+  "onEnter",
   Object {
-    "_dispatched": false,
+    "path": "/second",
+    "thunk": [MockFunction],
+    "type": "SECOND",
+  },
+  Object {
     "action": Object {
       "hash": "",
       "location": Object {
@@ -3569,6 +3617,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -3621,15 +3670,19 @@ Array [
     },
     "type": "SECOND",
   },
-  "onEnter",
   Object {},
 ]
 `;
 
 exports[`core capabilities can be overriden as options 17`] = `
 Array [
+  "thunk",
   Object {
-    "_dispatched": false,
+    "path": "/second",
+    "thunk": [MockFunction],
+    "type": "SECOND",
+  },
+  Object {
     "action": Object {
       "hash": "",
       "location": Object {
@@ -3895,6 +3948,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -3947,7 +4001,6 @@ Array [
     },
     "type": "SECOND",
   },
-  "thunk",
   Object {
     "cache": true,
   },
@@ -3956,6 +4009,329 @@ Array [
 
 exports[`core capabilities can be overriden as options 18`] = `
 Array [
+  "onComplete",
+  Object {
+    "path": "/second",
+    "thunk": [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "_dispatched": false,
+            "action": Object {
+              "hash": "",
+              "location": Object {
+                "basename": "",
+                "entries": Array [
+                  Object {
+                    "basename": "",
+                    "hash": "",
+                    "key": "345678",
+                    "pathname": "/first",
+                    "search": "",
+                    "state": Object {},
+                    "url": "/first",
+                  },
+                  Object {
+                    "basename": "",
+                    "hash": "",
+                    "key": "345678",
+                    "pathname": "/second",
+                    "search": "",
+                    "state": Object {},
+                    "url": "/second",
+                  },
+                ],
+                "index": 1,
+                "kind": "push",
+                "length": 2,
+                "pathname": "/second",
+                "prev": Object {
+                  "basename": "",
+                  "entries": Array [
+                    Object {
+                      "basename": "",
+                      "hash": "",
+                      "key": "345678",
+                      "pathname": "/first",
+                      "search": "",
+                      "state": Object {},
+                      "url": "/first",
+                    },
+                  ],
+                  "hasSSR": false,
+                  "hash": "",
+                  "index": 0,
+                  "kind": "load",
+                  "length": 1,
+                  "params": Object {},
+                  "pathname": "/first",
+                  "query": Object {},
+                  "scene": "",
+                  "search": "",
+                  "state": Object {},
+                  "status": 200,
+                  "type": "FIRST",
+                  "url": "/first",
+                },
+                "scene": "",
+                "search": "",
+                "status": 200,
+                "url": "/second",
+              },
+              "params": Object {},
+              "query": Object {},
+              "state": Object {},
+              "type": "SECOND",
+            },
+            "arg": "extra-arg",
+            "clearCache": [Function],
+            "commitDispatch": [Function],
+            "commitHistory": [Function],
+            "completed": false,
+            "dispatch": [Function],
+            "error": null,
+            "getLocation": [Function],
+            "getState": [Function],
+            "getTitle": [Function],
+            "hash": "",
+            "history": MemoryHistory {
+              "_forceRefresh": false,
+              "_listener": [Function],
+              "basename": "",
+              "basenames": Array [],
+              "entries": Array [
+                Object {
+                  "basename": "",
+                  "hash": "",
+                  "key": "345678",
+                  "pathname": "/first",
+                  "search": "",
+                  "state": Object {},
+                  "url": "/first",
+                },
+                Object {
+                  "basename": "",
+                  "hash": "",
+                  "key": "345678",
+                  "pathname": "/second",
+                  "search": "",
+                  "state": Object {},
+                  "url": "/second",
+                },
+              ],
+              "firstRoute": Object {
+                "commit": [Function],
+                "nextHistory": Object {
+                  "basename": "",
+                  "basenames": Array [],
+                  "entries": Array [
+                    Object {
+                      "basename": "",
+                      "hash": "",
+                      "key": "345678",
+                      "pathname": "/first",
+                      "search": "",
+                      "state": Object {},
+                      "url": "/first",
+                    },
+                  ],
+                  "index": 0,
+                  "kind": "load",
+                  "length": 1,
+                  "location": Object {
+                    "basename": "",
+                    "hash": "",
+                    "key": "345678",
+                    "pathname": "/first",
+                    "search": "",
+                    "state": Object {},
+                    "url": "/first",
+                  },
+                  "saveHistory": [Function],
+                  "type": "@@rudy/UPDATE_HISTORY",
+                },
+                "type": "@@rudy/UPDATE_HISTORY",
+              },
+              "index": 1,
+              "kind": "push",
+              "length": 2,
+              "location": Object {
+                "basename": "",
+                "hash": "",
+                "key": "345678",
+                "pathname": "/second",
+                "search": "",
+                "state": Object {},
+                "url": "/second",
+              },
+              "saveHistory": [Function],
+            },
+            "initialLocation": Object {
+              "basename": "",
+              "entries": Array [
+                Object {
+                  "basename": "",
+                  "hash": "",
+                  "key": "345678",
+                  "pathname": "/first",
+                  "search": "",
+                  "state": Object {},
+                  "url": "/first",
+                },
+              ],
+              "hasSSR": false,
+              "hash": "",
+              "index": 0,
+              "kind": "load",
+              "length": 1,
+              "params": Object {},
+              "pathname": "/first",
+              "prev": Object {
+                "basename": "",
+                "entries": Array [],
+                "hasSSR": false,
+                "hash": "",
+                "index": -1,
+                "kind": "",
+                "length": 0,
+                "params": Object {},
+                "pathname": "",
+                "query": Object {},
+                "scene": "",
+                "search": "",
+                "state": Object {},
+                "type": "",
+                "url": "",
+              },
+              "query": Object {},
+              "scene": "",
+              "search": "",
+              "state": Object {},
+              "status": 200,
+              "type": "FIRST",
+              "url": "/first",
+            },
+            "initialState": Object {
+              "location": Object {
+                "basename": "",
+                "entries": Array [
+                  Object {
+                    "basename": "",
+                    "hash": "",
+                    "key": "345678",
+                    "pathname": "/first",
+                    "search": "",
+                    "state": Object {},
+                    "url": "/first",
+                  },
+                ],
+                "hasSSR": false,
+                "hash": "",
+                "index": 0,
+                "kind": "load",
+                "length": 1,
+                "params": Object {},
+                "pathname": "/first",
+                "prev": Object {
+                  "basename": "",
+                  "entries": Array [],
+                  "hasSSR": false,
+                  "hash": "",
+                  "index": -1,
+                  "kind": "",
+                  "length": 0,
+                  "params": Object {},
+                  "pathname": "",
+                  "query": Object {},
+                  "scene": "",
+                  "search": "",
+                  "state": Object {},
+                  "type": "",
+                  "url": "",
+                },
+                "query": Object {},
+                "scene": "",
+                "search": "",
+                "state": Object {},
+                "status": 200,
+                "type": "FIRST",
+                "url": "/first",
+              },
+              "title": "FIRST",
+            },
+            "options": Object {
+              "callbacks": Array [
+                "thunk",
+                "onComplete",
+                "beforeLeave",
+                "beforeEnter",
+                "onLeave",
+                "onEnter",
+                "thunk",
+                "onComplete",
+                "onError",
+              ],
+              "compose": [Function],
+              "createHistory": [Function],
+              "createReducer": [Function],
+              "createRequest": [Function],
+              "extra": Object {
+                "arg": "extra-arg",
+              },
+              "initialEntries": Array [
+                "/first",
+              ],
+              "location": "location",
+              "onError": [Function],
+              "shouldCall": [Function],
+              "shouldTransition": [Function],
+              "title": [Function],
+            },
+            "params": Object {},
+            "prevRoute": Object {
+              "path": "/first",
+              "type": "FIRST",
+            },
+            "query": Object {},
+            "route": [Circular],
+            "routes": Object {
+              "@@rudy/NOT_FOUND": Object {
+                "path": "/not-found",
+                "type": "@@rudy/NOT_FOUND",
+              },
+              "FIRST": Object {
+                "path": "/first",
+                "type": "FIRST",
+              },
+              "NEVER_USED_PATHLESS": Object {
+                "thunk": [MockFunction],
+                "type": "NEVER_USED_PATHLESS",
+              },
+              "REDIRECTED": Object {
+                "onComplete": [MockFunction],
+                "path": "/redirected",
+                "type": "REDIRECTED",
+              },
+              "SECOND": [Circular],
+            },
+            "state": Object {},
+            "store": Object {
+              "dispatch": [Function],
+              "getState": [Function],
+            },
+            "tmp": Object {
+              "committed": true,
+              "startAction": Object {
+                "type": "SECOND",
+              },
+            },
+            "type": "SECOND",
+          },
+        ],
+      ],
+    },
+    "type": "SECOND",
+  },
   Object {
     "_dispatched": false,
     "action": Object {
@@ -4223,6 +4599,7 @@ Array [
         "/first",
       ],
       "location": "location",
+      "onError": [Function],
       "shouldCall": [Function],
       "shouldTransition": [Function],
       "title": [Function],
@@ -4287,7 +4664,6 @@ Array [
     },
     "type": "SECOND",
   },
-  "onComplete",
   Object {},
 ]
 `;

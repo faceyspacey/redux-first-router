@@ -101,3 +101,34 @@ createTest('val matched by regex', {
   '/third?key=correct'
 ])
 
+createTest('route.toQuery/fromQuery', {
+  SECOND: {
+    path: '/second',
+    toQuery: (v, k) => v.toUpperCase() + k.toUpperCase()
+  },
+  THIRD: {
+    path: '/third',
+    fromQuery: (v, k) => v.toLowerCase() + k.toLowerCase()
+  }
+}, [
+  { type: 'SECOND', query: { key: 'correct' } },
+  { type: 'SECOND' },
+  '/third?key=CORRECT',
+  '/third'
+])
+
+createTest('route.defaultQuery', {
+  SECOND: {
+    path: '/second',
+    defaultQuery: { foo: 'bar' }
+  },
+  THIRD: {
+    path: '/third',
+    defaultQuery: q => ({ ...q, foo: 'bar' })
+  }
+}, [
+  { type: 'SECOND', query: { key: 'correct' } },
+  { type: 'SECOND' },
+  '/third?key=correct',
+  '/third'
+])

@@ -428,6 +428,7 @@ Object {
     "initialEntries": Array [
       "/first",
     ],
+    "onError": [Function],
     "shouldCall": [Function],
     "shouldTransition": [Function],
   },

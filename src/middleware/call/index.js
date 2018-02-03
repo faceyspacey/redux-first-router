@@ -1,51 +1,39 @@
-import {
-  enhanceRoutes,
-  shouldCall as defaultShouldCall,
-  isGlobalSkip,
-  isAutoDispatch,
-  complete,
-  onError,
-  isFalse,
-  createCache
-} from './utils'
-
+import { enhanceRoutes, shouldCall, createCache } from './utils'
 import { noOp, isAction } from '../../utils'
 
 export default (name, config = {}) => (api) => {
+  const { cache, prev, skipOpts = false } = config
+
   enhanceRoutes(name, api.routes)
   api.options.callbacks = api.options.callbacks || []
   api.options.callbacks.push(name)
 
-  api.options.shouldCall = api.options.shouldCall || defaultShouldCall
+  api.options.shouldCall = api.options.shouldCall || shouldCall
 
-  if (config.cache) {
+  if (cache) {
     api.clearCache = createCache(api, name)
   }
 
   return (req, next = noOp) => {
-    const { shouldCall } = req.options
+    const route = prev ? req.prevRoute : req.route
+    const execute = req.options.shouldCall(name, route, req, config)
 
-    if (!shouldCall(req, name, config)) return next()
+    if (!execute) return next()
 
-    const { prevRoute, dispatch, options: opts } = req
-    const { prev } = config
-    const route = prev ? prevRoute : req.route
-    const routeCb = (route && route[name]) || noOp
-    const optsCb = isGlobalSkip(name, req, routeCb) ? noOp : opts[name] || noOp
-    const needsErr = name === 'onError' && routeCb === noOp && optsCb === noOp
-    const proms = needsErr ? onError(req) : [routeCb(req), optsCb(req)]
+    const r = (execute.route && route[name]) || noOp
+    const o = (execute.options && !skipOpts && req.options[name]) || noOp
 
-    req._dispatched = false                                 // `dispatch` used by callbacks will set this to `true` (see utils/createDispatch.js)
+    req._dispatched = false // `dispatch` used by callbacks will set this to `true` (see utils/createDispatch.js)
 
-    return Promise.all(proms).then(([a, b]) => {
-      if (isFalse(a, b)) return false
-      const res = a || b
+    return Promise.all([r(req), o(req)]).then(([r, o]) => {
+      if (isFalse(r, o)) return false
+      const res = r || o
 
-      if (res && !req._dispatched && isAutoDispatch(req)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
+      if (res && !req._dispatched && isAutoDispatch(route, req.options)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
         const action = isAction(res) ? res : { payload: res }
         action.type = action.type || `${req.action.type}_COMPLETE`
 
-        return Promise.resolve(dispatch(action))
+        return Promise.resolve(req.dispatch(action))
           .then(complete(next))
       }
 
@@ -53,3 +41,12 @@ export default (name, config = {}) => (api) => {
     })
   }
 }
+
+const isFalse = (r, o) => r === false || o === false
+
+const complete = (next) => (res) => next().then(() => res)
+
+const isAutoDispatch = (route, options) =>
+  route.autoDispatch !== undefined
+    ? route.autoDispatch
+    : options.autoDispatch === undefined ? true : options.autoDispatch

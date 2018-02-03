@@ -16,15 +16,15 @@ export default (api, name) => {
   const { shouldCall, createCacheKey = defaultCreateCacheKey } = api.options
   let cache = {}
 
-  api.options.shouldCall = (req, name, config) => {
-    if (isCached(req, name, config)) return false
-    return shouldCall(req, name, config)
+  api.options.shouldCall = (name, route, req, config) => {
+    if (isCached(name, route, req, config)) return false
+    return shouldCall(name, route, req, config)
   }
 
-  const isCached = (req, name, config) => {
+  const isCached = (name, route, req, config) => {
     if (!config.cache || isServer()) return false
 
-    const { route, options, action } = req
+    const { options, action } = req
     const noCallback = !req.route[name] && !options[name]
 
     if (noCallback) return true

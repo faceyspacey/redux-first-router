@@ -18,6 +18,7 @@ export default (
     routes[type] = route
   }
 
+  // work on NOT_FOUND again after above for loop so we have properly formatted route object
   if (!isAddRoutes) {
     routes[NOT_FOUND].path = routes[NOT_FOUND].path || '/not-found'
   }

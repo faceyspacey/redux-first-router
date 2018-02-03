@@ -45,12 +45,15 @@ const fromParams = (params: Object, route: Route, opts: Options) => {
     const val = params[key]
     const decodedVal = val && decodeURIComponent(val) // don't decode undefined values from optional params
     params[key] = from(decodedVal, key, val, route, opts)
+    if (params[key] === undefined) delete params[key] === undefined // allow optional params to be overriden by defaultParams
   }
 
   const def = route.defaultParams || opts.defaultParams
-  return def
-    ? typeof def === 'function' ? def(params, route) : { ...def, params }
+  const foo = def
+    ? (typeof def === 'function' ? def(params, route) : { ...def, ...params })
     : params
+
+  return foo
 }
 
 const defaultFromParam = (
@@ -85,12 +88,13 @@ const fromQuery = (query: Object, route: Route, opts: Options) => {
   if (from) {
     for (const key in query) {
       query[key] = from(query[key], key, route)
+      if (query[key] === undefined) delete query[key] === undefined // allow undefined values to be overriden by defaultQuery
     }
   }
 
   const def = route.defaultQuery || opts.defaultQuery
   return def
-    ? typeof def === 'function' ? def(query, route) : { ...def, query }
+    ? typeof def === 'function' ? def(query, route) : { ...def, ...query }
     : query
 }
 

@@ -5,7 +5,7 @@ export default (getReq) => (action) => {
   const req = getReq() // get full req object from closure, since both are defined at same time
   const { store, routes } = req
   const route = routes[action.type]
-  const isPathlessThunk = !route || !route.path                   // routes are not actually changing if route has no `path` (aka "pathless thunks")
+  const isPathlessThunk = !route || !route.path                // routes are not actually changing if route has no `path` (aka "pathless thunks")
   const fromShortCircuitingPhase = !isTransformed(req.action)  // middleware like `anonymousThunk` dispatch early (before "pipeline phase") and need to go back through middleware normally
   const isSwitchingRoutes = !isPathlessThunk && !fromShortCircuitingPhase
 

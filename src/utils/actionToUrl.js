@@ -24,19 +24,22 @@ export default (
 
   return compileUrl(
     path,
-    toParams(params, route, opts),
-    toQuery(query, route, opts),
+    toParams(params, route, opts, action),
+    toQuery(query, route, opts, action),
     toHash(hash, route, opts, action),
     route,
     opts
   ) || '/'
 }
 
-const toParams = (params: ?Object, route: Route, opts: Options) => {
+const toParams = (params: ?Object, route: Route, opts: Options, action) => {
   const def = route.defaultParams || opts.defaultParams
   params = def
-    ? typeof def === 'function' ? def(params, route) : { ...def, params }
+    ? typeof def === 'function' ? def(params, route) : { ...def, ...params }
     : params
+
+  // unfortunate impurity to send defaults back to the original action as well
+  if (def) action.params = params
 
   if (params) {
     const newParams = {}
@@ -76,11 +79,14 @@ const defaultToParam = (
     : val === undefined ? undefined : encodedVal
 }
 
-const toQuery = (query: ?Object, route: Route, opts: Options) => {
+const toQuery = (query: ?Object, route: Route, opts: Options, action) => {
   const def = route.defaultQuery || opts.defaultQuery
   query = def
-    ? typeof def === 'function' ? def(query, route, opts) : { ...def, query }
+    ? typeof def === 'function' ? def(query, route, opts) : { ...def, ...query }
     : query
+
+  // unfortunate impurity to send defaults back to the original action as well
+  if (def) action.query = query
 
   const to = route.toQuery || opts.toQuery
 
@@ -103,7 +109,8 @@ const toHash = (hash: ?string, route: Route, opts: Options, action) => {
     ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
     : hash
 
-  if (hash) action.hash = hash
+  // unfortunate impurity to send defaults back to the original action as well
+  if (def) action.hash = hash
 
   const to = route.toHash || opts.toHash
   return to ? to(hash, route, opts) : hash

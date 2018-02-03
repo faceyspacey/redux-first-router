@@ -64,7 +64,22 @@ createTest('fromPath + toPath', {
     toParam: (val) => val.toLowerCase()
   }
 }, [
-  { type: 'SECOND', params: { param: 'bar' } },
+  { type: 'SECOND', params: { param: 'BAR' } },
+  '/third/foo'
+])
+
+createTest('options.to/fromPath', {
+  SECOND: {
+    path: '/second/:param'
+  },
+  THIRD: {
+    path: '/third/:param'
+  }
+}, {
+  fromParam: (val) => val.toUpperCase(),
+  toParam: (val) => val.toLowerCase()
+}, [
+  { type: 'SECOND', params: { param: 'BAR' } },
   '/third/foo'
 ])
 
@@ -222,3 +237,20 @@ createTest('regex parameters', {
   '/third/100',
   '/third/foo'
 ])
+
+createTest('route.defaultParams', {
+  SECOND: {
+    path: '/second/:param?',
+    defaultParams: { param: 'bar' }
+  },
+  THIRD: {
+    path: '/third',
+    defaultParams: p => ({ ...p, foo: 'bar' })
+  }
+}, [
+  { type: 'SECOND' },
+  '/third?key=correct',
+  '/third',
+  '/second'
+])
+

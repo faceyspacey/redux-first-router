@@ -23,6 +23,8 @@ import {
   changePageTitle
 } from '../middleware'
 
+import { onError as defaultOnError } from '../middleware/call/utils'
+
 export default (
   routesInput: RoutesMapInput = {},
   options: Options = {},
@@ -49,10 +51,12 @@ export default (
     createHistory = createSmartHistory,
     createReducer = createLocationReducer,
     compose = composePromise,
+    onError
   } = options
 
   options.shouldTransition = options.shouldTransition || shouldTransition
   options.createRequest = options.createRequest || createRequest
+  options.onError = typeof onError !== 'undefined' ? onError : defaultOnError
 
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)

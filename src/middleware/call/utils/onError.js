@@ -13,6 +13,10 @@ export default (req) => {
     }
 
     if (index === -1) {
+      index = __dirname.indexOf('__helpers__')
+    }
+
+    if (index === -1) {
       index = __dirname.indexOf('__tests-helpers__')
     }
 
@@ -23,5 +27,5 @@ export default (req) => {
     console.log(`[RUDY ERROR]: action.type: ${type}\n`, trace)
   }
 
-  return [action]
+  return action // this action will be dispatched on errors if no custom onError callbacks
 }
