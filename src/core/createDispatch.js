@@ -7,11 +7,11 @@ export default (getReq) => (action) => {
   const route = routes[action.type]
   const isPathlessThunk = !route || !route.path                // routes are not actually changing if route has no `path` (aka "pathless thunks")
   const fromShortCircuitingPhase = !isTransformed(req.action)  // middleware like `anonymousThunk` dispatch early (before "pipeline phase") and need to go back through middleware normally
-  const isSwitchingRoutes = !isPathlessThunk && !fromShortCircuitingPhase
+  const isRedirecting = !isPathlessThunk && !fromShortCircuitingPhase
 
   req._dispatched = true // tell `middleware/call.js` + middleware/anonymousThunk.js` to not automatically dispatch callback returns
 
-  if (isSwitchingRoutes && !req.completed) {
+  if (isRedirecting && !req.completed) {
     const status = action.location && action.location.status
     action = redirect(action, status || 302)
 

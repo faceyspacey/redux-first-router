@@ -29,6 +29,10 @@ Array [
       "thunk": [Function],
       "type": "@@rudy/ADD_ROUTES",
     },
+    "@@rudy/CALL_HISTORY": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CALL_HISTORY",
+    },
     "@@rudy/NOT_FOUND": Object {
       "path": "/not-found",
       "type": "@@rudy/NOT_FOUND",
@@ -185,6 +189,10 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
       },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -333,6 +341,10 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
       },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -479,6 +491,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -755,6 +771,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1069,6 +1089,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1400,6 +1424,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1735,6 +1763,10 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
       },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -2067,6 +2099,10 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
       },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -2242,6 +2278,10 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
       },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -2377,6 +2417,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -2695,6 +2739,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -3022,6 +3070,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -3355,6 +3407,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -3693,6 +3749,10 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
       },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -4028,6 +4088,10 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
       },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -4362,6 +4426,10 @@ Array [
                 "thunk": [Function],
                 "type": "@@rudy/ADD_ROUTES",
               },
+              "@@rudy/CALL_HISTORY": Object {
+                "thunk": [Function],
+                "type": "@@rudy/CALL_HISTORY",
+              },
               "@@rudy/NOT_FOUND": Object {
                 "path": "/not-found",
                 "type": "@@rudy/NOT_FOUND",
@@ -4692,6 +4760,10 @@ Array [
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
         "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
