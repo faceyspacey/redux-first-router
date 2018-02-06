@@ -27,9 +27,9 @@ exports[`callback "bag" argument has all goodies: 1 - history_index 1`] = `1`;
 
 exports[`callback "bag" argument has all goodies: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -177,9 +177,9 @@ exports[`callback "bag" argument has all goodies: bag 1`] = `
 Object {
   "_dispatched": false,
   "action": Object {
+    "basename": "",
     "hash": "",
     "location": Object {
-      "basename": "",
       "entries": Array [
         Object {
           "basename": "",
@@ -450,6 +450,10 @@ Object {
     "type": "SECOND",
   },
   "routes": Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+      "type": "@@rudy/ADD_ROUTES",
+    },
     "@@rudy/NOT_FOUND": Object {
       "path": "/not-found",
       "type": "@@rudy/NOT_FOUND",

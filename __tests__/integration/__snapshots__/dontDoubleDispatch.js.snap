@@ -2,9 +2,9 @@
 
 exports[`do NOT dispatch actions with identical URLs more than once 1`] = `
 Object {
+  "basename": "",
   "hash": "bla",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -147,9 +147,9 @@ exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SE
 
 exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "bla",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -220,9 +220,9 @@ Object {
 
 exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "bla",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

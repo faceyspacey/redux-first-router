@@ -1,4 +1,4 @@
-import { isRedirect, isTransformed } from './index'
+import { isRedirect, isTransformed } from '../utils'
 import { redirect } from '../actions'
 
 export default (getReq) => (action) => {
@@ -35,8 +35,8 @@ export default (getReq) => (action) => {
     action.location.committed = req.tmp.committed || isRedirect(req.tmp.startAction)
 
     // if multiple redirects in one pass, the last redirect becomes `prev`
-    const { type, params, query, state, hash, location } = req.action
-    req.tmp.prev = { type, params, query, state, hash, ...location }
+    const { type, params, query, state, hash, basename, location } = req.action
+    req.tmp.prev = { type, params, query, state, hash, basename, ...location }
 
     return req.redirect = store.dispatch(action)    // assign redirect action to `req.redirect` so `composePromise` can properly return the new action
   }

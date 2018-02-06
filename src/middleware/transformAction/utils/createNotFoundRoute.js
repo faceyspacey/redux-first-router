@@ -15,7 +15,7 @@ export default (req, prev) => {
 
     return {
       type,
-      url: resolvePath(route, prev, action.location && action.location.url)
+      url: resolvePath(route, prev, action.notFoundUrl)
     }
   }
 

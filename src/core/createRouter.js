@@ -1,21 +1,18 @@
 // @flow
 import type { RoutesMapInput, Options, Store, Dispatch } from '../flow-types'
 
-import composePromise from './composePromise'
-import createLocationReducer from './createLocationReducer'
 import createSmartHistory from '../history'
+import { composePromise, createLocationReducer, createRequest } from './index'
 
 import {
   createSelector,
   formatRoutes,
-  shouldTransition,
-  createRequest
+  shouldTransition
 } from '../utils'
 
 import {
   serverRedirect,
-  addRoutes,
-  pathlessThunk,
+  pathlessRouteThunk,
   anonymousThunk,
   transformAction,
   call,
@@ -30,8 +27,7 @@ export default (
   options: Options = {},
   middlewares: Array<Function> = [
     serverRedirect,     // short-circuiting middleware
-    addRoutes,
-    pathlessThunk,
+    pathlessRouteThunk,
     anonymousThunk,
     transformAction,      // pipeline starts here
     call('beforeLeave', { prev: true }),

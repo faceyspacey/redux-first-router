@@ -1,6 +1,7 @@
 // @flow
 import { UPDATE_HISTORY } from '../types'
-import { createDispatch, noOp } from '../utils'
+import { noOp } from '../utils'
+import { createDispatch } from './index'
 
 export default (
   action,
@@ -9,7 +10,7 @@ export default (
   next
 ) => {
   const { store, routes, options, getLocation } = api
-  tmp.startAction = tmp.startAction || action // stays consistent across redirects (see utils/createDispatch.js)
+  tmp.startAction = tmp.startAction || action // stays consistent across redirects (see core/createDispatch.js)
 
   const req = {
     ...options.extra,

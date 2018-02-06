@@ -27,9 +27,9 @@ exports[`dispatch(notFound()): 1 - history_index 1`] = `1`;
 
 exports[`dispatch(notFound()): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -87,6 +87,7 @@ Object {
     "status": 404,
     "url": "/not-found",
   },
+  "notFoundUrl": undefined,
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -171,7 +172,7 @@ Object {
 
 exports[`dispatch(notFound()): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
 
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - history_entries 1`] = `
+exports[`dispatch(notFound(action, alternatePath)): 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -183,7 +184,7 @@ Array [
     "url": "/first",
   },
   Object {
-    "basename": "/basename",
+    "basename": "",
     "hash": "",
     "key": "345678",
     "pathname": "/does-not-exist",
@@ -194,13 +195,13 @@ Array [
 ]
 `;
 
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - history_index 1`] = `1`;
+exports[`dispatch(notFound(action, alternatePath)): 1 - history_index 1`] = `1`;
 
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - response 1`] = `
+exports[`dispatch(notFound(action, alternatePath)): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "/basename",
     "entries": Array [
       Object {
         "basename": "",
@@ -212,7 +213,7 @@ Object {
         "url": "/first",
       },
       Object {
-        "basename": "/basename",
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/does-not-exist",
@@ -258,6 +259,7 @@ Object {
     "status": 404,
     "url": "/does-not-exist",
   },
+  "notFoundUrl": "/does-not-exist",
   "params": Object {
     "foo": "bar",
   },
@@ -267,14 +269,14 @@ Object {
 }
 `;
 
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(notFound(action, alternatePath)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(notFound(action, alternatePath)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - state 1`] = `
+exports[`dispatch(notFound(action, alternatePath)): 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/basename",
+    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -286,7 +288,7 @@ Object {
         "url": "/first",
       },
       Object {
-        "basename": "/basename",
+        "basename": "",
         "hash": "",
         "key": "345678",
         "pathname": "/does-not-exist",
@@ -344,7 +346,7 @@ Object {
 }
 `;
 
-exports[`dispatch(notFound(action, alternatePath, basename)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`dispatch(notFound(action, alternatePath)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
 
 exports[`dispatch(notFound(alternatePath)): 1 - history_entries 1`] = `
 Array [
@@ -373,9 +375,9 @@ exports[`dispatch(notFound(alternatePath)): 1 - history_index 1`] = `1`;
 
 exports[`dispatch(notFound(alternatePath)): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -433,6 +435,7 @@ Object {
     "status": 404,
     "url": "/does-not-exist",
   },
+  "notFoundUrl": "/does-not-exist",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -517,7 +520,7 @@ Object {
 
 exports[`dispatch(notFound(alternatePath)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
 
-exports[`dispatch(notFound(alternatePath, basename, forcedType)): 1 - history_entries 1`] = `
+exports[`dispatch(notFound(alternatePath, forcedType)): 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -531,24 +534,21 @@ Array [
 ]
 `;
 
-exports[`dispatch(notFound(alternatePath, basename, forcedType)): 1 - history_index 1`] = `0`;
+exports[`dispatch(notFound(alternatePath, forcedType)): 1 - history_index 1`] = `0`;
 
-exports[`dispatch(notFound(alternatePath, basename, forcedType)): 1 - response 1`] = `
+exports[`dispatch(notFound(alternatePath, forcedType)): 1 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": "/basename",
-    "url": "/does-not-exist",
-  },
-  "params": Object {},
+  "notFoundUrl": "/does-not-exist",
+  "params": undefined,
   "type": "WRONG",
 }
 `;
 
-exports[`dispatch(notFound(alternatePath, basename, forcedType)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(notFound(alternatePath, forcedType)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(notFound(alternatePath, basename, forcedType)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(notFound(alternatePath, forcedType)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(notFound(alternatePath, basename, forcedType)): 1 - state 1`] = `
+exports[`dispatch(notFound(alternatePath, forcedType)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -599,7 +599,7 @@ Object {
 }
 `;
 
-exports[`dispatch(notFound(alternatePath, basename, forcedType)): 1 - title 1`] = `"FIRST"`;
+exports[`dispatch(notFound(alternatePath, forcedType)): 1 - title 1`] = `"FIRST"`;
 
 exports[`dispatch(notFound(params)): 1 - history_entries 1`] = `
 Array [
@@ -628,9 +628,9 @@ exports[`dispatch(notFound(params)): 1 - history_index 1`] = `1`;
 
 exports[`dispatch(notFound(params)): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -688,6 +688,7 @@ Object {
     "status": 404,
     "url": "/not-found",
   },
+  "notFoundUrl": undefined,
   "params": Object {
     "foo": "bar",
   },
@@ -848,9 +849,9 @@ Object {
 
 exports[`notFound on first load: firstRoute - /non-existent - 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -888,6 +889,7 @@ Object {
     "status": 404,
     "url": "/non-existent",
   },
+  "notFoundUrl": "/non-existent",
   "params": Object {},
   "query": Object {},
   "state": Object {},

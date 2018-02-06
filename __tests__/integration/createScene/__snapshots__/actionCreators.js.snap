@@ -27,9 +27,9 @@ exports[`createScene() actions.notFound(params, path): 13 - history_index 1`] = 
 
 exports[`createScene() actions.notFound(params, path): 13 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -87,6 +87,7 @@ Object {
     "status": 404,
     "url": "/cat",
   },
+  "notFoundUrl": "/cat",
   "params": Object {
     "foo": "bar",
   },
@@ -193,9 +194,7 @@ exports[`createScene() actions.notFound.complete(payload): 14 - history_index 1`
 
 exports[`createScene() actions.notFound.complete(payload): 14 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": undefined,
-  },
+  "basename": undefined,
   "payload": "foo",
   "type": "@@rudy/NOT_FOUND_COMPLETE",
 }
@@ -285,9 +284,9 @@ exports[`createScene() actions.second(): 1 - history_index 1`] = `1`;
 
 exports[`createScene() actions.second(): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -447,9 +446,7 @@ exports[`createScene() actions.second(action with wrong type): 5 - history_index
 
 exports[`createScene() actions.second(action with wrong type): 5 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": undefined,
-  },
+  "basename": undefined,
   "type": "WRONG",
 }
 `;
@@ -538,9 +535,9 @@ exports[`createScene() actions.second(params): 3 - history_index 1`] = `1`;
 
 exports[`createScene() actions.second(params): 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -713,9 +710,9 @@ exports[`createScene() actions.second(partialAction): 2 - history_index 1`] = `1
 
 exports[`createScene() actions.second(partialAction): 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -888,9 +885,9 @@ exports[`createScene() actions.second(thunk): 4 - history_index 1`] = `1`;
 
 exports[`createScene() actions.second(thunk): 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1051,9 +1048,7 @@ exports[`createScene() actions.second.complete(thunk): 11 - history_index 1`] = 
 
 exports[`createScene() actions.second.complete(thunk): 11 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": undefined,
-  },
+  "basename": undefined,
   "payload": Object {
     "foo": "bar",
   },
@@ -1136,9 +1131,7 @@ exports[`createScene() actions.third.complete(payload): 10 - history_index 1`] =
 
 exports[`createScene() actions.third.complete(payload): 10 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": undefined,
-  },
+  "basename": undefined,
   "payload": Object {
     "foo": "bar",
   },
@@ -1221,10 +1214,8 @@ exports[`createScene() actions.third.error(new Error): 8 - history_index 1`] = `
 
 exports[`createScene() actions.third.error(new Error): 8 - response 1`] = `
 Object {
+  "basename": undefined,
   "error": [Error: fail],
-  "location": Object {
-    "basename": undefined,
-  },
   "type": "THIRD_ERROR",
 }
 `;
@@ -1306,9 +1297,7 @@ exports[`createScene() route with just action creator: 12 - history_index 1`] = 
 
 exports[`createScene() route with just action creator: 12 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": undefined,
-  },
+  "basename": undefined,
   "params": Object {
     "foo": "bar",
   },
@@ -1400,9 +1389,9 @@ exports[`createScene() route.action - custom action creator: 6 - history_index 1
 
 exports[`createScene() route.action - custom action creator: 6 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1575,9 +1564,9 @@ exports[`createScene() route.action: [] - custom action creators (array) - actio
 
 exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1741,11 +1730,9 @@ exports[`createScene() route.error - custom error action creator: 9 - history_in
 
 exports[`createScene() route.error - custom error action creator: 9 - response 1`] = `
 Object {
+  "basename": undefined,
   "error": Object {
     "foo": "bar",
-  },
-  "location": Object {
-    "basename": undefined,
   },
   "type": "SECOND_ERROR",
 }

@@ -25,6 +25,10 @@ Array [
 exports[`core capabilities can be overriden as options 2`] = `
 Array [
   Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+      "type": "@@rudy/ADD_ROUTES",
+    },
     "@@rudy/NOT_FOUND": Object {
       "path": "/not-found",
       "type": "@@rudy/NOT_FOUND",
@@ -112,7 +116,6 @@ Array [
     [Function],
     [Function],
     [Function],
-    [Function],
   ],
   Object {
     "getLocation": [Function],
@@ -178,6 +181,10 @@ Array [
       "title": [Function],
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -322,6 +329,10 @@ Array [
       "title": [Function],
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -465,6 +476,10 @@ Array [
       "title": [Function],
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -507,9 +522,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -737,6 +752,10 @@ Array [
       "type": "FIRST",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -817,9 +836,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -1047,6 +1066,10 @@ Array [
       "type": "FIRST",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -1125,9 +1148,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -1374,6 +1397,10 @@ Array [
       "type": "FIRST",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -1455,9 +1482,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -1704,6 +1731,10 @@ Array [
       "type": "FIRST",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -1783,9 +1814,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -2032,6 +2063,10 @@ Array [
       "type": "FIRST",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -2203,6 +2238,10 @@ Array [
       "title": [Function],
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -2335,6 +2374,10 @@ Array [
       "title": [Function],
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -2377,9 +2420,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -2649,6 +2692,10 @@ Array [
       "type": "SECOND",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -2700,9 +2747,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -2972,6 +3019,10 @@ Array [
       "type": "SECOND",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -3020,9 +3071,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -3301,6 +3352,10 @@ Array [
       "type": "SECOND",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -3353,9 +3408,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -3634,6 +3689,10 @@ Array [
       "type": "SECOND",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -3684,9 +3743,9 @@ Array [
   },
   Object {
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -3965,6 +4024,10 @@ Array [
       "type": "SECOND",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -4018,9 +4081,9 @@ Array [
           Object {
             "_dispatched": false,
             "action": Object {
+              "basename": "",
               "hash": "",
               "location": Object {
-                "basename": "",
                 "entries": Array [
                   Object {
                     "basename": "",
@@ -4295,6 +4358,10 @@ Array [
             "query": Object {},
             "route": [Circular],
             "routes": Object {
+              "@@rudy/ADD_ROUTES": Object {
+                "thunk": [Function],
+                "type": "@@rudy/ADD_ROUTES",
+              },
               "@@rudy/NOT_FOUND": Object {
                 "path": "/not-found",
                 "type": "@@rudy/NOT_FOUND",
@@ -4335,9 +4402,9 @@ Array [
   Object {
     "_dispatched": false,
     "action": Object {
+      "basename": "",
       "hash": "",
       "location": Object {
-        "basename": "",
         "entries": Array [
           Object {
             "basename": "",
@@ -4622,6 +4689,10 @@ Array [
       "type": "SECOND",
     },
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -4695,9 +4766,9 @@ exports[`core capabilities can be overriden as options: 1 - history_index 1`] = 
 
 exports[`core capabilities can be overriden as options: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

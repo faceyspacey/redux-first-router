@@ -357,9 +357,9 @@ Object {
 
 exports[`beforeLeave return false: firstRoute - /first - 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -484,9 +484,9 @@ exports[`beforeLeave return undefined: 1 - history_index 1`] = `1`;
 
 exports[`beforeLeave return undefined: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -700,9 +700,9 @@ Object {
 
 exports[`beforeLeave return undefined: firstRoute - /first - 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - history_entries 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"}}}} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -14,13 +14,17 @@ Array [
 ]
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - history_index 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"}}}} - history_index 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - response 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"}}}} - response 1`] = `
 Object {
   "payload": Object {
     "formatRoute": undefined,
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "FOO": Object {
         "path": "/foo",
         "type": "FOO",
@@ -31,11 +35,11 @@ Object {
 }
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - state 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"}}}} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -83,11 +87,11 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\",\\"type\\":\\"FOO\\"}}}",
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\"}}}",
 }
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"}}}} - title 1`] = `"FIRST"`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"}}}} - title 1`] = `"FIRST"`;
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_entries 1`] = `
 Array [
@@ -116,9 +120,9 @@ exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_index 1`] = `1`;
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -262,7 +266,7 @@ Object {
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - title 1`] = `"FOO"`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - history_entries 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"}}}} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -276,13 +280,18 @@ Array [
 ]
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - history_index 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"}}}} - history_index 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - response 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"}}}} - response 1`] = `
 Object {
   "payload": Object {
     "formatRoute": [Function],
     "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "path": "/bar",
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
       "BAZ": Object {
         "path": "/bar",
         "thunk": [Function],
@@ -299,11 +308,11 @@ Object {
 }
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - state 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"}}}} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -351,11 +360,11 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"FOO\\"},\\"BAZ\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"BAZ\\"}}}",
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\",\\"thunk\\":\\"BAZ\\"},\\"BAZ\\":{\\"path\\":\\"/baz\\"}}}",
 }
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"}}}} - title 1`] = `"FIRST"`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"}}}} - title 1`] = `"FIRST"`;
 
 exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_entries 1`] = `
 Array [

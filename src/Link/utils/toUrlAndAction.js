@@ -2,7 +2,6 @@
 import resolvePathname from 'resolve-pathname'
 import { actionToUrl, urlToAction } from '../../utils'
 import { stripBasename, findBasename } from '../../history/utils'
-import { changeBasename } from '../../actions'
 import type { RoutesMap, Options } from '../../flow-types'
 
 export type To = string | Array<string> | Object
@@ -36,7 +35,7 @@ export default (
 
     try {
       url = actionToUrl(action, routes, options)
-      basename = (action.location && action.location.basename) || basename
+      basename = action.basename || basename
     }
     catch (e) {
       if (process.env.NODE_ENV === 'development') {
@@ -68,7 +67,7 @@ export default (
   }
 
   if (basename) {
-    action = changeBasename(basename, action)
+    action.basename = basename
   }
 
   const fullUrl = isExternal ? url : basename + url

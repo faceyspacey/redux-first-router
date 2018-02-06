@@ -244,6 +244,9 @@ Array [
   },
   "FIRST",
   Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+    },
     "@@rudy/NOT_FOUND": Object {},
     "FIRST": Object {
       "foo": "/first",
@@ -267,6 +270,9 @@ Array [
   },
   "NEVER_USED_PATHLESS",
   Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+    },
     "@@rudy/NOT_FOUND": Object {},
     "FIRST": Object {
       "foo": "/first",
@@ -293,6 +299,9 @@ Array [
   },
   "REDIRECTED",
   Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+    },
     "@@rudy/NOT_FOUND": Object {},
     "FIRST": Object {
       "foo": "/first",
@@ -318,7 +327,44 @@ Array [
   Object {},
   "@@rudy/NOT_FOUND",
   Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+    },
     "@@rudy/NOT_FOUND": Object {},
+    "FIRST": Object {
+      "foo": "/first",
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "NEVER_USED_PATHLESS": Object {
+      "path": undefined,
+      "thunk": [MockFunction],
+      "type": "NEVER_USED_PATHLESS",
+    },
+    "REDIRECTED": Object {
+      "onComplete": [MockFunction],
+      "path": undefined,
+      "type": "REDIRECTED",
+    },
+  },
+  false,
+]
+`;
+
+exports[`options.formatRoute 5`] = `
+Array [
+  Object {
+    "thunk": [Function],
+  },
+  "@@rudy/ADD_ROUTES",
+  Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+    },
+    "@@rudy/NOT_FOUND": Object {
+      "path": undefined,
+      "type": "@@rudy/NOT_FOUND",
+    },
     "FIRST": Object {
       "foo": "/first",
       "path": "/first",
@@ -411,9 +457,9 @@ Object {
 
 exports[`options.formatRoute: firstRoute - /first - 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -691,9 +737,9 @@ Object {
 
 exports[`routes as path string: firstRoute - /first - 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

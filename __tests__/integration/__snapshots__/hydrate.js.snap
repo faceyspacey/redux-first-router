@@ -78,9 +78,9 @@ Object {
 
 exports[`beforeEnter + thunk callbacks NOT called if isHydrate: firstRoute - /first - 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

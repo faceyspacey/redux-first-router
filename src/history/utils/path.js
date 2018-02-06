@@ -6,7 +6,7 @@ const addLeadingSlash = path =>
 const stripTrailingSlash = path =>
   path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path
 
-export const stripSlashes = path => stripTrailingSlash(addLeadingSlash(path))
+export const formatSlashes = path => stripTrailingSlash(addLeadingSlash(path))
 
 export const parsePath = (path) => {
   let pathname = path || '/'

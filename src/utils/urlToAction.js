@@ -12,7 +12,7 @@ export default (
   routes: RoutesMap,
   opts: Options
 ): ReceivedAction => {
-  const { url, state } = typeof loc === 'string' ? { url: loc } : loc
+  const { url, state, basename } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
   const l = parsePath(url)
 
@@ -35,7 +35,7 @@ export default (
     ? (routes[NOT_FOUND].parseQuery || opts.parseQuery || qs.parse)(search)
     : {}
 
-  return notFound({ params, query, hash, state }, url)
+  return notFound({ params, query, hash, state, basename }, url)
 }
 
 const fromParams = (params: Object, route: Route, opts: Options) => {

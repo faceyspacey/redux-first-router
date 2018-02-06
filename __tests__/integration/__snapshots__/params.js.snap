@@ -27,9 +27,9 @@ exports[`bi-directional params transformation "/third/foo/bar": 2 - history_inde
 
 exports[`bi-directional params transformation "/third/foo/bar": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -204,9 +204,9 @@ exports[`bi-directional params transformation {"type":"SECOND","params":{"param1
 
 exports[`bi-directional params transformation {"type":"SECOND","params":{"param1":"foo","param2":"bar"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -381,9 +381,9 @@ exports[`capitalizedWords "/third/james-gillmore": 2 - history_index 1`] = `1`;
 
 exports[`capitalizedWords "/third/james-gillmore": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -556,9 +556,9 @@ exports[`capitalizedWords {"type":"SECOND","params":{"param":"James Gillmore"}}:
 
 exports[`capitalizedWords {"type":"SECOND","params":{"param":"James Gillmore"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -731,9 +731,9 @@ exports[`convertNumbers "/third/100": 2 - history_index 1`] = `1`;
 
 exports[`convertNumbers "/third/100": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -906,9 +906,9 @@ exports[`convertNumbers {"type":"SECOND","params":{"param":100}}: 1 - history_in
 
 exports[`convertNumbers {"type":"SECOND","params":{"param":100}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1081,9 +1081,9 @@ exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - history_index 1
 
 exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1141,6 +1141,7 @@ Object {
     "status": 404,
     "url": "/third/foo/bar",
   },
+  "notFoundUrl": "/third/foo/bar",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -1252,9 +1253,9 @@ exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"
 
 exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1427,9 +1428,9 @@ exports[`does not parse a blank string "" as NaN "/third": 2 - history_index 1`]
 
 exports[`does not parse a blank string "" as NaN "/third": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1602,9 +1603,9 @@ exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - history_
 
 exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1746,352 +1747,6 @@ Object {
 
 exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
 
-exports[`fromPath + toPath "/third/": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/third/",
-    "search": "",
-    "state": Object {},
-    "url": "/third/",
-  },
-]
-`;
-
-exports[`fromPath + toPath "/third/": 2 - history_index 1`] = `1`;
-
-exports[`fromPath + toPath "/third/": 2 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third/",
-        "search": "",
-        "state": Object {},
-        "url": "/third/",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/third/",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 404,
-    "url": "/third/",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`fromPath + toPath "/third/": 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`fromPath + toPath "/third/": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`fromPath + toPath "/third/": 2 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third/",
-        "search": "",
-        "state": Object {},
-        "url": "/third/",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/third/",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 404,
-    "type": "@@rudy/NOT_FOUND",
-    "url": "/third/",
-  },
-  "title": "@@rudy/NOT_FOUND",
-}
-`;
-
-exports[`fromPath + toPath "/third/": 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
-
-exports[`fromPath + toPath "/third/FOO": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/third/FOO",
-    "search": "",
-    "state": Object {},
-    "url": "/third/FOO",
-  },
-]
-`;
-
-exports[`fromPath + toPath "/third/FOO": 2 - history_index 1`] = `1`;
-
-exports[`fromPath + toPath "/third/FOO": 2 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third/FOO",
-        "search": "",
-        "state": Object {},
-        "url": "/third/FOO",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/third/FOO",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/third/FOO",
-  },
-  "params": Object {
-    "param": "FOO",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "THIRD",
-}
-`;
-
-exports[`fromPath + toPath "/third/FOO": 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`fromPath + toPath "/third/FOO": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`fromPath + toPath "/third/FOO": 2 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third/FOO",
-        "search": "",
-        "state": Object {},
-        "url": "/third/FOO",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
-      "param": "FOO",
-    },
-    "pathname": "/third/FOO",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "THIRD",
-    "url": "/third/FOO",
-  },
-  "title": "THIRD",
-}
-`;
-
-exports[`fromPath + toPath "/third/FOO": 2 - title 1`] = `"THIRD"`;
-
 exports[`fromPath + toPath "/third/foo": 2 - history_entries 1`] = `
 Array [
   Object {
@@ -2119,9 +1774,9 @@ exports[`fromPath + toPath "/third/foo": 2 - history_index 1`] = `1`;
 
 exports[`fromPath + toPath "/third/foo": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2267,356 +1922,6 @@ Object {
 
 exports[`fromPath + toPath "/third/foo": 2 - title 1`] = `"THIRD"`;
 
-exports[`fromPath + toPath "/third/gpp": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/third/gpp",
-    "search": "",
-    "state": Object {},
-    "url": "/third/gpp",
-  },
-]
-`;
-
-exports[`fromPath + toPath "/third/gpp": 2 - history_index 1`] = `1`;
-
-exports[`fromPath + toPath "/third/gpp": 2 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third/gpp",
-        "search": "",
-        "state": Object {},
-        "url": "/third/gpp",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/third/gpp",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/third/gpp",
-  },
-  "params": Object {
-    "param": "GPP",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "THIRD",
-}
-`;
-
-exports[`fromPath + toPath "/third/gpp": 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`fromPath + toPath "/third/gpp": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`fromPath + toPath "/third/gpp": 2 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/third/gpp",
-        "search": "",
-        "state": Object {},
-        "url": "/third/gpp",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
-      "param": "GPP",
-    },
-    "pathname": "/third/gpp",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "THIRD",
-    "url": "/third/gpp",
-  },
-  "title": "THIRD",
-}
-`;
-
-exports[`fromPath + toPath "/third/gpp": 2 - title 1`] = `"THIRD"`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"B"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second/b",
-    "search": "",
-    "state": Object {},
-    "url": "/second/b",
-  },
-]
-`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"B"}}: 1 - history_index 1`] = `1`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"B"}}: 1 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/b",
-        "search": "",
-        "state": Object {},
-        "url": "/second/b",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second/b",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second/b",
-  },
-  "params": Object {
-    "param": "B",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"B"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"B"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"B"}}: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/b",
-        "search": "",
-        "state": Object {},
-        "url": "/second/b",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
-      "param": "B",
-    },
-    "pathname": "/second/b",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second/b",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"B"}}: 1 - title 1`] = `"SECOND"`;
-
 exports[`fromPath + toPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - history_entries 1`] = `
 Array [
   Object {
@@ -2644,9 +1949,9 @@ exports[`fromPath + toPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - histo
 
 exports[`fromPath + toPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2792,181 +2097,6 @@ Object {
 
 exports[`fromPath + toPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"bar"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second/bar",
-    "search": "",
-    "state": Object {},
-    "url": "/second/bar",
-  },
-]
-`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"bar"}}: 1 - history_index 1`] = `1`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"bar"}}: 1 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/bar",
-        "search": "",
-        "state": Object {},
-        "url": "/second/bar",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second/bar",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second/bar",
-  },
-  "params": Object {
-    "param": "bar",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"bar"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"bar"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"bar"}}: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/bar",
-        "search": "",
-        "state": Object {},
-        "url": "/second/bar",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
-      "param": "bar",
-    },
-    "pathname": "/second/bar",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second/bar",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"param":"bar"}}: 1 - title 1`] = `"SECOND"`;
-
 exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js": 2 - history_entries 1`] = `
 Array [
   Object {
@@ -2994,9 +2124,9 @@ exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/b
 
 exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3175,9 +2305,9 @@ exports[`match "multi segment params" as single param {"type":"REPO1","params":{
 
 exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master","filePath":"core/createRouter.js"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3356,9 +2486,9 @@ exports[`match "multi segment params" as single param {"type":"REPO1","params":{
 
 exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"missed"}}: 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3535,9 +2665,9 @@ exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/b
 
 exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/bla/baz/yo/sdf": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3712,9 +2842,9 @@ exports[`match MULTIPLE "multi segment params" as single param {"type":"SECOND",
 
 exports[`match MULTIPLE "multi segment params" as single param {"type":"SECOND","params":{"segments1":"foo/bar","segments2":"baz/yo/sdf"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3889,9 +3019,9 @@ exports[`match optional params "/third": 4 - history_index 1`] = `1`;
 
 exports[`match optional params "/third": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4060,9 +3190,9 @@ exports[`match optional params "/third/foo": 2 - history_index 1`] = `1`;
 
 exports[`match optional params "/third/foo": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4235,9 +3365,9 @@ exports[`match optional params {"type":"SECOND","params":{"param":"foo"}}: 1 - h
 
 exports[`match optional params {"type":"SECOND","params":{"param":"foo"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4410,9 +3540,9 @@ exports[`match optional params {"type":"SECOND"}: 3 - history_index 1`] = `1`;
 
 exports[`match optional params {"type":"SECOND"}: 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4581,9 +3711,9 @@ exports[`never returns an empty string when path has single optional param that 
 
 exports[`never returns an empty string when path has single optional param that is undefined "/third": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4752,9 +3882,9 @@ exports[`never returns an empty string when path has single optional param that 
 
 exports[`never returns an empty string when path has single optional param that is undefined {"type":"SECOND","params":{}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4927,9 +4057,9 @@ exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - h
 
 exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5102,9 +4232,9 @@ exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","p
 
 exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5277,9 +4407,9 @@ exports[`optional static segments ("aliases") "/third": 3 - history_index 1`] = 
 
 exports[`optional static segments ("aliases") "/third": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5448,9 +4578,9 @@ exports[`optional static segments ("aliases") "/third/list": 2 - history_index 1
 
 exports[`optional static segments ("aliases") "/third/list": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5623,9 +4753,9 @@ exports[`optional static segments ("aliases") {"type":"SECOND"}: 1 - history_ind
 
 exports[`optional static segments ("aliases") {"type":"SECOND"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5794,9 +4924,9 @@ exports[`optionally match "multi segment params" as single param "/repo2/faceysp
 
 exports[`optionally match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5973,9 +5103,9 @@ exports[`optionally match "multi segment params" as single param {"type":"REPO1"
 
 exports[`optionally match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -6152,9 +5282,9 @@ exports[`options.to/fromPath "/third/foo": 2 - history_index 1`] = `1`;
 
 exports[`options.to/fromPath "/third/foo": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -6300,181 +5430,6 @@ Object {
 
 exports[`options.to/fromPath "/third/foo": 2 - title 1`] = `"THIRD"`;
 
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"B"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second/b",
-    "search": "",
-    "state": Object {},
-    "url": "/second/b",
-  },
-]
-`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"B"}}: 1 - history_index 1`] = `1`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"B"}}: 1 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/b",
-        "search": "",
-        "state": Object {},
-        "url": "/second/b",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second/b",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second/b",
-  },
-  "params": Object {
-    "param": "B",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"B"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"B"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"B"}}: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/b",
-        "search": "",
-        "state": Object {},
-        "url": "/second/b",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
-      "param": "B",
-    },
-    "pathname": "/second/b",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second/b",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"B"}}: 1 - title 1`] = `"SECOND"`;
-
 exports[`options.to/fromPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - history_entries 1`] = `
 Array [
   Object {
@@ -6502,9 +5457,9 @@ exports[`options.to/fromPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - his
 
 exports[`options.to/fromPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -6650,181 +5605,6 @@ Object {
 
 exports[`options.to/fromPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"bar"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second/bar",
-    "search": "",
-    "state": Object {},
-    "url": "/second/bar",
-  },
-]
-`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"bar"}}: 1 - history_index 1`] = `1`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"bar"}}: 1 - response 1`] = `
-Object {
-  "hash": "",
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/bar",
-        "search": "",
-        "state": Object {},
-        "url": "/second/bar",
-      },
-    ],
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second/bar",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second/bar",
-  },
-  "params": Object {
-    "param": "bar",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"bar"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"bar"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"bar"}}: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second/bar",
-        "search": "",
-        "state": Object {},
-        "url": "/second/bar",
-      },
-    ],
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
-      "param": "bar",
-    },
-    "pathname": "/second/bar",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hasSSR": false,
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second/bar",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"param":"bar"}}: 1 - title 1`] = `"SECOND"`;
-
 exports[`regex parameters "/third/100": 3 - history_entries 1`] = `
 Array [
   Object {
@@ -6852,9 +5632,9 @@ exports[`regex parameters "/third/100": 3 - history_index 1`] = `1`;
 
 exports[`regex parameters "/third/100": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -7027,9 +5807,9 @@ exports[`regex parameters "/third/foo": 4 - history_index 1`] = `1`;
 
 exports[`regex parameters "/third/foo": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -7087,6 +5867,7 @@ Object {
     "status": 404,
     "url": "/third/foo",
   },
+  "notFoundUrl": "/third/foo",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -7198,9 +5979,9 @@ exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - history_i
 
 exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -7373,9 +6154,9 @@ exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - history_ind
 
 exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -7548,9 +6329,9 @@ exports[`route.defaultParams "/second": 4 - history_index 1`] = `1`;
 
 exports[`route.defaultParams "/second": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -7723,9 +6504,9 @@ exports[`route.defaultParams "/third": 3 - history_index 1`] = `1`;
 
 exports[`route.defaultParams "/third": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -7898,9 +6679,9 @@ exports[`route.defaultParams "/third?key=correct": 2 - history_index 1`] = `1`;
 
 exports[`route.defaultParams "/third?key=correct": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -8077,9 +6858,9 @@ exports[`route.defaultParams {"type":"SECOND"}: 1 - history_index 1`] = `1`;
 
 exports[`route.defaultParams {"type":"SECOND"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -8252,9 +7033,9 @@ exports[`static regexes "/third/all": 3 - history_index 1`] = `1`;
 
 exports[`static regexes "/third/all": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -8427,9 +7208,9 @@ exports[`static regexes "/third/list": 2 - history_index 1`] = `1`;
 
 exports[`static regexes "/third/list": 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -8602,9 +7383,9 @@ exports[`static regexes {"type":"SECOND"}: 1 - history_index 1`] = `1`;
 
 exports[`static regexes {"type":"SECOND"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

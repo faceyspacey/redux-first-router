@@ -1,5 +1,5 @@
 import { UPDATE_HISTORY } from '../types'
-import { stripSlashes, createPath, createLocation, createKey } from './utils'
+import { formatSlashes, createPath, createLocation, createKey } from './utils'
 
 export default class History {
   constructor(opts) {
@@ -185,7 +185,7 @@ export default class History {
   }
 
   setBasename(basename) {
-    this.basename = stripSlashes(basename)
+    this.basename = formatSlashes(basename)
   }
 
   // UTILS:

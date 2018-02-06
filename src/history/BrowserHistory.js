@@ -1,7 +1,7 @@
 import History from './History'
 
 import {
-  stripSlashes,
+  formatSlashes,
   createPath,
   getWindowLocation,
   isExtraneousPopstateEvent,
@@ -54,7 +54,7 @@ import {
 export default class BrowserHistory extends History {
   constructor(opts = {}) {
     const { basenames: bns = [] } = opts
-    const basenames = bns.map(bn => stripSlashes(bn))
+    const basenames = bns.map(bn => formatSlashes(bn))
 
     const { id, ...initialHistoryState } = getInitialHistoryState()
     const defaultLocation = getWindowLocation(initialHistoryState, basenames)

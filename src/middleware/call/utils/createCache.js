@@ -2,8 +2,8 @@ import { isServer, actionToUrl } from '../../../utils'
 import { createLocation } from '../../../history/utils'
 
 const defaultCreateCacheKey = (action, name) => {
-  const { type, location } = action
-  const { basename, pathname, search } = location
+  const { type, location, basename } = action
+  const { pathname, search } = location
   return `${name}|${type}|${basename}|${pathname}|${search}` // don't cache using URL hash, as in 99.999% of all apps its the same route
 }
 

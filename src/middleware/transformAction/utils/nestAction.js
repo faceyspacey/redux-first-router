@@ -16,12 +16,12 @@ export default (action, { prev: p, ...prev }, history) => {
     query,
     hash,
     state,
+    basename: basename.substr(1),
     location: {
       ...action.location,
-      url,
+      url: basename + url,
       pathname,
       search,
-      basename,
       scene,
       status,
 

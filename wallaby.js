@@ -18,8 +18,14 @@ module.exports = wallaby => {
     ],
 
     tests: [
-      // '__tests__/**/*.js',
-      '__tests__/integration/anonymousThunk.js',
+      // '__tests__/integration/**/*.js',
+      // '__tests__/integration/hashes.js',
+      // '__tests__/integration/queries.js',
+      // '__tests__/integration/params.js',
+      // '__tests__/integration/createScene/**/*.js',
+      // '__tests__/integration/anonymousThunk.js',
+      '__tests__/integration/actions/history.js',
+      // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/overrideOptions.js',
       // '__tests__/integration/queries.js',
       // '__tests__/integration/params.js',

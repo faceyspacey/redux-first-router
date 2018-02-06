@@ -1,5 +1,1351 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[{"foo":"bar"}]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[{"foo":"bar"}]}} - history_index 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[{"foo":"bar"}]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[{"foo":"bar"}]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[{"foo":"bar"}]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[{"foo":"bar"}]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[{"foo":"bar"}]}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - history_index 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - history_index 2`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "clear": "old state",
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "clear": "old state",
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "bla": "sdf",
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "bla": "sdf",
+        "yo": "dog",
+      },
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"back","args":[null]}} - title 2`] = `"FIRST"`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"bla":"sdf"}]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "clear": "old state",
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"bla":"sdf"}]}} - history_index 1`] = `1`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"bla":"sdf"}]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "clear": "old state",
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "bla": "sdf",
+    "yo": "dog",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"bla":"sdf"}]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"bla":"sdf"}]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"bla":"sdf"}]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "clear": "old state",
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "bla": "sdf",
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "clear": "old state",
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "yo": "dog",
+          },
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "clear": "old state",
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "bla": "sdf",
+      "yo": "dog",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"bla":"sdf"}]}} - title 1`] = `"SECOND"`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"yo":"dog"}]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "yo": "dog",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"yo":"dog"}]}} - history_index 1`] = `1`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"yo":"dog"}]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "yo": "dog",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"yo":"dog"}]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"yo":"dog"}]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"yo":"dog"}]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "yo": "dog",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "yo": "dog",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"next","args":[{"yo":"dog"}]}} - title 1`] = `"SECOND"`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"bla":"sdf"}]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"bla":"sdf"}]}} - history_index 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"bla":"sdf"}]}} - response 1`] = `
+Object {
+  "error": [TypeError: Cannot read property 'apply' of undefined],
+  "type": "@@rudy/CALL_HISTORY_ERROR",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"bla":"sdf"}]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"bla":"sdf"}]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"bla":"sdf"}]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "error": [TypeError: Cannot read property 'apply' of undefined],
+    "errorType": "@@rudy/CALL_HISTORY_ERROR",
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@rudy/CALL_HISTORY_ERROR",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"bla":"sdf"}]}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"yo":"dog"}]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"yo":"dog"}]}} - history_index 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"yo":"dog"}]}} - response 1`] = `
+Object {
+  "error": [TypeError: Cannot read property 'apply' of undefined],
+  "type": "@@rudy/CALL_HISTORY_ERROR",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"yo":"dog"}]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"yo":"dog"}]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"yo":"dog"}]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "error": [TypeError: Cannot read property 'apply' of undefined],
+    "errorType": "@@rudy/CALL_HISTORY_ERROR",
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@rudy/CALL_HISTORY_ERROR",
+}
+`;
+
+exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"nfext","args":[{"yo":"dog"}]}} - title 1`] = `"FIRST"`;
+
 exports[`dispatch(back/next()): function - history_entries 1`] = `
 Array [
   Object {
@@ -150,9 +1496,9 @@ exports[`dispatch(back/next()): function - history_index 5`] = `0`;
 
 exports[`dispatch(back/next()): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -232,9 +1578,9 @@ Object {
 
 exports[`dispatch(back/next()): function - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -320,9 +1666,9 @@ Object {
 
 exports[`dispatch(back/next()): function - response 3`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -412,9 +1758,9 @@ Object {
 
 exports[`dispatch(back/next()): function - response 4`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -507,9 +1853,9 @@ Object {
 
 exports[`dispatch(back/next()): function - response 5`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1094,6 +2440,241 @@ exports[`dispatch(back/next()): function - title 4`] = `"SECOND"`;
 
 exports[`dispatch(back/next()): function - title 5`] = `"FIRST"`;
 
+exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null,null]}} - history_index 1`] = `0`;
+
+exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "info": "jump",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 3,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-2,null,null,null]}} - title 1`] = `"FIRST"`;
+
 exports[`dispatch(jump(-2)): function - history_entries 1`] = `
 Array [
   Object {
@@ -1130,10 +2711,10 @@ exports[`dispatch(jump(-2)): function - history_index 1`] = `0`;
 
 exports[`dispatch(jump(-2)): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "jump",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1329,6 +2910,384 @@ Object {
 
 exports[`dispatch(jump(-2)): function - title 1`] = `"FIRST"`;
 
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - history_index 1`] = `0`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - history_index 1`] = `1`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - title 1`] = `"SECOND"`;
+
 exports[`dispatch(jump(n)): function - history_entries 1`] = `
 Array [
   Object {
@@ -1381,9 +3340,9 @@ exports[`dispatch(jump(n)): function - history_index 2`] = `1`;
 
 exports[`dispatch(jump(n)): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1459,9 +3418,9 @@ Object {
 
 exports[`dispatch(jump(n)): function - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1707,6 +3666,418 @@ exports[`dispatch(jump(n)): function - title 1`] = `"FIRST"`;
 
 exports[`dispatch(jump(n)): function - title 2`] = `"SECOND"`;
 
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[0,{"foo":"bar"},true,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[0,{"foo":"bar"},true,null]}} - history_index 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[0,{"foo":"bar"},true,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[0,{"foo":"bar"},true,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[0,{"foo":"bar"},true,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[0,{"foo":"bar"},true,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[0,{"foo":"bar"},true,null]}} - title 1`] = `"FIRST"`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,null]}} - history_index 1`] = `1`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {
+        "foo": "bar",
+      },
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,null]}} - title 1`] = `"SECOND"`;
+
 exports[`dispatch(jump(n, state, byIndex === true)): function - history_entries 1`] = `
 Array [
   Object {
@@ -1765,9 +4136,9 @@ exports[`dispatch(jump(n, state, byIndex === true)): function - history_index 2`
 
 exports[`dispatch(jump(n, state, byIndex === true)): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1847,9 +4218,9 @@ Object {
 
 exports[`dispatch(jump(n, state, byIndex === true)): function - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2119,6 +4490,498 @@ exports[`dispatch(jump(n, state, byIndex === true)): function - title 1`] = `"FI
 
 exports[`dispatch(jump(n, state, byIndex === true)): function - title 2`] = `"SECOND"`;
 
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"back"]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"back"]}} - history_index 1`] = `1`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"back"]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+    "kind": "back",
+    "length": 3,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"back"]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"back"]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"back"]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "back",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {
+            "foo": "bar",
+          },
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"back"]}} - title 1`] = `"SECOND"`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"next"]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"next"]}} - history_index 1`] = `1`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"next"]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+    "kind": "next",
+    "length": 3,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 2,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"next"]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"next"]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"next"]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 2,
+      "kind": "push",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,{"foo":"bar"},true,"next"]}} - title 1`] = `"SECOND"`;
+
 exports[`dispatch(jump(n, state, byIndex, kind)): function - history_entries 1`] = `
 Array [
   Object {
@@ -2193,9 +5056,9 @@ exports[`dispatch(jump(n, state, byIndex, kind)): function - history_index 2`] =
 
 exports[`dispatch(jump(n, state, byIndex, kind)): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2293,9 +5156,9 @@ Object {
 
 exports[`dispatch(jump(n, state, byIndex, kind)): function - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2638,9 +5501,9 @@ exports[`dispatch(push/replace()) dispatch(push(path)): 1 - history_index 1`] = 
 
 exports[`dispatch(push/replace()) dispatch(push(path)): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2811,9 +5674,9 @@ exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - history_index
 
 exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2981,9 +5844,9 @@ exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - history_index 1`]
 
 exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3127,9 +5990,9 @@ exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - history_in
 
 exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3290,10 +6153,10 @@ exports[`dispatch(reset(actions)) - entries as action objects: 1 - history_index
 
 exports[`dispatch(reset(actions)) - entries as action objects: 1 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "something",
   "info": "reset",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -3364,7 +6227,7 @@ Object {
     "scene": "",
     "search": "baz=yo&foo=bar",
     "status": 200,
-    "url": "/third?baz=yo&foo=bar#something",
+    "url": "/base-name/third?baz=yo&foo=bar#something",
   },
   "params": Object {},
   "query": Object {
@@ -3383,7 +6246,7 @@ exports[`dispatch(reset(actions)) - entries as action objects: 1 - routes - REDI
 exports[`dispatch(reset(actions)) - entries as action objects: 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -3463,7 +6326,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "THIRD",
-    "url": "/third?baz=yo&foo=bar#something",
+    "url": "/base-name/third?baz=yo&foo=bar#something",
   },
   "title": "THIRD",
 }
@@ -3498,10 +6361,10 @@ exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1
 
 exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "reset",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3661,6 +6524,196 @@ Object {
 
 exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1 - title 1`] = `"THIRD"`;
 
+exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/second","/third"],0,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/second","/third"],0,null]}} - history_index 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/second","/third"],0,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/second","/third"],0,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/second","/third"],0,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/second","/third"],0,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/second","/third"],0,null]}} - title 1`] = `"SECOND"`;
+
 exports[`dispatch(reset(entries, index)) - back kind inferred: function - history_entries 1`] = `
 Array [
   Object {
@@ -3688,10 +6741,10 @@ exports[`dispatch(reset(entries, index)) - back kind inferred: function - histor
 
 exports[`dispatch(reset(entries, index)) - back kind inferred: function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "reset",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3887,10 +6940,10 @@ exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - history_index 
 
 exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "reset",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4104,10 +7157,10 @@ exports[`dispatch(reset(entries, index)) - load kind inferred (because only one 
 
 exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "reset",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4209,6 +7262,286 @@ Object {
 
 exports[`dispatch(reset(entries, index)) - load kind inferred (because only one entry): 1 - title 1`] = `"SECOND"`;
 
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/fourth","/second","/third","/first"],2,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/fourth",
+    "search": "",
+    "state": undefined,
+    "url": "/fourth",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": undefined,
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": undefined,
+    "url": "/third",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": undefined,
+    "url": "/first",
+  },
+]
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/fourth","/second","/third","/first"],2,null]}} - history_index 1`] = `2`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/fourth","/second","/third","/first"],2,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "info": "reset",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": undefined,
+        "url": "/fourth",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+        "url": "/first",
+      },
+    ],
+    "index": 2,
+    "kind": "next",
+    "length": 4,
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/fourth",
+          "search": "",
+          "state": undefined,
+          "url": "/fourth",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": undefined,
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 4,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/fourth","/second","/third","/first"],2,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/fourth","/second","/third","/first"],2,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/fourth","/second","/third","/first"],2,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/fourth",
+        "search": "",
+        "state": undefined,
+        "url": "/fourth",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": undefined,
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": undefined,
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+        "url": "/first",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 2,
+    "kind": "next",
+    "length": 4,
+    "params": Object {},
+    "pathname": "/third",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/fourth",
+          "search": "",
+          "state": undefined,
+          "url": "/fourth",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": undefined,
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": undefined,
+          "url": "/third",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": undefined,
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 4,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[["/fourth","/second","/third","/first"],2,null]}} - title 1`] = `"THIRD"`;
+
 exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - history_entries 1`] = `
 Array [
   Object {
@@ -4254,10 +7587,10 @@ exports[`dispatch(reset(entries, index)) - next kind inferred because > than cur
 
 exports[`dispatch(reset(entries, index)) - next kind inferred because > than current index: function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "reset",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4516,10 +7849,10 @@ exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - history_inde
 
 exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "reset",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4706,10 +8039,10 @@ exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev 
 
 exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev and current index is the same): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "info": "reset",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4858,10 +8191,10 @@ exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - histor
 
 exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "something",
   "info": "reset",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -4932,7 +8265,7 @@ Object {
     "scene": "",
     "search": "foo=bar&baz=yo",
     "status": 200,
-    "url": "/third?foo=bar&baz=yo#something",
+    "url": "/base-name/third?foo=bar&baz=yo#something",
   },
   "params": Object {},
   "query": Object {
@@ -4951,7 +8284,7 @@ exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - routes
 exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -5031,7 +8364,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "THIRD",
-    "url": "/third?foo=bar&baz=yo#something",
+    "url": "/base-name/third?foo=bar&baz=yo#something",
   },
   "title": "THIRD",
 }
@@ -5059,9 +8392,9 @@ exports[`dispatch(setState()) dispatch(setState(state)): 1 - history_index 1`] =
 
 exports[`dispatch(setState()) dispatch(setState(state)): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5182,6 +8515,192 @@ Object {
 
 exports[`dispatch(setState()) dispatch(setState(state)): 1 - title 1`] = `"FIRST"`;
 
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},0,true]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},0,true]}} - history_index 1`] = `1`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},0,true]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "setState",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},0,true]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},0,true]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},0,true]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},0,true]}} - title 1`] = `"SECOND"`;
+
 exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - history_entries 1`] = `
 Array [
   Object {
@@ -5211,9 +8730,9 @@ exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true))
 
 exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5368,6 +8887,192 @@ Object {
 
 exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true)): function - title 1`] = `"SECOND"`;
 
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},"345678",null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},"345678",null]}} - history_index 1`] = `1`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},"345678",null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "setState",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},"345678",null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},"345678",null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},"345678",null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},"345678",null]}} - title 1`] = `"SECOND"`;
+
 exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - history_entries 1`] = `
 Array [
   Object {
@@ -5397,9 +9102,9 @@ exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - h
 
 exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5554,6 +9259,192 @@ Object {
 
 exports[`dispatch(setState()) dispatch(setState(state, keyString)): function - title 1`] = `"SECOND"`;
 
+exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},-1,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},-1,null]}} - history_index 1`] = `1`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},-1,null]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "index": 1,
+    "kind": "setState",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},-1,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},-1,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},-1,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {
+          "foo": "bar",
+        },
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"setState","args":[{"foo":"bar"},-1,null]}} - title 1`] = `"SECOND"`;
+
 exports[`dispatch(setState()) dispatch(setState(state, n)): function - history_entries 1`] = `
 Array [
   Object {
@@ -5583,9 +9474,9 @@ exports[`dispatch(setState()) dispatch(setState(state, n)): function - history_i
 
 exports[`dispatch(setState()) dispatch(setState(state, n)): function - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5760,9 +9651,9 @@ exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - history_index 1
 
 exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

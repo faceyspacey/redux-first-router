@@ -27,9 +27,9 @@ exports[`dispatch(changeBasename(name)) with existing basename: 1 - history_inde
 
 exports[`dispatch(changeBasename(name)) with existing basename: 1 - response 1`] = `
 Object {
+  "basename": "bar",
   "hash": "",
   "location": Object {
-    "basename": "/bar",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -55,7 +55,7 @@ Object {
     "length": 2,
     "pathname": "/first",
     "prev": Object {
-      "basename": "/foo",
+      "basename": "foo",
       "entries": Array [
         Object {
           "basename": "/foo",
@@ -80,12 +80,12 @@ Object {
       "state": Object {},
       "status": 200,
       "type": "FIRST",
-      "url": "/first",
+      "url": "/foo/first",
     },
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/first",
+    "url": "/bar/first",
   },
   "params": Object {},
   "query": Object {},
@@ -101,7 +101,7 @@ exports[`dispatch(changeBasename(name)) with existing basename: 1 - routes - RED
 exports[`dispatch(changeBasename(name)) with existing basename: 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/bar",
+    "basename": "bar",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -130,7 +130,7 @@ Object {
     "params": Object {},
     "pathname": "/first",
     "prev": Object {
-      "basename": "/foo",
+      "basename": "foo",
       "entries": Array [
         Object {
           "basename": "/foo",
@@ -155,7 +155,7 @@ Object {
       "state": Object {},
       "status": 200,
       "type": "FIRST",
-      "url": "/first",
+      "url": "/foo/first",
     },
     "query": Object {},
     "scene": "",
@@ -163,7 +163,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "FIRST",
-    "url": "/first",
+    "url": "/bar/first",
   },
   "title": "FIRST",
 }
@@ -190,7 +190,7 @@ exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /fo
 exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /foo/first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
-    "basename": "/foo",
+    "basename": "foo",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -239,9 +239,9 @@ Object {
 
 exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /foo/first - 1 - response 1`] = `
 Object {
+  "basename": "foo",
   "hash": "",
   "location": Object {
-    "basename": "/foo",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -277,7 +277,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/first",
+    "url": "/foo/first",
   },
   "params": Object {},
   "query": Object {},
@@ -289,7 +289,7 @@ Object {
 exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /foo/first - 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/foo",
+    "basename": "foo",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -331,7 +331,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "FIRST",
-    "url": "/first",
+    "url": "/foo/first",
   },
   "title": "FIRST",
 }
@@ -366,9 +366,9 @@ exports[`dispatch(changeBasename(name)): 1 - history_index 1`] = `1`;
 
 exports[`dispatch(changeBasename(name)): 1 - response 1`] = `
 Object {
+  "basename": "foo",
   "hash": "",
   "location": Object {
-    "basename": "/foo",
     "entries": Array [
       Object {
         "basename": "",
@@ -424,7 +424,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/first",
+    "url": "/foo/first",
   },
   "params": Object {},
   "query": Object {},
@@ -440,7 +440,7 @@ exports[`dispatch(changeBasename(name)): 1 - routes - REDIRECTED - onComplete 1`
 exports[`dispatch(changeBasename(name)): 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/foo",
+    "basename": "foo",
     "entries": Array [
       Object {
         "basename": "",
@@ -502,7 +502,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "FIRST",
-    "url": "/first",
+    "url": "/foo/first",
   },
   "title": "FIRST",
 }
@@ -549,7 +549,7 @@ exports[`dispatch(changeBasename(name, action)): 1 - routes - REDIRECTED - onCom
 exports[`dispatch(changeBasename(name, action)): 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/foo",
+    "basename": "foo",
     "entries": Array [
       Object {
         "basename": "",
@@ -611,7 +611,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "REDIRECTED",
-    "url": "/redirected",
+    "url": "/foo/redirected",
   },
   "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
 }

@@ -2,9 +2,9 @@ import createTest from '../../__helpers__/createTest'
 
 import createReducer from '../../src/core/createLocationReducer'
 import createHistory from '../../src/history'
-import compose from '../../src/core/composePromise'
 import shouldTransition from '../../src/utils/shouldTransition'
-import createRequest from '../../src/utils/createRequest'
+import createRequest from '../../src/core/createRequest'
+import compose from '../../src/core/composePromise'
 import shouldCall from '../../src/middleware/call/utils/shouldCall'
 
 createTest('core capabilities can be overriden as options', {

@@ -1,5 +1,5 @@
 import resolvePathname from 'resolve-pathname'
-import { parsePath, createPath, stripBasename } from './index'
+import { parsePath, createPath, stripBasename, formatSlashes } from './index'
 
 export const createLocation = (path, state, key, currentLocation, basename) => {
   let location
@@ -38,6 +38,10 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
   location.key = location.key || key || createKey()
   location.url = createPath(location)
   location.basename = location.basename || basename || ''
+
+  if (location.basename) {
+    location.basename = formatSlashes(location.basename)
+  }
 
   return location
 }

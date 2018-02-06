@@ -2,7 +2,11 @@ import { call } from './index'
 import composePromise from '../core/composePromise'
 
 export default (api) => {
-  const middlewares = [call('thunk', { skipOpts: true }), call('onComplete')]
+  const middlewares = [
+    call('thunk', { skipOpts: true }),
+    call('onComplete', { skipOpts: true })
+  ]
+
   const pipelineBranch = composePromise(middlewares, api)
 
   return (req, next) => {

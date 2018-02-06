@@ -9,16 +9,16 @@ createTest('dispatch(notFound(alternatePath))', {}, [
   notFound('/does-not-exist')
 ])
 
-createTest('dispatch(notFound(alternatePath, basename, forcedType))', {}, [
-  notFound('/does-not-exist', '/basename', 'WRONG')
+createTest('dispatch(notFound(alternatePath, forcedType))', {}, [
+  notFound('/does-not-exist', 'WRONG')
 ])
 
 createTest('dispatch(notFound(params))', {}, [
   notFound({ foo: 'bar' })
 ])
 
-createTest('dispatch(notFound(action, alternatePath, basename))', {}, [
-  notFound({ type: 'SECOND', params: { foo: 'bar' } }, '/does-not-exist', '/basename')
+createTest('dispatch(notFound(action, alternatePath))', {}, [
+  notFound({ type: 'SECOND', params: { foo: 'bar' } }, '/does-not-exist')
 ])
 
 createTest('notFound on first load', {}, [

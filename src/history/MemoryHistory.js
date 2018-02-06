@@ -1,7 +1,7 @@
 import History from './History'
 
 import {
-  stripSlashes,
+  formatSlashes,
   transformEntry,
   restoreHistory,
   saveHistory
@@ -39,7 +39,7 @@ export default class MemoryHistory extends History {
       useSessionStorage = false
     } = opts
 
-    const basenames = bns.map(bn => stripSlashes(bn))
+    const basenames = bns.map(bn => formatSlashes(bn))
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
     const { index, entries, saveHistory } = !useSessionStorage
       ? create(initialIndex, initialEntries, basenames) // this happens 99% of the time

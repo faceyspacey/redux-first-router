@@ -13,7 +13,7 @@ export {
 } from './location'
 
 export {
-  stripSlashes,
+  formatSlashes,
   hasBasename,
   stripBasename,
   findBasename,

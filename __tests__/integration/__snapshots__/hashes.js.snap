@@ -27,9 +27,9 @@ exports[`hash equals string "/third#correct": 3 - history_index 1`] = `1`;
 
 exports[`hash equals string "/third#correct": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -198,9 +198,9 @@ exports[`hash equals string "/third#missed": 4 - history_index 1`] = `1`;
 
 exports[`hash equals string "/third#missed": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -258,6 +258,7 @@ Object {
     "status": 404,
     "url": "/third#missed",
   },
+  "notFoundUrl": "/third#missed",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -369,9 +370,9 @@ exports[`hash equals string {"type":"SECOND","hash":"correct"}: 1 - history_inde
 
 exports[`hash equals string {"type":"SECOND","hash":"correct"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -540,9 +541,9 @@ exports[`hash equals string {"type":"SECOND","hash":"missed"}: 2 - history_index
 
 exports[`hash equals string {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -711,9 +712,9 @@ exports[`hash matched by function "/third#correct": 3 - history_index 1`] = `1`;
 
 exports[`hash matched by function "/third#correct": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -882,9 +883,9 @@ exports[`hash matched by function "/third#missed": 4 - history_index 1`] = `1`;
 
 exports[`hash matched by function "/third#missed": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -942,6 +943,7 @@ Object {
     "status": 404,
     "url": "/third#missed",
   },
+  "notFoundUrl": "/third#missed",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -1053,9 +1055,9 @@ exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - histor
 
 exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1224,9 +1226,9 @@ exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - history
 
 exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1395,9 +1397,9 @@ exports[`hash matched by regex "/third#correct": 3 - history_index 1`] = `1`;
 
 exports[`hash matched by regex "/third#correct": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1566,9 +1568,9 @@ exports[`hash matched by regex "/third#missed": 4 - history_index 1`] = `1`;
 
 exports[`hash matched by regex "/third#missed": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1626,6 +1628,7 @@ Object {
     "status": 404,
     "url": "/third#missed",
   },
+  "notFoundUrl": "/third#missed",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -1737,9 +1740,9 @@ exports[`hash matched by regex {"type":"SECOND","hash":"correct"}: 1 - history_i
 
 exports[`hash matched by regex {"type":"SECOND","hash":"correct"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1908,9 +1911,9 @@ exports[`hash matched by regex {"type":"SECOND","hash":"missed"}: 2 - history_in
 
 exports[`hash matched by regex {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2079,9 +2082,9 @@ exports[`hash required not to be there "/third": 3 - history_index 1`] = `1`;
 
 exports[`hash required not to be there "/third": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2250,9 +2253,9 @@ exports[`hash required not to be there "/third#missed": 4 - history_index 1`] = 
 
 exports[`hash required not to be there "/third#missed": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2421,9 +2424,9 @@ exports[`hash required not to be there {"type":"SECOND","hash":"missed"}: 2 - hi
 
 exports[`hash required not to be there {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "missed",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2592,9 +2595,9 @@ exports[`hash required not to be there {"type":"SECOND"}: 1 - history_index 1`] 
 
 exports[`hash required not to be there {"type":"SECOND"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2763,9 +2766,9 @@ exports[`required hash "/third": 4 - history_index 1`] = `1`;
 
 exports[`required hash "/third": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2823,6 +2826,7 @@ Object {
     "status": 404,
     "url": "/third",
   },
+  "notFoundUrl": "/third",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -2934,9 +2938,9 @@ exports[`required hash "/third#correct": 3 - history_index 1`] = `1`;
 
 exports[`required hash "/third#correct": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3105,9 +3109,9 @@ exports[`required hash {"type":"SECOND","hash":"correct"}: 1 - history_index 1`]
 
 exports[`required hash {"type":"SECOND","hash":"correct"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3276,9 +3280,9 @@ exports[`required hash {"type":"SECOND"}: 2 - history_index 1`] = `1`;
 
 exports[`required hash {"type":"SECOND"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3447,9 +3451,9 @@ exports[`route.defaultHash "/third": 4 - history_index 1`] = `1`;
 
 exports[`route.defaultHash "/third": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "defaultHash",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3618,9 +3622,9 @@ exports[`route.defaultHash "/third#CORRECT": 3 - history_index 1`] = `1`;
 
 exports[`route.defaultHash "/third#CORRECT": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "CORRECT",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3789,9 +3793,9 @@ exports[`route.defaultHash {"type":"SECOND","hash":"correct"}: 1 - history_index
 
 exports[`route.defaultHash {"type":"SECOND","hash":"correct"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3960,9 +3964,9 @@ exports[`route.defaultHash {"type":"SECOND"}: 2 - history_index 1`] = `1`;
 
 exports[`route.defaultHash {"type":"SECOND"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "defaultHash",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4131,9 +4135,9 @@ exports[`route.toHash/fromHash "/third": 4 - history_index 1`] = `1`;
 
 exports[`route.toHash/fromHash "/third": 4 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4302,9 +4306,9 @@ exports[`route.toHash/fromHash "/third#CORRECT": 3 - history_index 1`] = `1`;
 
 exports[`route.toHash/fromHash "/third#CORRECT": 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4473,9 +4477,9 @@ exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - history_i
 
 exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "correct",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4644,9 +4648,9 @@ exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - history_index 1`] = `1`;
 
 exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

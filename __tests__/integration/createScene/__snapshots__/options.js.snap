@@ -27,9 +27,9 @@ exports[`createScene(routes, { scene, basename }) actions.notFound(params, path)
 
 exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -85,8 +85,9 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 404,
-    "url": "/cat",
+    "url": "/base-name/cat",
   },
+  "notFoundUrl": "/cat",
   "params": Object {
     "foo": "bar",
   },
@@ -103,7 +104,7 @@ exports[`createScene(routes, { scene, basename }) actions.notFound(params, path)
 exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -167,7 +168,7 @@ Object {
     "state": Object {},
     "status": 404,
     "type": "SCENE/@@rudy/NOT_FOUND",
-    "url": "/cat",
+    "url": "/base-name/cat",
   },
   "title": "SCENE/@@rudy/NOT_FOUND",
 }
@@ -193,9 +194,7 @@ exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payl
 
 exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": "/base-name",
-  },
+  "basename": "/base-name",
   "payload": "foo",
   "type": "SCENE/@@rudy/NOT_FOUND_COMPLETE",
 }
@@ -285,9 +284,9 @@ exports[`createScene(routes, { scene, basename }) actions.second(): 1 - history_
 
 exports[`createScene(routes, { scene, basename }) actions.second(): 1 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -343,7 +342,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "params": Object {},
   "query": Object {},
@@ -359,7 +358,7 @@ exports[`createScene(routes, { scene, basename }) actions.second(): 1 - routes -
 exports[`createScene(routes, { scene, basename }) actions.second(): 1 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -421,7 +420,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "SCENE/SECOND",
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "title": "SCENE/SECOND",
 }
@@ -447,9 +446,7 @@ exports[`createScene(routes, { scene, basename }) actions.second(action with wro
 
 exports[`createScene(routes, { scene, basename }) actions.second(action with wrong type): 5 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": "/base-name",
-  },
+  "basename": "/base-name",
   "type": "WRONG",
 }
 `;
@@ -538,9 +535,9 @@ exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - hi
 
 exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -596,7 +593,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "params": Object {
     "foo": "bar",
@@ -614,7 +611,7 @@ exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - ro
 exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -678,7 +675,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "SCENE/SECOND",
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "title": "SCENE/SECOND",
 }
@@ -713,9 +710,9 @@ exports[`createScene(routes, { scene, basename }) actions.second(partialAction):
 
 exports[`createScene(routes, { scene, basename }) actions.second(partialAction): 2 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -771,7 +768,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "params": Object {
     "foo": "bar",
@@ -789,7 +786,7 @@ exports[`createScene(routes, { scene, basename }) actions.second(partialAction):
 exports[`createScene(routes, { scene, basename }) actions.second(partialAction): 2 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -853,7 +850,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "SCENE/SECOND",
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "title": "SCENE/SECOND",
 }
@@ -888,9 +885,9 @@ exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - his
 
 exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -946,7 +943,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "params": Object {},
   "query": Object {},
@@ -963,7 +960,7 @@ exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - rou
 exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -1025,7 +1022,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "SCENE/SECOND",
-    "url": "/second",
+    "url": "/base-name/second",
   },
   "title": "SCENE/SECOND",
 }
@@ -1051,9 +1048,7 @@ exports[`createScene(routes, { scene, basename }) actions.second.complete(thunk)
 
 exports[`createScene(routes, { scene, basename }) actions.second.complete(thunk): 11 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": "/base-name",
-  },
+  "basename": "/base-name",
   "payload": Object {
     "foo": "bar",
   },
@@ -1136,9 +1131,7 @@ exports[`createScene(routes, { scene, basename }) actions.third.complete(payload
 
 exports[`createScene(routes, { scene, basename }) actions.third.complete(payload): 10 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": "/base-name",
-  },
+  "basename": "/base-name",
   "payload": Object {
     "foo": "bar",
   },
@@ -1221,10 +1214,8 @@ exports[`createScene(routes, { scene, basename }) actions.third.error(new Error)
 
 exports[`createScene(routes, { scene, basename }) actions.third.error(new Error): 8 - response 1`] = `
 Object {
+  "basename": "/base-name",
   "error": [Error: fail],
-  "location": Object {
-    "basename": "/base-name",
-  },
   "type": "SCENE/THIRD_ERROR",
 }
 `;
@@ -1306,9 +1297,7 @@ exports[`createScene(routes, { scene, basename }) route with just action creator
 
 exports[`createScene(routes, { scene, basename }) route with just action creator: 12 - response 1`] = `
 Object {
-  "location": Object {
-    "basename": "/base-name",
-  },
+  "basename": "/base-name",
   "params": Object {
     "foo": "bar",
   },
@@ -1400,9 +1389,9 @@ exports[`createScene(routes, { scene, basename }) route.action - custom action c
 
 exports[`createScene(routes, { scene, basename }) route.action - custom action creator: 6 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -1458,7 +1447,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/third",
+    "url": "/base-name/third",
   },
   "params": Object {
     "foo": "baz",
@@ -1476,7 +1465,7 @@ exports[`createScene(routes, { scene, basename }) route.action - custom action c
 exports[`createScene(routes, { scene, basename }) route.action - custom action creator: 6 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -1540,7 +1529,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "SCENE/THIRD",
-    "url": "/third",
+    "url": "/base-name/third",
   },
   "title": "SCENE/THIRD",
 }
@@ -1575,9 +1564,9 @@ exports[`createScene(routes, { scene, basename }) route.action: [] - custom acti
 
 exports[`createScene(routes, { scene, basename }) route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - response 1`] = `
 Object {
+  "basename": "base-name",
   "hash": "",
   "location": Object {
-    "basename": "/base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -1633,7 +1622,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/fourth",
+    "url": "/base-name/fourth",
   },
   "params": Object {
     "foo": "baz",
@@ -1651,7 +1640,7 @@ exports[`createScene(routes, { scene, basename }) route.action: [] - custom acti
 exports[`createScene(routes, { scene, basename }) route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - state 1`] = `
 Object {
   "location": Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "entries": Array [
       Object {
         "basename": "",
@@ -1715,7 +1704,7 @@ Object {
     "state": Object {},
     "status": 200,
     "type": "SCENE/FOURTH",
-    "url": "/fourth",
+    "url": "/base-name/fourth",
   },
   "title": "SCENE/FOURTH",
 }
@@ -1741,11 +1730,9 @@ exports[`createScene(routes, { scene, basename }) route.error - custom error act
 
 exports[`createScene(routes, { scene, basename }) route.error - custom error action creator: 9 - response 1`] = `
 Object {
+  "basename": "/base-name",
   "error": Object {
     "foo": "bar",
-  },
-  "location": Object {
-    "basename": "/base-name",
   },
   "type": "SCENE/SECOND_ERROR",
 }

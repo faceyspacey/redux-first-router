@@ -23,7 +23,7 @@ export default (name, config = {}) => (api) => {
     const r = (execute.route && route[name]) || noOp
     const o = (execute.options && !skipOpts && req.options[name]) || noOp
 
-    req._dispatched = false // `dispatch` used by callbacks will set this to `true` (see utils/createDispatch.js)
+    req._dispatched = false // `dispatch` used by callbacks will set this to `true` (see core/createDispatch.js)
 
     return Promise.all([r(req), o(req)]).then(([r, o]) => {
       if (isFalse(r, o)) return false

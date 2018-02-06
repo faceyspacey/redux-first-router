@@ -31,18 +31,20 @@ export default (
     const t = (arg && arg.type) || type
     if (isNotFound(t)) {
       const notFoundPath = info === 'isThunk' ? null : info
-      return notFound(arg, notFoundPath, basename, t)
+      const act = notFound(arg, notFoundPath, t)
+      if (basename) act.basename = basename
+      return act
     }
 
     // handle error action creator
     if (key === 'error') return handleError(arg, t, basename)
 
     // the default behavior of transforming an `arg` object into an action with its type
-    if (isAction(arg)) return { type, ...arg, location: { basename, ...arg.location } }
+    if (isAction(arg)) return { type, basename, ...arg }
 
     // if no `payload`, `query`, etc, treat arg as a `params/payload` for convenience
     const name = key === 'complete' ? 'payload' : 'params'
-    return { type, [name]: arg || {}, location: { basename } }
+    return { type, [name]: arg || {}, basename }
   }
 
   // optionally allow custom action creators

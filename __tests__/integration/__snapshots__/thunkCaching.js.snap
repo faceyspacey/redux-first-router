@@ -27,9 +27,9 @@ exports[`cached thunk only called once: {"type":"FIRST"} - history_index 1`] = `
 
 exports[`cached thunk only called once: {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -243,9 +243,9 @@ exports[`cached thunk only called once: {"type":"SECOND"} - history_index 2`] = 
 
 exports[`cached thunk only called once: {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -312,9 +312,9 @@ Object {
 
 exports[`cached thunk only called once: {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -582,9 +582,9 @@ exports[`clearCache(): {"type":"FIRST"} - history_index 1`] = `0`;
 
 exports[`clearCache(): {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -798,9 +798,9 @@ exports[`clearCache(): {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`clearCache(): {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -867,9 +867,9 @@ Object {
 
 exports[`clearCache(): {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1137,9 +1137,9 @@ exports[`clearCache(action): {"type":"FIRST"} - history_index 1`] = `0`;
 
 exports[`clearCache(action): {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1353,9 +1353,9 @@ exports[`clearCache(action): {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`clearCache(action): {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1422,9 +1422,9 @@ Object {
 
 exports[`clearCache(action): {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1508,7 +1508,7 @@ exports[`clearCache(action): {"type":"SECOND"} - routes - REDIRECTED - onComplet
 
 exports[`clearCache(action): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
 
-exports[`clearCache(action): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
+exports[`clearCache(action): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `1`;
 
 exports[`clearCache(action): {"type":"SECOND"} - state 1`] = `
 Object {
@@ -1692,9 +1692,9 @@ exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - history_index
 
 exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1908,9 +1908,9 @@ exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - history_inde
 
 exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -1977,9 +1977,9 @@ Object {
 
 exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2063,7 +2063,7 @@ exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - RED
 
 exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
 
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
+exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `1`;
 
 exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - state 1`] = `
 Object {
@@ -2272,9 +2272,9 @@ exports[`clearCache(func): {"type":"FIRST"} - history_index 2`] = `0`;
 
 exports[`clearCache(func): {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2350,9 +2350,9 @@ Object {
 
 exports[`clearCache(func): {"type":"FIRST"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2679,9 +2679,9 @@ exports[`clearCache(func): {"type":"SECOND"} - history_index 3`] = `1`;
 
 exports[`clearCache(func): {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2748,9 +2748,9 @@ Object {
 
 exports[`clearCache(func): {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -2826,9 +2826,9 @@ Object {
 
 exports[`clearCache(func): {"type":"SECOND"} - response 3`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3184,9 +3184,9 @@ exports[`clearCache(string): {"type":"FIRST"} - history_index 1`] = `0`;
 
 exports[`clearCache(string): {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3400,9 +3400,9 @@ exports[`clearCache(string): {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`clearCache(string): {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3469,9 +3469,9 @@ Object {
 
 exports[`clearCache(string): {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3739,9 +3739,9 @@ exports[`options.cache === false: {"type":"FIRST"} - history_index 1`] = `0`;
 
 exports[`options.cache === false: {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -3955,9 +3955,9 @@ exports[`options.cache === false: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`options.cache === false: {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4024,9 +4024,9 @@ Object {
 
 exports[`options.cache === false: {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4294,9 +4294,9 @@ exports[`options.createCacheKey: {"type":"FIRST"} - history_index 1`] = `0`;
 
 exports[`options.createCacheKey: {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4510,9 +4510,9 @@ exports[`options.createCacheKey: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`options.createCacheKey: {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4579,9 +4579,9 @@ Object {
 
 exports[`options.createCacheKey: {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -4849,9 +4849,9 @@ exports[`route.cache === false: {"type":"FIRST"} - history_index 1`] = `0`;
 
 exports[`route.cache === false: {"type":"FIRST"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5065,9 +5065,9 @@ exports[`route.cache === false: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`route.cache === false: {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -5134,9 +5134,9 @@ Object {
 
 exports[`route.cache === false: {"type":"SECOND"} - response 2`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",

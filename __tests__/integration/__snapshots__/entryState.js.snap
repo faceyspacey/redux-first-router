@@ -30,9 +30,9 @@ exports[`action.state as function: {"type":"SECOND"} - history_index 1`] = `1`;
 
 exports[`action.state as function: {"type":"SECOND"} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -226,9 +226,9 @@ exports[`state attached to history entry {"type":"FIRST"}: 2 - history_index 1`]
 
 exports[`state attached to history entry {"type":"FIRST"}: 2 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -379,9 +379,9 @@ exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}
 
 exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -560,9 +560,9 @@ exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}
 
 exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
@@ -742,9 +742,9 @@ exports[`state merged on back/next: {"type":"SECOND","state":{"baz":"bla"}} - hi
 
 exports[`state merged on back/next: {"type":"SECOND","state":{"baz":"bla"}} - response 1`] = `
 Object {
+  "basename": "",
   "hash": "",
   "location": Object {
-    "basename": "",
     "entries": Array [
       Object {
         "basename": "",
