@@ -103,6 +103,7 @@ Object {
         "url": "/first",
       },
     ],
+    "from": null,
     "hasSSR": true,
     "hash": "",
     "index": 0,
@@ -113,7 +114,6 @@ Object {
     "prev": Object {
       "basename": "",
       "entries": Array [],
-      "hasSSR": true,
       "hash": "",
       "index": -1,
       "kind": "",

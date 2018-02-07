@@ -92,6 +92,7 @@ Object {
         "url": "/first",
       },
     ],
+    "from": null,
     "index": 0,
     "kind": "load",
     "length": 1,
@@ -99,7 +100,6 @@ Object {
     "prev": Object {
       "basename": "",
       "entries": Array [],
-      "hasSSR": false,
       "hash": "",
       "index": -1,
       "kind": "",
@@ -140,6 +140,7 @@ Object {
         "url": "/first",
       },
     ],
+    "from": null,
     "hasSSR": false,
     "hash": "",
     "index": 0,
@@ -150,7 +151,6 @@ Object {
     "prev": Object {
       "basename": "",
       "entries": Array [],
-      "hasSSR": false,
       "hash": "",
       "index": -1,
       "kind": "",
