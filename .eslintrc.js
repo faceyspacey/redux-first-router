@@ -73,6 +73,7 @@ module.exports = {
     'guard-for-in': 1,
     'jsx-a11y/aria-props': 1,
     'no-await-in-loop': 1,
+    'prefer-destructuring': 1,
     'space-before-function-paren': 0,
     'guard-for-in': 0,
     'no-restricted-syntax': 0,

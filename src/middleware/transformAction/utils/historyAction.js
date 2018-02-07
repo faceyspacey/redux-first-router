@@ -2,10 +2,13 @@ import { createPrev } from '../../../core/createLocationReducer'
 import { urlToAction, isNotFound } from '../../../utils'
 import { nestAction, createNotFoundRoute } from './index'
 
-export default (req, action, prev) => {
+export default (req, action) => {
   req.route = req.routes[action.type]
 
   const { nextHistory } = req.action
+  const curr = req.getLocation()
+  let prev = curr.kind === 'init' ? curr.prev : curr
+  let from
 
   if (isNotFound(action)) {
     req.action = action
@@ -46,8 +49,12 @@ export default (req, action, prev) => {
     }
     else prev = createPrev(hasSSR)
   }
+  else if (nextHistory.kind === 'redirect') {
+    prev = curr.prev    // keep previous prev state to reflect how the end user perceives the app
+    from = { ...curr }  // but provide access to what the state was in the `from` key for user by developers
+  }
 
-  req.action = nestAction(action, prev, nextHistory)          // replace history-triggered action with real action intended for reducers
+  req.action = nestAction(action, prev, nextHistory, from)          // replace history-triggered action with real action intended for reducers
 
   return req
 }

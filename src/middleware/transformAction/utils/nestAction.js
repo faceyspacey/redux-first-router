@@ -1,10 +1,13 @@
 import { typeToScene, isNotFound } from '../../../utils'
 
-export default (action, { prev: p, ...prev }, history) => {
+export default (action, { prev: p, hasSSR, from: f, ...prev }, history, { prev: p2, hasSSR: h2, from: f2, ...fromState } = {}) => {
   const { kind, entries, index, length, location } = history
-  const { url, pathname, search, basename, state = {} } = location
+  const { pathname, search, basename: bn, url: u, state = {} } = location
   const { type, params = {}, query = {}, hash = '' } = action
+  const from = fromState.pathname ? fromState : null
   const scene = typeToScene(type)
+  const basename = bn.substr(1)
+  const url = bn + u
   const status = kind === 'redirect'
     ? ((action.location && action.location.status) || 302)
     : (isNotFound(type) ? 404 : 200)
@@ -16,16 +19,17 @@ export default (action, { prev: p, ...prev }, history) => {
     query,
     hash,
     state,
-    basename: basename.substr(1),
+    basename,
     location: {
       ...action.location,
-      url: basename + url,
+      url,
       pathname,
       search,
       scene,
       status,
 
       prev,
+      from,
 
       kind,
       entries,

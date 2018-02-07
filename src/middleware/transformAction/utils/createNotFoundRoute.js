@@ -1,7 +1,7 @@
 import { isNotFound } from '../../../utils'
 import { NOT_FOUND } from '../../../types'
 
-export default (req, prev) => {
+export default (req) => {
   const { action = {}, routes, route, prevRoute } = req
 
   // NOT_FOUND action dispatched by user
@@ -15,7 +15,7 @@ export default (req, prev) => {
 
     return {
       type,
-      url: resolvePath(route, prev, action.notFoundUrl)
+      url: resolvePath(route, action.notFoundUrl, routes)
     }
   }
 
@@ -27,9 +27,9 @@ export default (req, prev) => {
 
   return {
     type,
-    url: resolvePath(routes[type], prev, null, routes)
+    url: resolvePath(routes[type], null, routes)
   }
 }
 
-const resolvePath = (route, prev, urlOverride, routes) =>
+const resolvePath = (route, urlOverride, routes) =>
   urlOverride || route.path || routes[NOT_FOUND].path
