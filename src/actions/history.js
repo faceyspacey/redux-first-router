@@ -3,19 +3,19 @@ import { CALL_HISTORY } from '../types'
 import { actionToUrl } from '../utils'
 import { createLocation } from '../history/utils/location'
 
-export const push = (path: string, state: ?Object) => ({
+export const push = (path: string, state: ?Object, basename: ?string) => ({
   type: CALL_HISTORY,
   payload: {
     method: 'push',
-    args: [path, state]
+    args: [path, state, basename]
   }
 })
 
-export const replace = (path: string, state: ?Object) => ({
+export const replace = (path: string, state: ?Object, basename: ?string) => ({
   type: CALL_HISTORY,
   payload: {
     method: 'replace',
-    args: [path, state]
+    args: [path, state, basename]
   }
 })
 

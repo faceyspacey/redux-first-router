@@ -1,5 +1,5 @@
 import { UPDATE_HISTORY } from '../types'
-import { formatSlashes, createPath, createLocation, createKey } from './utils'
+import { formatSlashes, createPath, createLocation, createKey, findBasename, stripBasename } from './utils'
 
 export default class History {
   constructor(opts) {
@@ -33,7 +33,13 @@ export default class History {
 
   // API:
 
-  push(path, state = {}, notify = true) {
+  push(path, state = {}, basename, notify = true) {
+    const foundBasename = findBasename(path, this.basenames)
+    if (foundBasename) path = path.substr(foundBasename.length)
+
+    basename = foundBasename || basename
+    if (basename) this.setBasename(basename)
+
     const key = createKey()
     const bn = this.basename
     const location = createLocation(path, state, key, this.location, bn)
@@ -58,7 +64,13 @@ export default class History {
     return this._notify({ nextHistory, commit }, notify)
   }
 
-  replace(path, state = {}, notify = true) {
+  replace(path, state = {}, basename, notify = true) {
+    const foundBasename = findBasename(path, this.basenames)
+    if (foundBasename) path = path.substr(foundBasename.length)
+
+    basename = foundBasename || basename
+    if (basename) this.setBasename(basename)
+
     const k = createKey()
     const bn = this.basename
     const location = createLocation(path, state, k, this.location, bn)

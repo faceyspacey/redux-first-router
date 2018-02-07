@@ -6,8 +6,6 @@ export { default as isRedirect } from './isRedirect'
 export { default as isCommittedRedirect } from './isCommittedRedirect'
 export { default as isTransformed } from './isTransformed'
 
-export { default as createSelector } from './createSelector'
-
 export { default as actionToUrl } from './actionToUrl'
 export { default as urlToAction } from './urlToAction'
 
@@ -21,3 +19,7 @@ export { default as formatRoutes } from './formatRoutes'
 export { default as typeToScene } from './typeToScene'
 
 export { default as noOp } from './noOp'
+
+export { default as createSelector } from './createSelector'
+
+export { default as callRoute } from './callRoute'

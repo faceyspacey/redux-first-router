@@ -2,12 +2,10 @@ import { isRedirect, isCommittedRedirect } from '../../../utils'
 import { nestAction } from './index'
 
 export default (req, url, action, history) => {
-  if (action.basename) history.setBasename(action.basename)             // allow basenames to be changed along with any route change
-
-  const { state } = action
+  const { state, basename: bn } = action
   const redirectCommitted = isCommittedRedirect(action, req)
   const method = redirectCommitted ? 'replace' : 'push'                 // redirects before committing are just pushes (since the original route was never pushed)
-  const { nextHistory, commit } = history[method](url, state, false)    // get returned the same action as functions passed to `history.listen`
+  const { nextHistory, commit } = history[method](url, state, bn, false)// get returned the same action as functions passed to `history.listen`
   const redirect = isRedirect(action)
 
   nextHistory.kind = redirect ? 'redirect' : nextHistory.kind           // the kind no matter what relfects the appropriate intent

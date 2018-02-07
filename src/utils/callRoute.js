@@ -2,16 +2,19 @@
 import type { Action, RoutesMap } from '../flow-types'
 
 export default (routes: RoutesMap) => (
-  action: Action,
-  name: string,
+  action: Action | string,
+  key: string,
   ...args: Array<any>
 ) => {
-  const route = routes[action.type]
+  const type = typeof action === 'string' ? action : action.type
+  const route = routes[type]
   if (!route) return null
 
-  if (!name) return route
-  if (typeof route[name] !== 'function') return route[name]
-  return route[name](action, ...args)
+  if (!key) return route
+  if (typeof route[key] !== 'function') return route[key]
+
+  action = typeof action === 'object' ? action : { type }
+  return route[key](...args, action)
 }
 
 // usage:
