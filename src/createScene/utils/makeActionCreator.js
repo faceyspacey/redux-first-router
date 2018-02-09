@@ -18,7 +18,9 @@ export default (
     // optionally handle action creators that return functions (aka `thunk`)
     if (typeof arg === 'function') {
       const thunk: Function = arg
-      return (...args: Array<any>) => defaultCreator(thunk(...args, type), 'isThunk')
+      return (...args: Array<any>) => {
+        return defaultCreator(thunk(...args, type), 'isThunk')
+      }
     }
 
     // do nothing if a `thunk` returned nothing (i.e. manually used `dispatch`)

@@ -1,5 +1,54 @@
 import createTest from '../../__helpers__/createTest'
 
+createTest('anonymous thunks can be dispatched', {
+  SECOND: {
+    path: '/second',
+    beforeEnter: async ({ dispatch, getLocation }) => {
+      await dispatch(({ dispatch }) => {
+        // return { type: 'REDIRECTED' }
+        dispatch({ type: 'REDIRECTED' })
+      })
+    }
+    // onComplete({ getLocation }) {
+    //   console.log('YES2', getLocation().type)
+    // }
+  }
+})
+
+// createTest('anonymous thunks can be dispatched', {
+//   FOO: {
+//     thunk: async ({ dispatch }) => {
+//       // dispatch({ type: 'REDIRECTED' })
+
+//       await dispatch(async ({ dispatch }) => {
+//         // return { type: 'REDIRECTED' }
+//         await dispatch({ type: 'BAR' })
+//       })
+//     }
+//   },
+//   BAR: {
+//     thunk: async ({ dispatch }) => {
+//       // dispatch({ type: 'REDIRECTED' })
+
+//       await dispatch(({ dispatch }) => {
+//         // return { type: 'REDIRECTED' }
+//         return dispatch({ type: 'REDIRECTED' })
+//       })
+//     }
+//   },
+//   SECOND: {
+//     path: '/second',
+//     beforeEnter: async ({ dispatch, getLocation }) => {
+//       return { type: 'FOO' }
+//     }
+//     // onComplete({ getLocation }) {
+//     //   console.log('YES2', getLocation().type)
+//     // }
+//   }
+// }, [
+//   { type: 'SECOND' }
+// ])
+
 // createTest('anonymous thunks can be dispatched', {
 //   SECOND: {
 //     path: '/second',

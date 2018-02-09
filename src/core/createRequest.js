@@ -1,7 +1,7 @@
 // @flow
 import { UPDATE_HISTORY } from '../types'
-import { noOp } from '../utils'
-import { createDispatch } from './index'
+import { redirect } from '../actions'
+import { isRedirect, noOp } from '../utils'
 
 export default (
   action,
@@ -9,8 +9,14 @@ export default (
   tmp,
   next
 ) => {
-  const { store, routes, options, getLocation } = api
-  tmp.startAction = tmp.startAction || action // stays consistent across redirects (see core/createDispatch.js)
+  const { store, routes, options, getLocation, ctx } = api
+  const route = routes[action.type] || {}
+
+  if (!ctx.busy && isRedirect(action)) {
+    tmp.committed = true
+  }
+
+  ctx.busy = ctx.busy || !!route.path || action.type === UPDATE_HISTORY
 
   const req = {
     ...options.extra,
@@ -20,15 +26,43 @@ export default (
     initialState: store.getState(),
     initialLocation: getLocation(),
     getState: store.getState,
-    dispatch: createDispatch(() => req),
     prevRoute: routes[getLocation().type],
-    route: routes[action.type] || {},
+    route,
     commitHistory: action.type === UPDATE_HISTORY ? action.commit : noOp,
     commitDispatch: next,
     completed: false,
     error: null
   }
 
+  req.dispatch = createDispatch(req)
+
   return req
 }
 
+const createDispatch = (req) => (action) => {
+  const { routes, getLocation, store: { dispatch } } = req
+  const route = routes[action.type]
+
+  req._dispatched = true                      // tell callbacks to not automatically dispatch callback returns
+  action.tmp = req.tmp                        // keep the same `tmp` object across all redirects
+
+  if (req.ctx.busy && route && route.path) {
+    const status = action.location && action.location.status
+    action = redirect(action, status || 302)  // automatically treat dispatches to routes during pipeline as redirects
+    return req.redirect = dispatch(action)    // assign redirect action to `req.redirect` so `composePromise` can properly return the new action
+  }
+  else if (req.completed) {
+    delete action.location
+  }
+
+  const oldUrl = getLocation().url
+
+  return Promise.resolve(dispatch(action))  // dispatch transformed action
+    .then(res => {
+      if (oldUrl !== getLocation().url) {
+        req.redirect = res                  // capture redirects in nested calls to anonymousThunks + pathlessRouteThunks
+      }
+
+      return res
+    })
+}

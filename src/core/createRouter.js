@@ -64,18 +64,21 @@ export default (
   const middleware = (store: Store) => {
     const getTitle = () => selectTitleState(store.getState() || {})
     const getLocation = (s) => selectLocationState(s || store.getState() || {})
+    const ctx = { busy: false }
 
-    Object.assign(api, { store, getTitle, getLocation })
+    Object.assign(api, { store, getTitle, getLocation, ctx })
 
     const nextPromise = compose(middlewares, api, true)
     const { shouldTransition, createRequest } = options
     const onError = call('onError')(api)
-    let tmp = {}
 
     history.listen(store.dispatch)
     store.getState.rudy = api // make rudy available via `context` (see <Link />)
 
     return (next: Dispatch) => (action: Object) => {
+      const tmp = action.tmp || {}
+      delete action.tmp
+
       if (!shouldTransition(action, api)) return next(action)
 
       const req = createRequest(action, api, tmp, next)
@@ -87,8 +90,8 @@ export default (
           return onError(req)
         })
         .then(res => {
-          tmp = {}
           req.completed = true
+          req.ctx.busy = false
           return res
         })
     }

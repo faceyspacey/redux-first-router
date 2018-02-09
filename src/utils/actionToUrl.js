@@ -35,7 +35,7 @@ export default (
 const toParams = (params: ?Object, route: Route, opts: Options, action) => {
   const def = route.defaultParams || opts.defaultParams
   params = def
-    ? typeof def === 'function' ? def(params, route) : { ...def, ...params }
+    ? typeof def === 'function' ? def(params, route, opts) : { ...def, ...params }
     : params
 
   // unfortunate impurity to send defaults back to the original action as well

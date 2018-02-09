@@ -53,6 +53,8 @@ export default (api) => async (req, next) => {
   const { type, params, query, hash, state } = req.action
   Object.assign(req, { type, params, query, hash, state })
 
+  req.tmp.from = req.action // record attempted route for potential redirects
+
   await next()
   return req.action
 }

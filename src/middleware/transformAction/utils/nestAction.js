@@ -1,10 +1,10 @@
 import { typeToScene, isNotFound } from '../../../utils'
 
-export default (action, { prev: p, hasSSR, from: f, ...prev }, history, { prev: p2, hasSSR: h2, from: f2, ...fromState } = {}) => {
+export default (action, { prev: p, hasSSR, from: f, ...prev }, history, fromAction) => {
   const { kind, entries, index, length, location } = history
   const { pathname, search, basename: bn, url: u, state = {} } = location
   const { type, params = {}, query = {}, hash = '' } = action
-  const from = fromState.pathname ? fromState : null
+  const from = createFrom(fromAction)
   const scene = typeToScene(type)
   const basename = bn.substr(1)
   const url = bn + u
@@ -37,4 +37,17 @@ export default (action, { prev: p, hasSSR, from: f, ...prev }, history, { prev: 
       length
     }
   }
+}
+
+const createFrom = (fromAction) => {
+  if (!fromAction) return null
+
+  const { type, params, query, state, hash, basename, location } = fromAction
+  const from = { type, params, query, state, hash, basename, ...location }
+
+  delete from.prev
+  delete from.hassSSR
+  delete from.from
+
+  return from
 }
