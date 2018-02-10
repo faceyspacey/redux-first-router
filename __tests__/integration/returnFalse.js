@@ -16,10 +16,9 @@ let confirmModal
 createTest('beforeLeave return false and user confirms action in modal', {
   FIRST: {
     path: '/first',
-    beforeLeave: ({ dispatch, action }) => {
-      confirmModal = () => dispatch({ ...action, params: { canLeave: true } })
-
-      return !!action.params.canLeave // a real app can do anything to determine if the user can leave (e.g. check if a purchase form is complete)
+    beforeLeave: ({ confirm }) => {
+      confirmModal = confirm
+      return false
     }
   }
 }, async ({ dispatch, getState }) => {

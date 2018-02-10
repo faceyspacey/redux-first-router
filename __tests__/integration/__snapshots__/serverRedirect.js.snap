@@ -77,7 +77,6 @@ Object {
 exports[`redirect on server not dispatched; instead redirect info returned: firstRoute - /first - 1 - response 1`] = `
 Object {
   "location": Object {
-    "committed": true,
     "kind": "redirect",
     "status": 302,
     "url": "/redirected",

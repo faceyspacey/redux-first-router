@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/redirected",
+    "search": "",
+    "state": Object {},
+    "url": "/redirected",
+  },
+]
+`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - history_index 1`] = `1`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - response 1`] = `
+Object {
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
+}
+`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_A - thunk 1`] = `1`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_B - thunk 1`] = `1`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - SECOND - beforeEnter 1`] = `1`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED",
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
+}
+`;
+
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - title 1`] = `"REDIRECTED"`;

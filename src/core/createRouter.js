@@ -90,7 +90,6 @@ export default (
           return onError(req)
         })
         .then(res => {
-          req.completed = true
           req.ctx.busy = false
           return res
         })

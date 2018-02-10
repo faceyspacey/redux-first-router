@@ -42,6 +42,18 @@ export default (action, { prev: p, hasSSR, from: f, ...prev }, history, fromActi
 const createFrom = (fromAction) => {
   if (!fromAction) return null
 
+  // if redirect(action) from outside of pipeline, we receive the state instead (see ./reduxAction.js)
+  if (!fromAction.location) {
+    const from = { ...fromAction }
+
+    delete from.prev
+    delete from.hasSSR
+    delete from.from
+
+    return from
+  }
+
+  // if redirect occurred during pipeline, we receive an action representing the previous state
   const { type, params, query, state, hash, basename, location } = fromAction
   const from = { type, params, query, state, hash, basename, ...location }
 

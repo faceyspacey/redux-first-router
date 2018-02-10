@@ -1,5 +1,3162 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`cache.clear(): {"type":"FIRST"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(): {"type":"FIRST"} - history_index 1`] = `0`;
+
+exports[`cache.clear(): {"type":"FIRST"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`cache.clear(): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(): {"type":"FIRST"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`cache.clear(): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+
+exports[`cache.clear(): {"type":"SECOND"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(): {"type":"SECOND"} - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(): {"type":"SECOND"} - history_index 1`] = `1`;
+
+exports[`cache.clear(): {"type":"SECOND"} - history_index 2`] = `1`;
+
+exports[`cache.clear(): {"type":"SECOND"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(): {"type":"SECOND"} - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`cache.clear(): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`cache.clear(): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
+
+exports[`cache.clear(): {"type":"SECOND"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(): {"type":"SECOND"} - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(): {"type":"SECOND"} - title 1`] = `"SECOND"`;
+
+exports[`cache.clear(): {"type":"SECOND"} - title 2`] = `"SECOND"`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - history_index 1`] = `0`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`cache.clear(action): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - history_index 1`] = `1`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - history_index 2`] = `1`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `1`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - title 1`] = `"SECOND"`;
+
+exports[`cache.clear(action): {"type":"SECOND"} - title 2`] = `"SECOND"`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - history_index 1`] = `0`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_index 1`] = `1`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_index 2`] = `1`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `1`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - title 1`] = `"SECOND"`;
+
+exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - title 2`] = `"SECOND"`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - history_index 1`] = `0`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - history_index 2`] = `0`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - routes - SECOND - thunk 2`] = `2`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+
+exports[`cache.clear(func): {"type":"FIRST"} - title 2`] = `"FIRST"`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - history_entries 3`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - history_index 1`] = `1`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - history_index 2`] = `1`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - history_index 3`] = `1`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - response 3`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 3`] = `0`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - REDIRECTED - onComplete 3`] = `0`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - routes - SECOND - thunk 3`] = `3`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - state 3`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - title 1`] = `"SECOND"`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - title 2`] = `"SECOND"`;
+
+exports[`cache.clear(func): {"type":"SECOND"} - title 3`] = `"SECOND"`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - history_index 1`] = `0`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`cache.clear(string): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - history_index 1`] = `1`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - history_index 2`] = `1`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "back",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - title 1`] = `"SECOND"`;
+
+exports[`cache.clear(string): {"type":"SECOND"} - title 2`] = `"SECOND"`;
+
 exports[`cached thunk only called once: {"type":"FIRST"} - history_entries 1`] = `
 Array [
   Object {
@@ -554,3163 +3711,6 @@ Object {
 exports[`cached thunk only called once: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`cached thunk only called once: {"type":"SECOND"} - title 2`] = `"SECOND"`;
-
-exports[`clearCache(): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(): {"type":"FIRST"} - history_index 1`] = `0`;
-
-exports[`clearCache(): {"type":"FIRST"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/first",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "FIRST",
-}
-`;
-
-exports[`clearCache(): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(): {"type":"FIRST"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "FIRST",
-}
-`;
-
-exports[`clearCache(): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`clearCache(): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`clearCache(): {"type":"SECOND"} - history_index 2`] = `1`;
-
-exports[`clearCache(): {"type":"SECOND"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(): {"type":"SECOND"} - response 2`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`clearCache(): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`clearCache(): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
-
-exports[`clearCache(): {"type":"SECOND"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(): {"type":"SECOND"} - state 2`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(): {"type":"SECOND"} - title 1`] = `"SECOND"`;
-
-exports[`clearCache(): {"type":"SECOND"} - title 2`] = `"SECOND"`;
-
-exports[`clearCache(action): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(action): {"type":"FIRST"} - history_index 1`] = `0`;
-
-exports[`clearCache(action): {"type":"FIRST"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/first",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "FIRST",
-}
-`;
-
-exports[`clearCache(action): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(action): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(action): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(action): {"type":"FIRST"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "FIRST",
-}
-`;
-
-exports[`clearCache(action): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`clearCache(action): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(action): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(action): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`clearCache(action): {"type":"SECOND"} - history_index 2`] = `1`;
-
-exports[`clearCache(action): {"type":"SECOND"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(action): {"type":"SECOND"} - response 2`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(action): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(action): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`clearCache(action): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(action): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`clearCache(action): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(action): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `1`;
-
-exports[`clearCache(action): {"type":"SECOND"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(action): {"type":"SECOND"} - state 2`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(action): {"type":"SECOND"} - title 1`] = `"SECOND"`;
-
-exports[`clearCache(action): {"type":"SECOND"} - title 2`] = `"SECOND"`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - history_index 1`] = `0`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/first",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "FIRST",
-}
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "FIRST",
-}
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - history_index 2`] = `1`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - response 2`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `1`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - state 2`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - title 1`] = `"SECOND"`;
-
-exports[`clearCache(action, { name: "thunk" }): {"type":"SECOND"} - title 2`] = `"SECOND"`;
-
-exports[`clearCache(func): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(func): {"type":"FIRST"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(func): {"type":"FIRST"} - history_index 1`] = `0`;
-
-exports[`clearCache(func): {"type":"FIRST"} - history_index 2`] = `0`;
-
-exports[`clearCache(func): {"type":"FIRST"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/first",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "FIRST",
-}
-`;
-
-exports[`clearCache(func): {"type":"FIRST"} - response 2`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "next",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/first",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "FIRST",
-}
-`;
-
-exports[`clearCache(func): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(func): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`clearCache(func): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(func): {"type":"FIRST"} - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`clearCache(func): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(func): {"type":"FIRST"} - routes - SECOND - thunk 2`] = `2`;
-
-exports[`clearCache(func): {"type":"FIRST"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "FIRST",
-}
-`;
-
-exports[`clearCache(func): {"type":"FIRST"} - state 2`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "next",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "FIRST",
-}
-`;
-
-exports[`clearCache(func): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`clearCache(func): {"type":"FIRST"} - title 2`] = `"FIRST"`;
-
-exports[`clearCache(func): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - history_entries 3`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`clearCache(func): {"type":"SECOND"} - history_index 2`] = `1`;
-
-exports[`clearCache(func): {"type":"SECOND"} - history_index 3`] = `1`;
-
-exports[`clearCache(func): {"type":"SECOND"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - response 2`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - response 3`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 3`] = `0`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - REDIRECTED - onComplete 3`] = `0`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
-
-exports[`clearCache(func): {"type":"SECOND"} - routes - SECOND - thunk 3`] = `3`;
-
-exports[`clearCache(func): {"type":"SECOND"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - state 2`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - state 3`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(func): {"type":"SECOND"} - title 1`] = `"SECOND"`;
-
-exports[`clearCache(func): {"type":"SECOND"} - title 2`] = `"SECOND"`;
-
-exports[`clearCache(func): {"type":"SECOND"} - title 3`] = `"SECOND"`;
-
-exports[`clearCache(string): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(string): {"type":"FIRST"} - history_index 1`] = `0`;
-
-exports[`clearCache(string): {"type":"FIRST"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/first",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "FIRST",
-}
-`;
-
-exports[`clearCache(string): {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(string): {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(string): {"type":"FIRST"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(string): {"type":"FIRST"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 0,
-    "kind": "back",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 1,
-      "kind": "push",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/second",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "SECOND",
-      "url": "/second",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "FIRST",
-}
-`;
-
-exports[`clearCache(string): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`clearCache(string): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(string): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
-  },
-]
-`;
-
-exports[`clearCache(string): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`clearCache(string): {"type":"SECOND"} - history_index 2`] = `1`;
-
-exports[`clearCache(string): {"type":"SECOND"} - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(string): {"type":"SECOND"} - response 2`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`clearCache(string): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`clearCache(string): {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`clearCache(string): {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`clearCache(string): {"type":"SECOND"} - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`clearCache(string): {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
-
-exports[`clearCache(string): {"type":"SECOND"} - routes - SECOND - thunk 2`] = `2`;
-
-exports[`clearCache(string): {"type":"SECOND"} - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(string): {"type":"SECOND"} - state 2`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "next",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "state": Object {},
-          "url": "/second",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "back",
-      "length": 2,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`clearCache(string): {"type":"SECOND"} - title 1`] = `"SECOND"`;
-
-exports[`clearCache(string): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
 exports[`options.cache === false: {"type":"FIRST"} - history_entries 1`] = `
 Array [

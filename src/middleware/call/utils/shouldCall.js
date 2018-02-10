@@ -3,7 +3,7 @@ import { isHydrate, isServer } from '../../../utils'
 const regularReturn = { route: true, options: true }
 const errorReturn = { route: true, options: false }
 
-export default (name, route, req, config) => {
+export default (name, route, req) => {
   if (!route[name] && !req.options[name]) return false
 
   const state = req.getLocation()
@@ -15,6 +15,14 @@ export default (name, route, req, config) => {
   if (isHydrate(state, 'load') && name === 'thunk') return false
   if (name === 'beforeLeave' && state.kind === 'init') return false
   if (name === 'onLeave' && state.kind === 'load') return false
+
+  if (req.action.location && req.action.location.force) {
+    const { force } = req.action.location
+
+    if (force === true) return false
+    if (name === force) return false
+    if (Array.isArray(force) && force.includes(name)) return false
+  }
 
   return name === 'onError' && route.onError ? errorReturn : regularReturn
 }

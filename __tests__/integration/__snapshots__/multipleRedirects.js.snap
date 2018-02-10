@@ -303,7 +303,6 @@ Object {
     ],
     "from": Object {
       "basename": "",
-      "committed": false,
       "entries": Array [
         Object {
           "basename": "",
@@ -419,7 +418,6 @@ Object {
     ],
     "from": Object {
       "basename": "",
-      "committed": false,
       "entries": Array [
         Object {
           "basename": "",

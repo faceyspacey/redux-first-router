@@ -19,8 +19,8 @@ module.exports = wallaby => {
 
     tests: [
       // '__tests__/integration/**/*.js',
-      '__tests__/integration/pathlessRouteThunk.js',
-      // '__tests__/integration/multipleRedirects.js',
+      // '__tests__/integration/thunkCaching.js',
+      // '__tests__/integration/returnFalse.js',
       // '__tests__/integration/actions/redirect.js',
       // '__tests__/integration/queries.js',
       // '__tests__/integration/params.js',
@@ -30,6 +30,7 @@ module.exports = wallaby => {
       // '__tests__/integration/actions/history.js',
       // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/overrideOptions.js',
+      '__tests__/integration/serverRedirect.js',
       // '__tests__/integration/queries.js',
       // '__tests__/integration/params.js',
       // '__tests__/Link/NavLink.js',

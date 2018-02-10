@@ -1,0 +1,24 @@
+import createTest from '../../__helpers__/createTest'
+
+createTest('pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline', {
+  SECOND: {
+    path: '/second',
+    beforeEnter: async () => {
+      return { type: 'PATHLESS_A' }
+    }
+  },
+  PATHLESS_A: {
+    thunk: async ({ dispatch }) => {
+      await dispatch(async ({ dispatch }) => {  // anonymousThunk
+        return dispatch({ type: 'PATHLESS_B' })
+      })
+    }
+  },
+  PATHLESS_B: {
+    thunk: async () => {
+      return { type: 'REDIRECTED' } // we'll reach here successfully in one pass through the pipeline
+    }
+  }
+}, [
+  { type: 'SECOND' }
+])

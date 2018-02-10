@@ -122,6 +122,9 @@ Array [
     [Function],
   ],
   Object {
+    "ctx": Object {
+      "busy": false,
+    },
     "getLocation": [Function],
     "getTitle": [Function],
     "history": MemoryHistory {
@@ -261,7 +264,14 @@ Array [
     "type": "@@rudy/UPDATE_HISTORY",
   },
   Object {
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "ctx": Object {
+      "busy": false,
+    },
     "getLocation": [Function],
     "getTitle": [Function],
     "history": MemoryHistory {
@@ -412,7 +422,14 @@ Array [
     "type": "@@rudy/UPDATE_HISTORY",
   },
   Object {
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "ctx": Object {
+      "busy": false,
+    },
     "getLocation": [Function],
     "getTitle": [Function],
     "history": MemoryHistory {
@@ -584,10 +601,18 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -805,11 +830,10 @@ Array [
       "getState": [Function],
     },
     "tmp": Object {
-      "startAction": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
           "entries": Array [
             Object {
               "basename": "",
@@ -821,22 +845,36 @@ Array [
               "url": "/first",
             },
           ],
+          "from": null,
           "index": 0,
           "kind": "load",
           "length": 1,
-          "location": Object {
+          "pathname": "/first",
+          "prev": Object {
             "basename": "",
+            "entries": Array [],
             "hash": "",
-            "key": "345678",
-            "pathname": "/first",
+            "index": -1,
+            "kind": "",
+            "length": 0,
+            "params": Object {},
+            "pathname": "",
+            "query": Object {},
+            "scene": "",
             "search": "",
             "state": Object {},
-            "url": "/first",
+            "type": "",
+            "url": "",
           },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/first",
         },
-        "type": "@@rudy/UPDATE_HISTORY",
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
       },
     },
     "type": "FIRST",
@@ -902,10 +940,18 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -1123,11 +1169,10 @@ Array [
       "getState": [Function],
     },
     "tmp": Object {
-      "startAction": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
           "entries": Array [
             Object {
               "basename": "",
@@ -1139,22 +1184,36 @@ Array [
               "url": "/first",
             },
           ],
+          "from": null,
           "index": 0,
           "kind": "load",
           "length": 1,
-          "location": Object {
+          "pathname": "/first",
+          "prev": Object {
             "basename": "",
+            "entries": Array [],
             "hash": "",
-            "key": "345678",
-            "pathname": "/first",
+            "index": -1,
+            "kind": "",
+            "length": 0,
+            "params": Object {},
+            "pathname": "",
+            "query": Object {},
+            "scene": "",
             "search": "",
             "state": Object {},
-            "url": "/first",
+            "type": "",
+            "url": "",
           },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/first",
         },
-        "type": "@@rudy/UPDATE_HISTORY",
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
       },
     },
     "type": "FIRST",
@@ -1218,10 +1277,18 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -1459,11 +1526,10 @@ Array [
     },
     "tmp": Object {
       "committed": true,
-      "startAction": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
           "entries": Array [
             Object {
               "basename": "",
@@ -1475,22 +1541,36 @@ Array [
               "url": "/first",
             },
           ],
+          "from": null,
           "index": 0,
           "kind": "load",
           "length": 1,
-          "location": Object {
+          "pathname": "/first",
+          "prev": Object {
             "basename": "",
+            "entries": Array [],
             "hash": "",
-            "key": "345678",
-            "pathname": "/first",
+            "index": -1,
+            "kind": "",
+            "length": 0,
+            "params": Object {},
+            "pathname": "",
+            "query": Object {},
+            "scene": "",
             "search": "",
             "state": Object {},
-            "url": "/first",
+            "type": "",
+            "url": "",
           },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/first",
         },
-        "type": "@@rudy/UPDATE_HISTORY",
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
       },
     },
     "type": "FIRST",
@@ -1556,10 +1636,18 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -1797,7 +1885,149 @@ Array [
     },
     "tmp": Object {
       "committed": true,
-      "startAction": Object {
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+          ],
+          "from": null,
+          "index": 0,
+          "kind": "load",
+          "length": 1,
+          "pathname": "/first",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [],
+            "hash": "",
+            "index": -1,
+            "kind": "",
+            "length": 0,
+            "params": Object {},
+            "pathname": "",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "type": "",
+            "url": "",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    },
+    "type": "FIRST",
+  },
+  Object {},
+]
+`;
+
+exports[`core capabilities can be overriden as options 10`] = `
+Array [
+  "thunk",
+  Object {
+    "path": "/first",
+    "type": "FIRST",
+  },
+  Object {
+    "action": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+        ],
+        "from": null,
+        "index": 0,
+        "kind": "load",
+        "length": 1,
+        "pathname": "/first",
+        "prev": Object {
+          "basename": "",
+          "entries": Array [],
+          "hash": "",
+          "index": -1,
+          "kind": "",
+          "length": 0,
+          "params": Object {},
+          "pathname": "",
+          "query": Object {},
+          "scene": "",
+          "search": "",
+          "state": Object {},
+          "type": "",
+          "url": "",
+        },
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/first",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "arg": "extra-arg",
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "commitDispatch": [Function],
+    "commitHistory": [Function],
+    "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
+    "dispatch": [Function],
+    "error": null,
+    "getLocation": [Function],
+    "getState": [Function],
+    "getTitle": [Function],
+    "hash": "",
+    "history": MemoryHistory {
+      "_forceRefresh": false,
+      "_listener": [Function],
+      "basename": "",
+      "basenames": Array [],
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "firstRoute": Object {
         "commit": [Function],
         "nextHistory": Object {
           "basename": "",
@@ -1830,14 +2060,244 @@ Array [
         },
         "type": "@@rudy/UPDATE_HISTORY",
       },
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "location": Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      "saveHistory": [Function],
+    },
+    "initialLocation": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hasSSR": false,
+      "hash": "",
+      "index": 0,
+      "kind": "init",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "prev": Object {
+        "basename": "",
+        "entries": Array [],
+        "hasSSR": false,
+        "hash": "",
+        "index": -1,
+        "kind": "",
+        "length": 0,
+        "params": Object {},
+        "pathname": "",
+        "query": Object {},
+        "scene": "",
+        "search": "",
+        "state": Object {},
+        "type": "",
+        "url": "",
+      },
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "initialState": Object {
+      "location": Object {
+        "basename": "",
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+        ],
+        "hasSSR": false,
+        "hash": "",
+        "index": 0,
+        "kind": "init",
+        "length": 1,
+        "params": Object {},
+        "pathname": "/first",
+        "prev": Object {
+          "basename": "",
+          "entries": Array [],
+          "hasSSR": false,
+          "hash": "",
+          "index": -1,
+          "kind": "",
+          "length": 0,
+          "params": Object {},
+          "pathname": "",
+          "query": Object {},
+          "scene": "",
+          "search": "",
+          "state": Object {},
+          "type": "",
+          "url": "",
+        },
+        "query": Object {},
+        "scene": "",
+        "search": "",
+        "state": Object {},
+        "type": "FIRST",
+        "url": "/first",
+      },
+      "title": "@@redux/INIT",
+    },
+    "options": Object {
+      "callbacks": Array [
+        "thunk",
+        "onComplete",
+        "beforeLeave",
+        "beforeEnter",
+        "onLeave",
+        "onEnter",
+        "thunk",
+        "onComplete",
+        "onError",
+      ],
+      "compose": [Function],
+      "createHistory": [Function],
+      "createReducer": [Function],
+      "createRequest": [Function],
+      "extra": Object {
+        "arg": "extra-arg",
+      },
+      "initialEntries": Array [
+        "/first",
+      ],
+      "location": "location",
+      "onError": [Function],
+      "shouldCall": [Function],
+      "shouldTransition": [Function],
+      "title": [Function],
+    },
+    "params": Object {},
+    "prevRoute": Object {
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "query": Object {},
+    "route": Object {
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/NOT_FOUND": Object {
+        "path": "/not-found",
+        "type": "@@rudy/NOT_FOUND",
+      },
+      "FIRST": Object {
+        "path": "/first",
+        "type": "FIRST",
+      },
+      "NEVER_USED_PATHLESS": Object {
+        "thunk": [MockFunction],
+        "type": "NEVER_USED_PATHLESS",
+      },
+      "REDIRECTED": Object {
+        "onComplete": [MockFunction],
+        "path": "/redirected",
+        "type": "REDIRECTED",
+      },
+      "SECOND": Object {
+        "path": "/second",
+        "thunk": [MockFunction],
+        "type": "SECOND",
+      },
+    },
+    "state": Object {},
+    "store": Object {
+      "dispatch": [Function],
+      "getState": [Function],
+    },
+    "tmp": Object {
+      "committed": true,
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+          ],
+          "from": null,
+          "index": 0,
+          "kind": "load",
+          "length": 1,
+          "pathname": "/first",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [],
+            "hash": "",
+            "index": -1,
+            "kind": "",
+            "length": 0,
+            "params": Object {},
+            "pathname": "",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "type": "",
+            "url": "",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
     },
     "type": "FIRST",
   },
-  Object {},
+  Object {
+    "cache": true,
+  },
 ]
 `;
 
-exports[`core capabilities can be overriden as options 10`] = `
+exports[`core capabilities can be overriden as options 11`] = `
 Array [
   "onComplete",
   Object {
@@ -1892,10 +2352,18 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -2133,11 +2601,10 @@ Array [
     },
     "tmp": Object {
       "committed": true,
-      "startAction": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
           "entries": Array [
             Object {
               "basename": "",
@@ -2149,22 +2616,36 @@ Array [
               "url": "/first",
             },
           ],
+          "from": null,
           "index": 0,
           "kind": "load",
           "length": 1,
-          "location": Object {
+          "pathname": "/first",
+          "prev": Object {
             "basename": "",
+            "entries": Array [],
             "hash": "",
-            "key": "345678",
-            "pathname": "/first",
+            "index": -1,
+            "kind": "",
+            "length": 0,
+            "params": Object {},
+            "pathname": "",
+            "query": Object {},
+            "scene": "",
             "search": "",
             "state": Object {},
-            "url": "/first",
+            "type": "",
+            "url": "",
           },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/first",
         },
-        "type": "@@rudy/UPDATE_HISTORY",
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
       },
     },
     "type": "FIRST",
@@ -2173,13 +2654,20 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 11`] = `
+exports[`core capabilities can be overriden as options 12`] = `
 Array [
   Object {
     "type": "SECOND",
   },
   Object {
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "ctx": Object {
+      "busy": false,
+    },
     "getLocation": [Function],
     "getTitle": [Function],
     "history": MemoryHistory {
@@ -2313,13 +2801,20 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 12`] = `
+exports[`core capabilities can be overriden as options 13`] = `
 Array [
   Object {
     "type": "SECOND",
   },
   Object {
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "ctx": Object {
+      "busy": false,
+    },
     "getLocation": [Function],
     "getTitle": [Function],
     "history": MemoryHistory {
@@ -2455,7 +2950,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 13`] = `
+exports[`core capabilities can be overriden as options 14`] = `
 Array [
   "beforeLeave",
   Object {
@@ -2530,10 +3025,18 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -2773,7 +3276,70 @@ Array [
       "getState": [Function],
     },
     "tmp": Object {
-      "startAction": Object {
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/second",
+              "search": "",
+              "state": Object {},
+              "url": "/second",
+            },
+          ],
+          "from": null,
+          "index": 1,
+          "kind": "push",
+          "length": 2,
+          "pathname": "/second",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [
+              Object {
+                "basename": "",
+                "hash": "",
+                "key": "345678",
+                "pathname": "/first",
+                "search": "",
+                "state": Object {},
+                "url": "/first",
+              },
+            ],
+            "hash": "",
+            "index": 0,
+            "kind": "load",
+            "length": 1,
+            "params": Object {},
+            "pathname": "/first",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "status": 200,
+            "type": "FIRST",
+            "url": "/first",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
         "type": "SECOND",
       },
     },
@@ -2785,7 +3351,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 14`] = `
+exports[`core capabilities can be overriden as options 15`] = `
 Array [
   "beforeEnter",
   Object {
@@ -2861,10 +3427,18 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -3104,7 +3678,70 @@ Array [
       "getState": [Function],
     },
     "tmp": Object {
-      "startAction": Object {
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/second",
+              "search": "",
+              "state": Object {},
+              "url": "/second",
+            },
+          ],
+          "from": null,
+          "index": 1,
+          "kind": "push",
+          "length": 2,
+          "pathname": "/second",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [
+              Object {
+                "basename": "",
+                "hash": "",
+                "key": "345678",
+                "pathname": "/first",
+                "search": "",
+                "state": Object {},
+                "url": "/first",
+              },
+            ],
+            "hash": "",
+            "index": 0,
+            "kind": "load",
+            "length": 1,
+            "params": Object {},
+            "pathname": "/first",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "status": 200,
+            "type": "FIRST",
+            "url": "/first",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
         "type": "SECOND",
       },
     },
@@ -3114,7 +3751,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 15`] = `
+exports[`core capabilities can be overriden as options 16`] = `
 Array [
   "onLeave",
   Object {
@@ -3189,10 +3826,18 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -3442,7 +4087,70 @@ Array [
     },
     "tmp": Object {
       "committed": true,
-      "startAction": Object {
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/second",
+              "search": "",
+              "state": Object {},
+              "url": "/second",
+            },
+          ],
+          "from": null,
+          "index": 1,
+          "kind": "push",
+          "length": 2,
+          "pathname": "/second",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [
+              Object {
+                "basename": "",
+                "hash": "",
+                "key": "345678",
+                "pathname": "/first",
+                "search": "",
+                "state": Object {},
+                "url": "/first",
+              },
+            ],
+            "hash": "",
+            "index": 0,
+            "kind": "load",
+            "length": 1,
+            "params": Object {},
+            "pathname": "/first",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "status": 200,
+            "type": "FIRST",
+            "url": "/first",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
         "type": "SECOND",
       },
     },
@@ -3454,7 +4162,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 16`] = `
+exports[`core capabilities can be overriden as options 17`] = `
 Array [
   "onEnter",
   Object {
@@ -3530,10 +4238,18 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -3783,7 +4499,70 @@ Array [
     },
     "tmp": Object {
       "committed": true,
-      "startAction": Object {
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/second",
+              "search": "",
+              "state": Object {},
+              "url": "/second",
+            },
+          ],
+          "from": null,
+          "index": 1,
+          "kind": "push",
+          "length": 2,
+          "pathname": "/second",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [
+              Object {
+                "basename": "",
+                "hash": "",
+                "key": "345678",
+                "pathname": "/first",
+                "search": "",
+                "state": Object {},
+                "url": "/first",
+              },
+            ],
+            "hash": "",
+            "index": 0,
+            "kind": "load",
+            "length": 1,
+            "params": Object {},
+            "pathname": "/first",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "status": 200,
+            "type": "FIRST",
+            "url": "/first",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
         "type": "SECOND",
       },
     },
@@ -3793,7 +4572,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 17`] = `
+exports[`core capabilities can be overriden as options 18`] = `
 Array [
   "thunk",
   Object {
@@ -3869,10 +4648,18 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -4122,7 +4909,70 @@ Array [
     },
     "tmp": Object {
       "committed": true,
-      "startAction": Object {
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/second",
+              "search": "",
+              "state": Object {},
+              "url": "/second",
+            },
+          ],
+          "from": null,
+          "index": 1,
+          "kind": "push",
+          "length": 2,
+          "pathname": "/second",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [
+              Object {
+                "basename": "",
+                "hash": "",
+                "key": "345678",
+                "pathname": "/first",
+                "search": "",
+                "state": Object {},
+                "url": "/first",
+              },
+            ],
+            "hash": "",
+            "index": 0,
+            "kind": "load",
+            "length": 1,
+            "params": Object {},
+            "pathname": "/first",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "status": 200,
+            "type": "FIRST",
+            "url": "/first",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
         "type": "SECOND",
       },
     },
@@ -4134,7 +4984,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 18`] = `
+exports[`core capabilities can be overriden as options 19`] = `
 Array [
   "onComplete",
   Object {
@@ -4211,10 +5061,18 @@ Array [
               "type": "SECOND",
             },
             "arg": "extra-arg",
-            "clearCache": [Function],
+            "cache": Object {
+              "cacheAction": [Function],
+              "clear": [Function],
+              "isCached": [Function],
+            },
             "commitDispatch": [Function],
             "commitHistory": [Function],
             "completed": false,
+            "confirm": [Function],
+            "ctx": Object {
+              "busy": true,
+            },
             "dispatch": [Function],
             "error": null,
             "getLocation": [Function],
@@ -4456,7 +5314,70 @@ Array [
             },
             "tmp": Object {
               "committed": true,
-              "startAction": Object {
+              "from": Object {
+                "basename": "",
+                "hash": "",
+                "location": Object {
+                  "entries": Array [
+                    Object {
+                      "basename": "",
+                      "hash": "",
+                      "key": "345678",
+                      "pathname": "/first",
+                      "search": "",
+                      "state": Object {},
+                      "url": "/first",
+                    },
+                    Object {
+                      "basename": "",
+                      "hash": "",
+                      "key": "345678",
+                      "pathname": "/second",
+                      "search": "",
+                      "state": Object {},
+                      "url": "/second",
+                    },
+                  ],
+                  "from": null,
+                  "index": 1,
+                  "kind": "push",
+                  "length": 2,
+                  "pathname": "/second",
+                  "prev": Object {
+                    "basename": "",
+                    "entries": Array [
+                      Object {
+                        "basename": "",
+                        "hash": "",
+                        "key": "345678",
+                        "pathname": "/first",
+                        "search": "",
+                        "state": Object {},
+                        "url": "/first",
+                      },
+                    ],
+                    "hash": "",
+                    "index": 0,
+                    "kind": "load",
+                    "length": 1,
+                    "params": Object {},
+                    "pathname": "/first",
+                    "query": Object {},
+                    "scene": "",
+                    "search": "",
+                    "state": Object {},
+                    "status": 200,
+                    "type": "FIRST",
+                    "url": "/first",
+                  },
+                  "scene": "",
+                  "search": "",
+                  "status": 200,
+                  "url": "/second",
+                },
+                "params": Object {},
+                "query": Object {},
+                "state": Object {},
                 "type": "SECOND",
               },
             },
@@ -4536,10 +5457,18 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
-    "clearCache": [Function],
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
     "commitDispatch": [Function],
     "commitHistory": [Function],
     "completed": false,
+    "confirm": [Function],
+    "ctx": Object {
+      "busy": true,
+    },
     "dispatch": [Function],
     "error": null,
     "getLocation": [Function],
@@ -4801,7 +5730,70 @@ Array [
     },
     "tmp": Object {
       "committed": true,
-      "startAction": Object {
+      "from": Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/second",
+              "search": "",
+              "state": Object {},
+              "url": "/second",
+            },
+          ],
+          "from": null,
+          "index": 1,
+          "kind": "push",
+          "length": 2,
+          "pathname": "/second",
+          "prev": Object {
+            "basename": "",
+            "entries": Array [
+              Object {
+                "basename": "",
+                "hash": "",
+                "key": "345678",
+                "pathname": "/first",
+                "search": "",
+                "state": Object {},
+                "url": "/first",
+              },
+            ],
+            "hash": "",
+            "index": 0,
+            "kind": "load",
+            "length": 1,
+            "params": Object {},
+            "pathname": "/first",
+            "query": Object {},
+            "scene": "",
+            "search": "",
+            "state": Object {},
+            "status": 200,
+            "type": "FIRST",
+            "url": "/first",
+          },
+          "scene": "",
+          "search": "",
+          "status": 200,
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
         "type": "SECOND",
       },
     },

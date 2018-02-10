@@ -27,7 +27,7 @@ createTest('options.createCacheKey', {
   await snap({ type: 'SECOND' })
 })
 
-createTest('clearCache()', {
+createTest('cache.clear()', {
   SECOND: {
     path: '/second',
     thunk: function() {}
@@ -36,14 +36,14 @@ createTest('clearCache()', {
   await snap({ type: 'SECOND' })
   await snap({ type: 'FIRST' })
 
-  await dispatch(({ clearCache }) => {
-    clearCache()
+  await dispatch(({ cache }) => {
+    cache.clear()
   })
 
   await snap({ type: 'SECOND' })
 })
 
-createTest('clearCache(string)', {
+createTest('cache.clear(string)', {
   SECOND: {
     path: '/second',
     thunk: function() {}
@@ -52,14 +52,14 @@ createTest('clearCache(string)', {
   await snap({ type: 'SECOND' })
   await snap({ type: 'FIRST' })
 
-  await dispatch(({ clearCache }) => {
-    clearCache('SECOND')
+  await dispatch(({ cache }) => {
+    cache.clear('SECOND')
   })
 
   await snap({ type: 'SECOND' })
 })
 
-createTest('clearCache(action)', {
+createTest('cache.clear(action)', {
   SECOND: {
     path: '/second',
     thunk: function() {}
@@ -68,14 +68,14 @@ createTest('clearCache(action)', {
   await snap({ type: 'SECOND' })
   await snap({ type: 'FIRST' })
 
-  await dispatch(({ clearCache }) => {
-    clearCache({ type: 'SECOND' })
+  await dispatch(({ cache }) => {
+    cache.clear({ type: 'SECOND' })
   })
 
   await snap({ type: 'SECOND' })
 })
 
-createTest('clearCache(action, { name: "thunk" })', {
+createTest('cache.clear(action, { name: "thunk" })', {
   SECOND: {
     path: '/second',
     thunk: function() {}
@@ -84,14 +84,14 @@ createTest('clearCache(action, { name: "thunk" })', {
   await snap({ type: 'SECOND' })
   await snap({ type: 'FIRST' })
 
-  await dispatch(({ clearCache }) => {
-    clearCache({ type: 'SECOND' }, { name: 'thunk' })
+  await dispatch(({ cache }) => {
+    cache.clear({ type: 'SECOND' }, { name: 'thunk' })
   })
 
   await snap({ type: 'SECOND' })
 })
 
-createTest('clearCache(func)', {
+createTest('cache.clear(func)', {
   SECOND: {
     path: '/second',
     thunk: function() {}
@@ -100,16 +100,16 @@ createTest('clearCache(func)', {
   await snap({ type: 'SECOND' })
   await snap({ type: 'FIRST' })
 
-  await dispatch(({ clearCache }) => {
-    clearCache((cache, api, opts) => {
+  await dispatch(({ cache }) => {
+    cache.clear((cache, api, opts) => {
       return {}
     })
   })
 
   await snap({ type: 'SECOND' })
 
-  await dispatch(({ clearCache }) => {
-    clearCache((cache, api, opts) => {
+  await dispatch(({ cache }) => {
+    cache.clear((cache, api, opts) => {
       for (const key in cache) delete cache[key]
     })
   })

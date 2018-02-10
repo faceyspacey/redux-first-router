@@ -9,25 +9,21 @@ const defaultCreateCacheKey = (action, name) => {
 
 const callbacks = []
 
-export default (api, name) => {
-  callbacks.push(name)
-  if (api.clearCache) return api.clearCache
-
-  const { shouldCall, createCacheKey = defaultCreateCacheKey } = api.options
-  let cache = {}
-
-  api.options.shouldCall = (name, route, req, config) => {
-    if (isCached(name, route, req, config)) return false
-    return shouldCall(name, route, req, config)
+export default (api, name, config) => {
+  if (config.prev) {
+    throw new Error(`[rudy] call('${name}') middleware 'cache' option cannot be used with 'prev' option`)
   }
 
-  const isCached = (name, route, req, config) => {
-    if (!config.cache || isServer()) return false
+  callbacks.push(name)
+  if (api.cache) return api.cache
+
+  const { createCacheKey = defaultCreateCacheKey } = api.options
+  let cache = {}
+
+  const isCached = (name, route, req) => {
+    if (isServer()) return false
 
     const { options, action } = req
-    const noCallback = !req.route[name] && !options[name]
-
-    if (noCallback) return true
 
     if (!route.path || route.cache === false) return false
     if (options.cache === false && route.cache === undefined) return false
@@ -35,12 +31,16 @@ export default (api, name) => {
     const key = createCacheKey(action, name)
 
     if (cache[key]) return true
-    cache[key] = true
 
     return false
   }
 
-  const clearCache = (action, opts = {}) => {
+  const cacheAction = (name, action) => {
+    const key = createCacheKey(action, name)
+    cache[key] = true
+  }
+
+  const clear = (action, opts = {}) => {
     if (!action) {
       cache = {}
     }
@@ -65,5 +65,5 @@ export default (api, name) => {
     }
   }
 
-  return clearCache
+  return { isCached, cacheAction, clear }
 }

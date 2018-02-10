@@ -161,15 +161,14 @@ Object {
         "url": "/redirected",
       },
     ],
+    "force": "beforeLeave",
     "from": null,
     "hasSSR": false,
     "hash": "",
     "index": 1,
     "kind": "push",
     "length": 2,
-    "params": Object {
-      "canLeave": true,
-    },
+    "params": Object {},
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",

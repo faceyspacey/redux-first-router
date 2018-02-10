@@ -2,26 +2,29 @@ import { enhanceRoutes, shouldCall, createCache } from './utils'
 import { noOp, isAction } from '../../utils'
 
 export default (name, config = {}) => (api) => {
-  const { cache, prev, skipOpts = false } = config
+  const { cache = false, prev = false, skipOpts = false } = config
 
   enhanceRoutes(name, api.routes)
+
   api.options.callbacks = api.options.callbacks || []
   api.options.callbacks.push(name)
-
   api.options.shouldCall = api.options.shouldCall || shouldCall
 
   if (cache) {
-    api.clearCache = createCache(api, name)
+    api.cache = createCache(api, name, config)
   }
 
   return (req, next = noOp) => {
     const route = prev ? req.prevRoute : req.route
-    const execute = req.options.shouldCall(name, route, req, config)
 
-    if (!execute) return next()
+    const isCached = cache && api.cache.isCached(name, route, req)
+    if (isCached) return next()
 
-    const r = (execute.route && route[name]) || noOp
-    const o = (execute.options && !skipOpts && req.options[name]) || noOp
+    const calls = req.options.shouldCall(name, route, req, config)
+    if (!calls || isCached) return next()
+
+    const r = (calls.route && route[name]) || noOp
+    const o = (calls.options && !skipOpts && req.options[name]) || noOp
 
     req._dispatched = false // `dispatch` used by callbacks will set this to `true` (see core/createDispatch.js)
 
@@ -34,8 +37,14 @@ export default (name, config = {}) => (api) => {
         action.type = action.type || `${req.action.type}_COMPLETE`
 
         return Promise.resolve(req.dispatch(action))
+          .then((res) => {
+            if (cache) api.cache.cacheAction(name, req.action)
+            return res
+          })
           .then(complete(next))
       }
+
+      if (cache) api.cache.cacheAction(name, req.action)
 
       return complete(next)(res)
     })
