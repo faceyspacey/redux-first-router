@@ -250,6 +250,9 @@ Array [
     "@@rudy/CALL_HISTORY": Object {
       "thunk": [Function],
     },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "thunk": [Function],
+    },
     "@@rudy/NOT_FOUND": Object {},
     "FIRST": Object {
       "foo": "/first",
@@ -277,6 +280,9 @@ Array [
       "thunk": [Function],
     },
     "@@rudy/CALL_HISTORY": Object {
+      "thunk": [Function],
+    },
+    "@@rudy/CHANGE_BASENAME": Object {
       "thunk": [Function],
     },
     "@@rudy/NOT_FOUND": Object {},
@@ -311,6 +317,9 @@ Array [
     "@@rudy/CALL_HISTORY": Object {
       "thunk": [Function],
     },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "thunk": [Function],
+    },
     "@@rudy/NOT_FOUND": Object {},
     "FIRST": Object {
       "foo": "/first",
@@ -340,6 +349,9 @@ Array [
       "thunk": [Function],
     },
     "@@rudy/CALL_HISTORY": Object {
+      "thunk": [Function],
+    },
+    "@@rudy/CHANGE_BASENAME": Object {
       "thunk": [Function],
     },
     "@@rudy/NOT_FOUND": Object {},
@@ -376,6 +388,9 @@ Array [
     "@@rudy/CALL_HISTORY": Object {
       "thunk": [Function],
     },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "thunk": [Function],
+    },
     "@@rudy/NOT_FOUND": Object {
       "path": undefined,
       "type": "@@rudy/NOT_FOUND",
@@ -405,6 +420,48 @@ Array [
   Object {
     "thunk": [Function],
   },
+  "@@rudy/CHANGE_BASENAME",
+  Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "path": undefined,
+      "thunk": [Function],
+      "type": "@@rudy/ADD_ROUTES",
+    },
+    "@@rudy/CALL_HISTORY": Object {
+      "thunk": [Function],
+    },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "thunk": [Function],
+    },
+    "@@rudy/NOT_FOUND": Object {
+      "path": undefined,
+      "type": "@@rudy/NOT_FOUND",
+    },
+    "FIRST": Object {
+      "foo": "/first",
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "NEVER_USED_PATHLESS": Object {
+      "path": undefined,
+      "thunk": [MockFunction],
+      "type": "NEVER_USED_PATHLESS",
+    },
+    "REDIRECTED": Object {
+      "onComplete": [MockFunction],
+      "path": undefined,
+      "type": "REDIRECTED",
+    },
+  },
+  false,
+]
+`;
+
+exports[`options.formatRoute 7`] = `
+Array [
+  Object {
+    "thunk": [Function],
+  },
   "@@rudy/CALL_HISTORY",
   Object {
     "@@rudy/ADD_ROUTES": Object {
@@ -414,6 +471,11 @@ Array [
     },
     "@@rudy/CALL_HISTORY": Object {
       "thunk": [Function],
+    },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "path": undefined,
+      "thunk": [Function],
+      "type": "@@rudy/CHANGE_BASENAME",
     },
     "@@rudy/NOT_FOUND": Object {
       "path": undefined,

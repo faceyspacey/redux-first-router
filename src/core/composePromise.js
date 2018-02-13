@@ -1,4 +1,4 @@
-export default (middlewares, curryArg, handleRedirects = false) => {
+export default (middlewares, curryArg, killOnRedirect = false) => {
   const pipeline = curryArg
     ? middlewares.map(middleware => middleware(curryArg))
     : middlewares
@@ -9,9 +9,13 @@ export default (middlewares, curryArg, handleRedirects = false) => {
 
     return dispatch(0)
 
-    function dispatch(i) {
-      if (req.redirect && handleRedirects) {
+    function dispatch(i, ...args) {
+      if (req.redirect && killOnRedirect) {
         return Promise.resolve(req.redirect)
+      }
+
+      if (req.cancelled) {
+        return Promise.resolve(result)
       }
 
       if (i <= index) {
@@ -24,12 +28,16 @@ export default (middlewares, curryArg, handleRedirects = false) => {
       if (!fn) return Promise.resolve()
 
       try {
-        const next = () => Promise.resolve(dispatch(i + 1))
-        const prom = Promise.resolve(fn(req, next)) // insure middleware is a promise
+        const next = (...args) => Promise.resolve(dispatch(i + 1, ...args))
+        const prom = Promise.resolve(fn(req, next, ...args)) // insure middleware is a promise
 
         return prom.then(res => {
-          if (req.redirect && handleRedirects) {
+          if (req.redirect && killOnRedirect) {
             return req.redirect
+          }
+
+          if (req.ctx.cancelled) {
+            return result
           }
 
           if (isFalse(res, result)) {

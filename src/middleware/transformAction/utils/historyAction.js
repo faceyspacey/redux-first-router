@@ -31,10 +31,10 @@ export default (req, action) => {
       // build the action for that entry, and create what the resulting state shape would have looked like
       const { routes, history, options } = req
       const prevAction = urlToAction(prevLocation, routes, options)
-      const state = nestAction(prevAction, {}, history)
+      const act = nestAction(prevAction, {}, history)
 
       // do what the location reducer does where it maps `...action.location` flatly on to `action`
-      prev = Object.assign(state, state.location)
+      prev = Object.assign({}, act, act.location)
 
       prev.entries = action.info === 'reset' ? entries : history.entries // on reset, use next history's entries for previous state, or the entries may not match
       prev.length = length
@@ -42,10 +42,9 @@ export default (req, action) => {
       prev.index = prevIndex
       prev.url = prevLocation.url
       prev.basename = prevLocation.basename
+      // prev.search = prevLocation.search
+      // prev.pathname = prevLocation.pathname
       prev.state = prevLocation.state || {}
-
-      delete prev.location
-      delete prev.prev
     }
     else prev = createPrev(hasSSR)
   }

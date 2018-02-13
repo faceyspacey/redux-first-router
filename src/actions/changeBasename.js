@@ -1,13 +1,16 @@
 // @flow
 import type { Action } from '../flow-types'
+import { CHANGE_BASENAME } from '../types'
 
 export default (basename: string, action: ?Action) => {
   if (!action) {
-    return ({ initialLocation }) => {
-      const { type, params, query, state, hash } = initialLocation
-      return { type, params, query, state, hash, basename }
+    return {
+      type: CHANGE_BASENAME,
+      payload: { basename }
     }
   }
 
   return { ...action, basename }
 }
+
+// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRouteThunks

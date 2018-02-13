@@ -1,5 +1,4 @@
 import { call } from './index'
-import composePromise from '../core/composePromise'
 
 export default (api) => {
   const middlewares = [
@@ -7,7 +6,13 @@ export default (api) => {
     call('onComplete', { skipOpts: true })
   ]
 
-  const pipelineBranch = composePromise(middlewares, api)
+  const pipelineBranch = api.options.compose(middlewares, api)
+
+  // Registering is currently only used when core features (like the
+  // `addRoutes` action creator) depend on the middleware being available.
+  // See `utils/formatRoutes.js` for how `hasMiddleware` is used to throw
+  // errors when not available.
+  api.registerMiddleware('pathlessRouteThunk')
 
   return (req, next) => {
     if (req.route && !req.route.path && typeof req.route.thunk === 'function') {

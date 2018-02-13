@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - history_index 1`] = `1`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: 1 - title 1`] = `"SECOND"`;
+
+exports[`middleware argument can be a function that is responsible for the work of composePromise: compose 1`] = `
+Object {
+  "ctx": Object {
+    "busy": false,
+  },
+  "getLocation": [Function],
+  "getTitle": [Function],
+  "hasMiddleware": [Function],
+  "history": MemoryHistory {
+    "_forceRefresh": false,
+    "basename": "",
+    "basenames": Array [],
+    "entries": Array [],
+    "firstRoute": Object {
+      "commit": [Function],
+      "nextHistory": Object {
+        "basename": "",
+        "basenames": Array [],
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+        ],
+        "index": 0,
+        "kind": "load",
+        "length": 1,
+        "location": Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        "saveHistory": [Function],
+        "type": "@@rudy/UPDATE_HISTORY",
+      },
+      "type": "@@rudy/UPDATE_HISTORY",
+    },
+    "index": -1,
+    "length": 0,
+    "location": null,
+    "saveHistory": [Function],
+  },
+  "options": Object {
+    "compose": [Function],
+    "createRequest": [Function],
+    "extra": Object {
+      "arg": "extra-arg",
+    },
+    "initialEntries": Array [
+      "/first",
+    ],
+    "onError": [Function],
+    "shouldTransition": [Function],
+  },
+  "registerMiddleware": [Function],
+  "routes": Object {
+    "@@rudy/ADD_ROUTES": Object {
+      "thunk": [Function],
+      "type": "@@rudy/ADD_ROUTES",
+    },
+    "@@rudy/CALL_HISTORY": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CALL_HISTORY",
+    },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CHANGE_BASENAME",
+    },
+    "@@rudy/NOT_FOUND": Object {
+      "path": "/not-found",
+      "type": "@@rudy/NOT_FOUND",
+    },
+    "FIRST": Object {
+      "path": "/first",
+      "type": "FIRST",
+    },
+    "NEVER_USED_PATHLESS": Object {
+      "thunk": [MockFunction],
+      "type": "NEVER_USED_PATHLESS",
+    },
+    "REDIRECTED": Object {
+      "onComplete": [MockFunction],
+      "path": "/redirected",
+      "type": "REDIRECTED",
+    },
+    "SECOND": Object {
+      "path": "/second",
+      "thunk": [MockFunction],
+      "type": "SECOND",
+    },
+  },
+  "store": Object {
+    "dispatch": [Function],
+    "getState": [Function],
+  },
+}
+`;

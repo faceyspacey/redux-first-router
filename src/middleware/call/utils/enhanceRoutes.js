@@ -1,17 +1,15 @@
-import composePromise from '../../../core/composePromise'
-
-export default (name, routes) => {
+export default (name, routes, options) => {
   for (const type in routes) {
     const route = routes[type]
     const cb = route[name]
-    const callback = findCallback(name, routes, cb, route)
+    const callback = findCallback(name, routes, cb, route, options)
     if (callback) route[name] = callback
   }
 
   return routes
 }
 
-const findCallback = (name, routes, callback, route) => {
+const findCallback = (name, routes, callback, route, options) => {
   if (typeof callback === 'function') {
     return callback
   }
@@ -24,7 +22,7 @@ const findCallback = (name, routes, callback, route) => {
       return prom.then(complete(next))
     })
 
-    return composePromise(pipeline, null, true)
+    return options.compose(pipeline, null, true)
   }
   else if (typeof callback === 'string') {
     const type = callback

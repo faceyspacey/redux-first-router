@@ -19,7 +19,7 @@ export default (
     if (typeof arg === 'function') {
       const thunk: Function = arg
       return (...args: Array<any>) => {
-        return defaultCreator(thunk(...args, type), 'isThunk')
+        return defaultCreator(thunk(...args), 'isThunk')
       }
     }
 
@@ -51,7 +51,7 @@ export default (
 
   // optionally allow custom action creators
   if (ac) {
-    return (...args: Array<any>) => defaultCreator(ac(...args, type))
+    return (...args: Array<any>) => defaultCreator(ac(...args))
   }
 
   // primary use case: generate an action creator (will only trigger last lines of `defaultCreator`)

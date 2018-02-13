@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`routes can specify route.middleware array to override global middleware: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`routes can specify route.middleware array to override global middleware: 1 - history_index 1`] = `1`;
+
+exports[`routes can specify route.middleware array to override global middleware: 1 - response 1`] = `"foo"`;
+
+exports[`routes can specify route.middleware array to override global middleware: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`routes can specify route.middleware array to override global middleware: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`routes can specify route.middleware array to override global middleware: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND_COMPLETE - \\"SUCCESS!\\"",
+}
+`;
+
+exports[`routes can specify route.middleware array to override global middleware: 1 - title 1`] = `"SECOND"`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/redirected",
+    "search": "",
+    "state": Object {},
+    "url": "/redirected",
+  },
+]
+`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - history_index 1`] = `1`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - response 1`] = `"foo"`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED",
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED",
+}
+`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - title 1`] = `"REDIRECTED"`;

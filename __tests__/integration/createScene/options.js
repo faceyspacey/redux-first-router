@@ -10,15 +10,15 @@ const routesMap = {
   },
   THIRD: {
     path: '/third',
-    action: (arg) => (req, type) => {
-      return { params: { foo: arg }, type }
+    action: (arg) => (req) => {
+      return { params: { foo: arg } }
     }
   },
   FOURTH: {
     path: '/fourth',
     action: ['customCreator'],
-    customCreator: (arg) => (req, type) => {
-      return { params: { foo: arg }, type }
+    customCreator: (arg) => (req) => {
+      return { params: { foo: arg } }
     }
   },
   PLAIN: {
@@ -38,7 +38,7 @@ createTest('createScene(routes, { scene, basename })', routes, [
   ['actions.second()', actions.second()],
   ['actions.second(partialAction)', actions.second({ params: { foo: 'bar' } })],
   ['actions.second(params)', actions.second({ foo: 'bar' })],
-  ['actions.second(thunk)', actions.second((req, type) => ({ testReq: req.getTitle(), type }))],
+  ['actions.second(thunk)', actions.second((req) => ({ testReq: req.getTitle() }))],
   ['actions.second(action with wrong type)', actions.second({ type: 'WRONG' })],
   ['route.action - custom action creator', actions.third('baz')],
   ['route.action: [] - custom action creators (array) - actions.fourth.customCreator()', actions.fourth.customCreator('baz')],

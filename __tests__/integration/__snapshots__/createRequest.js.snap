@@ -174,7 +174,7 @@ Object {
 exports[`callback "bag" argument has all goodies: 1 - title 1`] = `"SECOND"`;
 
 exports[`callback "bag" argument has all goodies: bag 1`] = `
-Object {
+Request {
   "_dispatched": false,
   "action": Object {
     "basename": "",
@@ -260,6 +260,7 @@ Object {
   "getLocation": [Function],
   "getState": [Function],
   "getTitle": [Function],
+  "hasMiddleware": [Function],
   "hash": "",
   "history": MemoryHistory {
     "_forceRefresh": false,
@@ -429,6 +430,7 @@ Object {
       "onComplete",
       "onError",
     ],
+    "compose": [Function],
     "createRequest": [Function],
     "extra": Object {
       "arg": "extra-arg",
@@ -446,6 +448,7 @@ Object {
     "type": "FIRST",
   },
   "query": Object {},
+  "registerMiddleware": [Function],
   "route": Object {
     "beforeEnter": [MockFunction] {
       "calls": Array [
@@ -465,6 +468,10 @@ Object {
     "@@rudy/CALL_HISTORY": Object {
       "thunk": [Function],
       "type": "@@rudy/CALL_HISTORY",
+    },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CHANGE_BASENAME",
     },
     "@@rudy/NOT_FOUND": Object {
       "path": "/not-found",

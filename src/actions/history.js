@@ -1,7 +1,5 @@
 // @flow
 import { CALL_HISTORY } from '../types'
-import { actionToUrl } from '../utils'
-import { createLocation } from '../history/utils/location'
 
 export const push = (path: string, state: ?Object, basename: ?string) => ({
   type: CALL_HISTORY,
@@ -60,26 +58,4 @@ export const next = (state: ?(Object | Function)) => ({
 })
 
 
-// Below is a pathless route thunk added to your routes by `utils/formatRoutes.js`:
-// NOTE: it's here for convenient reference
-
-export const callHistoryThunk = ({ action, history, routes, options }) => {
-  const { method, args } = action.payload
-
-  if (method !== 'reset') {
-    return history[method](...args, false)
-  }
-
-  const [entries, index, kind] = args
-
-  if (typeof entries[0] === 'object' && entries[0].type) {
-    const locations = entries.map(action => {
-      const url = actionToUrl(action, routes, options)
-      return createLocation(url, action.state, undefined, undefined, action.basename)
-    })
-
-    return history.reset(locations, index, kind, false)
-  }
-
-  return history.reset(entries, index, kind, false)
-}
+// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRouteThunks

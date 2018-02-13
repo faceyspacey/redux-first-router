@@ -1,8 +1,12 @@
 export default (api) => async (req, next) => {
-  const ret = req.commitDispatch(req.action)
+  if (req.route.redirectBeforeEnter) { // will exist if you specified `route.redirect`
+    return req.route.redirectBeforeEnter(req)
+  }
 
+  const ret = req.commitDispatch(req.action)
   req.commitHistory()
-  // req.ctx.busy = false
+
+  // req.ctx.pending = false
   req.tmp.committed = true
 
   await next()

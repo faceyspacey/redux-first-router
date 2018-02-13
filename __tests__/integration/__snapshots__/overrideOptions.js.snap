@@ -1,6 +1,426 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`core capabilities can be overriden as options 1`] = `
+exports[`core capabilities can be overriden as options: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`core capabilities can be overriden as options: 1 - history_index 1`] = `1`;
+
+exports[`core capabilities can be overriden as options: 1 - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`core capabilities can be overriden as options: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`core capabilities can be overriden as options: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`core capabilities can be overriden as options: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`core capabilities can be overriden as options: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`core capabilities can be overriden as options: 1 - title 1`] = `"SECOND"`;
+
+exports[`core capabilities can be overriden as options: compose 1`] = `
+Array [
+  Array [
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+  ],
+  Object {
+    "ctx": Object {
+      "busy": false,
+    },
+    "getLocation": [Function],
+    "getTitle": [Function],
+    "hasMiddleware": [Function],
+    "history": MemoryHistory {
+      "_forceRefresh": false,
+      "basename": "",
+      "basenames": Array [],
+      "entries": Array [],
+      "firstRoute": Object {
+        "commit": [Function],
+        "nextHistory": Object {
+          "basename": "",
+          "basenames": Array [],
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+          ],
+          "index": 0,
+          "kind": "load",
+          "length": 1,
+          "location": Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          "saveHistory": [Function],
+          "type": "@@rudy/UPDATE_HISTORY",
+        },
+        "type": "@@rudy/UPDATE_HISTORY",
+      },
+      "index": -1,
+      "length": 0,
+      "location": null,
+      "saveHistory": [Function],
+    },
+    "options": Object {
+      "compose": [Function],
+      "createHistory": [Function],
+      "createReducer": [Function],
+      "createRequest": [Function],
+      "extra": Object {
+        "arg": "extra-arg",
+      },
+      "initialEntries": Array [
+        "/first",
+      ],
+      "location": "location",
+      "onError": [Function],
+      "shouldCall": [Function],
+      "shouldTransition": [Function],
+      "title": [Function],
+    },
+    "registerMiddleware": [Function],
+    "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/NOT_FOUND": Object {
+        "path": "/not-found",
+        "type": "@@rudy/NOT_FOUND",
+      },
+      "FIRST": Object {
+        "path": "/first",
+        "type": "FIRST",
+      },
+      "NEVER_USED_PATHLESS": Object {
+        "thunk": [MockFunction],
+        "type": "NEVER_USED_PATHLESS",
+      },
+      "REDIRECTED": Object {
+        "onComplete": [MockFunction],
+        "path": "/redirected",
+        "type": "REDIRECTED",
+      },
+      "SECOND": Object {
+        "path": "/second",
+        "thunk": [MockFunction],
+        "type": "SECOND",
+      },
+    },
+    "store": Object {
+      "dispatch": [Function],
+      "getState": [Function],
+    },
+  },
+  true,
+]
+`;
+
+exports[`core capabilities can be overriden as options: compose 2`] = `
+Array [
+  Array [
+    [Function],
+    [Function],
+  ],
+  Object {
+    "ctx": Object {
+      "busy": false,
+    },
+    "getLocation": [Function],
+    "getTitle": [Function],
+    "hasMiddleware": [Function],
+    "history": MemoryHistory {
+      "_forceRefresh": false,
+      "basename": "",
+      "basenames": Array [],
+      "entries": Array [],
+      "firstRoute": Object {
+        "commit": [Function],
+        "nextHistory": Object {
+          "basename": "",
+          "basenames": Array [],
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+          ],
+          "index": 0,
+          "kind": "load",
+          "length": 1,
+          "location": Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          "saveHistory": [Function],
+          "type": "@@rudy/UPDATE_HISTORY",
+        },
+        "type": "@@rudy/UPDATE_HISTORY",
+      },
+      "index": -1,
+      "length": 0,
+      "location": null,
+      "saveHistory": [Function],
+    },
+    "options": Object {
+      "compose": [Function],
+      "createHistory": [Function],
+      "createReducer": [Function],
+      "createRequest": [Function],
+      "extra": Object {
+        "arg": "extra-arg",
+      },
+      "initialEntries": Array [
+        "/first",
+      ],
+      "location": "location",
+      "onError": [Function],
+      "shouldCall": [Function],
+      "shouldTransition": [Function],
+      "title": [Function],
+    },
+    "registerMiddleware": [Function],
+    "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/NOT_FOUND": Object {
+        "path": "/not-found",
+        "type": "@@rudy/NOT_FOUND",
+      },
+      "FIRST": Object {
+        "path": "/first",
+        "type": "FIRST",
+      },
+      "NEVER_USED_PATHLESS": Object {
+        "thunk": [MockFunction],
+        "type": "NEVER_USED_PATHLESS",
+      },
+      "REDIRECTED": Object {
+        "onComplete": [MockFunction],
+        "path": "/redirected",
+        "type": "REDIRECTED",
+      },
+      "SECOND": Object {
+        "path": "/second",
+        "thunk": [MockFunction],
+        "type": "SECOND",
+      },
+    },
+    "store": Object {
+      "dispatch": [Function],
+      "getState": [Function],
+    },
+  },
+]
+`;
+
+exports[`core capabilities can be overriden as options: createHistory 1`] = `
 Array [
   Object {
     "compose": [Function],
@@ -22,7 +442,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 2`] = `
+exports[`core capabilities can be overriden as options: createReducer 1`] = `
 Array [
   Object {
     "@@rudy/ADD_ROUTES": Object {
@@ -32,6 +452,10 @@ Array [
     "@@rudy/CALL_HISTORY": Object {
       "thunk": [Function],
       "type": "@@rudy/CALL_HISTORY",
+    },
+    "@@rudy/CHANGE_BASENAME": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CHANGE_BASENAME",
     },
     "@@rudy/NOT_FOUND": Object {
       "path": "/not-found",
@@ -105,130 +529,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 3`] = `
-Array [
-  Array [
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-  ],
-  Object {
-    "ctx": Object {
-      "busy": false,
-    },
-    "getLocation": [Function],
-    "getTitle": [Function],
-    "history": MemoryHistory {
-      "_forceRefresh": false,
-      "basename": "",
-      "basenames": Array [],
-      "entries": Array [],
-      "firstRoute": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
-          "entries": Array [
-            Object {
-              "basename": "",
-              "hash": "",
-              "key": "345678",
-              "pathname": "/first",
-              "search": "",
-              "state": Object {},
-              "url": "/first",
-            },
-          ],
-          "index": 0,
-          "kind": "load",
-          "length": 1,
-          "location": Object {
-            "basename": "",
-            "hash": "",
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "state": Object {},
-            "url": "/first",
-          },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
-        },
-        "type": "@@rudy/UPDATE_HISTORY",
-      },
-      "index": -1,
-      "length": 0,
-      "location": null,
-      "saveHistory": [Function],
-    },
-    "options": Object {
-      "compose": [Function],
-      "createHistory": [Function],
-      "createReducer": [Function],
-      "createRequest": [Function],
-      "extra": Object {
-        "arg": "extra-arg",
-      },
-      "initialEntries": Array [
-        "/first",
-      ],
-      "location": "location",
-      "onError": [Function],
-      "shouldCall": [Function],
-      "shouldTransition": [Function],
-      "title": [Function],
-    },
-    "routes": Object {
-      "@@rudy/ADD_ROUTES": Object {
-        "thunk": [Function],
-        "type": "@@rudy/ADD_ROUTES",
-      },
-      "@@rudy/CALL_HISTORY": Object {
-        "thunk": [Function],
-        "type": "@@rudy/CALL_HISTORY",
-      },
-      "@@rudy/NOT_FOUND": Object {
-        "path": "/not-found",
-        "type": "@@rudy/NOT_FOUND",
-      },
-      "FIRST": Object {
-        "path": "/first",
-        "type": "FIRST",
-      },
-      "NEVER_USED_PATHLESS": Object {
-        "thunk": [MockFunction],
-        "type": "NEVER_USED_PATHLESS",
-      },
-      "REDIRECTED": Object {
-        "onComplete": [MockFunction],
-        "path": "/redirected",
-        "type": "REDIRECTED",
-      },
-      "SECOND": Object {
-        "path": "/second",
-        "thunk": [MockFunction],
-        "type": "SECOND",
-      },
-    },
-    "store": Object {
-      "dispatch": [Function],
-      "getState": [Function],
-    },
-  },
-  true,
-]
-`;
-
-exports[`core capabilities can be overriden as options 4`] = `
+exports[`core capabilities can be overriden as options: createRequest 1`] = `
 Array [
   Object {
     "commit": [Function],
@@ -274,6 +575,7 @@ Array [
     },
     "getLocation": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "history": MemoryHistory {
       "_forceRefresh": false,
       "_listener": [Function],
@@ -346,6 +648,7 @@ Array [
       "shouldTransition": [Function],
       "title": [Function],
     },
+    "registerMiddleware": [Function],
     "routes": Object {
       "@@rudy/ADD_ROUTES": Object {
         "thunk": [Function],
@@ -354,6 +657,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -383,177 +690,172 @@ Array [
       "getState": [Function],
     },
   },
-]
-`;
-
-exports[`core capabilities can be overriden as options 5`] = `
-Array [
-  Object {
-    "commit": [Function],
-    "nextHistory": Object {
-      "basename": "",
-      "basenames": Array [],
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "location": Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      "saveHistory": [Function],
-      "type": "@@rudy/UPDATE_HISTORY",
-    },
-    "type": "@@rudy/UPDATE_HISTORY",
-  },
-  Object {
-    "cache": Object {
-      "cacheAction": [Function],
-      "clear": [Function],
-      "isCached": [Function],
-    },
-    "ctx": Object {
-      "busy": false,
-    },
-    "getLocation": [Function],
-    "getTitle": [Function],
-    "history": MemoryHistory {
-      "_forceRefresh": false,
-      "_listener": [Function],
-      "basename": "",
-      "basenames": Array [],
-      "entries": Array [],
-      "firstRoute": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
-          "entries": Array [
-            Object {
-              "basename": "",
-              "hash": "",
-              "key": "345678",
-              "pathname": "/first",
-              "search": "",
-              "state": Object {},
-              "url": "/first",
-            },
-          ],
-          "index": 0,
-          "kind": "load",
-          "length": 1,
-          "location": Object {
-            "basename": "",
-            "hash": "",
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "state": Object {},
-            "url": "/first",
-          },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
-        },
-        "type": "@@rudy/UPDATE_HISTORY",
-      },
-      "index": -1,
-      "length": 0,
-      "location": null,
-      "saveHistory": [Function],
-    },
-    "options": Object {
-      "callbacks": Array [
-        "thunk",
-        "onComplete",
-        "beforeLeave",
-        "beforeEnter",
-        "onLeave",
-        "onEnter",
-        "thunk",
-        "onComplete",
-        "onError",
-      ],
-      "compose": [Function],
-      "createHistory": [Function],
-      "createReducer": [Function],
-      "createRequest": [Function],
-      "extra": Object {
-        "arg": "extra-arg",
-      },
-      "initialEntries": Array [
-        "/first",
-      ],
-      "location": "location",
-      "onError": [Function],
-      "shouldCall": [Function],
-      "shouldTransition": [Function],
-      "title": [Function],
-    },
-    "routes": Object {
-      "@@rudy/ADD_ROUTES": Object {
-        "thunk": [Function],
-        "type": "@@rudy/ADD_ROUTES",
-      },
-      "@@rudy/CALL_HISTORY": Object {
-        "thunk": [Function],
-        "type": "@@rudy/CALL_HISTORY",
-      },
-      "@@rudy/NOT_FOUND": Object {
-        "path": "/not-found",
-        "type": "@@rudy/NOT_FOUND",
-      },
-      "FIRST": Object {
-        "path": "/first",
-        "type": "FIRST",
-      },
-      "NEVER_USED_PATHLESS": Object {
-        "thunk": [MockFunction],
-        "type": "NEVER_USED_PATHLESS",
-      },
-      "REDIRECTED": Object {
-        "onComplete": [MockFunction],
-        "path": "/redirected",
-        "type": "REDIRECTED",
-      },
-      "SECOND": Object {
-        "path": "/second",
-        "thunk": [MockFunction],
-        "type": "SECOND",
-      },
-    },
-    "store": Object {
-      "dispatch": [Function],
-      "getState": [Function],
-    },
-  },
-  Object {},
   [Function],
 ]
 `;
 
-exports[`core capabilities can be overriden as options 6`] = `
+exports[`core capabilities can be overriden as options: createRequest 2`] = `
+Array [
+  Object {
+    "type": "SECOND",
+  },
+  Object {
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "ctx": Object {
+      "busy": false,
+    },
+    "getLocation": [Function],
+    "getTitle": [Function],
+    "hasMiddleware": [Function],
+    "history": MemoryHistory {
+      "_forceRefresh": false,
+      "_listener": [Function],
+      "basename": "",
+      "basenames": Array [],
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "firstRoute": Object {
+        "commit": [Function],
+        "nextHistory": Object {
+          "basename": "",
+          "basenames": Array [],
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+          ],
+          "index": 0,
+          "kind": "load",
+          "length": 1,
+          "location": Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          "saveHistory": [Function],
+          "type": "@@rudy/UPDATE_HISTORY",
+        },
+        "type": "@@rudy/UPDATE_HISTORY",
+      },
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "location": Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      "saveHistory": [Function],
+    },
+    "options": Object {
+      "callbacks": Array [
+        "thunk",
+        "onComplete",
+        "beforeLeave",
+        "beforeEnter",
+        "onLeave",
+        "onEnter",
+        "thunk",
+        "onComplete",
+        "onError",
+      ],
+      "compose": [Function],
+      "createHistory": [Function],
+      "createReducer": [Function],
+      "createRequest": [Function],
+      "extra": Object {
+        "arg": "extra-arg",
+      },
+      "initialEntries": Array [
+        "/first",
+      ],
+      "location": "location",
+      "onError": [Function],
+      "shouldCall": [Function],
+      "shouldTransition": [Function],
+      "title": [Function],
+    },
+    "registerMiddleware": [Function],
+    "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/NOT_FOUND": Object {
+        "path": "/not-found",
+        "type": "@@rudy/NOT_FOUND",
+      },
+      "FIRST": Object {
+        "path": "/first",
+        "type": "FIRST",
+      },
+      "NEVER_USED_PATHLESS": Object {
+        "thunk": [MockFunction],
+        "type": "NEVER_USED_PATHLESS",
+      },
+      "REDIRECTED": Object {
+        "onComplete": [MockFunction],
+        "path": "/redirected",
+        "type": "REDIRECTED",
+      },
+      "SECOND": Object {
+        "path": "/second",
+        "thunk": [MockFunction],
+        "type": "SECOND",
+      },
+    },
+    "store": Object {
+      "dispatch": [Function],
+      "getState": [Function],
+    },
+  },
+  [Function],
+]
+`;
+
+exports[`core capabilities can be overriden as options: shouldCall 1`] = `
 Array [
   "beforeLeave",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -618,6 +920,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -788,6 +1091,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/first",
       "type": "FIRST",
@@ -800,6 +1104,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -885,14 +1193,14 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 7`] = `
+exports[`core capabilities can be overriden as options: shouldCall 2`] = `
 Array [
   "beforeEnter",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -957,6 +1265,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -1127,6 +1436,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/first",
       "type": "FIRST",
@@ -1139,6 +1449,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1222,14 +1536,14 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 8`] = `
+exports[`core capabilities can be overriden as options: shouldCall 3`] = `
 Array [
   "onLeave",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -1294,6 +1608,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -1483,6 +1798,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/first",
       "type": "FIRST",
@@ -1495,6 +1811,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1581,14 +1901,14 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 9`] = `
+exports[`core capabilities can be overriden as options: shouldCall 4`] = `
 Array [
   "onEnter",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -1653,6 +1973,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -1842,6 +2163,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/first",
       "type": "FIRST",
@@ -1854,6 +2176,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1938,14 +2264,14 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 10`] = `
+exports[`core capabilities can be overriden as options: shouldCall 5`] = `
 Array [
   "thunk",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -2010,6 +2336,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -2199,6 +2526,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/first",
       "type": "FIRST",
@@ -2211,6 +2539,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -2297,14 +2629,14 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 11`] = `
+exports[`core capabilities can be overriden as options: shouldCall 6`] = `
 Array [
   "onComplete",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -2369,6 +2701,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -2558,6 +2891,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/first",
       "type": "FIRST",
@@ -2570,6 +2904,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -2654,310 +2992,14 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 12`] = `
-Array [
-  Object {
-    "type": "SECOND",
-  },
-  Object {
-    "cache": Object {
-      "cacheAction": [Function],
-      "clear": [Function],
-      "isCached": [Function],
-    },
-    "ctx": Object {
-      "busy": false,
-    },
-    "getLocation": [Function],
-    "getTitle": [Function],
-    "history": MemoryHistory {
-      "_forceRefresh": false,
-      "_listener": [Function],
-      "basename": "",
-      "basenames": Array [],
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "firstRoute": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
-          "entries": Array [
-            Object {
-              "basename": "",
-              "hash": "",
-              "key": "345678",
-              "pathname": "/first",
-              "search": "",
-              "state": Object {},
-              "url": "/first",
-            },
-          ],
-          "index": 0,
-          "kind": "load",
-          "length": 1,
-          "location": Object {
-            "basename": "",
-            "hash": "",
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "state": Object {},
-            "url": "/first",
-          },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
-        },
-        "type": "@@rudy/UPDATE_HISTORY",
-      },
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "location": Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      "saveHistory": [Function],
-    },
-    "options": Object {
-      "callbacks": Array [
-        "thunk",
-        "onComplete",
-        "beforeLeave",
-        "beforeEnter",
-        "onLeave",
-        "onEnter",
-        "thunk",
-        "onComplete",
-        "onError",
-      ],
-      "compose": [Function],
-      "createHistory": [Function],
-      "createReducer": [Function],
-      "createRequest": [Function],
-      "extra": Object {
-        "arg": "extra-arg",
-      },
-      "initialEntries": Array [
-        "/first",
-      ],
-      "location": "location",
-      "onError": [Function],
-      "shouldCall": [Function],
-      "shouldTransition": [Function],
-      "title": [Function],
-    },
-    "routes": Object {
-      "@@rudy/ADD_ROUTES": Object {
-        "thunk": [Function],
-        "type": "@@rudy/ADD_ROUTES",
-      },
-      "@@rudy/CALL_HISTORY": Object {
-        "thunk": [Function],
-        "type": "@@rudy/CALL_HISTORY",
-      },
-      "@@rudy/NOT_FOUND": Object {
-        "path": "/not-found",
-        "type": "@@rudy/NOT_FOUND",
-      },
-      "FIRST": Object {
-        "path": "/first",
-        "type": "FIRST",
-      },
-      "NEVER_USED_PATHLESS": Object {
-        "thunk": [MockFunction],
-        "type": "NEVER_USED_PATHLESS",
-      },
-      "REDIRECTED": Object {
-        "onComplete": [MockFunction],
-        "path": "/redirected",
-        "type": "REDIRECTED",
-      },
-      "SECOND": Object {
-        "path": "/second",
-        "thunk": [MockFunction],
-        "type": "SECOND",
-      },
-    },
-    "store": Object {
-      "dispatch": [Function],
-      "getState": [Function],
-    },
-  },
-]
-`;
-
-exports[`core capabilities can be overriden as options 13`] = `
-Array [
-  Object {
-    "type": "SECOND",
-  },
-  Object {
-    "cache": Object {
-      "cacheAction": [Function],
-      "clear": [Function],
-      "isCached": [Function],
-    },
-    "ctx": Object {
-      "busy": false,
-    },
-    "getLocation": [Function],
-    "getTitle": [Function],
-    "history": MemoryHistory {
-      "_forceRefresh": false,
-      "_listener": [Function],
-      "basename": "",
-      "basenames": Array [],
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "firstRoute": Object {
-        "commit": [Function],
-        "nextHistory": Object {
-          "basename": "",
-          "basenames": Array [],
-          "entries": Array [
-            Object {
-              "basename": "",
-              "hash": "",
-              "key": "345678",
-              "pathname": "/first",
-              "search": "",
-              "state": Object {},
-              "url": "/first",
-            },
-          ],
-          "index": 0,
-          "kind": "load",
-          "length": 1,
-          "location": Object {
-            "basename": "",
-            "hash": "",
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "state": Object {},
-            "url": "/first",
-          },
-          "saveHistory": [Function],
-          "type": "@@rudy/UPDATE_HISTORY",
-        },
-        "type": "@@rudy/UPDATE_HISTORY",
-      },
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "location": Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      "saveHistory": [Function],
-    },
-    "options": Object {
-      "callbacks": Array [
-        "thunk",
-        "onComplete",
-        "beforeLeave",
-        "beforeEnter",
-        "onLeave",
-        "onEnter",
-        "thunk",
-        "onComplete",
-        "onError",
-      ],
-      "compose": [Function],
-      "createHistory": [Function],
-      "createReducer": [Function],
-      "createRequest": [Function],
-      "extra": Object {
-        "arg": "extra-arg",
-      },
-      "initialEntries": Array [
-        "/first",
-      ],
-      "location": "location",
-      "onError": [Function],
-      "shouldCall": [Function],
-      "shouldTransition": [Function],
-      "title": [Function],
-    },
-    "routes": Object {
-      "@@rudy/ADD_ROUTES": Object {
-        "thunk": [Function],
-        "type": "@@rudy/ADD_ROUTES",
-      },
-      "@@rudy/CALL_HISTORY": Object {
-        "thunk": [Function],
-        "type": "@@rudy/CALL_HISTORY",
-      },
-      "@@rudy/NOT_FOUND": Object {
-        "path": "/not-found",
-        "type": "@@rudy/NOT_FOUND",
-      },
-      "FIRST": Object {
-        "path": "/first",
-        "type": "FIRST",
-      },
-      "NEVER_USED_PATHLESS": Object {
-        "thunk": [MockFunction],
-        "type": "NEVER_USED_PATHLESS",
-      },
-      "REDIRECTED": Object {
-        "onComplete": [MockFunction],
-        "path": "/redirected",
-        "type": "REDIRECTED",
-      },
-      "SECOND": Object {
-        "path": "/second",
-        "thunk": [MockFunction],
-        "type": "SECOND",
-      },
-    },
-    "store": Object {
-      "dispatch": [Function],
-      "getState": [Function],
-    },
-  },
-  Object {},
-  [Function],
-]
-`;
-
-exports[`core capabilities can be overriden as options 14`] = `
+exports[`core capabilities can be overriden as options: shouldCall 7`] = `
 Array [
   "beforeLeave",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -3042,6 +3084,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -3233,6 +3276,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/second",
       "thunk": [MockFunction],
@@ -3246,6 +3290,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -3351,7 +3399,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 15`] = `
+exports[`core capabilities can be overriden as options: shouldCall 8`] = `
 Array [
   "beforeEnter",
   Object {
@@ -3359,7 +3407,7 @@ Array [
     "thunk": [MockFunction],
     "type": "SECOND",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -3444,6 +3492,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -3635,6 +3684,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/second",
       "thunk": [MockFunction],
@@ -3648,6 +3698,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -3751,14 +3805,14 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 16`] = `
+exports[`core capabilities can be overriden as options: shouldCall 9`] = `
 Array [
   "onLeave",
   Object {
     "path": "/first",
     "type": "FIRST",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -3843,6 +3897,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -4043,6 +4098,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/second",
       "thunk": [MockFunction],
@@ -4056,6 +4112,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -4162,7 +4222,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 17`] = `
+exports[`core capabilities can be overriden as options: shouldCall 10`] = `
 Array [
   "onEnter",
   Object {
@@ -4170,7 +4230,7 @@ Array [
     "thunk": [MockFunction],
     "type": "SECOND",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -4255,6 +4315,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -4455,6 +4516,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/second",
       "thunk": [MockFunction],
@@ -4468,6 +4530,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -4572,7 +4638,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 18`] = `
+exports[`core capabilities can be overriden as options: shouldCall 11`] = `
 Array [
   "thunk",
   Object {
@@ -4580,7 +4646,7 @@ Array [
     "thunk": [MockFunction],
     "type": "SECOND",
   },
-  Object {
+  Request {
     "action": Object {
       "basename": "",
       "hash": "",
@@ -4665,6 +4731,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -4865,6 +4932,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/second",
       "thunk": [MockFunction],
@@ -4878,6 +4946,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -4984,7 +5056,7 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options 19`] = `
+exports[`core capabilities can be overriden as options: shouldCall 12`] = `
 Array [
   "onComplete",
   Object {
@@ -4992,7 +5064,7 @@ Array [
     "thunk": [MockFunction] {
       "calls": Array [
         Array [
-          Object {
+          Request {
             "_dispatched": false,
             "action": Object {
               "basename": "",
@@ -5078,6 +5150,7 @@ Array [
             "getLocation": [Function],
             "getState": [Function],
             "getTitle": [Function],
+            "hasMiddleware": [Function],
             "hash": "",
             "history": MemoryHistory {
               "_forceRefresh": false,
@@ -5278,6 +5351,7 @@ Array [
               "type": "FIRST",
             },
             "query": Object {},
+            "registerMiddleware": [Function],
             "route": [Circular],
             "routes": Object {
               "@@rudy/ADD_ROUTES": Object {
@@ -5287,6 +5361,10 @@ Array [
               "@@rudy/CALL_HISTORY": Object {
                 "thunk": [Function],
                 "type": "@@rudy/CALL_HISTORY",
+              },
+              "@@rudy/CHANGE_BASENAME": Object {
+                "thunk": [Function],
+                "type": "@@rudy/CHANGE_BASENAME",
               },
               "@@rudy/NOT_FOUND": Object {
                 "path": "/not-found",
@@ -5388,7 +5466,7 @@ Array [
     },
     "type": "SECOND",
   },
-  Object {
+  Request {
     "_dispatched": false,
     "action": Object {
       "basename": "",
@@ -5474,6 +5552,7 @@ Array [
     "getLocation": [Function],
     "getState": [Function],
     "getTitle": [Function],
+    "hasMiddleware": [Function],
     "hash": "",
     "history": MemoryHistory {
       "_forceRefresh": false,
@@ -5674,6 +5753,7 @@ Array [
       "type": "FIRST",
     },
     "query": Object {},
+    "registerMiddleware": [Function],
     "route": Object {
       "path": "/second",
       "thunk": [MockFunction] {
@@ -5693,6 +5773,10 @@ Array [
       "@@rudy/CALL_HISTORY": Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -5803,175 +5887,319 @@ Array [
 ]
 `;
 
-exports[`core capabilities can be overriden as options: 1 - history_entries 1`] = `
+exports[`core capabilities can be overriden as options: shouldTransition 1`] = `
 Array [
   Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
+    "commit": [Function],
+    "nextHistory": Object {
+      "basename": "",
+      "basenames": Array [],
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "location": Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      "saveHistory": [Function],
+      "type": "@@rudy/UPDATE_HISTORY",
+    },
+    "type": "@@rudy/UPDATE_HISTORY",
   },
   Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {},
-    "url": "/second",
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "ctx": Object {
+      "busy": false,
+    },
+    "getLocation": [Function],
+    "getTitle": [Function],
+    "hasMiddleware": [Function],
+    "history": MemoryHistory {
+      "_forceRefresh": false,
+      "_listener": [Function],
+      "basename": "",
+      "basenames": Array [],
+      "entries": Array [],
+      "firstRoute": Object {
+        "commit": [Function],
+        "nextHistory": Object {
+          "basename": "",
+          "basenames": Array [],
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+          ],
+          "index": 0,
+          "kind": "load",
+          "length": 1,
+          "location": Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          "saveHistory": [Function],
+          "type": "@@rudy/UPDATE_HISTORY",
+        },
+        "type": "@@rudy/UPDATE_HISTORY",
+      },
+      "index": -1,
+      "length": 0,
+      "location": null,
+      "saveHistory": [Function],
+    },
+    "options": Object {
+      "callbacks": Array [
+        "thunk",
+        "onComplete",
+        "beforeLeave",
+        "beforeEnter",
+        "onLeave",
+        "onEnter",
+        "thunk",
+        "onComplete",
+        "onError",
+      ],
+      "compose": [Function],
+      "createHistory": [Function],
+      "createReducer": [Function],
+      "createRequest": [Function],
+      "extra": Object {
+        "arg": "extra-arg",
+      },
+      "initialEntries": Array [
+        "/first",
+      ],
+      "location": "location",
+      "onError": [Function],
+      "shouldCall": [Function],
+      "shouldTransition": [Function],
+      "title": [Function],
+    },
+    "registerMiddleware": [Function],
+    "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/NOT_FOUND": Object {
+        "path": "/not-found",
+        "type": "@@rudy/NOT_FOUND",
+      },
+      "FIRST": Object {
+        "path": "/first",
+        "type": "FIRST",
+      },
+      "NEVER_USED_PATHLESS": Object {
+        "thunk": [MockFunction],
+        "type": "NEVER_USED_PATHLESS",
+      },
+      "REDIRECTED": Object {
+        "onComplete": [MockFunction],
+        "path": "/redirected",
+        "type": "REDIRECTED",
+      },
+      "SECOND": Object {
+        "path": "/second",
+        "thunk": [MockFunction],
+        "type": "SECOND",
+      },
+    },
+    "store": Object {
+      "dispatch": [Function],
+      "getState": [Function],
+    },
   },
 ]
 `;
 
-exports[`core capabilities can be overriden as options: 1 - history_index 1`] = `1`;
-
-exports[`core capabilities can be overriden as options: 1 - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "SECOND",
-}
-`;
-
-exports[`core capabilities can be overriden as options: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`core capabilities can be overriden as options: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`core capabilities can be overriden as options: 1 - routes - SECOND - thunk 1`] = `1`;
-
-exports[`core capabilities can be overriden as options: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {},
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
+exports[`core capabilities can be overriden as options: shouldTransition 2`] = `
+Array [
+  Object {
     "type": "SECOND",
-    "url": "/second",
   },
-  "title": "SECOND",
-}
+  Object {
+    "cache": Object {
+      "cacheAction": [Function],
+      "clear": [Function],
+      "isCached": [Function],
+    },
+    "ctx": Object {
+      "busy": false,
+    },
+    "getLocation": [Function],
+    "getTitle": [Function],
+    "hasMiddleware": [Function],
+    "history": MemoryHistory {
+      "_forceRefresh": false,
+      "_listener": [Function],
+      "basename": "",
+      "basenames": Array [],
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "firstRoute": Object {
+        "commit": [Function],
+        "nextHistory": Object {
+          "basename": "",
+          "basenames": Array [],
+          "entries": Array [
+            Object {
+              "basename": "",
+              "hash": "",
+              "key": "345678",
+              "pathname": "/first",
+              "search": "",
+              "state": Object {},
+              "url": "/first",
+            },
+          ],
+          "index": 0,
+          "kind": "load",
+          "length": 1,
+          "location": Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          "saveHistory": [Function],
+          "type": "@@rudy/UPDATE_HISTORY",
+        },
+        "type": "@@rudy/UPDATE_HISTORY",
+      },
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "location": Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      "saveHistory": [Function],
+    },
+    "options": Object {
+      "callbacks": Array [
+        "thunk",
+        "onComplete",
+        "beforeLeave",
+        "beforeEnter",
+        "onLeave",
+        "onEnter",
+        "thunk",
+        "onComplete",
+        "onError",
+      ],
+      "compose": [Function],
+      "createHistory": [Function],
+      "createReducer": [Function],
+      "createRequest": [Function],
+      "extra": Object {
+        "arg": "extra-arg",
+      },
+      "initialEntries": Array [
+        "/first",
+      ],
+      "location": "location",
+      "onError": [Function],
+      "shouldCall": [Function],
+      "shouldTransition": [Function],
+      "title": [Function],
+    },
+    "registerMiddleware": [Function],
+    "routes": Object {
+      "@@rudy/ADD_ROUTES": Object {
+        "thunk": [Function],
+        "type": "@@rudy/ADD_ROUTES",
+      },
+      "@@rudy/CALL_HISTORY": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/NOT_FOUND": Object {
+        "path": "/not-found",
+        "type": "@@rudy/NOT_FOUND",
+      },
+      "FIRST": Object {
+        "path": "/first",
+        "type": "FIRST",
+      },
+      "NEVER_USED_PATHLESS": Object {
+        "thunk": [MockFunction],
+        "type": "NEVER_USED_PATHLESS",
+      },
+      "REDIRECTED": Object {
+        "onComplete": [MockFunction],
+        "path": "/redirected",
+        "type": "REDIRECTED",
+      },
+      "SECOND": Object {
+        "path": "/second",
+        "thunk": [MockFunction],
+        "type": "SECOND",
+      },
+    },
+    "store": Object {
+      "dispatch": [Function],
+      "getState": [Function],
+    },
+  },
+]
 `;
-
-exports[`core capabilities can be overriden as options: 1 - title 1`] = `"SECOND"`;

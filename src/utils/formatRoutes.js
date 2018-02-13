@@ -1,9 +1,10 @@
 // @flow
-import { NOT_FOUND, ADD_ROUTES, CALL_HISTORY } from '../types'
+import { NOT_FOUND, ADD_ROUTES, CHANGE_BASENAME, CALL_HISTORY } from '../types'
 import { redirect } from '../actions'
 import type { RoutesMap, RoutesMapInput } from '../flow-types'
 import { enhanceRoutes } from '../middleware/call/utils' // unfortunate coupling (to potentially optional middleware)
-import { callHistoryThunk } from '../actions/history'
+import { actionToUrl } from './index'
+import { createLocation } from '../history/utils/location'
 
 const formatRoutes = (
   routes: RoutesMapInput,
@@ -12,8 +13,9 @@ const formatRoutes = (
 ): RoutesMap => {
   if (!isAddRoutes) routes[NOT_FOUND] = routes[NOT_FOUND] || {}
 
-  routes[ADD_ROUTES] = routes[ADD_ROUTES] || { thunk: addRoutesThunk }
-  routes[CALL_HISTORY] = routes[CALL_HISTORY] || { thunk: callHistoryThunk }
+  routes[ADD_ROUTES] = routes[ADD_ROUTES] || { thunk: addRoutes }
+  routes[CHANGE_BASENAME] = routes[CHANGE_BASENAME] || { thunk: changeBasename }
+  routes[CALL_HISTORY] = routes[CALL_HISTORY] || { thunk: callHistory }
 
   for (const type in routes) {
     const route = format(routes[type], type, routes, formatRoute, isAddRoutes)
@@ -39,7 +41,8 @@ export const format = (r, type, routes, formatRoute, isAddRoutes) => {
   if (formatRoute) {
     return formatRoute(route, type, routes, isAddRoutes)
   }
-  else if (typeof route === 'function') {
+
+  if (typeof route === 'function') {
     return { thunk: route }
   }
 
@@ -51,10 +54,21 @@ const createRedirect = (route, routes) => {
   const scenicType = `${route.scene}/${t}`
   const type = routes[scenicType] ? scenicType : t
 
-  route.beforeEnter = ({ action }) => redirect({ ...action, type }, 301)
+  route.redirectBeforeEnter = ({ action, dispatch }) => {
+    return dispatch(redirect({ ...action, type }, 301))
+  }
 }
 
-const addRoutesThunk = ({ action, options, routes: allRoutes }) => {
+
+// pathlessRouteThunks which listen to corresponding action creators:
+
+const addRoutes = ({ action, options, routes: allRoutes, hasMiddleware }) => {
+  const env = process.env.NODE_ENV
+
+  if (env === 'development' && !hasMiddleware('pathlessRouteThunk')) {
+    throw new Error('[rudy] "pathlessRouteThunk" middleware is required to use "addRoutes" action creator.')
+  }
+
   const { routes, formatRoute } = action.payload
   const format = formatRoute || options.formatRoute
   const newRoutes = formatRoutes(routes, format, true)
@@ -62,9 +76,49 @@ const addRoutesThunk = ({ action, options, routes: allRoutes }) => {
   const callbacks = options.callbacks || []
 
   callbacks.forEach(name => {
-    enhanceRoutes(name, newRoutes)
+    enhanceRoutes(name, newRoutes, options)
   })
 
   Object.assign(allRoutes, newRoutes)
 }
 
+
+const changeBasename = ({ initialLocation, action, hasMiddleware }) => {
+  const env = process.env.NODE_ENV
+
+  if (env === 'development' && !hasMiddleware('pathlessRouteThunk')) {
+    throw new Error('[rudy] "pathlessRouteThunk" middleware is required to use "changeBasename" action creator without passing an action.')
+  }
+
+  const { type, params, query, state, hash } = initialLocation
+  const { basename } = action.payload
+  return { type, params, query, state, hash, basename }
+}
+
+
+const callHistory = ({ action, history, routes, options, hasMiddleware }) => {
+  const env = process.env.NODE_ENV
+
+  if (env === 'development' && !hasMiddleware('pathlessRouteThunk')) {
+    throw new Error('[rudy] "pathlessRouteThunk" middleware is required to use history action creators.')
+  }
+
+  const { method, args } = action.payload
+
+  if (method !== 'reset') {
+    return history[method](...args, false)
+  }
+
+  const [entries, index, kind] = args
+
+  if (typeof entries[0] === 'object' && entries[0].type) {
+    const locations = entries.map(action => {
+      const url = actionToUrl(action, routes, options)
+      return createLocation(url, action.state, undefined, undefined, action.basename)
+    })
+
+    return history.reset(locations, index, kind, false)
+  }
+
+  return history.reset(entries, index, kind, false)
+}

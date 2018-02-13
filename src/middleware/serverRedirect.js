@@ -12,6 +12,10 @@ export default (api) => (req, next) => {
     action.url = action.location.url = basename + url
     action.status = action.location.status || 302
 
+    // account for anonymous thunks potentially redirecting without returning itself
+    // and not able to be discovered by regular means in `utils/createRequest.js`
+    req.ctx.serverRedirect = true
+
     return action
   }
 

@@ -945,10 +945,11 @@ Object {
     "status": 200,
     "url": "/second",
   },
-  "params": Object {},
+  "params": Object {
+    "testReq": "FIRST",
+  },
   "query": Object {},
   "state": Object {},
-  "testReq": "FIRST",
   "type": "SECOND",
 }
 `;
@@ -987,7 +988,9 @@ Object {
     "index": 1,
     "kind": "push",
     "length": 2,
-    "params": Object {},
+    "params": Object {
+      "testReq": "FIRST",
+    },
     "pathname": "/second",
     "prev": Object {
       "basename": "",

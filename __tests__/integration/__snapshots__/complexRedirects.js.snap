@@ -38,6 +38,8 @@ exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipe
 
 exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_B - thunk 1`] = `1`;
 
+exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_NOT_INTERPUTING - thunk 1`] = `1`;
+
 exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
 exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - SECOND - beforeEnter 1`] = `1`;

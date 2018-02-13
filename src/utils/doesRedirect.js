@@ -14,4 +14,6 @@ export default (action, redirectFunc) => {
 
     return true
   }
+
+  return false
 }

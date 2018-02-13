@@ -46,12 +46,13 @@ export default (
     formatRoute,
     createHistory = createSmartHistory,
     createReducer = createLocationReducer,
-    compose = composePromise,
     onError
   } = options
 
+  // assign to options so middleware can override them in 1st pass if necessary
   options.shouldTransition = options.shouldTransition || shouldTransition
   options.createRequest = options.createRequest || createRequest
+  options.compose = options.compose || composePromise
   options.onError = typeof onError !== 'undefined' ? onError : defaultOnError
 
   const routes = formatRoutes(routesInput, formatRoute)
@@ -59,7 +60,10 @@ export default (
   const selectTitleState = createSelector('title', title)
   const history = createHistory(options)
   const reducer = createReducer(routes, history.firstRoute.nextHistory, options)
-  const api = { routes, history, options }
+  const availableMiddlewares = {}
+  const registerMiddleware = (name: string) => availableMiddlewares[name] = true
+  const hasMiddleware = (name: string) => availableMiddlewares[name]
+  const api = { routes, history, options, registerMiddleware, hasMiddleware }
 
   const middleware = (store: Store) => {
     const getTitle = () => selectTitleState(store.getState() || {})
@@ -68,7 +72,10 @@ export default (
 
     Object.assign(api, { store, getTitle, getLocation, ctx })
 
-    const nextPromise = compose(middlewares, api, true)
+    let nextPromise = typeof middlewares === 'function'
+      ? middlewares(api, true)
+      : options.compose(middlewares, api, true)
+
     const { shouldTransition, createRequest } = options
     const onError = call('onError')(api)
 
@@ -76,12 +83,15 @@ export default (
     store.getState.rudy = api // make rudy available via `context` (see <Link />)
 
     return (next: Dispatch) => (action: Object) => {
-      const tmp = action.tmp || {}
-      delete action.tmp
-
       if (!shouldTransition(action, api)) return next(action)
 
-      const req = createRequest(action, api, tmp, next)
+      const req = createRequest(action, api, next)
+
+      nextPromise = req.route.middleware
+        ? typeof req.route.middleware === 'function'
+          ? req.route.middleware(api, true)
+          : options.compose(req.route.middleware, api, true)
+        : nextPromise
 
       return nextPromise(req) // start middleware pipeline
         .catch(error => {
@@ -90,7 +100,8 @@ export default (
           return onError(req)
         })
         .then(res => {
-          req.ctx.busy = false
+          const isRouteChangingPipeline = req.route.path
+          req.ctx.busy = isRouteChangingPipeline ? false : req.ctx.busy
           return res
         })
     }

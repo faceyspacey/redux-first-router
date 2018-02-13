@@ -4,7 +4,7 @@ import { noOp, isAction } from '../../utils'
 export default (name, config = {}) => (api) => {
   const { cache = false, prev = false, skipOpts = false } = config
 
-  enhanceRoutes(name, api.routes)
+  enhanceRoutes(name, api.routes, api.options)
 
   api.options.callbacks = api.options.callbacks || []
   api.options.callbacks.push(name)

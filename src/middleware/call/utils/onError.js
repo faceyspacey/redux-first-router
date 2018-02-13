@@ -27,5 +27,5 @@ export default (req) => {
     console.log(`[RUDY ERROR]: action.type: ${type}\n`, trace)
   }
 
-  return action // this action will be dispatched on errors if no custom onError callbacks
+  return req.dispatch(action)
 }

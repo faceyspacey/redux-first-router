@@ -129,9 +129,10 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       firstRoute
     } = setupStore(routesMap, initialPath, opts)
 
-    await store.dispatch(firstRoute())
+    const firstResponse = await store.dispatch(firstRoute())
 
     await callback({
+      firstResponse,
       history,
       routes,
       options,
@@ -161,6 +162,9 @@ const setupStore = (routesMap, initialPath, opts) => {
   options.initialEntries = [initialPath]
   options.extra = { arg: 'extra-arg' }
 
+  const middlewareFunc = options.middlewareFunc
+  delete options.middlewareFunc
+
   const title = (state, action = {}) => {
     return action.payload
       ? action.type + ' - ' + JSON.stringify(action.payload)
@@ -169,7 +173,8 @@ const setupStore = (routesMap, initialPath, opts) => {
 
   const { middleware, reducer, firstRoute, rudy } = createRouter(
     routes,
-    options
+    options,
+    middlewareFunc
   )
 
   const rootReducer = combineReducers({ title, location: reducer })

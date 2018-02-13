@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - history_entries 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -14,9 +14,9 @@ Array [
 ]
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - history_index 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - history_index 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - response 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - response 1`] = `
 Object {
   "payload": Object {
     "formatRoute": undefined,
@@ -29,6 +29,10 @@ Object {
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
       },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
+      },
       "FOO": Object {
         "path": "/foo",
         "type": "FOO",
@@ -39,11 +43,11 @@ Object {
 }
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - state 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -95,7 +99,7 @@ Object {
 }
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - title 1`] = `"FIRST"`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"type":"@@rudy/CALL_HISTORY"}}}} - title 1`] = `"FIRST"`;
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_entries 1`] = `
 Array [
@@ -270,7 +274,7 @@ Object {
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - title 1`] = `"FOO"`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - history_entries 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -284,9 +288,9 @@ Array [
 ]
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - history_index 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - history_index 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - response 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - response 1`] = `
 Object {
   "payload": Object {
     "formatRoute": [Function],
@@ -300,6 +304,11 @@ Object {
         "path": "/bar",
         "thunk": [Function],
         "type": "@@rudy/CALL_HISTORY",
+      },
+      "@@rudy/CHANGE_BASENAME": Object {
+        "path": "/bar",
+        "thunk": [Function],
+        "type": "@@rudy/CHANGE_BASENAME",
       },
       "BAZ": Object {
         "path": "/bar",
@@ -317,11 +326,11 @@ Object {
 }
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - state 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -373,7 +382,7 @@ Object {
 }
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - title 1`] = `"FIRST"`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CALL_HISTORY":{"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - title 1`] = `"FIRST"`;
 
 exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_entries 1`] = `
 Array [
