@@ -270,6 +270,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -389,6 +397,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -456,6 +472,14 @@ Array [
     "@@rudy/CHANGE_BASENAME": Object {
       "thunk": [Function],
       "type": "@@rudy/CHANGE_BASENAME",
+    },
+    "@@rudy/CLEAR_CACHE": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CLEAR_CACHE",
+    },
+    "@@rudy/CONFIRM": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CONFIRM",
     },
     "@@rudy/NOT_FOUND": Object {
       "path": "/not-found",
@@ -662,6 +686,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -816,6 +848,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -903,6 +943,7 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -1108,6 +1149,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1248,6 +1297,7 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -1454,6 +1504,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -1591,6 +1649,7 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -1815,6 +1874,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -1956,6 +2023,7 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -2180,6 +2248,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -2319,6 +2395,7 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -2543,6 +2620,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -2684,6 +2769,7 @@ Array [
       "type": "FIRST",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -2908,6 +2994,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -3067,6 +3161,7 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -3294,6 +3389,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -3475,6 +3578,7 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -3703,6 +3807,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -3880,6 +3992,7 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -4116,6 +4229,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -4298,6 +4419,7 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -4534,6 +4656,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -4714,6 +4844,7 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -4950,6 +5081,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
@@ -5133,6 +5272,7 @@ Array [
               "type": "SECOND",
             },
             "arg": "extra-arg",
+            "block": [Function],
             "cache": Object {
               "cacheAction": [Function],
               "clear": [Function],
@@ -5366,6 +5506,14 @@ Array [
                 "thunk": [Function],
                 "type": "@@rudy/CHANGE_BASENAME",
               },
+              "@@rudy/CLEAR_CACHE": Object {
+                "thunk": [Function],
+                "type": "@@rudy/CLEAR_CACHE",
+              },
+              "@@rudy/CONFIRM": Object {
+                "thunk": [Function],
+                "type": "@@rudy/CONFIRM",
+              },
               "@@rudy/NOT_FOUND": Object {
                 "path": "/not-found",
                 "type": "@@rudy/NOT_FOUND",
@@ -5535,6 +5683,7 @@ Array [
       "type": "SECOND",
     },
     "arg": "extra-arg",
+    "block": [Function],
     "cache": Object {
       "cacheAction": [Function],
       "clear": [Function],
@@ -5778,6 +5927,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -6020,6 +6177,14 @@ Array [
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
       },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
+      },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",
         "type": "@@rudy/NOT_FOUND",
@@ -6172,6 +6337,14 @@ Array [
       "@@rudy/CHANGE_BASENAME": Object {
         "thunk": [Function],
         "type": "@@rudy/CHANGE_BASENAME",
+      },
+      "@@rudy/CLEAR_CACHE": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CLEAR_CACHE",
+      },
+      "@@rudy/CONFIRM": Object {
+        "thunk": [Function],
+        "type": "@@rudy/CONFIRM",
       },
       "@@rudy/NOT_FOUND": Object {
         "path": "/not-found",

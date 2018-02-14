@@ -3,7 +3,7 @@ import type { Action, RoutesMap } from '../flow-types'
 
 export default (routes: RoutesMap) => (
   action: Action | string,
-  key: string,
+  key?: string,
   ...args: Array<any>
 ) => {
   const type = typeof action === 'string' ? action : action.type

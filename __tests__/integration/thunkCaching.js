@@ -1,4 +1,5 @@
 import createTest from '../../__helpers__/createTest'
+import { clearCache } from '../../src/actions'
 
 createTest('cached thunk only called once', {
   SECOND: {
@@ -115,6 +116,22 @@ createTest('cache.clear(func)', {
   })
 
   await snap({ type: 'FIRST' })
+
+  await snap({ type: 'SECOND' })
+})
+
+createTest('clearCache(invalidator) - action creator', {
+  SECOND: {
+    path: '/second',
+    thunk: function() {
+      console.log(1)
+    }
+  }
+}, [], async ({ dispatch, snap }) => {
+  await snap({ type: 'SECOND' })
+  await snap({ type: 'FIRST' })
+
+  await dispatch(clearCache())
 
   await snap({ type: 'SECOND' })
 })

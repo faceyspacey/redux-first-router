@@ -1,7 +1,8 @@
 // @flow
-import { UPDATE_HISTORY } from '../types'
+import { UPDATE_HISTORY, BLOCK, UNBLOCK } from '../types'
 import { redirect } from '../actions'
 import { isRedirect, noOp } from '../utils'
+import { createFrom } from '../middleware/transformAction/utils'
 
 export default (
   action,
@@ -49,13 +50,6 @@ class Request {
     this.getState = store.getState
   }
 
-  confirm = (shouldDispatch = true) => {
-    if (!shouldDispatch) return
-
-    this.action.location.force = 'beforeLeave'  // bypass `beforeLeave` returning `false` + force through pipeline again (see `shouldCall`, `isTransformed`, `shouldTransition`)
-    return this.store.dispatch(this.action)
-  }
-
   dispatch = (action) => {
     const { dispatch } = this.store
     const route = this.routes[action.type]
@@ -66,10 +60,10 @@ class Request {
       action.tmp = this.tmp                      // keep the same `tmp` object across all redirects (or potential redirects in anonymous thunks)
     }
 
-    if (this.ctx.busy && route && route.path) {  // convert actions to redirects only if "busy" in a route changing pipeline
+    if (this.ctx.busy && route && route.path) { // convert actions to redirects only if "busy" in a route changing pipeline
       const status = action.location && action.location.status
       action = redirect(action, status || 302)  // automatically treat dispatches to routes during pipeline as redirects
-      return this.redirect = dispatch(action)    // assign redirect action to `this.redirect` so `composePromise` can properly return the new action
+      return this.redirect = dispatch(action)   // assign redirect action to `this.redirect` so `composePromise` can properly return the new action
     }
 
     const oldUrl = this.getLocation().url
@@ -82,5 +76,38 @@ class Request {
 
         return res
       })
+  }
+
+  confirm = (canLeave?: boolean = true) => {
+    delete this.ctx.confirm
+
+    if (!canLeave) {
+      return this.store.dispatch({ type: UNBLOCK })
+    }
+
+    // When `false` is returned from a `call` middleware, you can use `req.confirm()`
+    // to run the action successfully through the pipeline again, as in a confirmation modal.
+    // All we do is temporarily delete the blocking callback and replace it after the action
+    // is successfully dispatched.
+    //
+    // See `middleware/call/index.js` for where the below assignments are made.
+    const { name, prev } = this.last
+    const route = prev ? this.prevRoute : this.route
+    const callback = route[name]
+
+    delete route[name]
+
+    // this.action.location.blocked = true
+    return this.store.dispatch(this.action)
+      .then(res => {
+        route[name] = callback // put callback back
+        return res
+      })
+  }
+
+  block = () => {
+    this.ctx.confirm = this.confirm
+    const ref = createFrom(this.action)
+    return this.store.dispatch({ type: BLOCK, payload: { ref } })
   }
 }

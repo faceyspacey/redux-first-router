@@ -16,14 +16,6 @@ export default (name, route, req) => {
   if (name === 'beforeLeave' && state.kind === 'init') return false
   if (name === 'onLeave' && state.kind === 'load') return false
 
-  if (req.action.location && req.action.location.force) {
-    const { force } = req.action.location
-
-    if (force === true) return false
-    if (name === force) return false
-    if (Array.isArray(force) && force.includes(name)) return false
-  }
-
   return name === 'onError' && route.onError ? errorReturn : regularReturn
 }
 

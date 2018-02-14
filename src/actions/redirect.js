@@ -6,7 +6,6 @@ export default (action: Action, status: number = 302) => ({
   location: {
     ...action.location,
     status,
-    url: null, // insures action can go through pipeline (`url` indicates its passed through already), see `utils/isTransformed.js`
     kind: 'redirect'
   }
 })

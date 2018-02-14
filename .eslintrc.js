@@ -62,7 +62,7 @@ module.exports = {
     'no-unused-vars': 1,
     'import/no-unresolved': 1,
     'flowtype/no-weak-types': 1,
-    'consistent-return': 1,
+    'consistent-return': 0,
     'no-nested-ternary': 0,
     'no-return-assign': 1,
     'no-continue': 1,

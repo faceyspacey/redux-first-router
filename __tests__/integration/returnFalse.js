@@ -1,4 +1,16 @@
 import createTest from '../../__helpers__/createTest'
+import { confirm } from '../../src/actions'
+
+createTest('beforeLeave return undefined', {
+  FIRST: {
+    path: '/first',
+    beforeLeave: function() {}
+  },
+  SECOND: {
+    path: '/second',
+    thunk: function() {}
+  }
+})
 
 createTest('beforeLeave return false', {
   FIRST: {
@@ -11,34 +23,65 @@ createTest('beforeLeave return false', {
   }
 })
 
-let confirmModal
-
 createTest('beforeLeave return false and user confirms action in modal', {
   FIRST: {
     path: '/first',
-    beforeLeave: ({ confirm }) => {
-      confirmModal = confirm
-      return false
-    }
+    beforeLeave: () => false
   }
 }, async ({ dispatch, getState }) => {
   await dispatch({ type: 'REDIRECTED' }) // not used as a redirect, but just an available default action type
+
   expect(getState()).toMatchSnapshot('action blocked')
 
-  const res = await confirmModal() // user dispatches later in a modal (i.e. if a user confirmed the action)
-  expect(res).toMatchSnapshot()
+  // const res = await confirmModal1()
+  const res = await dispatch(confirm()) // user dispatches later in a modal (i.e. if a user confirmed the action)
+
+  expect(res).toMatchSnapshot('response')
   expect(getState()).toMatchSnapshot('action confirmed')
 })
 
-createTest('beforeLeave return undefined', {
+let confirmModal2
+
+createTest('beforeLeave return false and user confirms action in modal (with redirects in between)', {
   FIRST: {
     path: '/first',
-    beforeLeave: function() {}
+    beforeLeave: ({ confirm }) => {
+      confirmModal2 = confirm
+      return false
+    }
   },
   SECOND: {
     path: '/second',
-    thunk: function() {}
+    beforeEnter: ({ dispatch }) => {
+      dispatch({ type: 'REDIRECTED' })
+    }
   }
+}, [], async ({ dispatch, getState }) => {
+  await dispatch({ type: 'SECOND' })
+  expect(getState()).toMatchSnapshot('action blocked')
+
+  const res = await confirmModal2() // user dispatches later in a modal (i.e. if a user confirmed the action)
+  expect(res).toMatchSnapshot('response')
+  expect(getState()).toMatchSnapshot('action confirmed')
+})
+
+let confirmModal3
+
+createTest('beforeEnter return false and user confirms action in modal', {
+  SECOND: {
+    path: '/second',
+    beforeEnter: ({ confirm }) => {
+      confirmModal3 = confirm
+      return false
+    }
+  }
+}, [], async ({ dispatch, getState }) => {
+  await dispatch({ type: 'SECOND' })
+  expect(getState()).toMatchSnapshot('action blocked')
+
+  const res = await confirmModal3() // user dispatches later in a modal (i.e. if user confirmed entering a restricted portion of a site [e.g. over age 21])
+  expect(res).toMatchSnapshot('response')
+  expect(getState()).toMatchSnapshot('action confirmed')
 })
 
 createTest('beforeEnter return false', {

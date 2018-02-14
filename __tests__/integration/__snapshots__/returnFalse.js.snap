@@ -1,5 +1,234 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`beforeEnter return false and user confirms action in modal: action blocked 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2}}}",
+}
+`;
+
+exports[`beforeEnter return false and user confirms action in modal: action confirmed 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`beforeEnter return false and user confirms action in modal: response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
 exports[`beforeEnter return false: 1 - history_entries 1`] = `
 Array [
   Object {
@@ -30,6 +259,44 @@ exports[`beforeEnter return false: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "blocked": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
     "entries": Array [
       Object {
         "basename": "",
@@ -73,20 +340,102 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "FIRST",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2}}}",
 }
 `;
 
 exports[`beforeEnter return false: 1 - title 1`] = `"FIRST"`;
 
-exports[`beforeLeave return false and user confirms action in modal 1`] = `
+exports[`beforeLeave return false and user confirms action in modal (with redirects in between): action blocked 1`] = `
 Object {
-  "payload": "redirect_complete",
-  "type": "REDIRECTED_COMPLETE",
+  "location": Object {
+    "basename": "",
+    "blocked": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 0,
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [],
+      "hash": "",
+      "index": -1,
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "url": "/first",
+  },
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2}}}",
 }
 `;
 
-exports[`beforeLeave return false and user confirms action in modal: action blocked 1`] = `
+exports[`beforeLeave return false and user confirms action in modal (with redirects in between): action confirmed 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -100,6 +449,159 @@ Object {
         "state": Object {},
         "url": "/first",
       },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/redirected",
+        "search": "",
+        "state": Object {},
+        "url": "/redirected",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "redirect",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED",
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
+}
+`;
+
+exports[`beforeLeave return false and user confirms action in modal (with redirects in between): response 1`] = `
+Object {
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
+}
+`;
+
+exports[`beforeLeave return false and user confirms action in modal: action blocked 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/redirected",
+            "search": "",
+            "state": Object {},
+            "url": "/redirected",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+        "pathname": "/redirected",
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/redirected",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "REDIRECTED",
+    },
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
     ],
     "from": null,
     "hasSSR": false,
@@ -133,7 +635,7 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "FIRST",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"REDIRECTED\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/redirected\\",\\"pathname\\":\\"/redirected\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/redirected\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/redirected\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2}}}",
 }
 `;
 
@@ -161,7 +663,6 @@ Object {
         "url": "/redirected",
       },
     ],
-    "force": "beforeLeave",
     "from": null,
     "hasSSR": false,
     "hash": "",
@@ -209,6 +710,13 @@ Object {
 }
 `;
 
+exports[`beforeLeave return false and user confirms action in modal: response 1`] = `
+Object {
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
+}
+`;
+
 exports[`beforeLeave return false: 1 - history_entries 1`] = `
 Array [
   Object {
@@ -239,6 +747,44 @@ exports[`beforeLeave return false: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "blocked": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "state": Object {},
+            "url": "/first",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 1,
+        "kind": "push",
+        "length": 2,
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
     "entries": Array [
       Object {
         "basename": "",
@@ -282,7 +828,7 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "FIRST",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2}}}",
 }
 `;
 

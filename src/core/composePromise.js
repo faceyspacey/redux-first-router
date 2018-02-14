@@ -31,7 +31,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
         const next = (...args) => Promise.resolve(dispatch(i + 1, ...args))
         const prom = Promise.resolve(fn(req, next, ...args)) // insure middleware is a promise
 
-        return prom.then(res => {
+        const retrn = prom.then(res => {
           if (req.redirect && killOnRedirect) {
             return req.redirect
           }
@@ -47,6 +47,12 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
           result = result || res
           return i === 0 ? result : res // return of dispatch is that of last middleware
         })
+
+        if (req.firstRouteSPA && req.tmp.committed) {
+          return result
+        }
+
+        return retrn
       }
       catch (err) {
         return Promise.reject(err)

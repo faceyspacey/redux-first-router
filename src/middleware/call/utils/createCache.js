@@ -40,19 +40,20 @@ export default (api, name, config) => {
     cache[key] = true
   }
 
-  const clear = (action, opts = {}) => {
-    if (!action) {
+  const clear = (invalidator, opts = {}) => {
+    if (!invalidator) {
       cache = {}
     }
-    else if (typeof action === 'function') {      // allow user to customize cache clearing algo
-      cache = action(cache, api, opts) || cache
+    else if (typeof invalidator === 'function') {      // allow user to customize cache clearing algo
+      cache = invalidator(cache, api, opts) || cache
     }
-    else if (typeof action === 'string') {        // delete all cached items for TYPE or other string
+    else if (typeof invalidator === 'string') {        // delete all cached items for TYPE or other string
       for (const k in cache) {
-        if (k.indexOf(action) > -1) delete cache[k]
+        if (k.indexOf(invalidator) > -1) delete cache[k]
       }
     }
     else {                                        // delete all/some callbacks for precise item (default)
+      const action = invalidator
       const loc = createLocation(actionToUrl(action, api.routes, api.options))
       const act = { ...action, location: { ...action.location, ...loc } }
 

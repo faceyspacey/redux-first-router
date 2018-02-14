@@ -1,4 +1,4 @@
-import { isRedirect, isCommittedRedirect } from '../../../utils'
+import { isRedirect } from '../../../utils'
 import { nestAction } from './index'
 
 export default (req, url, action, history) => {
@@ -8,7 +8,11 @@ export default (req, url, action, history) => {
   const method = redirectCommitted ? 'replace' : 'push'                 // redirects before committing are just pushes (since the original route was never pushed)
   const { nextHistory, commit } = history[method](url, state, bn, false)// get returned the same action as functions passed to `history.listen`
 
-  nextHistory.kind = redirect ? 'redirect' : nextHistory.kind           // the kind no matter what relfects the appropriate intent
+  if (redirect) {
+    // the kind no matter what reflects the appropriate intent
+    // but we must also consider automatic back/next detection by `history`
+    nextHistory.kind = /back|next/.test(nextHistory.kind) ? nextHistory.kind : 'redirect'
+  }
 
   const curr = req.getLocation()
   let from                                                              // `from` represents the route the user would have gone to had there been no redirect

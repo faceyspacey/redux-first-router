@@ -19,15 +19,15 @@ module.exports = wallaby => {
 
     tests: [
       // '__tests__/integration/**/*.js',
-      // '__tests__/integration/thunkCaching.js',
-      '__tests__/integration/complexRedirects.js',
+      // '__tests__/integration/dispatchFrom.js',
+      // '__tests__/integration/returnFalse.js',
       // '__tests__/integration/onError.js',
       // '__tests__/integration/queries.js',
       // '__tests__/integration/params.js',
       // '__tests__/integration/createScene/actionCreators.js',
       // '__tests__/integration/serverRedirect.js',
       // '__tests__/integration/redirects.js',
-      // '__tests__/integration/actions/history.js',
+      '__tests__/integration/actions/redirect.js',
       // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/routeLevelMiddleware.js',
       // '__tests__/integration/serverRedirect.js',

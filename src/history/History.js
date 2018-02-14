@@ -43,6 +43,8 @@ export default class History {
     const key = createKey()
     const bn = this.basename
     const location = createLocation(path, state, key, this.location, bn)
+
+    // automatically determine if the user is just going back or next to a URL already visited
     const back = this._isBack(location)
     const next = this._isNext(location)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -74,12 +76,21 @@ export default class History {
     const k = createKey()
     const bn = this.basename
     const location = createLocation(path, state, k, this.location, bn)
-    const entries = this.entries.slice(0)
+
+    // automatically determine if the user is just going back or next to a URL already visited
+    const back = this._isBack(location)
+    const next = this._isNext(location)
+    const kind = back ? 'back' : (next ? 'next' : 'redirect')
+
+    if (/back|next/.test(kind)) {
+      return this.jump(back ? -1 : 1, state, undefined, undefined, notify)
+    }
+
     const index = this.index
+    const entries = this.entries.slice(0)
 
     entries[index] = location
 
-    const kind = 'redirect'
     const nextState = { kind, location, entries, index }
     const nextHistory = this._createNextHistory(nextState)
 

@@ -250,6 +250,14 @@ Object {
       "thunk": [Function],
       "type": "@@rudy/CHANGE_BASENAME",
     },
+    "@@rudy/CLEAR_CACHE": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CLEAR_CACHE",
+    },
+    "@@rudy/CONFIRM": Object {
+      "thunk": [Function],
+      "type": "@@rudy/CONFIRM",
+    },
     "@@rudy/NOT_FOUND": Object {
       "path": "/not-found",
       "type": "@@rudy/NOT_FOUND",

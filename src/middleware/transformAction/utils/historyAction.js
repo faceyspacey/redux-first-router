@@ -50,7 +50,7 @@ export default (req, action) => {
   }
   else if (nextHistory.kind === 'redirect') {
     prev = curr.prev    // keep previous prev state to reflect how the end user perceives the app
-    from = { ...curr }  // but provide access to what the state was in the `from` key for user by developers
+    from = curr         // but provide access to what the state was in the `from` key for user by developers
   }
 
   req.action = nestAction(action, prev, nextHistory, from)          // replace history-triggered action with real action intended for reducers

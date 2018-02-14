@@ -3,8 +3,6 @@ export { default as isAction } from './isAction'
 export { default as isNotFound } from './isNotFound'
 export { default as isServer } from './isServer'
 export { default as isRedirect } from './isRedirect'
-export { default as isCommittedRedirect } from './isCommittedRedirect'
-export { default as isTransformed } from './isTransformed'
 
 export { default as actionToUrl } from './actionToUrl'
 export { default as urlToAction } from './urlToAction'

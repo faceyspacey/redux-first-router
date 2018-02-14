@@ -1,5 +1,5 @@
 // @flow
-import { ADD_ROUTES } from '../types'
+import { ADD_ROUTES, BLOCK, UNBLOCK } from '../types'
 import { isServer, urlToAction, typeToScene } from '../utils'
 
 import type {
@@ -27,18 +27,31 @@ export default (routes: RoutesMap, history: History, options: Options) => {
       const hasSSR = st.hasSSR
       return { type, params, query, state, hash, hasSSR, basename, ...l }
     }
-    else if (action.type === ADD_ROUTES) {
+
+    if (action.type === ADD_ROUTES) {
       const count = Object.keys(action.payload.routes).length  // we need to be able to update Links when new routes are added
       const routesAdded = (st.routesAdded || 0) + count        // we could just increment a number, but why not at least off some info
       return { ...st, routesAdded }
     }
-    else if (l && l.kind === 'setState') {
+
+    if (l && l.kind === 'setState') {
       const { state, location: { entries } } = action
       return { ...st, state, entries }
     }
-    else if (action.type.indexOf('_ERROR') > -1) {
+
+    if (action.type.indexOf('_ERROR') > -1) {
       const { error, type: errorType } = action
       return { ...st, error, errorType }
+    }
+
+    if (action.type === BLOCK) {
+      const { ref } = action.payload
+      return { ...st, blocked: ref }
+    }
+
+    if (action.type === UNBLOCK) {
+      const { blocked, ...state } = st
+      return state
     }
 
     return st

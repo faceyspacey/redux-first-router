@@ -1,5 +1,6 @@
 import { enhanceRoutes, shouldCall, createCache } from './utils'
 import { noOp, isAction } from '../../utils'
+import { BLOCK } from '../../types'
 
 export default (name, config = {}) => (api) => {
   const { cache = false, prev = false, skipOpts = false } = config
@@ -21,7 +22,7 @@ export default (name, config = {}) => (api) => {
     if (isCached) return next()
 
     const calls = req.options.shouldCall(name, route, req, config)
-    if (!calls || isCached) return next()
+    if (!calls) return next()
 
     const r = (calls.route && route[name]) || noOp
     const o = (calls.options && !skipOpts && req.options[name]) || noOp
@@ -29,7 +30,19 @@ export default (name, config = {}) => (api) => {
     req._dispatched = false // `dispatch` used by callbacks will set this to `true` (see core/createDispatch.js)
 
     return Promise.all([r(req), o(req)]).then(([r, o]) => {
-      if (isFalse(r, o)) return false
+      if (isFalse(r, o)) {
+        // set the current callback name and whether its on the previous route (beforeLeave) or current
+        // so that `req.confirm()` can temporarily delete it and pass through the pipeline successfully
+        // in a confirmation modal or similar
+        req.last = { name, prev }
+
+        if (!req.tmp.committed) {
+          req.block()
+        }
+
+        return false
+      }
+
       const res = r || o
 
       if (res && !req._dispatched && isAutoDispatch(route, req.options)) { // if no dispatch was detected, and a result was returned, dispatch it automatically

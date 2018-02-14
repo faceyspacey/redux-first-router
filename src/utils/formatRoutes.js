@@ -1,5 +1,5 @@
 // @flow
-import { NOT_FOUND, ADD_ROUTES, CHANGE_BASENAME, CALL_HISTORY } from '../types'
+import { NOT_FOUND, ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY } from '../types'
 import { redirect } from '../actions'
 import type { RoutesMap, RoutesMapInput } from '../flow-types'
 import { enhanceRoutes } from '../middleware/call/utils' // unfortunate coupling (to potentially optional middleware)
@@ -15,6 +15,8 @@ const formatRoutes = (
 
   routes[ADD_ROUTES] = routes[ADD_ROUTES] || { thunk: addRoutes }
   routes[CHANGE_BASENAME] = routes[CHANGE_BASENAME] || { thunk: changeBasename }
+  routes[CLEAR_CACHE] = routes[CLEAR_CACHE] || { thunk: clearCache }
+  routes[CONFIRM] = routes[CONFIRM] || { thunk: confirm }
   routes[CALL_HISTORY] = routes[CALL_HISTORY] || { thunk: callHistory }
 
   for (const type in routes) {
@@ -93,6 +95,30 @@ const changeBasename = ({ initialLocation, action, hasMiddleware }) => {
   const { type, params, query, state, hash } = initialLocation
   const { basename } = action.payload
   return { type, params, query, state, hash, basename }
+}
+
+
+const clearCache = ({ cache, action, hasMiddleware }) => {
+  const env = process.env.NODE_ENV
+
+  if (env === 'development' && !hasMiddleware('pathlessRouteThunk')) {
+    throw new Error('[rudy] "pathlessRouteThunk" middleware is required to use "clearCache" action creator.')
+  }
+
+  const { invalidator, options } = action.payload
+  return cache.clear(invalidator, options)
+}
+
+
+const confirm = ({ ctx, action, hasMiddleware }) => {
+  const env = process.env.NODE_ENV
+
+  if (env === 'development' && !hasMiddleware('pathlessRouteThunk')) {
+    throw new Error('[rudy] "pathlessRouteThunk" middleware is required to use "confirm" action creator.')
+  }
+
+  const { canLeave } = action.payload
+  return ctx.confirm(canLeave)
 }
 
 

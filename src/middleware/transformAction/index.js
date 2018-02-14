@@ -22,7 +22,9 @@ export default (api) => async (req, next) => {
     getLocation
   } = req
 
-  if (action.type !== UPDATE_HISTORY && !route.path) return next() // only create route actions if from history or routes with paths
+  if (action.type !== UPDATE_HISTORY && !route.path) {
+    return next() // only create route actions if from history or routes with paths
+  }
 
   try {
     if (action.type === UPDATE_HISTORY) {
