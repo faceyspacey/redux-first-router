@@ -10,7 +10,7 @@ export default (doc: Document, title: ?string): ?string => {
 }
 
 export const getDocument = (): Document => {
-  const isSSRTest = process.env.NODE_ENV === 'test' && window.isSSR
+  const isSSRTest = process.env.NODE_ENV === 'test' && typeof window !== 'undefined' && window.isSSR
 
   return typeof document !== 'undefined' && !isSSRTest ? document : {}
 }
