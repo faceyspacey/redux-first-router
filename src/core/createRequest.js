@@ -13,7 +13,11 @@ export default (
 class Request {
   constructor(action, api, next) {
     const { store, routes, options, getLocation, ctx } = api
+    const state = getLocation()
     const route = routes[action.type] || {}
+    const prevRoute = state.kind === 'init'
+      ? routes[state.prev.type] || {}
+      : routes[state.type]
 
     if (route.path) {
       if (ctx.pending && !action.tmp) {
@@ -38,9 +42,9 @@ class Request {
     this.tmp = tmp
     this.ctx = ctx
     this.route = route
-    this.prevRoute = routes[getLocation().type]
+    this.prevRoute = prevRoute
     this.initialState = store.getState()
-    this.initialLocation = getLocation()
+    this.initialLocation = state
     this.completed = false
     this.error = null
 
@@ -48,6 +52,18 @@ class Request {
     this.commitDispatch = next
 
     this.getState = store.getState
+  }
+
+  getKind = () => {
+    return this.action.location && this.action.location.kind
+  }
+
+  commit = () => {
+    const res = this.commitDispatch(this.action)
+    this.commitHistory()
+     // req.ctx.pending = false
+    this.tmp.committed = true
+    return res
   }
 
   dispatch = (action) => {

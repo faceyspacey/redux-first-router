@@ -1,3 +1,5 @@
+// @flow
+import type { LocationState } from '../../../flow-types'
 import { isHydrate, isServer } from '../../../utils'
 
 const regularReturn = { route: true, options: true }
@@ -6,15 +8,8 @@ const errorReturn = { route: true, options: false }
 export default (name, route, req) => {
   if (!route[name] && !req.options[name]) return false
 
-  const state = req.getLocation()
-  const kind = req.action.location && req.action.location.kind
-
-  if (/setState|reset/.test(kind)) return false
-  if (isHydrate(state, 'init') && /before/.test(name)) return false
-  if (isServer() && /onLeave|onEnter/.test(name)) return false
-  if (isHydrate(state, 'load') && name === 'thunk') return false
-  if (name === 'beforeLeave' && state.kind === 'init') return false
-  if (name === 'onLeave' && state.kind === 'load') return false
+  if (isHydrate(req) && name !== 'onEnter') return false
+  if (isServer() && /beforeLeave|onLeave|onEnter/.test(name)) return false
 
   return name === 'onError' && route.onError ? errorReturn : regularReturn
 }

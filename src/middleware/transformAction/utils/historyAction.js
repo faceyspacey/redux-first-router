@@ -7,6 +7,9 @@ export default (req, action) => {
 
   const { nextHistory } = req.action
   const curr = req.getLocation()
+
+  nextHistory.location.state = action.state || nextHistory.location.state
+
   let prev = curr.kind === 'init' ? curr.prev : curr
   let from
 

@@ -2,7 +2,13 @@
 
 exports[`beforeEnter + thunk callbacks NOT called if isHydrate: 1 - routes - FIRST - beforeEnter 1`] = `0`;
 
-exports[`beforeEnter + thunk callbacks NOT called if isHydrate: 1 - routes - FIRST - onComplete 1`] = `1`;
+exports[`beforeEnter + thunk callbacks NOT called if isHydrate: 1 - routes - FIRST - beforeLeave 1`] = `0`;
+
+exports[`beforeEnter + thunk callbacks NOT called if isHydrate: 1 - routes - FIRST - onComplete 1`] = `0`;
+
+exports[`beforeEnter + thunk callbacks NOT called if isHydrate: 1 - routes - FIRST - onEnter 1`] = `1`;
+
+exports[`beforeEnter + thunk callbacks NOT called if isHydrate: 1 - routes - FIRST - onLeave 1`] = `0`;
 
 exports[`beforeEnter + thunk callbacks NOT called if isHydrate: 1 - routes - FIRST - thunk 1`] = `0`;
 

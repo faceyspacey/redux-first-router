@@ -136,9 +136,11 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       history,
       routes,
       options,
+      store,
       dispatch: store.dispatch,
       getState: store.getState,
       location: () => store.getState().location,
+      snapChange,
       snap: async (action, prefix = '') => {
         const res = await store.dispatch(action)
 

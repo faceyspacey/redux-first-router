@@ -35,3 +35,39 @@ createTest('action.state as function', {
     })
   })
 })
+
+createTest('route.defaultState', {
+  SECOND: {
+    path: '/second',
+    defaultState: { foo: 'bar' }
+  },
+  THIRD: {
+    path: '/third',
+    defaultState: q => {
+      return { ...q, foo: 'bar' }
+    }
+  }
+}, [
+  { type: 'SECOND', state: { key: 'correct' } },
+  { type: 'SECOND' }
+], async ({ history, store, snapChange }) => {
+  const res = await history.push('/third', { abc: 123 })
+  snapChange('', res, store, history)
+})
+
+createTest('route.toState/fromState', {
+  SECOND: {
+    path: '/second',
+    toState: (v, k) => v.toUpperCase() + k.toUpperCase()
+  },
+  THIRD: {
+    path: '/third',
+    fromState: (v, k) => v.toLowerCase() + k.toLowerCase()
+  }
+}, [
+  { type: 'SECOND', state: { key: 'correct' } },
+  { type: 'SECOND' }
+], async ({ history, store, snapChange }) => {
+  const res = await history.push('/third', { abc: 'XYZF' })
+  snapChange('', res, store, history)
+})

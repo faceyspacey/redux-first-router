@@ -16,11 +16,13 @@ export default (
   routes: RoutesMap,
   opts: Options = {}
 ): string => {
-  const { type, params, query, hash } = action
+  const { type, params, query, hash, state } = action
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
 
   if (typeof path !== 'string') throw new Error('[rudy] invalid route path')
+
+  toState(state, route, opts, action)
 
   return compileUrl(
     path,
@@ -101,6 +103,30 @@ const toQuery = (query: ?Object, route: Route, opts: Options, action) => {
   }
 
   return query
+}
+
+const toState = (state: ?Object, route: Route, opts: Options, action) => {
+  const def = route.defaultState || opts.defaultState
+  state = def
+    ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
+    : state
+
+  // unfortunate impurity to send defaults back to the original action as well
+  if (def) action.state = state
+
+  const to = route.toState || opts.toState
+
+  if (to && state) {
+    const newState = {}
+
+    for (const key in state) {
+      newState[key] = to(state[key], key, route, opts)
+    }
+
+    return newState
+  }
+
+  return state
 }
 
 const toHash = (hash: ?string, route: Route, opts: Options, action) => {

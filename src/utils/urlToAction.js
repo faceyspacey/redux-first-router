@@ -23,7 +23,8 @@ export default (
 
     if (match) {
       const { params, query, hash } = match
-      return { type, params, query, hash, state }
+      const st = fromState(state, route, opts)
+      return { type, params, query, hash, basename, state: st }
     }
   }
 
@@ -49,11 +50,9 @@ const fromParams = (params: Object, route: Route, opts: Options) => {
   }
 
   const def = route.defaultParams || opts.defaultParams
-  const foo = def
-    ? (typeof def === 'function' ? def(params, route) : { ...def, ...params })
+  return def
+    ? (typeof def === 'function' ? def(params, route, opts) : { ...def, ...params })
     : params
-
-  return foo
 }
 
 const defaultFromParam = (
@@ -87,25 +86,41 @@ const fromQuery = (query: Object, route: Route, opts: Options) => {
 
   if (from) {
     for (const key in query) {
-      query[key] = from(query[key], key, route)
+      query[key] = from(query[key], key, route, opts)
       if (query[key] === undefined) delete query[key] === undefined // allow undefined values to be overriden by defaultQuery
     }
   }
 
   const def = route.defaultQuery || opts.defaultQuery
   return def
-    ? typeof def === 'function' ? def(query, route) : { ...def, ...query }
+    ? typeof def === 'function' ? def(query, route, opts) : { ...def, ...query }
     : query
 }
 
 const fromHash = (hash: string, route: Route, opts: Options) => {
   const from = route.fromHash || opts.fromHash
-  hash = from ? from(hash, route) : hash
+  hash = from ? from(hash, route, opts) : hash
 
   const def = route.defaultHash || opts.defaultHash
   return def
-    ? typeof def === 'function' ? def(hash, route) : (hash || def)
+    ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
     : hash
+}
+
+const fromState = (state: Object, route: Route, opts: Options) => {
+  const from = route.fromState || opts.fromState
+
+  if (from) {
+    for (const key in state) {
+      state[key] = from(state[key], key, route, opts)
+      if (state[key] === undefined) delete state[key] === undefined // allow undefined values to be overriden by defaultQuery
+    }
+  }
+
+  const def = route.defaultState || opts.defaultState
+  return def
+    ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
+    : state
 }
 
 const transformers = { fromParams, fromQuery, fromHash }

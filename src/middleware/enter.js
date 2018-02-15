@@ -3,12 +3,8 @@ export default (api) => async (req, next) => {
     return req.route.redirectBeforeEnter(req)
   }
 
-  const ret = req.commitDispatch(req.action)
-  req.commitHistory()
-
-  // req.ctx.pending = false
-  req.tmp.committed = true
+  const res = req.commit()
 
   await next()
-  return ret
+  return res
 }

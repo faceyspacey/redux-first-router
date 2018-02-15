@@ -123,9 +123,7 @@ createTest('cache.clear(func)', {
 createTest('clearCache(invalidator) - action creator', {
   SECOND: {
     path: '/second',
-    thunk: function() {
-      console.log(1)
-    }
+    thunk: function() {}
   }
 }, [], async ({ dispatch, snap }) => {
   await snap({ type: 'SECOND' })

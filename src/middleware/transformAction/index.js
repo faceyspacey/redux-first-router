@@ -49,6 +49,12 @@ export default (api) => async (req, next) => {
     req = reduxAction(req, url, act, history)
   }
 
+  // `setState` needs to skip the callbacks of the middleware pipeline and go straight to the reducer.
+  // Also, `setState` kind will have the same URL, so we must handle it before `isDoubleDispatch`.
+  if (req.action.location.kind === 'setState') {
+    return req.commit()
+  }
+
   const currentState = getLocation()
   if (isDoubleDispatch(req, currentState)) return req.action
 
@@ -64,5 +70,4 @@ export default (api) => async (req, next) => {
 const isDoubleDispatch = (req, state) =>
   req.action.location.url === state.url
   && state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
-  && req.action.location.kind !== 'setState'
   && req.action.info !== 'reset'
