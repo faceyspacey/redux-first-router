@@ -14,27 +14,21 @@ createTest('core capabilities can be overriden as options', {
   }
 }, {
   createHistory: (...args) => {
-    expect(args).toMatchSnapshot('createHistory')
     return createHistory(...args)
   },
   createReducer: (...args) => {
-    expect(args).toMatchSnapshot('createReducer')
     return createReducer(...args)
   },
   compose: (...args) => {
-    expect(args).toMatchSnapshot('compose')
     return composePromise(...args)
   },
   shouldTransition: (...args) => {
-    expect(args).toMatchSnapshot('shouldTransition')
     return shouldTransition(...args)
   },
   createRequest: (...args) => {
-    expect(args).toMatchSnapshot('createRequest')
     return createRequest(...args)
   },
   shouldCall: (...args) => {
-    expect(args).toMatchSnapshot('shouldCall')
     return shouldCall(...args)
   },
   title: state => state.title,

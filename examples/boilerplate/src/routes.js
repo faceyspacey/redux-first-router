@@ -2,11 +2,10 @@ import { redirect } from 'redux-first-router'
 
 export default {
   HOME: '/',
-
   LIST: {
     path: '/list/:category',
-    thunk: async ({ action }) => {
-      const { params: { category } } = action
+    thunk: async ({ params }) => {
+      const { category } = params
       const packages = await fetch(`/api/category/${category}`)
 
       if (packages.length === 0) {

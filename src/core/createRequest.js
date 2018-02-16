@@ -10,7 +10,7 @@ export default (
   next
 ) => new Request(action, api, next)
 
-class Request {
+export class Request {
   constructor(action, api, next) {
     const { store, routes, options, getLocation, ctx } = api
     const state = getLocation()
@@ -19,20 +19,33 @@ class Request {
       ? routes[state.prev.type] || {}
       : routes[state.type]
 
+    // cancel pending not committed requests if new ones quickly come in
     if (route.path) {
-      if (ctx.pending && !action.tmp) {
-        // ctx.cancelled = true
+      const requestNotCommitted = ctx.pending
+      const isNewPipeline = !action.tmp
+
+      if (requestNotCommitted && isNewPipeline) {
+        requestNotCommitted.cancelled = true // composePromise will return early on pending requests, effectively cancelling them
       }
-      // ctx.pending = true
+
+      ctx.pending = this
     }
 
+    // the `tmp` context is passed along by all actions in the same primary parent
+    // pipeline to keep track of things like `committed` status, but we don't want the
+    // resulting action that leaves Rudy to have this, so we delete it.
     const tmp = action.tmp || {}
     delete action.tmp
 
+    // a `committed` status must be marked for redirects initiated outside of the pipeline
+    // so that `src/middleware/transformAction/reduxAction.js` knows to `replace` the
+    // history entry instead of `push`
     if (!ctx.busy && isRedirect(action)) {
       tmp.committed = true
     }
 
+    // maintain `busy` status throughout a primary parent route changing pipeline even if
+    // there are pathlessRoutes, anonymousThunks (which don't have paths) called by them
     ctx.busy = ctx.busy || !!route.path || action.type === UPDATE_HISTORY
 
     Object.assign(this, options.extra)
@@ -45,23 +58,20 @@ class Request {
     this.prevRoute = prevRoute
     this.initialState = store.getState()
     this.initialLocation = state
-    this.completed = false
     this.error = null
 
+    // commitHistory is supplied by history-generated actions, and by redux-generated actions
+    // it will be added by the `transformAction` middleware, overwriting `noOp` below
     this.commitHistory = this.action.type === UPDATE_HISTORY ? this.action.commit : noOp
     this.commitDispatch = next
 
     this.getState = store.getState
   }
 
-  getKind = () => {
-    return this.action.location && this.action.location.kind
-  }
-
   commit = () => {
     const res = this.commitDispatch(this.action)
     this.commitHistory()
-     // req.ctx.pending = false
+    this.ctx.pending = false
     this.tmp.committed = true
     return res
   }
@@ -113,7 +123,6 @@ class Request {
 
     delete route[name]
 
-    // this.action.location.blocked = true
     return this.store.dispatch(this.action)
       .then(res => {
         route[name] = callback // put callback back
@@ -125,5 +134,13 @@ class Request {
     this.ctx.confirm = this.confirm
     const ref = createFrom(this.action)
     return this.store.dispatch({ type: BLOCK, payload: { ref } })
+  }
+
+  getKind = () => {
+    return this.action.location && this.action.location.kind
+  }
+
+  hasSSR = () => {
+    return this.getLocation().hasSSR
   }
 }

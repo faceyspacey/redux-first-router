@@ -15,7 +15,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
       }
 
       if (req.cancelled) {
-        return Promise.resolve(result)
+        return Promise.resolve(false)
       }
 
       if (i <= index) {
@@ -36,21 +36,18 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
             return req.redirect
           }
 
-          if (req.ctx.cancelled) {
-            return result
+          if (req.cancelled) {
+            return false
           }
 
           if (isFalse(res, result)) {
+            req.ctx.pending = false
             return result = false
           }
 
           result = result || res
           return i === 0 ? result : res // return of dispatch is that of last middleware
         })
-
-        if (req.firstRouteSPA && req.tmp.committed) {
-          return result
-        }
 
         return retrn
       }

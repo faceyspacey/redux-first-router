@@ -91,7 +91,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
       initialState
     } = setupStore(routesMap, initialPath, opts)
 
-    const firstAction = firstRoute()
+    const firstAction = firstRoute(true)
     const res = await store.dispatch(firstAction)
 
     if (routesMap.FIRST || initialPath !== '/first') {
@@ -129,9 +129,12 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       firstRoute
     } = setupStore(routesMap, initialPath, opts)
 
-    const firstResponse = await store.dispatch(firstRoute())
+    const firstResponse = opts.dispatchFirstRoute === false
+      ? null
+      : await store.dispatch(firstRoute(true))
 
     await callback({
+      firstRoute,
       firstResponse,
       history,
       routes,
@@ -139,7 +142,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       store,
       dispatch: store.dispatch,
       getState: store.getState,
-      location: () => store.getState().location,
+      getLocation: () => store.getState().location,
       snapChange,
       snap: async (action, prefix = '') => {
         const res = await store.dispatch(action)
@@ -162,7 +165,7 @@ const setupStore = (routesMap, initialPath, opts) => {
   const options = createOptions(opts)
 
   options.initialEntries = [initialPath]
-  options.extra = { arg: 'extra-arg' }
+  options.extra = options.extra || { arg: 'extra-arg' }
 
   const middlewareFunc = options.middlewareFunc
   delete options.middlewareFunc
@@ -262,65 +265,90 @@ const snapOptions = (prefix, options) => {
 }
 
 const snapCallbacks = (prefix, obj) => {
-  if (typeof obj.beforeLeave === 'function' && obj.beforeLeave.mock) {
-    expect(obj.beforeLeave.mock.calls.length).toMatchSnapshot(prefix + ' - beforeLeave')
-  }
-
-  if (typeof obj.beforeEnter === 'function' && obj.beforeEnter.mock) {
-    expect(obj.beforeEnter.mock.calls.length).toMatchSnapshot(prefix + ' - beforeEnter')
-  }
-
-  if (typeof obj.onLeave === 'function' && obj.onLeave.mock) {
-    expect(obj.onLeave.mock.calls.length).toMatchSnapshot(prefix + ' - onLeave')
-  }
-
-  if (typeof obj.onEnter === 'function' && obj.onEnter.mock) {
-    expect(obj.onEnter.mock.calls.length).toMatchSnapshot(prefix + ' - onEnter')
-  }
-
-  if (typeof obj.thunk === 'function' && obj.thunk.mock) {
-    expect(obj.thunk.mock.calls.length).toMatchSnapshot(prefix + ' - thunk')
-  }
-
-  if (typeof obj.onComplete === 'function' && obj.onComplete.mock) {
-    expect(obj.onComplete.mock.calls.length).toMatchSnapshot(prefix + ' - onComplete')
-  }
-
-  if (typeof obj.onError === 'function' && obj.onError.mock) {
-    expect(obj.onError.mock.calls.length).toMatchSnapshot(prefix + ' - onError')
-  }
+  expectBeforeLeave(prefix, obj)
+  expectBeforeEnter(prefix, obj)
+  expectOnLeave(prefix, obj)
+  expectOnEnter(prefix, obj)
+  expectThunk(prefix, obj)
+  expectOnComplete(prefix, obj)
+  expectOnError(prefix, obj)
 }
 
 const snapChange = (prefix, res, store, history, initialState) => {
-  if (initialState) expectInitialState(initialState, prefix)
+  if (initialState) expectInitialState(prefix, initialState)
 
-  expectState(store, prefix)
-  expectResponse(res, prefix)
-  expectEntries(history, prefix)
-  expectIndex(history, prefix)
+  expectState(prefix, store)
+  expectResponse(prefix, res)
+  expectEntries(prefix, history)
+  expectIndex(prefix, history)
   expectTitle(prefix)
 }
 
-const expectInitialState = (initialState, prefix) => {
+// all these expect functions are broken out separately so we can easily see the
+// name of the expectation that failed in the trace displayed in the Wallaby web panel
+
+const expectInitialState = (prefix, initialState) => {
   expect(initialState).toMatchSnapshot(prefix + ' - initial_state')
 }
 
-const expectResponse = (res, prefix) => {
-  expect(res).toMatchSnapshot(prefix + ' - response')
-}
-
-const expectState = (store, prefix) => {
+const expectState = (prefix, store) => {
   expect(store.getState()).toMatchSnapshot(prefix + ' - state')
 }
 
-const expectEntries = (history, prefix) => {
+const expectResponse = (prefix, res) => {
+  expect(res).toMatchSnapshot(prefix + ' - response')
+}
+
+const expectEntries = (prefix, history) => {
   expect(history.entries).toMatchSnapshot(prefix + ' - history_entries')
 }
 
-const expectIndex = (history, prefix) => {
+const expectIndex = (prefix, history) => {
   expect(history.index).toMatchSnapshot(prefix + ' - history_index')
 }
 
 const expectTitle = (prefix) => {
   expect(document.title).toMatchSnapshot(prefix + ' - title')
+}
+
+const expectBeforeLeave = (prefix, obj) => {
+  if (typeof obj.beforeLeave === 'function' && obj.beforeLeave.mock) {
+    expect(obj.beforeLeave.mock.calls.length).toMatchSnapshot(prefix + ' - beforeLeave')
+  }
+}
+
+const expectBeforeEnter = (prefix, obj) => {
+  if (typeof obj.beforeEnter === 'function' && obj.beforeEnter.mock) {
+    expect(obj.beforeEnter.mock.calls.length).toMatchSnapshot(prefix + ' - beforeEnter')
+  }
+}
+
+const expectOnLeave = (prefix, obj) => {
+  if (typeof obj.onLeave === 'function' && obj.onLeave.mock) {
+    expect(obj.onLeave.mock.calls.length).toMatchSnapshot(prefix + ' - onLeave')
+  }
+}
+
+const expectOnEnter = (prefix, obj) => {
+  if (typeof obj.onEnter === 'function' && obj.onEnter.mock) {
+    expect(obj.onEnter.mock.calls.length).toMatchSnapshot(prefix + ' - onEnter')
+  }
+}
+
+const expectThunk = (prefix, obj) => {
+  if (typeof obj.thunk === 'function' && obj.thunk.mock) {
+    expect(obj.thunk.mock.calls.length).toMatchSnapshot(prefix + ' - thunk')
+  }
+}
+
+const expectOnComplete = (prefix, obj) => {
+  if (typeof obj.onComplete === 'function' && obj.onComplete.mock) {
+    expect(obj.onComplete.mock.calls.length).toMatchSnapshot(prefix + ' - onComplete')
+  }
+}
+
+const expectOnError = (prefix, obj) => {
+  if (typeof obj.onError === 'function' && obj.onError.mock) {
+    expect(obj.onError.mock.calls.length).toMatchSnapshot(prefix + ' - onError')
+  }
 }

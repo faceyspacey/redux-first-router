@@ -28,3 +28,13 @@ createTest('currentType_ERROR dispatched if no onError callback provided', {
     }
   }
 })
+
+createTest('default options.onError skipped if options.onError === null', {
+  SECOND: {
+    path: '/second',
+    thunk: () => {
+      throw new Error('thunk-failed')
+    },
+    onError: function() {}
+  }
+}, { onError: null })

@@ -128,7 +128,12 @@ Array [
 
 exports[`pathless route thunk errors trigger onError: 1 - history_index 1`] = `0`;
 
-exports[`pathless route thunk errors trigger onError: 1 - response 1`] = `undefined`;
+exports[`pathless route thunk errors trigger onError: 1 - response 1`] = `
+Object {
+  "error": [Error: fail],
+  "type": "PATHLESS_ERROR",
+}
+`;
 
 exports[`pathless route thunk errors trigger onError: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
@@ -155,6 +160,8 @@ Object {
         "url": "/first",
       },
     ],
+    "error": [Error: fail],
+    "errorType": "PATHLESS_ERROR",
     "from": null,
     "hasSSR": false,
     "hash": "",
@@ -187,7 +194,7 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "PATHLESS",
+  "title": "PATHLESS_ERROR",
 }
 `;
 

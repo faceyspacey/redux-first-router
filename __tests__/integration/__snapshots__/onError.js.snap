@@ -113,7 +113,7 @@ Object {
 
 exports[`currentType_ERROR dispatched if no onError callback provided: 1 - title 1`] = `"SECOND"`;
 
-exports[`route onError called if other callbacks throw: 1 - history_entries 1`] = `
+exports[`default options.onError skipped if options.onError === null: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -136,19 +136,19 @@ Array [
 ]
 `;
 
-exports[`route onError called if other callbacks throw: 1 - history_index 1`] = `1`;
+exports[`default options.onError skipped if options.onError === null: 1 - history_index 1`] = `1`;
 
-exports[`route onError called if other callbacks throw: 1 - response 1`] = `undefined`;
+exports[`default options.onError skipped if options.onError === null: 1 - response 1`] = `undefined`;
 
-exports[`route onError called if other callbacks throw: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`default options.onError skipped if options.onError === null: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`route onError called if other callbacks throw: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`default options.onError skipped if options.onError === null: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`route onError called if other callbacks throw: 1 - routes - SECOND - onError 1`] = `1`;
+exports[`default options.onError skipped if options.onError === null: 1 - routes - SECOND - onError 1`] = `1`;
 
-exports[`route onError called if other callbacks throw: 1 - routes - SECOND - thunk 1`] = `1`;
+exports[`default options.onError skipped if options.onError === null: 1 - routes - SECOND - thunk 1`] = `1`;
 
-exports[`route onError called if other callbacks throw: 1 - state 1`] = `
+exports[`default options.onError skipped if options.onError === null: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -216,6 +216,121 @@ Object {
     "url": "/second",
   },
   "title": "SECOND",
+}
+`;
+
+exports[`default options.onError skipped if options.onError === null: 1 - title 1`] = `"SECOND"`;
+
+exports[`route onError called if other callbacks throw: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`route onError called if other callbacks throw: 1 - history_index 1`] = `1`;
+
+exports[`route onError called if other callbacks throw: 1 - response 1`] = `
+Object {
+  "error": [Error: thunk-failed],
+  "type": "SECOND_ERROR",
+}
+`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - SECOND - onError 1`] = `1`;
+
+exports[`route onError called if other callbacks throw: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`route onError called if other callbacks throw: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "error": [Error: thunk-failed],
+    "errorType": "SECOND_ERROR",
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND_ERROR",
 }
 `;
 

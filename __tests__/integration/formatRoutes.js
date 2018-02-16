@@ -28,12 +28,10 @@ createTest('options.formatRoute', {
     foo: '/first'
   }
 }, {
-  formatRoute: (...args) => {
-    expect(args).toMatchSnapshot()
-    const [route, type, routes, isAddRoutes] = args
-
+  formatRoute: (route, type, routes, isAddRoutes) => {
     return {
       ...route,
+      type,
       path: route.foo
     }
   }

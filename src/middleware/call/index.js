@@ -37,7 +37,7 @@ export default (name, config = {}) => (api) => {
         req.last = { name, prev }
 
         if (!req.tmp.committed) {
-          req.block()
+          req.block() // update state.blocked === actionBlockedFrom
         }
 
         return false

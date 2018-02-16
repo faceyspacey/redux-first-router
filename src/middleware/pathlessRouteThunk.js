@@ -6,7 +6,7 @@ export default (api) => {
     call('onComplete', { skipOpts: true })
   ]
 
-  const pipelineBranch = api.options.compose(middlewares, api)
+  const pipeline = api.options.compose(middlewares, api)
 
   // Registering is currently only used when core features (like the
   // `addRoutes` action creator) depend on the middleware being available.
@@ -15,10 +15,23 @@ export default (api) => {
   api.registerMiddleware('pathlessRouteThunk')
 
   return (req, next) => {
-    if (req.route && !req.route.path && typeof req.route.thunk === 'function') {
-      req.action = req.commitDispatch(req.action)
+    const { route } = req
 
-      const res = pipelineBranch(req)
+    if (route && !route.path && (route.thunk || route.middleware)) {
+      if (route.dispatch !== false) {
+        req.action = req.commitDispatch(req.action)
+      }
+
+      let res
+
+      if (typeof route.thunk === 'function') {
+        res = pipeline(req)
+      }
+      else if (Array.isArray(route.middleware)) {
+        const pipeline = api.options.compose(route.middleware, api, true)
+        res = pipeline(req)
+      }
+
       return Promise.resolve(res)
         .then(res => res || req.action)
     }

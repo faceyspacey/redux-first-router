@@ -106,7 +106,7 @@ const clearCache = ({ cache, action, hasMiddleware }) => {
   }
 
   const { invalidator, options } = action.payload
-  return cache.clear(invalidator, options)
+  cache.clear(invalidator, options)
 }
 
 

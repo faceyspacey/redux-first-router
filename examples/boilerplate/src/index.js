@@ -12,7 +12,7 @@ const { store, firstRoute } = configureStore(window.REDUX_STATE)
 const render = App => {
   const root = document.getElementById('root')
 
-  ReactDOM.hydrate(
+  ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
         <App />
@@ -22,8 +22,7 @@ const render = App => {
   )
 }
 
-store.dispatch(firstRoute())
-render(App)
+store.dispatch(firstRoute()).then(() => render(App))
 
 if (module.hot && process.env.NODE_ENV === 'development') {
   module.hot.accept('./components/App', () => {

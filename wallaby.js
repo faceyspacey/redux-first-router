@@ -20,8 +20,8 @@ module.exports = wallaby => {
     tests: [
       // '__tests__/integration/**/*.js',
       // '__tests__/integration/hydrate.js',
-      '__tests__/integration/returnFalse.js',
-      // '__tests__/integration/onError.js',
+      '__tests__/integration/arrayCallback.js',
+      // '__tests__/integration/createRequest.js',
       // '__tests__/integration/queries.js',
       // '__tests__/integration/actions/history.js',
       // '__tests__/integration/createScene/actionCreators.js',

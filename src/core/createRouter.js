@@ -100,7 +100,7 @@ export default (
           return onError(req)
         })
         .then(res => {
-          const isRouteChangingPipeline = req.route.path
+          const isRouteChangingPipeline = req.route.path && !req.clientLoadBusy
           req.ctx.busy = isRouteChangingPipeline ? false : req.ctx.busy
           return res
         })
@@ -108,7 +108,13 @@ export default (
   }
 
   return {
-    firstRoute: () => history.firstRoute,
+    firstRoute: (awaitWholePipeline) => {
+      if (awaitWholePipeline) {
+        api.awaitWholePipeline = awaitWholePipeline
+      }
+
+      return history.firstRoute
+    },
     middleware,
     reducer,
     rudy: api

@@ -27,7 +27,7 @@ exports[`all options callbacks are called: 1 - history_index 1`] = `1`;
 
 exports[`all options callbacks are called: 1 - options - beforeEnter 1`] = `2`;
 
-exports[`all options callbacks are called: 1 - options - beforeLeave 1`] = `1`;
+exports[`all options callbacks are called: 1 - options - beforeLeave 1`] = `2`;
 
 exports[`all options callbacks are called: 1 - options - onComplete 1`] = `2`;
 
@@ -35,7 +35,7 @@ exports[`all options callbacks are called: 1 - options - onEnter 1`] = `2`;
 
 exports[`all options callbacks are called: 1 - options - onError 1`] = `1`;
 
-exports[`all options callbacks are called: 1 - options - onLeave 1`] = `1`;
+exports[`all options callbacks are called: 1 - options - onLeave 1`] = `2`;
 
 exports[`all options callbacks are called: 1 - options - thunk 1`] = `2`;
 
