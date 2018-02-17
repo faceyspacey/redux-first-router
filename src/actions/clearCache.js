@@ -8,4 +8,4 @@ export default (invalidator?: any, options?: Object) => {
   }
 }
 
-// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRouteThunks
+// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoute

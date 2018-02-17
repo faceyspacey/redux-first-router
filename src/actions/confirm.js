@@ -8,4 +8,4 @@ export default (canLeave?: boolean = true) => {
   }
 }
 
-// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRouteThunks
+// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoute

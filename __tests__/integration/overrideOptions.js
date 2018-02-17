@@ -1,10 +1,8 @@
 import createTest from '../../__helpers__/createTest'
 
-import createReducer from '../../src/core/createLocationReducer'
+import { compose, createRequest, createReducer } from '../../src/core'
 import createHistory from '../../src/history'
 import shouldTransition from '../../src/utils/shouldTransition'
-import createRequest from '../../src/core/createRequest'
-import composePromise from '../../src/core/composePromise'
 import shouldCall from '../../src/middleware/call/utils/shouldCall'
 
 createTest('core capabilities can be overriden as options', {
@@ -20,7 +18,7 @@ createTest('core capabilities can be overriden as options', {
     return createReducer(...args)
   },
   compose: (...args) => {
-    return composePromise(...args)
+    return compose(...args)
   },
   shouldTransition: (...args) => {
     return shouldTransition(...args)

@@ -38,7 +38,7 @@ export default class History {
     if (foundBasename) path = path.substr(foundBasename.length)
 
     basename = foundBasename || basename
-    if (basename) this.setBasename(basename)
+    if (typeof basename === 'string') this.setBasename(basename)
 
     const key = createKey()
     const bn = this.basename
@@ -71,7 +71,7 @@ export default class History {
     if (foundBasename) path = path.substr(foundBasename.length)
 
     basename = foundBasename || basename
-    if (basename) this.setBasename(basename)
+    if (typeof basename === 'string') this.setBasename(basename)
 
     const k = createKey()
     const bn = this.basename

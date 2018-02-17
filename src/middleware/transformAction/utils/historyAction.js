@@ -1,4 +1,4 @@
-import { createPrev } from '../../../core/createLocationReducer'
+import { createPrev } from '../../../core'
 import { urlToAction, isNotFound } from '../../../utils'
 import { nestAction, createNotFoundRoute } from './index'
 

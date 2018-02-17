@@ -10,14 +10,14 @@ export default (api) => async (req, next) => {
   // code that depends on it is respected. The `state.from` key or `state.status`
   // should be used to be informed of redirects.
   if (req.getLocation().kind === 'init') {
-    // req.action.location.kind = 'load'
+    req.action.location.kind = 'load'
   }
 
   const res = req.commit() // commit history + action to state
 
   // return early on `load` so rendering can happen ASAP
   // i.e. before `thunk` is called but after potentially async auth in `beforeEnter`
-  if (req.getKind() === 'load' && !isServer() && !api.awaitWholePipeline) {
+  if (req.getKind() === 'load' && !isServer() && !api.resolveFirstRouteEarly) {
     next().then(() => {
       req.ctx.busy = false
     })

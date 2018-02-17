@@ -176,7 +176,7 @@ const setupStore = (routesMap, initialPath, opts) => {
       : action.type
   }
 
-  const { middleware, reducer, firstRoute, rudy } = createRouter(
+  const { middleware, reducer, firstRoute, history } = createRouter(
     routes,
     options,
     middlewareFunc
@@ -194,7 +194,7 @@ const setupStore = (routesMap, initialPath, opts) => {
     initialState,
     routes,
     options,
-    history: rudy.history
+    history
   }
 }
 
@@ -235,6 +235,9 @@ const createRoutes = (routesMap) => {
     },
     REDIRECTED: {
       path: '/redirected',
+      beforeEnter: () => {
+        return new Promise(res => setTimeout(res, 1))
+      },
       onComplete: jest.fn(() => 'redirect_complete')
     },
     ...routes

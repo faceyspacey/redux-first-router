@@ -1,10 +1,10 @@
 import createTest from '../../__helpers__/createTest'
 
-import composePromise from '../../src/core/composePromise'
+import { compose } from '../../src/core'
 
 import {
   serverRedirect,
-  pathlessRouteThunk,
+  pathlessRoute,
   anonymousThunk,
   transformAction,
   call,
@@ -21,12 +21,9 @@ createTest('middleware argument can be a function that is responsible for the wo
   // `middlewareFunc` will actually be made to override the `middlewares` arg to `createRouter`
   // by `createTest.js`. The signature will become: `createRouter(routes, options, middlewareFunc)`
   middlewareFunc: (api, handleRedirects) => {
-    expect(handleRedirects).toEqual(true)
-    expect(api).toMatchSnapshot('compose')
-
-    return composePromise([
+    return compose([
       serverRedirect,     // short-circuiting middleware
-      pathlessRouteThunk,
+      pathlessRoute('thunk'),
       anonymousThunk,
       transformAction,      // pipeline starts here
       call('beforeLeave', { prev: true }),

@@ -440,7 +440,7 @@ Object {
     "hasSSR": false,
     "hash": "",
     "index": 0,
-    "kind": "redirect",
+    "kind": "load",
     "length": 1,
     "params": Object {},
     "pathname": "/redirected",

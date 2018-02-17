@@ -58,4 +58,4 @@ export const next = (state: ?(Object | Function)) => ({
 })
 
 
-// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRouteThunks
+// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoute

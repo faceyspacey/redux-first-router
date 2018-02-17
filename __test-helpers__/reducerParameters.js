@@ -1,5 +1,5 @@
 import createSmartHistory from '../src/history'
-import { createInitialState } from '../src/core/createLocationReducer'
+import { createInitialState } from '../src/core/createReducer'
 import { NOT_FOUND } from '../src/types'
 
 export default async (type, pathname) => {

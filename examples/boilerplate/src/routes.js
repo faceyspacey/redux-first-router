@@ -1,7 +1,10 @@
 import { redirect } from 'redux-first-router'
 
 export default {
-  HOME: '/',
+  HOME: {
+    path: '/',
+    beforeLeave: () => false
+  },
   LIST: {
     path: '/list/:category',
     thunk: async ({ params }) => {

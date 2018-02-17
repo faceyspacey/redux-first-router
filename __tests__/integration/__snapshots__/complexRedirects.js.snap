@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - history_entries 1`] = `
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -23,28 +23,28 @@ Array [
 ]
 `;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - history_index 1`] = `1`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - history_index 1`] = `1`;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - response 1`] = `
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
   "type": "REDIRECTED_COMPLETE",
 }
 `;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_A - thunk 1`] = `1`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_A - thunk 1`] = `1`;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_B - thunk 1`] = `1`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_B - thunk 1`] = `1`;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_NOT_INTERPUTING - thunk 1`] = `1`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - PATHLESS_NOT_INTERPUTING - thunk 1`] = `1`;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - routes - SECOND - beforeEnter 1`] = `1`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - SECOND - beforeEnter 1`] = `1`;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - state 1`] = `
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -152,4 +152,4 @@ Object {
 }
 `;
 
-exports[`pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline: 1 - title 1`] = `"REDIRECTED"`;
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - title 1`] = `"REDIRECTED"`;

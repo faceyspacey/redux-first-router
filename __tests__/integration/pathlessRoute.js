@@ -2,7 +2,7 @@ import createTest from '../../__helpers__/createTest'
 
 createTest('pathless route thunk called', {
   PATHLESS: {
-    thunk: ({ dispatch }) => {
+    thunk: async ({ dispatch }) => {
       dispatch({ type: 'REDIRECTED' })
     },
     onComplete: function() {}

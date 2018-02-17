@@ -25,7 +25,7 @@ export class Request {
       const isNewPipeline = !action.tmp
 
       if (requestNotCommitted && isNewPipeline) {
-        requestNotCommitted.cancelled = true // composePromise will return early on pending requests, effectively cancelling them
+        requestNotCommitted.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
       }
 
       ctx.pending = this
@@ -89,7 +89,10 @@ export class Request {
     if (this.ctx.busy && route && route.path) { // convert actions to redirects only if "busy" in a route changing pipeline
       const status = action.location && action.location.status
       action = redirect(action, status || 302)  // automatically treat dispatches to routes during pipeline as redirects
-      return this.redirect = dispatch(action)   // assign redirect action to `this.redirect` so `composePromise` can properly return the new action
+      return this.redirect = dispatch(action)   // assign redirect action to `this.redirect` so `compose` can properly return the new action
+    }
+    else if (route && route.path) {
+      return this.redirect = dispatch(action)   // pathless routes entered by themselves still need to short-circuit middleware, and follow the new action, but without a redirect
     }
 
     const oldUrl = this.getLocation().url
@@ -97,7 +100,7 @@ export class Request {
     return Promise.resolve(dispatch(action))    // dispatch transformed action
       .then(res => {
         if (oldUrl !== this.getLocation().url || this.ctx.serverRedirect) {
-          this.redirect = res                    // capture redirects in nested calls to anonymousThunks + pathlessRouteThunks
+          this.redirect = res                    // capture redirects in nested calls to anonymousThunks + pathlessRoute
         }
 
         return res

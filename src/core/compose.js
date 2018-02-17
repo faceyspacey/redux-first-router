@@ -33,7 +33,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
 
         const retrn = prom.then(res => {
           if (req.redirect && killOnRedirect) {
-            return req.redirect
+            return res && res !== req.action ? res : req.redirect // await redirects dispatched, but if something else is returned, resolve that instead
           }
 
           if (req.cancelled) {

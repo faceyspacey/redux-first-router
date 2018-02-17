@@ -8,7 +8,6 @@ createTest('callback can be array of functions', {
         req.passOn = 'a'
       },
       (req) => {
-        console.log(1)
         req.passOn += 'b'
       },
       (req) => req.passOn + 'c'

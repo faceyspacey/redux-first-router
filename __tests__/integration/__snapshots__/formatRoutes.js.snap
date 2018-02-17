@@ -436,7 +436,8 @@ exports[`route as thunk function (pathless route): 1 - history_index 1`] = `1`;
 
 exports[`route as thunk function (pathless route): 1 - response 1`] = `
 Object {
-  "type": "PATHLESS",
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
 }
 `;
 

@@ -7,7 +7,7 @@ import {
   changePageTitle
 } from '../../src/middleware'
 
-import { composePromise } from '../../src/core'
+import { compose } from '../../src/core'
 
 createTest('routes can specify route.middleware array to override global middleware', {
   SECOND: {
@@ -36,7 +36,7 @@ createTest('routes can specify route.middleware as function to override global m
     path: '/second',
     onTransition: () => ({ type: 'REDIRECTED' }),
     middleware: (api, killOnRedirect) => {
-      return composePromise([
+      return compose([
         transformAction,
         call('onTransition'),
         enter,

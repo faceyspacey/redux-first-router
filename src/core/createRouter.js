@@ -2,7 +2,7 @@
 import type { RoutesMapInput, Options, Store, Dispatch } from '../flow-types'
 
 import createSmartHistory from '../history'
-import { composePromise, createLocationReducer, createRequest } from './index'
+import { compose, createReducer, createRequest } from './index'
 
 import {
   createSelector,
@@ -12,7 +12,7 @@ import {
 
 import {
   serverRedirect,
-  pathlessRouteThunk,
+  pathlessRoute,
   anonymousThunk,
   transformAction,
   call,
@@ -27,7 +27,7 @@ export default (
   options: Options = {},
   middlewares: Array<Function> = [
     serverRedirect,     // short-circuiting middleware
-    pathlessRouteThunk,
+    pathlessRoute('thunk'),
     anonymousThunk,
     transformAction,      // pipeline starts here
     call('beforeLeave', { prev: true }),
@@ -45,21 +45,22 @@ export default (
     title,
     formatRoute,
     createHistory = createSmartHistory,
-    createReducer = createLocationReducer,
+    createReducer: createLocationReducer = createReducer,
     onError
   } = options
 
   // assign to options so middleware can override them in 1st pass if necessary
   options.shouldTransition = options.shouldTransition || shouldTransition
   options.createRequest = options.createRequest || createRequest
-  options.compose = options.compose || composePromise
+  options.compose = options.compose || compose
   options.onError = typeof onError !== 'undefined' ? onError : defaultOnError
 
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createHistory(options)
-  const reducer = createReducer(routes, history.firstRoute.nextHistory, options)
+  const nextHistory = history.firstRoute.nextHistory
+  const reducer = createLocationReducer(routes, nextHistory, options)
   const availableMiddlewares = {}
   const registerMiddleware = (name: string) => availableMiddlewares[name] = true
   const hasMiddleware = (name: string) => availableMiddlewares[name]
@@ -108,15 +109,13 @@ export default (
   }
 
   return {
-    firstRoute: (awaitWholePipeline) => {
-      if (awaitWholePipeline) {
-        api.awaitWholePipeline = awaitWholePipeline
-      }
-
+    firstRoute: (resolveEarly = false) => {
+      api.resolveFirstRouteEarly = resolveEarly
       return history.firstRoute
     },
     middleware,
     reducer,
+    ...api,
     rudy: api
   }
 }

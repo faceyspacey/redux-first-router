@@ -1,11 +1,10 @@
 import createTest from '../../__helpers__/createTest'
 
-
 createTest('anonymous thunks can be dispatched', {
   SECOND: {
     path: '/second',
-    beforeEnter: ({ dispatch }) => {
-      dispatch(({ dispatch }) => {
+    beforeEnter: async ({ dispatch }) => {
+      await dispatch(async ({ dispatch }) => {
         dispatch({ type: 'REDIRECTED' })
       })
     }
@@ -13,7 +12,7 @@ createTest('anonymous thunks can be dispatched', {
 }, async ({ dispatch, getState }) => {
   // test outside of route callbacks:
   const res = await dispatch(({ dispatch }) => {
-    return dispatch({ type: 'FIRST' })
+    dispatch({ type: 'REDIRECTED' })
   })
 
   expect(res).toMatchSnapshot()
@@ -24,12 +23,12 @@ createTest('anonymous thunks can return actions for automatic dispatch', {
   SECOND: {
     path: '/second',
     beforeEnter: ({ dispatch }) => {
-      dispatch(() => ({ type: 'REDIRECTED' }))
+      return dispatch(() => ({ type: 'REDIRECTED' }))
     }
   }
 }, async ({ dispatch, getState }) => {
   // test outside of route callbacks:
-  const res = await dispatch(() => ({ type: 'FIRST' }))
+  const res = await dispatch(() => ({ type: 'REDIRECTED' }))
 
   expect(res).toMatchSnapshot()
   expect(getState()).toMatchSnapshot()

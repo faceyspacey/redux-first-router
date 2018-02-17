@@ -1,4 +1,5 @@
 export { default as createRouter } from './createRouter'
 export { default as createRequest } from './createRequest'
-export { default as createLocationReducer } from './createLocationReducer'
-export { default as composePromise } from './composePromise'
+export { default as compose } from './compose'
+export { default as createReducer, createInitialState, createPrev } from './createReducer'
+

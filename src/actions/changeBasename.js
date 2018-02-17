@@ -13,4 +13,4 @@ export default (basename: string, action: ?Action) => {
   return { ...action, basename }
 }
 
-// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRouteThunks
+// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoutes

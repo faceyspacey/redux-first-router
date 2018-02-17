@@ -1,6 +1,6 @@
 import createTest from '../../__helpers__/createTest'
 
-createTest('pathlessRouteThunks + anonymousThunks can perform redirects in the pipeline', {
+createTest('pathlessRoute + anonymousThunks can perform redirects in the pipeline', {
   SECOND: {
     path: '/second',
     beforeEnter: async ({ dispatch }) => {

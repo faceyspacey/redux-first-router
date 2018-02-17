@@ -1,17 +1,16 @@
-import createSmartHistory from '../src/history'
-import createLocationReducer, {
-  createInitialState
-} from '../src/core/createLocationReducer'
+
 import { NOT_FOUND } from '../src/types'
+import { createReducer, createInitialState } from '../src/core'
+import createSmartHistory from '../src/history'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
-it('createLocationReducer() - maintains address bar pathname state and current + previous matched location-aware actions', async () => {
+it('createReducer() - maintains address bar pathname state and current + previous matched location-aware actions', async () => {
   const { history, routesMap, action, expectState } = await reducerParameters(
     'SECOND',
     '/second/bar'
   )
 
-  const reducer = createLocationReducer(routesMap, history, {})
+  const reducer = createReducer(routesMap, history, {})
   const state = reducer(undefined, action) /*? */
 
   expectState(state)
@@ -23,7 +22,7 @@ it('locationReducer() reduces action.type === NOT_FOUND', async () => {
     '/foo'
   )
 
-  const reducer = createLocationReducer(routesMap, history, {})
+  const reducer = createReducer(routesMap, history, {})
   const state = reducer(undefined, action) /*? */
 
   expect(state.type).toEqual(NOT_FOUND)
@@ -36,7 +35,7 @@ it('locationReducer() reduces non matched action.type and returns initialState',
     '/third'
   )
 
-  const reducer = createLocationReducer(routesMap, history, {})
+  const reducer = createReducer(routesMap, history, {})
   const state = reducer(undefined, action) /*? */
 
   expect(state).toEqual(initialState)
