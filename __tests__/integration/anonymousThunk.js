@@ -5,14 +5,14 @@ createTest('anonymous thunks can be dispatched', {
     path: '/second',
     beforeEnter: async ({ dispatch }) => {
       await dispatch(async ({ dispatch }) => {
-        dispatch({ type: 'REDIRECTED' })
+        return dispatch({ type: 'REDIRECTED' })
       })
     }
   }
 }, async ({ dispatch, getState }) => {
   // test outside of route callbacks:
   const res = await dispatch(({ dispatch }) => {
-    dispatch({ type: 'REDIRECTED' })
+    return dispatch({ type: 'REDIRECTED' })
   })
 
   expect(res).toMatchSnapshot()

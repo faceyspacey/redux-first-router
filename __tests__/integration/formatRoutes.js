@@ -8,7 +8,7 @@ createTest('routes as path string', {
 
 createTest('route as thunk function (pathless route)', {
   PATHLESS: ({ dispatch }) => {
-    dispatch({ type: 'REDIRECTED' })
+    return dispatch({ type: 'REDIRECTED' })
   }
 })
 

@@ -52,8 +52,8 @@ createTest('beforeLeave return false and user confirms action in modal (with red
   },
   SECOND: {
     path: '/second',
-    beforeEnter: ({ dispatch }) => {
-      dispatch({ type: 'REDIRECTED' })
+    beforeEnter: async ({ dispatch }) => {
+      await dispatch({ type: 'REDIRECTED' })
     }
   }
 }, [], async ({ dispatch, getState }) => {

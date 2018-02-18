@@ -85,13 +85,7 @@ export class Request {
 
     if (this.ctx.busy && route && route.path) { // convert actions to redirects only if "busy" in a route changing pipeline
       const status = action.location && action.location.status
-      action = redirect(action, status || 302)  // automatically treat dispatches to routes during pipeline as redirects
-      return this.redirect = dispatch(action)   // assign redirect action to `this.redirect` so `compose` can properly return the new action
-        .then(markAsDispatched)
-    }
-    else if (route && route.path) {
-      return this.redirect = dispatch(action)   // pathless routes entered by themselves still need to short-circuit middleware, and follow the new action, but without a redirect
-        .then(markAsDispatched)
+      action = redirect(action, status || 302)
     }
 
     const oldUrl = this.getLocation().url
@@ -99,7 +93,7 @@ export class Request {
     return Promise.resolve(dispatch(action))    // dispatch transformed action
       .then(res => {
         if (oldUrl !== this.getLocation().url || this.ctx.serverRedirect) {
-          this.redirect = res                    // capture redirects in nested calls to anonymousThunks + pathlessRoute
+          this.redirect = res                    // // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
         }
 
         return markAsDispatched(res)

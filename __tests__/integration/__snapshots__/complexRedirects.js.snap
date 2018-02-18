@@ -44,6 +44,10 @@ exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 
 
 exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - SECOND - beforeEnter 1`] = `1`;
 
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - SECOND - onComplete 1`] = `0`;
+
+exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - routes - SECOND - thunk 1`] = `1`;
+
 exports[`pathlessRoute + anonymousThunks can perform redirects in the pipeline: 1 - state 1`] = `
 Object {
   "location": Object {

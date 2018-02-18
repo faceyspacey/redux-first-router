@@ -26,7 +26,7 @@ module.exports = wallaby => {
       // '__tests__/integration/actions/history.js',
       // '__tests__/integration/createScene/actionCreators.js',
       // '__tests__/integration/serverRedirect.js',
-      '__tests__/integration/complexRedirects.js',
+      '__tests__/integration/returnFalse.js',
       // '__tests__/integration/entryState.js',
       // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/routeLevelMiddleware.js',

@@ -1,5 +1,5 @@
 import { enhanceRoutes, shouldCall, createCache } from './utils'
-import { noOp, isAction } from '../../utils'
+import { noOp, isAction, isRedirect } from '../../utils'
 import { BLOCK } from '../../types'
 
 export default (name, config = {}) => (api) => {
@@ -55,7 +55,8 @@ export default (name, config = {}) => (api) => {
 
       if (cache) req.cache.cacheAction(name, req.action)
 
-      return complete(next)(r || o)
+      const res = r !== undefined ? r : o
+      return complete(next)(res)
     })
   }
 }
@@ -65,7 +66,10 @@ const isFalse = (r, o) => r === false || o === false
 const complete = (next) => (res) => next().then(() => res)
 
 const autoDis = (req, res, route, name, next, isOptCb) => {
-  if (res && !res._dispatched && isAutoDispatch(route, req.options, isOptCb)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
+  if (res === false) return false
+  const hasReturn = res === null || (res && !res._dispatched)
+
+  if (hasReturn && isAutoDispatch(route, req.options, isOptCb)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
     const action = isAction(res) ? res : { payload: res }
     action.type = action.type || `${req.action.type}_COMPLETE`
 

@@ -8,7 +8,7 @@ createTest('callbacks called on load if SPA', {
     path: '/first',
     beforeEnter: function() {},
     thunk: ({ dispatch }) => {
-      dispatch({ type: 'REDIRECTED' })
+      return dispatch({ type: 'REDIRECTED' })
     }
   }
 })

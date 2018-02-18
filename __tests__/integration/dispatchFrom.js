@@ -3,9 +3,9 @@ import createTest from '../../__helpers__/createTest'
 createTest('re-dispatching state.from behaves as if original action was dispatched', {
   SECOND: {
     path: '/second',
-    beforeEnter: ({ dispatch, action }) => {
+    beforeEnter: async ({ dispatch, action }) => {
       if (action.allow) return
-      dispatch({ type: 'REDIRECTED' })
+      return dispatch({ type: 'REDIRECTED' })
     }
   }
 }, [], async ({ dispatch, getState }) => {
