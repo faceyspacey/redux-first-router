@@ -22,7 +22,8 @@ const findCallback = (name, routes, callback, route, options) => {
       return prom.then(complete(next))
     })
 
-    return options.compose(pipeline, null, true)
+    const killOnRedirect = !!route.path
+    return options.compose(pipeline, null, killOnRedirect)
   }
   else if (typeof callback === 'string') {
     const type = callback

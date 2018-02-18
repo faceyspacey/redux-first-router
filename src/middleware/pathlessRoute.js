@@ -17,21 +17,12 @@ export default (name1 = 'thunk', name2 = 'onComplete') => (api) => {
   return (req, next) => {
     const { route } = req
 
-    if (route && !route.path && (route[name1] || route.middleware)) {
+    if (route && !route.path && typeof route[name1] === 'function') {
       if (route.dispatch !== false) {
         req.action = req.commitDispatch(req.action)
       }
 
-      let res
-
-      if (typeof route[name1] === 'function') {
-        res = pipeline(req)
-      }
-      else if (Array.isArray(route.middleware)) {
-        const pipeline = api.options.compose(route.middleware, api, true)
-        res = pipeline(req)
-      }
-
+      const res = pipeline(req)
       return Promise.resolve(res)
         .then(res => res || req.action)
     }

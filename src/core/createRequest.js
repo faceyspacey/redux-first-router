@@ -1,4 +1,3 @@
-// @flow
 import { UPDATE_HISTORY, BLOCK, UNBLOCK } from '../types'
 import { redirect } from '../actions'
 import { isRedirect, noOp } from '../utils'
@@ -80,8 +79,6 @@ export class Request {
     const { dispatch } = this.store
     const route = this.routes[action.type]
 
-    this._dispatched = true                      // tell callbacks to not automatically dispatch callback returns
-
     if (route || typeof action === 'function') {
       action.tmp = this.tmp                      // keep the same `tmp` object across all redirects (or potential redirects in anonymous thunks)
     }
@@ -90,9 +87,11 @@ export class Request {
       const status = action.location && action.location.status
       action = redirect(action, status || 302)  // automatically treat dispatches to routes during pipeline as redirects
       return this.redirect = dispatch(action)   // assign redirect action to `this.redirect` so `compose` can properly return the new action
+        .then(markAsDispatched)
     }
     else if (route && route.path) {
       return this.redirect = dispatch(action)   // pathless routes entered by themselves still need to short-circuit middleware, and follow the new action, but without a redirect
+        .then(markAsDispatched)
     }
 
     const oldUrl = this.getLocation().url
@@ -103,11 +102,11 @@ export class Request {
           this.redirect = res                    // capture redirects in nested calls to anonymousThunks + pathlessRoute
         }
 
-        return res
+        return markAsDispatched(res)
       })
   }
 
-  confirm = (canLeave?: boolean = true) => {
+  confirm = (canLeave = true) => {
     delete this.ctx.confirm
 
     if (!canLeave) {
@@ -146,4 +145,11 @@ export class Request {
   hasSSR = () => {
     return this.getLocation().hasSSR
   }
+}
+
+const markAsDispatched = res => {
+  if (res && typeof res === 'object') {
+    res._dispatched = true // tell `middleware/call/index.js` to not automatically dispatch callback returns
+  }
+  return res
 }

@@ -91,7 +91,7 @@ export default (
       nextPromise = req.route.middleware
         ? typeof req.route.middleware === 'function'
           ? req.route.middleware(api, true)
-          : options.compose(req.route.middleware, api, true)
+          : options.compose(req.route.middleware, api, !!req.route.path)
         : nextPromise
 
       return nextPromise(req) // start middleware pipeline

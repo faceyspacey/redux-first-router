@@ -74,6 +74,7 @@ module.exports = {
     'jsx-a11y/aria-props': 1,
     'no-await-in-loop': 1,
     'prefer-destructuring': 1,
+    'no-return-assign': 0,
     'space-before-function-paren': 0,
     'guard-for-in': 0,
     'no-restricted-syntax': 0,

@@ -27,5 +27,5 @@ export default (req) => {
     console.log(`[RUDY ERROR]: action.type: ${type}\n`, trace)
   }
 
-  return req.commitDispatch(action)
+  return req.dispatch(action)
 }

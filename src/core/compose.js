@@ -32,6 +32,10 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
         const prom = Promise.resolve(fn(req, next, ...args)) // insure middleware is a promise
 
         const retrn = prom.then(res => {
+          if (res) {
+            delete res._dispatched
+          }
+
           if (req.redirect && killOnRedirect) {
             return res && res !== req.action ? res : req.redirect // await redirects dispatched, but if something else is returned, resolve that instead
           }

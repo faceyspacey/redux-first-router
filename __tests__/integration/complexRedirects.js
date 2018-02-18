@@ -5,7 +5,7 @@ createTest('pathlessRoute + anonymousThunks can perform redirects in the pipelin
     path: '/second',
     beforeEnter: async ({ dispatch }) => {
       await dispatch({ type: 'PATHLESS_NOT_INTERPUTING' })
-      return dispatch({ type: 'PATHLESS_A' })
+      await dispatch({ type: 'PATHLESS_A' })
     }
   },
   PATHLESS_A: {

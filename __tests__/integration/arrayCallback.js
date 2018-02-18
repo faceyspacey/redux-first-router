@@ -10,7 +10,7 @@ createTest('callback can be array of functions', {
       (req) => {
         req.passOn += 'b'
       },
-      (req) => req.passOn + 'c'
+      (req) => req.passOn + 'c',
     ]
   }
 })

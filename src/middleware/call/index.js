@@ -16,20 +16,21 @@ export default (name, config = {}) => (api) => {
   }
 
   return (req, next = noOp) => {
-    const route = prev ? req.prevRoute : req.route
+    const rt = prev ? req.prevRoute : req.route
 
-    const isCached = cache && api.cache.isCached(name, route, req)
+    const isCached = cache && api.cache.isCached(name, rt, req)
     if (isCached) return next()
 
-    const calls = req.options.shouldCall(name, route, req, config)
+    const calls = req.options.shouldCall(name, rt, req, config)
     if (!calls) return next()
 
-    const r = (calls.route && route[name]) || noOp
+    const r = (calls.route && rt[name]) || noOp
     const o = (calls.options && !skipOpts && req.options[name]) || noOp
 
-    req._dispatched = false // `dispatch` used by callbacks will set this to `true` (see core/createDispatch.js)
-
-    return Promise.all([r(req), o(req)]).then(([r, o]) => {
+    return Promise.all([
+      Promise.resolve(r(req)).then(r => autoDis(req, r, rt, name, next)),
+      Promise.resolve(o(req)).then(o => autoDis(req, o, rt, name, next, true))
+    ]).then(([r, o]) => {
       if (isFalse(r, o)) {
         // set the current callback name and whether its on the previous route (beforeLeave) or current
         // so that `req.confirm()` can temporarily delete it and pass through the pipeline successfully
@@ -43,23 +44,18 @@ export default (name, config = {}) => (api) => {
         return false
       }
 
-      const res = r || o
+      // `_dispatched` is a flag used to find whether actions were already dispatched in order
+      // to determine whether to automatically dispatch it. The goal is not to dispatch twice.
+      //
+      // We delete these keys so they don't show up in responses returned from `store.dispatch`
+      // NOTE: they are only applied to responses, which often are actions, but only AFTER they
+      // are dispatched. This way reducers never see this key. See `core/createRequest.js`
+      if (r) delete r._dispatched
+      if (o) delete o._dispatched
 
-      if (res && !req._dispatched && isAutoDispatch(route, req.options)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
-        const action = isAction(res) ? res : { payload: res }
-        action.type = action.type || `${req.action.type}_COMPLETE`
+      if (cache) req.cache.cacheAction(name, req.action)
 
-        return Promise.resolve(req.dispatch(action))
-          .then((res) => {
-            if (cache) api.cache.cacheAction(name, req.action)
-            return res
-          })
-          .then(complete(next))
-      }
-
-      if (cache) api.cache.cacheAction(name, req.action)
-
-      return complete(next)(res)
+      return complete(next)(r || o)
     })
   }
 }
@@ -68,7 +64,21 @@ const isFalse = (r, o) => r === false || o === false
 
 const complete = (next) => (res) => next().then(() => res)
 
-const isAutoDispatch = (route, options) =>
-  route.autoDispatch !== undefined
-    ? route.autoDispatch
-    : options.autoDispatch === undefined ? true : options.autoDispatch
+const autoDis = (req, res, route, name, next, isOptCb) => {
+  if (res && !res._dispatched && isAutoDispatch(route, req.options, isOptCb)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
+    const action = isAction(res) ? res : { payload: res }
+    action.type = action.type || `${req.action.type}_COMPLETE`
+
+    return Promise.resolve(req.dispatch(action))
+  }
+
+  return res
+}
+
+const isAutoDispatch = (route, options, isOptCb) =>
+  isOptCb
+    ? options.autoDispatch === undefined ? true : options.autoDispatch
+    :  route.autoDispatch !== undefined
+      ? route.autoDispatch
+      : options.autoDispatch === undefined ? true : options.autoDispatch
+
