@@ -30,6 +30,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -57,6 +58,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -104,6 +106,7 @@ exports[`core capabilities can be overriden as options: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -134,6 +137,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

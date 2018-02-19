@@ -5,6 +5,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -47,6 +48,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -83,6 +85,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -133,6 +136,7 @@ exports[`re-dispatching state.from behaves as if original action was dispatched:
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -172,6 +176,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

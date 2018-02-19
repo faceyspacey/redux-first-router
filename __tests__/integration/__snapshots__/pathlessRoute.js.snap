@@ -44,6 +44,7 @@ exports[`pathless route thunk called: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -74,6 +75,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -150,6 +152,7 @@ exports[`pathless route thunk errors trigger onError: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -173,6 +176,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,

@@ -44,6 +44,7 @@ exports[`add routeType_COMPLETE as type to action-like object that is missing ty
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -74,6 +75,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -157,6 +159,7 @@ exports[`non object argument can be payload: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -187,6 +190,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -270,6 +274,7 @@ exports[`null payloads allowed: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -300,6 +305,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -385,6 +391,7 @@ exports[`when isAction(action) === false set to payload: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -415,6 +422,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

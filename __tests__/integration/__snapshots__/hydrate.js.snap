@@ -36,6 +36,7 @@ exports[`beforeEnter + thunk callbacks NOT called if isHydrate: firstRoute - /fi
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -56,6 +57,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": false,
       "hash": "",
@@ -87,6 +89,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -105,6 +108,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -135,6 +139,7 @@ exports[`beforeEnter + thunk callbacks NOT called if isHydrate: firstRoute - /fi
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -156,6 +161,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,

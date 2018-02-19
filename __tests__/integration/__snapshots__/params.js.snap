@@ -30,6 +30,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -57,6 +58,7 @@ Object {
     "pathname": "/third/foo/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -105,6 +107,7 @@ exports[`bi-directional params transformation "/third/foo/bar": 2 - state 1`] = 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -138,6 +141,7 @@ Object {
     "pathname": "/third/foo/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -207,6 +211,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -234,6 +239,7 @@ Object {
     "pathname": "/second/foo/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -282,6 +288,7 @@ exports[`bi-directional params transformation {"type":"SECOND","params":{"param1
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -315,6 +322,7 @@ Object {
     "pathname": "/second/foo/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -384,6 +392,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -411,6 +420,7 @@ Object {
     "pathname": "/third/james-gillmore",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -458,6 +468,7 @@ exports[`capitalizedWords "/third/james-gillmore": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -490,6 +501,7 @@ Object {
     "pathname": "/third/james-gillmore",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -559,6 +571,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -586,6 +599,7 @@ Object {
     "pathname": "/second/james-gillmore",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -633,6 +647,7 @@ exports[`capitalizedWords {"type":"SECOND","params":{"param":"James Gillmore"}}:
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -665,6 +680,7 @@ Object {
     "pathname": "/second/james-gillmore",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -734,6 +750,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -761,6 +778,7 @@ Object {
     "pathname": "/third/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -808,6 +826,7 @@ exports[`convertNumbers "/third/100": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -840,6 +859,7 @@ Object {
     "pathname": "/third/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -909,6 +929,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -936,6 +957,7 @@ Object {
     "pathname": "/second/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -983,6 +1005,7 @@ exports[`convertNumbers {"type":"SECOND","params":{"param":100}}: 1 - state 1`] 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1015,6 +1038,7 @@ Object {
     "pathname": "/second/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1084,6 +1108,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1111,6 +1136,7 @@ Object {
     "pathname": "/third/foo/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1157,6 +1183,7 @@ exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1187,6 +1214,7 @@ Object {
     "pathname": "/third/foo/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1256,6 +1284,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1283,6 +1312,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1330,6 +1360,7 @@ exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1362,6 +1393,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1431,6 +1463,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1458,6 +1491,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1505,6 +1539,7 @@ exports[`does not parse a blank string "" as NaN "/third": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1537,6 +1572,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1606,6 +1642,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1633,6 +1670,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1678,6 +1716,7 @@ exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - state 1`
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1708,6 +1747,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1777,6 +1817,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1804,6 +1845,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1851,6 +1893,7 @@ exports[`fromPath + toPath "/third/foo": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1883,6 +1926,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1952,6 +1996,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1979,6 +2024,7 @@ Object {
     "pathname": "/second/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2026,6 +2072,7 @@ exports[`fromPath + toPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - state
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2058,6 +2105,7 @@ Object {
     "pathname": "/second/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2127,6 +2175,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2154,6 +2203,7 @@ Object {
     "pathname": "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2204,6 +2254,7 @@ exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/b
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2239,6 +2290,7 @@ Object {
     "pathname": "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2308,6 +2360,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2335,6 +2388,7 @@ Object {
     "pathname": "/repo1/faceyspacey/rudy/blob/master/core/createRouter.js",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2385,6 +2439,7 @@ exports[`match "multi segment params" as single param {"type":"REPO1","params":{
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2420,6 +2475,7 @@ Object {
     "pathname": "/repo1/faceyspacey/rudy/blob/master/core/createRouter.js",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2489,6 +2545,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2516,6 +2573,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2565,6 +2623,7 @@ exports[`match "multi segment params" as single param {"type":"REPO1","params":{
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2599,6 +2658,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2668,6 +2728,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2695,6 +2756,7 @@ Object {
     "pathname": "/third/foo/bar/bla/baz/yo/sdf",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2743,6 +2805,7 @@ exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/b
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2776,6 +2839,7 @@ Object {
     "pathname": "/third/foo/bar/bla/baz/yo/sdf",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2845,6 +2909,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2872,6 +2937,7 @@ Object {
     "pathname": "/second/foo/bar/bla/baz/yo/sdf",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2920,6 +2986,7 @@ exports[`match MULTIPLE "multi segment params" as single param {"type":"SECOND",
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2953,6 +3020,7 @@ Object {
     "pathname": "/second/foo/bar/bla/baz/yo/sdf",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3022,6 +3090,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3049,6 +3118,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3094,6 +3164,7 @@ exports[`match optional params "/third": 4 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3124,6 +3195,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3193,6 +3265,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3220,6 +3293,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3267,6 +3341,7 @@ exports[`match optional params "/third/foo": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3299,6 +3374,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3368,6 +3444,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3395,6 +3472,7 @@ Object {
     "pathname": "/second/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3442,6 +3520,7 @@ exports[`match optional params {"type":"SECOND","params":{"param":"foo"}}: 1 - s
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3474,6 +3553,7 @@ Object {
     "pathname": "/second/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3543,6 +3623,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3570,6 +3651,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3615,6 +3697,7 @@ exports[`match optional params {"type":"SECOND"}: 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3645,6 +3728,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3714,6 +3798,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3741,6 +3826,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3786,6 +3872,7 @@ exports[`never returns an empty string when path has single optional param that 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3816,6 +3903,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3885,6 +3973,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3912,6 +4001,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3959,6 +4049,7 @@ exports[`never returns an empty string when path has single optional param that 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3991,6 +4082,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4060,6 +4152,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4087,6 +4180,7 @@ Object {
     "pathname": "/third/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4134,6 +4228,7 @@ exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - s
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4166,6 +4261,7 @@ Object {
     "pathname": "/third/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4235,6 +4331,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4262,6 +4359,7 @@ Object {
     "pathname": "/second/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4309,6 +4407,7 @@ exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","p
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4341,6 +4440,7 @@ Object {
     "pathname": "/second/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4410,6 +4510,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4437,6 +4538,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4482,6 +4584,7 @@ exports[`optional static segments ("aliases") "/third": 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4512,6 +4615,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4581,6 +4685,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4608,6 +4713,7 @@ Object {
     "pathname": "/third/list",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4655,6 +4761,7 @@ exports[`optional static segments ("aliases") "/third/list": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4687,6 +4794,7 @@ Object {
     "pathname": "/third/list",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4756,6 +4864,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4783,6 +4892,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4828,6 +4938,7 @@ exports[`optional static segments ("aliases") {"type":"SECOND"}: 1 - state 1`] =
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4858,6 +4969,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4927,6 +5039,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4954,6 +5067,7 @@ Object {
     "pathname": "/repo2/faceyspacey/rudy/blob/master",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5003,6 +5117,7 @@ exports[`optionally match "multi segment params" as single param "/repo2/faceysp
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5037,6 +5152,7 @@ Object {
     "pathname": "/repo2/faceyspacey/rudy/blob/master",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5106,6 +5222,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5133,6 +5250,7 @@ Object {
     "pathname": "/repo1/faceyspacey/rudy/blob/master",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5182,6 +5300,7 @@ exports[`optionally match "multi segment params" as single param {"type":"REPO1"
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5216,6 +5335,7 @@ Object {
     "pathname": "/repo1/faceyspacey/rudy/blob/master",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5285,6 +5405,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5312,6 +5433,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5359,6 +5481,7 @@ exports[`options.to/fromPath "/third/foo": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5391,6 +5514,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5460,6 +5584,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5487,6 +5612,7 @@ Object {
     "pathname": "/second/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5534,6 +5660,7 @@ exports[`options.to/fromPath {"type":"SECOND","params":{"param":"BAR"}}: 1 - sta
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5566,6 +5693,7 @@ Object {
     "pathname": "/second/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5635,6 +5763,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5662,6 +5791,7 @@ Object {
     "pathname": "/third/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5709,6 +5839,7 @@ exports[`regex parameters "/third/100": 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5741,6 +5872,7 @@ Object {
     "pathname": "/third/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5810,6 +5942,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5837,6 +5970,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5883,6 +6017,7 @@ exports[`regex parameters "/third/foo": 4 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5913,6 +6048,7 @@ Object {
     "pathname": "/third/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5982,6 +6118,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6009,6 +6146,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6056,6 +6194,7 @@ exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - state 1`]
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6088,6 +6227,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6157,6 +6297,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6184,6 +6325,7 @@ Object {
     "pathname": "/second/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6231,6 +6373,7 @@ exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - state 1`] =
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6263,6 +6406,7 @@ Object {
     "pathname": "/second/100",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6332,6 +6476,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6359,6 +6504,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6406,6 +6552,7 @@ exports[`route.defaultParams "/second": 4 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6438,6 +6585,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6507,6 +6655,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6534,6 +6683,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6581,6 +6731,7 @@ exports[`route.defaultParams "/third": 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6613,6 +6764,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6682,6 +6834,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6709,6 +6862,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6758,6 +6912,7 @@ exports[`route.defaultParams "/third?key=correct": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6790,6 +6945,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6861,6 +7017,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6888,6 +7045,7 @@ Object {
     "pathname": "/second/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6935,6 +7093,7 @@ exports[`route.defaultParams {"type":"SECOND"}: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6967,6 +7126,7 @@ Object {
     "pathname": "/second/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -7036,6 +7196,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -7063,6 +7224,7 @@ Object {
     "pathname": "/third/all",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -7110,6 +7272,7 @@ exports[`static regexes "/third/all": 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -7142,6 +7305,7 @@ Object {
     "pathname": "/third/all",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -7211,6 +7375,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -7238,6 +7403,7 @@ Object {
     "pathname": "/third/list",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -7285,6 +7451,7 @@ exports[`static regexes "/third/list": 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -7317,6 +7484,7 @@ Object {
     "pathname": "/third/list",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -7386,6 +7554,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -7413,6 +7582,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -7458,6 +7628,7 @@ exports[`static regexes {"type":"SECOND"}: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -7488,6 +7659,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

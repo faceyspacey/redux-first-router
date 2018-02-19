@@ -35,6 +35,7 @@ exports[`routes can specify route.middleware array to override global middleware
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -65,6 +66,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -139,6 +141,7 @@ exports[`routes can specify route.middleware as function to override global midd
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -163,6 +166,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -206,6 +210,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

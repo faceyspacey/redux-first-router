@@ -30,6 +30,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -54,6 +55,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -94,6 +96,7 @@ Object {
     "pathname": "/redirected-again-after",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -149,6 +152,7 @@ exports[`multiple redirects are honored after enter: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -173,6 +177,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -216,6 +221,7 @@ Object {
     "pathname": "/redirected-again-after",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -285,6 +291,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -309,6 +316,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -349,6 +357,7 @@ Object {
     "pathname": "/redirected-again",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -402,6 +411,7 @@ exports[`multiple redirects are honored: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -426,6 +436,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -469,6 +480,7 @@ Object {
     "pathname": "/redirected-again",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

@@ -7,6 +7,7 @@ export default (action, prevState, history, fromAction) => {
   const prev = createPrev(prevState)
   const from = createFrom(fromAction)
   const scene = typeToScene(type)
+  const direction = getDirection(kind, prevState)
   const basename = bn.substr(1)
   const url = bn + u
   const status = (kind === 'redirect' || fromAction)
@@ -27,6 +28,7 @@ export default (action, prevState, history, fromAction) => {
       pathname,
       search,
       scene,
+      direction,
       status,
 
       prev,
@@ -70,4 +72,15 @@ const createStateReference = (location) => {
   delete ref.blocked
 
   return ref
+}
+
+const getDirection = (kind, prevState) =>
+  kind === 'redirect' ? prevState.direction : directions[kind]
+
+
+const directions = {
+  load: 'forward',
+  push: 'forward',
+  next: 'forward',
+  back: 'backward'
 }

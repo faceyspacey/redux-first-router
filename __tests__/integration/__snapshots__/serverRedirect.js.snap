@@ -28,6 +28,7 @@ exports[`redirect on server not dispatched; instead redirect info returned: firs
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -48,6 +49,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": true,
       "hash": "",
@@ -91,6 +93,7 @@ exports[`redirect on server not dispatched; instead redirect info returned: firs
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -112,6 +115,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,

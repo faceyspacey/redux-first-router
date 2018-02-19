@@ -24,6 +24,7 @@ exports[`callback can be array of functions: firstRoute - /first - 1 - initial_s
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -44,6 +45,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": false,
       "hash": "",
@@ -81,6 +83,7 @@ exports[`callback can be array of functions: firstRoute - /first - 1 - state 1`]
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -102,6 +105,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -154,6 +158,7 @@ exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 -
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -174,6 +179,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": false,
       "hash": "",
@@ -211,6 +217,7 @@ exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 -
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -232,6 +239,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,

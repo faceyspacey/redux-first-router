@@ -81,6 +81,7 @@ export const createInitialState = (
     pathname,
     search,
     basename: basename.substr(1),
+    direction: 'forward',
     scene,
 
     kind: 'init',
@@ -106,6 +107,7 @@ export const createPrev = (hasSSR: boolean) => ({
   search: '',
   basename: '',
   scene: '',
+  direction: 'forward',
 
   kind: '',
   entries: [],

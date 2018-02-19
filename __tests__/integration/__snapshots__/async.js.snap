@@ -46,6 +46,7 @@ exports[`callbacks sequentially run as promises /w redirect: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -70,6 +71,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -113,6 +115,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -198,6 +201,7 @@ exports[`callbacks sequentially run as promises: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -228,6 +232,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

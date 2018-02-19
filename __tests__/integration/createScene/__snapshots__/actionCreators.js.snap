@@ -30,6 +30,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -57,6 +58,7 @@ Object {
     "pathname": "/cat",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -105,6 +107,7 @@ exports[`createScene() actions.notFound(params, path): 13 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -137,6 +140,7 @@ Object {
     "pathname": "/cat",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -208,6 +212,7 @@ exports[`createScene() actions.notFound.complete(payload): 14 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -229,6 +234,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -287,6 +293,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -314,6 +321,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -359,6 +367,7 @@ exports[`createScene() actions.second(): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -389,6 +398,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -459,6 +469,7 @@ exports[`createScene() actions.second(action with wrong type): 5 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -480,6 +491,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -538,6 +550,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -565,6 +578,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -612,6 +626,7 @@ exports[`createScene() actions.second(params): 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -644,6 +659,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -713,6 +729,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -740,6 +757,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -787,6 +805,7 @@ exports[`createScene() actions.second(partialAction): 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -819,6 +838,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -888,6 +908,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -915,6 +936,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -962,6 +984,7 @@ exports[`createScene() actions.second(thunk): 4 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -994,6 +1017,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1067,6 +1091,7 @@ exports[`createScene() actions.second.complete(thunk): 11 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1088,6 +1113,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -1150,6 +1176,7 @@ exports[`createScene() actions.third.complete(payload): 10 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1171,6 +1198,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -1231,6 +1259,7 @@ exports[`createScene() actions.third.error(new Error): 8 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1254,6 +1283,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -1316,6 +1346,7 @@ exports[`createScene() route with just action creator: 12 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1337,6 +1368,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -1395,6 +1427,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1422,6 +1455,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1469,6 +1503,7 @@ exports[`createScene() route.action - custom action creator: 6 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1501,6 +1536,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1570,6 +1606,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1597,6 +1634,7 @@ Object {
     "pathname": "/fourth",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1644,6 +1682,7 @@ exports[`createScene() route.action: [] - custom action creators (array) - actio
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1676,6 +1715,7 @@ Object {
     "pathname": "/fourth",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1749,6 +1789,7 @@ exports[`createScene() route.error - custom error action creator: 9 - state 1`] 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1774,6 +1815,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,

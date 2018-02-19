@@ -30,6 +30,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -57,6 +58,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -103,6 +105,7 @@ exports[`dispatch(notFound()): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -133,6 +136,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -202,6 +206,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -229,6 +234,7 @@ Object {
     "pathname": "/does-not-exist",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -277,6 +283,7 @@ exports[`dispatch(notFound(action, alternatePath)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -309,6 +316,7 @@ Object {
     "pathname": "/does-not-exist",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -378,6 +386,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -405,6 +414,7 @@ Object {
     "pathname": "/does-not-exist",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -451,6 +461,7 @@ exports[`dispatch(notFound(alternatePath)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -481,6 +492,7 @@ Object {
     "pathname": "/does-not-exist",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -552,6 +564,7 @@ exports[`dispatch(notFound(alternatePath, forcedType)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -573,6 +586,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -631,6 +645,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -658,6 +673,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -706,6 +722,7 @@ exports[`dispatch(notFound(params)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -738,6 +755,7 @@ Object {
     "pathname": "/not-found",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -801,6 +819,7 @@ exports[`notFound on first load: firstRoute - /non-existent - 1 - initial_state 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -821,6 +840,7 @@ Object {
     "pathname": "/non-existent",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": false,
       "hash": "",
@@ -852,6 +872,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -870,6 +891,7 @@ Object {
     "pathname": "/non-existent",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -901,6 +923,7 @@ exports[`notFound on first load: firstRoute - /non-existent - 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -922,6 +945,7 @@ Object {
     "pathname": "/non-existent",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,

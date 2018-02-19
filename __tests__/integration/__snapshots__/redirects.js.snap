@@ -28,6 +28,7 @@ exports[`redirect after enter (on firstRoute): firstRoute - /first - 1 - initial
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -48,6 +49,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": false,
       "hash": "",
@@ -85,6 +87,7 @@ exports[`redirect after enter (on firstRoute): firstRoute - /first - 1 - state 1
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -100,6 +103,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -134,6 +138,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -206,6 +211,7 @@ exports[`redirect after enter: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -230,6 +236,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -273,6 +280,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -340,6 +348,7 @@ exports[`redirect before enter (on firstRoute): firstRoute - /first - 1 - initia
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -360,6 +369,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": false,
       "hash": "",
@@ -397,6 +407,7 @@ exports[`redirect before enter (on firstRoute): firstRoute - /first - 1 - state 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -412,6 +423,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -446,6 +458,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -518,6 +531,7 @@ exports[`redirect before enter: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -542,6 +556,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -585,6 +600,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

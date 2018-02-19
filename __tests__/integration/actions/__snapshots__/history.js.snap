@@ -32,6 +32,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -61,6 +62,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -117,6 +119,7 @@ exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -149,6 +152,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -265,6 +269,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -297,6 +302,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -357,6 +363,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -390,6 +397,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -460,6 +468,7 @@ exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -495,6 +504,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -554,6 +564,7 @@ exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -590,6 +601,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -688,6 +700,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -721,6 +734,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -786,6 +800,7 @@ exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -822,6 +837,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -915,6 +931,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -946,6 +963,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1006,6 +1024,7 @@ exports[`dispatch(back/next()): {"type":"@@rudy/CALL_HISTORY","payload":{"method
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1040,6 +1059,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1134,6 +1154,7 @@ Object {
   "hash": "",
   "info": "jump",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1170,6 +1191,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1204,6 +1226,7 @@ Object {
       "kind": "push",
       "length": 3,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -1274,6 +1297,7 @@ exports[`dispatch(jump(-2)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1313,6 +1337,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1347,6 +1372,7 @@ Object {
       "kind": "push",
       "length": 3,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -1441,6 +1467,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1468,6 +1495,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1522,6 +1550,7 @@ exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"j
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1552,6 +1581,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1630,6 +1660,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1657,6 +1688,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1711,6 +1743,7 @@ exports[`dispatch(jump(n)): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"j
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1741,6 +1774,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1821,6 +1855,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1850,6 +1885,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1906,6 +1942,7 @@ exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTOR
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1938,6 +1975,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2022,6 +2060,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2053,6 +2092,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2113,6 +2153,7 @@ exports[`dispatch(jump(n, state, byIndex === true)): {"type":"@@rudy/CALL_HISTOR
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2147,6 +2188,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2242,6 +2284,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2280,6 +2323,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2347,6 +2391,7 @@ exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY",
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2388,6 +2433,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2490,6 +2536,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2528,6 +2575,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2593,6 +2641,7 @@ exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY",
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2634,6 +2683,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2723,6 +2773,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2750,6 +2801,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2795,6 +2847,7 @@ exports[`dispatch(push/replace()) dispatch(push(path)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2825,6 +2878,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2896,6 +2950,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2925,6 +2980,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2972,6 +3028,7 @@ exports[`dispatch(push/replace()) dispatch(push(path, state)): 2 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3004,6 +3061,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3066,6 +3124,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3081,6 +3140,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3112,6 +3172,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -3146,6 +3207,7 @@ exports[`dispatch(push/replace()) dispatch(replace(path)): 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3161,6 +3223,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3195,6 +3258,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -3246,6 +3310,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3263,6 +3328,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3294,6 +3360,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -3330,6 +3397,7 @@ exports[`dispatch(push/replace()) dispatch(replace(path, state)): 4 - state 1`] 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3347,6 +3415,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3381,6 +3450,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -3444,6 +3514,7 @@ Object {
   "hash": "something",
   "info": "reset",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -3473,6 +3544,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "/first-base",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "/first-base",
@@ -3500,6 +3572,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3557,6 +3630,7 @@ exports[`dispatch(reset(actions)) - entries as action objects: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "base-name",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -3589,6 +3663,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "/first-base",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "/first-base",
@@ -3616,6 +3691,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3698,6 +3774,7 @@ Object {
   "hash": "",
   "info": "reset",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3725,6 +3802,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3750,6 +3828,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3802,6 +3881,7 @@ exports[`dispatch(reset(entries)) - last element inferred, next kind inferred: 1
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3832,6 +3912,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3857,6 +3938,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -3934,6 +4016,7 @@ Object {
   "hash": "",
   "info": "reset",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3961,6 +4044,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3986,6 +4070,7 @@ Object {
       "kind": "push",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -4047,6 +4132,7 @@ exports[`dispatch(reset(entries, index)) - back kind inferred: {"type":"@@rudy/C
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4077,6 +4163,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4102,6 +4189,7 @@ Object {
       "kind": "push",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -4197,6 +4285,7 @@ Object {
   "hash": "",
   "info": "reset",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4233,6 +4322,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4267,6 +4357,7 @@ Object {
       "kind": "load",
       "length": 3,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -4319,6 +4410,7 @@ exports[`dispatch(reset(entries, index)) - kind kind forced): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4358,6 +4450,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4392,6 +4485,7 @@ Object {
       "kind": "load",
       "length": 3,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -4460,6 +4554,7 @@ Object {
   "hash": "",
   "info": "reset",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4478,6 +4573,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -4512,6 +4608,7 @@ exports[`dispatch(reset(entries, index)) - load kind inferred (because only one 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4533,6 +4630,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -4610,6 +4708,7 @@ Object {
   "hash": "",
   "info": "reset",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4655,6 +4754,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4698,6 +4798,7 @@ Object {
       "kind": "push",
       "length": 4,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -4759,6 +4860,7 @@ exports[`dispatch(reset(entries, index)) - next kind inferred because > than cur
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4807,6 +4909,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4850,6 +4953,7 @@ Object {
       "kind": "push",
       "length": 4,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -4936,6 +5040,7 @@ Object {
   "hash": "",
   "info": "reset",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4963,6 +5068,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4988,6 +5094,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -5040,6 +5147,7 @@ exports[`dispatch(reset(entries, index)) - next kind inferred): 1 - state 1`] = 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5070,6 +5178,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5095,6 +5204,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -5172,6 +5282,7 @@ Object {
   "hash": "",
   "info": "reset",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5199,6 +5310,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -5233,6 +5345,7 @@ exports[`dispatch(reset(entries, index)) - redirect kind inferred (because prev 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5263,6 +5376,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -5324,6 +5438,7 @@ Object {
   "hash": "something",
   "info": "reset",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -5353,6 +5468,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "/first-base",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "/first-base",
@@ -5380,6 +5496,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -5437,6 +5554,7 @@ exports[`dispatch(reset(entryObjects)) - entries as location objects: 1 - state 
 Object {
   "location": Object {
     "basename": "base-name",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/first-base",
@@ -5469,6 +5587,7 @@ Object {
     "pathname": "/third",
     "prev": Object {
       "basename": "/first-base",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "/first-base",
@@ -5496,6 +5615,7 @@ Object {
       "kind": "load",
       "length": 2,
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -5570,6 +5690,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": undefined,
     "entries": Array [
       Object {
         "basename": "",
@@ -5590,6 +5711,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5637,6 +5759,7 @@ exports[`dispatch(setState()) dispatch(setState(state)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5660,6 +5783,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -5722,6 +5846,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": undefined,
     "entries": Array [
       Object {
         "basename": "",
@@ -5751,6 +5876,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5805,6 +5931,7 @@ exports[`dispatch(setState()) dispatch(setState(state, index, byIndex === true))
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5837,6 +5964,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5908,6 +6036,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": undefined,
     "entries": Array [
       Object {
         "basename": "",
@@ -5937,6 +6066,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5991,6 +6121,7 @@ exports[`dispatch(setState()) dispatch(setState(state, keyString)): {"type":"@@r
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6023,6 +6154,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6094,6 +6226,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": undefined,
     "entries": Array [
       Object {
         "basename": "",
@@ -6123,6 +6256,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6177,6 +6311,7 @@ exports[`dispatch(setState()) dispatch(setState(state, n)): {"type":"@@rudy/CALL
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6209,6 +6344,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6271,6 +6407,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": undefined,
     "entries": Array [
       Object {
         "basename": "",
@@ -6291,6 +6428,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6338,6 +6476,7 @@ exports[`dispatch(setState()) dispatch(setState(stateFunc)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -6361,6 +6500,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,

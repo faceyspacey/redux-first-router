@@ -62,6 +62,7 @@ exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"ro
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -83,6 +84,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -142,6 +144,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -169,6 +172,7 @@ Object {
     "pathname": "/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -215,6 +219,7 @@ exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -245,6 +250,7 @@ Object {
     "pathname": "/foo",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -358,6 +364,7 @@ exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -379,6 +386,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -448,6 +456,7 @@ exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - state 1`] = 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -478,6 +487,7 @@ Object {
     "pathname": "/bar",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

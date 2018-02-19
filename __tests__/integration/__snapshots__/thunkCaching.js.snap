@@ -30,6 +30,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -57,6 +58,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -113,6 +115,7 @@ exports[`cache.clear(): {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -143,6 +146,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -246,6 +250,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -273,6 +278,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -315,6 +321,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -342,6 +349,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -404,6 +412,7 @@ exports[`cache.clear(): {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -434,6 +443,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -475,6 +485,7 @@ exports[`cache.clear(): {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -505,6 +516,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -585,6 +597,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -612,6 +625,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -668,6 +682,7 @@ exports[`cache.clear(action): {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -698,6 +713,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -801,6 +817,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -828,6 +845,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -870,6 +888,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -897,6 +916,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -959,6 +979,7 @@ exports[`cache.clear(action): {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -989,6 +1010,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1030,6 +1052,7 @@ exports[`cache.clear(action): {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1060,6 +1083,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1140,6 +1164,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1167,6 +1192,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1223,6 +1249,7 @@ exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - state 1`] = 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1253,6 +1280,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1356,6 +1384,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1383,6 +1412,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1425,6 +1455,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1452,6 +1483,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1514,6 +1546,7 @@ exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - state 1`] =
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1544,6 +1577,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1585,6 +1619,7 @@ exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - state 2`] =
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1615,6 +1650,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1720,6 +1756,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1747,6 +1784,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1798,6 +1836,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1825,6 +1864,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1887,6 +1927,7 @@ exports[`cache.clear(func): {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1917,6 +1958,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -1967,6 +2009,7 @@ exports[`cache.clear(func): {"type":"FIRST"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -1997,6 +2040,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2127,6 +2171,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2154,6 +2199,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2196,6 +2242,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2223,6 +2270,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2274,6 +2322,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2301,6 +2350,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2369,6 +2419,7 @@ exports[`cache.clear(func): {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2399,6 +2450,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2440,6 +2492,7 @@ exports[`cache.clear(func): {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2470,6 +2523,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2520,6 +2574,7 @@ exports[`cache.clear(func): {"type":"SECOND"} - state 3`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2550,6 +2605,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2632,6 +2688,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2659,6 +2716,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2715,6 +2773,7 @@ exports[`cache.clear(string): {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2745,6 +2804,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2848,6 +2908,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2875,6 +2936,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2917,6 +2979,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -2944,6 +3007,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3006,6 +3070,7 @@ exports[`cache.clear(string): {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3036,6 +3101,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3077,6 +3143,7 @@ exports[`cache.clear(string): {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3107,6 +3174,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3187,6 +3255,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3214,6 +3283,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3270,6 +3340,7 @@ exports[`cached thunk only called once: {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3300,6 +3371,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3403,6 +3475,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3430,6 +3503,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3472,6 +3546,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3499,6 +3574,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3561,6 +3637,7 @@ exports[`cached thunk only called once: {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3591,6 +3668,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3632,6 +3710,7 @@ exports[`cached thunk only called once: {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3662,6 +3741,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3742,6 +3822,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3769,6 +3850,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3825,6 +3907,7 @@ exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - state 1`] 
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3855,6 +3938,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3958,6 +4042,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3985,6 +4070,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4027,6 +4113,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4054,6 +4141,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4116,6 +4204,7 @@ exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - state 1`]
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4146,6 +4235,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4187,6 +4277,7 @@ exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - state 2`]
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4217,6 +4308,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4297,6 +4389,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4324,6 +4417,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4380,6 +4474,7 @@ exports[`options.cache === false: {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4410,6 +4505,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4513,6 +4609,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4540,6 +4637,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4582,6 +4680,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4609,6 +4708,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4671,6 +4771,7 @@ exports[`options.cache === false: {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4701,6 +4802,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4742,6 +4844,7 @@ exports[`options.cache === false: {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4772,6 +4875,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4852,6 +4956,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4879,6 +4984,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -4935,6 +5041,7 @@ exports[`options.createCacheKey: {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -4965,6 +5072,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5068,6 +5176,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5095,6 +5204,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5137,6 +5247,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5164,6 +5275,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5226,6 +5338,7 @@ exports[`options.createCacheKey: {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5256,6 +5369,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5297,6 +5411,7 @@ exports[`options.createCacheKey: {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5327,6 +5442,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5407,6 +5523,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5434,6 +5551,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5490,6 +5608,7 @@ exports[`route.cache === false: {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5520,6 +5639,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5623,6 +5743,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5650,6 +5771,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5692,6 +5814,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5719,6 +5842,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5781,6 +5905,7 @@ exports[`route.cache === false: {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5811,6 +5936,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5852,6 +5978,7 @@ exports[`route.cache === false: {"type":"SECOND"} - state 2`] = `
 Object {
   "location": Object {
     "basename": "",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5882,6 +6009,7 @@ Object {
     "pathname": "/second",
     "prev": Object {
       "basename": "",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",

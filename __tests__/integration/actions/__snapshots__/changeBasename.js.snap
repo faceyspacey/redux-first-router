@@ -30,6 +30,7 @@ Object {
   "basename": "bar",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -57,6 +58,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "foo",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "/foo",
@@ -102,6 +104,7 @@ exports[`dispatch(changeBasename(name)) with existing basename: 1 - state 1`] = 
 Object {
   "location": Object {
     "basename": "bar",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -132,6 +135,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "foo",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "/foo",
@@ -191,6 +195,7 @@ exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /fo
 Object {
   "location": Object {
     "basename": "foo",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -211,6 +216,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hasSSR": false,
       "hash": "",
@@ -242,6 +248,7 @@ Object {
   "basename": "foo",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -260,6 +267,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -290,6 +298,7 @@ exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /fo
 Object {
   "location": Object {
     "basename": "foo",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "/foo",
@@ -311,6 +320,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [],
       "hash": "",
       "index": -1,
@@ -369,6 +379,7 @@ Object {
   "basename": "foo",
   "hash": "",
   "location": Object {
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -396,6 +407,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -441,6 +453,7 @@ exports[`dispatch(changeBasename(name)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "foo",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -471,6 +484,7 @@ Object {
     "pathname": "/first",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -550,6 +564,7 @@ exports[`dispatch(changeBasename(name, action)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "foo",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -580,6 +595,7 @@ Object {
     "pathname": "/redirected",
     "prev": Object {
       "basename": "",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
