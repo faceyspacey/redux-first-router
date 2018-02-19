@@ -35,7 +35,7 @@ export default (
 
     try {
       url = actionToUrl(action, routes, options)
-      basename = action.basename || basename
+      basename = action.basename || basename || ''
     }
     catch (e) {
       if (process.env.NODE_ENV === 'development') {
@@ -67,7 +67,7 @@ export default (
   }
 
   if (basename) {
-    action.basename = basename
+    action = { ...action, basename }
   }
 
   const fullUrl = isExternal ? url : basename + url

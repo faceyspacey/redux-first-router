@@ -25,7 +25,7 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     routes[t2] = format(routesMap[t], t2, routesMap, formatRoute)
 
     const route = routes[t2]
-    const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so types will be un-prefixed
+    const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so types will be un-prefixed (NOTE: this is normalization for if routes pass through `createScene` twice)
     const action = camelCase(tClean)
 
     types[tClean] = t2

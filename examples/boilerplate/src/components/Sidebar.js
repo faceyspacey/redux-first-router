@@ -19,12 +19,12 @@ const Sidebar = ({ path, dispatch }) => (
       Redux
     </NavLink>
 
-    <Link
-      className={isActive(path, '/list/react')}
+    <NavLink
+      activeClassName={styles.active}
       to={{ type: 'LIST', params: { category: 'react' } }}
     >
       React
-    </Link>
+    </NavLink>
 
     <div style={{ height: 20 }} />
 

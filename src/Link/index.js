@@ -134,10 +134,9 @@ const navLinkProps = (props: Props, fullUrl: string, action: ?ReceivedAction) =>
   const { getLocation, options, routes } = rudy
   const { pathname, query, hash } = parsePath(fullUrl)
   const matchers = { path: pathname, query: q && query, hash: h && hash }
-  const currentFullUrl = basename + url
   const opts = { partial, strict }
   const route = routes[action.type] || {}
-  const match = matchUrl(currentFullUrl, matchers, opts, route, options)
+  const match = matchUrl(url, matchers, opts, route, options)
 
   if (match) {
     Object.assign(match, action)
@@ -153,7 +152,7 @@ const navLinkProps = (props: Props, fullUrl: string, action: ?ReceivedAction) =>
 }
 
 const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
-  const { url, pathname, basename, routesAdded } = rudy.getLocation()
+  const { url, pathname, basename: bn, routesAdded } = rudy.getLocation()
   const isNav = props.activeClassName || props.activeStyle // only NavLinks re-render when the URL changes
 
   // We are very precise about what we want to cause re-renderings, as perf is
@@ -164,6 +163,8 @@ const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
   if (typeof props.to === 'string' && props.to.charAt(0) !== '/') {
     currentPathname = pathname
   }
+
+  const basename = bn ? `/${bn}` : ''
 
   return { rudy, basename, routesAdded, url: isNav && url, currentPathname: pathname }
 }
