@@ -1,5 +1,3 @@
-import { NOT_FOUND } from 'redux-first-router/types'
-
 // try dispatching these from the redux devTools
 
 export const goToPage = (type, category) => ({
@@ -16,7 +14,7 @@ export const goToAdmin = () => ({
 })
 
 export const notFound = () => ({
-  type: NOT_FOUND
+  type: 'NOT_FOUND'
 })
 
 export const visitCategory = category => ({

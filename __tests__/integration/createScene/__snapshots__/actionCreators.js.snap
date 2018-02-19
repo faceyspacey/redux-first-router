@@ -93,7 +93,7 @@ Object {
   },
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -167,14 +167,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/cat",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`createScene() actions.notFound(params, path): 13 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`createScene() actions.notFound(params, path): 13 - title 1`] = `"NOT_FOUND"`;
 
 exports[`createScene() actions.notFound.complete(payload): 14 - history_entries 1`] = `
 Array [

@@ -1145,7 +1145,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -1217,14 +1217,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/third/foo/bar",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - title 1`] = `"NOT_FOUND"`;
 
 exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - history_entries 1`] = `
 Array [
@@ -1318,7 +1318,7 @@ Object {
   },
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -1392,14 +1392,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`does not parse a blank string "" as NaN "/third": 2 - history_entries 1`] = `
 Array [
@@ -1666,7 +1666,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -1738,14 +1738,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`fromPath + toPath "/third/foo": 2 - history_entries 1`] = `
 Array [
@@ -2553,7 +2553,7 @@ Object {
   },
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -2629,14 +2629,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"missed"}}: 3 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"missed"}}: 3 - title 1`] = `"NOT_FOUND"`;
 
 exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/bla/baz/yo/sdf": 2 - history_entries 1`] = `
 Array [
@@ -5871,7 +5871,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -5943,14 +5943,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/third/foo",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`regex parameters "/third/foo": 4 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`regex parameters "/third/foo": 4 - title 1`] = `"NOT_FOUND"`;
 
 exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - history_entries 1`] = `
 Array [
@@ -6044,7 +6044,7 @@ Object {
   },
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -6118,14 +6118,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - title 1`] = `"NOT_FOUND"`;
 
 exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - history_entries 1`] = `
 Array [
@@ -7446,7 +7446,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -7518,11 +7518,11 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`static regexes {"type":"SECOND"}: 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`static regexes {"type":"SECOND"}: 1 - title 1`] = `"NOT_FOUND"`;

@@ -91,7 +91,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -163,14 +163,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound()): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`dispatch(notFound()): 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`dispatch(notFound(action, alternatePath)): 1 - history_entries 1`] = `
 Array [
@@ -265,7 +265,7 @@ Object {
   },
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -339,14 +339,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/does-not-exist",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound(action, alternatePath)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`dispatch(notFound(action, alternatePath)): 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`dispatch(notFound(alternatePath)): 1 - history_entries 1`] = `
 Array [
@@ -439,7 +439,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -511,14 +511,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/does-not-exist",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound(alternatePath)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`dispatch(notFound(alternatePath)): 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`dispatch(notFound(alternatePath, forcedType)): 1 - history_entries 1`] = `
 Array [
@@ -694,7 +694,7 @@ Object {
   },
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -768,14 +768,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound(params)): 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`dispatch(notFound(params)): 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`notFound on first load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
@@ -840,7 +840,7 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/non-existent",
   },
   "title": "@@redux/INIT",
@@ -893,7 +893,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -941,11 +941,11 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/non-existent",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`notFound on first load: firstRoute - /non-existent - 1 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`notFound on first load: firstRoute - /non-existent - 1 - title 1`] = `"NOT_FOUND"`;

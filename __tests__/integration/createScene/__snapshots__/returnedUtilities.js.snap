@@ -239,7 +239,7 @@ Object {
   "FOURTH": "FOURTH",
   "FOURTH_COMPLETE": "FOURTH_COMPLETE",
   "FOURTH_ERROR": "FOURTH_ERROR",
-  "NOT_FOUND": "@@rudy/NOT_FOUND",
+  "NOT_FOUND": "NOT_FOUND",
   "NOT_FOUND_COMPLETE": "NOT_FOUND_COMPLETE",
   "NOT_FOUND_ERROR": "NOT_FOUND_ERROR",
   "PLAIN": "PLAIN",
@@ -266,16 +266,16 @@ Object {
 
 exports[`createScene returns types, actions, routes, exportString 3`] = `
 Object {
-  "@@rudy/NOT_FOUND": Object {
-    "path": "/not-found-foo",
-    "scene": "",
-  },
   "FOURTH": Object {
     "action": Array [
       "customCreator",
     ],
     "customCreator": [Function],
     "path": "/fourth",
+    "scene": "",
+  },
+  "NOT_FOUND": Object {
+    "path": "/not-found-foo",
     "scene": "",
   },
   "PLAIN": Object {

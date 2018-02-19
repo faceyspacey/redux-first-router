@@ -1,5 +1,4 @@
 import { isNotFound } from '../../../utils'
-import { NOT_FOUND } from '../../../types'
 
 export default (req) => {
   const { action = {}, routes, route, prevRoute } = req
@@ -11,7 +10,7 @@ export default (req) => {
       ? action.type
       : scene && routes[`${scene}/NOT_FOUND`] // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
         ? `${scene}/NOT_FOUND`
-        : NOT_FOUND
+        : 'NOT_FOUND'
 
     return {
       type,
@@ -23,7 +22,7 @@ export default (req) => {
   const scene = route.scene || prevRoute.scene
   const type = scene && routes[`${scene}/NOT_FOUND`]
     ? `${scene}/NOT_FOUND`
-    : NOT_FOUND
+    : 'NOT_FOUND'
 
   return {
     type,
@@ -32,4 +31,4 @@ export default (req) => {
 }
 
 const resolvePath = (route, urlOverride, routes) =>
-  urlOverride || route.path || routes[NOT_FOUND].path
+  urlOverride || route.path || routes.NOT_FOUND.path

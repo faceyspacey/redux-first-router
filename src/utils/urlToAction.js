@@ -3,7 +3,6 @@ import qs from 'query-string'
 import { matchUrl } from './index'
 import { parsePath } from '../history/utils'
 import { notFound } from '../actions'
-import { NOT_FOUND } from '../types'
 
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
@@ -33,7 +32,7 @@ export default (
   const { search, hash } = l
   const params = {}
   const query = search
-    ? (routes[NOT_FOUND].parseQuery || opts.parseQuery || qs.parse)(search)
+    ? (routes.NOT_FOUND.parseQuery || opts.parseQuery || qs.parse)(search)
     : {}
 
   return notFound({ params, query, hash, state, basename }, url)

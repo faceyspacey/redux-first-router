@@ -1,6 +1,5 @@
 // @flow
 import type { RoutesMapInput, CreateActionsOptions } from '../flow-types'
-import { NOT_FOUND } from '../types'
 
 import {
   camelCase,
@@ -19,9 +18,9 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
   const result = keys.reduce((result, t) => {
     const { types, actions, routes } = result
 
-    const t2 = scene ? `${prefix}${t}`.replace('@@rudy/', '') : `${prefix}${t}` // remove `@@rudy/NOT_FOUND` prefix if there's a scene, otherwise keep the default one
-    const tc = `${prefix}${t}_COMPLETE`.replace('@@rudy/', '')  // insure '@@rudy/NOT_FOUND' prefixed COMPLETE + ERROR types lose prefix so these
-    const te = `${prefix}${t}_ERROR`.replace('@@rudy/', '')     // extra actions don't ever pass through middleware (see `utils/shouldTransition.js`)
+    const t2 = `${prefix}${t}`
+    const tc = `${prefix}${t}_COMPLETE`
+    const te = `${prefix}${t}_ERROR`
 
     routes[t2] = format(routesMap[t], t2, routesMap, formatRoute)
 
@@ -54,19 +53,6 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
   }, { types: {}, actions: {}, routes: {} })
 
   const { types, actions } = result
-
-  // insure @@rudy/NOT_FOUND routes are also un-prefixed, eg: NOT_FOUND, notFound, etc
-  if (types[NOT_FOUND]) {
-    types.NOT_FOUND = types[NOT_FOUND]
-    types.NOT_FOUND_COMPLETE = types[`${NOT_FOUND}_COMPLETE`]
-    types.NOT_FOUND_ERROR = types[`${NOT_FOUND}_ERROR`]
-    delete types[NOT_FOUND]
-    delete types[`${NOT_FOUND}_COMPLETE`]
-    delete types[`${NOT_FOUND}_ERROR`]
-
-    actions.notFound = actions.rudyNotFound
-    delete actions.rudyNotFound
-  }
 
   if (log && /^(development|test)$/.test(process.env.NODE_ENV)) {
     result.exportString = logExports(types, actions, result.routes, opts)

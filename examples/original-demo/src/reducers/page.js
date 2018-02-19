@@ -1,5 +1,3 @@
-import { NOT_FOUND } from 'redux-first-router/types'
-
 export default (state = 'NotFound', action = {}) => components[action.type] || state
 
 const components = {
@@ -9,7 +7,7 @@ const components = {
   PLAY: 'Video',
   ADMIN: 'Admin',
   LOGIN: 'Login',
-  [NOT_FOUND]: 'NotFound'
+  NOT_FOUND: 'NotFound'
 }
 
 // NOTES: this is the primary reducer demonstrating how RFR replaces the need

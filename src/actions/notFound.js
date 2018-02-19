@@ -1,6 +1,5 @@
 // @flow
 import type { Action } from '../flow-types'
-import { NOT_FOUND } from '../types'
 import { isAction } from '../utils'
 
 export default (
@@ -14,7 +13,7 @@ export default (
     act = undefined
   }
 
-  type = type || NOT_FOUND // type not meant for user to supply; it's passed by generated action creators
+  type = type || 'NOT_FOUND' // type not meant for user to supply; it's passed by generated action creators
 
   return isAction(act)
     ? { ...act, type, notFoundUrl }

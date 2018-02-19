@@ -1,5 +1,5 @@
 // @flow
-import { NOT_FOUND, ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY } from '../types'
+import { ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY } from '../types'
 import { redirect } from '../actions'
 import type { RoutesMap, RoutesMapInput } from '../flow-types'
 
@@ -17,7 +17,7 @@ export default (
   isAddRoutes: boolean = false
 ): RoutesMap => {
   if (!isAddRoutes) {
-    routes[NOT_FOUND] = routes[NOT_FOUND] || { path: '/not-found' }
+    routes.NOT_FOUND = routes.NOT_FOUND || { path: '/not-found' }
   }
 
   routes[ADD_ROUTES] = routes[ADD_ROUTES] || { thunk: addRoutes }

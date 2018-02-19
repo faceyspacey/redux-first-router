@@ -262,7 +262,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -334,14 +334,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/third#missed",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`hash equals string "/third#missed": 4 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`hash equals string "/third#missed": 4 - title 1`] = `"NOT_FOUND"`;
 
 exports[`hash equals string {"type":"SECOND","hash":"correct"}: 1 - history_entries 1`] = `
 Array [
@@ -604,7 +604,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -676,14 +676,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`hash equals string {"type":"SECOND","hash":"missed"}: 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`hash equals string {"type":"SECOND","hash":"missed"}: 2 - title 1`] = `"NOT_FOUND"`;
 
 exports[`hash matched by function "/third#correct": 3 - history_entries 1`] = `
 Array [
@@ -947,7 +947,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -1019,14 +1019,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/third#missed",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`hash matched by function "/third#missed": 4 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`hash matched by function "/third#missed": 4 - title 1`] = `"NOT_FOUND"`;
 
 exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - history_entries 1`] = `
 Array [
@@ -1289,7 +1289,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -1361,14 +1361,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - title 1`] = `"NOT_FOUND"`;
 
 exports[`hash matched by regex "/third#correct": 3 - history_entries 1`] = `
 Array [
@@ -1632,7 +1632,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -1704,14 +1704,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/third#missed",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`hash matched by regex "/third#missed": 4 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`hash matched by regex "/third#missed": 4 - title 1`] = `"NOT_FOUND"`;
 
 exports[`hash matched by regex {"type":"SECOND","hash":"correct"}: 1 - history_entries 1`] = `
 Array [
@@ -1974,7 +1974,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -2046,14 +2046,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`hash matched by regex {"type":"SECOND","hash":"missed"}: 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`hash matched by regex {"type":"SECOND","hash":"missed"}: 2 - title 1`] = `"NOT_FOUND"`;
 
 exports[`hash required not to be there "/third": 3 - history_entries 1`] = `
 Array [
@@ -2830,7 +2830,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -2902,14 +2902,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/third",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`required hash "/third": 4 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`required hash "/third": 4 - title 1`] = `"NOT_FOUND"`;
 
 exports[`required hash "/third#correct": 3 - history_entries 1`] = `
 Array [
@@ -3343,7 +3343,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -3415,14 +3415,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`required hash {"type":"SECOND"}: 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`required hash {"type":"SECOND"}: 2 - title 1`] = `"NOT_FOUND"`;
 
 exports[`route.defaultHash "/third": 4 - history_entries 1`] = `
 Array [
@@ -4711,7 +4711,7 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "@@rudy/NOT_FOUND",
+  "type": "NOT_FOUND",
 }
 `;
 
@@ -4783,11 +4783,11 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-found",
   },
-  "title": "@@rudy/NOT_FOUND",
+  "title": "NOT_FOUND",
 }
 `;
 
-exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - title 1`] = `"@@rudy/NOT_FOUND"`;
+exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - title 1`] = `"NOT_FOUND"`;

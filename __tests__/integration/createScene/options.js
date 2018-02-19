@@ -1,7 +1,5 @@
 import createTest from '../../../__helpers__/createTest'
-
 import createScene from '../../../src/createScene'
-import { NOT_FOUND } from '../../../src/types'
 
 const routesMap = {
   SECOND: {
@@ -26,7 +24,7 @@ const routesMap = {
       return { foo: arg }
     }
   },
-  [NOT_FOUND]: '/not-found-foo'
+  NOT_FOUND: '/not-found-foo'
 }
 
 const { actions, routes } = createScene(routesMap, {

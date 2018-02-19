@@ -28,13 +28,13 @@ exports[`custom NOT_FOUND route: 1 - history_index 1`] = `1`;
 exports[`custom NOT_FOUND route: 1 - response 1`] = `
 Object {
   "payload": "thunk done",
-  "type": "@@rudy/NOT_FOUND_COMPLETE",
+  "type": "NOT_FOUND_COMPLETE",
 }
 `;
 
-exports[`custom NOT_FOUND route: 1 - routes - @@rudy/NOT_FOUND - thunk 1`] = `2`;
-
 exports[`custom NOT_FOUND route: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`custom NOT_FOUND route: 1 - routes - NOT_FOUND - thunk 1`] = `2`;
 
 exports[`custom NOT_FOUND route: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
@@ -94,7 +94,7 @@ Object {
       "search": "",
       "state": Object {},
       "status": 404,
-      "type": "@@rudy/NOT_FOUND",
+      "type": "NOT_FOUND",
       "url": "/missed",
     },
     "query": Object {},
@@ -102,14 +102,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/not-available",
   },
-  "title": "@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\"",
+  "title": "NOT_FOUND_COMPLETE - \\"thunk done\\"",
 }
 `;
 
-exports[`custom NOT_FOUND route: 1 - title 1`] = `"@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\""`;
+exports[`custom NOT_FOUND route: 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - history_entries 1`] = `
 Array [
@@ -170,7 +170,7 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/missed",
   },
   "title": "@@redux/INIT",
@@ -180,7 +180,7 @@ Object {
 exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - response 1`] = `
 Object {
   "payload": "thunk done",
-  "type": "@@rudy/NOT_FOUND_COMPLETE",
+  "type": "NOT_FOUND_COMPLETE",
 }
 `;
 
@@ -228,14 +228,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "@@rudy/NOT_FOUND",
+    "type": "NOT_FOUND",
     "url": "/missed",
   },
-  "title": "@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\"",
+  "title": "NOT_FOUND_COMPLETE - \\"thunk done\\"",
 }
 `;
 
-exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - title 1`] = `"@@rudy/NOT_FOUND_COMPLETE - \\"thunk done\\""`;
+exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - title 1`] = `"NOT_FOUND"`;
 
 exports[`options.formatRoute: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
