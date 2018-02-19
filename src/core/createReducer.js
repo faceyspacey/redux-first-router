@@ -116,3 +116,30 @@ export const createPrev = (hasSSR: boolean) => ({
 
   hasSSR
 })
+
+// export const createPrevEntries = (entries, index, lastIndex, hasSSR: boolean, routes, opts) => {
+//   const n = index > lastIndex ? -1 : 1
+//   const direction = index > lastIndex ? 'forward' : 'backwawrd'
+//   const kind = direction === 'forward' ? 'push' : 'back'
+//   const entryAction = entries[n]
+//   const url = actionToUrl(entry, routes, opts)
+//   const { pathname, search, basename } = createLocation(url)
+//   const scene = routes[entryAction.type].scene || ''
+
+//   return {
+//     ...entryAction,
+
+//     url,
+//     pathname,
+//     search,
+//     scene,
+//     direction,
+
+//     kind,
+//     entries,
+//     index: lastIndex,
+//     length: entries.length,
+
+//     hasSSR
+//   }
+// }

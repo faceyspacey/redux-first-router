@@ -35,8 +35,6 @@ export default (...names) => (api) => {
   }
 }
 
-const hasCallback = (route, names, type) => {
-  const hasCb = names.find(name => typeof route[name] === 'function')
-  console.log('HASCALLBACK', hasCb, type)
-  return hasCb
-}
+const hasCallback = (route, names, type) =>
+  names.find(name => typeof route[name] === 'function')
+
