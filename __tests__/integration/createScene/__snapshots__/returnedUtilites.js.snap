@@ -5,9 +5,9 @@ Object {
   "FOURTH": "double/scene/FOURTH",
   "FOURTH_COMPLETE": "double/scene/FOURTH_COMPLETE",
   "FOURTH_ERROR": "double/scene/FOURTH_ERROR",
-  "NOT_FOUND": "double/scene/@@rudy/NOT_FOUND",
-  "NOT_FOUND_COMPLETE": "double/scene/@@rudy/NOT_FOUND_COMPLETE",
-  "NOT_FOUND_ERROR": "double/scene/@@rudy/NOT_FOUND_ERROR",
+  "NOT_FOUND": "double/scene/NOT_FOUND",
+  "NOT_FOUND_COMPLETE": "double/scene/NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "double/scene/NOT_FOUND_ERROR",
   "PLAIN": "double/scene/PLAIN",
   "PLAIN_COMPLETE": "double/scene/PLAIN_COMPLETE",
   "PLAIN_ERROR": "double/scene/PLAIN_ERROR",
@@ -32,16 +32,16 @@ Object {
 
 exports[`call createScene twice on same routes 3`] = `
 Object {
-  "double/scene/@@rudy/NOT_FOUND": Object {
-    "path": "/not-found-foo",
-    "scene": "double/scene",
-  },
   "double/scene/FOURTH": Object {
     "action": Array [
       "customCreator",
     ],
     "customCreator": [Function],
     "path": "/fourth",
+    "scene": "double/scene",
+  },
+  "double/scene/NOT_FOUND": Object {
+    "path": "/not-found-foo",
     "scene": "double/scene",
   },
   "double/scene/PLAIN": Object {
@@ -122,9 +122,9 @@ Object {
   "FOURTH": "SCENE/FOURTH",
   "FOURTH_COMPLETE": "SCENE/FOURTH_COMPLETE",
   "FOURTH_ERROR": "SCENE/FOURTH_ERROR",
-  "NOT_FOUND": "SCENE/@@rudy/NOT_FOUND",
-  "NOT_FOUND_COMPLETE": "SCENE/@@rudy/NOT_FOUND_COMPLETE",
-  "NOT_FOUND_ERROR": "SCENE/@@rudy/NOT_FOUND_ERROR",
+  "NOT_FOUND": "SCENE/NOT_FOUND",
+  "NOT_FOUND_COMPLETE": "SCENE/NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "SCENE/NOT_FOUND_ERROR",
   "PLAIN": "SCENE/PLAIN",
   "PLAIN_COMPLETE": "SCENE/PLAIN_COMPLETE",
   "PLAIN_ERROR": "SCENE/PLAIN_ERROR",
@@ -149,16 +149,16 @@ Object {
 
 exports[`createScene returns types, actions, routes, exportString (/w scene + basename options) 3`] = `
 Object {
-  "SCENE/@@rudy/NOT_FOUND": Object {
-    "path": "/not-found-foo",
-    "scene": "SCENE",
-  },
   "SCENE/FOURTH": Object {
     "action": Array [
       "customCreator",
     ],
     "customCreator": [Function],
     "path": "/fourth",
+    "scene": "SCENE",
+  },
+  "SCENE/NOT_FOUND": Object {
+    "path": "/not-found-foo",
     "scene": "SCENE",
   },
   "SCENE/PLAIN": Object {
@@ -240,8 +240,8 @@ Object {
   "FOURTH_COMPLETE": "FOURTH_COMPLETE",
   "FOURTH_ERROR": "FOURTH_ERROR",
   "NOT_FOUND": "@@rudy/NOT_FOUND",
-  "NOT_FOUND_COMPLETE": "@@rudy/NOT_FOUND_COMPLETE",
-  "NOT_FOUND_ERROR": "@@rudy/NOT_FOUND_ERROR",
+  "NOT_FOUND_COMPLETE": "NOT_FOUND_COMPLETE",
+  "NOT_FOUND_ERROR": "NOT_FOUND_ERROR",
   "PLAIN": "PLAIN",
   "PLAIN_COMPLETE": "PLAIN_COMPLETE",
   "PLAIN_ERROR": "PLAIN_ERROR",

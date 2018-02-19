@@ -196,7 +196,7 @@ exports[`createScene() actions.notFound.complete(payload): 14 - response 1`] = `
 Object {
   "basename": undefined,
   "payload": "foo",
-  "type": "@@rudy/NOT_FOUND_COMPLETE",
+  "type": "NOT_FOUND_COMPLETE",
 }
 `;
 
@@ -251,11 +251,11 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "@@rudy/NOT_FOUND_COMPLETE - \\"foo\\"",
+  "title": "NOT_FOUND_COMPLETE - \\"foo\\"",
 }
 `;
 
-exports[`createScene() actions.notFound.complete(payload): 14 - title 1`] = `"@@rudy/NOT_FOUND_COMPLETE - \\"foo\\""`;
+exports[`createScene() actions.notFound.complete(payload): 14 - title 1`] = `"FIRST"`;
 
 exports[`createScene() actions.second(): 1 - history_entries 1`] = `
 Array [

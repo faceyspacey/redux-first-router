@@ -1,10 +1,13 @@
 import { call } from './index'
+import { UPDATE_HISTORY } from '../types'
 
-export default (name1 = 'thunk', name2 = 'onComplete') => (api) => {
-  const middlewares = [
-    call(name1, { skipOpts: true }),
-    call(name2, { skipOpts: true })
-  ]
+export default (...names) => (api) => {
+  names[0] = names[0] || 'thunk'
+  names[1] = names[1] || 'onComplete'
+
+  const middlewares = names.map(name => {
+    return call(name, { skipOpts: true })
+  })
 
   const pipeline = api.options.compose(middlewares, api)
 
@@ -15,9 +18,10 @@ export default (name1 = 'thunk', name2 = 'onComplete') => (api) => {
   api.registerMiddleware('pathlessRoute')
 
   return (req, next) => {
-    const { route } = req
+    const { route, action } = req
+    const isPathless = route && !route.path && action.type !== UPDATE_HISTORY
 
-    if (route && !route.path && typeof route[name1] === 'function') {
+    if (isPathless && hasCallback(route, names, action.type)) {
       if (route.dispatch !== false) {
         req.action = req.commitDispatch(req.action)
       }
@@ -29,4 +33,10 @@ export default (name1 = 'thunk', name2 = 'onComplete') => (api) => {
 
     return next()
   }
+}
+
+const hasCallback = (route, names, type) => {
+  const hasCb = names.find(name => typeof route[name] === 'function')
+  console.log('HASCALLBACK', hasCb, type)
+  return hasCb
 }

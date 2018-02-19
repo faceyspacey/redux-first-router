@@ -10,10 +10,10 @@ createTest('automatically dispatch action object returned from thunk', {
   }
 })
 
-createTest('create action /w payload + set type to currentActionType + _COMPLETE', {
+createTest('automatically infer non action object to be payload', {
   SECOND: {
     path: '/second',
-    thunk: () => 'payload',
+    thunk: () => ({ foo: 'bar' }),
     onComplete: function() {}
   }
 })

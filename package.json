@@ -75,7 +75,7 @@
   },
   "jest": {
     "verbose": false,
-    "silent": true,
+    "silent": false,
     "testURL": "http://localhost:3000",
     "testMatch": [
       "**/__tests__/integration/**/*.js?(x)"

@@ -1,13 +1,13 @@
 module.exports = {
-  createSmartHistory: require('./dist/smart-history/index.js').default,
-  History: require('./dist/smart-history/history/History.js').default,
-  MemoryHistory: require('./dist/smart-history/history/MemoryHistory.js').default,
-  BrowserHistory: require('./dist/smart-history/history/BrowserHistory.js').default,
+  createHistory: require('./dist/core/createHistory.js').default,
+  History: require('./dist/history/History.js').default,
+  MemoryHistory: require('./core/history/MemoryHistory.js').default,
+  BrowserHistory: require('./core/history/BrowserHistory.js').default,
   utils: {
-    dom: require('./dist/smart-history/utils/dom.js'),
-    location: require('./dist/smart-history/utils/location.js'),
-    path: require('./dist/smart-history/utils/path.js'),
-    sessionStorage: require('./dist/smart-history/utils/sessionStorage.js'),
+    dom: require('./dist/history/utils/dom.js'),
+    location: require('./core/history/utils/location.js'),
+    path: require('./dist/history/utils/path.js'),
+    sessionStorage: require('./core/history/utils/sessionStorage.js'),
   }
 }
 

@@ -93,7 +93,7 @@ Object {
   },
   "query": Object {},
   "state": Object {},
-  "type": "SCENE/@@rudy/NOT_FOUND",
+  "type": "SCENE/NOT_FOUND",
 }
 `;
 
@@ -167,14 +167,14 @@ Object {
     "search": "",
     "state": Object {},
     "status": 404,
-    "type": "SCENE/@@rudy/NOT_FOUND",
+    "type": "SCENE/NOT_FOUND",
     "url": "/base-name/cat",
   },
-  "title": "SCENE/@@rudy/NOT_FOUND",
+  "title": "SCENE/NOT_FOUND",
 }
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - title 1`] = `"SCENE/@@rudy/NOT_FOUND"`;
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - title 1`] = `"SCENE/NOT_FOUND"`;
 
 exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - history_entries 1`] = `
 Array [
@@ -196,7 +196,7 @@ exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payl
 Object {
   "basename": "/base-name",
   "payload": "foo",
-  "type": "SCENE/@@rudy/NOT_FOUND_COMPLETE",
+  "type": "SCENE/NOT_FOUND_COMPLETE",
 }
 `;
 
@@ -251,11 +251,11 @@ Object {
     "type": "FIRST",
     "url": "/first",
   },
-  "title": "SCENE/@@rudy/NOT_FOUND_COMPLETE - \\"foo\\"",
+  "title": "SCENE/NOT_FOUND_COMPLETE - \\"foo\\"",
 }
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - title 1`] = `"SCENE/@@rudy/NOT_FOUND_COMPLETE - \\"foo\\""`;
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - title 1`] = `"FIRST"`;
 
 exports[`createScene(routes, { scene, basename }) actions.second(): 1 - history_entries 1`] = `
 Array [

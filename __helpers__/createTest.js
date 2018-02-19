@@ -171,7 +171,7 @@ const setupStore = (routesMap, initialPath, opts) => {
   delete options.middlewareFunc
 
   const title = (state, action = {}) => {
-    return action.payload
+    return action.payload !== undefined
       ? action.type + ' - ' + JSON.stringify(action.payload)
       : action.type
   }

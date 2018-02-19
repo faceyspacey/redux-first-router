@@ -1,7 +1,6 @@
 import createTest from '../../__helpers__/createTest'
 
-import { compose, createRequest, createReducer } from '../../src/core'
-import createHistory from '../../src/history'
+import { compose, createHistory, createRequest, createReducer } from '../../src/core'
 import shouldTransition from '../../src/utils/shouldTransition'
 import shouldCall from '../../src/middleware/call/utils/shouldCall'
 

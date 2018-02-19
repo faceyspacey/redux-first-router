@@ -1,0 +1,455 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - history_index 1`] = `1`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - response 1`] = `
+Object {
+  "payload": "foo",
+  "type": "SECOND_COMPLETE",
+}
+`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND_COMPLETE - \\"foo\\"",
+}
+`;
+
+exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - title 1`] = `"SECOND"`;
+
+exports[`non object argument can be payload: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`non object argument can be payload: 1 - history_index 1`] = `1`;
+
+exports[`non object argument can be payload: 1 - response 1`] = `
+Object {
+  "payload": "foo",
+  "type": "SECOND_COMPLETE",
+}
+`;
+
+exports[`non object argument can be payload: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`non object argument can be payload: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`non object argument can be payload: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`non object argument can be payload: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`non object argument can be payload: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND_COMPLETE - \\"foo\\"",
+}
+`;
+
+exports[`non object argument can be payload: 1 - title 1`] = `"SECOND"`;
+
+exports[`null payloads allowed: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`null payloads allowed: 1 - history_index 1`] = `1`;
+
+exports[`null payloads allowed: 1 - response 1`] = `
+Object {
+  "payload": null,
+  "type": "SECOND_COMPLETE",
+}
+`;
+
+exports[`null payloads allowed: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`null payloads allowed: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`null payloads allowed: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`null payloads allowed: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`null payloads allowed: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND_COMPLETE - null",
+}
+`;
+
+exports[`null payloads allowed: 1 - title 1`] = `"SECOND"`;
+
+exports[`when isAction(action) === false set to payload: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`when isAction(action) === false set to payload: 1 - history_index 1`] = `1`;
+
+exports[`when isAction(action) === false set to payload: 1 - response 1`] = `
+Object {
+  "payload": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND_COMPLETE",
+}
+`;
+
+exports[`when isAction(action) === false set to payload: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`when isAction(action) === false set to payload: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`when isAction(action) === false set to payload: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`when isAction(action) === false set to payload: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`when isAction(action) === false set to payload: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hasSSR": false,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "prev": Object {
+      "basename": "",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "url": "/second",
+  },
+  "title": "SECOND_COMPLETE - {\\"foo\\":\\"bar\\"}",
+}
+`;
+
+exports[`when isAction(action) === false set to payload: 1 - title 1`] = `"SECOND"`;

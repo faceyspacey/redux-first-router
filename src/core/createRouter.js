@@ -1,8 +1,6 @@
 // @flow
 import type { RoutesMapInput, Options, Store, Dispatch } from '../flow-types'
-
-import createSmartHistory from '../history'
-import { compose, createReducer, createRequest } from './index'
+import { compose, createHistory, createReducer, createRequest } from './index'
 
 import {
   createSelector,
@@ -27,8 +25,8 @@ export default (
   options: Options = {},
   middlewares: Array<Function> = [
     serverRedirect,     // short-circuiting middleware
-    pathlessRoute('thunk'),
     anonymousThunk,
+    pathlessRoute('thunk'),
     transformAction,      // pipeline starts here
     call('beforeLeave', { prev: true }),
     call('beforeEnter'),
@@ -44,7 +42,7 @@ export default (
     location,
     title,
     formatRoute,
-    createHistory = createSmartHistory,
+    createHistory: createSmartHistory = createHistory,
     createReducer: createLocationReducer = createReducer,
     onError
   } = options
@@ -58,7 +56,7 @@ export default (
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
-  const history = createHistory(options)
+  const history = createSmartHistory(options)
   const nextHistory = history.firstRoute.nextHistory
   const reducer = createLocationReducer(routes, nextHistory, options)
   const availableMiddlewares = {}

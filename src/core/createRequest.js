@@ -1,6 +1,6 @@
 import { UPDATE_HISTORY, BLOCK, UNBLOCK } from '../types'
 import { redirect } from '../actions'
-import { isRedirect, noOp } from '../utils'
+import { isRedirect, noOp, createAction } from '../utils'
 import { createFrom } from '../middleware/transformAction/utils'
 
 export default (
@@ -77,7 +77,8 @@ export class Request {
 
   dispatch = (action) => {
     const { dispatch } = this.store
-    const route = this.routes[action.type]
+    const type = action && action.type
+    const route = this.routes[type]
 
     if (route || typeof action === 'function') {
       action.tmp = this.tmp                      // keep the same `tmp` object across all redirects (or potential redirects in anonymous thunks)
@@ -86,6 +87,10 @@ export class Request {
     if (this.ctx.busy && route && route.path) { // convert actions to redirects only if "busy" in a route changing pipeline
       const status = action.location && action.location.status
       action = redirect(action, status || 302)
+    }
+
+    if ((action === null || !action.type) && typeof action !== 'function') {
+      action = createAction(action, this)       // automatically turn payload-only actions into real actions with routeType_COMPLETE as type
     }
 
     const oldUrl = this.getLocation().url

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`automatically dispatch action object returned from thunk: 1 - history_entries 1`] = `
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -23,23 +23,17 @@ Array [
 ]
 `;
 
-exports[`automatically dispatch action object returned from thunk: 1 - history_index 1`] = `1`;
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - history_index 1`] = `1`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - response 1`] = `
-Object {
-  "type": "FOO",
-}
-`;
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - response 1`] = `"foo"`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - routes - SECOND - onComplete 1`] = `1`;
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - SECOND - thunk 1`] = `1`;
 
-exports[`automatically dispatch action object returned from thunk: 1 - routes - SECOND - thunk 1`] = `1`;
-
-exports[`automatically dispatch action object returned from thunk: 1 - state 1`] = `
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -106,13 +100,13 @@ Object {
     "type": "SECOND",
     "url": "/second",
   },
-  "title": "FOO",
+  "title": "SECOND",
 }
 `;
 
-exports[`automatically dispatch action object returned from thunk: 1 - title 1`] = `"SECOND"`;
+exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - title 1`] = `"SECOND"`;
 
-exports[`automatically infer non action object to be payload: 1 - history_entries 1`] = `
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -135,26 +129,17 @@ Array [
 ]
 `;
 
-exports[`automatically infer non action object to be payload: 1 - history_index 1`] = `1`;
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - history_index 1`] = `1`;
 
-exports[`automatically infer non action object to be payload: 1 - response 1`] = `
-Object {
-  "payload": Object {
-    "foo": "bar",
-  },
-  "type": "SECOND_COMPLETE",
-}
-`;
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - response 1`] = `"foo"`;
 
-exports[`automatically infer non action object to be payload: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`automatically infer non action object to be payload: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`automatically infer non action object to be payload: 1 - routes - SECOND - onComplete 1`] = `1`;
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - SECOND - thunk 1`] = `1`;
 
-exports[`automatically infer non action object to be payload: 1 - routes - SECOND - thunk 1`] = `1`;
-
-exports[`automatically infer non action object to be payload: 1 - state 1`] = `
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -221,8 +206,8 @@ Object {
     "type": "SECOND",
     "url": "/second",
   },
-  "title": "SECOND_COMPLETE - {\\"foo\\":\\"bar\\"}",
+  "title": "SECOND",
 }
 `;
 
-exports[`automatically infer non action object to be payload: 1 - title 1`] = `"SECOND"`;
+exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - title 1`] = `"SECOND"`;
