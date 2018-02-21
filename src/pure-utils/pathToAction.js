@@ -43,9 +43,7 @@ export default (
     const payload = keys.reduce((payload, key, index) => {
       let value = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
 
-      value = typeof value === 'string' &&
-        !value.match(/^\s*$/) &&
-        !isNaN(value) // check that value is not a blank string, and is numeric
+      value = typeof value === 'string' && value.match(/^\d+$/)
         ? parseFloat(value) // make sure pure numbers aren't passed to reducers as strings
         : value
 

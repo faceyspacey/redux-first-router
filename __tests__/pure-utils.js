@@ -154,6 +154,17 @@ describe('pathToAction(path, routesMap)', () => {
     expect(action.payload.param).toEqual(69)
   })
 
+  it('parse path containing hexadecimal param into action with payload value set as string', () => {
+    const path = '/info/0x12'
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/' }
+    }
+
+    const action = pathToAction(path, routesMap) /*? */
+    expect(typeof action.payload.param).toEqual('string')
+    expect(action.payload.param).toEqual('0x12')
+  })
+
   it('does not parse a blank string "" as NaN', () => {
     const path = '/info'
     const routesMap = {
