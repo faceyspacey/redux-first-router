@@ -5,7 +5,7 @@ Since the middleware handles the actions it receives asyncronously, on the serve
 
 *server/configureStore.js:*
 ```js
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import createHistory from 'history/createMemoryHistory'
 import { connectRoutes } from 'redux-first-router'
 
