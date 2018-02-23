@@ -24,7 +24,7 @@ export default (
   routesInput: RoutesMapInput = {},
   options: Options = {},
   middlewares: Array<Function> = [
-    serverRedirect,     // short-circuiting middleware
+    serverRedirect,       // short-circuiting middleware
     anonymousThunk,
     pathlessRoute('thunk'),
     transformAction,      // pipeline starts here
@@ -44,55 +44,46 @@ export default (
     formatRoute,
     createHistory: createSmartHistory = createHistory,
     createReducer: createLocationReducer = createReducer,
-    onError
+    onError: onErr
   } = options
 
   // assign to options so middleware can override them in 1st pass if necessary
   options.shouldTransition = options.shouldTransition || shouldTransition
   options.createRequest = options.createRequest || createRequest
   options.compose = options.compose || compose
-  options.onError = typeof onError !== 'undefined' ? onError : defaultOnError
+  options.onError = typeof onErr !== 'undefined' ? onErr : defaultOnError
 
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createSmartHistory(options)
-  const nextHistory = history.firstRoute.nextHistory
+  const { nextHistory } = history.firstRoute
   const reducer = createLocationReducer(routes, nextHistory, options)
-  const availableMiddlewares = {}
-  const registerMiddleware = (name: string) => availableMiddlewares[name] = true
-  const hasMiddleware = (name: string) => availableMiddlewares[name]
-  const api = { routes, history, options, registerMiddleware, hasMiddleware }
+  const wares = {}
+  const register = (name: string, val?: any = true) => wares[name] = val
+  const has = (name: string) => wares[name]
+  const ctx = { busy: false }
+  const api = { routes, history, options, register, has, ctx }
+  const onError = call('onError')(api)
+  const nextPromise = options.compose(middlewares, api, true)
 
   const middleware = (store: Store) => {
     const getTitle = () => selectTitleState(store.getState() || {})
     const getLocation = (s) => selectLocationState(s || store.getState() || {})
-    const ctx = { busy: false }
+    const { shouldTransition, createRequest } = options // middlewares may mutably monkey-patch these in above call to `compose`
 
-    Object.assign(api, { store, getTitle, getLocation, ctx })
+    Object.assign(api, { store, getTitle, getLocation })
+    store.getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)
+    history.listen(store.dispatch) // dispatch actions in response to browser back/next buttons, etc
 
-    let nextPromise = typeof middlewares === 'function'
-      ? middlewares(api, true)
-      : options.compose(middlewares, api, true)
+    return (dispatch: Dispatch) => (action: Object) => {
+      if (!shouldTransition(action, api)) return dispatch(action) // short-circuit and pass through Redux middleware normally
 
-    const { shouldTransition, createRequest } = options
-    const onError = call('onError')(api)
+      const req = createRequest(action, api, dispatch) // the `Request` arg passed to all middleware
+      const mw = req.route.middleware
+      const next = mw ? options.compose(mw, api, !!req.route.path) : nextPromise
 
-    history.listen(store.dispatch)
-    store.getState.rudy = api // make rudy available via `context` (see <Link />)
-
-    return (next: Dispatch) => (action: Object) => {
-      if (!shouldTransition(action, api)) return next(action)
-
-      const req = createRequest(action, api, next)
-
-      nextPromise = req.route.middleware
-        ? typeof req.route.middleware === 'function'
-          ? req.route.middleware(api, true)
-          : options.compose(req.route.middleware, api, !!req.route.path)
-        : nextPromise
-
-      return nextPromise(req) // start middleware pipeline
+      return next(req) // start middleware pipeline
         .catch(error => {
           req.error = error
           req.errorType = `${req.action.type}_ERROR`
@@ -107,14 +98,12 @@ export default (
   }
 
   return {
-    firstRoute: (resolveEarly = false) => {
-      api.resolveFirstRouteEarly = resolveEarly
-      return history.firstRoute
-    },
+    ...api,
     middleware,
     reducer,
-    ...api,
-    rudy: api
+    firstRoute: (resolveEarly = true) => {
+      api.resolveFirstRouteEarly = resolveEarly
+      return history.firstRoute
+    }
   }
 }
-

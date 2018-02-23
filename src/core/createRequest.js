@@ -12,6 +12,7 @@ export default (
 export class Request {
   constructor(action, api, next) {
     const { store, routes, options, getLocation, ctx } = api
+    const fromHistory = action.type === UPDATE_HISTORY
     const state = getLocation()
     const route = routes[action.type] || {}
     const prevRoute = state.kind === 'init'
@@ -30,11 +31,13 @@ export class Request {
       ctx.pending = this
     }
 
-    // the `tmp` context is passed along by all actions in the same primary parent
+    // the `tmp` context is passed along by all route-changing actions in the same primary parent
     // pipeline to keep track of things like `committed` status, but we don't want the
     // resulting action that leaves Rudy to have this, so we delete it.
     const tmp = action.tmp || {}
     delete action.tmp
+
+    tmp.load = tmp.load || (fromHistory && action.nextHistory.kind === 'load')
 
     // a `committed` status must be marked for redirects initiated outside of the pipeline
     // so that `src/middleware/transformAction/reduxAction.js` knows to `replace` the
@@ -45,10 +48,15 @@ export class Request {
 
     // maintain `busy` status throughout a primary parent route changing pipeline even if
     // there are pathlessRoutes, anonymousThunks (which don't have paths) called by them
-    ctx.busy = ctx.busy || !!route.path || action.type === UPDATE_HISTORY
+    ctx.busy = ctx.busy || !!route.path || fromHistory
 
     Object.assign(this, options.extra)
     Object.assign(this, api)
+
+    if (!fromHistory) {
+      Object.assign(this, this.action) // for convenience (less destructuring in callbacks) our action key/vals are destructured into `Request` instances
+      delete this.location // redirect action creator has this, and even though it causes no problems, we don't want it to prevent confusion
+    }
 
     this.action = action
     this.tmp = tmp
@@ -61,18 +69,21 @@ export class Request {
 
     // commitHistory is supplied by history-generated actions, and by redux-generated actions
     // it will be added by the `transformAction` middleware, overwriting `noOp` below
-    this.commitHistory = this.action.type === UPDATE_HISTORY ? this.action.commit : noOp
-    this.commitDispatch = next
+    this.commitHistory = fromHistory ? action.commit : noOp
+    this.commitDispatch = next // standard redux next dispatch from our redux middleware
+    this.revertPop = fromHistory && action.revertPop // available when user uses browser back/next buttons. See `core/compose.js` for when it's called on a blocked route change
 
     this.getState = store.getState
   }
 
   commit = () => {
-    const res = this.commitDispatch(this.action)
-    this.commitHistory()
     this.ctx.pending = false
     this.tmp.committed = true
-    return res
+
+    return Promise.all([
+      this.commitDispatch(this.action),
+      this.commitHistory()
+    ]).then(([res]) => res)
   }
 
   dispatch = (action) => {
@@ -101,7 +112,11 @@ export class Request {
           this.redirect = res                    // // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
         }
 
-        return markAsDispatched(res)
+        if (res && typeof res === 'object') {
+          res._dispatched = true // tell `middleware/call/index.js` to not automatically dispatch callback returns
+        }
+
+        return res
       })
   }
 
@@ -144,11 +159,8 @@ export class Request {
   hasSSR = () => {
     return this.getLocation().hasSSR
   }
-}
 
-const markAsDispatched = res => {
-  if (res && typeof res === 'object') {
-    res._dispatched = true // tell `middleware/call/index.js` to not automatically dispatch callback returns
+  isFirstLoad = () => {
+    return this.tmp.firstLoad
   }
-  return res
 }

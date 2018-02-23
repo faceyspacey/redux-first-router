@@ -91,7 +91,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
       initialState
     } = setupStore(routesMap, initialPath, opts)
 
-    const firstAction = firstRoute(true)
+    const firstAction = firstRoute(false)
     const res = await store.dispatch(firstAction)
 
     if (routesMap.FIRST || initialPath !== '/first') {
@@ -131,7 +131,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
 
     const firstResponse = opts.dispatchFirstRoute === false
       ? null
-      : await store.dispatch(firstRoute(true))
+      : await store.dispatch(firstRoute(false))
 
     await callback({
       firstRoute,

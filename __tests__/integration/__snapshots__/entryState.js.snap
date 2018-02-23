@@ -1314,338 +1314,7 @@ Object {
 
 exports[`route.toState/fromState snipes:  - title 1`] = `"THIRD"`;
 
-exports[`state attached to history entry {"type":"FIRST"}: 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-]
-`;
-
-exports[`state attached to history entry {"type":"FIRST"}: 2 - history_index 1`] = `0`;
-
-exports[`state attached to history entry {"type":"FIRST"}: 2 - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/first",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {},
-  "type": "FIRST",
-}
-`;
-
-exports[`state attached to history entry {"type":"FIRST"}: 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`state attached to history entry {"type":"FIRST"}: 2 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`state attached to history entry {"type":"FIRST"}: 2 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 0,
-    "kind": "load",
-    "length": 1,
-    "params": Object {},
-    "pathname": "/first",
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [],
-      "hash": "",
-      "index": -1,
-      "kind": "",
-      "length": 0,
-      "params": Object {},
-      "pathname": "",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "type": "",
-      "url": "",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "FIRST",
-    "url": "/first",
-  },
-  "title": "FIRST",
-}
-`;
-
-exports[`state attached to history entry {"type":"FIRST"}: 2 - title 1`] = `"FIRST"`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/second",
-    "search": "",
-    "state": Object {
-      "baz": "bla",
-    },
-    "url": "/second",
-  },
-]
-`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - history_index 1`] = `1`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {
-          "baz": "bla",
-        },
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "scene": "",
-    "search": "",
-    "status": 200,
-    "url": "/second",
-  },
-  "params": Object {},
-  "query": Object {},
-  "state": Object {
-    "baz": "bla",
-  },
-  "type": "SECOND",
-}
-`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/second",
-        "search": "",
-        "state": Object {
-          "baz": "bla",
-        },
-        "url": "/second",
-      },
-    ],
-    "from": null,
-    "hasSSR": false,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {
-      "baz": "bla",
-    },
-    "status": 200,
-    "type": "SECOND",
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"baz":"bla"}}: 3 - title 1`] = `"SECOND"`;
-
-exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - history_entries 1`] = `
+exports[`state attached to history entry: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -1670,9 +1339,9 @@ Array [
 ]
 `;
 
-exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - history_index 1`] = `1`;
+exports[`state attached to history entry: 1 - history_index 1`] = `1`;
 
-exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - response 1`] = `
+exports[`state attached to history entry: 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -1747,11 +1416,11 @@ Object {
 }
 `;
 
-exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`state attached to history entry: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`state attached to history entry: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - state 1`] = `
+exports[`state attached to history entry: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -1828,7 +1497,7 @@ Object {
 }
 `;
 
-exports[`state attached to history entry {"type":"SECOND","state":{"foo":"bar"}}: 1 - title 1`] = `"SECOND"`;
+exports[`state attached to history entry: 1 - title 1`] = `"SECOND"`;
 
 exports[`state merged on back/next: {"type":"SECOND","state":{"baz":"bla"}} - history_entries 1`] = `
 Array [

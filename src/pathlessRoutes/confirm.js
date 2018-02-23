@@ -1,8 +1,8 @@
 export default (req) => {
-  const { ctx, action, hasMiddleware, dispatch } = req
+  const { ctx, action, has, dispatch } = req
   const env = process.env.NODE_ENV
 
-  if (env === 'development' && !hasMiddleware('pathlessRoute')) {
+  if (env === 'development' && !has('pathlessRoute')) {
     throw new Error('[rudy] "pathlessRoute" middleware is required to use "confirm" action creator.')
   }
 

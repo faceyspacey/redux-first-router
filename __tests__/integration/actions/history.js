@@ -57,9 +57,32 @@ createTest('dispatch(back/next())', routes, [], async ({ dispatch, snap }) => {
   await snap(back())
 })
 
+createTest('automatically interpret push to previous entry as a kind === "back"', routes, [], async ({ dispatch, snap }) => {
+  await dispatch({ type: 'SECOND' })
+  await snap({ type: 'FIRST' })
+})
+
+createTest('automatically interpret push to next entry as a kind === "next"', routes, [], async ({ dispatch, snap }) => {
+  await dispatch({ type: 'SECOND' })
+  await dispatch({ type: 'FIRST' })
+  await snap({ type: 'SECOND' })
+})
+
 createTest('dispatch(jump(n))', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
+
+  await dispatch(({ history }) => {
+    expect(history.canJump(-1)).toEqual(true)
+    expect(history.canJump(1)).toEqual(false)
+  })
+
   await snap(jump(-1))
+
+  await dispatch(({ history }) => {
+    expect(history.canJump(1)).toEqual(true)
+    expect(history.canJump(-1)).toEqual(false)
+  })
+
   await snap(jump(1))
 })
 

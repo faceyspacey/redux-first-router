@@ -9,7 +9,7 @@ export default (api) => async (req, next) => {
   // but we preserve the `load` kind, so for example code like the below
   // code that depends on it is respected. The `state.from` key or `state.status`
   // should be used to be informed of redirects.
-  if (req.getLocation().kind === 'init') {
+  if (req.tmp.load) {
     req.action.location.kind = 'load'
   }
 
@@ -17,7 +17,7 @@ export default (api) => async (req, next) => {
 
   // return early on `load` so rendering can happen ASAP
   // i.e. before `thunk` is called but after potentially async auth in `beforeEnter`
-  if (req.getKind() === 'load' && !isServer() && !api.resolveFirstRouteEarly) {
+  if (req.getKind() === 'load' && !isServer() && api.resolveFirstRouteEarly) {
     next().then(() => {
       req.ctx.busy = false
     })

@@ -81,9 +81,12 @@ export default class BrowserHistory extends History {
       if (this._popForced) return (this._popForced = false)
 
       const n = this._isNext(location) ? 1 : -1
+      const revertPop = () => this._forceGo(n * -1)
 
-      this._forceGo(n * -1) // revert
-      this.jump(n) // commit handled by our regular `jump` function now
+      // revertPop will be called if route change blocked by `core/compose.js` or used as
+      // a flag by `this._jump` below to do nothing in the browser, since the user already
+      // did it via browser back/next buttons
+      this.jump(n, undefined, false, undefined, true, revertPop)
     }
 
     // you don't really need to worry about the below utility work:
@@ -106,40 +109,88 @@ export default class BrowserHistory extends History {
     window.history.go(n) // revert
   }
 
-  _pushState(location) {
+  _push(location) {
     const { key, state } = location
     const href = this._createHref(location)
     window.history.pushState({ id: this._id, key, state }, null, href)
+    return Promise.resolve()
   }
 
-  _replaceStateReal(location) {
+  _replace(location) {
     const { key, state } = location
     const href = this._createHref(location)
     window.history.replaceState({ id: this._id, key, state }, null, href)
+    return Promise.resolve()
   }
 
-  _replaceState(location, n, prevLocation) {
-    if (!n) return this._replaceStateReal(location)
+  _jump(nextState, n, isPop) {
+    const prev = this.location
+    const { location: loc } = nextState
 
-    const ready = () => {
-      console.log('REVERT', prevLocation.basename + prevLocation.url === createPath(window.location), prevLocation.basename + prevLocation.url, createPath(window.location))
-      return prevLocation.basename + prevLocation.url === createPath(window.location)
+    if (!n) { // possibly the user mathematically calculated a jump of `0`
+      return this._replace(loc)
+        .then(() => this._updateHistory(nextState))
     }
-    const complete = () => this._forceGo(n)
-    tryChange(ready, complete)
 
-    const ready2 = () => {
-      console.log('JUMP', location.basename + location.url === createPath(window.location), location.basename + location.url, createPath(window.location))
-      return location.basename + location.url === createPath(window.location)
+    if (isPop) {  // pop already handled by browser back/next buttons and history state is already up to date
+      return this._updateHistory(nextState)
     }
-    return new Promise(res => tryChange(ready2, res)).then(() => {
-      console.log('REPLACE', location.basename + location.url)
-      return this._replaceStateReal(location)
+
+    return this._awaitLocation(prev)
+      .then(() => this._forceGo(n))
+      .then(() => this._awaitLocation(loc))
+      .then(() => this._replace(loc))
+      .then(() => this._updateHistory(nextState))
+  }
+
+  _setState(nextState, n) {
+    const prev = this.location
+    const loc = nextState.entries[this.index + n]
+
+    if (!n) {
+      return this._replace(loc)
+        .then(() => this._updateHistory(nextState))
+    }
+
+    return this._awaitLocation(prev)
+      .then(() => this._forceGo(n))
+      .then(() => this._awaitLocation(loc))
+      .then(() => this._replace(loc))
+      .then(() => this._forceGo(-n))
+      .then(() => this._awaitLocation(prev))
+      .then(() => this._updateHistory(nextState))
+  }
+
+  _reset(nextState) {
+    const { index, entries } = nextState
+    const lastIndex = entries.length - 1
+    const stayAtEnd = index === lastIndex
+    const prev = this.location
+    const loc = this.entries[0]
+    const n = -this.index // jump to beginning of entries stack
+
+    return this._awaitLocation(prev)
+      .then(() => this._forceGo(n))
+      .then(() => this._awaitLocation(loc))
+      .then(() => {
+        this._replace(entries[0])
+        entries.slice(1).forEach(e => this._push(e))
+
+        if (!stayAtEnd) {
+          this._forceGo(index - lastIndex)
+        }
+
+        this._updateHistory(nextState)
+      })
+  }
+
+  _awaitLocation(loc) {
+    return new Promise(resolve => {
+      return tryChange(
+        () => loc.basename + loc.url === createPath(window.location),
+        resolve
+      )
     })
-  }
-
-  _resetState() {
-
   }
 }
 
@@ -174,3 +225,28 @@ const rapidChangeWorkaround = (ready, complete) => {
     }
   }
 }
+
+
+
+
+// _performJump(location, n, prevLocation) {
+//   if (!n) return this._replace(location)
+
+//   const ready = () => {
+//     console.log('REVERT', prevLocation.basename + prevLocation.url === createPath(window.location), prevLocation.basename + prevLocation.url, createPath(window.location))
+//     return prevLocation.basename + prevLocation.url === createPath(window.location)
+//   }
+
+//   const complete = () => this._forceGo(n)
+//   tryChange(ready, complete)
+
+//   const ready2 = () => {
+//     console.log('JUMP', location.basename + location.url === createPath(window.location), location.basename + location.url, createPath(window.location))
+//     return location.basename + location.url === createPath(window.location)
+//   }
+
+//   return new Promise(res => tryChange(ready2, res)).then(() => {
+//     console.log('REPLACE', location.basename + location.url)
+//     this._replace(location)
+//   })
+// }

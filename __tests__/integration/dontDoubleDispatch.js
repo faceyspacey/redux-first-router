@@ -18,3 +18,12 @@ createTest('do NOT dispatch actions with identical URLs more than once', {
     expect(routes.SECOND.beforeEnter).toHaveBeenCalledTimes(1)
   })
 })
+
+createTest('allow double dispatch when kind === "load"', {
+  FIRST: {
+    path: '/first',
+    beforeEnter: function() {}
+  }
+}, [
+  { type: 'FIRST' }
+])

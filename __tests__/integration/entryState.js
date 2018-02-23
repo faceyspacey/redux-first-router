@@ -5,9 +5,7 @@ createTest('state attached to history entry', {
     path: '/second'
   }
 }, [
-  { type: 'SECOND', state: { foo: 'bar' } },
-  { type: 'FIRST' },
-  { type: 'SECOND', state: { baz: 'bla' } }
+  { type: 'SECOND', state: { foo: 'bar' } }
 ])
 
 createTest('state merged on back/next', {

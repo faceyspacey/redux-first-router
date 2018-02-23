@@ -34,7 +34,7 @@ createTest('routes can specify route.middleware array to override global middlew
 createTest('routes can specify route.middleware as function to override global middleware', {
   SECOND: {
     path: '/second',
-    onTransition: () => ({ type: 'REDIRECTED' }),
+    onTransition: () => 'SUCCESS!',
     middleware: (api, killOnRedirect) => {
       return compose([
         transformAction,

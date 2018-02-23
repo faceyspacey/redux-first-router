@@ -1,10 +1,10 @@
 import { enhanceRoutes } from '../middleware/call/utils' // unfortunate coupling (to potentially optional middleware)
 import { formatRoutes } from '../utils'
 
-export default ({ action, options, routes: allRoutes, hasMiddleware }) => {
+export default ({ action, options, routes: allRoutes, has }) => {
   const env = process.env.NODE_ENV
 
-  if (env === 'development' && !hasMiddleware('pathlessRoute')) {
+  if (env === 'development' && !has('pathlessRoute')) {
     throw new Error('[rudy] "pathlessRoute" middleware is required to use "addRoutes" action creator.')
   }
 

@@ -1,7 +1,7 @@
-export default ({ initialLocation, hasMiddleware, action, dispatch }) => {
+export default ({ initialLocation, has, action, dispatch }) => {
   const env = process.env.NODE_ENV
 
-  if (env === 'development' && !hasMiddleware('pathlessRoute')) {
+  if (env === 'development' && !has('pathlessRoute')) {
     throw new Error('[rudy] "pathlessRoute" middleware is required to use "changeBasename" action creator without passing an action.')
   }
 

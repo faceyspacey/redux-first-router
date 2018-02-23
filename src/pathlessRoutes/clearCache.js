@@ -1,7 +1,7 @@
-export default ({ cache, action, hasMiddleware }) => {
+export default ({ cache, action, has }) => {
   const env = process.env.NODE_ENV
 
-  if (env === 'development' && !hasMiddleware('pathlessRoute')) {
+  if (env === 'development' && !has('pathlessRoute')) {
     throw new Error('[rudy] "pathlessRoute" middleware is required to use "clearCache" action creator.')
   }
 

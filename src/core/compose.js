@@ -1,6 +1,10 @@
 import { isRedirect } from '../utils'
 
 export default (middlewares, curryArg, killOnRedirect = false) => {
+  if (typeof middlewares === 'function') {
+    return middlewares(curryArg, killOnRedirect) // accept custom function to do compose work below
+  }
+
   const pipeline = curryArg
     ? middlewares.map(middleware => middleware(curryArg))
     : middlewares
@@ -57,6 +61,11 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
           // middleware terminates piepline, and now there is no longer a "pending" route change
           if (res === false) {
             req.ctx.pending = false
+
+            // call window.history.go(-1 | 1) to go back to URL/route whose `beforeLeave` returned `false`
+            if (!req.tmp.committed && req.revertPop) {
+              req.revertPop()
+            }
           }
 
           result = result !== undefined ? result : res // insure last middleware return stays the final return of `dispatch` after chain rewinds

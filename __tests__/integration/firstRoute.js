@@ -13,7 +13,7 @@ createTest('firstRoute(false) resolves early on enter', {
 }, {
   dispatchFirstRoute: false // but tests are setup to pass `true` without this option (note: this option only exists in tests)
 }, [], async ({ firstRoute, dispatch, getState }) => {
-  const res = await dispatch(firstRoute()) // by default creatTest dispatches: firstRoute(true), going through the whole pipeline
+  const res = await dispatch(firstRoute()) // by default creatTest dispatches: firstRoute(false), going through the whole pipeline
 
   expect(res.type).toEqual('FIRST')
   expect(getState().title).toEqual('FIRST') // would otherwise equal: FIRST_COMPLETE - "notAwaited"

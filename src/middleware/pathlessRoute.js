@@ -13,9 +13,9 @@ export default (...names) => (api) => {
 
   // Registering is currently only used when core features (like the
   // `addRoutes` action creator) depend on the middleware being available.
-  // See `utils/formatRoutes.js` for how `hasMiddleware` is used to throw
+  // See `utils/formatRoutes.js` for how `has` is used to throw
   // errors when not available.
-  api.registerMiddleware('pathlessRoute')
+  api.register('pathlessRoute')
 
   return (req, next) => {
     const { route, action } = req

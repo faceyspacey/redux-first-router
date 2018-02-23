@@ -4,7 +4,8 @@ import {
   formatSlashes,
   transformEntry,
   restoreHistory,
-  saveHistory
+  saveHistory,
+  canUseDom
 } from './utils'
 
 // NOTE ON HISTORY STUBS:
@@ -47,14 +48,10 @@ export default class MemoryHistory extends History {
 
     super({ index, entries, basenames, saveHistory })
 
-    this._forceRefresh = forceRefresh
+    this._forceRefresh = forceRefresh && canUseDom // again, only will be triggered when used in browsers as a fallback
   }
 
-  _pushState(location) {
-    return this._replaceState(location)
-  }
-
-  _replaceState(location) {
+  _push(location) {
     if (this._forceRefresh) {
       const href = this._createHref(location)
       window.location.href = href
@@ -63,8 +60,28 @@ export default class MemoryHistory extends History {
     return Promise.resolve()
   }
 
-  _resetState(location) {
-    return this._replaceState(location)
+  _replace(location) {
+    if (this._forceRefresh) {
+      const href = this._createHref(location)
+      window.location.href = href
+    }
+
+    return Promise.resolve()
+  }
+
+  _jump(nextState) {
+    this._updateHistory(nextState)
+    return Promise.resolve()
+  }
+
+  _setState(nextState) {
+    this._updateHistory(nextState)
+    return Promise.resolve()
+  }
+
+  _reset(nextState) {
+    this._updateHistory(nextState)
+    return Promise.resolve()
   }
 }
 

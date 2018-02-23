@@ -27,6 +27,7 @@ export default (preloadedState, initialEntries) => {
     window.routes = routes
     window.store = store
     window.hist = history
+    window.actions = actionCreators
   }
 
   return { store, firstRoute }

@@ -55,8 +55,7 @@ export default (api) => async (req, next) => {
     return req.commit()
   }
 
-  const currentState = getLocation()
-  if (isDoubleDispatch(req, currentState)) return req.action
+  if (isDoubleDispatch(req, getLocation())) return req.action // no point dispatching twice
 
   const { type, params, query, hash, state } = req.action
   Object.assign(req, { type, params, query, hash, state })
@@ -69,5 +68,5 @@ export default (api) => async (req, next) => {
 
 const isDoubleDispatch = (req, state) =>
   req.action.location.url === state.url
-  && state.kind !== 'init' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
+  && req.action.location.kind !== 'load' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
   && req.action.info !== 'reset'
