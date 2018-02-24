@@ -77,11 +77,18 @@ export default class BrowserHistory extends History {
   }
 
   _setupPopHandling() {
-    const handlePop = location => {
+    const handlePop = loc => {
       if (this._popForced) return (this._popForced = false)
 
-      const n = this._isNext(location) ? 1 : -1
-      const revertPop = () => this._forceGo(n * -1)
+      const n = this._isNext(loc) ? 1 : -1
+      // const { index, length, location, entries } = this
+      // const currentState = { index, length, location, entries }
+      const revertPop = (isRedirect) => {
+        // this._updateHistory(currentState)
+        // this._forceGo(n * -1)
+        this._awaitLocation(loc, 'revert')
+          .then(() => this._forceGo(n * -1))
+      }
 
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
@@ -109,17 +116,31 @@ export default class BrowserHistory extends History {
     window.history.go(n) // revert
   }
 
-  _push(location) {
+  _push(nextState, awaitLoc) {
+    const { location } = nextState
     const { key, state } = location
     const href = this._createHref(location)
-    window.history.pushState({ id: this._id, key, state }, null, href)
+    console.log('PUSH', href)
+
+    return this._awaitLocation(awaitLoc || this.location, '_push')
+      .then(() => window.history.pushState({ id: this._id, key, state }, null, href))
+      .then(() => this._updateHistory(nextState))
+
     return Promise.resolve()
   }
 
-  _replace(location) {
+  _replace(nextState, awaitLoc) {
+    const { location } = nextState
     const { key, state } = location
     const href = this._createHref(location)
+    console.log('REPLACE', href)
+
+    return this._awaitLocation(awaitLoc || this.location, '_replace')
+      .then(() => window.history.replaceState({ id: this._id, key, state }, null, href))
+      .then(() => this._updateHistory(nextState))
+
     window.history.replaceState({ id: this._id, key, state }, null, href)
+
     return Promise.resolve()
   }
 
@@ -132,14 +153,15 @@ export default class BrowserHistory extends History {
         .then(() => this._updateHistory(nextState))
     }
 
-    if (isPop) {  // pop already handled by browser back/next buttons and history state is already up to date
+    if (isPop) {  // pop already handled by browser back/next buttons and real history state is already up to date
+      console.log('JUMP isPop')
       return this._updateHistory(nextState)
     }
-
-    return this._awaitLocation(prev)
+    console.log('JUMP!')
+    return this._awaitLocation(prev, 'jump prev')
       .then(() => this._forceGo(n))
-      .then(() => this._awaitLocation(loc))
-      .then(() => this._replace(loc))
+      .then(() => this._awaitLocation(loc, 'jump loc'))
+      .then(() => this._replace(nextState, nextState.location))
       .then(() => this._updateHistory(nextState))
   }
 
@@ -151,7 +173,7 @@ export default class BrowserHistory extends History {
       return this._replace(loc)
         .then(() => this._updateHistory(nextState))
     }
-
+    console.log('SET STATE')
     return this._awaitLocation(prev)
       .then(() => this._forceGo(n))
       .then(() => this._awaitLocation(loc))
@@ -184,12 +206,12 @@ export default class BrowserHistory extends History {
       })
   }
 
-  _awaitLocation(loc) {
+  _awaitLocation(loc, name) {
     return new Promise(resolve => {
-      return tryChange(
-        () => loc.basename + loc.url === createPath(window.location),
-        resolve
-      )
+      const url = loc.basename + loc.url
+      const ready = () => url === createPath(window.location)
+
+      return tryChange(ready, resolve, name)
     })
   }
 }
@@ -202,26 +224,26 @@ let tries = 0
 const maxTries = 10
 const queue = []
 
-const tryChange = (ready, complete) => {
-  if (tries === 0) rapidChangeWorkaround(ready, complete)
-  else queue.push([ready, complete])
+const tryChange = (ready, complete, name) => {
+  if (tries === 0) rapidChangeWorkaround(ready, complete, name)
+  else queue.push([ready, complete, name])
 }
 
-const rapidChangeWorkaround = (ready, complete) => {
+const rapidChangeWorkaround = (ready, complete, name) => {
   tries++
-  console.log('tries', tries)
 
   if (!ready() && tries < maxTries) {
-    setTimeout(() => rapidChangeWorkaround(ready, complete), 9)
+    console.log('tries', tries + 1, name)
+    setTimeout(() => rapidChangeWorkaround(ready, complete, name), 9)
   }
   else {
     complete()
     tries = 0
 
-    const [again, com] = queue.shift() || [] // try another if queue is full
+    const [again, com, name] = queue.shift() || [] // try another if queue is full
 
     if (again) {
-      rapidChangeWorkaround(again, com)
+      rapidChangeWorkaround(again, com, name)
     }
   }
 }

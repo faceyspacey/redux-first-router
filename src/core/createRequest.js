@@ -25,7 +25,7 @@ export class Request {
       const isNewPipeline = !action.tmp
 
       if (requestNotCommitted && isNewPipeline) {
-        requestNotCommitted.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
+        requestNotCommitted.cancelled = this // `compose` will return early on pending requests, effectively cancelling them
       }
 
       ctx.pending = this
@@ -98,6 +98,11 @@ export class Request {
     if (this.ctx.busy && route && route.path) { // convert actions to redirects only if "busy" in a route changing pipeline
       const status = action.location && action.location.status
       action = redirect(action, status || 302)
+
+      if (!this.tmp.committed && this.revertPop) {
+        console.log('CREAT_REQUEST - revertPop')
+        this.revertPop()
+      }
     }
 
     if ((action === null || !action.type) && typeof action !== 'function') {

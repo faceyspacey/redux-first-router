@@ -3,7 +3,12 @@ import { redirect } from 'redux-first-router'
 export default {
   HOME: {
     path: '/',
-    beforeLeave: () => false
+    beforeEnter: (req) => {
+      if (req.getLocation().length > 1) {
+        return req.dispatch({ type: 'LIST', params: { category: 'react' } })
+      }
+    }
+    // beforeLeave: () => false
   },
   LIST: {
     path: '/list/:category',

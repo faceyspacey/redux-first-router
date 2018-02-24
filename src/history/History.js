@@ -55,11 +55,7 @@ export default class History {
     const entries = this._pushToFront(location, this.entries, index, kind)
     const nextState = { kind, location, index, entries }
     const nextHistory = this._createNextHistory(nextState)
-
-    const commit = () => {
-      this._push(location)
-      this._updateHistory(nextState)
-    }
+    const commit = () => this._push(nextState)
 
     return this._notify({ nextHistory, commit }, notify)
   }
@@ -89,11 +85,7 @@ export default class History {
 
     const nextState = { kind, location, entries, index }
     const nextHistory = this._createNextHistory(nextState)
-
-    const commit = () => {
-      this._replace(location)
-      this._updateHistory(nextState)
-    }
+    const commit = () => this._replace(nextState)
 
     return this._notify({ nextHistory, commit }, notify)
   }
@@ -102,12 +94,13 @@ export default class History {
     n = this._resolveN(n, byIndex)
     kind = kind || (n < 0 ? 'back' : 'next')
 
+    const isPop = !!revertPop
     const index = this.index + n
     const entries = this.entries.slice(0)
     const location = entries[index] = { ...this.entries[index] }
     const nextState = { kind, location, index, entries }
     const nextHistory = this._createNextHistory(nextState)
-    const commit = () => this._jump(nextState, n, !!revertPop)
+    const commit = () => this._jump(nextState, n, isPop)
     const info = n === -1 || n === 1 ? null : 'jump'     // info === jump will tell middleware/transformAction.js to create custom `prev`
 
     state = typeof state === 'function' ? state(location.state) : state
@@ -115,6 +108,10 @@ export default class History {
 
     if (!this.entries[index]) {
       throw new Error(`[rudy] no entry at index: ${index}. Consider using \`history.canJump(n)\`.`)
+    }
+
+    if (isPop) {
+      // this._updateHistory(nextState)
     }
 
     return this._notify({ nextHistory, commit, info, revertPop }, notify)

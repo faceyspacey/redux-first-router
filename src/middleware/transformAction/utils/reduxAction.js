@@ -4,8 +4,11 @@ import { nestAction } from './index'
 export default (req, url, action, history) => {
   const { state, basename: bn } = action
   const redirect = isRedirect(action)
+  // const redirectCommitted = redirect && (req.tmp.committed || req.revertPop || (typeof window !== 'undefined' && window.foo))
+  // console.log('REDIRECT COMMITTED', redirectCommitted, req.revertPop, req.tmp.committed)
   const redirectCommitted = redirect && req.tmp.committed
   const method = redirectCommitted ? 'replace' : 'push'                 // redirects before committing are just pushes (since the original route was never pushed)
+  console.log('METHOD', method)
   const { nextHistory, commit } = history[method](url, state, bn, false)// get returned the same action as functions passed to `history.listen`
 
   if (redirect) {

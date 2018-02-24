@@ -20,7 +20,20 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
         return Promise.resolve(result)
       }
 
-      if (req.cancelled) {
+      if (req.cancelled) { // if a new request comes in before this one commits/enters, cancel it by not calling next middleware
+        if (req.revertPop) { // special handling if the canceled request is from the browser back/next buttons ("pops")
+          const nextRequest = req.cancelled
+
+          if (!nextRequest.revertPop) {
+            req.revertPop() // if previous request is triggered by browser back/next buttons, but not the next request, revert it
+          }
+          else if (!nextRequest.tmp.committed) {
+            req.tmp.committed = true
+            req.commitDispatch(req.action) // we need to commit the action s
+            req.commitHistory()
+          }
+        }
+
         return Promise.resolve(false) // short-circuit, dont call next middleware
       }
 
@@ -64,6 +77,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
 
             // call window.history.go(-1 | 1) to go back to URL/route whose `beforeLeave` returned `false`
             if (!req.tmp.committed && req.revertPop) {
+              console.log('COMPOSE REVERT POP')
               req.revertPop()
             }
           }

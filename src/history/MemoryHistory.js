@@ -51,18 +51,22 @@ export default class MemoryHistory extends History {
     this._forceRefresh = forceRefresh && canUseDom // again, only will be triggered when used in browsers as a fallback
   }
 
-  _push(location) {
+  _push(nextState) {
+    this._updateHistory(nextState)
+
     if (this._forceRefresh) {
-      const href = this._createHref(location)
+      const href = this._createHref(nextState.location)
       window.location.href = href
     }
 
     return Promise.resolve()
   }
 
-  _replace(location) {
+  _replace(nextState) {
+    this._updateHistory(nextState)
+
     if (this._forceRefresh) {
-      const href = this._createHref(location)
+      const href = this._createHref(nextState.location)
       window.location.href = href
     }
 
