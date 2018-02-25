@@ -90,7 +90,31 @@ export default class History {
     return this._notify({ nextHistory, commit }, notify)
   }
 
+  replacePop(path, state = {}, basename, notify = true, pop) {
+    const foundBasename = findBasename(path, this.basenames)
+    if (foundBasename) path = path.substr(foundBasename.length)
+
+    basename = foundBasename || basename
+    if (typeof basename === 'string') this.setBasename(basename)
+
+    const k = createKey()
+    const bn = this.basename
+    const location = createLocation(path, state, k, this.location, bn)
+    const index = pop.index
+    const entries = pop.entries.slice(0)
+    const kind = index < this.index ? 'back' : 'next'
+
+    entries[index] = location
+
+    const nextState = { kind, location, entries, index }
+    const nextHistory = this._createNextHistory(nextState)
+    const commit = () => this._replace(nextState, pop.location, pop.n)
+
+    return this._notify({ nextHistory, commit }, notify)
+  }
+
   jump(n, state, byIndex = false, kind, notify = true, revertPop) {
+    console.log('N', n)
     n = this._resolveN(n, byIndex)
     kind = kind || (n < 0 ? 'back' : 'next')
 

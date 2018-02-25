@@ -10,7 +10,7 @@ export default (req, action) => {
 
   nextHistory.location.state = action.state || nextHistory.location.state
 
-  let prev = curr.kind === 'init' ? curr.prev : curr
+  let prev = nextHistory.kind === 'load' ? curr.prev : curr
   let from
 
   if (isNotFound(action)) {

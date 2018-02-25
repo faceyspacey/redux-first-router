@@ -1,5 +1,3 @@
-import { isRedirect } from '../utils'
-
 export default (middlewares, curryArg, killOnRedirect = false) => {
   if (typeof middlewares === 'function') {
     return middlewares(curryArg, killOnRedirect) // accept custom function to do compose work below
@@ -76,9 +74,8 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
             req.ctx.pending = false
 
             // call window.history.go(-1 | 1) to go back to URL/route whose `beforeLeave` returned `false`
-            if (!req.tmp.committed && req.revertPop) {
-              console.log('COMPOSE REVERT POP')
-              req.revertPop()
+            if (!req.tmp.committed && req.tmp.revertPop) {
+              req.tmp.revertPop()
             }
           }
 

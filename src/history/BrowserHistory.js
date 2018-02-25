@@ -81,14 +81,10 @@ export default class BrowserHistory extends History {
       if (this._popForced) return (this._popForced = false)
 
       const n = this._isNext(loc) ? 1 : -1
-      // const { index, length, location, entries } = this
-      // const currentState = { index, length, location, entries }
-      const revertPop = (isRedirect) => {
-        // this._updateHistory(currentState)
-        // this._forceGo(n * -1)
-        this._awaitLocation(loc, 'revert')
+      const revertPop = this._once(() => {
+        return this._awaitLocation(loc, 'revert')
           .then(() => this._forceGo(n * -1))
-      }
+      })
 
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
@@ -129,11 +125,20 @@ export default class BrowserHistory extends History {
     return Promise.resolve()
   }
 
-  _replace(nextState, awaitLoc) {
+  _replace(nextState, awaitLoc, n) {
     const { location } = nextState
     const { key, state } = location
     const href = this._createHref(location)
     console.log('REPLACE', href)
+
+    if (n) {
+      this._forceGo(n)
+
+      console.log('AWAIT LOCATION', n, awaitLoc)
+      return this._awaitLocation(awaitLoc || this.location, '_replaceBackNext')
+        .then(() => window.history.replaceState({ id: this._id, key, state }, null, href))
+        .then(() => this._updateHistory(nextState))
+    }
 
     return this._awaitLocation(awaitLoc || this.location, '_replace')
       .then(() => window.history.replaceState({ id: this._id, key, state }, null, href))
@@ -209,7 +214,10 @@ export default class BrowserHistory extends History {
   _awaitLocation(loc, name) {
     return new Promise(resolve => {
       const url = loc.basename + loc.url
-      const ready = () => url === createPath(window.location)
+      const ready = () => {
+        console.log('CREATE PATH', url, createPath(window.location))
+        return url === createPath(window.location)
+      }
 
       return tryChange(ready, resolve, name)
     })

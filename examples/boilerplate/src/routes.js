@@ -4,7 +4,9 @@ export default {
   HOME: {
     path: '/',
     beforeEnter: (req) => {
-      if (req.getLocation().length > 1) {
+      // if (req.getLocation().length > 1) {
+      console.log('FOO', typeof window !== 'undefined' && window.foo)
+      if (typeof window !== 'undefined' && window.foo) {
         return req.dispatch({ type: 'LIST', params: { category: 'react' } })
       }
     }

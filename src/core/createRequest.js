@@ -71,7 +71,11 @@ export class Request {
     // it will be added by the `transformAction` middleware, overwriting `noOp` below
     this.commitHistory = fromHistory ? action.commit : noOp
     this.commitDispatch = next // standard redux next dispatch from our redux middleware
-    this.revertPop = fromHistory && action.revertPop // available when user uses browser back/next buttons. See `core/compose.js` for when it's called on a blocked route change
+
+    // available when browser back/next buttons used. It's used in 2 cases:
+    // 1) when you return `false` from a route triggered by the browser back/next buttons (See `core/compose.js`)
+    // 2) as a flag when you redirect from a route triggered by browser back/next buttons (see `middleware/transformAction/utils/reduxAction.js`)
+    this.tmp.revertPop = this.tmp.revertPop || action.revertPop
 
     this.getState = store.getState
   }
@@ -93,16 +97,17 @@ export class Request {
 
     if (route || typeof action === 'function') {
       action.tmp = this.tmp                      // keep the same `tmp` object across all redirects (or potential redirects in anonymous thunks)
+
+      if (this.ctx.busy) {
+        // keep track of previous action to properly replace instead of push during back/next redirects
+        // see `middleware/transformAction/utils/reduxAction.js`
+        action.tmp.prevAction = this.tmp.prevAction || this.action
+      }
     }
 
     if (this.ctx.busy && route && route.path) { // convert actions to redirects only if "busy" in a route changing pipeline
       const status = action.location && action.location.status
       action = redirect(action, status || 302)
-
-      if (!this.tmp.committed && this.revertPop) {
-        console.log('CREAT_REQUEST - revertPop')
-        this.revertPop()
-      }
     }
 
     if ((action === null || !action.type) && typeof action !== 'function') {

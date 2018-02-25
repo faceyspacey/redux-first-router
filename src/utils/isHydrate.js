@@ -3,8 +3,8 @@ import type { LocationState } from '../flow-types'
 import { isServer } from './index'
 
 export default (req): boolean => {
-  const { kind, hasSSR } = req.getLocation()
-  return !isServer() && /init|load/.test(kind) && req.ctx.busy && hasSSR
+  const { hasSSR } = req.getLocation()
+  return hasSSR && !isServer() && req.getKind() === 'load' && req.ctx.busy
 }
 
 // `req.ctx.busy` is checked so pathlessRoutes (which are never busy unless
