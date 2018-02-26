@@ -14,25 +14,26 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
     return dispatch(0)
 
     function dispatch(i, ...args) {
-      if (req.redirect && killOnRedirect) { // short-circuit, dont call next middleware
-        return Promise.resolve(result)
+      if (req.redirect !== undefined && killOnRedirect) { // short-circuit, dont call next middleware
+        const ret = i === 0 && result !== undefined ? result : false
+        return Promise.resolve(ret)
       }
 
       if (req.cancelled) { // if a new request comes in before this one commits/enters, cancel it by not calling next middleware
-        if (req.revertPop) { // special handling if the canceled request is from the browser back/next buttons ("pops")
-          const nextRequest = req.cancelled
+        // if (req.revertPop) { // special handling if the canceled request is from the browser back/next buttons ("pops")
+        //   const nextRequest = req.cancelled
 
-          if (!nextRequest.revertPop) {
-            req.revertPop() // if previous request is triggered by browser back/next buttons, but not the next request, revert it
-          }
-          else if (!nextRequest.tmp.committed) {
-            req.tmp.committed = true
-            req.commitDispatch(req.action) // we need to commit the action s
-            req.commitHistory()
-          }
-        }
-
-        return Promise.resolve(false) // short-circuit, dont call next middleware
+        //   if (!nextRequest.revertPop) {
+        //     req.revertPop() // if previous request is triggered by browser back/next buttons, but not the next request, revert it
+        //   }
+        //   else if (!nextRequest.tmp.committed) {
+        //     req.tmp.committed = true
+        //     req.commitDispatch(req.action) // we need to commit the action s
+        //     req.commitHistory()
+        //   }
+        // }
+        const ret = i === 0 && result !== undefined ? result : false
+        return Promise.resolve(ret) // short-circuit, dont call next middleware
       }
 
       // start standard work:
@@ -56,7 +57,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
           }
 
           // return value of redirect (resolution of next pipeline), but if value returned from callback, return that instead
-          if (req.redirect && killOnRedirect) {
+          if (req.redirect !== undefined && killOnRedirect) {
             return result = result !== undefined
               ? result // as below in the standard use-case, this insures last middleware dictates return
               : res === req.action
@@ -64,17 +65,14 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
                 : res !== undefined ? res : req.redirect // usually the result returned will be the result of the pipeline redirected to, but we honor explicit different returns (`res`)
           }
 
-          // another route changing pipeline was started, canceling this one (see top of `core/createRequest.js`)
-          if (req.cancelled) {
-            return false
-          }
-
-          // middleware terminates piepline, and now there is no longer a "pending" route change
-          if (res === false) {
-            req.ctx.pending = false
+          // if a middleware return `false`, the pipeline is terminated and now there is no longer a "pending" route change
+          if (res === false && !req.tmp.committed) {
+            const newRequestCameIn = req.ctx.pending !== req
+            req.ctx.pending = newRequestCameIn ? req.ctx.pending : false // preserve potential incoming request that came in during async callback that returned false, otherwise indicate the initial request is no longer pending
 
             // call window.history.go(-1 | 1) to go back to URL/route whose `beforeLeave` returned `false`
-            if (!req.tmp.committed && req.tmp.revertPop) {
+            // NOTE: this is also used by redirects back to the current route (see `middleware/call/index.js`)
+            if (req.tmp.revertPop) {
               req.tmp.revertPop()
             }
           }

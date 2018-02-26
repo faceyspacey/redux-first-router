@@ -1,6 +1,7 @@
 // @flow
 export const PREFIX = '@@rudy'
-export const prefixType = (type: string) => `${PREFIX}/${type}`
+export const prefixType = (type: string, prefix?: string) =>
+  `${prefix || PREFIX}/${type}`
 
 export const UPDATE_HISTORY = prefixType('UPDATE_HISTORY')
 export const CALL_HISTORY = prefixType('CALL_HISTORY')
@@ -10,5 +11,8 @@ export const CHANGE_BASENAME = prefixType('CHANGE_BASENAME')
 export const CLEAR_CACHE = prefixType('CLEAR_CACHE')
 
 export const CONFIRM = prefixType('CONFIRM')
-export const BLOCK = '@@skiprudy/BLOCK' // these skip middleware pipeline, and are reducer-only
-export const UNBLOCK = '@@skiprudy/UNBLOCK'
+export const BLOCK = prefixType('BLOCK', '@@skiprudy') // these skip middleware pipeline, and are reducer-only
+export const UNBLOCK = prefixType('UNBLOCK', '@@skiprudy')
+
+export const SET_FROM = prefixType('SET_FROM', '@@skiprudy')
+

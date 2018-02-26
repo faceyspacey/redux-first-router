@@ -1,4 +1,4 @@
-import { UPDATE_HISTORY, BLOCK, UNBLOCK } from '../types'
+import { UPDATE_HISTORY, BLOCK, UNBLOCK, SET_FROM } from '../types'
 import { redirect } from '../actions'
 import { isRedirect, noOp, createAction } from '../utils'
 import { createFrom } from '../middleware/transformAction/utils'
@@ -25,7 +25,7 @@ export class Request {
       const isNewPipeline = !action.tmp
 
       if (requestNotCommitted && isNewPipeline) {
-        requestNotCommitted.cancelled = this // `compose` will return early on pending requests, effectively cancelling them
+        requestNotCommitted.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
       }
 
       ctx.pending = this
@@ -119,7 +119,7 @@ export class Request {
     return Promise.resolve(dispatch(action))    // dispatch transformed action
       .then(res => {
         if (oldUrl !== this.getLocation().url || this.ctx.serverRedirect) {
-          this.redirect = res                    // // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
+          this.redirect = res                   // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
         }
 
         if (res && typeof res === 'object') {
@@ -160,6 +160,11 @@ export class Request {
     this.ctx.confirm = this.confirm
     const ref = createFrom(this.action)
     return this.store.dispatch({ type: BLOCK, payload: { ref } })
+  }
+
+  setFrom = () => {
+    const ref = createFrom(this.action)
+    return this.store.dispatch({ type: SET_FROM, payload: { ref } })
   }
 
   getKind = () => {

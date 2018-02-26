@@ -55,7 +55,16 @@ export default (api) => async (req, next) => {
     return req.commit()
   }
 
-  if (isDoubleDispatch(req, getLocation())) return req.action // no point dispatching twice
+  if (isDoubleDispatch(req, getLocation())) { // don't dispatch the same action twice
+    if (!req.tmp.prevAction) {
+      return req.action // primary use case
+    }
+
+    // and if it happens to be within a route-changing pipline that redirects,
+    // insure the parent pipeline short-ciruits while setting `state.from` (see `call/index.js`)
+    if (req.tmp.revertPop) req.tmp.revertPop()
+    return req.ctx.doubleDispatchRedirect = req.action
+  }
 
   const { type, params, query, hash, state } = req.action
   Object.assign(req, { type, params, query, hash, state })
@@ -68,5 +77,5 @@ export default (api) => async (req, next) => {
 
 const isDoubleDispatch = (req, state) =>
   req.action.location.url === state.url
-  && req.action.location.kind !== 'load' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
+  && req.getKind() !== 'load' // on load, the `firstRoute` action will trigger the same URL as stored in state, and we need to dispatch it anyway :)
   && req.action.info !== 'reset'

@@ -1,5 +1,5 @@
 // @flow
-import { ADD_ROUTES, BLOCK, UNBLOCK } from '../types'
+import { ADD_ROUTES, BLOCK, UNBLOCK, SET_FROM } from '../types'
 import { isServer, urlToAction, typeToScene } from '../utils'
 
 import type {
@@ -52,6 +52,11 @@ export default (routes: RoutesMap, history: History, options: Options) => {
     if (action.type === UNBLOCK) {
       const { blocked, ...state } = st
       return state
+    }
+
+    if (action.type === SET_FROM) {
+      const { ref } = action.payload
+      return { ...st, from: ref }
     }
 
     return st

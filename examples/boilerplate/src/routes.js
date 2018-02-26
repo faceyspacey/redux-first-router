@@ -3,11 +3,10 @@ import { redirect } from 'redux-first-router'
 export default {
   HOME: {
     path: '/',
-    beforeEnter: (req) => {
-      // if (req.getLocation().length > 1) {
-      console.log('FOO', typeof window !== 'undefined' && window.foo)
+    beforeEnter: async (req) => {
+      await new Promise(res => setTimeout(res, 2000))
       if (typeof window !== 'undefined' && window.foo) {
-        return req.dispatch({ type: 'LIST', params: { category: 'react' } })
+        const res = await req.dispatch({ type: 'LIST', params: { category: 'react' } })
       }
     }
     // beforeLeave: () => false

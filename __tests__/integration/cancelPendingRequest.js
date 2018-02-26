@@ -10,22 +10,22 @@ createTest('new requests cancel current pending (not committed) requests', {
   },
   SECOND: {
     path: '/second',
-    beforeEnter: function() {} // will not run because pipeline will be canceled
+    beforeEnter: () => 'secondBeforeEnter' // will not run because pipeline will be canceled
   },
   THIRD: {
     path: '/third',
-    beforeEnter: function() {}
+    thunk: () => 'thirdThunk'
   }
-}, [], async ({ dispatch, getLocation }) => {
+}, [], async ({ dispatch, getLocation, getState }) => {
   let res = dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 
-  const state = getLocation()
-  expect(state.type).toEqual('THIRD')
+  const location = getLocation()
+  expect(location.type).toEqual('THIRD')
 
   res = await res
-  expect(res).toEqual(false)
+  expect(res.type).toEqual('SECOND') // res will still be the action that was canceled
 
   expect(getLocation().type).toEqual('THIRD')
-  expect(state).toEqual(getLocation())
+  expect(getState()).toMatchSnapshot()
 })

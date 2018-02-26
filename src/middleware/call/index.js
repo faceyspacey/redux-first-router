@@ -43,6 +43,15 @@ export default (name, config = {}) => (api) => {
         return false
       }
 
+      if (req.ctx.doubleDispatchRedirect) { // dispatches to current location during redirects blocked, see `transformAction/index.js`
+        const attemptedAction = req.ctx.doubleDispatchRedirect
+        delete req.ctx.doubleDispatchRedirect
+        req.cancelled = true
+        req.setFrom()
+        const res = r !== undefined ? r : o
+        return res !== undefined ? res : attemptedAction
+      }
+
       // `_dispatched` is a flag used to find whether actions were already dispatched in order
       // to determine whether to automatically dispatch it. The goal is not to dispatch twice.
       //
