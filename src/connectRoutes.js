@@ -6,6 +6,7 @@ import { stripTrailingSlash, addLeadingSlash } from 'rudy-history/PathUtils'
 import pathToAction from './pure-utils/pathToAction'
 import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
+import isRedirectAction from './pure-utils/isRedirectAction'
 import isServer from './pure-utils/isServer'
 import isReactNative from './pure-utils/isReactNative'
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
@@ -330,13 +331,8 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     if (onBeforeChange) {
       let skip
 
-      const dispatch = (action: Object) => {
-        if (
-          action &&
-          action.meta &&
-          action.meta.location &&
-          action.meta.location.kind === 'redirect'
-        ) {
+      const redirectAwareDispatch = (action: Action) => {
+        if (isRedirectAction(action)) {
           skip = true
           prevLocation = location.current
           const nextPath = pathnamePlusSearch(location.current)
@@ -354,7 +350,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       }
 
       const bag = { action, extra }
-      onBeforeChange(dispatch, store.getState, bag)
+      onBeforeChange(redirectAwareDispatch, store.getState, bag)
       if (skip) return true
     }
 
@@ -381,13 +377,22 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
+      let skip = false
+
+      const redirectAwareDispatch = (action: Action) => {
+        if (isRedirectAction(action)) skip = true
+        store.dispatch(action)
+      }
+
       attemptCallRouteThunk(
-        dispatch,
+        redirectAwareDispatch,
         store.getState,
         route,
         selectLocationState,
         bag
       )
+
+      if (skip) return
     }
 
     if (onAfterChange) {
