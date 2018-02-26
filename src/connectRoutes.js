@@ -23,8 +23,7 @@ import {
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
-import middlewareCreateNotFoundAction
-  from './action-creators/middlewareCreateNotFoundAction'
+import middlewareCreateNotFoundAction from './action-creators/middlewareCreateNotFoundAction'
 
 import createLocationReducer, {
   getInitialState
@@ -152,13 +151,15 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     payload: {}
   }
 
-  const selectLocationState = typeof location === 'function'
-    ? location
-    : location ? state => state[location] : state => state.location
+  const selectLocationState =
+    typeof location === 'function'
+      ? location
+      : location ? state => state[location] : state => state.location
 
-  const selectTitleState = typeof title === 'function'
-    ? title
-    : title ? state => state[title] : state => state.title
+  const selectTitleState =
+    typeof title === 'function'
+      ? title
+      : title ? state => state[title] : state => state.title
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
@@ -236,7 +237,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     let navigationAction
 
     if (navigators && action.type.indexOf('Navigation/') === 0) {
-      ({ navigationAction, action } = navigationToAction(
+      ;({ navigationAction, action } = navigationToAction(
         navigators,
         store,
         routesMap,
@@ -269,13 +270,12 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
       action = middlewareCreateNotFoundAction(
         action,
-        store.getState().location,
+        selectLocationState(store.getState()),
         prevLocation,
         history,
         notFoundPath
       )
-    }
-    else if (route && !isLocationAction(action)) {
+    } else if (route && !isLocationAction(action)) {
       // THE MAGIC: dispatched action matches a connected type, so we generate a
       // location-aware action and also as a result update location reducer state.
       action = middlewareCreateAction(
@@ -503,8 +503,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       if (shouldPerformInitialDispatch !== false) {
         _initialDispatch()
       }
-    }
-    else {
+    } else {
       // set correct prevLocation on client that has SSR so that it will be
       // assigned to `action.meta.location.prev` and the corresponding state
       prevLocation = location
@@ -572,8 +571,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       if (!scrollBehavior.manual) {
         scrollBehavior.updateScroll(prevState, nextState)
       }
-    }
-    else if (__DEV__ && performedByUser) {
+    } else if (__DEV__ && performedByUser) {
       throw new Error(
         `[redux-first-router] you must set the \`restoreScroll\` option before
         you can call \`updateScroll\``
