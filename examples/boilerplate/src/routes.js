@@ -4,7 +4,7 @@ export default {
   HOME: {
     path: '/',
     beforeEnter: async (req) => {
-      await new Promise(res => setTimeout(res, 2000))
+      if (typeof window !== 'undefined') await new Promise(res => setTimeout(res, 4000))
       if (typeof window !== 'undefined' && window.foo) {
         const res = await req.dispatch({ type: 'LIST', params: { category: 'react' } })
       }

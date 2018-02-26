@@ -134,10 +134,6 @@ export default class History {
       throw new Error(`[rudy] no entry at index: ${index}. Consider using \`history.canJump(n)\`.`)
     }
 
-    if (isPop) {
-      // this._updateHistory(nextState)
-    }
-
     return this._notify({ nextHistory, commit, info, revertPop }, notify)
   }
 
@@ -222,10 +218,10 @@ export default class History {
   _once(commit) {
     let committed = false
 
-    return () => {
+    return (...args) => {
       if (committed) return
       committed = true
-      return commit()
+      return commit(...args)
     }
   }
 
@@ -241,6 +237,11 @@ export default class History {
   _isNext(location) {
     const entry = this.entries[this.index + 1]
     return entry && entry.url === location.url
+  }
+
+  _isAfter(location) {
+    return this.entries.slice(this.index + 1, this.index + 3)
+      .find(e => e.url === location.url)
   }
 
   _updateHistory(state) {

@@ -66,8 +66,8 @@ export default (api) => async (req, next) => {
     return req.ctx.doubleDispatchRedirect = req.action
   }
 
-  const { type, params, query, hash, state } = req.action
-  Object.assign(req, { type, params, query, hash, state })
+  const { type, params, query, hash, state, location } = req.action
+  Object.assign(req, { type, params, query, hash, state, location })
 
   req.tmp.from = req.action // record attempted route for potential redirects
 

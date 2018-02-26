@@ -12,6 +12,8 @@ export default (
 export class Request {
   constructor(action, api, next) {
     const { store, routes, options, getLocation, ctx } = api
+    const isNewPipeline = !action.tmp
+    const pendingRequest = ctx.pending
     const fromHistory = action.type === UPDATE_HISTORY
     const state = getLocation()
     const route = routes[action.type] || {}
@@ -19,22 +21,10 @@ export class Request {
       ? routes[state.prev.type] || {}
       : routes[state.type]
 
-    // cancel pending not committed requests if new ones quickly come in
-    if (route.path) {
-      const requestNotCommitted = ctx.pending
-      const isNewPipeline = !action.tmp
-
-      if (requestNotCommitted && isNewPipeline) {
-        requestNotCommitted.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
-      }
-
-      ctx.pending = this
-    }
-
     // the `tmp` context is passed along by all route-changing actions in the same primary parent
     // pipeline to keep track of things like `committed` status, but we don't want the
     // resulting action that leaves Rudy to have this, so we delete it.
-    const tmp = action.tmp || {}
+    const tmp = this.tmp = action.tmp || {}
     delete action.tmp
 
     tmp.load = tmp.load || (fromHistory && action.nextHistory.kind === 'load')
@@ -50,16 +40,22 @@ export class Request {
     // there are pathlessRoutes, anonymousThunks (which don't have paths) called by them
     ctx.busy = ctx.busy || !!route.path || fromHistory
 
-    Object.assign(this, options.extra)
-    Object.assign(this, api)
+    // cancel pending not committed requests if new ones quickly come in
+    if (route.path || fromHistory) {
+      console.log('CHECK IF CANCELED', isNewPipeline, pendingRequest)
+      if (pendingRequest && isNewPipeline) {
+        pendingRequest.tmp.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
+        pendingRequest.revert()
+      }
 
-    if (!fromHistory) {
-      Object.assign(this, this.action) // for convenience (less destructuring in callbacks) our action key/vals are destructured into `Request` instances
-      delete this.location // redirect action creator has this, and even though it causes no problems, we don't want it to prevent confusion
+      ctx.pending = this
     }
 
+    Object.assign(this, options.extra)
+    Object.assign(this, api)
+    Object.assign(this, !fromHistory && action) // destructure action into request for convenience in callbacks
+
     this.action = action
-    this.tmp = tmp
     this.ctx = ctx
     this.route = route
     this.prevRoute = prevRoute
@@ -81,6 +77,7 @@ export class Request {
   }
 
   commit = () => {
+    console.log('COMMIT!', this.type, this.params && this.params.category)
     this.ctx.pending = false
     this.tmp.committed = true
 
@@ -88,6 +85,13 @@ export class Request {
       this.commitDispatch(this.action),
       this.commitHistory()
     ]).then(([res]) => res)
+  }
+
+  revert = () => {
+    if (this.tmp.revertPop) {
+      console.log('REVERT!!!', this.type)
+      this.tmp.revertPop(false)
+    }
   }
 
   dispatch = (action) => {
