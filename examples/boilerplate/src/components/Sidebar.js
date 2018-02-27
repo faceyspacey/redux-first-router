@@ -26,6 +26,13 @@ const Sidebar = ({ path, dispatch }) => (
       React
     </NavLink>
 
+    <NavLink
+      activeClassName={styles.active}
+      to={{ type: 'NOT_FOUND' }}
+    >
+      NOT_FOUND
+    </NavLink>
+
     <div style={{ height: 20 }} />
 
     <h2>EVENT HANDLERS</h2>

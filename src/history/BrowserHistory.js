@@ -82,9 +82,11 @@ export default class BrowserHistory extends History {
 
       const n = this._isAfter(loc) ? 1 : -1
       const kind = n === -1 ? 'back' : 'next'
-      console.log("RECEIVED POP", loc.url)
+
+      console.log("RECEIVED POP", kind, loc.url)
+
       const revertPop = this._once((shouldAwait = true) => {
-        console.log('POP', loc.url)
+        console.log('POP REVERTED - BrowserHistory', loc.url)
         if (!shouldAwait) return this._forceGo(n * -1)
 
         return this._awaitLocation(loc, 'revert')
@@ -220,7 +222,7 @@ export default class BrowserHistory extends History {
     return new Promise(resolve => {
       const url = loc.basename + loc.url
       const ready = () => {
-        console.log('CREATE PATH', url, createPath(window.location))
+        console.log('READY(desiredUrl, currentUrl)', url, createPath(window.location))
         return url === createPath(window.location)
       }
 

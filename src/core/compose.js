@@ -20,20 +20,8 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
       }
 
       if (req.tmp.cancelled) { // if a new request comes in before this one commits/enters, cancel it by not calling next middleware
-        // if (req.revertPop) { // special handling if the canceled request is from the browser back/next buttons ("pops")
-        //   const nextRequest = req.tmp.cancelled
-
-        //   if (!nextRequest.revertPop) {
-        //     req.revertPop() // if previous request is triggered by browser back/next buttons, but not the next request, revert it
-        //   }
-        //   else if (!nextRequest.tmp.committed) {
-        //     req.tmp.committed = true
-        //     req.commitDispatch(req.action) // we need to commit the action s
-        //     req.commitHistory()
-        //   }
-        // }
         const ret = i === 0 && result !== undefined ? result : false
-        console.log('CANCELED', ret)
+        console.log('CANCELED', i, req.location && req.location.url, req)
         return Promise.resolve(ret) // short-circuit, dont call next middleware
       }
 
