@@ -30,6 +30,10 @@ export default (api, name, config) => {
 
     const key = createCacheKey(action, name)
 
+    if (req.getKind() === 'load' && req.isUniversal()) {
+      cache[key] = true
+    }
+
     if (cache[key]) return true
 
     return false
@@ -38,6 +42,7 @@ export default (api, name, config) => {
   const cacheAction = (name, action) => {
     const key = createCacheKey(action, name)
     cache[key] = true
+    return key
   }
 
   const clear = (invalidator, opts = {}) => {

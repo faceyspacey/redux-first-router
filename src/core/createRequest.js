@@ -190,8 +190,4 @@ export class Request {
   isUniversal = () => {
     return this.getLocation().universal
   }
-
-  isFirstLoad = () => {
-    return this.tmp.firstLoad
-  }
 }
