@@ -119,6 +119,7 @@ Object {
         "kind": "load",
         "length": 1,
         "pathname": "/first",
+        "pop": false,
         "scene": "",
         "search": "",
         "status": 200,
@@ -135,6 +136,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/redirected",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",

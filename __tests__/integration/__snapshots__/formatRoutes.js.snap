@@ -70,6 +70,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/not-available",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -90,6 +91,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/missed",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -211,6 +213,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/missed",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -337,6 +340,7 @@ Object {
     "kind": "load",
     "length": 1,
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -389,6 +393,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -489,6 +494,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/redirected",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -509,6 +515,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -626,6 +633,7 @@ Object {
     "kind": "load",
     "length": 1,
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -678,6 +686,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",

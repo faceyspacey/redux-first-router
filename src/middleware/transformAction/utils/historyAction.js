@@ -34,7 +34,7 @@ export default (req, action) => {
       // build the action for that entry, and create what the resulting state shape would have looked like
       const { routes, history, options } = req
       const prevAction = urlToAction(prevLocation, routes, options)
-      const act = nestAction(prevAction, {}, history)
+      const act = nestAction(req, prevAction, {}, history)
 
       // do what the location reducer does where it maps `...action.location` flatly on to `action`
       prev = Object.assign({}, act, act.location)
@@ -56,7 +56,7 @@ export default (req, action) => {
     from = curr         // but provide access to what the state was in the `from` key for user by developers
   }
 
-  req.action = nestAction(action, prev, nextHistory, from)          // replace history-triggered action with real action intended for reducers
+  req.action = nestAction(req, action, prev, nextHistory, from)          // replace history-triggered action with real action intended for reducers
 
   return req
 }

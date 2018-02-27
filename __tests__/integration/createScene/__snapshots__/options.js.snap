@@ -56,6 +56,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/cat",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -76,6 +77,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -137,6 +139,7 @@ Object {
       "foo": "bar",
     },
     "pathname": "/cat",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -157,6 +160,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -231,6 +235,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -319,6 +324,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -339,6 +345,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -395,6 +402,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -415,6 +423,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -488,6 +497,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -576,6 +586,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -596,6 +607,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -656,6 +668,7 @@ Object {
       "foo": "bar",
     },
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -676,6 +689,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -755,6 +769,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -775,6 +790,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -835,6 +851,7 @@ Object {
       "foo": "bar",
     },
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -855,6 +872,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -934,6 +952,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -954,6 +973,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -1014,6 +1034,7 @@ Object {
       "testReq": "FIRST",
     },
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1034,6 +1055,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -1110,6 +1132,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1195,6 +1218,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1280,6 +1304,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1365,6 +1390,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1453,6 +1479,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/third",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1473,6 +1500,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -1533,6 +1561,7 @@ Object {
       "foo": "baz",
     },
     "pathname": "/third",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1553,6 +1582,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -1632,6 +1662,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/fourth",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1652,6 +1683,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -1712,6 +1744,7 @@ Object {
       "foo": "baz",
     },
     "pathname": "/fourth",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -1732,6 +1765,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -1812,6 +1846,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",

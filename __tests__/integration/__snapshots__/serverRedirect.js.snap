@@ -112,6 +112,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",

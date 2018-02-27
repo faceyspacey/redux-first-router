@@ -20,7 +20,6 @@ export default {
   LIST: {
     path: '/list/:category',
     thunk: async ({ params }) => {
-      console.log('THUNK CALLED')
       const { category } = params
       const packages = await fetch(`/api/category/${category}`)
 

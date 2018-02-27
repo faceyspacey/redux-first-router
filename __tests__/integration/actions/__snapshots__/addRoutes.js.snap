@@ -81,6 +81,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -170,6 +171,7 @@ Object {
     "kind": "push",
     "length": 2,
     "pathname": "/foo",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -190,6 +192,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "routesAdded": 1,
       "scene": "",
@@ -247,6 +250,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/foo",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -267,6 +271,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "routesAdded": 1,
       "scene": "",
@@ -383,6 +388,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -484,6 +490,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/bar",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -504,6 +511,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "routesAdded": 2,
       "scene": "",

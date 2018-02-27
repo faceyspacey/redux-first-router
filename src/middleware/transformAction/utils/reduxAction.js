@@ -50,7 +50,7 @@ export default (req, url, action, history) => {
     prev = redirectCommitted ? curr.prev : prev                         // `prev` maintains proper entries array, notwithstanding any redirects
   }
 
-  req.action = nestAction(action, prev, nextHistory, from)
+  req.action = nestAction(req, action, prev, nextHistory, from)
   req.commitHistory = commit                                            // put these here so `enter` middleware can commit the history, etc
 
   return req

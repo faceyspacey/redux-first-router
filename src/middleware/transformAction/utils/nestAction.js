@@ -1,12 +1,13 @@
 import { typeToScene, isNotFound } from '../../../utils'
 
-export default (action, prevState, history, fromAction) => {
+export default (req, action, prevState, history, fromAction) => {
   const { kind, entries, index, length, location } = history
   const { pathname, search, basename: bn, url: u, state = {} } = location
   const { type, params = {}, query = {}, hash = '' } = action
   const prev = createPrev(prevState)
   const from = createFrom(fromAction)
   const scene = typeToScene(type)
+  const pop = !!req.tmp.revertPop
   const direction = getDirection(kind, prevState)
   const basename = bn.substr(1)
   const url = bn + u
@@ -37,7 +38,8 @@ export default (action, prevState, history, fromAction) => {
       kind,
       entries,
       index,
-      length
+      length,
+      pop
     }
   }
 }

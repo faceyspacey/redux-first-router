@@ -72,6 +72,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -92,6 +93,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -187,6 +189,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -207,6 +210,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -302,6 +306,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -322,6 +327,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
@@ -419,6 +425,7 @@ Object {
     "length": 2,
     "params": Object {},
     "pathname": "/second",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -439,6 +446,7 @@ Object {
       "length": 1,
       "params": Object {},
       "pathname": "/first",
+      "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
