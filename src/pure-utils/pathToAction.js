@@ -49,6 +49,8 @@ export default (
       typeof routes[i].fromPath === 'function' &&
       routes[i].fromPath
 
+    const userMeta = typeof routes[i] === 'object' && routes[i].meta
+
     const type = routeTypes[i]
 
     const payload = (keys || []).reduce((payload, key, index) => {
@@ -70,7 +72,11 @@ export default (
       return payload
     }, {})
 
-    return { type, payload, meta: query ? { query } : {} }
+    const meta = {
+      ...(userMeta ? { meta: userMeta } : {}),
+      ...(query ? { query } : {})
+    }
+    return { type, payload, meta }
   }
 
   // This will basically will only end up being called if the developer is manually calling history.push().
