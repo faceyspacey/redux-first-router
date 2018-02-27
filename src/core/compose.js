@@ -63,7 +63,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
             // call window.history.go(-1 | 1) to go back to URL/route whose `beforeLeave` returned `false`
             // NOTE: this is also used by redirects back to the current route (see `middleware/call/index.js`)
             if (req.tmp.revertPop) {
-              req.tmp.revertPop()
+              req.tmp.revertPop(false)
             }
           }
 

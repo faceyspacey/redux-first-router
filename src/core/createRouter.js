@@ -78,6 +78,7 @@ export default (
 
     return (dispatch: Dispatch) => (action: Object) => {
       if (!shouldTransition(action, api)) return dispatch(action) // short-circuit and pass through Redux middleware normally
+      if (action.tmp && action.tmp.cancelled) return Promise.resolve(action)
 
       const req = createRequest(action, api, dispatch) // the `Request` arg passed to all middleware
       const mw = req.route.middleware

@@ -56,6 +56,10 @@ export default (api) => async (req, next) => {
   }
 
   if (isDoubleDispatch(req, getLocation())) { // don't dispatch the same action twice
+    req.ctx.pending = false
+    console.log('DOUBLE', req.tmp.revertPop, req.tmp)
+    req.history.pendingPop = false
+
     if (!req.tmp.prevAction) {
       return req.action // primary use case
     }

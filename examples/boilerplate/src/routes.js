@@ -3,17 +3,20 @@ import { redirect } from 'redux-first-router'
 export default {
   HOME: {
     path: '/',
-    // beforeEnter: async (req) => {
-    //   if (typeof window !== 'undefined' && req.history.entries.length > 2) await new Promise(res => setTimeout(res, 10000))
-    //   if (typeof window !== 'undefined' && req.history.entries.length > 2) {
-    //     const res = await req.dispatch({ type: 'LIST', params: { category: 'react' } })
-    //   }
-    // }
-    beforeLeave: async ({ type }) => {
-      await new Promise(res => setTimeout(res, 10000))
-      return type === 'NOT_FOUND'
+    beforeEnter: async (req) => {
+      if (typeof window !== 'undefined' && window.foo) await new Promise(res => setTimeout(res, 3000))
+
+      if (typeof window !== 'undefined' && window.foo) {
+        const res = await req.dispatch({ type: 'LIST', params: { category: 'react' } })
+      }
     }
+    // beforeLeave: async ({ type }) => {
+    //   return false
+    //   await new Promise(res => setTimeout(res, 10000))
+    //   return type === 'NOT_FOUND'
+    // }
   },
+  PATHLESS: () => console.log('PATHLESS'),
   LIST: {
     path: '/list/:category',
     thunk: async ({ params }) => {

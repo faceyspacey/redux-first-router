@@ -80,10 +80,13 @@ export default class BrowserHistory extends History {
     const handlePop = loc => {
       if (this._popForced) return (this._popForced = false)
 
-      const n = this._isAfter(loc) ? 1 : -1
+      const n = this.pendingPop
+        ? this._isAfterNext(loc) ? 1 : -1
+        : this._isNext(loc) ? 1 : -1
+
       const kind = n === -1 ? 'back' : 'next'
 
-      console.log("RECEIVED POP", kind, loc.url)
+      console.log("RECEIVED POP", this.pendingPop, kind, loc.url)
 
       const revertPop = this._once((shouldAwait = true) => {
         console.log('POP REVERTED - BrowserHistory', loc.url)

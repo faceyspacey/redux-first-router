@@ -42,7 +42,11 @@ export class Request {
 
     // cancel pending not committed requests if new ones quickly come in
     if (route.path || fromHistory) {
-      console.log('CHECK IF CANCELED', fromHistory ? action.nextHistory.location.url : action.type, !isNewPipeline && 'pipeline redirect', pendingRequest)
+      console.log('CHECK IF CANCELED', fromHistory ? action.nextHistory.location.url : action.type, isNewPipeline ? 'true - new pipeline' : 'pipeline redirect', pendingRequest)
+      if (fromHistory && action.revertPop) {
+        api.history.pendingPop = true
+      }
+
       if (pendingRequest && isNewPipeline) {
         if (fromHistory && action.revertPop) {
           console.log('NEWEST HISTORY POP REVERT!!!!!!')
@@ -87,6 +91,7 @@ export class Request {
     console.log('COMMIT!', this.type, this.params && this.params.category)
     this.ctx.pending = false
     this.tmp.committed = true
+    this.history.pendingPop = false
 
     return Promise.all([
       this.commitDispatch(this.action),
