@@ -22,7 +22,8 @@ export type RouteObject = {
     bag: Bag
   ) => any | Promise<any>,
   navKey?: string,
-  confirmLeave?: ConfirmLeave
+  confirmLeave?: ConfirmLeave,
+  meta?: Object
 }
 
 export type Route = RouteString | RouteObject
