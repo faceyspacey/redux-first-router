@@ -67,7 +67,7 @@ const createStateReference = (location) => {
   const ref = { ...location }
 
   delete ref.prev
-  delete ref.hasSSR
+  delete ref.universal
   delete ref.from
   delete ref.blocked
 

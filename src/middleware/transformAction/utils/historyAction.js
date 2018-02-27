@@ -28,7 +28,7 @@ export default (req, action) => {
     const { entries, index, length, kind } = nextHistory
     const prevIndex = kind === 'back' ? index + 1 : index - 1
     const prevLocation = entries[prevIndex]
-    const hasSSR = !!req.getLocation().hasSSR
+    const universal = !!req.getLocation().universal
 
     if (prevLocation) {
       // build the action for that entry, and create what the resulting state shape would have looked like
@@ -41,7 +41,7 @@ export default (req, action) => {
 
       prev.entries = action.info === 'reset' ? entries : history.entries // on reset, use next history's entries for previous state, or the entries may not match
       prev.length = length
-      prev.hasSSR = hasSSR
+      prev.universal = universal
       prev.index = prevIndex
       prev.url = prevLocation.url
       prev.basename = prevLocation.basename
@@ -49,7 +49,7 @@ export default (req, action) => {
       // prev.pathname = prevLocation.pathname
       prev.state = prevLocation.state || {}
     }
-    else prev = createPrev(hasSSR)
+    else prev = createPrev(universal)
   }
   else if (nextHistory.kind === 'redirect') {
     prev = curr.prev    // keep previous prev state to reflect how the end user perceives the app

@@ -187,8 +187,8 @@ export class Request {
     return this.action.location && this.action.location.kind
   }
 
-  hasSSR = () => {
-    return this.getLocation().hasSSR
+  isUniversal = () => {
+    return this.getLocation().universal
   }
 
   isFirstLoad = () => {

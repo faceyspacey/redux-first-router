@@ -133,7 +133,7 @@ export type LocationState = {
   kind: ?string,
   history: ?HistoryData,
   routesMap: RoutesMap,
-  hasSSR?: true
+  universal?: true
 }
 
 export type Location = {

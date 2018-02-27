@@ -24,8 +24,8 @@ export default (routes: RoutesMap, history: History, options: Options) => {
       (l.url !== st.url || l.kind === 'load' || action.info === 'reset')
     ) {
       const { type, params, query, state, hash, basename } = action
-      const hasSSR = st.hasSSR
-      return { type, params, query, state, hash, hasSSR, basename, ...l }
+      const universal = st.universal
+      return { type, params, query, state, hash, universal, basename, ...l }
     }
 
     if (action.type === ADD_ROUTES) {
@@ -73,7 +73,7 @@ export const createInitialState = (
   const action = urlToAction(location, routes, options)
   const { type, params = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
-  const hasSSR = isServer()
+  const universal = isServer()
 
   return {
     type,
@@ -94,13 +94,13 @@ export const createInitialState = (
     index,
     length,
 
-    hasSSR,
+    universal,
 
-    prev: createPrev(hasSSR)
+    prev: createPrev(universal)
   }
 }
 
-export const createPrev = (hasSSR: boolean) => ({
+export const createPrev = (universal: boolean) => ({
   type: '',
   params: {},
   query: {},
@@ -119,10 +119,10 @@ export const createPrev = (hasSSR: boolean) => ({
   index: -1,
   length: 0,
 
-  hasSSR
+  universal
 })
 
-// export const createPrevEntries = (entries, index, lastIndex, hasSSR: boolean, routes, opts) => {
+// export const createPrevEntries = (entries, index, lastIndex, universal: boolean, routes, opts) => {
 //   const n = index > lastIndex ? -1 : 1
 //   const direction = index > lastIndex ? 'forward' : 'backwawrd'
 //   const kind = direction === 'forward' ? 'push' : 'back'
@@ -145,6 +145,6 @@ export const createPrev = (hasSSR: boolean) => ({
 //     index: lastIndex,
 //     length: entries.length,
 
-//     hasSSR
+//     universal
 //   }
 // }
