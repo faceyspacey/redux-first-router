@@ -72,7 +72,7 @@ export default class History {
     const location = createLocation(path, state, k, this.location, bn)
     const back = this._isBack(location) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(location)
-    const kind = back ? 'back' : (next ? 'next' : 'redirect')
+    const kind = back ? 'back' : (next ? 'next' : 'replace')
 
     if (/back|next/.test(kind)) {
       return this.jump(back ? -1 : 1, state, undefined, undefined, notify)
@@ -113,19 +113,19 @@ export default class History {
     return this._notify({ nextHistory, commit }, notify)
   }
 
-  jump(n, state, byIndex = false, kind, notify = true, revertPop) {
+  jump(n, state, byIndex = false, manualKind, notify = true, revertPop) {
     console.log('N', n)
     n = this._resolveN(n, byIndex)
-    kind = kind || (n < 0 ? 'back' : 'next')
+    manualKind = manualKind || (n < 0 ? 'back' : 'next')
 
+    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'jump')
     const isPop = !!revertPop
     const index = this.index + n
     const entries = this.entries.slice(0)
     const location = entries[index] = { ...this.entries[index] }
     const nextState = { kind, location, index, entries }
-    const nextHistory = this._createNextHistory(nextState)
+    const nextHistory = this._createNextHistory(nextState, { manualKind })
     const commit = () => this._jump(nextState, n, isPop)
-    const info = n === -1 || n === 1 ? null : 'jump'     // info === jump will tell middleware/transformAction.js to create custom `prev`
 
     state = typeof state === 'function' ? state(location.state) : state
     location.state = { ...location.state, ...state }
@@ -134,18 +134,19 @@ export default class History {
       throw new Error(`[rudy] no entry at index: ${index}. Consider using \`history.canJump(n)\`.`)
     }
 
-    return this._notify({ nextHistory, commit, info, revertPop }, notify)
+    return this._notify({ nextHistory, commit, revertPop }, notify)
   }
 
   setState(state, n, byIndex = false, notify = true) {
     n = this._resolveN(n, byIndex)
 
+    const kind = 'setState'
     const curIndex = this.index
     const index = this.index + n
     const entries = this.entries.slice(0)
     const changedLocation = entries[index] = { ...this.entries[index] }
     const location = n === 0 ? changedLocation : this.location // insure if state set on current entry, location is not stale
-    const nextState = { kind: 'setState', location, index: curIndex, entries }
+    const nextState = { kind, location, index: curIndex, entries }
     const nextHistory = this._createNextHistory(nextState)
     const commit = () => this._setState(nextState, n)
 
@@ -167,29 +168,30 @@ export default class History {
     return this.jump(1, state, false, 'next', notify)
   }
 
-  reset(entries, index, kind, notify = true) {
+  reset(entries, index, manualKind, notify = true) {
     entries = entries.map(e => createLocation(e))
     index = index !== undefined ? index : entries.length - 1
 
-    if (!kind) {
+    if (!manualKind) {
       if (entries.length > 1) {
-        if (index === entries.length - 1) kind = 'next'   // assume the user would be going forward in the new entries stack, i.e. if at head
-        else if (index === this.index) kind = 'redirect'
-        else kind = index < this.index ? 'back' : 'next'  // assume the user is going 'back' if lower than current index, and 'next' otherwise
+        if (index === entries.length - 1) manualKind = 'next'   // assume the user would be going forward in the new entries stack, i.e. if at head
+        else if (index === this.index) manualKind = 'replace'
+        else manualKind = index < this.index ? 'back' : 'next'  // assume the user is going 'back' if lower than current index, and 'next' otherwise
       }
-      else kind = 'load'                                  // if one entry, set kind to 'load' so app can behave as if it's loaded for the first time
+      else manualKind = 'load'                                  // if one entry, set kind to 'load' so app can behave as if it's loaded for the first time
     }
 
     if (!entries[index]) {
       throw new Error(`[rudy] no location entry at index: ${index}.`)
     }
 
+    const kind = 'reset'
     const location = { ...entries[index] }
     const nextState = { kind, location, index, entries }
-    const nextHistory = this._createNextHistory(nextState)
+    const nextHistory = this._createNextHistory(nextState, { manualKind })
     const commit = () => this._reset(nextState)
 
-    return this._notify({ nextHistory, commit, info: 'reset' }, notify)
+    return this._notify({ nextHistory, commit }, notify)
   }
 
   canJump(n, byIndex) {
@@ -255,8 +257,8 @@ export default class History {
     this.saveHistory(this)
   }
 
-  _createNextHistory(state) {
-    const next = Object.assign({ type: UPDATE_HISTORY }, this, state)
+  _createNextHistory(state, moreState) {
+    const next = Object.assign({ type: UPDATE_HISTORY }, this, state, moreState)
     next.length = state.entries ? state.entries.length : this.length
     return next
   }

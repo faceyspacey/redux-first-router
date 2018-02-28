@@ -3,6 +3,9 @@ import { redirect } from 'redux-first-router'
 export default {
   HOME: {
     path: '/',
+    onEnter: () => {
+      console.log(document.querySelector('.Home__content--319uD'))
+    },
     beforeEnter: async (req) => {
       if (typeof window !== 'undefined' && window.foo) await new Promise(res => setTimeout(res, 3000))
 

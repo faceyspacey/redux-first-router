@@ -34,7 +34,7 @@ createTest('doesRedirect() on server returns true and if passed callback calls c
   const redirectFunc = jest.fn()
   doesRedirect(firstResponse, redirectFunc)
 
-  expect(redirectFunc).toBeCalledWith(302, '/redirected', { location: { kind: 'redirect', status: 302, url: '/redirected' }, status: 302, type: 'REDIRECTED', url: '/redirected' })
+  expect(redirectFunc).toBeCalledWith(302, '/redirected', { location: { kind: 'replace', status: 302, url: '/redirected' }, status: 302, type: 'REDIRECTED', url: '/redirected' })
 
   const expressResponse = { redirect: jest.fn() }
   doesRedirect(firstResponse, expressResponse)

@@ -14,7 +14,6 @@ export default (req, url, action, history) => {
     const { basename, location } = req.tmp.prevAction
     const { index, entries, pathname: prevUrl } = location
     let n = getPrevNextN(prevUrl, req.history)
-    console.log('HELP', n, prevUrl, req.history.index, req.history.entries)
     if (n) {
       if (!isNAdjacentToSameUrl(url, req.history, n)) {
         n = req.tmp.revertPop ? null : n // if this back/next movement is do to a user-triggered pop (browser back/next buttons), we don't need to shift the browser history by n, since it's already been done
@@ -38,12 +37,14 @@ export default (req, url, action, history) => {
   if (redirect) {
     // the kind no matter what reflects the appropriate intent
     // but we must also consider automatic back/next detection by `history`
-    nextHistory.kind = /back|next/.test(nextHistory.kind) ? nextHistory.kind : 'redirect'
+    nextHistory.kind = req.tmp.load
+      ? 'load'
+      : nextHistory.kind === 'push' ? 'replace' : nextHistory.kind
   }
 
   const curr = req.getLocation()
   let from                                                              // `from` represents the route the user would have gone to had there been no redirect
-  let prev = curr.kind === 'init' ? curr.prev : curr                    // `init` comes before initial `load` action, but they share the same `prev` state, as they are essentially the same, except the former is the initial state before any actions are dispatched
+  let prev = req.tmp.load ? curr.prev : curr                            // `init` comes before initial `load` action, but they share the same `prev` state, as they are essentially the same, except the former is the initial state before any actions are dispatched
 
   if (redirect) {
     from = req.tmp.from || prev                                         // `prev` used when redirect comes from outside of pipeline via `redirect` action creator

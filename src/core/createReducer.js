@@ -20,9 +20,7 @@ export default (routes: RoutesMap, history: History, options: Options) => {
     const r = routes[action.type]
     const l = action.location
 
-    if (r && r.path && !action.error &&
-      (l.url !== st.url || l.kind === 'load' || action.info === 'reset')
-    ) {
+    if (r && r.path && (l.url !== st.url || /load|reset/.test(l.kind))) {
       const { type, params, query, state, hash, basename } = action
       const universal = st.universal
       return { type, params, query, state, hash, universal, basename, ...l }

@@ -184,6 +184,7 @@ export class Request {
   }
 
   getKind = () => {
+    if (this.tmp.load) return 'load'
     return this.action.location && this.action.location.kind
   }
 

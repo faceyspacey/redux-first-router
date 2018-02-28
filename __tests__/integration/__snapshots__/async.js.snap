@@ -109,7 +109,7 @@ Object {
     },
     "hash": "",
     "index": 1,
-    "kind": "redirect",
+    "kind": "replace",
     "length": 2,
     "params": Object {},
     "pathname": "/redirected",

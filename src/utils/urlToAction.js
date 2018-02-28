@@ -61,10 +61,10 @@ const defaultFromParam = (
   route: Route,
   opts: Options
 ) => {
-  const convert = route.convertNumbers ||
+  const convertNum = route.convertNumbers ||
     (opts.convertNumbers && route.convertNumbers !== false)
 
-  if (convert && isNumber(decodedVal)) {
+  if (convertNum && isNumber(decodedVal)) {
     return parseFloat(decodedVal)
   }
 
@@ -124,4 +124,4 @@ const fromState = (state: Object, route: Route, opts: Options) => {
 
 const transformers = { fromParams, fromQuery, fromHash }
 
-const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)
+const isNumber = (val: string) => /^\d+$/.test(val)

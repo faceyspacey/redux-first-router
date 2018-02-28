@@ -8,10 +8,11 @@ export default (req, action, prevState, history, fromAction) => {
   const from = createFrom(fromAction)
   const scene = typeToScene(type)
   const pop = !!req.tmp.revertPop
-  const direction = getDirection(kind, prevState)
+  const direction = getDirection(kind, index, prevState)
+
   const basename = bn.substr(1)
   const url = bn + u
-  const status = (kind === 'redirect' || fromAction)
+  const status = (kind === 'replace' || fromAction)
     ? ((action.location && action.location.status) || 302)
     : (isNotFound(type) ? 404 : 200)
 
@@ -72,17 +73,12 @@ const createStateReference = (location) => {
   delete ref.universal
   delete ref.from
   delete ref.blocked
+  delete ref.location
 
   return ref
 }
 
-const getDirection = (kind, prevState) =>
-  kind === 'redirect' ? prevState.direction : directions[kind]
-
-
-const directions = {
-  load: 'forward',
-  push: 'forward',
-  next: 'forward',
-  back: 'backward'
-}
+const getDirection = (kind, currIndex, prevState) =>
+  /replace|setState/.test(kind)
+    ? prevState.direction
+    : currIndex < prevState.index ? 'backward' : 'forward'

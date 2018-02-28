@@ -6,6 +6,6 @@ export default (action: Action, status: number = 302) => ({
   location: {
     ...action.location,
     status,
-    kind: 'redirect'
+    kind: 'replace'
   }
 })

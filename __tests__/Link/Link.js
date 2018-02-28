@@ -109,7 +109,7 @@ it('ON_CLICK: dispatches redirect if redirect === true', async () => {
   const { location } = store.getState() /*? $.location */
 
   expect(location.pathname).toEqual('/first')
-  expect(location.kind).toEqual('redirect')
+  expect(location.kind).toEqual('replace')
 })
 
 it('ON_TOUCH_START: dispatches action onTouchStart if down === true', async () => {

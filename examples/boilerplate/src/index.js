@@ -22,7 +22,10 @@ const render = App => {
   )
 }
 
-store.dispatch(firstRoute(false)).then(() => render(App))
+store.dispatch(firstRoute()).then(() => {
+  console.log('RENDER')
+  render(App)
+})
 
 if (module.hot && process.env.NODE_ENV === 'development') {
   module.hot.accept('./components/App', () => {

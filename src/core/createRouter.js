@@ -102,8 +102,8 @@ export default (
     ...api,
     middleware,
     reducer,
-    firstRoute: (resolveEarly = true) => {
-      api.resolveFirstRouteEarly = resolveEarly
+    firstRoute: (resolveOnEnter = true) => {
+      api.resolveFirstRouteOnEnter = resolveOnEnter
       return history.firstRoute
     }
   }

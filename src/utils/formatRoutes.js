@@ -1,6 +1,5 @@
 // @flow
 import { ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY } from '../types'
-import { redirect } from '../actions'
 import type { RoutesMap, RoutesMapInput } from '../flow-types'
 
 import {
@@ -28,9 +27,7 @@ export default (
 
   for (const type in routes) {
     const route = format(routes[type], type, routes, formatRoute, isAddRoutes)
-
     route.type = type
-    if (route.redirect) createRedirect(route, routes)
     routes[type] = route
   }
 
@@ -51,12 +48,3 @@ export const format = (r, type, routes, formatRoute, isAddRoutes) => {
   return route
 }
 
-const createRedirect = (route, routes) => {
-  const t = route.redirect
-  const scenicType = `${route.scene}/${t}`
-  const type = routes[scenicType] ? scenicType : t
-
-  route.redirectBeforeEnter = ({ action, dispatch }) => {
-    return dispatch(redirect({ ...action, type }, 301))
-  }
-}

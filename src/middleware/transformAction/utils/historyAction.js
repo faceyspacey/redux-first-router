@@ -21,14 +21,21 @@ export default (req, action) => {
   // for specialty `history.reset` and `history.jump` methods/actionCreators, we gotta jump through a few
   // hoops to reconcile actions and state to match what would be logical. The below code in combination with
   // History.js re-creates the previous entry based on which direction (back or next) was determined to be going.
-  if (/jump|reset/.test(req.action.info)) {
-    action.info = req.action.info // will === 'jump' || or 'reset' (used by `isDoubleDispatch` in this middleware and location reducer to allow processing)
-
+  if (/jump|reset/.test(nextHistory.kind)) {
     // find previous location entry based on the desired direction to pretend to be going
-    const { entries, index, length, kind } = nextHistory
-    const prevIndex = kind === 'back' ? index + 1 : index - 1
+    const { entries, index, length, manualKind } = nextHistory
+
+    let prevIndex = manualKind === 'next' ? index - 1 : index + 1
+
+    if (manualKind === 'replace') {
+      prevIndex = curr.direction === 'forward' ? index - 1 : index + 1
+      if (entries[index].url !== curr.url) {
+        from = curr
+      }
+    }
+
     const prevLocation = entries[prevIndex]
-    const universal = !!req.getLocation().universal
+    const universal = !!curr.universal
 
     if (prevLocation) {
       // build the action for that entry, and create what the resulting state shape would have looked like
@@ -39,7 +46,7 @@ export default (req, action) => {
       // do what the location reducer does where it maps `...action.location` flatly on to `action`
       prev = Object.assign({}, act, act.location)
 
-      prev.entries = action.info === 'reset' ? entries : history.entries // on reset, use next history's entries for previous state, or the entries may not match
+      prev.entries = nextHistory.kind === 'reset' ? entries : history.entries // on reset, use next history's entries for previous state, or the entries may not match
       prev.length = length
       prev.universal = universal
       prev.index = prevIndex
@@ -51,7 +58,7 @@ export default (req, action) => {
     }
     else prev = createPrev(universal)
   }
-  else if (nextHistory.kind === 'redirect') {
+  else if (nextHistory.kind === 'replace') {
     prev = curr.prev    // keep previous prev state to reflect how the end user perceives the app
     from = curr         // but provide access to what the state was in the `from` key for user by developers
   }

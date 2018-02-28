@@ -21,8 +21,8 @@ const createResetAction = (args, history, routes, options) => {
 
   if (typeof entries[0] === 'object' && entries[0].type) {
     if (entries.length === 1) {
-      const entry = findResetFirstEntry(entries[0], routes, options)
-      entries.unshift({ ...entry })
+      const entry = findResetFirstAction(entries[0], routes, options)
+      entries.unshift(entry)
     }
 
     const locations = entries.map(action => {
@@ -33,10 +33,15 @@ const createResetAction = (args, history, routes, options) => {
     return history.reset(locations, index, kind, false)
   }
 
+  if (entries.length === 1) {
+    const entry = findResetFirstEntry(entries[0], routes, options)
+    entries.unshift(entry)
+  }
+
   return history.reset(entries, index, kind, false)
 }
 
-const findResetFirstEntry = (action, routes, options) => {
+const findResetFirstAction = (action, routes, options) => {
   if (options.resetFirstEntry) {
     return typeof options.resetFirstEntry === 'function'
       ? options.resetFirstEntry(action)
@@ -44,9 +49,26 @@ const findResetFirstEntry = (action, routes, options) => {
   }
 
   if (routes[action.type].path !== '/') {
-    const route = Object.keys(routes).find(route => route.path === '/')
-    return route ? { type: route.type } : { type: 'NOT_FOUND' }
+    const homeType = Object.keys(routes).find(type => routes[type].path === '/')
+    return homeType ? { type: homeType } : { type: 'NOT_FOUND' }
   }
 
   return { type: 'NOT_FOUND' }
+}
+
+const findResetFirstEntry = (entry, routes, options) => {
+  if (options.resetFirstEntry) {
+    return typeof options.resetFirstEntry === 'function'
+      ? options.resetFirstEntry(action)
+      : options.resetFirstEntry
+  }
+
+  const notFoundPath = routes.NOT_FOUND.path
+
+  if (entry !== '/' || entry.url !== '/') {
+    const homeRoute = Object.keys(routes).find(type => routes[type].path === '/')
+    return homeRoute ? '/' : notFoundPath
+  }
+
+  return notFoundPath
 }
