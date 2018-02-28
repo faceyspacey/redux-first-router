@@ -1,6 +1,6 @@
 {
   "name": "redux-first-router",
-  "version": "0.0.7-rudy",
+  "version": "0.0.8-rudy",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "scripts": {

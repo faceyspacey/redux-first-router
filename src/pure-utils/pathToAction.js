@@ -85,4 +85,4 @@ export default (
   return { type: NOT_FOUND, payload: {}, meta }
 }
 
-const isNumber = (val: string) => !val.match(/^\s*$/) && !isNaN(val)
+const isNumber = (val: string) => /^\d+$/.test(val)
