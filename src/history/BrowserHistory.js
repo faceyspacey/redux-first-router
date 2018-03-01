@@ -82,6 +82,8 @@ export default class BrowserHistory extends History {
 
       const n = this.pendingPop
         ? this._isAfterNext(loc) ? 1 : -1
+          // ? 1
+          // : loc.url === this.location.url ? 1 : -1
         : this._isNext(loc) ? 1 : -1
 
       const kind = n === -1 ? 'back' : 'next'
@@ -99,7 +101,7 @@ export default class BrowserHistory extends History {
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
       // did it via browser back/next buttons
-      this.jump(n, undefined, false, kind, true, revertPop)
+      this.currentPop = this.jump(n, undefined, false, kind, true, revertPop)
     }
 
     // you don't really need to worry about the below utility work:

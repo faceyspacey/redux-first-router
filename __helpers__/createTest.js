@@ -7,11 +7,11 @@ export default async (...allArgs) => {
   const hasCallbacks = callbacks.length > 0
 
   const [testName, routesMap] = args
-  let [,, options = {}, actions] = args
+  let [,, options = { browser: false }, actions] = args
 
   if (Array.isArray(options)) {
     actions = options
-    options = {}
+    options = { browser: false }
   }
 
   if (!actions) {
@@ -133,6 +133,8 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       ? null
       : await store.dispatch(firstRoute(false))
 
+    const awaitPop = opts.browser && createAwaitPop(history)
+
     await callback({
       firstRoute,
       firstResponse,
@@ -140,6 +142,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       routes,
       options,
       store,
+      awaitPop,
       dispatch: store.dispatch,
       getState: store.getState,
       getLocation: () => store.getState().location,
@@ -152,6 +155,16 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         snapChange(prefix, res, store, history)
         snapRoutes(prefix, routes)
         snapOptions(prefix, options)
+
+        return res
+      },
+      snapPop: async (direction, prefix = '') => {
+        const res = await awaitPop(direction)
+
+        snapChange(prefix, res, store, history)
+        snapRoutes(prefix, routes)
+        snapOptions(prefix, options)
+
         return res
       }
     })
@@ -354,4 +367,20 @@ const expectOnError = (prefix, obj) => {
   if (typeof obj.onError === 'function' && obj.onError.mock) {
     expect(obj.onError.mock.calls.length).toMatchSnapshot(prefix + ' - onError')
   }
+}
+
+
+// for testing pops in a "real" browser (as simulated by Jest)
+
+const createAwaitPop = (history) => {
+  return (direction = 'back') => {
+    history.currentPop = null
+    window.history[direction]()
+    return awaitPop(history)
+  }
+}
+
+const awaitPop = async (history) => {
+  await new Promise(res => setTimeout(res, 3))
+  return history.currentPop || awaitPop(history)
 }

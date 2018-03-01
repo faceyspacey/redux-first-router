@@ -16,6 +16,8 @@ export default ({ action, history, routes, options, has, dispatch }) => {
   return dispatch(act)
 }
 
+// work pertaining only to `RESET` action
+
 const createResetAction = (args, history, routes, options) => {
   const [entries, index, kind] = args
 

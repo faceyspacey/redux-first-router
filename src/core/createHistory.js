@@ -9,7 +9,7 @@ import {
 } from '../history/utils'
 
 export default opts => {
-  if (process.env.NODE_ENV === 'test' || !canUseDOM) {
+  if (opts.browser === false || !canUseDOM) {
     return new MemoryHistory(opts)
   }
 
