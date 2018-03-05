@@ -91,7 +91,7 @@ export default (
           return onError(req)
         })
         .then(res => {
-          const isRouteChangingPipeline = req.route.path && !req.clientLoadBusy
+          const isRouteChangingPipeline = req.route.path && !req.tmp.cancelled && !req.clientLoadBusy
           req.ctx.busy = isRouteChangingPipeline ? false : req.ctx.busy
           return res
         })

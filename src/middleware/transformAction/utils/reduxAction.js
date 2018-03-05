@@ -13,12 +13,13 @@ export default (req, url, action, history) => {
   if (!req.tmp.committed && req.tmp.prevAction) {
     const { basename, location } = req.tmp.prevAction
     const { index, entries, pathname: prevUrl } = location
+
     let n = getPrevNextN(prevUrl, req.history)
     if (n) {
       if (!isNAdjacentToSameUrl(url, req.history, n)) {
         n = req.tmp.revertPop ? null : n // if this back/next movement is do to a user-triggered pop (browser back/next buttons), we don't need to shift the browser history by n, since it's already been done
         pop = { n, entries, index, location: { basename, url: prevUrl } }
-        console.log('SINGLE POP!', pop)
+        console.log('SINGLE POP!', action.type, pop)
         method = 'replacePop'
       }
       else {

@@ -42,21 +42,8 @@ export class Request {
 
     // cancel pending not committed requests if new ones quickly come in
     if (route.path || fromHistory) {
-      console.log('CHECK IF CANCELED', fromHistory ? action.nextHistory.location.url : action.type, isNewPipeline ? 'true - new pipeline' : 'pipeline redirect', pendingRequest)
-      if (fromHistory && action.revertPop) {
-        api.history.pendingPop = true
-      }
-
       if (pendingRequest && isNewPipeline) {
-        if (fromHistory && action.revertPop) {
-          console.log('NEWEST HISTORY POP REVERT!!!!!!')
-          this.tmp.cancelled = true
-          action.revertPop(false)
-        }
-        else {
-          pendingRequest.tmp.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
-          pendingRequest.revert()
-        }
+        pendingRequest.tmp.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
       }
 
       ctx.pending = this
@@ -81,29 +68,21 @@ export class Request {
 
     // available when browser back/next buttons used. It's used in 2 cases:
     // 1) when you return `false` from a route triggered by the browser back/next buttons (See `core/compose.js`)
-    // 2) as a flag when you redirect from a route triggered by browser back/next buttons (see `middleware/transformAction/utils/reduxAction.js`)
+    // 2) in `transformAction/index.js` when popping to a route that redirects to the current URL (yes, we're on top of edge cases!)
     this.tmp.revertPop = this.tmp.revertPop || action.revertPop
 
     this.getState = store.getState
   }
 
   commit = () => {
-    console.log('COMMIT!', this.type, this.params && this.params.category)
     this.ctx.pending = false
     this.tmp.committed = true
-    this.history.pendingPop = false
+    this.history.pendingPop = null
 
     return Promise.all([
       this.commitDispatch(this.action),
       this.commitHistory()
     ]).then(([res]) => res)
-  }
-
-  revert = () => {
-    if (this.tmp.revertPop) {
-      console.log('REVERT!!!', this.type)
-      this.tmp.revertPop(false)
-    }
   }
 
   dispatch = (action) => {

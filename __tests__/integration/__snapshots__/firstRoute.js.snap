@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`firstRoute(false) resolves early on enter: response 1`] = `
+exports[`firstRoute(true) resolves early on enter: response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -52,7 +52,7 @@ Object {
 }
 `;
 
-exports[`firstRoute(false) resolves early on enter: state 1`] = `
+exports[`firstRoute(true) resolves early on enter: state 1`] = `
 Object {
   "location": Object {
     "basename": "",

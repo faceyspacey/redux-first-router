@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pop test:  - history_entries 1`] = `
+exports[`double pop:  - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -8,7 +8,7 @@ Array [
     "key": "345678",
     "pathname": "/",
     "search": "",
-    "state": Object {},
+    "state": undefined,
     "url": "/",
   },
   Object {
@@ -20,12 +20,21 @@ Array [
     "state": Object {},
     "url": "/second",
   },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
 ]
 `;
 
-exports[`pop test:  - history_index 1`] = `0`;
+exports[`double pop:  - history_index 1`] = `1`;
 
-exports[`pop test:  - response 1`] = `
+exports[`double pop:  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -38,7 +47,7 @@ Object {
         "key": "345678",
         "pathname": "/",
         "search": "",
-        "state": Object {},
+        "state": undefined,
         "url": "/",
       },
       Object {
@@ -50,12 +59,21 @@ Object {
         "state": Object {},
         "url": "/second",
       },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
     ],
     "from": null,
-    "index": 0,
+    "index": 1,
     "kind": "back",
-    "length": 2,
-    "pathname": "/",
+    "length": 3,
+    "pathname": "/second",
     "pop": true,
     "prev": Object {
       "basename": "",
@@ -79,39 +97,50 @@ Object {
           "state": Object {},
           "url": "/second",
         },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
       ],
       "hash": "",
-      "index": 1,
+      "index": 2,
       "kind": "push",
-      "length": 2,
+      "length": 3,
       "params": Object {},
-      "pathname": "/second",
+      "pathname": "/third",
       "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
       "state": Object {},
       "status": 200,
-      "type": "SECOND",
-      "url": "/second",
+      "type": "THIRD",
+      "url": "/third",
     },
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/",
+    "url": "/second",
   },
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "FIRST",
+  "type": "SECOND",
 }
 `;
 
-exports[`pop test:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`double pop:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`pop test:  - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`double pop:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`pop test:  - state 1`] = `
+exports[`double pop:  - routes - SECOND - beforeEnter 1`] = `2`;
+
+exports[`double pop:  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -123,7 +152,7 @@ Object {
         "key": "345678",
         "pathname": "/",
         "search": "",
-        "state": Object {},
+        "state": undefined,
         "url": "/",
       },
       Object {
@@ -135,14 +164,23 @@ Object {
         "state": Object {},
         "url": "/second",
       },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
     ],
     "from": null,
     "hash": "",
-    "index": 0,
+    "index": 1,
     "kind": "back",
-    "length": 2,
+    "length": 3,
     "params": Object {},
-    "pathname": "/",
+    "pathname": "/second",
     "pop": true,
     "prev": Object {
       "basename": "",
@@ -166,33 +204,42 @@ Object {
           "state": Object {},
           "url": "/second",
         },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
       ],
       "hash": "",
-      "index": 1,
+      "index": 2,
       "kind": "push",
-      "length": 2,
+      "length": 3,
       "params": Object {},
-      "pathname": "/second",
+      "pathname": "/third",
       "pop": false,
       "query": Object {},
       "scene": "",
       "search": "",
       "state": Object {},
       "status": 200,
-      "type": "SECOND",
-      "url": "/second",
+      "type": "THIRD",
+      "url": "/third",
     },
     "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
     "status": 200,
-    "type": "FIRST",
+    "type": "SECOND",
     "universal": false,
-    "url": "/",
+    "url": "/second",
   },
-  "title": "FIRST",
+  "title": "SECOND",
 }
 `;
 
-exports[`pop test:  - title 1`] = `"FIRST"`;
+exports[`double pop:  - title 1`] = `"SECOND"`;

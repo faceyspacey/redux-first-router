@@ -25,11 +25,13 @@ export default (
   routes[CONFIRM] = routes[CONFIRM] || { thunk: confirm, dispatch: false }
   routes[CALL_HISTORY] = routes[CALL_HISTORY] || { thunk: callHistory, dispatch: false }
 
-  for (const type in routes) {
+  const types = Object.keys(routes)
+
+  types.forEach(type => {
     const route = format(routes[type], type, routes, formatRoute, isAddRoutes)
     route.type = type
     routes[type] = route
-  }
+  })
 
   return routes
 }

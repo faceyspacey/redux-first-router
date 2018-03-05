@@ -14,8 +14,8 @@ export default (routes: RoutesMap) => (
   if (typeof route[key] !== 'function') return route[key]
 
   action = typeof action === 'object' ? action : { type }
-  return route[key](...args, action)
+  return route[key](action, ...args)
 }
 
 // usage:
-// callRoute(routes)(action, name)
+// callRoute(routes)(action, key, ...args)

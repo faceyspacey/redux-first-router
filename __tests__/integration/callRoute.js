@@ -8,7 +8,7 @@ createTest('callRoute(action | type, routeKey, ...args)', {
   },
   THIRD: {
     path: '/third',
-    doSomething: (arg, action) => arg + action.type
+    doSomething: (action, arg1, arg2) => action.type + arg1 + arg2
   }
 }, [], async ({ routes }) => {
   const call = callRoute(routes)
@@ -20,5 +20,5 @@ createTest('callRoute(action | type, routeKey, ...args)', {
   expect(call('SECOND', 'foo')).toEqual('bar')
   expect(call({ type: 'SECOND' }, 'foo')).toEqual('bar')
 
-  expect(call('THIRD', 'doSomething', 'arg')).toEqual('argTHIRD')
+  expect(call('THIRD', 'doSomething', 'arg1', 'arg2')).toEqual('THIRDarg1arg2')
 })

@@ -1,7 +1,7 @@
 import createTest from '../../__helpers__/createTest'
 
-// false is the default by the way
-createTest('firstRoute(false) resolves early on enter', {
+// true is the default by the way
+createTest('firstRoute(true) resolves early on enter', {
   FIRST: {
     path: '/first',
     beforeEnter: () => 'beforeEnterComplete',

@@ -23,7 +23,9 @@ export default (routes: RoutesMap, history: History, options: Options) => {
     if (r && r.path && (l.url !== st.url || /load|reset/.test(l.kind))) {
       const { type, params, query, state, hash, basename } = action
       const universal = st.universal
-      return { type, params, query, state, hash, universal, basename, ...l }
+      const s = { type, params, query, state, hash, universal, basename, ...l }
+      if (st.ready === false) s.ready = true
+      return s
     }
 
     if (action.type === ADD_ROUTES) {
@@ -40,6 +42,14 @@ export default (routes: RoutesMap, history: History, options: Options) => {
     if (action.type.indexOf('_ERROR') > -1) {
       const { error, type: errorType } = action
       return { ...st, error, errorType }
+    }
+
+    if (action.type.indexOf('_COMPLETE') > -1) {
+      return { ...st, ready: true }
+    }
+
+    if (action.type.indexOf('_START') > -1) {
+      return { ...st, ready: false }
     }
 
     if (action.type === BLOCK) {

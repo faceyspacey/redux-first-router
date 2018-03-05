@@ -633,6 +633,7 @@ Object {
       "url": "/first",
     },
     "query": Object {},
+    "ready": true,
     "scene": "",
     "search": "",
     "state": Object {},

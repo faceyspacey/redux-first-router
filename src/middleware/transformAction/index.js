@@ -57,17 +57,20 @@ export default (api) => async (req, next) => {
 
   if (isDoubleDispatch(req, getLocation())) { // don't dispatch the same action twice
     req.ctx.pending = false
-    console.log('DOUBLE', req.tmp.revertPop, req.tmp)
-    req.history.pendingPop = false
+    console.log('DOUBLE DISPATCH', req.tmp.revertPop, req.tmp)
+    req.history.pendingPop = null
 
     if (!req.tmp.prevAction) {
       return req.action // primary use case
     }
 
+    req.ctx.doubleDispatchRedirect = req.action
+
     // and if it happens to be within a route-changing pipline that redirects,
     // insure the parent pipeline short-ciruits while setting `state.from` (see `call/index.js`)
     if (req.tmp.revertPop) req.tmp.revertPop()
-    return req.ctx.doubleDispatchRedirect = req.action
+
+    return req.action
   }
 
   const { type, params, query, hash, state, location } = req.action

@@ -7,12 +7,16 @@ export default async (...allArgs) => {
   const hasCallbacks = callbacks.length > 0
 
   const [testName, routesMap] = args
-  let [,, options = { browser: false }, actions] = args
+  let [,, options = {}, actions] = args
 
   if (Array.isArray(options)) {
     actions = options
-    options = { browser: false }
+    options = {}
   }
+
+  if (options.skip) return
+
+  options.browser = options.browser || false
 
   if (!actions) {
     actions = Object.keys(routesMap).filter(type => !/FIRST|REDIRECTED/.test(type))
@@ -133,7 +137,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       ? null
       : await store.dispatch(firstRoute(false))
 
-    const awaitPop = opts.browser && createAwaitPop(history)
+    const pop = opts.browser && createPop(history)
 
     await callback({
       firstRoute,
@@ -142,7 +146,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       routes,
       options,
       store,
-      awaitPop,
+      pop,
       dispatch: store.dispatch,
       getState: store.getState,
       getLocation: () => store.getState().location,
@@ -159,7 +163,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         return res
       },
       snapPop: async (direction, prefix = '') => {
-        const res = await awaitPop(direction)
+        const res = await pop(direction)
 
         snapChange(prefix, res, store, history)
         snapRoutes(prefix, routes)
@@ -372,7 +376,7 @@ const expectOnError = (prefix, obj) => {
 
 // for testing pops in a "real" browser (as simulated by Jest)
 
-const createAwaitPop = (history) => {
+const createPop = (history) => {
   return (direction = 'back') => {
     history.currentPop = null
     window.history[direction]()
@@ -380,7 +384,11 @@ const createAwaitPop = (history) => {
   }
 }
 
-const awaitPop = async (history) => {
+const awaitPop = async (history, tries = 1) => {
+  if (tries >= 10) {
+    throw new Error(`awaitPop reached the maximum amount of tries (${tries})`)
+  }
+
   await new Promise(res => setTimeout(res, 3))
-  return history.currentPop || awaitPop(history)
+  return history.currentPop || awaitPop(history, ++tries)
 }

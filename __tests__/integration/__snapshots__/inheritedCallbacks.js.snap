@@ -503,6 +503,7 @@ Object {
       "url": "",
     },
     "query": Object {},
+    "ready": true,
     "scene": "",
     "search": "",
     "state": Object {},

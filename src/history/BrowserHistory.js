@@ -80,23 +80,23 @@ export default class BrowserHistory extends History {
     const handlePop = loc => {
       if (this._popForced) return (this._popForced = false)
 
-      const n = this.pendingPop
-        ? this._isAfterNext(loc) ? 1 : -1
-          // ? 1
-          // : loc.url === this.location.url ? 1 : -1
-        : this._isNext(loc) ? 1 : -1
+      let n
+
+      if (!this.pendingPop) {
+        n = this._isNext(loc) ? 1 : -1
+        this.pendingPop = n
+      }
+      else if (loc.url === this.location.url) {
+        n = this.pendingPop * -1 // switch directions
+        return this._forceGo(n * -1)
+      }
+      else {
+        n = this.pendingPop
+        return this._forceGo(n * -1)
+      }
 
       const kind = n === -1 ? 'back' : 'next'
-
-      console.log("RECEIVED POP", this.pendingPop, kind, loc.url)
-
-      const revertPop = this._once((shouldAwait = true) => {
-        console.log('POP REVERTED - BrowserHistory', loc.url)
-        if (!shouldAwait) return this._forceGo(n * -1)
-
-        return this._awaitLocation(loc, 'revert')
-          .then(() => this._forceGo(n * -1))
-      })
+      const revertPop = this._once(() => this._forceGo(n * -1))
 
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already

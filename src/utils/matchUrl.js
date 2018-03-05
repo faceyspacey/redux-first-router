@@ -73,7 +73,7 @@ export default (
     params: fromParams ? fromParams(params, route, opts) : params,
     query: fromQuery ? fromQuery(query, route, opts) : query,
     hash: fromHash ? fromHash(hash || '', route, opts) : (hash || ''),
-    matchedPath: matchers.path === '/' && path === '' ? '/' : path, // the matched portion of the URL
+    matchedPath: matchers.path === '/' && path === '' ? '/' : path, // the matched portion of the URL/path
     matchers,
     partial: !!options.partial
   }

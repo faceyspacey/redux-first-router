@@ -46,3 +46,23 @@ createTest('routes can specify route.middleware as function to override global m
     }
   }
 })
+
+createTest('call({ dispatchStart: true })', {
+  SECOND: {
+    path: '/second',
+    thunk: async (req) => {
+      await new Promise(res => setTimeout(res, 5))
+      expect(req.getLocation().ready).toEqual(false)
+      return 'SUCCESS!'
+    },
+    middleware: [
+      transformAction,
+      call('thunk', { dispatchStart: true }),
+      enter,
+      () => (req, next) => {
+        expect(req.getLocation().ready).toEqual(true)
+        return next()
+      }
+    ]
+  }
+})

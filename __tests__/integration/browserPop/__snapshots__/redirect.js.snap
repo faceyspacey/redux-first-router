@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pop redirect:  - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`pop redirect:  - history_index 1`] = `0`;
+
+exports[`pop redirect:  - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "direction": "backward",
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/",
+            "search": "",
+            "state": Object {},
+            "url": "/",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 0,
+        "kind": "back",
+        "length": 2,
+        "pathname": "/",
+        "pop": true,
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/third",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`pop redirect:  - routes - FIRST - beforeEnter 1`] = `2`;
+
+exports[`pop redirect:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`pop redirect:  - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`pop redirect:  - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "direction": "backward",
+        "entries": Array [
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/",
+            "search": "",
+            "state": Object {},
+            "url": "/",
+          },
+          Object {
+            "basename": "",
+            "hash": "",
+            "key": "345678",
+            "pathname": "/second",
+            "search": "",
+            "state": Object {},
+            "url": "/second",
+          },
+        ],
+        "index": 0,
+        "kind": "back",
+        "length": 2,
+        "pathname": "/",
+        "pop": true,
+        "scene": "",
+        "search": "",
+        "status": 200,
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/third",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "THIRD",
+    "universal": false,
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`pop redirect:  - title 1`] = `"THIRD"`;
