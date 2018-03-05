@@ -1,4 +1,4 @@
-import createTest from '../../../__helpers__/createTest'
+import createTest from '../../../../__helpers__/createTest'
 
 createTest('double pop (when 4th index same as prev)', {
   FIRST: '/',

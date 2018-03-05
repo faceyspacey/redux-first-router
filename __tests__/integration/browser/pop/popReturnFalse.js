@@ -1,5 +1,5 @@
-import createTest from '../../../__helpers__/createTest'
-import awaitUrlChange from '../../../__helpers__/awaitUrlChange'
+import createTest from '../../../../__helpers__/createTest'
+import awaitUrlChange from '../../../../__helpers__/awaitUrlChange'
 
 createTest('pop from route that wont let you leave', {
   FIRST: '/',

@@ -1,4 +1,4 @@
-import createTest from '../../../__helpers__/createTest'
+import createTest from '../../../../__helpers__/createTest'
 
 createTest('double pop', {
   FIRST: '/',

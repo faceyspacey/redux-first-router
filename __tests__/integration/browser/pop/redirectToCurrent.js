@@ -1,5 +1,5 @@
-import createTest from '../../../__helpers__/createTest'
-import awaitUrlChange from '../../../__helpers__/awaitUrlChange'
+import createTest from '../../../../__helpers__/createTest'
+import awaitUrlChange from '../../../../__helpers__/awaitUrlChange'
 
 createTest('pop redirect to current URL', {
   FIRST: '/',

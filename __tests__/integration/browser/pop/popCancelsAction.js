@@ -1,4 +1,4 @@
-import createTest from '../../../__helpers__/createTest'
+import createTest from '../../../../__helpers__/createTest'
 
 createTest('regular action then pop (cancel regular action)', {
   FIRST: {
