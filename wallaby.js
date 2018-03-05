@@ -23,7 +23,7 @@ module.exports = wallaby => {
       // '__tests__/integration/actions/addRoutes.js',
       // '__tests__/integration/createRequest.js',
       // '__tests__/integration/dispatchFrom.js',
-      '__tests__/integration/browserPop/**/*.js',
+      '__tests__/integration/browser/sessionStorage/**/*.js',
       // '__tests__/integration/browserPop/popCancelsAction.js',
       // '__tests__/integration/cancelPendingRequest.js',
       // '__tests__/integration/actions/history.js',

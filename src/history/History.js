@@ -201,7 +201,11 @@ export default class History {
 
   listen(fn) {
     this._listener = fn
-    return () => this._listener = null
+    return () => this.unlisten()
+  }
+
+  unlisten() {
+    this._listener = null
   }
 
   setBasename(basename) {

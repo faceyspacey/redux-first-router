@@ -12,10 +12,6 @@ const setItem = (key, val) => {
   window.sessionStorage.setItem(prefixKey(key), JSON.stringify(val))
 }
 
-const removeItem = key => {
-  window.sessionStorage.removeItem(prefixKey(key))
-}
-
 const getItem = key => {
   try {
     const json = window.sessionStorage.getItem(prefixKey(key))
@@ -24,8 +20,6 @@ const getItem = key => {
   catch (error) {
     // Ignore invalid JSON.
   }
-
-  return undefined
 }
 
 const getSetItem = (key, val) => {

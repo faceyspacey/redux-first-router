@@ -177,7 +177,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
   })
 }
 
-const setupStore = (routesMap, initialPath, opts) => {
+export const setupStore = (routesMap, initialPath, opts) => {
   const routes = createRoutes(routesMap)
   const options = createOptions(opts)
 
@@ -261,7 +261,7 @@ const createRoutes = (routesMap) => {
   }
 }
 
-const createOptions = (opts) => {
+const createOptions = (opts = {}) => {
   const options = { ...opts }
 
   for (const cb of callbacks) {

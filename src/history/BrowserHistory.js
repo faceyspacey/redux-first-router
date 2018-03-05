@@ -67,19 +67,20 @@ export default class BrowserHistory extends History {
   }
 
   listen(fn) {
-    const unlisten = super.listen(fn)
+    super.listen(fn)
     this._addPopListener()
 
-    return () => {
-      this._removePopListener()
-      unlisten()
-    }
+    return () => this.unlisten()
+  }
+
+  unlisten() {
+    this._removePopListener()
+    super.unlisten()
   }
 
   _setupPopHandling() {
     const handlePop = loc => {
       if (this._popForced) return (this._popForced = false)
-
       let n
 
       if (!this.pendingPop) {
@@ -101,6 +102,8 @@ export default class BrowserHistory extends History {
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
       // did it via browser back/next buttons
+      console.log(132)
+      this.dog = true
       this.currentPop = this.jump(n, undefined, false, kind, true, revertPop)
     }
 

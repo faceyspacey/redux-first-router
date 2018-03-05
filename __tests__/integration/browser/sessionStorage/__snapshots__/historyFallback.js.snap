@@ -1,0 +1,884 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`restore history from history fallback 1`] = `
+Object {
+  "history": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 0,
+  },
+  "id": "345678",
+  "key": "345678",
+  "state": Object {},
+}
+`;
+
+exports[`restore history from history fallback 2`] = `
+Object {
+  "history": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 1,
+  },
+  "id": "345678",
+  "key": "345678",
+  "state": Object {},
+}
+`;
+
+exports[`restore history from history fallback 3`] = `
+Object {
+  "history": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 2,
+  },
+  "id": "345678",
+  "key": "345678",
+  "state": Object {},
+}
+`;
+
+exports[`restore history from history fallback 4`] = `
+Object {
+  "history": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/",
+      },
+    ],
+    "index": 3,
+  },
+  "id": "345678",
+  "key": "345678",
+  "state": Object {},
+}
+`;
+
+exports[`restore history from history fallback:  - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/",
+    "search": "",
+    "state": Object {},
+    "url": "/",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`restore history from history fallback:  - history_entries 2`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/",
+    "search": "",
+    "state": Object {},
+    "url": "/",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+]
+`;
+
+exports[`restore history from history fallback:  - history_index 1`] = `1`;
+
+exports[`restore history from history fallback:  - history_index 2`] = `2`;
+
+exports[`restore history from history fallback:  - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "next",
+    "length": 3,
+    "pathname": "/second",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": Object {},
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`restore history from history fallback:  - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "from": null,
+    "index": 2,
+    "kind": "next",
+    "length": 3,
+    "pathname": "/third",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": Object {},
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/second",
+      "pop": true,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/third",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "THIRD",
+}
+`;
+
+exports[`restore history from history fallback:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`restore history from history fallback:  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`restore history from history fallback:  - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`restore history from history fallback:  - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`restore history from history fallback:  - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "kind": "next",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": Object {},
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`restore history from history fallback:  - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 2,
+    "kind": "next",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/third",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": Object {},
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "next",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/second",
+      "pop": true,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "THIRD",
+    "universal": false,
+    "url": "/third",
+  },
+  "title": "THIRD",
+}
+`;
+
+exports[`restore history from history fallback:  - title 1`] = `"SECOND"`;
+
+exports[`restore history from history fallback:  - title 2`] = `"THIRD"`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/",
+    "search": "",
+    "state": Object {},
+    "url": "/",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/third",
+    "search": "",
+    "state": Object {},
+    "url": "/third",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/",
+    "search": "",
+    "state": Object {},
+    "url": "/",
+  },
+]
+`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - history_index 1`] = `3`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+    ],
+    "from": null,
+    "index": 3,
+    "kind": "push",
+    "length": 4,
+    "pathname": "/",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": Object {},
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hash": "",
+      "index": 2,
+      "kind": "next",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "pop": true,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/third",
+        "search": "",
+        "state": Object {},
+        "url": "/third",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/",
+        "search": "",
+        "state": Object {},
+        "url": "/",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 3,
+    "kind": "push",
+    "length": 4,
+    "params": Object {},
+    "pathname": "/",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": Object {},
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
+      "hash": "",
+      "index": 2,
+      "kind": "next",
+      "length": 3,
+      "params": Object {},
+      "pathname": "/third",
+      "pop": true,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "THIRD",
+      "url": "/third",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - title 1`] = `"FIRST"`;
