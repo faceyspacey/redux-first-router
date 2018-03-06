@@ -8,7 +8,7 @@ export default (obj, req) => {
       : { payload: obj }
 
   action.type = action.type ||
-    (req.tmp.committed ? `${req.action.type}_COMPLETE` : `${req.action.type}_DONE`)
+    (req.tmp.committed ? `${req.type}_COMPLETE` : `${req.type}_DONE`)
 
   return action
 }

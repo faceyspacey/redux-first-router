@@ -105,8 +105,17 @@ export class Request {
       action = redirect(action, status || 302)
     }
 
-    if ((action === null || !action.type) && typeof action !== 'function') {
-      action = createAction(action, this)       // automatically turn payload-only actions into real actions with routeType_COMPLETE as type
+    if (typeof action !== 'function') {
+      if (!this._start) {
+        action = createAction(action, this)       // automatically turn payload-only actions into real actions with routeType_COMPLETE|_DONE as type
+      }
+      else if (this._start) {
+        // a callback immediately before `enter` has the final action/payload dispatched attached
+        // to the payload of the main route action, to limit the # of actions dispatched.
+        // NOTE: requires this middleware: `[call('beforeThunk', { start: true }), enter]`
+        this.action.payload = action
+        return Promise.resolve(action)
+      }
     }
 
     const oldUrl = this.getLocation().url

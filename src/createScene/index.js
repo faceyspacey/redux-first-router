@@ -14,7 +14,7 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
   const scene = sc || ''
   const prefix = scene ? `${scene}/` : ''
   const keys = Object.keys(routesMap)
-  const subtypes = [...st, 'start', 'complete', 'error']
+  const subtypes = [...st, 'start', 'complete', 'error', 'done']
 
   const result = keys.reduce((result, t) => {
     const { types, actions, routes } = result

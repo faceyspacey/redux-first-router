@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`call({ dispatchStart: true }): 1 - history_entries 1`] = `
+exports[`call({ start: true }): 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -23,9 +23,9 @@ Array [
 ]
 `;
 
-exports[`call({ dispatchStart: true }): 1 - history_index 1`] = `1`;
+exports[`call({ start: true }): 1 - history_index 1`] = `1`;
 
-exports[`call({ dispatchStart: true }): 1 - response 1`] = `
+exports[`call({ start: true }): 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -92,19 +92,20 @@ Object {
     "url": "/second",
   },
   "params": Object {},
+  "payload": "SUCCESS!!",
   "query": Object {},
   "state": Object {},
   "type": "SECOND",
 }
 `;
 
-exports[`call({ dispatchStart: true }): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`call({ start: true }): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`call({ dispatchStart: true }): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`call({ start: true }): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`call({ dispatchStart: true }): 1 - routes - SECOND - thunk 1`] = `1`;
+exports[`call({ start: true }): 1 - routes - SECOND - thunk 1`] = `1`;
 
-exports[`call({ dispatchStart: true }): 1 - state 1`] = `
+exports[`call({ start: true }): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -176,11 +177,11 @@ Object {
     "universal": false,
     "url": "/second",
   },
-  "title": "SECOND",
+  "title": "SECOND - \\"SUCCESS!!\\"",
 }
 `;
 
-exports[`call({ dispatchStart: true }): 1 - title 1`] = `"FIRST"`;
+exports[`call({ start: true }): 1 - title 1`] = `"FIRST"`;
 
 exports[`routes can specify route.middleware array to override global middleware: 1 - history_entries 1`] = `
 Array [

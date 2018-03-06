@@ -2,7 +2,7 @@ import { enhanceRoutes, shouldCall, createCache } from './utils'
 import { noOp, isAction, createAction } from '../../utils'
 
 export default (name, config = {}) => (api) => {
-  const { cache = false, prev = false, skipOpts = false, dispatchStart = false } = config
+  const { cache = false, prev = false, skipOpts = false, start = false } = config
 
   enhanceRoutes(name, api.routes, api.options)
 
@@ -26,15 +26,18 @@ export default (name, config = {}) => (api) => {
     const r = (calls.route && rt[name]) || noOp
     const o = (calls.options && !skipOpts && req.options[name]) || noOp
 
-    if (dispatchStart) {
+    if (start) {
       const type = `${req.type}_START`
       req.commitDispatch({ type })
+      req._start = true
     }
 
     return Promise.all([
       Promise.resolve(r(req)).then(r => autoDis(req, r, rt, name, next)),
       Promise.resolve(o(req)).then(o => autoDis(req, o, rt, name, next, true))
     ]).then(([r, o]) => {
+      req._start = false
+
       if (isFalse(r, o)) {
         // set the current callback name and whether its on the previous route (beforeLeave) or current
         // so that `req.confirm()` can temporarily delete it and pass through the pipeline successfully
@@ -80,11 +83,10 @@ const complete = (next) => (res) => next().then(() => res)
 
 const autoDis = (req, res, route, name, next, isOptCb) => {
   if (res === false) return false
-  const hasReturn = res === null || (res && !res._dispatched)
+  const hasReturn = res === null || (res && !res._dispatched) // `res._dispatched` indicates it was manually dispatched
 
   if (hasReturn && isAutoDispatch(route, req.options, isOptCb)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
-    const action = createAction(res, req) // automatically create actions out of `res` which is just a payload, etc
-    return Promise.resolve(req.dispatch(action))
+    return Promise.resolve(req.dispatch(res))
   }
 
   return res
