@@ -39,3 +39,34 @@ createTest('null payloads allowed', {
     onComplete: function() {}
   }
 })
+
+
+createTest('arg as type', {
+  SECOND: {
+    path: '/second',
+    thunk: ({ dispatch }) => {
+      return dispatch('FOO_BAR')
+    },
+    onComplete: function() {}
+  }
+})
+
+createTest('arg as @@library type', {
+  SECOND: {
+    path: '/second',
+    thunk: ({ dispatch }) => {
+      return dispatch('@@library/FOO_BAR')
+    },
+    onComplete: function() {}
+  }
+})
+
+createTest('arg as type from route', {
+  SECOND: {
+    path: '/second',
+    thunk: ({ dispatch }) => {
+      return dispatch('FIRST')
+    },
+    onComplete: function() {}
+  }
+})

@@ -118,6 +118,439 @@ Object {
 
 exports[`add routeType_COMPLETE as type to action-like object that is missing type: 1 - title 1`] = `"SECOND"`;
 
+exports[`arg as @@library type: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`arg as @@library type: 1 - history_index 1`] = `1`;
+
+exports[`arg as @@library type: 1 - response 1`] = `
+Object {
+  "type": "@@library/FOO_BAR",
+}
+`;
+
+exports[`arg as @@library type: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`arg as @@library type: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`arg as @@library type: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`arg as @@library type: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`arg as @@library type: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "@@library/FOO_BAR",
+}
+`;
+
+exports[`arg as @@library type: 1 - title 1`] = `"SECOND"`;
+
+exports[`arg as type from route: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`arg as type from route: 1 - history_index 1`] = `0`;
+
+exports[`arg as type from route: 1 - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "pathname": "/first",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`arg as type from route: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`arg as type from route: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`arg as type from route: 1 - routes - SECOND - onComplete 1`] = `0`;
+
+exports[`arg as type from route: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`arg as type from route: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "kind": "back",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/first",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+      ],
+      "hash": "",
+      "index": 1,
+      "kind": "push",
+      "length": 2,
+      "params": Object {},
+      "pathname": "/second",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "SECOND",
+      "url": "/second",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`arg as type from route: 1 - title 1`] = `"FIRST"`;
+
+exports[`arg as type: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/second",
+    "search": "",
+    "state": Object {},
+    "url": "/second",
+  },
+]
+`;
+
+exports[`arg as type: 1 - history_index 1`] = `1`;
+
+exports[`arg as type: 1 - response 1`] = `
+Object {
+  "type": "FOO_BAR",
+}
+`;
+
+exports[`arg as type: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`arg as type: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`arg as type: 1 - routes - SECOND - onComplete 1`] = `1`;
+
+exports[`arg as type: 1 - routes - SECOND - thunk 1`] = `1`;
+
+exports[`arg as type: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/second",
+        "search": "",
+        "state": Object {},
+        "url": "/second",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "FOO_BAR",
+}
+`;
+
+exports[`arg as type: 1 - title 1`] = `"SECOND"`;
+
 exports[`non object argument can be payload: 1 - history_entries 1`] = `
 Array [
   Object {

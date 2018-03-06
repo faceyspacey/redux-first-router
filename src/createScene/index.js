@@ -9,11 +9,12 @@ import {
 } from './utils'
 
 export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
-  const { scene: sc, basename: bn, formatRoute, logExports: log } = opts
+  const { scene: sc, basename: bn, formatRoute, subtypes: st = [], logExports: log } = opts
 
   const scene = sc || ''
   const prefix = scene ? `${scene}/` : ''
   const keys = Object.keys(routesMap)
+  const subtypes = [...st, 'start', 'complete', 'error']
 
   const result = keys.reduce((result, t) => {
     const { types, actions, routes } = result
@@ -46,8 +47,14 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
       actions[action] = makeActionCreator(route, t2, 'action', bn)
     }
 
-    actions[action].complete = makeActionCreator(route, tc, 'complete', bn)
-    actions[action].error = makeActionCreator(route, te, 'error', bn)
+    subtypes.forEach(name => {
+      const suffix = '_' + name.toUpperCase()
+      const cleanType = `${tClean}${suffix}`
+      const realType = `${prefix}${t}${suffix}`
+
+      types[cleanType] = realType
+      actions[action][name] = makeActionCreator(route, realType, name, bn)
+    })
 
     return result
   }, { types: {}, actions: {}, routes: {} })

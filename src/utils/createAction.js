@@ -15,6 +15,10 @@ export default (obj, req) => {
 
 const isType = (str, req) => {
   if (req.routes[str]) return true
-  // if (/[A-Z0-9]+/.test(str)) return true
+  if (typeRegex.test(str)) return true
+  if (str.indexOf('@@') === 0) return true
+
   return false
 }
+
+const typeRegex = /^[A-Z0-9_/]+$/

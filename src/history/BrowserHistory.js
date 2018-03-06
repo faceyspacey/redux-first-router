@@ -270,28 +270,3 @@ const rapidChangeWorkaround = (ready, complete, name) => {
     }
   }
 }
-
-
-
-
-// _performJump(location, n, prevLocation) {
-//   if (!n) return this._replace(location)
-
-//   const ready = () => {
-//     console.log('REVERT', prevLocation.basename + prevLocation.url === createPath(window.location), prevLocation.basename + prevLocation.url, createPath(window.location))
-//     return prevLocation.basename + prevLocation.url === createPath(window.location)
-//   }
-
-//   const complete = () => this._forceGo(n)
-//   tryChange(ready, complete)
-
-//   const ready2 = () => {
-//     console.log('JUMP', location.basename + location.url === createPath(window.location), location.basename + location.url, createPath(window.location))
-//     return location.basename + location.url === createPath(window.location)
-//   }
-
-//   return new Promise(res => tryChange(ready2, res)).then(() => {
-//     console.log('REPLACE', location.basename + location.url)
-//     this._replace(location)
-//   })
-// }
