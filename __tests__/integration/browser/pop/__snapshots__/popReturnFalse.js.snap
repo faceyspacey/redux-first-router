@@ -8,7 +8,7 @@ Array [
     "key": "345678",
     "pathname": "/",
     "search": "",
-    "state": undefined,
+    "state": Object {},
     "url": "/",
   },
   Object {
@@ -85,7 +85,7 @@ Object {
         "key": "345678",
         "pathname": "/",
         "search": "",
-        "state": undefined,
+        "state": Object {},
         "url": "/",
       },
       Object {
@@ -116,7 +116,7 @@ Object {
           "key": "345678",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": Object {},
           "url": "/",
         },
       ],

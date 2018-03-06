@@ -2,32 +2,98 @@
 
 exports[`restore history from history fallback 1`] = `
 Object {
-  "history": Object {
+  "basename": "",
+  "direction": "backward",
+  "entries": Array [
+    Object {
+      "basename": "",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/",
+      "search": "",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/second",
+      "search": "",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/third",
+      "search": "",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "from": null,
+  "hash": "",
+  "index": 0,
+  "kind": "load",
+  "length": 3,
+  "params": Object {},
+  "pathname": "/",
+  "pop": false,
+  "prev": Object {
+    "basename": "",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
+        "hash": "",
         "key": "345678",
+        "pathname": "/",
+        "search": "",
         "state": Object {},
         "url": "/",
       },
       Object {
         "basename": "",
+        "hash": "",
         "key": "345678",
+        "pathname": "/second",
+        "search": "",
         "state": Object {},
         "url": "/second",
       },
       Object {
         "basename": "",
+        "hash": "",
         "key": "345678",
+        "pathname": "/third",
+        "search": "",
         "state": Object {},
         "url": "/third",
       },
     ],
-    "index": 0,
+    "hash": "",
+    "index": 1,
+    "kind": "back",
+    "length": 3,
+    "params": Object {},
+    "pathname": "/second",
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "SECOND",
+    "url": "/second",
   },
-  "id": "345678",
-  "key": "345678",
+  "query": Object {},
+  "scene": "",
+  "search": "",
   "state": Object {},
+  "status": 200,
+  "type": "FIRST",
+  "universal": false,
+  "url": "/",
 }
 `;
 
@@ -54,7 +120,7 @@ Object {
         "url": "/third",
       },
     ],
-    "index": 1,
+    "index": 0,
   },
   "id": "345678",
   "key": "345678",
@@ -85,7 +151,7 @@ Object {
         "url": "/third",
       },
     ],
-    "index": 2,
+    "index": 1,
   },
   "id": "345678",
   "key": "345678",
@@ -94,6 +160,37 @@ Object {
 `;
 
 exports[`restore history from history fallback 4`] = `
+Object {
+  "history": Object {
+    "entries": Array [
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/second",
+      },
+      Object {
+        "basename": "",
+        "key": "345678",
+        "state": Object {},
+        "url": "/third",
+      },
+    ],
+    "index": 2,
+  },
+  "id": "345678",
+  "key": "345678",
+  "state": Object {},
+}
+`;
+
+exports[`restore history from history fallback 5`] = `
 Object {
   "history": Object {
     "entries": Array [
@@ -241,7 +338,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -450,7 +547,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",

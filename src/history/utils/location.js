@@ -6,7 +6,7 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
 
   if (typeof path === 'string') {
     location = parsePath(path)
-    location.state = state
+    location.state = state || {}
   }
   else {
     location = { ...path }

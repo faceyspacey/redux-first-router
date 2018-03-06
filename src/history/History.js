@@ -245,16 +245,6 @@ export default class History {
     return entry && entry.url === location.url
   }
 
-  _isBeforeBack(location) {
-    const entry = this.entries[this.index - 2]
-    return entry && entry.url === location.url
-  }
-
-  _isAfterNext(location) {
-    const entry = this.entries[this.index + 2]
-    return entry && entry.url === location.url
-  }
-
   _updateHistory(state) {
     Object.assign(this, state)
     this.length = state.entries ? state.entries.length : this.length

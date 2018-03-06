@@ -1,5 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`restore history from sessionStorage 1`] = `
+Object {
+  "basename": "",
+  "direction": "forward",
+  "entries": Array [
+    Object {
+      "basename": "",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/",
+      "search": "",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/second",
+      "search": "",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "hash": "",
+      "key": "345678",
+      "pathname": "/third",
+      "search": "",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "from": null,
+  "hash": "",
+  "index": 2,
+  "kind": "load",
+  "length": 3,
+  "params": Object {},
+  "pathname": "/third",
+  "pop": false,
+  "prev": Object {
+    "basename": "",
+    "direction": "forward",
+    "entries": Array [],
+    "hash": "",
+    "index": -1,
+    "kind": "",
+    "length": 0,
+    "params": Object {},
+    "pathname": "",
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "type": "",
+    "url": "",
+  },
+  "query": Object {},
+  "scene": "",
+  "search": "",
+  "state": Object {},
+  "status": 200,
+  "type": "THIRD",
+  "universal": false,
+  "url": "/third",
+}
+`;
+
 exports[`restore history from sessionStorage:  - history_entries 1`] = `
 Array [
   Object {
@@ -8,6 +77,7 @@ Array [
     "key": "345678",
     "pathname": "/",
     "search": "",
+    "state": Object {},
     "url": "/",
   },
   Object {
@@ -80,6 +150,7 @@ Object {
         "key": "345678",
         "pathname": "/",
         "search": "",
+        "state": Object {},
         "url": "/",
       },
       Object {
@@ -117,6 +188,7 @@ Object {
           "key": "345678",
           "pathname": "/",
           "search": "",
+          "state": Object {},
           "url": "/",
         },
         Object {
@@ -216,6 +288,7 @@ Object {
           "key": "345678",
           "pathname": "/",
           "search": "",
+          "state": Object {},
           "url": "/",
         },
         Object {
@@ -284,6 +357,7 @@ Object {
         "key": "345678",
         "pathname": "/",
         "search": "",
+        "state": Object {},
         "url": "/",
       },
       Object {
@@ -323,6 +397,7 @@ Object {
           "key": "345678",
           "pathname": "/",
           "search": "",
+          "state": Object {},
           "url": "/",
         },
         Object {
@@ -424,6 +499,7 @@ Object {
           "key": "345678",
           "pathname": "/",
           "search": "",
+          "state": Object {},
           "url": "/",
         },
         Object {

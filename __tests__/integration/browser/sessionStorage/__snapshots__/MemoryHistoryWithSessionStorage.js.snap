@@ -4,7 +4,7 @@ exports[`restore history from history fallback 1`] = `
 Object {
   "location": Object {
     "basename": "",
-    "direction": "forward",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -44,20 +44,48 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
-      "entries": Array [],
+      "direction": "backward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "state": Object {},
+          "url": "/",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "state": Object {},
+          "url": "/second",
+        },
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "state": Object {},
+          "url": "/third",
+        },
+      ],
       "hash": "",
-      "index": -1,
-      "kind": "",
-      "length": 0,
+      "index": 1,
+      "kind": "back",
+      "length": 3,
       "params": Object {},
-      "pathname": "",
+      "pathname": "/second",
       "query": Object {},
       "scene": "",
       "search": "",
       "state": Object {},
-      "type": "",
-      "url": "",
+      "type": "SECOND",
+      "url": "/second",
     },
     "query": Object {},
     "scene": "",
@@ -418,7 +446,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -523,7 +551,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",

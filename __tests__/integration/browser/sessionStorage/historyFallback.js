@@ -34,6 +34,8 @@ createTest('restore history from history fallback', {
   SECOND: '/second',
   THIRD: '/third'
 }, { browser: true }, [], async ({ snapPop, snap, getLocation }) => {
+  expect(getLocation()).toMatchSnapshot()
+
   // firstRoute dispatched by `createTest`
   expect(window.history.state.history.index).toEqual(0)
   expect(getLocation().type).toEqual('FIRST')

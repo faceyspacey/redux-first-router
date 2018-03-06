@@ -1,6 +1,6 @@
 // @flow
 import type { RoutesMapInput, Options, Store, Dispatch } from '../flow-types'
-import { compose, createHistory, createReducer, createRequest } from './index'
+import { compose, createHistory, createReducer, createInitialState, createRequest } from './index'
 
 import {
   createSelector,
@@ -44,6 +44,7 @@ export default (
     formatRoute,
     createHistory: createSmartHistory = createHistory,
     createReducer: createLocationReducer = createReducer,
+    createInitialState: createState = createInitialState,
     onError: onErr
   } = options
 
@@ -57,8 +58,9 @@ export default (
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createSmartHistory(options)
-  const { nextHistory } = history.firstRoute
-  const reducer = createLocationReducer(routes, nextHistory, options)
+  const { nextHistory: nh } = history.firstRoute
+  const initialState = createState(routes, nh, options)
+  const reducer = createLocationReducer(initialState, routes, nh, options)
   const wares = {}
   const register = (name: string, val?: any = true) => wares[name] = val
   const has = (name: string) => wares[name]
