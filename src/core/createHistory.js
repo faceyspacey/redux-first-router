@@ -8,17 +8,17 @@ import {
   createPath
 } from '../history/utils'
 
-export default opts => {
-  if (opts.browser === false || !canUseDOM) {
-    return new MemoryHistory(opts)
+export default (routes, options) => {
+  if (options.browser === false || !canUseDOM) {
+    return new MemoryHistory(routes, options)
   }
 
   if (supportsHistory()) {
-    return new BrowserHistory(opts)
+    return new BrowserHistory(routes, options)
   }
 
-  opts.useSessionStorage = hasSessionStorage() // give MemoryHistory browser fallback a chance to remember entries through sessionStorage
-  opts.initialEntries = [createPath(window.location)]
+  options.useSessionStorage = hasSessionStorage() // give MemoryHistory browser fallback a chance to remember entries through sessionStorage
+  options.initialEntries = [createPath(window.location)]
 
-  return new MemoryHistory(opts)
+  return new MemoryHistory(routes, options)
 }

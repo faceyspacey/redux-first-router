@@ -32,7 +32,7 @@ const { actions, routes } = createScene(routesMap, {
   basename: '/base-name'
 })
 
-createTest('createScene(routes, { scene, basename })', routes, [
+createTest('createScene(routes, { scene, basename })', routes, { log: true }, [
   ['actions.second()', actions.second()],
   ['actions.second(partialAction)', actions.second({ params: { foo: 'bar' } })],
   ['actions.second(params)', actions.second({ foo: 'bar' })],
@@ -45,6 +45,7 @@ createTest('createScene(routes, { scene, basename })', routes, [
   ['actions.third.complete(payload)', actions.third.complete({ foo: 'bar' })],
   ['actions.second.complete(thunk)', actions.second.complete(() => ({ foo: 'bar' }))],
   ['route with just action creator', actions.plain('bar')],
+  ['actions.notFound(params)', actions.notFound({ foo: 'bar' })],
   ['actions.notFound(params, path)', actions.notFound({ foo: 'bar' }, '/cat')],
   ['actions.notFound.complete(payload)', actions.notFound.complete('foo')]
 ])

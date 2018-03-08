@@ -57,7 +57,7 @@ export default (
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
-  const history = createSmartHistory(options)
+  const history = createSmartHistory(routes, options)
   const { nextHistory: nh } = history.firstRoute
   const initialState = createState(routes, nh, options)
   const reducer = createLocationReducer(initialState, routes, nh, options)

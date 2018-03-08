@@ -52,7 +52,7 @@ import {
 // so client code can control when the URL actually changes, and possibly deny it
 
 export default class BrowserHistory extends History {
-  constructor(opts = {}) {
+  constructor(routes, opts = {}) {
     const { basenames: bns = [] } = opts
     const basenames = bns.map(bn => formatSlashes(bn))
 

@@ -1,6 +1,190 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - history_entries 1`] = `
+exports[`createScene(routes, { scene, basename }) actions.notFound(params): 13 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/first",
+    "search": "",
+    "state": Object {},
+    "url": "/first",
+  },
+  Object {
+    "basename": "/base-name",
+    "hash": "",
+    "key": "345678",
+    "pathname": "/not-found-foo",
+    "search": "",
+    "state": Object {},
+    "url": "/not-found-foo",
+  },
+]
+`;
+
+exports[`createScene(routes, { scene, basename }) actions.notFound(params): 13 - history_index 1`] = `1`;
+
+exports[`createScene(routes, { scene, basename }) actions.notFound(params): 13 - response 1`] = `
+Object {
+  "basename": "base-name",
+  "hash": "",
+  "location": Object {
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/not-found-foo",
+        "search": "",
+        "state": Object {},
+        "url": "/not-found-foo",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "pathname": "/not-found-foo",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "SCENE",
+    "search": "",
+    "status": 404,
+    "url": "/base-name/not-found-foo",
+  },
+  "notFoundUrl": undefined,
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {},
+  "state": Object {},
+  "type": "SCENE/NOT_FOUND",
+}
+`;
+
+exports[`createScene(routes, { scene, basename }) actions.notFound(params): 13 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`createScene(routes, { scene, basename }) actions.notFound(params): 13 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene(routes, { scene, basename }) actions.notFound(params): 13 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "base-name",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": Object {},
+        "url": "/first",
+      },
+      Object {
+        "basename": "/base-name",
+        "hash": "",
+        "key": "345678",
+        "pathname": "/not-found-foo",
+        "search": "",
+        "state": Object {},
+        "url": "/not-found-foo",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "kind": "push",
+    "length": 2,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/not-found-foo",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "state": Object {},
+          "url": "/first",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "query": Object {},
+    "scene": "SCENE",
+    "search": "",
+    "state": Object {},
+    "status": 404,
+    "type": "SCENE/NOT_FOUND",
+    "universal": false,
+    "url": "/base-name/not-found-foo",
+  },
+  "title": "SCENE/NOT_FOUND",
+}
+`;
+
+exports[`createScene(routes, { scene, basename }) actions.notFound(params): 13 - title 1`] = `"SCENE/NOT_FOUND"`;
+
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 14 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -23,9 +207,9 @@ Array [
 ]
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - history_index 1`] = `1`;
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 14 - history_index 1`] = `1`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - response 1`] = `
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 14 - response 1`] = `
 Object {
   "basename": "base-name",
   "hash": "",
@@ -101,11 +285,11 @@ Object {
 }
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 14 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 14 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - state 1`] = `
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 14 - state 1`] = `
 Object {
   "location": Object {
     "basename": "base-name",
@@ -182,9 +366,9 @@ Object {
 }
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 13 - title 1`] = `"SCENE/NOT_FOUND"`;
+exports[`createScene(routes, { scene, basename }) actions.notFound(params, path): 14 - title 1`] = `"SCENE/NOT_FOUND"`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - history_entries 1`] = `
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 15 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -198,9 +382,9 @@ Array [
 ]
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - history_index 1`] = `0`;
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 15 - history_index 1`] = `0`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - response 1`] = `
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 15 - response 1`] = `
 Object {
   "basename": "/base-name",
   "payload": "foo",
@@ -208,11 +392,11 @@ Object {
 }
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 15 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 15 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - state 1`] = `
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 15 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -267,7 +451,7 @@ Object {
 }
 `;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - title 1`] = `"FIRST"`;
+exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 15 - title 1`] = `"FIRST"`;
 
 exports[`createScene(routes, { scene, basename }) actions.second(): 1 - history_entries 1`] = `
 Array [

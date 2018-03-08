@@ -8,6 +8,8 @@ import {
   canUseDom
 } from './utils'
 
+import { urlToAction } from '../utils'
+
 // NOTE ON HISTORY STUBS:
 
 // Even though this is used primarily in environments without `window`, it is also
@@ -31,7 +33,7 @@ import {
 // return right where you left, even if the URL isn't changing.
 
 export default class MemoryHistory extends History {
-  constructor(opts = {}) {
+  constructor(routes, opts = {}) {
     const {
       initialEntries: ents = ['/'],
       initialIndex = 0,
@@ -43,7 +45,7 @@ export default class MemoryHistory extends History {
     const basenames = bns.map(bn => formatSlashes(bn))
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
     const { index, entries, saveHistory } = !useSessionStorage
-      ? create(initialIndex, initialEntries, basenames) // this happens 99% of the time
+      ? create(routes, opts, initialIndex, initialEntries, basenames) // this happens 99% of the time
       : restore(initialEntries, basenames) // only used when in browser environment (as a fallback)
 
     super({ index, entries, basenames, saveHistory })
@@ -93,10 +95,16 @@ export default class MemoryHistory extends History {
 
 // TRANSFORM ENTRIES ARRAY INTO PROPER LOCATION OBJECTS + INDEX
 
-const create = (initialIndex, initialEntries, basenames) => {
+const create = (routes, opts, initialIndex, initialEntries, basenames) => {
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
-  const entries = initialEntries.map(e => transformEntry(e, basenames))
+  const entries = initialEntries.map(e => createAction(e, routes, opts, basenames))
   return { index, entries }
+}
+
+const createAction = (e, routes, opts, basenames) => {
+  const location = transformEntry(e, basenames)
+  return location
+  const action = urlToAction(location, routes, opts)
 }
 
 // RE-HYDRATE FROM SESSION_STORAGE:
