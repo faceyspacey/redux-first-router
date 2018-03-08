@@ -33,7 +33,7 @@ export default (
 
   if (action.type === ADD_ROUTES) {
     const count = Object.keys(action.payload.routes).length  // we need to be able to update Links when new routes are added
-    const routesAdded = (st.routesAdded || 0) + count        // we could just increment a number, but why not at least off some info
+    const routesAdded = (st.routesAdded || 0) + count        // we could just increment a number, but why not at least offer some info
     return { ...st, routesAdded }
   }
 

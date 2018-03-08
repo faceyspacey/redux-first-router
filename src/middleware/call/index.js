@@ -1,5 +1,5 @@
 import { enhanceRoutes, shouldCall, createCache } from './utils'
-import { noOp, isAction, createAction } from '../../utils'
+import { noOp } from '../../utils'
 
 export default (name, config = {}) => (api) => {
   const { cache = false, prev = false, skipOpts = false, start = false } = config
@@ -27,8 +27,9 @@ export default (name, config = {}) => (api) => {
     const o = (calls.options && !skipOpts && req.options[name]) || noOp
 
     if (start) {
-      const type = `${req.type}_START`
-      req.commitDispatch({ type })
+      const action = { ...req.action }
+      action.type = `${req.type}_START`
+      req.commitDispatch(action)
       req._start = true
     }
 
