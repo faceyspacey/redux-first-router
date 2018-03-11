@@ -48,7 +48,7 @@ export default class MemoryHistory extends History {
       ? create(routes, opts, initialIndex, initialEntries, basenames) // this happens 99% of the time
       : restore(initialEntries, basenames) // only used when in browser environment (as a fallback)
 
-    super({ index, entries, basenames, saveHistory })
+    super(routes, opts, { index, entries, basenames, saveHistory })
 
     this._forceRefresh = forceRefresh && canUseDom // again, only will be triggered when used in browsers as a fallback
   }
@@ -57,8 +57,7 @@ export default class MemoryHistory extends History {
     this._updateHistory(nextState)
 
     if (this._forceRefresh) {
-      const href = this._createHref(nextState.location)
-      window.location.href = href
+      window.location.href = nextState.location.url
     }
 
     return Promise.resolve()
@@ -68,8 +67,7 @@ export default class MemoryHistory extends History {
     this._updateHistory(nextState)
 
     if (this._forceRefresh) {
-      const href = this._createHref(nextState.location)
-      window.location.href = href
+      window.location.href = nextState.location.url
     }
 
     return Promise.resolve()
@@ -105,6 +103,10 @@ const createAction = (e, routes, opts, basenames) => {
   const location = transformEntry(e, basenames)
   return location
   const action = urlToAction(location, routes, opts)
+  return {
+    ...location,
+    ...action
+  }
 }
 
 // RE-HYDRATE FROM SESSION_STORAGE:

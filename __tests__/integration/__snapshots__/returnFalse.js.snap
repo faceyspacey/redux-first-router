@@ -90,7 +90,7 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/first\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/second\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
 }
 `;
 
@@ -358,7 +358,7 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/first\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/second\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
 }
 `;
 
@@ -454,7 +454,7 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/first\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/second\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
 }
 `;
 
@@ -670,7 +670,7 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"REDIRECTED\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/redirected\\",\\"pathname\\":\\"/redirected\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/redirected\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/redirected\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"REDIRECTED\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/redirected\\",\\"pathname\\":\\"/redirected\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/first\\"},{\\"pathname\\":\\"/redirected\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/redirected\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
 }
 `;
 
@@ -873,7 +873,7 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/first\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
+  "title": "@@skiprudy/BLOCK - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"state\\":{},\\"basename\\":\\"\\",\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"forward\\",\\"status\\":200,\\"kind\\":\\"push\\",\\"entries\\":[{\\"pathname\\":\\"/first\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/first\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/second\\"}],\\"index\\":1,\\"length\\":2,\\"pop\\":false}}}",
 }
 `;
 

@@ -4,12 +4,12 @@ import { formatSlashes } from '../history/utils'
 export default (api) => (req, next) => {
   if (isServer() && isRedirect(req.action)) {
     const { action, routes, options } = req
-    const url = actionToUrl(action, routes, options)
+    const path = actionToUrl(action, routes, options)
 
     let basename = action.basename || req.getLocation().basename
     basename = basename ? formatSlashes(basename) : ''
 
-    action.url = action.location.url = basename + url
+    action.url = action.location.url = basename + path
     action.status = action.location.status || 302
 
     // account for anonymous thunks potentially redirecting without returning itself

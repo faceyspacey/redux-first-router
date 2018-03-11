@@ -1,9 +1,13 @@
 import { UPDATE_HISTORY } from '../types'
-import { formatSlashes, createPath, createLocation, createKey, findBasename, stripBasename } from './utils'
+import { formatSlashes, createPath, createLocation, createKey, findBasename } from './utils'
+import { urlToAction } from '../utils'
 
 export default class History {
-  constructor(opts) {
-    const { index, entries, saveHistory, basenames } = opts
+  constructor(routes, options, config) {
+    const { index, entries, saveHistory, basenames } = config
+
+    this.routes = routes
+    this.options = options
 
     this.saveHistory = saveHistory || function() {}
 
@@ -31,6 +35,17 @@ export default class History {
     this.firstRoute = { nextHistory, commit, type: UPDATE_HISTORY }
   }
 
+  createLocation(path, state, key, currLocation, bn) {
+    const location = createLocation(path, state, key, this.location, bn)
+    return location
+    const action = urlToAction(location, this.routes, this.options)
+    console.log('ACTION', action)
+    return {
+      ...location,
+      ...action
+    }
+  }
+
   // API:
 
   push(path, state = {}, basename, notify = true) {
@@ -42,7 +57,7 @@ export default class History {
 
     const key = createKey()
     const bn = this.basename
-    const location = createLocation(path, state, key, this.location, bn)
+    const location = this.createLocation(path, state, key, this.location, bn)
     const back = this._isBack(location) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(location)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -229,10 +244,6 @@ export default class History {
       committed = true
       return commit(...args)
     }
-  }
-
-  _createHref(location) {
-    return location.basename + createPath(location)
   }
 
   _isBack(location) {

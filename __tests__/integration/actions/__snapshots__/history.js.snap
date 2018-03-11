@@ -3747,7 +3747,7 @@ Array [
     "state": Object {
       "bla": "sdf",
     },
-    "url": "/second",
+    "url": "/first-base/second",
   },
   Object {
     "basename": "/base-name",
@@ -3756,7 +3756,7 @@ Array [
     "pathname": "/third",
     "search": "baz=yo&foo=bar",
     "state": Object {},
-    "url": "/third?baz=yo&foo=bar#something",
+    "url": "/base-name/third?baz=yo&foo=bar#something",
   },
 ]
 `;
@@ -3779,7 +3779,7 @@ Object {
         "state": Object {
           "bla": "sdf",
         },
-        "url": "/second",
+        "url": "/first-base/second",
       },
       Object {
         "basename": "/base-name",
@@ -3788,7 +3788,7 @@ Object {
         "pathname": "/third",
         "search": "baz=yo&foo=bar",
         "state": Object {},
-        "url": "/third?baz=yo&foo=bar#something",
+        "url": "/base-name/third?baz=yo&foo=bar#something",
       },
     ],
     "from": null,
@@ -3810,7 +3810,7 @@ Object {
           "state": Object {
             "bla": "sdf",
           },
-          "url": "/second",
+          "url": "/first-base/second",
         },
         Object {
           "basename": "/base-name",
@@ -3819,7 +3819,7 @@ Object {
           "pathname": "/third",
           "search": "baz=yo&foo=bar",
           "state": Object {},
-          "url": "/third?baz=yo&foo=bar#something",
+          "url": "/base-name/third?baz=yo&foo=bar#something",
         },
       ],
       "hash": "",
@@ -3837,7 +3837,7 @@ Object {
       },
       "status": 200,
       "type": "SECOND",
-      "url": "/second",
+      "url": "/first-base/second",
     },
     "scene": "",
     "search": "baz=yo&foo=bar",
@@ -3873,7 +3873,7 @@ Object {
         "state": Object {
           "bla": "sdf",
         },
-        "url": "/second",
+        "url": "/first-base/second",
       },
       Object {
         "basename": "/base-name",
@@ -3882,7 +3882,7 @@ Object {
         "pathname": "/third",
         "search": "baz=yo&foo=bar",
         "state": Object {},
-        "url": "/third?baz=yo&foo=bar#something",
+        "url": "/base-name/third?baz=yo&foo=bar#something",
       },
     ],
     "from": null,
@@ -3906,7 +3906,7 @@ Object {
           "state": Object {
             "bla": "sdf",
           },
-          "url": "/second",
+          "url": "/first-base/second",
         },
         Object {
           "basename": "/base-name",
@@ -3915,7 +3915,7 @@ Object {
           "pathname": "/third",
           "search": "baz=yo&foo=bar",
           "state": Object {},
-          "url": "/third?baz=yo&foo=bar#something",
+          "url": "/base-name/third?baz=yo&foo=bar#something",
         },
       ],
       "hash": "",
@@ -3933,7 +3933,7 @@ Object {
       },
       "status": 200,
       "type": "SECOND",
-      "url": "/second",
+      "url": "/first-base/second",
     },
     "query": Object {
       "baz": "yo",
@@ -5496,7 +5496,7 @@ Array [
     "state": Object {
       "bla": "sdf",
     },
-    "url": "/second",
+    "url": "/first-base/second",
   },
   Object {
     "basename": "/base-name",
@@ -5505,7 +5505,7 @@ Array [
     "pathname": "/third",
     "search": "foo=bar&baz=yo",
     "state": Object {},
-    "url": "/third?foo=bar&baz=yo#something",
+    "url": "/base-name/third?foo=bar&baz=yo#something",
   },
 ]
 `;
@@ -5528,7 +5528,7 @@ Object {
         "state": Object {
           "bla": "sdf",
         },
-        "url": "/second",
+        "url": "/first-base/second",
       },
       Object {
         "basename": "/base-name",
@@ -5537,7 +5537,7 @@ Object {
         "pathname": "/third",
         "search": "foo=bar&baz=yo",
         "state": Object {},
-        "url": "/third?foo=bar&baz=yo#something",
+        "url": "/base-name/third?foo=bar&baz=yo#something",
       },
     ],
     "from": null,
@@ -5559,7 +5559,7 @@ Object {
           "state": Object {
             "bla": "sdf",
           },
-          "url": "/second",
+          "url": "/first-base/second",
         },
         Object {
           "basename": "/base-name",
@@ -5568,7 +5568,7 @@ Object {
           "pathname": "/third",
           "search": "foo=bar&baz=yo",
           "state": Object {},
-          "url": "/third?foo=bar&baz=yo#something",
+          "url": "/base-name/third?foo=bar&baz=yo#something",
         },
       ],
       "hash": "",
@@ -5586,7 +5586,7 @@ Object {
       },
       "status": 200,
       "type": "SECOND",
-      "url": "/second",
+      "url": "/first-base/second",
     },
     "scene": "",
     "search": "foo=bar&baz=yo",
@@ -5622,7 +5622,7 @@ Object {
         "state": Object {
           "bla": "sdf",
         },
-        "url": "/second",
+        "url": "/first-base/second",
       },
       Object {
         "basename": "/base-name",
@@ -5631,7 +5631,7 @@ Object {
         "pathname": "/third",
         "search": "foo=bar&baz=yo",
         "state": Object {},
-        "url": "/third?foo=bar&baz=yo#something",
+        "url": "/base-name/third?foo=bar&baz=yo#something",
       },
     ],
     "from": null,
@@ -5655,7 +5655,7 @@ Object {
           "state": Object {
             "bla": "sdf",
           },
-          "url": "/second",
+          "url": "/first-base/second",
         },
         Object {
           "basename": "/base-name",
@@ -5664,7 +5664,7 @@ Object {
           "pathname": "/third",
           "search": "foo=bar&baz=yo",
           "state": Object {},
-          "url": "/third?foo=bar&baz=yo#something",
+          "url": "/base-name/third?foo=bar&baz=yo#something",
         },
       ],
       "hash": "",
@@ -5682,7 +5682,7 @@ Object {
       },
       "status": 200,
       "type": "SECOND",
-      "url": "/second",
+      "url": "/first-base/second",
     },
     "query": Object {
       "baz": "yo",

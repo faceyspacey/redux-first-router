@@ -19,9 +19,9 @@ module.exports = wallaby => {
 
     tests: [
       // '__tests__/integration/**/*.js',
-      // '__tests__/integration/hydrate.js',
-      '__tests__/integration/createScene/options.js',
-      // '__tests__/integration/createRequest.js',
+      '__tests__/integration/returnFalse.js',
+      // '__tests__/integration/actions/history.js',
+      // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/dispatchFrom.js',
       // '__tests__/integration/browser/sessionStorage/**/*.js',
       // '__tests__/integration/browserPop/popCancelsAction.js',

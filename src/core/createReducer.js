@@ -149,9 +149,8 @@ export const createPrevEntries = (
   const kind = direction === 'forward' ? 'push' : 'back'
 
   const location = createLocation(entry)
-  const { pathname, search, basename: bn, url: u, state = {} } = location
+  const { pathname, search, basename: bn, url, state = {} } = location
   const basename = bn.substr(1)
-  const url = bn + u
 
   const action = urlToAction(location, routes, opts)
   const scene = routes[action.type].scene || ''

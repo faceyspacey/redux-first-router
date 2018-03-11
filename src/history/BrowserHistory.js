@@ -60,7 +60,7 @@ export default class BrowserHistory extends History {
     const defaultLocation = getWindowLocation(initialHistoryState, basenames)
     const { index, entries } = restoreHistory(defaultLocation)
 
-    super({ index, entries, basenames, saveHistory })
+    super(routes, opts, { index, entries, basenames, saveHistory })
 
     this._id = id
     this._setupPopHandling()
@@ -130,7 +130,7 @@ export default class BrowserHistory extends History {
   _push(nextState, awaitLoc) {
     const { location } = nextState
     const { key, state } = location
-    const href = this._createHref(location)
+    const href = location.url
     console.log('PUSH', href)
 
     return this._awaitLocation(awaitLoc || this.location, '_push')
@@ -143,7 +143,7 @@ export default class BrowserHistory extends History {
   _replace(nextState, awaitLoc, n) {
     const { location } = nextState
     const { key, state } = location
-    const href = this._createHref(location)
+    const href = location.url
     console.log('REPLACE', href)
 
     if (n) {
@@ -228,7 +228,7 @@ export default class BrowserHistory extends History {
 
   _awaitLocation(loc, name) {
     return new Promise(resolve => {
-      const url = loc.basename + loc.url
+      const { url } = loc
       const ready = () => {
         console.log('READY(desiredUrl, currentUrl)', url, createPath(window.location))
         return url === createPath(window.location)

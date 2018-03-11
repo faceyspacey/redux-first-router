@@ -325,7 +325,7 @@ Object {
     "universal": false,
     "url": "/third",
   },
-  "title": "@@skiprudy/SET_FROM - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"basename\\":\\"\\",\\"state\\":{},\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"backward\\",\\"status\\":200,\\"kind\\":\\"back\\",\\"entries\\":[{\\"url\\":\\"/\\",\\"key\\":\\"345678\\",\\"state\\":{},\\"basename\\":\\"\\",\\"pathname\\":\\"/\\",\\"search\\":\\"\\",\\"hash\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/second\\",\\"basename\\":\\"\\"},{\\"pathname\\":\\"/third\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"url\\":\\"/third\\",\\"basename\\":\\"\\"}],\\"index\\":1,\\"length\\":3,\\"pop\\":true}}}",
+  "title": "@@skiprudy/SET_FROM - {\\"ref\\":{\\"type\\":\\"SECOND\\",\\"params\\":{},\\"query\\":{},\\"hash\\":\\"\\",\\"basename\\":\\"\\",\\"state\\":{},\\"location\\":{\\"url\\":\\"/second\\",\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"scene\\":\\"\\",\\"direction\\":\\"backward\\",\\"status\\":200,\\"kind\\":\\"back\\",\\"entries\\":[{\\"url\\":\\"/\\",\\"key\\":\\"345678\\",\\"state\\":{},\\"basename\\":\\"\\",\\"pathname\\":\\"/\\",\\"search\\":\\"\\",\\"hash\\":\\"\\"},{\\"pathname\\":\\"/second\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/second\\"},{\\"pathname\\":\\"/third\\",\\"search\\":\\"\\",\\"hash\\":\\"\\",\\"state\\":{},\\"key\\":\\"345678\\",\\"basename\\":\\"\\",\\"url\\":\\"/third\\"}],\\"index\\":1,\\"length\\":3,\\"pop\\":true}}}",
 }
 `;
 

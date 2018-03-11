@@ -36,12 +36,13 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
   }
 
   location.key = location.key || key || createKey()
-  location.url = createPath(location)
   location.basename = location.basename || basename || ''
 
   if (location.basename) {
     location.basename = formatSlashes(location.basename)
   }
+
+  location.url = location.basename + createPath(location)
 
   return location
 }

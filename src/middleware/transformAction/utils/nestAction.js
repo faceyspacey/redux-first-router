@@ -2,7 +2,7 @@ import { typeToScene, isNotFound } from '../../../utils'
 
 export default (req, action, prevState, history, fromAction) => {
   const { kind, entries, index, length, location } = history
-  const { pathname, search, basename: bn, url: u, state = {} } = location
+  const { pathname, search, basename: bn, url, state = {} } = location
   const { type, params = {}, query = {}, hash = '' } = action
   const prev = createPrev(prevState)
   const from = createFrom(fromAction)
@@ -11,7 +11,6 @@ export default (req, action, prevState, history, fromAction) => {
   const direction = getDirection(kind, index, prevState)
 
   const basename = bn.substr(1)
-  const url = bn + u
   const status = (kind === 'replace' || fromAction)
     ? ((action.location && action.location.status) || 302)
     : (isNotFound(type) ? 404 : 200)

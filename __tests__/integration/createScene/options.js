@@ -32,7 +32,7 @@ const { actions, routes } = createScene(routesMap, {
   basename: '/base-name'
 })
 
-createTest('createScene(routes, { scene, basename })', routes, { log: true }, [
+createTest('createScene(routes, { scene, basename })', routes, [
   ['actions.second()', actions.second()],
   ['actions.second(partialAction)', actions.second({ params: { foo: 'bar' } })],
   ['actions.second(params)', actions.second({ foo: 'bar' })],

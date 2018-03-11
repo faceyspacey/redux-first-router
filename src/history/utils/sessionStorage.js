@@ -155,7 +155,10 @@ const getIndexAndEntries = history => {
     entries = entries.slice(0, index + 1)
   }
 
-  entries = entries.map(e => ({ ...e, ...parsePath(e.url) }))
+  entries = entries.map(e => {
+    const path = e.url.replace(e.basename, '')
+    return { ...e, ...parsePath(path) }
+  })
   return { index, entries }
 }
 
