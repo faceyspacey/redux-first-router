@@ -1,14 +1,12 @@
 import History from './History'
 
 import {
+  createAction,
   formatSlashes,
-  transformEntry,
   restoreHistory,
   saveHistory,
   canUseDom
 } from './utils'
-
-import { urlToAction } from '../utils'
 
 // NOTE ON HISTORY STUBS:
 
@@ -37,18 +35,18 @@ export default class MemoryHistory extends History {
     const {
       initialEntries: ents = ['/'],
       initialIndex = 0,
-      basenames: bns = [],
+      basenames = [],
       forceRefresh = false,
       useSessionStorage = false
     } = opts
 
-    const basenames = bns.map(bn => formatSlashes(bn))
+    opts.basenames = basenames.map(bn => formatSlashes(bn))
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
     const { index, entries, saveHistory } = !useSessionStorage
-      ? create(routes, opts, initialIndex, initialEntries, basenames) // this happens 99% of the time
-      : restore(initialEntries, basenames) // only used when in browser environment (as a fallback)
+      ? create(routes, opts, initialIndex, initialEntries) // this happens 99% of the time
+      : restore(initialEntries, routes, opts) // only used when in browser environment (as a fallback)
 
-    super(routes, opts, { index, entries, basenames, saveHistory })
+    super(routes, opts, { index, entries, saveHistory })
 
     this._forceRefresh = forceRefresh && canUseDom // again, only will be triggered when used in browsers as a fallback
   }
@@ -93,30 +91,21 @@ export default class MemoryHistory extends History {
 
 // TRANSFORM ENTRIES ARRAY INTO PROPER LOCATION OBJECTS + INDEX
 
-const create = (routes, opts, initialIndex, initialEntries, basenames) => {
+const create = (routes, opts, initialIndex, initialEntries) => {
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
-  const entries = initialEntries.map(e => createAction(e, routes, opts, basenames))
+  const entries = initialEntries.map(e => createAction(e, routes, opts))
   return { index, entries }
 }
 
-const createAction = (e, routes, opts, basenames) => {
-  const location = transformEntry(e, basenames)
-  return location
-  const action = urlToAction(location, routes, opts)
-  return {
-    ...location,
-    ...action
-  }
-}
 
 // RE-HYDRATE FROM SESSION_STORAGE:
 // This is hopefully hardly ever triggered, but it's just an extra frill to make things
 // as solid as possible in older browsers. Basically, IE9 and IE8 won't have `history`
 // but will have `sessionStorage`, so why not give them the ability to restore history :)
 
-const restore = (initialEntries, basenames) => {
+const restore = (initialEntries, routes, opts) => {
   const entry = initialEntries[0]
-  const defaultLocation = transformEntry(entry, basenames)
-  const { index, entries } = restoreHistory(defaultLocation) // impure
+  const defaultLocation = createAction(entry, routes, opts)
+  const { index, entries } = restoreHistory(defaultLocation, routes, opts) // impure
   return { index, entries, saveHistory }
 }

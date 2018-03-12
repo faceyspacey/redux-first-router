@@ -1,13 +1,3 @@
-import { createLocation, createKey } from './index'
-
-const addLeadingSlash = path =>
-  path.charAt(0) === '/' ? path : `/${path}`
-
-const stripTrailingSlash = path =>
-  path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path
-
-export const formatSlashes = path => stripTrailingSlash(addLeadingSlash(path))
-
 export const parsePath = (path) => {
   let pathname = path || '/'
   let search = ''
@@ -44,30 +34,17 @@ export const createPath = location => {
   return path
 }
 
-export const transformEntry = (e, bns) => {
-  const { entry, basename } = stripPath(e, bns)
-  const state = entry.state || {}
-  const key = e ? e.key : createKey()
-  return createLocation(entry, state, key, null, basename)
-}
-
-const stripPath = (path, basenames) => {
-  if (typeof path === 'string') {
-    const basename = findBasename(path, basenames)
-    const entry = basename ? stripBasename(path, basename) : path
-    return { entry, basename }
-  }
-
-  const entry = path
-  return { entry, basename: entry.basename }
-}
-
-export const hasBasename = (path, prefix) =>
-  new RegExp(`^${prefix}(\\/|\\?|#|$)`, 'i').test(path)
-
 export const stripBasename = (path, bn) =>
-  hasBasename(path, bn) ? path.substr(bn.length) : path
+  new RegExp(`^${bn}(\\/|\\?|#|$)`, 'i').test(path) ? path.substr(bn.length) : path
 
-export const findBasename = (path, bns = []) => {
-  return bns.find(bn => path.indexOf(bn) === 0)
-}
+export const findBasename = (path, bns = []) =>
+  bns.find(bn => path.indexOf(bn) === 0)
+
+export const formatSlashes = path =>
+  stripTrailingSlash(addLeadingSlash(path))
+
+const addLeadingSlash = path =>
+  path.charAt(0) === '/' ? path : `/${path}`
+
+const stripTrailingSlash = path =>
+  path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path

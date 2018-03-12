@@ -1,4 +1,4 @@
-import { parsePath, createKey, hasSessionStorage } from './index'
+import { parsePath, createKey, hasSessionStorage, createAction } from './index'
 
 // PREFIXING:
 
@@ -71,7 +71,7 @@ export const saveHistory = ({ index, entries }) => {
 }
 
 // called on startup
-export const restoreHistory = defaultLocation => {
+export const restoreHistory = (defaultLocation, routes, opts) => {
   const { url, key, state, basename } = defaultLocation // used if first time visiting site during session
   const defaultHistory = { index: 0, entries: [{ url, key, state, basename }] }
 
@@ -90,7 +90,7 @@ export const restoreHistory = defaultLocation => {
   }
 
   // `getSet` simply sets the `defaultHistory` in `sessionStorage` if it's a fresh visitation
-  return getIndexAndEntries(getSetItem('history', defaultHistory))
+  return getIndexAndEntries(getSetItem('history', defaultHistory), routes, opts)
 }
 
 export const getHistoryState = () => {
@@ -128,7 +128,7 @@ export const getInitialHistoryState = () => {
 
 // FACADE HELPERS:
 
-const getIndexAndEntries = history => {
+const getIndexAndEntries = (history, routes, opts) => {
   let { index, entries } = history
 
   // We must remove entries after the index in case the user opened a link to
@@ -157,7 +157,8 @@ const getIndexAndEntries = history => {
 
   entries = entries.map(e => {
     const path = e.url.replace(e.basename, '')
-    return { ...e, ...parsePath(path) }
+    const entry = { ...e, ...parsePath(path) }
+    return createAction(entry, routes, opts)
   })
   return { index, entries }
 }

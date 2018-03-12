@@ -1,5 +1,6 @@
 import resolvePathname from 'resolve-pathname'
-import { parsePath, createPath, stripBasename, formatSlashes } from './index'
+import { parsePath, createPath, stripBasename, findBasename, formatSlashes } from './index'
+import { urlToAction } from '../../utils'
 
 export const createLocation = (path, state, key, currentLocation, basename) => {
   let location
@@ -47,15 +48,30 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
   return location
 }
 
-export const getWindowLocation = (historyState, basenames = []) => {
+export const createAction = (entry, routes, opts, state, key, basename, currLoc) => {
+  if (typeof entry === 'string') {
+    const foundBasename = findBasename(entry, opts.basenames)
+    entry = foundBasename ? stripBasename(entry, foundBasename) : entry
+    basename = foundBasename || basename
+  }
+
+  const location = createLocation(entry, state, key, currLoc, basename)
+
+  return location
+  const action = urlToAction(location, routes, opts)
+  return {
+    ...location,
+    ...action,
+    location
+  }
+}
+
+export const getWindowLocation = (historyState, routes, opts) => {
   const { key, state } = historyState || {}
   const { pathname, search, hash } = window.location
-  let path = pathname + search + hash
+  const url = pathname + search + hash
 
-  const basename = basenames.find(bn => path.indexOf(bn) === 0)
-
-  if (basename) path = stripBasename(path, basename)
-  return createLocation(path, state, key, null, basename)
+  return createAction(url, routes, opts, state, key)
 }
 
 export const createKey = () =>

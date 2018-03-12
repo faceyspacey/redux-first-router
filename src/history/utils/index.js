@@ -8,18 +8,17 @@ export {
 
 export {
   createLocation,
+  createAction,
   getWindowLocation,
   createKey
 } from './location'
 
 export {
   formatSlashes,
-  hasBasename,
   stripBasename,
   findBasename,
   parsePath,
-  createPath,
-  transformEntry
+  createPath
 } from './path'
 
 export {

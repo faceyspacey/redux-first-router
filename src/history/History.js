@@ -1,19 +1,17 @@
 import { UPDATE_HISTORY } from '../types'
-import { formatSlashes, createPath, createLocation, createKey, findBasename } from './utils'
+import { createAction, createLocation, findBasename } from './utils'
 import { urlToAction } from '../utils'
 
 export default class History {
   constructor(routes, options, config) {
-    const { index, entries, saveHistory, basenames } = config
+    const { index, entries, saveHistory } = config
+
+    this.saveHistory = saveHistory || function() {}
 
     this.routes = routes
     this.options = options
 
-    this.saveHistory = saveHistory || function() {}
-
     this.basename = entries[index].basename
-    this.basenames = basenames
-
     this.entries = []
     this.index = -1
     this.length = 0
@@ -35,29 +33,14 @@ export default class History {
     this.firstRoute = { nextHistory, commit, type: UPDATE_HISTORY }
   }
 
-  createLocation(path, state, key, currLocation, bn) {
-    const location = createLocation(path, state, key, this.location, bn)
-    return location
-    const action = urlToAction(location, this.routes, this.options)
-    console.log('ACTION', action)
-    return {
-      ...location,
-      ...action
-    }
+  createLocation(path, state, basename) {
+    return createAction(path, this.routes, this.options, state, undefined, basename || this.basename, this.location)
   }
 
   // API:
 
   push(path, state = {}, basename, notify = true) {
-    const foundBasename = findBasename(path, this.basenames)
-    if (foundBasename) path = path.substr(foundBasename.length)
-
-    basename = foundBasename || basename
-    if (typeof basename === 'string') this.setBasename(basename)
-
-    const key = createKey()
-    const bn = this.basename
-    const location = this.createLocation(path, state, key, this.location, bn)
+    const location = this.createLocation(path, state, basename)
     const back = this._isBack(location) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(location)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -76,15 +59,7 @@ export default class History {
   }
 
   replace(path, state = {}, basename, notify = true) {
-    const foundBasename = findBasename(path, this.basenames)
-    if (foundBasename) path = path.substr(foundBasename.length)
-
-    basename = foundBasename || basename
-    if (typeof basename === 'string') this.setBasename(basename)
-
-    const k = createKey()
-    const bn = this.basename
-    const location = createLocation(path, state, k, this.location, bn)
+    const location = this.createLocation(path, state, basename)
     const back = this._isBack(location) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(location)
     const kind = back ? 'back' : (next ? 'next' : 'replace')
@@ -106,15 +81,7 @@ export default class History {
   }
 
   replacePop(path, state = {}, basename, notify = true, pop) {
-    const foundBasename = findBasename(path, this.basenames)
-    if (foundBasename) path = path.substr(foundBasename.length)
-
-    basename = foundBasename || basename
-    if (typeof basename === 'string') this.setBasename(basename)
-
-    const k = createKey()
-    const bn = this.basename
-    const location = createLocation(path, state, k, this.location, bn)
+    const location = this.createLocation(path, state, basename)
     const index = pop.index
     const entries = pop.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
@@ -223,10 +190,6 @@ export default class History {
     this._listener = null
   }
 
-  setBasename(basename) {
-    this.basename = formatSlashes(basename)
-  }
-
   // UTILS:
 
   _notify(action, notify = true) {
@@ -259,6 +222,7 @@ export default class History {
   _updateHistory(state) {
     Object.assign(this, state)
     this.length = state.entries ? state.entries.length : this.length
+    this.basename = state.location.basename
     this.saveHistory(this)
   }
 

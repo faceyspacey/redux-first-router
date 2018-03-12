@@ -53,14 +53,14 @@ import {
 
 export default class BrowserHistory extends History {
   constructor(routes, opts = {}) {
-    const { basenames: bns = [] } = opts
-    const basenames = bns.map(bn => formatSlashes(bn))
+    const { basenames = [] } = opts
+    opts.basenames = basenames.map(bn => formatSlashes(bn))
 
     const { id, ...initialHistoryState } = getInitialHistoryState()
-    const defaultLocation = getWindowLocation(initialHistoryState, basenames)
-    const { index, entries } = restoreHistory(defaultLocation)
+    const defaultLocation = getWindowLocation(initialHistoryState, routes, opts)
+    const { index, entries } = restoreHistory(defaultLocation, routes, opts)
 
-    super(routes, opts, { index, entries, basenames, saveHistory })
+    super(routes, opts, { index, entries, saveHistory })
 
     this._id = id
     this._setupPopHandling()
@@ -102,8 +102,6 @@ export default class BrowserHistory extends History {
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
       // did it via browser back/next buttons
-      console.log(132)
-      this.dog = true
       this.currentPop = this.jump(n, undefined, false, kind, true, revertPop)
     }
 
@@ -111,11 +109,11 @@ export default class BrowserHistory extends History {
 
     const onPopState = event => {
       if (isExtraneousPopstateEvent(event)) return // Ignore extraneous popstate events in WebKit.
-      handlePop(getWindowLocation(event.state, this.basenames))
+      handlePop(getWindowLocation(event.state, this.routes, this.options))
     }
 
     const onHashChange = () => {
-      handlePop(getWindowLocation(getHistoryState(), this.basenames))
+      handlePop(getWindowLocation(getHistoryState(), this.routes, this.options))
     }
 
     const funcs = createPopListenerFuncs(onPopState, onHashChange)

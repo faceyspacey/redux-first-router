@@ -11,7 +11,7 @@ export default (
   routes: RoutesMap,
   opts: Options
 ): ReceivedAction => {
-  const { url, pathname, state, basename } = typeof loc === 'string' ? { pathname: loc } : loc
+  const { url, state, basename } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
   const path = url.replace(basename, '')
   const l = parsePath(path)
