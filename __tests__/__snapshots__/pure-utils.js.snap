@@ -35,7 +35,7 @@ Object {
   "entries": Array [
     Object {
       "hash": "",
-      "key": undefined,
+      "key": "345678",
       "pathname": "/",
       "search": "",
       "state": undefined,
