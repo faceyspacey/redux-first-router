@@ -1,7 +1,6 @@
 import History from './History'
 
 import {
-  formatSlashes,
   createPath,
   getWindowLocation,
   isExtraneousPopstateEvent,
@@ -53,9 +52,6 @@ import {
 
 export default class BrowserHistory extends History {
   constructor(routes, opts = {}) {
-    const { basenames = [] } = opts
-    opts.basenames = basenames.map(bn => formatSlashes(bn))
-
     const { id, ...initialHistoryState } = getInitialHistoryState()
     const defaultLocation = getWindowLocation(initialHistoryState, routes, opts)
     const { index, entries } = restoreHistory(defaultLocation, routes, opts)
@@ -156,10 +152,6 @@ export default class BrowserHistory extends History {
     return this._awaitLocation(awaitLoc || this.location, '_replace')
       .then(() => window.history.replaceState({ id: this._id, key, state }, null, href))
       .then(() => this._updateHistory(nextState))
-
-    window.history.replaceState({ id: this._id, key, state }, null, href)
-
-    return Promise.resolve()
   }
 
   _jump(nextState, n, isPop) {

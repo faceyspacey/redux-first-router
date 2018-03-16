@@ -1,12 +1,5 @@
 import History from './History'
-
-import {
-  createAction,
-  formatSlashes,
-  restoreHistory,
-  saveHistory,
-  canUseDom
-} from './utils'
+import { createAction, restoreHistory, saveHistory } from './utils'
 
 // NOTE ON HISTORY STUBS:
 
@@ -23,67 +16,45 @@ import {
 // navigate through the array of entries. It's a "best possible" fallback to
 // having to refresh or show no URL changes at all.
 
-// B) The final fallback is simply refreshing the page as the standard `history` package
-// would do (but from `createBrowserHistory`). User's can choose this /w `forceRefresh`.
-
-// C) ALSO: if there is `sessionStorage`, but no `history`, such as in IE9 + IE8, we'll
+// B) ALSO: if there is `sessionStorage`, but no `history`, such as in IE9 + IE8, we'll
 // also save and restore history from sessionStorage. So if you back off the site, you'll
 // return right where you left, even if the URL isn't changing.
+
 
 export default class MemoryHistory extends History {
   constructor(routes, opts = {}) {
     const {
       initialEntries: ents = ['/'],
       initialIndex = 0,
-      basenames = [],
-      forceRefresh = false,
       useSessionStorage = false
     } = opts
 
-    opts.basenames = basenames.map(bn => formatSlashes(bn))
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
     const { index, entries, saveHistory } = !useSessionStorage
       ? create(routes, opts, initialIndex, initialEntries) // this happens 99% of the time
       : restore(initialEntries, routes, opts) // only used when in browser environment (as a fallback)
 
     super(routes, opts, { index, entries, saveHistory })
-
-    this._forceRefresh = forceRefresh && canUseDom // again, only will be triggered when used in browsers as a fallback
   }
 
   _push(nextState) {
-    this._updateHistory(nextState)
-
-    if (this._forceRefresh) {
-      window.location.href = nextState.location.url
-    }
-
-    return Promise.resolve()
+    return this._updateHistory(nextState)
   }
 
   _replace(nextState) {
-    this._updateHistory(nextState)
-
-    if (this._forceRefresh) {
-      window.location.href = nextState.location.url
-    }
-
-    return Promise.resolve()
+    return this._updateHistory(nextState)
   }
 
   _jump(nextState) {
-    this._updateHistory(nextState)
-    return Promise.resolve()
+    return this._updateHistory(nextState)
   }
 
   _setState(nextState) {
-    this._updateHistory(nextState)
-    return Promise.resolve()
+    return this._updateHistory(nextState)
   }
 
   _reset(nextState) {
-    this._updateHistory(nextState)
-    return Promise.resolve()
+    return this._updateHistory(nextState)
   }
 }
 

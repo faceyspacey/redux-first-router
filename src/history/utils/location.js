@@ -48,7 +48,7 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
   return location
 }
 
-export const createAction = (entry, routes, opts, state, key, basename, currLoc) => {
+export const createAction = (entry, routes, opts, state, key, basename, currLoc, scene) => {
   if (typeof entry === 'string') {
     const foundBasename = findBasename(entry, opts.basenames)
     entry = foundBasename ? stripBasename(entry, foundBasename) : entry
@@ -56,23 +56,20 @@ export const createAction = (entry, routes, opts, state, key, basename, currLoc)
   }
 
   const location = createLocation(entry, state, key, currLoc, basename)
-
-  // return location
-  const action = urlToAction(location, routes, opts)
+  const action = urlToAction(location, routes, opts, scene)
 
   delete location.basename
   delete location.hash
   delete location.state
 
   return {
-    // ...location,
     ...action,
     location
   }
 }
 
 export const getWindowLocation = (historyState, routes, opts) => {
-  const { key, state } = historyState || {}
+  const { key = '123456790', state = {} } = historyState || {}
   const { pathname, search, hash } = window.location
   const url = pathname + search + hash
 

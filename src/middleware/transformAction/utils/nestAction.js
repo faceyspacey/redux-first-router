@@ -1,7 +1,7 @@
 import { typeToScene, isNotFound } from '../../../utils'
 
 export default (req, originalAction, prevState, history, fromAction) => {
-  const { kind, entries, index, length, location: action } = history
+  const { kind: k, entries, index, length, location: action } = history
   const { pathname, search, url, key } = action.location
   const { type, hash = '', basename: bn = '' } = action
   const { params = {}, query = {}, state = {} } = originalAction || action
@@ -10,6 +10,7 @@ export default (req, originalAction, prevState, history, fromAction) => {
   const from = createFrom(fromAction)
   const scene = typeToScene(type)
   const pop = !!req.tmp.revertPop
+  const kind = req.tmp.load ? 'load' : (from ? k.replace('push', 'replace') : k)
   const direction = getDirection(kind, index, prevState)
 
   const basename = bn.substr(1)
@@ -38,7 +39,7 @@ export default (req, originalAction, prevState, history, fromAction) => {
       prev,
       from,
 
-      kind,
+      kind: /jump|reset/.test(k) ? k : kind,
       entries,
       index,
       length,
@@ -85,6 +86,3 @@ const getDirection = (kind, currIndex, prevState) =>
     ? prevState.direction
     : currIndex < prevState.index ? 'backward' : 'forward'
 
-const deepMerge = (originalAction, historyAction) => {
-  retur
-}

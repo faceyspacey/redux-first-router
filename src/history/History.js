@@ -34,7 +34,9 @@ export default class History {
   }
 
   createLocation(path, state, basename) {
-    return createAction(path, this.routes, this.options, state, undefined, basename || this.basename, this.location)
+    const location = this.location || this.firstRoute.nextHistory.location
+    const scene = this.routes[location.type].scene
+    return createAction(path, this.routes, this.options, state, undefined, basename || this.basename, this.location, scene)
   }
 
   // API:
@@ -106,7 +108,11 @@ export default class History {
     const location = entries[index] = { ...this.entries[index] }
     const nextState = { kind, location, index, entries }
     const nextHistory = this._createNextHistory(nextState, { manualKind })
-    const commit = () => this._jump(nextState, n, isPop)
+    const commit = () => {
+      const { kind, location, index, entries } = nextHistory
+      const nextState = { kind, location, index, entries }
+      return this._jump(nextState, n, isPop)
+    }
 
     state = typeof state === 'function' ? state(location.state) : state
 
@@ -171,7 +177,11 @@ export default class History {
     const location = { ...entries[index] }
     const nextState = { kind, location, index, entries }
     const nextHistory = this._createNextHistory(nextState, { manualKind })
-    const commit = () => this._reset(nextState)
+    const commit = () => {
+      const { kind, location, index, entries } = nextHistory
+      const nextState = { kind, location, index, entries }
+      return this._reset(nextState)
+    }
 
     return this._notify({ nextHistory, commit }, notify)
   }

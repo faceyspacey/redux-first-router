@@ -9,7 +9,8 @@ import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 export default (
   loc: Object,
   routes: RoutesMap,
-  opts: Options
+  opts: Options,
+  scene: string = ''
 ): ReceivedAction => {
   const { url, basename = '', state = {} } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
@@ -28,8 +29,9 @@ export default (
     }
   }
 
+  const type = routes[`${scene}/NOT_FOUND`] && `${scene}/NOT_FOUND`// try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
   return {
-    ...notFound(state),
+    ...notFound(state, type),
     basename,
     params: {},
     query: l.search ? parseQuery(l.search, routes, opts) : {}, // keep this info

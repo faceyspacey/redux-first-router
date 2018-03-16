@@ -14,7 +14,8 @@ import type {
 export default (
   action: Action,
   routes: RoutesMap,
-  opts: Options = {}
+  opts: Options = {},
+  prevRoute?: Object
 ): string => {
   const { type, params, query, hash, state } = action
   const route = routes[type]
@@ -24,14 +25,23 @@ export default (
 
   toState(state, route, opts, action)
 
-  return compileUrl(
-    path,
-    toParams(params, route, opts, action),
-    toQuery(query, route, opts, action),
-    toHash(hash, route, opts, action),
-    route,
-    opts
-  ) || '/'
+  try {
+    return compileUrl(
+      path,
+      toParams(params, route, opts, action),
+      toQuery(query, route, opts, action),
+      toHash(hash, route, opts, action),
+      route,
+      opts
+    ) || '/'
+  }
+  catch (e) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(`[rudy] unable to compile action "${type}" to URL`, action, e)
+    }
+
+    return notFoundUrl(action, routes, prevRoute)
+  }
 }
 
 const toParams = (params: ?Object, route: Route, opts: Options, action) => {
@@ -140,4 +150,18 @@ const toHash = (hash: ?string = '', route: Route, opts: Options, action) => {
 
   const to = route.toHash || opts.toHash
   return to ? to(hash, route, opts) : hash
+}
+
+const notFoundUrl = (action, routes, prevRoute: Object = {}) => {
+  const route = routes[action.type] || {}
+  const hasScene = action.type.indexOf('/NOT_FOUND') > -1
+  const scene = route.scene || prevRoute.scene || ''
+
+  action.type = hasScene
+    ? action.type
+    : routes[`${scene}/NOT_FOUND`] // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
+      ? `${scene}/NOT_FOUND`
+      : 'NOT_FOUND'
+
+  return routes[action.type].path || routes.NOT_FOUND.path
 }
