@@ -1,7 +1,8 @@
 import { enhanceRoutes } from '../middleware/call/utils' // unfortunate coupling (to potentially optional middleware)
 import { formatRoutes } from '../utils'
 
-export default ({ action, options, routes: allRoutes, has }) => {
+export default (req) => {
+  const { action, options, routes: allRoutes, has } = req
   const env = process.env.NODE_ENV
 
   if (env === 'development' && !has('pathlessRoute')) {
@@ -18,4 +19,8 @@ export default ({ action, options, routes: allRoutes, has }) => {
   })
 
   Object.assign(allRoutes, newRoutes)
+
+  action.payload.routesAdded = Object.keys(routes).length // we need something to triggering updating of Link components when routes added
+
+  req.commitDispatch(action)
 }

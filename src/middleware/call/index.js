@@ -27,8 +27,7 @@ export default (name, config = {}) => (api) => {
     const o = (calls.options && !skipOpts && req.options[name]) || noOp
 
     if (start) {
-      const action = { ...req.action }
-      action.type = `${req.type}_START`
+      const action = { ...req.action, type: `${req.type}_START` }
       req.commitDispatch(action)
       req._start = true
     }
@@ -96,7 +95,7 @@ const autoDis = (req, res, route, name, next, isOptCb) => {
 const isAutoDispatch = (route, options, isOptCb) =>
   isOptCb
     ? options.autoDispatch === undefined ? true : options.autoDispatch
-    :  route.autoDispatch !== undefined
+    : route.autoDispatch !== undefined
       ? route.autoDispatch
       : options.autoDispatch === undefined ? true : options.autoDispatch
 

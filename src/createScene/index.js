@@ -53,7 +53,7 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
       const realType = `${prefix}${t}${suffix}`
 
       types[cleanType] = realType
-      actions[action][name] = makeActionCreator(route, realType, name, bn)
+      actions[action][name] = makeActionCreator(route, realType, name, bn, subtypes)
     })
 
     return result

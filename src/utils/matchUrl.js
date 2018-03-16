@@ -58,7 +58,7 @@ export default (
   const query = matchQuery(search, matchers.query, route, opts)
   if (!query) return null
 
-  if (matchers.hash && !matchVal(hash, matchers.hash, 'hash', route, opts)) {
+  if (matchers.hash !== undefined && !matchVal(hash, matchers.hash, 'hash', route, opts)) {
     return null
   }
 
@@ -107,7 +107,7 @@ export const matchVal = (val, expected, key, route, opts) => {
       return val !== '' && val !== undefined
     }
 
-    return val === undefined
+    return val === undefined || val === ''
   }
   else if (type === 'string') {
     return expected === val

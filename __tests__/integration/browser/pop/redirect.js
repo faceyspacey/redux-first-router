@@ -16,7 +16,7 @@ createTest('pop redirect', {
   await snapPop('back')
 
   expect(getLocation().type).toEqual('THIRD')
-  expect(getLocation().entries[0].url).toEqual('/third')
+  expect(getLocation().entries[0].location.url).toEqual('/third')
 
   expect(window.location.pathname).toEqual('/third')
 })

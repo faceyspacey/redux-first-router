@@ -1,9 +1,11 @@
 import { typeToScene, isNotFound } from '../../../utils'
 
-export default (req, action, prevState, history, fromAction) => {
-  const { kind, entries, index, length, location } = history
-  const { pathname, search, basename: bn, url, state = {} } = location
-  const { type, params = {}, query = {}, hash = '' } = action
+export default (req, originalAction, prevState, history, fromAction) => {
+  const { kind, entries, index, length, location: action } = history
+  const { pathname, search, url, key } = action.location
+  const { type, hash = '', basename: bn = '' } = action
+  const { params = {}, query = {}, state = {} } = originalAction || action
+
   const prev = createPrev(prevState)
   const from = createFrom(fromAction)
   const scene = typeToScene(type)
@@ -12,11 +14,11 @@ export default (req, action, prevState, history, fromAction) => {
 
   const basename = bn.substr(1)
   const status = (kind === 'replace' || fromAction)
-    ? ((action.location && action.location.status) || 302)
+    ? ((originalAction && originalAction.location && originalAction.location.status) || 302)
     : (isNotFound(type) ? 404 : 200)
 
   return {
-    ...action,
+    ...originalAction,
     type,
     params,
     query,
@@ -24,10 +26,11 @@ export default (req, action, prevState, history, fromAction) => {
     state,
     basename,
     location: {
-      ...action.location,
+      ...(originalAction && originalAction.location),
       url,
       pathname,
       search,
+      key,
       scene,
       direction,
       status,
@@ -81,3 +84,7 @@ const getDirection = (kind, currIndex, prevState) =>
   /replace|setState/.test(kind)
     ? prevState.direction
     : currIndex < prevState.index ? 'backward' : 'forward'
+
+const deepMerge = (originalAction, historyAction) => {
+  retur
+}

@@ -11,7 +11,7 @@ export default (req) => {
       ? `${guessedScene}/NOT_FOUND`
       : 'NOT_FOUND'
 
-  const url = action.notFoundUrl || routes[type].path || routes.NOT_FOUND.path
+  const url = routes[type].path || routes.NOT_FOUND.path
   return { type, url }
 }
 

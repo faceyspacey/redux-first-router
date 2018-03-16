@@ -14,7 +14,7 @@ createTest('dispatch(addRoutes(routes))', {}, [], async ({ snap, getState }) => 
   expect(getState().location.pathname).toEqual('/foo')
 })
 
-createTest('dispatch(addRoutes(routes, formatRoute))', {}, [], async ({ snap, getState }) => {
+createTest('dispatch(addRoutes(routes, formatRoute))', {}, [], async ({ snap, getState, dispatch }) => {
   const routes = {
     FOO: {
       path: '/foo',
@@ -22,18 +22,14 @@ createTest('dispatch(addRoutes(routes, formatRoute))', {}, [], async ({ snap, ge
     },
     BAZ: {
       path: '/baz',
-      thunk: function() {
-        return 'payload'
-      }
+      thunk: () => 'payload!'
     }
   }
 
-  const formatRoute = route => {
-    return {
-      ...route,
-      path: '/bar'
-    }
-  }
+  const formatRoute = route => ({
+    ...route,
+    path: '/bar'
+  })
 
   await snap(addRoutes(routes, formatRoute))
   await snap({ type: 'FOO' })

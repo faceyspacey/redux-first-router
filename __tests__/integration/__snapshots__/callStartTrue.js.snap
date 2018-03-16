@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - history_entries 1`] = `
+exports[`call({ start: true }): 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -33,17 +33,106 @@ Array [
 ]
 `;
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - history_index 1`] = `1`;
+exports[`call({ start: true }): 1 - history_index 1`] = `1`;
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - response 1`] = `"foo"`;
+exports[`call({ start: true }): 1 - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "",
+          "hash": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
+          "state": Object {},
+          "type": "FIRST",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "key": "345678",
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/first",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "payload": "SUCCESS!!",
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`call({ start: true }): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`call({ start: true }): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - SECOND - thunk 1`] = `1`;
+exports[`call({ start: true }): 1 - routes - SECOND - thunk 1`] = `1`;
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - state 1`] = `
+exports[`call({ start: true }): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -123,6 +212,7 @@ Object {
       "url": "/first",
     },
     "query": Object {},
+    "ready": true,
     "scene": "",
     "search": "",
     "state": Object {},
@@ -131,145 +221,8 @@ Object {
     "universal": false,
     "url": "/second",
   },
-  "title": "SECOND",
+  "title": "SECOND - \\"SUCCESS!!\\"",
 }
 `;
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - title 1`] = `"SECOND"`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - history_index 1`] = `1`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - response 1`] = `"foo"`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - SECOND - thunk 1`] = `1`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "url": "/first",
-        },
-        "params": Object {},
-        "query": Object {},
-        "state": Object {},
-        "type": "FIRST",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/second",
-          "search": "",
-          "url": "/second",
-        },
-        "params": Object {},
-        "query": Object {},
-        "state": Object {},
-        "type": "SECOND",
-      },
-    ],
-    "from": null,
-    "hash": "",
-    "index": 1,
-    "key": "345678",
-    "kind": "push",
-    "length": 2,
-    "params": Object {},
-    "pathname": "/second",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "location": Object {
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "url": "/first",
-          },
-          "params": Object {},
-          "query": Object {},
-          "state": Object {},
-          "type": "FIRST",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "key": "345678",
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "pop": false,
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 200,
-    "type": "SECOND",
-    "universal": false,
-    "url": "/second",
-  },
-  "title": "SECOND",
-}
-`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - title 1`] = `"SECOND"`;
+exports[`call({ start: true }): 1 - title 1`] = `"FIRST"`;

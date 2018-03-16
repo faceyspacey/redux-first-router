@@ -91,7 +91,7 @@ createTest('does not parse a blank string "" as NaN', {
     path: '/third(.*)'
   }
 }, [
-  { type: 'SECOND' },
+  { type: 'SECOND' }, // this won't match unfortunately -- use optional param? instead
   '/third'
 ])
 
@@ -219,7 +219,7 @@ createTest('static regexes', {
     path: '/third/(list|all)'
   }
 }, [
-  { type: 'SECOND' }, // this won't match unfortunately, as the compiled URL can't choose "list" or "all"
+  { type: 'SECOND' }, // this won't match unfortunately, as the compiled URL can't choose "list" or "all" -- use named "regex parameters" below instead
   '/third/list',
   '/third/all'
 ])
@@ -232,7 +232,7 @@ createTest('regex parameters', {
     path: '/third/:id(\\d+)'
   }
 }, [
-  { type: 'SECOND', params: { id: 100 } }, // but these will match (CONCLUSION: give them dynamic segments so you can choose in `action.params`)
+  { type: 'SECOND', params: { id: 100 } },
   { type: 'SECOND', params: { id: 'foo' } },
   '/third/100',
   '/third/foo'

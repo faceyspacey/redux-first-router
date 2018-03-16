@@ -21,20 +21,18 @@ export default (...names) => (api) => {
     const { route, action } = req
     const isPathless = route && !route.path && action.type !== UPDATE_HISTORY
 
-    if (isPathless && hasCallback(route, names, action.type)) {
+    if (isPathless && hasCallback(route, names)) {
       if (route.dispatch !== false) {
         req.action = req.commitDispatch(req.action)
       }
 
-      const res = pipeline(req)
-      return Promise.resolve(res)
-        .then(res => res || req.action)
+      return pipeline(req).then(res => res || req.action)
     }
 
     return next()
   }
 }
 
-const hasCallback = (route, names, type) =>
+const hasCallback = (route, names) =>
   names.find(name => typeof route[name] === 'function')
 

@@ -18,53 +18,70 @@ module.exports = wallaby => {
     ],
 
     tests: [
-      // '__tests__/integration/**/*.js',
-      '__tests__/integration/params.js',
-      // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/browser/**/*.js',
-      // '__tests__/integration/dispatchFrom.js',
-      // '__tests__/integration/browser/sessionStorage/**/*.js',
-      // '__tests__/integration/browserPop/popCancelsAction.js',
-      // '__tests__/integration/cancelPendingRequest.js',
-      // '__tests__/integration/actions/history.js',
-      // '__tests__/integration/entryState.js',
+      // '__tests__/integration/actions/**/*.js',
+      // '__tests__/integration/createScene/**/*.js',
+
+
+      // '__tests__/integration/actions/addRoutes.js',
       // '__tests__/integration/actions/changeBasename.js',
-      // '__tests__/integration/routeLevelMiddleware.js',
-      // '__tests__/integration/serverRedirect.js',
-      // '__tests__/integration/queries.js',
-      // '__tests__/integration/params.js',
-      // '__tests__/Link/NavLink.js',
-
-      // '__tests__/integration/dontDoubleDispatch.js',
-      // '__tests__/createScene.js',
       // '__tests__/integration/actions/notFound.js',
-      // '__tests__/integration/**/*.js',
-      // '__tests__/Link/**/*.js',
-      // '__tests__/createRouter.js',
-      // '__tests__/createScene.js',
+      // '__tests__/integration/actions/redirect.js',
+      // '__tests__/integration/actions/history.js',
 
-      // '__tests__/standaloneThunk.js',
-      // '__tests__/beforeEnter.js',
-      // '__tests__/beforeLeave.js',
-      // '__tests__/onComplete.js',
-      // '__tests__/onEnter.js',
-      // '__tests__/onLeave.js',
-      // '__tests__/thunk.js',
+      // '__tests__/integration/browser/pop/**/*.js',
+      // '__tests__/integration/browser/sessionStorage/**/*.js',
 
-      // '__tests__/middleware.js',
-      // '__tests__/enhancer.js',
+      // '__tests__/integration/createScene/actionCreators.js',
+      // '__tests__/integration/createScene/options.js',
+      // '__tests__/integration/createScene/returnedUtilities.js',
 
-      // '__tests__/actionToUrl.js',
-      // '__tests__/urlToAction.js',
-      // '__tests__/queryStrings.js',
-      // '__tests__/actions.js',
-      // '__tests__/utils.js',
 
-      // '__tests__/nestAction.js',
-      // '__tests__/history.js',
-      // '__tests__/createLocationReducer.js',
-      // '__tests__/reducer.js',
-      // '__tests__/clientOnlyApi.js'
+      // '__tests__/integration/params.js',
+      // '__tests__/integration/queries.js',
+      // '__tests__/integration/hashes.js',
+      // '__tests__/integration/entryState.js',
+
+
+      // '__tests__/integration/arrayCallback.js',
+      // '__tests__/integration/inheritedCallbacks.js',
+
+      // '__tests__/integration/anonymousThunk.js',
+      // '__tests__/integration/pathlessRoute.js',
+
+      // '__tests__/integration/autoDispatch.js',
+      // '__tests__/integration/autoDispatchFalse.js',
+
+      // '__tests__/integration/formatRoutes.js',
+      // '__tests__/integration/callRoute.js',
+
+      // '__tests__/integration/cancelPendingRequest.js',
+      // '__tests__/integration/dontDoubleDispatch.js',
+
+      // '__tests__/integration/createAction.js',
+      // '__tests__/integration/createRequest.js',
+
+      // '__tests__/integration/firstRoute.js',
+      // '__tests__/integration/SPA.js',
+      // '__tests__/integration/hydrate.js',
+
+      // '__tests__/integration/middlewareAsFunction.js',
+      // '__tests__/integration/routeLevelMiddleware.js',
+      // '__tests__/integration/callStartTrue.js',
+
+      // '__tests__/integration/async.js',
+      // '__tests__/integration/onError.js',
+      // '__tests__/integration/optionsCallbacks.js',
+      // '__tests__/integration/overrideOptionse.js',
+      // '__tests__/integration/thunkCaching.js',
+
+      // '__tests__/integration/redirects.js',
+      // '__tests__/integration/returnFalse.js',
+      // '__tests__/integration/multipleRedirects.js',
+      // '__tests__/integration/complexRedirects.js',
+      // '__tests__/integration/serverRedirect.js',
+      // '__tests__/integration/redirectShortcut.js',
+      // '__tests__/integration/dispatchFrom.js',
     ],
 
     env: {

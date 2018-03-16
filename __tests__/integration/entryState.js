@@ -12,10 +12,12 @@ createTest('state merged on back/next', {
   SECOND: {
     path: '/second'
   }
-}, [], async ({ dispatch, snap }) => {
+}, [], async ({ dispatch, snap, getLocation }) => {
   await dispatch({ type: 'SECOND', state: { foo: 'bar' } })
   await dispatch({ type: 'FIRST' })
   await snap({ type: 'SECOND', state: { baz: 'bla' } })
+
+  expect(getLocation()).toMatchSnapshot()
 })
 
 createTest('action.state as function', {
@@ -50,16 +52,18 @@ createTest('route.defaultState', {
   { type: 'SECOND' }
 ], async ({ history, store, snapChange }) => {
   const res = await history.push('/third', { abc: 123 })
-  snapChange('', res, store, history)
+  snapChange(res, store, history)
 })
 
 createTest('route.toState/fromState', {
   SECOND: {
     path: '/second',
-    toState: (v, k) => v.toUpperCase() + k.toUpperCase()
+    toState: (v, k) => v.toUpperCase() + k.toUpperCase(),
+    fromState: (v, k) => v.toLowerCase() + k.toLowerCase()
   },
   THIRD: {
     path: '/third',
+    toState: (v, k) => v.toUpperCase() + k.toUpperCase(),
     fromState: (v, k) => v.toLowerCase() + k.toLowerCase()
   }
 }, [
@@ -67,5 +71,5 @@ createTest('route.toState/fromState', {
   { type: 'SECOND' }
 ], async ({ history, store, snapChange }) => {
   const res = await history.push('/third', { abc: 'XYZF' })
-  snapChange('', res, store, history)
+  snapChange(res, store, history)
 })

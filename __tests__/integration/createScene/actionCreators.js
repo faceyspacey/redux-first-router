@@ -42,7 +42,7 @@ createTest('createScene()', routes, [
   ['route.error - custom error action creator', actions.second.error(new Error('fail'))],
   ['actions.third.complete(payload)', actions.third.complete({ foo: 'bar' })],
   ['actions.second.complete(thunk)', actions.second.complete(() => ({ foo: 'bar' }))],
-  ['route with just action creator', actions.plain('bar')],
-  ['actions.notFound(params, path)', actions.notFound({ foo: 'bar' }, '/cat')],
+  ['route with just action creator', actions.plain('hello')],
+  ['actions.notFound(state)', actions.notFound({ foo: 'bar' })],
   ['actions.notFound.complete(payload)', actions.notFound.complete('foo')]
 ])

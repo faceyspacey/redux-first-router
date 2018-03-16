@@ -57,10 +57,15 @@ export const createAction = (entry, routes, opts, state, key, basename, currLoc)
 
   const location = createLocation(entry, state, key, currLoc, basename)
 
-  return location
+  // return location
   const action = urlToAction(location, routes, opts)
+
+  delete location.basename
+  delete location.hash
+  delete location.state
+
   return {
-    ...location,
+    // ...location,
     ...action,
     location
   }

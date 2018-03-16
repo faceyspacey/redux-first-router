@@ -1,5 +1,5 @@
 export default (req) => {
-  const { ctx, action, has, dispatch } = req
+  const { ctx, action, has } = req
   const env = process.env.NODE_ENV
 
   if (env === 'development' && !has('pathlessRoute')) {

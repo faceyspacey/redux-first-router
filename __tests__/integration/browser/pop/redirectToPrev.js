@@ -19,8 +19,8 @@ createTest('pop redirect to prev URL', {
   expect(getLocation().type).toEqual('FIRST')
   expect(getLocation().index).toEqual(0)
 
-  expect(getLocation().entries[0].url).toEqual('/')
-  expect(getLocation().entries[1].url).toEqual('/second')
+  expect(getLocation().entries[0].location.url).toEqual('/')
+  expect(getLocation().entries[1].location.url).toEqual('/second')
 
   expect(window.location.pathname).toEqual('/')
 })

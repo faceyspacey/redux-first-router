@@ -90,13 +90,12 @@ export default class History {
 
     const nextState = { kind, location, entries, index }
     const nextHistory = this._createNextHistory(nextState)
-    const commit = () => this._replace(nextState, pop.location, pop.n)
+    const commit = () => this._replace(nextState, pop.action, pop.n)
 
     return this._notify({ nextHistory, commit }, notify)
   }
 
   jump(n, state, byIndex = false, manualKind, notify = true, revertPop) {
-    console.log('N', n)
     n = this._resolveN(n, byIndex)
     manualKind = manualKind || (n < 0 ? 'back' : 'next')
 
@@ -110,6 +109,7 @@ export default class History {
     const commit = () => this._jump(nextState, n, isPop)
 
     state = typeof state === 'function' ? state(location.state) : state
+
     location.state = { ...location.state, ...state }
 
     if (!this.entries[index]) {
@@ -151,7 +151,7 @@ export default class History {
   }
 
   reset(entries, index, manualKind, notify = true) {
-    entries = entries.map(e => createLocation(e))
+    entries = entries.map(e => this.createLocation(e))
     index = index !== undefined ? index : entries.length - 1
 
     if (!manualKind) {
@@ -211,12 +211,12 @@ export default class History {
 
   _isBack(location) {
     const entry = this.entries[this.index - 1]
-    return entry && entry.url === location.url
+    return entry && entry.location.url === location.location.url
   }
 
   _isNext(location) {
     const entry = this.entries[this.index + 1]
-    return entry && entry.url === location.url
+    return entry && entry.location.url === location.location.url
   }
 
   _updateHistory(state) {
@@ -249,7 +249,7 @@ export default class History {
 
   _resolveN(n, byIndex) {
     if (typeof n === 'string') {
-      const index = this.entries.findIndex(e => e.key === n)
+      const index = this.entries.findIndex(e => e.location.key === n)
       return index - this.index
     }
 

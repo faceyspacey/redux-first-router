@@ -45,7 +45,6 @@ createTest('createScene(routes, { scene, basename })', routes, [
   ['actions.third.complete(payload)', actions.third.complete({ foo: 'bar' })],
   ['actions.second.complete(thunk)', actions.second.complete(() => ({ foo: 'bar' }))],
   ['route with just action creator', actions.plain('bar')],
-  ['actions.notFound(params)', actions.notFound({ foo: 'bar' })],
-  ['actions.notFound(params, path)', actions.notFound({ foo: 'bar' }, '/cat')],
+  ['actions.notFound(state)', actions.notFound({ foo: 'bar' })],
   ['actions.notFound.complete(payload)', actions.notFound.complete('foo')]
 ])

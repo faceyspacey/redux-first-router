@@ -17,13 +17,13 @@ export default (
 ): RoutesMap => {
   if (!isAddRoutes) {
     routes.NOT_FOUND = routes.NOT_FOUND || { path: '/not-found' }
-  }
 
-  routes[ADD_ROUTES] = routes[ADD_ROUTES] || { thunk: addRoutes }
-  routes[CHANGE_BASENAME] = routes[CHANGE_BASENAME] || { thunk: changeBasename, dispatch: false }
-  routes[CLEAR_CACHE] = routes[CLEAR_CACHE] || { thunk: clearCache }
-  routes[CONFIRM] = routes[CONFIRM] || { thunk: confirm, dispatch: false }
-  routes[CALL_HISTORY] = routes[CALL_HISTORY] || { thunk: callHistory, dispatch: false }
+    routes[ADD_ROUTES] = routes[ADD_ROUTES] || { thunk: addRoutes, dispatch: false }
+    routes[CHANGE_BASENAME] = routes[CHANGE_BASENAME] || { thunk: changeBasename, dispatch: false }
+    routes[CLEAR_CACHE] = routes[CLEAR_CACHE] || { thunk: clearCache }
+    routes[CONFIRM] = routes[CONFIRM] || { thunk: confirm, dispatch: false }
+    routes[CALL_HISTORY] = routes[CALL_HISTORY] || { thunk: callHistory, dispatch: false }
+  }
 
   const types = Object.keys(routes)
 

@@ -5,7 +5,7 @@ createTest('pop then regular action (cancel pop)', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    beforeEnter: () => new Promise(res => setTimeout(res, 50))
+    beforeEnter: () => new Promise(res => setTimeout(res, 70))
   },
   THIRD: '/third'
 }, { browser: true }, [], async ({ snapPop, snap, dispatch, getLocation }) => {

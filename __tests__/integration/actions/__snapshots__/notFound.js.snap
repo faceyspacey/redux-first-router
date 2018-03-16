@@ -5,20 +5,30 @@ Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/first",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/first",
+    "type": "FIRST",
   },
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/not-found",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/not-found",
+      "search": "",
+      "url": "/not-found",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/not-found",
+    "type": "NOT_FOUND",
   },
 ]
 `;
@@ -35,24 +45,35 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/not-found",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/not-found",
+          "search": "",
+          "url": "/not-found",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/not-found",
+        "type": "NOT_FOUND",
       },
     ],
     "from": null,
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
     "pathname": "/not-found",
@@ -64,15 +85,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -91,7 +118,6 @@ Object {
     "status": 404,
     "url": "/not-found",
   },
-  "notFoundUrl": undefined,
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -112,25 +138,36 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/not-found",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/not-found",
+          "search": "",
+          "url": "/not-found",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/not-found",
+        "type": "NOT_FOUND",
       },
     ],
     "from": null,
     "hash": "",
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
     "params": Object {},
@@ -143,15 +180,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -180,216 +223,44 @@ Object {
 
 exports[`dispatch(notFound()): 1 - title 1`] = `"NOT_FOUND"`;
 
-exports[`dispatch(notFound(action, alternatePath)): 1 - history_entries 1`] = `
+exports[`dispatch(notFound(state)): 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/first",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/first",
+    "type": "FIRST",
   },
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/does-not-exist",
-    "search": "",
-    "state": Object {},
-    "url": "/does-not-exist",
-  },
-]
-`;
-
-exports[`dispatch(notFound(action, alternatePath)): 1 - history_index 1`] = `1`;
-
-exports[`dispatch(notFound(action, alternatePath)): 1 - response 1`] = `
-Object {
-  "basename": "",
-  "hash": "",
-  "location": Object {
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
-      },
-    ],
-    "from": null,
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "pathname": "/does-not-exist",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "pop": false,
-      "query": Object {},
-      "scene": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/not-found",
       "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
+      "url": "/not-found",
     },
-    "scene": "",
-    "search": "",
-    "status": 404,
-    "url": "/does-not-exist",
-  },
-  "notFoundUrl": "/does-not-exist",
-  "params": Object {
-    "foo": "bar",
-  },
-  "query": Object {},
-  "state": Object {},
-  "type": "NOT_FOUND",
-}
-`;
-
-exports[`dispatch(notFound(action, alternatePath)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`dispatch(notFound(action, alternatePath)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`dispatch(notFound(action, alternatePath)): 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
-      },
-    ],
-    "from": null,
-    "hash": "",
-    "index": 1,
-    "kind": "push",
-    "length": 2,
-    "params": Object {
+    "params": Object {},
+    "query": Object {},
+    "state": Object {
       "foo": "bar",
     },
-    "pathname": "/does-not-exist",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
-          "state": Object {},
-          "url": "/first",
-        },
-      ],
-      "hash": "",
-      "index": 0,
-      "kind": "load",
-      "length": 1,
-      "params": Object {},
-      "pathname": "/first",
-      "pop": false,
-      "query": Object {},
-      "scene": "",
-      "search": "",
-      "state": Object {},
-      "status": 200,
-      "type": "FIRST",
-      "url": "/first",
-    },
-    "query": Object {},
-    "scene": "",
-    "search": "",
-    "state": Object {},
-    "status": 404,
     "type": "NOT_FOUND",
-    "universal": false,
-    "url": "/does-not-exist",
-  },
-  "title": "NOT_FOUND",
-}
-`;
-
-exports[`dispatch(notFound(action, alternatePath)): 1 - title 1`] = `"NOT_FOUND"`;
-
-exports[`dispatch(notFound(alternatePath)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/does-not-exist",
-    "search": "",
-    "state": Object {},
-    "url": "/does-not-exist",
   },
 ]
 `;
 
-exports[`dispatch(notFound(alternatePath)): 1 - history_index 1`] = `1`;
+exports[`dispatch(notFound(state)): 1 - history_index 1`] = `1`;
 
-exports[`dispatch(notFound(alternatePath)): 1 - response 1`] = `
+exports[`dispatch(notFound(state)): 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -399,27 +270,40 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/not-found",
+          "search": "",
+          "url": "/not-found",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "NOT_FOUND",
       },
     ],
     "from": null,
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
-    "pathname": "/does-not-exist",
+    "pathname": "/not-found",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -428,15 +312,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -453,21 +343,22 @@ Object {
     "scene": "",
     "search": "",
     "status": 404,
-    "url": "/does-not-exist",
+    "url": "/not-found",
   },
-  "notFoundUrl": "/does-not-exist",
   "params": Object {},
   "query": Object {},
-  "state": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
   "type": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound(alternatePath)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(notFound(state)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(notFound(alternatePath)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(notFound(state)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(notFound(alternatePath)): 1 - state 1`] = `
+exports[`dispatch(notFound(state)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -476,29 +367,42 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/does-not-exist",
-        "search": "",
-        "state": Object {},
-        "url": "/does-not-exist",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/not-found",
+          "search": "",
+          "url": "/not-found",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "NOT_FOUND",
       },
     ],
     "from": null,
     "hash": "",
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
     "params": Object {},
-    "pathname": "/does-not-exist",
+    "pathname": "/not-found",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -507,15 +411,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -532,128 +442,58 @@ Object {
     "query": Object {},
     "scene": "",
     "search": "",
-    "state": Object {},
+    "state": Object {
+      "foo": "bar",
+    },
     "status": 404,
     "type": "NOT_FOUND",
     "universal": false,
-    "url": "/does-not-exist",
+    "url": "/not-found",
   },
   "title": "NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound(alternatePath)): 1 - title 1`] = `"NOT_FOUND"`;
+exports[`dispatch(notFound(state)): 1 - title 1`] = `"NOT_FOUND"`;
 
-exports[`dispatch(notFound(alternatePath, forcedType)): 1 - history_entries 1`] = `
+exports[`dispatch(notFound(state, forcedType)): 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
-  },
-]
-`;
-
-exports[`dispatch(notFound(alternatePath, forcedType)): 1 - history_index 1`] = `0`;
-
-exports[`dispatch(notFound(alternatePath, forcedType)): 1 - response 1`] = `
-Object {
-  "notFoundUrl": "/does-not-exist",
-  "params": undefined,
-  "type": "WRONG",
-}
-`;
-
-exports[`dispatch(notFound(alternatePath, forcedType)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`dispatch(notFound(alternatePath, forcedType)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`dispatch(notFound(alternatePath, forcedType)): 1 - state 1`] = `
-Object {
-  "location": Object {
-    "basename": "",
-    "direction": "forward",
-    "entries": Array [
-      Object {
-        "basename": "",
-        "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
-        "state": Object {},
-        "url": "/first",
-      },
-    ],
-    "from": null,
-    "hash": "",
-    "index": 0,
-    "kind": "load",
-    "length": 1,
-    "params": Object {},
-    "pathname": "/first",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "direction": "forward",
-      "entries": Array [],
-      "hash": "",
-      "index": -1,
-      "kind": "",
-      "length": 0,
-      "params": Object {},
-      "pathname": "",
-      "query": Object {},
-      "scene": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
       "search": "",
-      "state": Object {},
-      "type": "",
-      "url": "",
+      "url": "/first",
     },
+    "params": Object {},
     "query": Object {},
-    "scene": "",
-    "search": "",
     "state": Object {},
-    "status": 200,
     "type": "FIRST",
-    "universal": false,
-    "url": "/first",
-  },
-  "title": "WRONG",
-}
-`;
-
-exports[`dispatch(notFound(alternatePath, forcedType)): 1 - title 1`] = `"FIRST"`;
-
-exports[`dispatch(notFound(params)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
-    "state": Object {},
-    "url": "/first",
   },
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/not-found",
-    "search": "",
-    "state": Object {},
-    "url": "/not-found",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/scene-level-not-found",
+      "search": "",
+      "url": "/scene-level-not-found",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {
+      "foo": "bar",
+    },
+    "type": "scene/NOT_FOUND",
   },
 ]
 `;
 
-exports[`dispatch(notFound(params)): 1 - history_index 1`] = `1`;
+exports[`dispatch(notFound(state, forcedType)): 1 - history_index 1`] = `1`;
 
-exports[`dispatch(notFound(params)): 1 - response 1`] = `
+exports[`dispatch(notFound(state, forcedType)): 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -663,27 +503,40 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/not-found",
-        "search": "",
-        "state": Object {},
-        "url": "/not-found",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/scene-level-not-found",
+          "search": "",
+          "url": "/scene-level-not-found",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "scene/NOT_FOUND",
       },
     ],
     "from": null,
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
-    "pathname": "/not-found",
+    "pathname": "/scene-level-not-found",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -692,15 +545,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -714,26 +573,25 @@ Object {
       "type": "FIRST",
       "url": "/first",
     },
-    "scene": "",
+    "scene": "scene",
     "search": "",
     "status": 404,
-    "url": "/not-found",
+    "url": "/scene-level-not-found",
   },
-  "notFoundUrl": undefined,
-  "params": Object {
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
     "foo": "bar",
   },
-  "query": Object {},
-  "state": Object {},
-  "type": "NOT_FOUND",
+  "type": "scene/NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound(params)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(notFound(state, forcedType)): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(notFound(params)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(notFound(state, forcedType)): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(notFound(params)): 1 - state 1`] = `
+exports[`dispatch(notFound(state, forcedType)): 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -742,31 +600,42 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/not-found",
-        "search": "",
-        "state": Object {},
-        "url": "/not-found",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/scene-level-not-found",
+          "search": "",
+          "url": "/scene-level-not-found",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "scene/NOT_FOUND",
       },
     ],
     "from": null,
     "hash": "",
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
-    "params": Object {
-      "foo": "bar",
-    },
-    "pathname": "/not-found",
+    "params": Object {},
+    "pathname": "/scene-level-not-found",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -775,15 +644,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -798,19 +673,21 @@ Object {
       "url": "/first",
     },
     "query": Object {},
-    "scene": "",
+    "scene": "scene",
     "search": "",
-    "state": Object {},
+    "state": Object {
+      "foo": "bar",
+    },
     "status": 404,
-    "type": "NOT_FOUND",
+    "type": "scene/NOT_FOUND",
     "universal": false,
-    "url": "/not-found",
+    "url": "/scene-level-not-found",
   },
-  "title": "NOT_FOUND",
+  "title": "scene/NOT_FOUND",
 }
 `;
 
-exports[`dispatch(notFound(params)): 1 - title 1`] = `"NOT_FOUND"`;
+exports[`dispatch(notFound(state, forcedType)): 1 - title 1`] = `"scene/NOT_FOUND"`;
 
 exports[`notFound on first load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
@@ -821,11 +698,16 @@ Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/non-existent",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/non-existent",
+      "search": "",
+      "url": "/non-existent",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/non-existent",
+    "type": "NOT_FOUND",
   },
 ]
 `;
@@ -841,15 +723,21 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/non-existent",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/non-existent",
+          "search": "",
+          "url": "/non-existent",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/non-existent",
+        "type": "NOT_FOUND",
       },
     ],
     "hash": "",
     "index": 0,
+    "key": "345678",
     "kind": "init",
     "length": 1,
     "params": Object {},
@@ -860,6 +748,7 @@ Object {
       "entries": Array [],
       "hash": "",
       "index": -1,
+      "key": "",
       "kind": "",
       "length": 0,
       "params": Object {},
@@ -894,15 +783,21 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/non-existent",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/non-existent",
+          "search": "",
+          "url": "/non-existent",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/non-existent",
+        "type": "NOT_FOUND",
       },
     ],
     "from": null,
     "index": 0,
+    "key": "345678",
     "kind": "load",
     "length": 1,
     "pathname": "/non-existent",
@@ -913,6 +808,7 @@ Object {
       "entries": Array [],
       "hash": "",
       "index": -1,
+      "key": "",
       "kind": "",
       "length": 0,
       "params": Object {},
@@ -929,7 +825,6 @@ Object {
     "status": 404,
     "url": "/non-existent",
   },
-  "notFoundUrl": "/non-existent",
   "params": Object {},
   "query": Object {},
   "state": Object {},
@@ -946,16 +841,22 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/non-existent",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/non-existent",
+          "search": "",
+          "url": "/non-existent",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/non-existent",
+        "type": "NOT_FOUND",
       },
     ],
     "from": null,
     "hash": "",
     "index": 0,
+    "key": "345678",
     "kind": "load",
     "length": 1,
     "params": Object {},
@@ -967,6 +868,7 @@ Object {
       "entries": Array [],
       "hash": "",
       "index": -1,
+      "key": "",
       "kind": "",
       "length": 0,
       "params": Object {},

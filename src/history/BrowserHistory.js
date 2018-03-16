@@ -87,7 +87,7 @@ export default class BrowserHistory extends History {
         n = this._isNext(loc) ? 1 : -1
         this.pendingPop = n
       }
-      else if (loc.url === this.location.url) {
+      else if (loc.location.url === this.location.location.url) {
         n = this.pendingPop * -1 // switch directions
         return this._forceGo(n * -1)
       }
@@ -128,7 +128,7 @@ export default class BrowserHistory extends History {
   _push(nextState, awaitLoc) {
     const { location } = nextState
     const { key, state } = location
-    const href = location.url
+    const href = location.location.url
     console.log('PUSH', href)
 
     return this._awaitLocation(awaitLoc || this.location, '_push')
@@ -141,7 +141,7 @@ export default class BrowserHistory extends History {
   _replace(nextState, awaitLoc, n) {
     const { location } = nextState
     const { key, state } = location
-    const href = location.url
+    const href = location.location.url
     console.log('REPLACE', href)
 
     if (n) {
@@ -226,7 +226,7 @@ export default class BrowserHistory extends History {
 
   _awaitLocation(loc, name) {
     return new Promise(resolve => {
-      const { url } = loc
+      const { url } = loc.location
       const ready = () => {
         console.log('READY(desiredUrl, currentUrl)', url, createPath(window.location))
         return url === createPath(window.location)

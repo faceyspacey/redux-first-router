@@ -18,7 +18,7 @@ export default (req, url, action, history) => {
     if (n) {
       if (!isNAdjacentToSameUrl(url, req.history, n)) {
         n = req.tmp.revertPop ? null : n // if this back/next movement is do to a user-triggered pop (browser back/next buttons), we don't need to shift the browser history by n, since it's already been done
-        pop = { n, entries, index, location: { basename, url: prevUrl } }
+        pop = { n, entries, index, action: { location: { url: prevUrl } } }
         console.log('SINGLE POP!', action.type, pop)
         method = 'replacePop'
       }
@@ -26,7 +26,7 @@ export default (req, url, action, history) => {
         const newIndex = index + n
         const newLocation = entries[newIndex]
         n = req.tmp.revertPop ? n : n * 2
-        pop = { n, entries, index: newIndex, location: newLocation }
+        pop = { n, entries, index: newIndex, action: newLocation }
         console.log('DOUBLE POP!!!', pop)
         method = 'replacePop'
       }
@@ -52,6 +52,13 @@ export default (req, url, action, history) => {
     prev = redirectCommitted ? curr.prev : prev                         // `prev` maintains proper entries array, notwithstanding any redirects
   }
 
+  action = {
+    ...action,
+    params: { ...nextHistory.location.params, ...action.params },
+    query: { ...nextHistory.location.query, ...action.query },
+    state: { ...nextHistory.location.state, ...action.state }
+  }
+
   req.action = nestAction(req, action, prev, nextHistory, from)
   req.commitHistory = commit                                            // put these here so `enter` middleware can commit the history, etc
 
@@ -62,14 +69,14 @@ const getPrevNextN = (url, history) => {
   const { entries, index } = history
 
   const prevLoc = entries[index - 1]
-  if (prevLoc && prevLoc.url === url) return -1
+  if (prevLoc && prevLoc.location.url === url) return -1
 
   const nextLoc = entries[index + 1]
-  if (nextLoc && nextLoc.url === url) return 1
+  if (nextLoc && nextLoc.location.url === url) return 1
 }
 
 const isNAdjacentToSameUrl = (url, history, n) => {
   const { entries, index } = history
   const loc = entries[index + (n * 2)]
-  return loc && loc.url === url
+  return loc && loc.location.url === url
 }

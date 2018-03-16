@@ -49,8 +49,8 @@ const getSetItem = (key, val) => {
 // called every time the history entries or index changes
 export const saveHistory = ({ index, entries }) => {
   entries = entries.map(e => ({
-    url: e.url,
-    key: e.key,
+    url: e.location.url,
+    key: e.location.key,
     state: e.state,
     basename: e.basename
   }))
@@ -72,7 +72,7 @@ export const saveHistory = ({ index, entries }) => {
 
 // called on startup
 export const restoreHistory = (defaultLocation, routes, opts) => {
-  const { url, key, state, basename } = defaultLocation // used if first time visiting site during session
+  const { state, basename, location: { url, key } } = defaultLocation // used if first time visiting site during session
   const defaultHistory = { index: 0, entries: [{ url, key, state, basename }] }
 
   if (!hasSessionStorage()) {
@@ -86,7 +86,7 @@ export const restoreHistory = (defaultLocation, routes, opts) => {
       window.history.replaceState(newState, null, window.location.href)
     }
 
-    return getIndexAndEntries(state.history || defaultHistory)
+    return getIndexAndEntries(state.history || defaultHistory, routes, opts)
   }
 
   // `getSet` simply sets the `defaultHistory` in `sessionStorage` if it's a fresh visitation

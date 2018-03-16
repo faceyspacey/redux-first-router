@@ -129,7 +129,7 @@ const toState = (state: ?Object, route: Route, opts: Options, action) => {
   return state
 }
 
-const toHash = (hash: ?string, route: Route, opts: Options, action) => {
+const toHash = (hash: ?string = '', route: Route, opts: Options, action) => {
   const def = route.defaultHash || opts.defaultHash
   hash = def
     ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)

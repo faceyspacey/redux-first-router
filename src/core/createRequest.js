@@ -126,9 +126,7 @@ export class Request {
           this.redirect = res                   // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
         }
 
-        if (res && typeof res === 'object') {
-          res._dispatched = true // tell `middleware/call/index.js` to not automatically dispatch callback returns
-        }
+        if (res) res._dispatched = true // tell `middleware/call/index.js` to NOT automatically dispatch callback returns
 
         return res
       })
@@ -141,8 +139,8 @@ export class Request {
       return this.store.dispatch({ type: UNBLOCK })
     }
 
-    // When `false` is returned from a `call` middleware, you can use `req.confirm()`
-    // to run the action successfully through the pipeline again, as in a confirmation modal.
+    // When `false` is returned from a `call` middleware, you can use `req.confirm()` or the corresponding action
+    // creator to run the action successfully through the pipeline again, as in a confirmation modal.
     // All we do is temporarily delete the blocking callback and replace it after the action
     // is successfully dispatched.
     //
@@ -156,6 +154,7 @@ export class Request {
     return this.store.dispatch(this.action)
       .then(res => {
         route[name] = callback // put callback back
+        if (res) res._dispatched = true
         return res
       })
   }

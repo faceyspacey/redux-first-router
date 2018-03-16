@@ -7,11 +7,11 @@ import { notFound } from '../actions'
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
 export default (
-  loc: Object | string,
+  loc: Object,
   routes: RoutesMap,
   opts: Options
 ): ReceivedAction => {
-  const { url, state, basename } = typeof loc === 'string' ? { url: loc } : loc
+  const { url, basename = '', state = {} } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
   const path = url.replace(basename, '')
   const l = parsePath(path)
@@ -28,15 +28,13 @@ export default (
     }
   }
 
-  // This will basically only end up being called if the developer is manually calling history.push().
-  // Or, if visitors visit an invalid URL, the developer can use the NOT_FOUND type to show a not-found page to
-  const { search, hash } = l
-  const params = {}
-  const query = search
-    ? (routes.NOT_FOUND.parseQuery || opts.parseQuery || qs.parse)(search)
-    : {}
-
-  return notFound({ params, query, hash, state, basename }, url)
+  return {
+    ...notFound(state),
+    basename,
+    params: {},
+    query: l.search ? parseQuery(l.search, routes, opts) : {}, // keep this info
+    hash: l.hash || ''
+  }
 }
 
 const fromParams = (params: Object, route: Route, opts: Options) => {
@@ -126,3 +124,6 @@ const fromState = (state: Object, route: Route, opts: Options) => {
 const transformers = { fromParams, fromQuery, fromHash }
 
 const isNumber = (val: string) => /^\d+$/.test(val)
+
+const parseQuery = (search, routes, opts) =>
+  (routes.NOT_FOUND.parseQuery || opts.parseQuery || qs.parse)(search)

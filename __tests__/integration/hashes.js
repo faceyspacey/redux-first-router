@@ -83,10 +83,12 @@ createTest('hash matched by regex', {
 createTest('route.toHash/fromHash', {
   SECOND: {
     path: '/second',
-    toHash: hash => hash.toUpperCase()
+    toHash: hash => hash.toUpperCase(),
+    fromHash: hash => hash.toLowerCase()
   },
   THIRD: {
     path: '/third',
+    toHash: hash => hash.toUpperCase(),
     fromHash: hash => hash.toLowerCase()
   }
 }, [

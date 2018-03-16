@@ -32,8 +32,7 @@ export default (
   }
 
   if (action.type === ADD_ROUTES) {
-    const count = Object.keys(action.payload.routes).length  // we need to be able to update Links when new routes are added
-    const routesAdded = (st.routesAdded || 0) + count        // we could just increment a number, but why not at least offer some info
+    const { routesAdded } = action.payload
     return { ...st, routesAdded }
   }
 
@@ -79,9 +78,10 @@ export const createInitialState = (
   history: History,
   options: Options
 ): LocationState => {
-  const { kind, entries, index, length, location } = history
-  const { url, pathname, search, basename } = location
-  const action = urlToAction(location, routes, options)
+  const { entries, index, length, location: entry } = history
+  const { location, ...action } = entry
+  const { basename = '' } = action
+  const { url, pathname, search, key } = location
   const { type, params = {}, query = {}, state = {}, hash = '' } = action
   const scene = typeToScene(type)
   const universal = isServer()
@@ -96,6 +96,7 @@ export const createInitialState = (
     url,
     pathname,
     search,
+    key,
     basename: basename.substr(1),
     direction: 'forward',
     scene,
@@ -121,6 +122,7 @@ export const createPrev = (universal: boolean) => ({
   url: '',
   pathname: '',
   search: '',
+  key: '',
   basename: '',
   scene: '',
   direction: 'forward',
@@ -148,21 +150,20 @@ export const createPrevEntries = (
   const direction = index > lastIndex ? 'forward' : 'backward'
   const kind = direction === 'forward' ? 'push' : 'back'
 
-  const location = createLocation(entry)
-  const { pathname, search, basename: bn, url, state = {} } = location
+  const { location, ...action } = entry
+  const { basename: bn = '' } = action
+  const { url, pathname, search, key } = location
   const basename = bn.substr(1)
-
-  const action = urlToAction(location, routes, opts)
   const scene = routes[action.type].scene || ''
 
   return {
     ...action,
-    state,
 
     basename,
     url,
     pathname,
     search,
+    key,
     scene,
     direction,
 

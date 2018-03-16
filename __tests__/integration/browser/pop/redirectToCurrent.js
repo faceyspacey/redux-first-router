@@ -22,8 +22,8 @@ createTest('pop redirect to current URL', {
   expect(getLocation().index).toEqual(2)
   expect(getLocation().length).toEqual(3)
 
-  expect(getLocation().entries[1].url).toEqual('/second')
-  expect(getLocation().entries[2].url).toEqual('/third')
+  expect(getLocation().entries[1].location.url).toEqual('/second')
+  expect(getLocation().entries[2].location.url).toEqual('/third')
 
   expect(window.location.pathname).toEqual('/third')
 })

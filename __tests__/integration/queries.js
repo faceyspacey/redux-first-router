@@ -34,9 +34,9 @@ createTest('key required not to be there', {
     }
   }
 }, [
-  { type: 'SECOND', query: { key: 'correct' } },
+  { type: 'SECOND', query: { key: 'missed' } },
   { type: 'SECOND' },
-  '/third?key=correct',
+  '/third?key=missed',
   '/third'
 ])
 
@@ -104,10 +104,12 @@ createTest('val matched by regex', {
 createTest('route.toQuery/fromQuery', {
   SECOND: {
     path: '/second',
-    toQuery: (v, k) => v.toUpperCase() + k.toUpperCase()
+    toQuery: (v, k) => v.toUpperCase() + k.toUpperCase(),
+    fromQuery: (v, k) => v.toLowerCase() + k.toLowerCase()
   },
   THIRD: {
     path: '/third',
+    toQuery: (v, k) => v.toUpperCase() + k.toUpperCase(),
     fromQuery: (v, k) => v.toLowerCase() + k.toLowerCase()
   }
 }, [

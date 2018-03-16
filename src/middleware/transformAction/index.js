@@ -29,7 +29,8 @@ export default (api) => async (req, next) => {
   try {
     if (action.type === UPDATE_HISTORY) {
       const { location } = action.nextHistory
-      const act = urlToAction(location, routes, options)
+      const loc = { ...location.location, ...location }
+      const act = urlToAction(loc, routes, options)
       req = historyAction(req, act)
     }
     else if (!isNotFound(action)) {
@@ -44,9 +45,7 @@ export default (api) => async (req, next) => {
   }
   catch (e) {
     const { type, url } = createNotFoundRoute(req)
-    const params = (action && action.params) || {}
-    const act = { ...action, type, params }
-    req = reduxAction(req, url, act, history)
+    req = reduxAction(req, url, { ...action, type }, history)
   }
 
   // `setState` needs to skip the callbacks of the middleware pipeline and go straight to the reducer.

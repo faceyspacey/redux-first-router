@@ -1,64 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"type":"@@rudy/CALL_HISTORY"}}}} - history_entries 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/first",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/first",
+    "type": "FIRST",
   },
 ]
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"type":"@@rudy/CALL_HISTORY"}}}} - history_index 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - history_index 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"type":"@@rudy/CALL_HISTORY"}}}} - response 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - response 1`] = `
 Object {
   "payload": Object {
     "formatRoute": undefined,
     "routes": Object {
-      "@@rudy/ADD_ROUTES": Object {
-        "thunk": [Function],
-        "type": "@@rudy/ADD_ROUTES",
-      },
-      "@@rudy/CALL_HISTORY": Object {
-        "dispatch": false,
-        "thunk": [Function],
-        "type": "@@rudy/CALL_HISTORY",
-      },
-      "@@rudy/CHANGE_BASENAME": Object {
-        "dispatch": false,
-        "thunk": [Function],
-        "type": "@@rudy/CHANGE_BASENAME",
-      },
-      "@@rudy/CLEAR_CACHE": Object {
-        "thunk": [Function],
-        "type": "@@rudy/CLEAR_CACHE",
-      },
-      "@@rudy/CONFIRM": Object {
-        "dispatch": false,
-        "thunk": [Function],
-        "type": "@@rudy/CONFIRM",
-      },
       "FOO": Object {
         "path": "/foo",
         "type": "FOO",
       },
     },
+    "routesAdded": 1,
   },
   "type": "@@rudy/ADD_ROUTES",
 }
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"type":"@@rudy/CALL_HISTORY"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"type":"@@rudy/CALL_HISTORY"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"type":"@@rudy/CALL_HISTORY"}}}} - state 1`] = `
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -67,16 +50,22 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
     ],
     "from": null,
     "hash": "",
     "index": 0,
+    "key": "345678",
     "kind": "load",
     "length": 1,
     "params": Object {},
@@ -88,6 +77,7 @@ Object {
       "entries": Array [],
       "hash": "",
       "index": -1,
+      "key": "",
       "kind": "",
       "length": 0,
       "params": Object {},
@@ -109,31 +99,41 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\"}}}",
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\",\\"type\\":\\"FOO\\"}},\\"routesAdded\\":1}",
 }
 `;
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","type":"FOO"},"@@rudy/ADD_ROUTES":{"type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"type":"@@rudy/CALL_HISTORY"}}}} - title 1`] = `"FIRST"`;
+exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - title 1`] = `"FIRST"`;
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/first",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/first",
+    "type": "FIRST",
   },
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/foo",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/foo",
+      "search": "",
+      "url": "/foo",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/foo",
+    "type": "FOO",
   },
 ]
 `;
@@ -150,24 +150,35 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/foo",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/foo",
+          "search": "",
+          "url": "/foo",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/foo",
+        "type": "FOO",
       },
     ],
     "from": null,
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
     "pathname": "/foo",
@@ -179,15 +190,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -227,25 +244,36 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/foo",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/foo",
+          "search": "",
+          "url": "/foo",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/foo",
+        "type": "FOO",
       },
     ],
     "from": null,
     "hash": "",
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
     "params": Object {},
@@ -258,15 +286,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -296,55 +330,32 @@ Object {
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - title 1`] = `"FOO"`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"path":"/bar","type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"path":"/bar","type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - history_entries 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/first",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/first",
+    "type": "FIRST",
   },
 ]
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"path":"/bar","type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"path":"/bar","type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - history_index 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - history_index 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"path":"/bar","type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"path":"/bar","type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - response 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - response 1`] = `
 Object {
   "payload": Object {
     "formatRoute": [Function],
     "routes": Object {
-      "@@rudy/ADD_ROUTES": Object {
-        "path": "/bar",
-        "thunk": [Function],
-        "type": "@@rudy/ADD_ROUTES",
-      },
-      "@@rudy/CALL_HISTORY": Object {
-        "dispatch": false,
-        "path": "/bar",
-        "thunk": [Function],
-        "type": "@@rudy/CALL_HISTORY",
-      },
-      "@@rudy/CHANGE_BASENAME": Object {
-        "dispatch": false,
-        "path": "/bar",
-        "thunk": [Function],
-        "type": "@@rudy/CHANGE_BASENAME",
-      },
-      "@@rudy/CLEAR_CACHE": Object {
-        "path": "/bar",
-        "thunk": [Function],
-        "type": "@@rudy/CLEAR_CACHE",
-      },
-      "@@rudy/CONFIRM": Object {
-        "dispatch": false,
-        "path": "/bar",
-        "thunk": [Function],
-        "type": "@@rudy/CONFIRM",
-      },
       "BAZ": Object {
         "path": "/bar",
         "thunk": [Function],
@@ -356,16 +367,17 @@ Object {
         "type": "FOO",
       },
     },
+    "routesAdded": 2,
   },
   "type": "@@rudy/ADD_ROUTES",
 }
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"path":"/bar","type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"path":"/bar","type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"path":"/bar","type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"path":"/bar","type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"path":"/bar","type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"path":"/bar","type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - state 1`] = `
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -374,16 +386,22 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
     ],
     "from": null,
     "hash": "",
     "index": 0,
+    "key": "345678",
     "kind": "load",
     "length": 1,
     "params": Object {},
@@ -395,6 +413,7 @@ Object {
       "entries": Array [],
       "hash": "",
       "index": -1,
+      "key": "",
       "kind": "",
       "length": 0,
       "params": Object {},
@@ -416,31 +435,41 @@ Object {
     "universal": false,
     "url": "/first",
   },
-  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/foo\\",\\"thunk\\":\\"BAZ\\"},\\"BAZ\\":{\\"path\\":\\"/baz\\"}}}",
+  "title": "@@rudy/ADD_ROUTES - {\\"routes\\":{\\"FOO\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"FOO\\"},\\"BAZ\\":{\\"path\\":\\"/bar\\",\\"type\\":\\"BAZ\\"}},\\"routesAdded\\":2}",
 }
 `;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/bar","type":"FOO"},"BAZ":{"path":"/bar","type":"BAZ"},"@@rudy/ADD_ROUTES":{"path":"/bar","type":"@@rudy/ADD_ROUTES"},"@@rudy/CHANGE_BASENAME":{"dispatch":false,"path":"/bar","type":"@@rudy/CHANGE_BASENAME"},"@@rudy/CLEAR_CACHE":{"path":"/bar","type":"@@rudy/CLEAR_CACHE"},"@@rudy/CONFIRM":{"dispatch":false,"path":"/bar","type":"@@rudy/CONFIRM"},"@@rudy/CALL_HISTORY":{"dispatch":false,"path":"/bar","type":"@@rudy/CALL_HISTORY"}}}} - title 1`] = `"FIRST"`;
+exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - title 1`] = `"FIRST"`;
 
 exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/first",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/first",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/first",
+    "type": "FIRST",
   },
   Object {
     "basename": "",
     "hash": "",
-    "key": "345678",
-    "pathname": "/bar",
-    "search": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "search": "",
+      "url": "/bar",
+    },
+    "params": Object {},
+    "query": Object {},
     "state": Object {},
-    "url": "/bar",
+    "type": "FOO",
   },
 ]
 `;
@@ -449,7 +478,7 @@ exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_inde
 
 exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - response 1`] = `
 Object {
-  "payload": "payload",
+  "payload": "payload!",
   "type": "FOO_COMPLETE",
 }
 `;
@@ -467,25 +496,36 @@ Object {
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/first",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/first",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/first",
+        "type": "FIRST",
       },
       Object {
         "basename": "",
         "hash": "",
-        "key": "345678",
-        "pathname": "/bar",
-        "search": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "search": "",
+          "url": "/bar",
+        },
+        "params": Object {},
+        "query": Object {},
         "state": Object {},
-        "url": "/bar",
+        "type": "FOO",
       },
     ],
     "from": null,
     "hash": "",
     "index": 1,
+    "key": "345678",
     "kind": "push",
     "length": 2,
     "params": Object {},
@@ -498,15 +538,21 @@ Object {
         Object {
           "basename": "",
           "hash": "",
-          "key": "345678",
-          "pathname": "/first",
-          "search": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/first",
+          },
+          "params": Object {},
+          "query": Object {},
           "state": Object {},
-          "url": "/first",
+          "type": "FIRST",
         },
       ],
       "hash": "",
       "index": 0,
+      "key": "345678",
       "kind": "load",
       "length": 1,
       "params": Object {},
@@ -531,7 +577,7 @@ Object {
     "universal": false,
     "url": "/bar",
   },
-  "title": "FOO_COMPLETE - \\"payload\\"",
+  "title": "FOO_COMPLETE - \\"payload!\\"",
 }
 `;
 

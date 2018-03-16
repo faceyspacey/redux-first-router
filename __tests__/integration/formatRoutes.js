@@ -31,7 +31,7 @@ createTest('options.formatRoute', {
     return {
       ...route,
       type,
-      path: route.foo
+      path: route.path || route.foo
     }
   }
 })

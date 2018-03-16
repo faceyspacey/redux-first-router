@@ -138,6 +138,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       : await store.dispatch(firstRoute(false))
 
     const pop = opts.browser && createPop(history)
+    let defaultPrefix = 0
 
     await callback({
       firstRoute,
@@ -150,11 +151,17 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       dispatch: store.dispatch,
       getState: store.getState,
       getLocation: () => store.getState().location,
-      snapChange,
-      snap: async (action, prefix = '') => {
-        const res = await store.dispatch(action)
+      snapChange: (...args) => {
+        if (typeof args[0] === 'string') {
+          return snapChange(...args)
+        }
 
+        return snapChange(++defaultPrefix, ...args)
+      },
+      snap: async (action, prefix = '') => {
         prefix = prefix || JSON.stringify(action) || 'function'
+
+        const res = await store.dispatch(action)
 
         snapChange(prefix, res, store, history)
         snapRoutes(prefix, routes)
