@@ -270,20 +270,3 @@ export default class History {
     return n || 0
   }
 }
-
-
-// setStateOld(state, n, byIndex, notify = true) {
-//   if (!n && !byIndex) {
-//     return this.jump(0, state, false, 'setState', notify)                       // setState on current entry (primary use-case)
-//   }
-
-//   const i = this.index                                                          // current index, which is where we'll return to after setting the state on a different entry
-//   const { nextHistory: nh } = this.jump(n, state, byIndex, 'setState', false)   // jump to different entry and set state on it
-//   const nextHistory = { ...nh, index: i, location: this.entries[i] }
-//   const { kind, location, index, entries } = nextHistory
-//   const nextState = { kind, location, index, entries }
-//   const resolvedN = this._resolveN(n, byIndex)
-//   const commit = () => this._setState(nextState, resolvedN)
-
-//   return this._notify({ nextHistory, commit }, notify)
-// }

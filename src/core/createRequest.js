@@ -52,6 +52,7 @@ export class Request {
     Object.assign(this, options.extra)
     Object.assign(this, api)
     Object.assign(this, !fromHistory && action) // destructure action into request for convenience in callbacks
+    if (fromHistory) this.type = UPDATE_HISTORY
 
     this.action = action
     this.ctx = ctx
