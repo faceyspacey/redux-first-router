@@ -63,15 +63,15 @@ export default (
   }
 
   const [path, ...values] = match
-  const { fromParams, fromQuery, fromHash } = options
+  const { fromPath, fromSearch, fromHash } = options
   const params = keys.reduce((params, key, index) => {
     params[key.name] = values[index]
     return params
   }, {})
 
   return {
-    params: fromParams ? fromParams(params, route, opts) : params,
-    query: fromQuery ? fromQuery(query, route, opts) : query,
+    params: fromPath ? fromPath(params, route, opts) : params,
+    query: fromSearch ? fromSearch(query, route, opts) : query,
     hash: fromHash ? fromHash(hash || '', route, opts) : (hash || ''),
     matchedPath: matchers.path === '/' && path === '' ? '/' : path, // the matched portion of the URL/path
     matchers,

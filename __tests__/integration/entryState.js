@@ -55,21 +55,3 @@ createTest('route.defaultState', {
   snapChange(res, store, history)
 })
 
-createTest('route.toState/fromState', {
-  SECOND: {
-    path: '/second',
-    toState: (v, k) => v.toUpperCase() + k.toUpperCase(),
-    fromState: (v, k) => v.toLowerCase() + k.toLowerCase()
-  },
-  THIRD: {
-    path: '/third',
-    toState: (v, k) => v.toUpperCase() + k.toUpperCase(),
-    fromState: (v, k) => v.toLowerCase() + k.toLowerCase()
-  }
-}, [
-  { type: 'SECOND', state: { key: 'correct' } },
-  { type: 'SECOND' }
-], async ({ history, store, snapChange }) => {
-  const res = await history.push('/third', { abc: 'XYZF' })
-  snapChange(res, store, history)
-})

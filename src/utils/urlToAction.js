@@ -39,8 +39,8 @@ export default (
   }
 }
 
-const fromParams = (params: Object, route: Route, opts: Options) => {
-  const from = route.fromParam || defaultFromParam
+const fromPath = (params: Object, route: Route, opts: Options) => {
+  const from = route.fromPath || defaultFromPath
 
   for (const key in params) {
     const val = params[key]
@@ -55,7 +55,7 @@ const fromParams = (params: Object, route: Route, opts: Options) => {
     : params
 }
 
-const defaultFromParam = (
+const defaultFromPath = (
   decodedVal: string,
   key: string,
   val: string,
@@ -76,13 +76,13 @@ const defaultFromParam = (
     return decodedVal.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
   }
 
-  return opts.fromParam
-    ? opts.fromParam(decodedVal, key, val, route, opts)
+  return opts.fromPath
+    ? opts.fromPath(decodedVal, key, val, route, opts)
     : decodedVal
 }
 
-const fromQuery = (query: Object, route: Route, opts: Options) => {
-  const from = route.fromQuery || opts.fromQuery
+const fromSearch = (query: Object, route: Route, opts: Options) => {
+  const from = route.fromSearch || opts.fromSearch
 
   if (from) {
     for (const key in query) {
@@ -108,22 +108,13 @@ const fromHash = (hash: string, route: Route, opts: Options) => {
 }
 
 const fromState = (state: Object, route: Route, opts: Options) => {
-  const from = route.fromState || opts.fromState
-
-  if (from) {
-    for (const key in state) {
-      state[key] = from(state[key], key, route, opts)
-      if (state[key] === undefined) delete state[key] === undefined // allow undefined values to be overriden by defaultQuery
-    }
-  }
-
   const def = route.defaultState || opts.defaultState
   return def
     ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
     : state
 }
 
-const transformers = { fromParams, fromQuery, fromHash }
+const transformers = { fromPath, fromSearch, fromHash }
 
 const isNumber = (val: string) => /^\d+$/.test(val)
 

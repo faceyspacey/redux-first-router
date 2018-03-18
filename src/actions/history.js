@@ -1,19 +1,19 @@
 // @flow
 import { CALL_HISTORY } from '../types'
 
-export const push = (path: string, state: ?Object, basename: ?string) => ({
+export const push = (path: string, state: ?Object) => ({
   type: CALL_HISTORY,
   payload: {
     method: 'push',
-    args: [path, state, basename]
+    args: [path, state]
   }
 })
 
-export const replace = (path: string, state: ?Object, basename: ?string) => ({
+export const replace = (path: string, state: ?Object) => ({
   type: CALL_HISTORY,
   payload: {
     method: 'replace',
-    args: [path, state, basename]
+    args: [path, state]
   }
 })
 

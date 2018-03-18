@@ -143,35 +143,26 @@ createTest('dispatch(reset(entries, index)) - next kind inferred because > than 
   await snap(reset(['/fourth', '/second', '/third', '/first'], 2))
 })
 
-createTest('dispatch(reset(entryObjects)) - entries as location objects', routes, [
-  reset([{
-    basename: '/first-base',
-    hash: '',
-    key: '123456',
-    pathname: '/second',
-    search: '',
-    state: { bla: 'sdf' },
-    url: '/second'
-  }, {
-    basename: '/base-name',
-    hash: 'something',
-    key: '345678',
-    pathname: '/third',
-    search: 'foo=bar&baz=yo',
-    state: {},
-    url: '/third?foo=bar&baz=yo'
-  }])
-])
-
-createTest('dispatch(reset(actions)) - entries as action objects', routes, [
+createTest('dispatch(reset(actions)) - entries as action objects', routes, {
+  basenames: ['/base-name']
+}, [
   reset([{
     type: 'SECOND',
-    basename: '/first-base',
     state: { bla: 'sdf' }
   }, {
     type: 'THIRD',
     basename: '/base-name',
+    state: { abc: 'def' },
     hash: 'something',
     query: { foo: 'bar', baz: 'yo' }
   }])
+])
+
+createTest('dispatch(reset(actions)) - entries as arrays [url, state]', routes, {
+  basenames: ['/base-name']
+}, [
+  reset([
+    ['/second', { bla: 'sdf' }],
+    ['/base-name/third?foo=bar&baz=yo#something', { abc: 'def' }]
+  ])
 ])

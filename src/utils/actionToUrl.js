@@ -17,45 +17,46 @@ export default (
   opts: Options = {},
   prevRoute?: Object
 ): string => {
-  const { type, params, query, hash, state } = action
+  const { type, params, query, hash, basename = '' } = action
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
 
   if (typeof path !== 'string') throw new Error('[rudy] invalid route path')
 
-  toState(state, route, opts, action)
+  const state = toState(action.state, route, opts, action)
 
   try {
-    return compileUrl(
+    const pathname = compileUrl(
       path,
-      toParams(params, route, opts, action),
-      toQuery(query, route, opts, action),
+      toPath(params, route, opts, action),
+      toSearch(query, route, opts, action),
       toHash(hash, route, opts, action),
       route,
       opts
     ) || '/'
+
+    const url = basename + pathname
+    return { url, state }
   }
   catch (e) {
     if (process.env.NODE_ENV === 'development') {
       console.error(`[rudy] unable to compile action "${type}" to URL`, action, e)
     }
 
-    return notFoundUrl(action, routes, prevRoute)
+    const url = basename + notFoundUrl(action, routes, prevRoute)
+    return { url, state: {} }
   }
 }
 
-const toParams = (params: ?Object, route: Route, opts: Options, action) => {
+const toPath = (params: ?Object, route: Route, opts: Options, action) => {
   const def = route.defaultParams || opts.defaultParams
   params = def
     ? typeof def === 'function' ? def(params, route, opts) : { ...def, ...params }
     : params
 
-  // unfortunate impurity to send defaults back to the original action as well
-  if (def) action.params = params
-
   if (params) {
     const newParams = {}
-    const to = route.toParam || defaultToParam
+    const to = route.toPath || defaultToPath
 
     for (const key in params) {
       const val = params[key]
@@ -68,7 +69,7 @@ const toParams = (params: ?Object, route: Route, opts: Options, action) => {
   }
 }
 
-const defaultToParam = (
+const defaultToPath = (
   val: string,
   key: string,
   encodedVal: string,
@@ -86,21 +87,18 @@ const defaultToParam = (
     return val.replace(/ /g, '-').toLowerCase()
   }
 
-  return opts.toParam
-    ? opts.toParam(val, key, encodedVal, route, opts)
+  return opts.toPath
+    ? opts.toPath(val, key, encodedVal, route, opts)
     : val === undefined ? undefined : encodedVal
 }
 
-const toQuery = (query: ?Object, route: Route, opts: Options, action) => {
+const toSearch = (query: ?Object, route: Route, opts: Options, action) => {
   const def = route.defaultQuery || opts.defaultQuery
   query = def
     ? typeof def === 'function' ? def(query, route, opts) : { ...def, ...query }
     : query
 
-  // unfortunate impurity to send defaults back to the original action as well
-  if (def) action.query = query
-
-  const to = route.toQuery || opts.toQuery
+  const to = route.toSearch || opts.toSearch
 
   if (to && query) {
     const newQuery = {}
@@ -117,26 +115,9 @@ const toQuery = (query: ?Object, route: Route, opts: Options, action) => {
 
 const toState = (state: ?Object, route: Route, opts: Options, action) => {
   const def = route.defaultState || opts.defaultState
-  state = def
+  return def
     ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
     : state
-
-  // unfortunate impurity to send defaults back to the original action as well
-  if (def) action.state = state
-
-  const to = route.toState || opts.toState
-
-  if (to && state) {
-    const newState = {}
-
-    for (const key in state) {
-      newState[key] = to(state[key], key, route, opts)
-    }
-
-    return newState
-  }
-
-  return state
 }
 
 const toHash = (hash: ?string = '', route: Route, opts: Options, action) => {
@@ -144,9 +125,6 @@ const toHash = (hash: ?string = '', route: Route, opts: Options, action) => {
   hash = def
     ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
     : hash
-
-  // unfortunate impurity to send defaults back to the original action as well
-  if (def) action.hash = hash
 
   const to = route.toHash || opts.toHash
   return to ? to(hash, route, opts) : hash

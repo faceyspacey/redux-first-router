@@ -669,11 +669,13 @@ Array [
     "hash": "",
     "location": Object {
       "key": "345678",
-      "pathname": "/second",
+      "pathname": "/second/bar",
       "search": "",
-      "url": "/base-name/second",
+      "url": "/base-name/second/bar",
     },
-    "params": Object {},
+    "params": Object {
+      "foo": "bar",
+    },
     "query": Object {},
     "state": Object {},
     "type": "SCENE/SECOND",
@@ -709,11 +711,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second",
+          "pathname": "/second/bar",
           "search": "",
-          "url": "/base-name/second",
+          "url": "/base-name/second/bar",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "bar",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/SECOND",
@@ -724,7 +728,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
-    "pathname": "/second",
+    "pathname": "/second/bar",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -764,7 +768,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/base-name/second",
+    "url": "/base-name/second/bar",
   },
   "params": Object {
     "foo": "bar",
@@ -804,11 +808,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second",
+          "pathname": "/second/bar",
           "search": "",
-          "url": "/base-name/second",
+          "url": "/base-name/second/bar",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "bar",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/SECOND",
@@ -823,7 +829,7 @@ Object {
     "params": Object {
       "foo": "bar",
     },
-    "pathname": "/second",
+    "pathname": "/second/bar",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -867,7 +873,7 @@ Object {
     "status": 200,
     "type": "SCENE/SECOND",
     "universal": false,
-    "url": "/base-name/second",
+    "url": "/base-name/second/bar",
   },
   "title": "SCENE/SECOND",
 }
@@ -896,11 +902,13 @@ Array [
     "hash": "",
     "location": Object {
       "key": "345678",
-      "pathname": "/second",
+      "pathname": "/second/bar",
       "search": "",
-      "url": "/base-name/second",
+      "url": "/base-name/second/bar",
     },
-    "params": Object {},
+    "params": Object {
+      "foo": "bar",
+    },
     "query": Object {},
     "state": Object {},
     "type": "SCENE/SECOND",
@@ -936,11 +944,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second",
+          "pathname": "/second/bar",
           "search": "",
-          "url": "/base-name/second",
+          "url": "/base-name/second/bar",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "bar",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/SECOND",
@@ -951,7 +961,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
-    "pathname": "/second",
+    "pathname": "/second/bar",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -991,7 +1001,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/base-name/second",
+    "url": "/base-name/second/bar",
   },
   "params": Object {
     "foo": "bar",
@@ -1031,11 +1041,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second",
+          "pathname": "/second/bar",
           "search": "",
-          "url": "/base-name/second",
+          "url": "/base-name/second/bar",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "bar",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/SECOND",
@@ -1050,7 +1062,7 @@ Object {
     "params": Object {
       "foo": "bar",
     },
-    "pathname": "/second",
+    "pathname": "/second/bar",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1094,7 +1106,7 @@ Object {
     "status": 200,
     "type": "SCENE/SECOND",
     "universal": false,
-    "url": "/base-name/second",
+    "url": "/base-name/second/bar",
   },
   "title": "SCENE/SECOND",
 }
@@ -1123,11 +1135,13 @@ Array [
     "hash": "",
     "location": Object {
       "key": "345678",
-      "pathname": "/second",
+      "pathname": "/second/FIRST",
       "search": "",
-      "url": "/base-name/second",
+      "url": "/base-name/second/FIRST",
     },
-    "params": Object {},
+    "params": Object {
+      "foo": "FIRST",
+    },
     "query": Object {},
     "state": Object {},
     "type": "SCENE/SECOND",
@@ -1163,11 +1177,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second",
+          "pathname": "/second/FIRST",
           "search": "",
-          "url": "/base-name/second",
+          "url": "/base-name/second/FIRST",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "FIRST",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/SECOND",
@@ -1178,7 +1194,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
-    "pathname": "/second",
+    "pathname": "/second/FIRST",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1218,10 +1234,10 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/base-name/second",
+    "url": "/base-name/second/FIRST",
   },
   "params": Object {
-    "testReq": "FIRST",
+    "foo": "FIRST",
   },
   "query": Object {},
   "state": Object {},
@@ -1258,11 +1274,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/second",
+          "pathname": "/second/FIRST",
           "search": "",
-          "url": "/base-name/second",
+          "url": "/base-name/second/FIRST",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "FIRST",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/SECOND",
@@ -1275,9 +1293,9 @@ Object {
     "kind": "push",
     "length": 2,
     "params": Object {
-      "testReq": "FIRST",
+      "foo": "FIRST",
     },
-    "pathname": "/second",
+    "pathname": "/second/FIRST",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1321,7 +1339,7 @@ Object {
     "status": 200,
     "type": "SCENE/SECOND",
     "universal": false,
-    "url": "/base-name/second",
+    "url": "/base-name/second/FIRST",
   },
   "title": "SCENE/SECOND",
 }
@@ -1744,11 +1762,13 @@ Array [
     "hash": "",
     "location": Object {
       "key": "345678",
-      "pathname": "/third",
+      "pathname": "/third/baz",
       "search": "",
-      "url": "/base-name/third",
+      "url": "/base-name/third/baz",
     },
-    "params": Object {},
+    "params": Object {
+      "foo": "baz",
+    },
     "query": Object {},
     "state": Object {},
     "type": "SCENE/THIRD",
@@ -1784,11 +1804,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/third",
+          "pathname": "/third/baz",
           "search": "",
-          "url": "/base-name/third",
+          "url": "/base-name/third/baz",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "baz",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/THIRD",
@@ -1799,7 +1821,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
-    "pathname": "/third",
+    "pathname": "/third/baz",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1839,7 +1861,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/base-name/third",
+    "url": "/base-name/third/baz",
   },
   "params": Object {
     "foo": "baz",
@@ -1879,11 +1901,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/third",
+          "pathname": "/third/baz",
           "search": "",
-          "url": "/base-name/third",
+          "url": "/base-name/third/baz",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "baz",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/THIRD",
@@ -1898,7 +1922,7 @@ Object {
     "params": Object {
       "foo": "baz",
     },
-    "pathname": "/third",
+    "pathname": "/third/baz",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -1942,7 +1966,7 @@ Object {
     "status": 200,
     "type": "SCENE/THIRD",
     "universal": false,
-    "url": "/base-name/third",
+    "url": "/base-name/third/baz",
   },
   "title": "SCENE/THIRD",
 }
@@ -1971,11 +1995,13 @@ Array [
     "hash": "",
     "location": Object {
       "key": "345678",
-      "pathname": "/fourth",
+      "pathname": "/fourth/baz",
       "search": "",
-      "url": "/base-name/fourth",
+      "url": "/base-name/fourth/baz",
     },
-    "params": Object {},
+    "params": Object {
+      "foo": "baz",
+    },
     "query": Object {},
     "state": Object {},
     "type": "SCENE/FOURTH",
@@ -2011,11 +2037,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/fourth",
+          "pathname": "/fourth/baz",
           "search": "",
-          "url": "/base-name/fourth",
+          "url": "/base-name/fourth/baz",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "baz",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/FOURTH",
@@ -2026,7 +2054,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
-    "pathname": "/fourth",
+    "pathname": "/fourth/baz",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -2066,7 +2094,7 @@ Object {
     "scene": "SCENE",
     "search": "",
     "status": 200,
-    "url": "/base-name/fourth",
+    "url": "/base-name/fourth/baz",
   },
   "params": Object {
     "foo": "baz",
@@ -2106,11 +2134,13 @@ Object {
         "hash": "",
         "location": Object {
           "key": "345678",
-          "pathname": "/fourth",
+          "pathname": "/fourth/baz",
           "search": "",
-          "url": "/base-name/fourth",
+          "url": "/base-name/fourth/baz",
         },
-        "params": Object {},
+        "params": Object {
+          "foo": "baz",
+        },
         "query": Object {},
         "state": Object {},
         "type": "SCENE/FOURTH",
@@ -2125,7 +2155,7 @@ Object {
     "params": Object {
       "foo": "baz",
     },
-    "pathname": "/fourth",
+    "pathname": "/fourth/baz",
     "pop": false,
     "prev": Object {
       "basename": "",
@@ -2169,7 +2199,7 @@ Object {
     "status": 200,
     "type": "SCENE/FOURTH",
     "universal": false,
-    "url": "/base-name/fourth",
+    "url": "/base-name/fourth/baz",
   },
   "title": "SCENE/FOURTH",
 }

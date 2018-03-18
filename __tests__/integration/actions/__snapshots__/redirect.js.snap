@@ -446,7 +446,7 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
-    "status": 302,
+    "status": 301,
     "type": "REDIRECTED",
     "universal": false,
     "url": "/redirected",

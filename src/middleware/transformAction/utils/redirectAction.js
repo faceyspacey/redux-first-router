@@ -3,8 +3,7 @@ import { nestAction } from './index'
 // handle redirects from back/next actions, where we want to replace in place
 // instead of pushing a new entry to preserve proper movement along history track
 
-export default (req, url, action, history) => {
-  const { state, basename: bn } = action
+export default (req, action, url, state, history) => {
   const { basename, location } = req.tmp.prevAction
   const { index, entries, pathname: prevUrl } = location
 
@@ -27,11 +26,11 @@ export default (req, url, action, history) => {
     }
   }
 
-  const { nextHistory, commit } = history[method](url, state, bn, false, pop)// get returned the same action as functions passed to `history.listen`
+  const { nextHistory, commit } = history[method](url, state, action.basename, false, pop)// get returned the same action as functions passed to `history.listen`
 
   const curr = req.getLocation()
-  const from = req.tmp.from || prev                                                              // `from` represents the route the user would have gone to had there been no redirect
   const prev = req.tmp.load ? curr.prev : curr                            // `init` comes before initial `load` action, but they share the same `prev` state, as they are essentially the same, except the former is the initial state before any actions are dispatched
+  const from = req.tmp.from || prev                                       // `from` represents the route the user would have gone to had there been no redirect
 
   req.action = nestAction(req, action, prev, nextHistory, from)
   req.commitHistory = commit                                            // put these here so `enter` middleware can commit the history, etc

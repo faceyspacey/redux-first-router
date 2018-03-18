@@ -575,9 +575,7 @@ Object {
     "url": "/not-found",
   },
   "params": Object {},
-  "query": Object {
-    "key": "missed",
-  },
+  "query": Object {},
   "state": Object {},
   "type": "NOT_FOUND",
 }
@@ -666,9 +664,7 @@ Object {
       "type": "FIRST",
       "url": "/first",
     },
-    "query": Object {
-      "key": "missed",
-    },
+    "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
@@ -1724,9 +1720,7 @@ Object {
     "url": "/not-found",
   },
   "params": Object {},
-  "query": Object {
-    "key": "wrong",
-  },
+  "query": Object {},
   "state": Object {},
   "type": "NOT_FOUND",
 }
@@ -1815,9 +1809,7 @@ Object {
       "type": "FIRST",
       "url": "/first",
     },
-    "query": Object {
-      "key": "wrong",
-    },
+    "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
@@ -3909,7 +3901,7 @@ Object {
 
 exports[`route.toQuery/fromQuery "/third": 4 - title 1`] = `"THIRD"`;
 
-exports[`route.toQuery/fromQuery "/third?key=CORRECT": 3 - history_entries 1`] = `
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -3931,12 +3923,12 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/third",
-      "search": "key=CORRECT",
-      "url": "/third?key=CORRECT",
+      "search": "key=CORRECT%20WITH%20SPACESKEY",
+      "url": "/third?key=CORRECT%20WITH%20SPACESKEY",
     },
     "params": Object {},
     "query": Object {
-      "key": "correctkeykey",
+      "key": "correct with spaces",
     },
     "state": Object {},
     "type": "THIRD",
@@ -3944,9 +3936,9 @@ Array [
 ]
 `;
 
-exports[`route.toQuery/fromQuery "/third?key=CORRECT": 3 - history_index 1`] = `1`;
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - history_index 1`] = `1`;
 
-exports[`route.toQuery/fromQuery "/third?key=CORRECT": 3 - response 1`] = `
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -3973,12 +3965,12 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/third",
-          "search": "key=CORRECT",
-          "url": "/third?key=CORRECT",
+          "search": "key=CORRECT%20WITH%20SPACESKEY",
+          "url": "/third?key=CORRECT%20WITH%20SPACESKEY",
         },
         "params": Object {},
         "query": Object {
-          "key": "correctkeykey",
+          "key": "correct with spaces",
         },
         "state": Object {},
         "type": "THIRD",
@@ -4027,24 +4019,24 @@ Object {
       "url": "/first",
     },
     "scene": "",
-    "search": "key=CORRECT",
+    "search": "key=CORRECT%20WITH%20SPACESKEY",
     "status": 200,
-    "url": "/third?key=CORRECT",
+    "url": "/third?key=CORRECT%20WITH%20SPACESKEY",
   },
   "params": Object {},
   "query": Object {
-    "key": "correctkeykey",
+    "key": "correct with spaces",
   },
   "state": Object {},
   "type": "THIRD",
 }
 `;
 
-exports[`route.toQuery/fromQuery "/third?key=CORRECT": 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`route.toQuery/fromQuery "/third?key=CORRECT": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`route.toQuery/fromQuery "/third?key=CORRECT": 3 - state 1`] = `
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4070,12 +4062,12 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/third",
-          "search": "key=CORRECT",
-          "url": "/third?key=CORRECT",
+          "search": "key=CORRECT%20WITH%20SPACESKEY",
+          "url": "/third?key=CORRECT%20WITH%20SPACESKEY",
         },
         "params": Object {},
         "query": Object {
-          "key": "correctkeykey",
+          "key": "correct with spaces",
         },
         "state": Object {},
         "type": "THIRD",
@@ -4126,23 +4118,23 @@ Object {
       "url": "/first",
     },
     "query": Object {
-      "key": "correctkeykey",
+      "key": "correct with spaces",
     },
     "scene": "",
-    "search": "key=CORRECT",
+    "search": "key=CORRECT%20WITH%20SPACESKEY",
     "state": Object {},
     "status": 200,
     "type": "THIRD",
     "universal": false,
-    "url": "/third?key=CORRECT",
+    "url": "/third?key=CORRECT%20WITH%20SPACESKEY",
   },
   "title": "THIRD",
 }
 `;
 
-exports[`route.toQuery/fromQuery "/third?key=CORRECT": 3 - title 1`] = `"THIRD"`;
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - title 1`] = `"THIRD"`;
 
-exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - history_entries 1`] = `
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -4164,12 +4156,12 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/second",
-      "search": "key=CORRECTKEY",
-      "url": "/second?key=CORRECTKEY",
+      "search": "key=CORRECT%20WITH%20SPACESKEY",
+      "url": "/second?key=CORRECT%20WITH%20SPACESKEY",
     },
     "params": Object {},
     "query": Object {
-      "key": "correctkeykey",
+      "key": "correct with spaces",
     },
     "state": Object {},
     "type": "SECOND",
@@ -4177,9 +4169,9 @@ Array [
 ]
 `;
 
-exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - history_index 1`] = `1`;
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - history_index 1`] = `1`;
 
-exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - response 1`] = `
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -4206,12 +4198,12 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/second",
-          "search": "key=CORRECTKEY",
-          "url": "/second?key=CORRECTKEY",
+          "search": "key=CORRECT%20WITH%20SPACESKEY",
+          "url": "/second?key=CORRECT%20WITH%20SPACESKEY",
         },
         "params": Object {},
         "query": Object {
-          "key": "correctkeykey",
+          "key": "correct with spaces",
         },
         "state": Object {},
         "type": "SECOND",
@@ -4260,24 +4252,24 @@ Object {
       "url": "/first",
     },
     "scene": "",
-    "search": "key=CORRECTKEY",
+    "search": "key=CORRECT%20WITH%20SPACESKEY",
     "status": 200,
-    "url": "/second?key=CORRECTKEY",
+    "url": "/second?key=CORRECT%20WITH%20SPACESKEY",
   },
   "params": Object {},
   "query": Object {
-    "key": "correct",
+    "key": "correct with spaces",
   },
   "state": Object {},
   "type": "SECOND",
 }
 `;
 
-exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - state 1`] = `
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4303,12 +4295,12 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/second",
-          "search": "key=CORRECTKEY",
-          "url": "/second?key=CORRECTKEY",
+          "search": "key=CORRECT%20WITH%20SPACESKEY",
+          "url": "/second?key=CORRECT%20WITH%20SPACESKEY",
         },
         "params": Object {},
         "query": Object {
-          "key": "correctkeykey",
+          "key": "correct with spaces",
         },
         "state": Object {},
         "type": "SECOND",
@@ -4359,21 +4351,21 @@ Object {
       "url": "/first",
     },
     "query": Object {
-      "key": "correct",
+      "key": "correct with spaces",
     },
     "scene": "",
-    "search": "key=CORRECTKEY",
+    "search": "key=CORRECT%20WITH%20SPACESKEY",
     "state": Object {},
     "status": 200,
     "type": "SECOND",
     "universal": false,
-    "url": "/second?key=CORRECTKEY",
+    "url": "/second?key=CORRECT%20WITH%20SPACESKEY",
   },
   "title": "SECOND",
 }
 `;
 
-exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - title 1`] = `"SECOND"`;
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - title 1`] = `"SECOND"`;
 
 exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - history_entries 1`] = `
 Array [
@@ -5416,9 +5408,7 @@ Object {
     "url": "/not-found",
   },
   "params": Object {},
-  "query": Object {
-    "key": "wrong",
-  },
+  "query": Object {},
   "state": Object {},
   "type": "NOT_FOUND",
 }
@@ -5507,9 +5497,7 @@ Object {
       "type": "FIRST",
       "url": "/first",
     },
-    "query": Object {
-      "key": "wrong",
-    },
+    "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
@@ -6342,9 +6330,7 @@ Object {
     "url": "/not-found",
   },
   "params": Object {},
-  "query": Object {
-    "key": "wrong",
-  },
+  "query": Object {},
   "state": Object {},
   "type": "NOT_FOUND",
 }
@@ -6433,9 +6419,7 @@ Object {
       "type": "FIRST",
       "url": "/first",
     },
-    "query": Object {
-      "key": "wrong",
-    },
+    "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},

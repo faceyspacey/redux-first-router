@@ -4,7 +4,7 @@ createTest('re-dispatching state.from behaves as if original action was dispatch
   SECOND: {
     path: '/second',
     beforeEnter: async ({ dispatch, action }) => {
-      if (action.allow) return
+      if (action.state.allow) return
       return dispatch({ type: 'REDIRECTED' })
     }
   }
@@ -17,7 +17,7 @@ createTest('re-dispatching state.from behaves as if original action was dispatch
   // to where the user initially tried to go
   const { from } = getState().location
   expect(from).toMatchSnapshot()
-  from.allow = true // for our simple example, we'll add this key/val to make `beforeEnter` not redirect
+  from.state = { allow: true } // for our simple example, we'll add this key/val to make `beforeEnter` not redirect
   res = await dispatch(from)
 
   expect(res.type).toEqual('SECOND')

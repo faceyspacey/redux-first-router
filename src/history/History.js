@@ -1,6 +1,6 @@
 import { UPDATE_HISTORY } from '../types'
-import { createAction, createLocation, findBasename } from './utils'
-import { urlToAction } from '../utils'
+import { createAction, createLocation } from './utils'
+import { actionToUrl } from '../utils'
 
 export default class History {
   constructor(routes, options, config) {
@@ -11,7 +11,6 @@ export default class History {
     this.routes = routes
     this.options = options
 
-    this.basename = entries[index].basename
     this.entries = []
     this.index = -1
     this.length = 0
@@ -36,7 +35,7 @@ export default class History {
   createLocation(path, state, basename) {
     const location = this.location || this.firstRoute.nextHistory.location
     const scene = this.routes[location.type].scene
-    return createAction(path, this.routes, this.options, state, undefined, basename || this.basename, this.location, scene)
+    return createAction(path, this.routes, this.options, state, undefined, basename, this.location, scene)
   }
 
   // API:
@@ -156,8 +155,28 @@ export default class History {
     return this.jump(1, state, false, 'next', notify)
   }
 
-  reset(entries, index, manualKind, notify = true) {
-    entries = entries.map(e => this.createLocation(e))
+  reset(entries, index, manualKind, basename, notify = true) {
+    if (entries.length === 1) {
+      const entry = this._findResetFirstAction(entries[0])
+      entries.unshift(entry)
+    }
+
+    entries = entries.map(entry => {
+      if (typeof entry === 'object' && entry.type) {
+        const action = entry
+        action.basename = action.basename || basename
+        const { url, state } = actionToUrl(action, this.routes, this.options)
+        return this.createLocation(url, state, action.basename)
+      }
+      else if (Array.isArray(entry)) {
+        const [url, state] = entry
+        return this.createLocation(url, state, basename)
+      }
+
+      return this.createLocation(entry, undefined, basename)
+    })
+
+
     index = index !== undefined ? index : entries.length - 1
 
     if (!manualKind) {
@@ -184,6 +203,35 @@ export default class History {
     }
 
     return this._notify({ nextHistory, commit }, notify)
+  }
+
+  _findResetFirstAction(action) {
+    const { routes, options } = this
+
+    if (options.resetFirstEntry) {
+      return typeof options.resetFirstEntry === 'function'
+        ? options.resetFirstEntry(action)
+        : options.resetFirstEntry
+    }
+
+    if (typeof action === 'object' && action.type) {
+      if (routes[action.type].path !== '/') {
+        const homeType = Object.keys(routes).find(type => routes[type].path === '/')
+        return homeType ? { type: homeType } : { type: 'NOT_FOUND' }
+      }
+
+      return { type: 'NOT_FOUND' }
+    }
+
+    const path = Array.isArray(action) ? action[0] : action
+    const notFoundPath = routes.NOT_FOUND.path
+
+    if (path !== '/') {
+      const homeRoute = Object.keys(routes).find(type => routes[type].path === '/')
+      return homeRoute ? '/' : notFoundPath
+    }
+
+    return notFoundPath
   }
 
   canJump(n, byIndex) {
@@ -232,7 +280,6 @@ export default class History {
   _updateHistory(state) {
     Object.assign(this, state)
     this.length = state.entries ? state.entries.length : this.length
-    this.basename = state.location.basename
     this.saveHistory(this)
   }
 

@@ -56,7 +56,6 @@ Object {
 
 exports[`re-dispatching state.from behaves as if original action was dispatched: response 1`] = `
 Object {
-  "allow": true,
   "basename": "",
   "hash": "",
   "location": Object {
@@ -101,7 +100,9 @@ Object {
         },
         "params": Object {},
         "query": Object {},
-        "state": Object {},
+        "state": Object {
+          "allow": true,
+        },
         "type": "SECOND",
       },
     ],
@@ -169,7 +170,9 @@ Object {
   },
   "params": Object {},
   "query": Object {},
-  "state": Object {},
+  "state": Object {
+    "allow": true,
+  },
   "type": "SECOND",
 }
 `;
@@ -219,7 +222,9 @@ Object {
         },
         "params": Object {},
         "query": Object {},
-        "state": Object {},
+        "state": Object {
+          "allow": true,
+        },
         "type": "SECOND",
       },
     ],
@@ -285,7 +290,9 @@ Object {
     "query": Object {},
     "scene": "",
     "search": "",
-    "state": Object {},
+    "state": Object {
+      "allow": true,
+    },
     "status": 200,
     "type": "SECOND",
     "universal": false,

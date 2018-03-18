@@ -119,7 +119,14 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
     snapRoutes(num, routes)
     snapOptions(num, options)
 
-    if (opts.log) console.log(store.getState().location)
+    if (opts.log) {
+      if (typeof opts.log !== 'function') {
+        console.log(store.getState().location)
+      }
+      else {
+        opts.log(store.getState().location)
+      }
+    }
   })
 }
 

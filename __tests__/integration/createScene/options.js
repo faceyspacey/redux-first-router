@@ -3,17 +3,17 @@ import createScene from '../../../src/createScene'
 
 const routesMap = {
   SECOND: {
-    path: '/second',
+    path: '/second/:foo?',
     error: (error) => ({ ...error, foo: 'bar' })
   },
   THIRD: {
-    path: '/third',
+    path: '/third/:foo',
     action: (arg) => (req) => {
       return { params: { foo: arg } }
     }
   },
   FOURTH: {
-    path: '/fourth',
+    path: '/fourth/:foo?',
     action: ['customCreator'],
     customCreator: (arg) => (req) => {
       return { params: { foo: arg } }
@@ -32,11 +32,13 @@ const { actions, routes } = createScene(routesMap, {
   basename: '/base-name'
 })
 
-createTest('createScene(routes, { scene, basename })', routes, [
+createTest('createScene(routes, { scene, basename })', routes, {
+  basenames: ['/base-name']
+}, [
   ['actions.second()', actions.second()],
   ['actions.second(partialAction)', actions.second({ params: { foo: 'bar' } })],
   ['actions.second(params)', actions.second({ foo: 'bar' })],
-  ['actions.second(thunk)', actions.second((req) => ({ testReq: req.getTitle() }))],
+  ['actions.second(thunk)', actions.second((req) => ({ foo: req.getTitle() }))],
   ['actions.second(action with wrong type)', actions.second({ type: 'WRONG' })],
   ['route.action - custom action creator', actions.third('baz')],
   ['route.action: [] - custom action creators (array) - actions.fourth.customCreator()', actions.fourth.customCreator('baz')],

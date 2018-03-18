@@ -21,7 +21,7 @@ export default (req) => {
     from = manualKind === 'replace' ? curr : from
   }
 
-  req.action = nestAction(req, action, prev, nextHistory, from)          // replace history-triggered action with real action intended for reducers
+  req.action = nestAction(req, undefined, prev, { ...nextHistory }, from)          // replace history-triggered action with real action intended for reducers
   return req
 }
 
@@ -43,7 +43,7 @@ const createPrevState = (req, index, { length, entries }) => {
 // import { isNotFound } from '../../../utils'
 // import { nestAction, createNotFoundRoute } from './index'
 
-// export default (req, action) => {
+// const old = (req, action) => {
 //   req.route = req.routes[action.type]
 
 //   const { nextHistory } = req.action

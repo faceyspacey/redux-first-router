@@ -52,35 +52,36 @@ createTest('numbers NOT converted without convertNumbers option', {
   '/third/100'
 ])
 
+const toFromPath = {
+  toPath: (v, k, encodedV) => encodedV + k + v,
+  fromPath: (v, k, encodedV) => decodeURIComponent(encodedV.replace(k, ''))
+    .replace(v.replace('correct with spaceskey', ''), '')
+}
+
 createTest('fromPath + toPath', {
   SECOND: {
-    path: '/second/:param',
-    fromParam: (val) => val.toUpperCase(),
-    toParam: (val) => val.toLowerCase()
+    path: '/second/:key',
+    ...toFromPath
   },
   THIRD: {
-    path: '/third/:param',
-    fromParam: (val) => val.toUpperCase(),
-    toParam: (val) => val.toLowerCase()
+    path: '/third/:key',
+    ...toFromPath
   }
 }, [
-  { type: 'SECOND', params: { param: 'BAR' } },
-  '/third/foo'
+  { type: 'SECOND', params: { key: 'correct with spaces' } },
+  '/third/correct%20with%20spaceskeycorrect with spaces'
 ])
 
 createTest('options.to/fromPath', {
   SECOND: {
-    path: '/second/:param'
+    path: '/second/:key'
   },
   THIRD: {
-    path: '/third/:param'
+    path: '/third/:key'
   }
-}, {
-  fromParam: (val) => val.toUpperCase(),
-  toParam: (val) => val.toLowerCase()
-}, [
-  { type: 'SECOND', params: { param: 'BAR' } },
-  '/third/foo'
+}, toFromPath, [
+  { type: 'SECOND', params: { key: 'correct with spaces' } },
+  '/third/correct%20with%20spaceskeycorrect with spaces'
 ])
 
 createTest('does not parse a blank string "" as NaN', {

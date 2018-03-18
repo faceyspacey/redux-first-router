@@ -59,7 +59,8 @@ export default (api, name, config) => {
     }
     else {                                        // delete all/some callbacks for precise item (default)
       const action = invalidator
-      const loc = createLocation(actionToUrl(action, api.routes, api.options))
+      const { url } = actionToUrl(action, api.routes, api.options)
+      const loc = createLocation(url)
       const act = { ...action, location: { ...action.location, ...loc } }
 
       const names = opts.name === undefined ? callbacks : [].concat(opts.name)

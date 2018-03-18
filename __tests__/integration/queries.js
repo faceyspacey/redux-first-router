@@ -104,18 +104,18 @@ createTest('val matched by regex', {
 createTest('route.toQuery/fromQuery', {
   SECOND: {
     path: '/second',
-    toQuery: (v, k) => v.toUpperCase() + k.toUpperCase(),
-    fromQuery: (v, k) => v.toLowerCase() + k.toLowerCase()
+    toSearch: (v, k) => v.toUpperCase() + k.toUpperCase(),
+    fromSearch: (v, k) => v.replace(k.toUpperCase(), '').toLowerCase()
   },
   THIRD: {
     path: '/third',
-    toQuery: (v, k) => v.toUpperCase() + k.toUpperCase(),
-    fromQuery: (v, k) => v.toLowerCase() + k.toLowerCase()
+    toSearch: (v, k) => v.toUpperCase() + k.toUpperCase(),
+    fromSearch: (v, k) => v.replace(k.toUpperCase(), '').toLowerCase()
   }
 }, [
-  { type: 'SECOND', query: { key: 'correct' } },
+  { type: 'SECOND', query: { key: 'correct with spaces' } },
   { type: 'SECOND' },
-  '/third?key=CORRECT',
+  '/third?key=CORRECT%20WITH%20SPACESKEY',
   '/third'
 ])
 

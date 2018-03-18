@@ -1,10 +1,9 @@
 import { typeToScene, isNotFound } from '../../../utils'
 
-export default (req, originalAction, prevState, history, fromAction) => {
+export default (req, originalAction = { location: {} }, prevState, history, fromAction) => {
   const { kind: k, entries, index, length, location: action } = history
+  const { type, params = {}, query = {}, state = {}, hash = '', basename: bn = '' } = action
   const { pathname, search, url, key } = action.location
-  const { type, hash = '', basename: bn = '' } = action
-  const { params = {}, query = {}, state = {} } = originalAction || action
 
   const prev = createPrev(prevState)
   const from = createFrom(fromAction)
@@ -15,11 +14,10 @@ export default (req, originalAction, prevState, history, fromAction) => {
 
   const basename = bn.substr(1)
   const status = (kind === 'replace' || fromAction)
-    ? ((originalAction && originalAction.location && originalAction.location.status) || 302)
+    ? (originalAction.location.status || 302)
     : (isNotFound(type) ? 404 : 200)
 
   return {
-    ...originalAction,
     type,
     params,
     query,
@@ -27,7 +25,6 @@ export default (req, originalAction, prevState, history, fromAction) => {
     state,
     basename,
     location: {
-      ...(originalAction && originalAction.location),
       url,
       pathname,
       search,

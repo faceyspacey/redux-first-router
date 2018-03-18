@@ -13,7 +13,7 @@ createTest('redirect within beforeEnter', {
   SECOND: {
     path: '/second',
     beforeEnter: ({ dispatch }) => {
-      return dispatch(redirect({ type: 'REDIRECTED' })) // this is unnecessary, redirects are automatic within callbacks, but for good measure should still work
+      return dispatch(redirect({ type: 'REDIRECTED' }, 301)) // this is unnecessary, redirects are automatic within callbacks, but for good measure should still work
     }
   }
 })

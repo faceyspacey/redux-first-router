@@ -32,9 +32,9 @@ export class Request {
     // a `committed` status must be marked for redirects initiated outside of the pipeline
     // so that `src/middleware/transformAction/reduxAction.js` knows to `replace` the
     // history entry instead of `push`
-    if (!ctx.busy && isRedirect(action)) {
-      tmp.committed = true
-    }
+    // if (!ctx.busy && isRedirect(action)) {
+    //   tmp.committed = true
+    // }
 
     // maintain `busy` status throughout a primary parent route changing pipeline even if
     // there are pathlessRoutes, anonymousThunks (which don't have paths) called by them
