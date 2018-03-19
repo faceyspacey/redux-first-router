@@ -24,37 +24,38 @@ import { createAction, restoreHistory, saveHistory } from './utils'
 export default class MemoryHistory extends History {
   constructor(routes, opts = {}) {
     const {
-      initialEntries: ents = ['/'],
+      initialDirection = 'forward',
       initialIndex = 0,
+      initialEntries: ents = ['/'],
       useSessionStorage = false
     } = opts
 
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
-    const { index, entries, saveHistory } = !useSessionStorage
-      ? create(routes, opts, initialIndex, initialEntries) // this happens 99% of the time
+    const { n, index, entries, saveHistory } = !useSessionStorage
+      ? create(routes, opts, initialDirection, initialIndex, initialEntries) // this happens 99% of the time
       : restore(initialEntries, routes, opts) // only used when in browser environment (as a fallback)
 
-    super(routes, opts, { index, entries, saveHistory })
+    super(routes, opts, { n, index, entries, saveHistory })
   }
 
-  _push(nextState) {
-    return this._updateHistory(nextState)
+  _push(action) {
+    return this._updateHistory(action)
   }
 
-  _replace(nextState) {
-    return this._updateHistory(nextState)
+  _replace(action) {
+    return this._updateHistory(action)
   }
 
-  _jump(nextState) {
-    return this._updateHistory(nextState)
+  _jump(action) {
+    return this._updateHistory(action)
   }
 
-  _setState(nextState) {
-    return this._updateHistory(nextState)
+  _setState(action) {
+    return this._updateHistory(action)
   }
 
-  _reset(nextState) {
-    return this._updateHistory(nextState)
+  _reset(action) {
+    return this._updateHistory(action)
   }
 }
 
@@ -62,10 +63,11 @@ export default class MemoryHistory extends History {
 
 // TRANSFORM ENTRIES ARRAY INTO PROPER LOCATION OBJECTS + INDEX
 
-const create = (routes, opts, initialIndex, initialEntries) => {
+const create = (routes, opts, initialDirection, initialIndex, initialEntries) => {
+  const n = initialDirection === 'forward' ? 1 : -1
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
   const entries = initialEntries.map(e => createAction(e, routes, opts))
-  return { index, entries }
+  return { n, index, entries }
 }
 
 
@@ -77,6 +79,6 @@ const create = (routes, opts, initialIndex, initialEntries) => {
 const restore = (initialEntries, routes, opts) => {
   const entry = initialEntries[0]
   const defaultLocation = createAction(entry, routes, opts)
-  const { index, entries } = restoreHistory(defaultLocation, routes, opts) // impure
-  return { index, entries, saveHistory }
+  const { n, index, entries } = restoreHistory(defaultLocation, routes, opts) // impure
+  return { n, index, entries, saveHistory }
 }

@@ -54,9 +54,9 @@ export default class BrowserHistory extends History {
   constructor(routes, opts = {}) {
     const { id, ...initialHistoryState } = getInitialHistoryState()
     const defaultLocation = getWindowLocation(initialHistoryState, routes, opts)
-    const { index, entries } = restoreHistory(defaultLocation, routes, opts)
+    const { n, index, entries } = restoreHistory(defaultLocation, routes, opts)
 
-    super(routes, opts, { index, entries, saveHistory })
+    super(routes, opts, { n, index, entries, saveHistory })
 
     this._id = id
     this._setupPopHandling()
@@ -83,7 +83,7 @@ export default class BrowserHistory extends History {
         n = this._isNext(loc) ? 1 : -1
         this.pendingPop = n
       }
-      else if (loc.location.url === this.location.location.url) {
+      else if (loc.location.url === this.action.location.url) {
         n = this.pendingPop * -1 // switch directions
         return this._forceGo(n * -1)
       }
@@ -121,83 +121,72 @@ export default class BrowserHistory extends History {
     window.history.go(n) // revert
   }
 
-  _push(nextState, awaitLoc) {
-    const { location } = nextState
-    const { key, state } = location
-    const href = location.location.url
-    console.log('PUSH', href)
+  _push(action, awaitLoc) {
+    const { state, location: { key, url } } = action
 
-    return this._awaitLocation(awaitLoc || this.location, '_push')
-      .then(() => window.history.pushState({ id: this._id, key, state }, null, href))
-      .then(() => this._updateHistory(nextState))
-
-    return Promise.resolve()
+    return this._awaitLocation(awaitLoc || this.action, '_push')
+      .then(() => window.history.pushState({ id: this._id, key, state }, null, url))
+      .then(() => this._updateHistory(action))
   }
 
-  _replace(nextState, awaitLoc, n) {
-    const { location } = nextState
-    const { key, state } = location
-    const href = location.location.url
-    console.log('REPLACE', href)
+  _replace(action, awaitLoc, n) {
+    const { state, location: { key, url } } = action
 
     if (n) {
       this._forceGo(n)
 
-      console.log('AWAIT LOCATION', n, awaitLoc)
-      return this._awaitLocation(awaitLoc || this.location, '_replaceBackNext')
-        .then(() => window.history.replaceState({ id: this._id, key, state }, null, href))
-        .then(() => this._updateHistory(nextState))
+      return this._awaitLocation(awaitLoc || this.action, '_replaceBackNext')
+        .then(() => window.history.replaceState({ id: this._id, key, state }, null, url))
+        .then(() => this._updateHistory(action))
     }
 
-    return this._awaitLocation(awaitLoc || this.location, '_replace')
-      .then(() => window.history.replaceState({ id: this._id, key, state }, null, href))
-      .then(() => this._updateHistory(nextState))
+    return this._awaitLocation(awaitLoc || this.action, '_replace')
+      .then(() => window.history.replaceState({ id: this._id, key, state }, null, url))
+      .then(() => this._updateHistory(action))
   }
 
-  _jump(nextState, n, isPop) {
-    const prev = this.location
-    const { location: loc } = nextState
+  _jump(action, n, isPop) {
+    const prev = this.action
 
     if (!n) { // possibly the user mathematically calculated a jump of `0`
-      return this._replace(loc)
-        .then(() => this._updateHistory(nextState))
+      return this._replace(action)
+        .then(() => this._updateHistory(action))
     }
 
     if (isPop) {  // pop already handled by browser back/next buttons and real history state is already up to date
-      console.log('JUMP isPop')
-      return this._updateHistory(nextState)
+      return this._updateHistory(action)
     }
-    console.log('JUMP!')
+
     return this._awaitLocation(prev, 'jump prev')
       .then(() => this._forceGo(n))
-      .then(() => this._awaitLocation(loc, 'jump loc'))
-      .then(() => this._replace(nextState, nextState.location))
-      .then(() => this._updateHistory(nextState))
+      .then(() => this._awaitLocation(action, 'jump loc'))
+      .then(() => this._replace(action, action))
+      .then(() => this._updateHistory(action))
   }
 
-  _setState(nextState, n) {
-    const prev = this.location
-    const loc = nextState.entries[this.index + n]
+  _setState(action, n) {
+    const prev = this.action
+    const loc = action.location.entries[this.index + n]
 
     if (!n) {
       return this._replace(loc)
-        .then(() => this._updateHistory(nextState))
+        .then(() => this._updateHistory(action))
     }
-    console.log('SET STATE')
+
     return this._awaitLocation(prev)
       .then(() => this._forceGo(n))
       .then(() => this._awaitLocation(loc))
       .then(() => this._replace(loc))
       .then(() => this._forceGo(-n))
       .then(() => this._awaitLocation(prev))
-      .then(() => this._updateHistory(nextState))
+      .then(() => this._updateHistory(action))
   }
 
-  _reset(nextState) {
-    const { index, entries } = nextState
+  _reset(action) {
+    const { index, entries } = action.location
     const lastIndex = entries.length - 1
     const stayAtEnd = index === lastIndex
-    const prev = this.location
+    const prev = this.action
     const loc = this.entries[0]
     const n = -this.index // jump to beginning of entries stack
 
@@ -212,18 +201,14 @@ export default class BrowserHistory extends History {
           this._forceGo(index - lastIndex)
         }
 
-        this._updateHistory(nextState)
+        this._updateHistory(action)
       })
   }
 
-  _awaitLocation(loc, name) {
+  _awaitLocation(action, name) {
     return new Promise(resolve => {
-      const { url } = loc.location
-      const ready = () => {
-        console.log('READY(desiredUrl, currentUrl)', url, createPath(window.location))
-        return url === createPath(window.location)
-      }
-
+      const { url } = action.location
+      const ready = () => url === createPath(window.location)
       return tryChange(ready, resolve, name)
     })
   }

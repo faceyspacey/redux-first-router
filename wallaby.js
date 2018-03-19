@@ -18,6 +18,8 @@ module.exports = wallaby => {
     ],
 
     tests: [
+      '__tests__/integration/browser/sessionStorage/historyFallback.js',
+
       // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/actions/**/*.js',
       // '__tests__/integration/createScene/**/*.js',
@@ -37,7 +39,7 @@ module.exports = wallaby => {
       // '__tests__/integration/createScene/returnedUtilities.js',
 
 
-      '__tests__/integration/params.js',
+      // '__tests__/integration/params.js',
       // '__tests__/integration/queries.js',
       // '__tests__/integration/hashes.js',
       // '__tests__/integration/entryState.js',

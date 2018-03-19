@@ -59,8 +59,8 @@ export default (
   const selectTitleState = createSelector('title', title)
   const history = createSmartHistory(routes, options)
   const { firstAction } = history
-  const initialState = createState(routes, firstAction, options)
-  const reducer = createLocationReducer(initialState, routes, firstAction, options)
+  const initialState = createState(firstAction, routes, options)
+  const reducer = createLocationReducer(initialState, routes, options)
   const wares = {}
   const register = (name: string, val?: any = true) => wares[name] = val
   const has = (name: string) => wares[name]

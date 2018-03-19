@@ -13,7 +13,6 @@ import type {
 export default (
   initialState: Object,
   routes: RoutesMap,
-  history: History,
   options: Options
 ) => (
   st: LocationState = initialState,
@@ -73,8 +72,8 @@ export default (
 
 
 export const createInitialState = (
-  routes: RoutesMap,
   action: History,
+  routes: RoutesMap,
   options: Options
 ): LocationState => {
   const { type, params = {}, query = {}, state = {}, hash = '', basename = '' } = action
@@ -108,7 +107,7 @@ export const createInitialState = (
 
     universal,
 
-    prev: createPrevEntries(routes, action, options, universal)
+    prev: createPrevEntries(action, routes, options, universal)
   }
 }
 
@@ -136,18 +135,17 @@ export const createPrev = (universal: boolean) => ({
 })
 
 export const createPrevEntries = (
-  routes,
   action,
+  routes,
   opts,
   universal
 ) => {
-  const { index, lastIndex = 1, entries } = action.location // needs to use real lastIndex instead of -1
-  const n = index > lastIndex ? -1 : 1
-  const prevAction = entries[n]
+  const { n, index, entries } = action.location // needs to use real lastIndex instead of -1
+  const prevAction = entries[index + n]
 
   if (!prevAction) return createPrev(universal)
 
-  const direction = index > lastIndex ? 'forward' : 'backward'
+  const direction = n === 1 ? 'forward' : 'backward'
   const kind = direction === 'forward' ? 'push' : 'back'
 
   const { location, ...act } = prevAction

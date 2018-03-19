@@ -153,6 +153,7 @@ Object {
       },
     ],
     "index": 0,
+    "n": 1,
   },
   "id": "345678",
   "key": "345678",
@@ -184,9 +185,10 @@ Object {
       },
     ],
     "index": 1,
+    "n": 1,
   },
   "id": "345678",
-  "key": undefined,
+  "key": "345678",
   "state": Object {},
 }
 `;
@@ -215,9 +217,10 @@ Object {
       },
     ],
     "index": 2,
+    "n": 1,
   },
   "id": "345678",
-  "key": undefined,
+  "key": "345678",
   "state": Object {},
 }
 `;
@@ -252,9 +255,10 @@ Object {
       },
     ],
     "index": 3,
+    "n": 1,
   },
   "id": "345678",
-  "key": undefined,
+  "key": "345678",
   "state": Object {},
 }
 `;

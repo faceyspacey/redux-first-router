@@ -2,7 +2,7 @@ import { parsePath, createKey, hasSessionStorage, createAction } from './index'
 
 // PREFIXING:
 
-const PREFIX = '@@History/'
+const PREFIX = '@@rudy/'
 
 const prefixKey = key => PREFIX + getId() + key
 
@@ -47,7 +47,7 @@ const getSetItem = (key, val) => {
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
 // called every time the history entries or index changes
-export const saveHistory = ({ index, entries }) => {
+export const saveHistory = ({ index, entries, n }) => {
   entries = entries.map(e => ({
     url: e.location.url,
     key: e.location.key,
@@ -55,7 +55,7 @@ export const saveHistory = ({ index, entries }) => {
     basename: e.basename
   }))
 
-  const history = { index, entries }
+  const history = { index, entries, n }
 
   // here's the key aspect of the fallback. essentially we keep updating history state
   // via `replaceState` so every entry has everything that would be in `sessionStorage`
@@ -73,7 +73,7 @@ export const saveHistory = ({ index, entries }) => {
 // called on startup
 export const restoreHistory = (defaultLocation, routes, opts) => {
   const { state, basename, location: { url, key } } = defaultLocation // used if first time visiting site during session
-  const defaultHistory = { index: 0, entries: [{ url, key, state, basename }] }
+  const defaultHistory = { n: 1, index: 0, entries: [{ url, key, state, basename }] }
 
   if (!hasSessionStorage()) {
     const state = getHistoryState()
@@ -166,7 +166,7 @@ const getIndexAndEntries = (history, routes, opts) => {
 let _id
 
 const getId = () => {
-  _id = _id || getHistoryState().id || 'id' // sessions when using memory history won't be able to have unique IDs
+  _id = _id || getHistoryState().id || 'id' // sessions when using memory history in the browser won't be able to have unique IDs
   return `${_id}/`
 }
 
