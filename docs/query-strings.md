@@ -86,6 +86,6 @@ With Express `req.path` does not contain the query. In this case you need to use
 ## CodeSandBox
 You can test out query support on codesandbox here:
 
-<a href="https://codesandbox.io/s/pgp5mEkzm?module=H1Ebz7rL7rZ" target="_blank">
+<a href="https://codesandbox.io/s/pgp5mekzm?module=%2Foptions.js" target="_blank">
   <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
