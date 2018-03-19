@@ -1,5 +1,4 @@
 export { default as camelCase } from './camelCase'
-export { default as getScene } from './getScene'
 export { default as handleError } from './handleError'
 export { default as logExports } from './logExports'
 export { default as makeActionCreator } from './makeActionCreator'

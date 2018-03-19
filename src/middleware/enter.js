@@ -5,7 +5,7 @@ export default (api) => async (req, next) => {
     return redirectShortcut(req)
   }
 
-  const res = req.commit() // commit history + action to state
+  const res = req.enter() // commit history + action to state
 
   // return early on `load` so rendering can happen ASAP
   // i.e. before `thunk` is called but after potentially async auth in `beforeEnter`

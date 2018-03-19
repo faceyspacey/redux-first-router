@@ -13,7 +13,7 @@ export { default as shouldTransition } from './shouldTransition'
 export { default as matchUrl } from './matchUrl'
 export { default as compileUrl } from './compileUrl'
 
-export { default as formatRoutes } from './formatRoutes'
+export { default as formatRoutes, formatRoute } from './formatRoutes'
 export { default as typeToScene } from './typeToScene'
 
 export { default as noOp } from './noOp'

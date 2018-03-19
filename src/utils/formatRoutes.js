@@ -12,7 +12,7 @@ import {
 
 export default (
   routes: RoutesMapInput,
-  formatRoute: ?Function,
+  formatter: ?Function,
   isAddRoutes: boolean = false
 ): RoutesMap => {
   if (!isAddRoutes) {
@@ -28,7 +28,7 @@ export default (
   const types = Object.keys(routes)
 
   types.forEach(type => {
-    const route = format(routes[type], type, routes, formatRoute, isAddRoutes)
+    const route = formatRoute(routes[type], type, routes, formatter, isAddRoutes)
     route.type = type
     routes[type] = route
   })
@@ -36,11 +36,11 @@ export default (
   return routes
 }
 
-export const format = (r, type, routes, formatRoute, isAddRoutes) => {
+export const formatRoute = (r, type, routes, formatter, isAddRoutes) => {
   const route = typeof r === 'string' ? { path: r } : r
 
-  if (formatRoute) {
-    return formatRoute(route, type, routes, isAddRoutes)
+  if (formatter) {
+    return formatter(route, type, routes, isAddRoutes)
   }
 
   if (typeof route === 'function') {

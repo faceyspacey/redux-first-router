@@ -1,7 +1,6 @@
 // @flow
 import { ADD_ROUTES, BLOCK, UNBLOCK, SET_FROM } from '../types'
-import { isServer, urlToAction, typeToScene } from '../utils'
-import { createLocation } from '../history/utils'
+import { isServer, typeToScene, isNotFound } from '../utils'
 
 import type {
   LocationState,
@@ -75,16 +74,15 @@ export default (
 
 export const createInitialState = (
   routes: RoutesMap,
-  history: History,
+  action: History,
   options: Options
 ): LocationState => {
-  const { entries, index, length, location: entry } = history
-  const { location, ...action } = entry
-  const { basename = '' } = action
-  const { url, pathname, search, key } = location
-  const { type, params = {}, query = {}, state = {}, hash = '' } = action
+  const { type, params = {}, query = {}, state = {}, hash = '', basename = '' } = action
+  const { entries, index, length, pathname, search, url, key } = action.location
+
   const scene = typeToScene(type)
   const universal = isServer()
+  const status = isNotFound(type) ? 404 : 200
 
   return {
     type,
@@ -98,17 +96,19 @@ export const createInitialState = (
     search,
     key,
     basename: basename.substr(1),
-    direction: 'forward',
     scene,
+    direction: 'forward',
+    status,
 
     kind: 'init',
     entries,
     index,
     length,
+    pop: false,
 
     universal,
 
-    prev: createPrevEntries(routes, history, options, universal)
+    prev: createPrevEntries(routes, action, options, universal)
   }
 }
 
@@ -137,29 +137,28 @@ export const createPrev = (universal: boolean) => ({
 
 export const createPrevEntries = (
   routes,
-  history,
+  action,
   opts,
   universal
 ) => {
-  const { index, lastIndex = 1, entries } = history // needs to use real lastIndex instead of -1
+  const { index, lastIndex = 1, entries } = action.location // needs to use real lastIndex instead of -1
   const n = index > lastIndex ? -1 : 1
-  const entry = entries[n]
+  const prevAction = entries[n]
 
-  if (!entry) return createPrev(universal)
+  if (!prevAction) return createPrev(universal)
 
   const direction = index > lastIndex ? 'forward' : 'backward'
   const kind = direction === 'forward' ? 'push' : 'back'
 
-  const { location, ...action } = entry
-  const { basename: bn = '' } = action
+  const { location, ...act } = prevAction
+  const { basename = '' } = act
   const { url, pathname, search, key } = location
-  const basename = bn.substr(1)
-  const scene = routes[action.type].scene || ''
+  const scene = routes[act.type].scene || ''
 
   return {
-    ...action,
+    ...act,
 
-    basename,
+    basename: basename.substr(1),
     url,
     pathname,
     search,
@@ -175,38 +174,3 @@ export const createPrevEntries = (
     universal
   }
 }
-
-// export const createPrevEntries = (
-//   routes,
-//   history,
-//   opts,
-//   universal
-// ) => {
-//   const { index, lastIndex = -1, entries } = history // needs to use real lastIndex instead of -1
-//   const n = index > lastIndex ? -1 : 1
-//   const direction = index > lastIndex ? 'forward' : 'backwawrd'
-//   const kind = direction === 'forward' ? 'push' : 'back'
-
-//   const entryAction = entries[n]
-
-//   const url = actionToUrl(entry, routes, opts)
-//   const { pathname, search, basename } = createLocation(url)
-//   const scene = routes[entryAction.type].scene || ''
-
-//   return {
-//     ...entryAction,
-
-//     url,
-//     pathname,
-//     search,
-//     scene,
-//     direction,
-
-//     kind,
-//     entries,
-//     index: lastIndex,
-//     length: entries.length,
-
-//     universal
-//   }
-// }

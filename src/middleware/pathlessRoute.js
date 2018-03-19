@@ -1,5 +1,4 @@
 import { call } from './index'
-import { UPDATE_HISTORY } from '../types'
 
 export default (...names) => (api) => {
   names[0] = names[0] || 'thunk'
@@ -18,8 +17,8 @@ export default (...names) => (api) => {
   api.register('pathlessRoute')
 
   return (req, next) => {
-    const { route, action } = req
-    const isPathless = route && !route.path && action.type !== UPDATE_HISTORY
+    const { route } = req
+    const isPathless = route && !route.path
 
     if (isPathless && hasCallback(route, names)) {
       if (route.dispatch !== false) {

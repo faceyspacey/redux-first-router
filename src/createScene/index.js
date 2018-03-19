@@ -5,11 +5,11 @@ import {
   camelCase,
   logExports,
   makeActionCreator,
-  formatRoute as format
+  formatRoute
 } from './utils'
 
 export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
-  const { scene: sc, basename: bn, formatRoute, subtypes: st = [], logExports: log } = opts
+  const { scene: sc, basename: bn, formatRoute: formatter, subtypes: st = [], logExports: log } = opts
 
   const scene = sc || ''
   const prefix = scene ? `${scene}/` : ''
@@ -23,7 +23,7 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     const tc = `${prefix}${t}_COMPLETE`
     const te = `${prefix}${t}_ERROR`
 
-    routes[t2] = format(routesMap[t], t2, routesMap, formatRoute)
+    routes[t2] = formatRoute(routesMap[t], t2, routesMap, formatter)
 
     const route = routes[t2]
     const tClean = route.scene ? t2.replace(`${route.scene}/`, '') : t // strip the scene so types will be un-prefixed (NOTE: this is normalization for if routes pass through `createScene` twice)

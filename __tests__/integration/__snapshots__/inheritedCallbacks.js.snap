@@ -65,6 +65,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -88,6 +89,7 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
+    "status": 200,
     "type": "FIRST",
     "universal": false,
     "url": "/first",
@@ -275,6 +277,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -298,6 +301,7 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
+    "status": 200,
     "type": "FIRST",
     "universal": false,
     "url": "/first",
@@ -487,6 +491,7 @@ Object {
     "length": 1,
     "params": Object {},
     "pathname": "/first",
+    "pop": false,
     "prev": Object {
       "basename": "",
       "direction": "forward",
@@ -510,6 +515,7 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {},
+    "status": 200,
     "type": "FIRST",
     "universal": false,
     "url": "/first",

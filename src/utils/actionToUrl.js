@@ -1,6 +1,5 @@
 // @flow
 import { compileUrl } from './index'
-import { matchQuery, matchVal } from './matchUrl'
 
 import type {
   Route,

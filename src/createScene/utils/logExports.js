@@ -1,9 +1,9 @@
 // @flow
-import { getScene } from './index'
+import { typeToScene } from '../../utils'
 
 export default (types, actions, routes, options) => {
   const opts = { ...options }
-  opts.scene = getScene(Object.keys(routes)[0])
+  opts.scene = typeToScene(Object.keys(routes)[0])
   delete opts.logExports
 
   const optsString = JSON.stringify(opts)

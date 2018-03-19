@@ -58,9 +58,9 @@ export default (
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createSmartHistory(routes, options)
-  const { nextHistory: nh } = history.firstRoute
-  const initialState = createState(routes, nh, options)
-  const reducer = createLocationReducer(initialState, routes, nh, options)
+  const { firstAction } = history
+  const initialState = createState(routes, firstAction, options)
+  const reducer = createLocationReducer(initialState, routes, firstAction, options)
   const wares = {}
   const register = (name: string, val?: any = true) => wares[name] = val
   const has = (name: string) => wares[name]
@@ -106,7 +106,7 @@ export default (
     reducer,
     firstRoute: (resolveOnEnter = true) => {
       api.resolveFirstRouteOnEnter = resolveOnEnter
-      return history.firstRoute
+      return firstAction
     }
   }
 }

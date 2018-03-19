@@ -14,7 +14,7 @@ export class Request {
     const { store, routes, options, getLocation, ctx } = api
     const isNewPipeline = !action.tmp
     const pendingRequest = ctx.pending
-    const fromHistory = action.type === UPDATE_HISTORY
+    const fromHistory = action.commit
     const state = getLocation()
     const route = routes[action.type] || {}
     const prevRoute = state.kind === 'init'
@@ -27,14 +27,8 @@ export class Request {
     const tmp = this.tmp = action.tmp || {}
     delete action.tmp
 
-    tmp.load = tmp.load || (fromHistory && action.nextHistory.kind === 'load')
+    tmp.load = tmp.load || (fromHistory && action.location.kind === 'load')
 
-    // a `committed` status must be marked for redirects initiated outside of the pipeline
-    // so that `src/middleware/transformAction/reduxAction.js` knows to `replace` the
-    // history entry instead of `push`
-    // if (!ctx.busy && isRedirect(action)) {
-    //   tmp.committed = true
-    // }
 
     // maintain `busy` status throughout a primary parent route changing pipeline even if
     // there are pathlessRoutes, anonymousThunks (which don't have paths) called by them
@@ -51,8 +45,7 @@ export class Request {
 
     Object.assign(this, options.extra)
     Object.assign(this, api)
-    Object.assign(this, !fromHistory && action) // destructure action into request for convenience in callbacks
-    if (fromHistory) this.type = UPDATE_HISTORY
+    Object.assign(this, action) // destructure action into request for convenience in callbacks
 
     this.action = action
     this.ctx = ctx
@@ -75,7 +68,7 @@ export class Request {
     this.getState = store.getState
   }
 
-  commit = () => {
+  enter = () => {
     this.ctx.pending = false
     this.tmp.committed = true
     this.history.pendingPop = null

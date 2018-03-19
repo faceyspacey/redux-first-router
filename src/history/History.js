@@ -1,5 +1,4 @@
-import { UPDATE_HISTORY } from '../types'
-import { createAction, createLocation } from './utils'
+import { createAction } from './utils'
 import { actionToUrl } from '../utils'
 
 export default class History {
@@ -29,11 +28,11 @@ export default class History {
       this._updateHistory(nextState)
     }
 
-    this.firstRoute = { nextHistory, commit, type: UPDATE_HISTORY }
+    this.firstAction = this._notify({ nextHistory, commit }, false)
   }
 
-  createLocation(path, state, basename) {
-    const location = this.location || this.firstRoute.nextHistory.location
+  createAction(path, state, basename) {
+    const location = this.location || this.firstAction
     const scene = this.routes[location.type].scene
     return createAction(path, this.routes, this.options, state, undefined, basename, this.location, scene)
   }
@@ -41,7 +40,7 @@ export default class History {
   // API:
 
   push(path, state = {}, basename, notify = true) {
-    const location = this.createLocation(path, state, basename)
+    const location = this.createAction(path, state, basename)
     const back = this._isBack(location) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(location)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -60,7 +59,7 @@ export default class History {
   }
 
   replace(path, state = {}, basename, notify = true) {
-    const location = this.createLocation(path, state, basename)
+    const location = this.createAction(path, state, basename)
     const back = this._isBack(location) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(location)
     const kind = back ? 'back' : (next ? 'next' : 'replace')
@@ -82,7 +81,7 @@ export default class History {
   }
 
   replacePop(path, state = {}, basename, notify = true, pop) {
-    const location = this.createLocation(path, state, basename)
+    const location = this.createAction(path, state, basename)
     const index = pop.index
     const entries = pop.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
@@ -164,16 +163,15 @@ export default class History {
     entries = entries.map(entry => {
       if (typeof entry === 'object' && entry.type) {
         const action = entry
-        action.basename = action.basename || basename
         const { url, state } = actionToUrl(action, this.routes, this.options)
-        return this.createLocation(url, state, action.basename)
+        return this.createAction(url, state, action.basename || basename)
       }
       else if (Array.isArray(entry)) {
         const [url, state] = entry
-        return this.createLocation(url, state, basename)
+        return this.createAction(url, state, basename)
       }
 
-      return this.createLocation(entry, undefined, basename)
+      return this.createAction(entry, undefined, basename)
     })
 
 
@@ -250,9 +248,21 @@ export default class History {
 
   // UTILS:
 
-  _notify(action, notify = true) {
-    action.type = UPDATE_HISTORY
-    action.commit = this._once(action.commit)
+  // _notify(action, notify = true) {
+  //   action.type = UPDATE_HISTORY
+  //   action.commit = this._once(action.commit)
+  //   if (notify && this._listener) return this._listener(action)
+  //   return action
+  // }
+
+  _notify({ nextHistory, commit, revertPop }, notify = true) {
+    const { location, index, entries, length, kind, manualKind } = nextHistory
+    const action = { ...location }
+    action.location = { ...action.location, index, entries, length, kind }
+    action.commit = this._once(commit)
+    action.manualKind = manualKind
+    action.revertPop = revertPop
+
     if (notify && this._listener) return this._listener(action)
     return action
   }

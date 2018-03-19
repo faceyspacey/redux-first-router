@@ -1,12 +1,10 @@
 // @flow
-import { isNotFound } from '../../utils'
-import { getScene } from './index'
-import { format } from '../../utils/formatRoutes'
+import { isNotFound, typeToScene, formatRoute } from '../../utils'
 
-export default (r, type, routes, formatRoute) => {
-  const route = format(r, type, routes, formatRoute)
+export default (r, type, routes, formatter) => {
+  const route = formatRoute(r, type, routes, formatter)
 
-  route.scene = getScene(type)
+  route.scene = typeToScene(type)
 
   // set default path for NOT_FOUND actions if necessary
   if (!route.path && isNotFound(type)) {

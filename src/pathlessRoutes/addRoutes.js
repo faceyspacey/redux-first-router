@@ -10,8 +10,8 @@ export default (req) => {
   }
 
   const { routes, formatRoute } = action.payload
-  const format = formatRoute || options.formatRoute
-  const newRoutes = formatRoutes(routes, format, true)
+  const formatter = formatRoute || options.formatRoute
+  const newRoutes = formatRoutes(routes, formatter, true)
   const callbacks = options.callbacks || []
 
   callbacks.forEach(name => {
