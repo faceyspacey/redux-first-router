@@ -257,6 +257,17 @@ export default class History {
     return action
   }
 
+  _createNextHistory(state, moreState) {
+    const length = state.entries ? state.entries.length : this.length
+    return Object.assign(state, moreState, { length })
+  }
+
+  _updateHistory(state) {
+    Object.assign(this, state)
+    this.length = state.entries ? state.entries.length : this.length
+    this.saveHistory(this)
+  }
+
   _once(commit) {
     let committed = false
 
@@ -275,18 +286,6 @@ export default class History {
   _isNext(location) {
     const entry = this.entries[this.index + 1]
     return entry && entry.location.url === location.location.url
-  }
-
-  _updateHistory(state) {
-    Object.assign(this, state)
-    this.length = state.entries ? state.entries.length : this.length
-    this.saveHistory(this)
-  }
-
-  _createNextHistory(state, moreState) {
-    const next = Object.assign({ type: UPDATE_HISTORY }, this, state, moreState)
-    next.length = state.entries ? state.entries.length : this.length
-    return next
   }
 
   _pushToFront(location, prevEntries, index) {

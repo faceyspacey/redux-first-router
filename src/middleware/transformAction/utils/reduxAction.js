@@ -6,24 +6,22 @@ export default (req) => {
   action.basename = action.basename || getLocation().basename
   const { url, state } = actionToUrl(action, routes, options, prevRoute)
 
-  if (!req.tmp.committed && req.tmp.prevAction) {
-    return redirectAction(req, action, url, state, history)
-  }
-
   const redirect = isRedirect(action)
   const redirectCommitted = redirect && (req.tmp.committed || !req.tmp.from)
-  const method = redirectCommitted ? 'replace' : 'push'                 // redirects before committing are just pushes (since the original route was never pushed)
+  let method = redirectCommitted ? 'replace' : 'push'                 // redirects before committing are just pushes (since the original route was never pushed)
+  let pop
+  let n
 
-  const { nextHistory, commit } = history[method](url, state, action.basename, false)// get returned the same action as functions passed to `history.listen`
+  if (!req.tmp.committed && (n = getPrevNextN(req.tmp.prevAction, req.history))) {
+    method = 'replacePop'
+    pop = redirectAction(req, action, url, state, history, method, n)
+  }
+
+  const { nextHistory, commit } = history[method](url, state, action.basename, false, pop)// get returned the same action as functions passed to `history.listen`
 
   const curr = req.getLocation()
-  const prev = req.tmp.load || redirectCommitted ? curr.prev : curr     // `init` comes before initial `load` action, but they share the same `prev` state, as they are essentially the same, except the former is the initial state before any actions are dispatched; -- general info: `prev` maintains proper entries array, notwithstanding any redirects
-  // const from = redirect ? req.tmp.from || prev : undefined              // `from` represents the route the user would have gone to had there been no redirect; `prev` used when redirect comes from outside of pipeline via `redirect` action creator
-  const from = redirect
-    ? req.tmp.from
-      ? req.tmp.from || prev
-      : curr
-    : undefined
+  const prev = req.tmp.load || redirectCommitted ? curr.prev : curr     // `init` comes before initial `load` action, but they share the same `prev` state, as they are essentially the same, except the former is the initial state before any actions are dispatched; -- about `prev` vs `from`: `prev` maintains proper entries array, notwithstanding any redirects, whereas `from` honors where the user tried to go, but never became the location state
+  const from = redirect ? req.tmp.from || curr : undefined              // `from` represents the route the user would have gone to had there been no redirect; `curr` used when redirect comes from outside of pipeline via `redirect` action creator
 
   req.action = nestAction(req, action, prev, nextHistory, from)
   req.commitHistory = commit                                            // put these here so `enter` middleware can commit the history, etc
@@ -31,6 +29,15 @@ export default (req) => {
   return req
 }
 
+const getPrevNextN = (prevAction, history) => {
+  if (!prevAction) return
+
+  const prev = history.entries[history.index - 1]
+  if (prev && prev.location.url === prevAction.location.url) return -1
+
+  const next = history.entries[history.index + 1]
+  if (next && next.location.url === prevAction.location.url) return 1
+}
 
 
 

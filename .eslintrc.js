@@ -64,6 +64,7 @@ module.exports = {
     'flowtype/no-weak-types': 1,
     'consistent-return': 0,
     'no-nested-ternary': 0,
+    'no-cond-assign': 0,
     'no-return-assign': 1,
     'no-continue': 1,
     'arrow-body-style': 1,
