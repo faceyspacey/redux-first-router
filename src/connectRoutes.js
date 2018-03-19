@@ -346,7 +346,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
           }
         }
 
-        store.dispatch(action)
+        return store.dispatch(action)
       }
 
       const bag = { action, extra }
@@ -381,7 +381,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
       const redirectAwareDispatch = (action: Action) => {
         if (isRedirectAction(action)) skip = true
-        store.dispatch(action)
+        return store.dispatch(action)
       }
 
       attemptCallRouteThunk(
