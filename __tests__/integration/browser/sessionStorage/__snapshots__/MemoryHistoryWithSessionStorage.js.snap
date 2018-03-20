@@ -4,7 +4,7 @@ exports[`restore history from history fallback 1`] = `
 Object {
   "location": Object {
     "basename": "",
-    "direction": "backward",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -129,6 +129,64 @@ Object {
     "url": "/",
   },
   "title": "FIRST",
+}
+`;
+
+exports[`restore history from history fallback 2`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "index": 0,
+}
+`;
+
+exports[`restore history from history fallback 3`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/third",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+  ],
+  "index": 3,
 }
 `;
 
@@ -603,7 +661,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "backward",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -740,7 +798,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "backward",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

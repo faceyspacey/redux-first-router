@@ -3,7 +3,7 @@
 exports[`restore history from sessionStorage 1`] = `
 Object {
   "basename": "",
-  "direction": "backward",
+  "direction": "forward",
   "entries": Array [
     Object {
       "basename": "",
@@ -126,6 +126,58 @@ Object {
   "type": "FIRST",
   "universal": false,
   "url": "/",
+}
+`;
+
+exports[`restore history from sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "index": 0,
+}
+`;
+
+exports[`restore history from sessionStorage 3`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "index": 2,
 }
 `;
 
@@ -286,7 +338,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "backward",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -559,7 +611,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "backward",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

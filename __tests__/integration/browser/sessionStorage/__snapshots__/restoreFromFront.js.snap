@@ -3,7 +3,7 @@
 exports[`restore history from sessionStorage 1`] = `
 Object {
   "basename": "",
-  "direction": "forward",
+  "direction": "backward",
   "entries": Array [
     Object {
       "basename": "",
@@ -60,20 +60,63 @@ Object {
   "prev": Object {
     "basename": "",
     "direction": "forward",
-    "entries": Array [],
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+    ],
     "hash": "",
-    "index": -1,
-    "key": "",
-    "kind": "",
-    "length": 0,
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 3,
     "params": Object {},
-    "pathname": "",
+    "pathname": "/second",
     "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
-    "type": "",
-    "url": "",
+    "type": "SECOND",
+    "url": "/second",
   },
   "query": Object {},
   "scene": "",
@@ -83,6 +126,58 @@ Object {
   "type": "THIRD",
   "universal": false,
   "url": "/third",
+}
+`;
+
+exports[`restore history from sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "index": 2,
+}
+`;
+
+exports[`restore history from sessionStorage 3`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/third",
+    },
+  ],
+  "index": 0,
 }
 `;
 
@@ -243,7 +338,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -516,7 +611,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",

@@ -3,7 +3,7 @@
 exports[`restore history from sessionStorage 1`] = `
 Object {
   "basename": "",
-  "direction": "forward",
+  "direction": "backward",
   "entries": Array [
     Object {
       "basename": "",
@@ -45,7 +45,7 @@ Object {
   "pop": false,
   "prev": Object {
     "basename": "",
-    "direction": "backward",
+    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -77,18 +77,18 @@ Object {
       },
     ],
     "hash": "",
-    "index": 1,
+    "index": 0,
     "key": "345678",
-    "kind": "back",
+    "kind": "push",
     "length": 2,
     "params": Object {},
-    "pathname": "/second",
+    "pathname": "/",
     "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
-    "type": "SECOND",
-    "url": "/second",
+    "type": "FIRST",
+    "url": "/",
   },
   "query": Object {},
   "scene": "",
@@ -98,6 +98,46 @@ Object {
   "type": "SECOND",
   "universal": false,
   "url": "/second",
+}
+`;
+
+exports[`restore history from sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+  ],
+  "index": 1,
+}
+`;
+
+exports[`restore history from sessionStorage 3`] = `
+Object {
+  "entries": Array [
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/",
+    },
+    Object {
+      "basename": "",
+      "key": "345678",
+      "state": Object {},
+      "url": "/second",
+    },
+  ],
+  "index": 0,
 }
 `;
 
@@ -181,7 +221,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -290,7 +330,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",

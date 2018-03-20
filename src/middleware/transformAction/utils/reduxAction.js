@@ -31,7 +31,7 @@ export default (req) => {
 
   const status = action.location && action.location.status
 
-  req.action = nestAction(req, mainAct, prev, from, status)
+  req.action = nestAction(req, mainAct, mainAct.prev || prev, mainAct.from || from, status)
   return req
 }
 

@@ -24,18 +24,20 @@ import { createAction, restoreHistory, saveHistory } from './utils'
 export default class MemoryHistory extends History {
   constructor(routes, opts = {}) {
     const {
-      initialDirection = 'forward',
       initialIndex = 0,
       initialEntries: ents = ['/'],
       useSessionStorage = false
     } = opts
 
-    const initialEntries = !Array.isArray(ents) ? [ents] : ents
-    const { n, index, entries, saveHistory } = !useSessionStorage
-      ? create(routes, opts, initialDirection, initialIndex, initialEntries) // this happens 99% of the time
-      : restore(initialEntries, routes, opts) // only used when in browser environment (as a fallback)
+    opts.restoreHistory = opts.restoreHistory || (useSessionStorage && restore)
+    opts.saveHistory = opts.saveHistory || (useSessionStorage && saveHistory)
 
-    super(routes, opts, { n, index, entries, saveHistory })
+    const initialEntries = !Array.isArray(ents) ? [ents] : ents
+    const { n, index, entries } = opts.restoreHistory
+      ? opts.restoreHistory(routes, opts, initialIndex, initialEntries) // only used when in browser environment (as a fallback)
+      : create(routes, opts, initialIndex, initialEntries) // this happens 99% of the time
+
+    super(routes, opts, { n, index, entries })
   }
 
   _push(action) {
@@ -63,8 +65,8 @@ export default class MemoryHistory extends History {
 
 // TRANSFORM ENTRIES ARRAY INTO PROPER LOCATION OBJECTS + INDEX
 
-const create = (routes, opts, initialDirection, initialIndex, initialEntries) => {
-  const n = initialDirection === 'forward' ? 1 : -1
+const create = (routes, opts, initialIndex, initialEntries) => {
+  const n = initialIndex > 0 ? -1 : 1 // initial direction the user is going across the history track
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
   const entries = initialEntries.map(e => createAction(e, routes, opts))
   return { n, index, entries }
@@ -76,9 +78,9 @@ const create = (routes, opts, initialDirection, initialIndex, initialEntries) =>
 // as solid as possible in older browsers. Basically, IE9 and IE8 won't have `history`
 // but will have `sessionStorage`, so why not give them the ability to restore history :)
 
-const restore = (initialEntries, routes, opts) => {
+const restore = (routes, opts, initialIndex, initialEntries) => {
   const entry = initialEntries[0]
   const defaultLocation = createAction(entry, routes, opts)
   const { n, index, entries } = restoreHistory(defaultLocation, routes, opts) // impure
-  return { n, index, entries, saveHistory }
+  return { n, index, entries }
 }

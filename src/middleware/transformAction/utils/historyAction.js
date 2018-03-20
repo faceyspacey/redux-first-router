@@ -1,4 +1,4 @@
-import { createPrev } from '../../../core'
+import { createPrevEmpty } from '../../../core'
 import { nestAction } from './index'
 
 // for specialty `history.reset` and `history.jump` methods/actionCreators, we gotta jump through a few
@@ -8,27 +8,24 @@ import { nestAction } from './index'
 export default (req) => {
   const { location, manualKind } = req.action
 
-  const curr = req.getLocation()
-  const { entries, index } = location
-  const i = findPrevIndex(index, manualKind, curr.direction)
-  const prev = entries[i] ? createPrevState(req, i, location) : createPrev()
-  const from = manualKind === 'replace' ? curr : from
+  const prev = createPrevState(req, location) || createPrevEmpty()
+  const from = manualKind === 'replace' && req.getLocation()
 
   req.action = nestAction(req, req.action, prev, from)          // replace history-triggered action with real action intended for reducers
 
   return req
 }
 
-// find previous location entry based on the desired direction to pretend to be going
-const findPrevIndex = (index, kind, currDirection) => {
-  if (kind === 'replace' && currDirection === 'forward') return index - 1
-  return kind === 'next' ? index - 1 : index + 1
-}
+const createPrevState = (req, { n, index: i, length, entries }) => {
+  const index = i - n
+  const entry = entries[index]
 
-const createPrevState = (req, index, { length, entries }) => {
-  const { location, ...action } = entries[index]
-  action.location = { ...location, kind: 'push', index, length, entries }
+  if (!entry) return
+
+  const { location, ...action } = entry
+  action.location = { ...location, kind: 'push', index, length, entries, n }
   const act = nestAction(req, action) // build the action for that entry, and create what the resulting state shape would have looked like
-  return Object.assign({}, act, act.location) // do what the location reducer does where it maps `...action.location` flatly on to `action`
+
+  return Object.assign(act, act.location) // do what the location reducer does where it maps `...action.location` flatly on to `action`
 }
 

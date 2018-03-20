@@ -18,7 +18,7 @@ module.exports = wallaby => {
     ],
 
     tests: [
-      '__tests__/integration/browser/sessionStorage/historyFallback.js',
+      // '__tests__/integration/browser/sessionStorage/**/*.js',
 
       // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/actions/**/*.js',
@@ -29,7 +29,7 @@ module.exports = wallaby => {
       // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/actions/notFound.js',
       // '__tests__/integration/actions/redirect.js',
-      // '__tests__/integration/actions/history.js',
+      '__tests__/integration/actions/history.js',
 
       // '__tests__/integration/browser/pop/**/*.js',
       // '__tests__/integration/browser/sessionStorage/**/*.js',

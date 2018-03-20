@@ -12,7 +12,7 @@ const setItem = (key, val) => {
   window.sessionStorage.setItem(prefixKey(key), JSON.stringify(val))
 }
 
-const getItem = key => {
+export const getItem = key => {
   try {
     const json = window.sessionStorage.getItem(prefixKey(key))
     return JSON.parse(json)
@@ -47,7 +47,7 @@ const getSetItem = (key, val) => {
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
 // called every time the history entries or index changes
-export const saveHistory = ({ index, entries, n }) => {
+export const saveHistory = ({ index, entries, forwardedOut }) => {
   entries = entries.map(e => ({
     url: e.location.url,
     key: e.location.key,
@@ -55,12 +55,15 @@ export const saveHistory = ({ index, entries, n }) => {
     basename: e.basename
   }))
 
-  const history = { index, entries, n }
+  const history = forwardedOut
+    ? { index, entries, forwardedOut } // used to patch an edge case, see `getIndexAndEntries` below
+    : { index, entries }
 
   // here's the key aspect of the fallback. essentially we keep updating history state
   // via `replaceState` so every entry has everything that would be in `sessionStorage`
   if (!hasSessionStorage()) {
     const state = getHistoryState()
+    delete state.forwardedOut
     const newState = { ...state, history }
 
     window.history.replaceState(newState, null, window.location.href)
@@ -129,7 +132,7 @@ export const getInitialHistoryState = () => {
 // FACADE HELPERS:
 
 const getIndexAndEntries = (history, routes, opts) => {
-  let { index, entries } = history
+  let { index, entries, forwardedOut } = history
 
   // We must remove entries after the index in case the user opened a link to
   // another site in the middle of the entries stack and then returned via the
@@ -139,19 +142,14 @@ const getIndexAndEntries = (history, routes, opts) => {
   // same thing would happen.
   //
   // EXCEPTION: if we did this on the first entry, we would break backing out of the
-  // site and returning. So this is only applied to essentially "forwarding out" of
-  // the site. That leaves one hole: if you forward out from the first entry, you will
-  // return and have dead entries (if you had additional entries). But this isn't really
-  // a hole--because if you use the forward browser button to go forward, you in fact
-  // leave the site. That leaves only one thing that can happen anyway: pushing new entries within your site.
-  // Now, if you are using the `next` method manually, even if you check `canGo`,
-  // you will think you can go to the next internal entry, but you will in fact send the
-  // user to the next site lol. You aren't supposed to use that method, but with upcoming
-  // web-based navigators, it may become more popular. When that happens, we'll do this for you:
-  // set the below variable `__forwardedOut` to true before following links, by monkey-patching
-  // `Event.prototype.preventDefault` to store this fact in `sessionStorage`, and then on load`,
-  // set `window.__forwardedOut` to true. If you're OCD, you can do it in user-land now :)
-  if (index > 0 || window.__forwardedOut) {
+  // site and returning (entries would be unnecessarily removed). So this is only applied to
+  // "forwarding out." That leaves one hole: if you forward out from the first entry, you will
+  // return and have problematic entries that should NOT be there. Then because of Rudy's
+  // automatic back/next detection, which causes the history track to "jump" instead of "push,"
+  // dispatching an action for the next entry would in fact make you leave the site instead
+  // of push the new entry! To circumvent that, use Rudy's <Link /> component and it will
+  // set the `forwardedOut` flag (just before linking out) that insures this is addressed:
+  if (index > 0 || forwardedOut) {
     entries = entries.slice(0, index + 1)
   }
 
@@ -160,7 +158,13 @@ const getIndexAndEntries = (history, routes, opts) => {
     const entry = { ...e, ...parsePath(path) }
     return createAction(entry, routes, opts)
   })
-  return { index, entries }
+
+  // when entries are restored on load, the direction is always backward if on an index > 0
+  // because the corresponding entrices are removed (it's as if you are going back from an
+  // external URL, which you are
+  const n = index > 0 ? -1 : 1
+
+  return { n, index, entries }
 }
 
 let _id

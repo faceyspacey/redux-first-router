@@ -100,9 +100,7 @@ createTest('dispatch(jump(n, state, byIndex, kind))', routes, [], async ({ dispa
   await dispatch({ type: 'THIRD' })
 
   await snap(jump(0, { foo: 'bar' }, true, 'next')) // would normally be "back"
-  console.log(getLocation())
   await snap(jump(2, { foo: 'bar' }, true, 'back')) // would normally be "next"
-  console.log(getLocation())
 })
 
 // when you jump more than one entry, middleware/transformAction/utils/historyAction.js re-creates `state.location.prev`

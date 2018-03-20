@@ -18,7 +18,7 @@ export default (api, name, config) => {
   if (api.cache) return api.cache
 
   const { createCacheKey = defaultCreateCacheKey } = api.options
-  let cache = {}
+  let cache = config.cacheStorage = config.cacheStorage || {}
 
   const isCached = (name, route, req) => {
     if (isServer()) return false
@@ -47,10 +47,10 @@ export default (api, name, config) => {
 
   const clear = (invalidator, opts = {}) => {
     if (!invalidator) {
-      cache = {}
+      for (const k in cache) delete cache[k]
     }
     else if (typeof invalidator === 'function') {      // allow user to customize cache clearing algo
-      cache = invalidator(cache, api, opts) || cache
+      invalidator(cache, api, opts) // invalidators should mutably operate on the cache hash
     }
     else if (typeof invalidator === 'string') {        // delete all cached items for TYPE or other string
       for (const k in cache) {

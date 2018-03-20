@@ -77,11 +77,14 @@ export const createInitialState = (
   options: Options
 ): LocationState => {
   const { type, params = {}, query = {}, state = {}, hash = '', basename = '' } = action
-  const { entries, index, length, pathname, search, url, key } = action.location
+  const { entries, index, length, pathname, search, url, key, n } = action.location
 
   const scene = typeToScene(type)
   const universal = isServer()
   const status = isNotFound(type) ? 404 : 200
+
+  const direction = n === -1 ? 'backward' : 'forward'
+  const prev = createPrev(action, routes, options, universal)
 
   return {
     type,
@@ -96,7 +99,7 @@ export const createInitialState = (
     key,
     basename: basename.substr(1),
     scene,
-    direction: 'forward',
+    direction,
     status,
 
     kind: 'init',
@@ -107,46 +110,24 @@ export const createInitialState = (
 
     universal,
 
-    prev: createPrevEntries(action, routes, options, universal)
+    prev
   }
 }
 
-export const createPrev = (universal: boolean) => ({
-  type: '',
-  params: {},
-  query: {},
-  hash: '',
-  state: {},
-
-  url: '',
-  pathname: '',
-  search: '',
-  key: '',
-  basename: '',
-  scene: '',
-  direction: 'forward',
-
-  kind: '',
-  entries: [],
-  index: -1,
-  length: 0,
-
-  universal
-})
-
-export const createPrevEntries = (
+export const createPrev = (
   action,
   routes,
   opts,
   universal
 ) => {
   const { n, index, entries } = action.location // needs to use real lastIndex instead of -1
-  const prevAction = entries[index + n]
+  const lastIndex = index + n // the entry action we want is the opposite of the direction the user is going
+  const prevAction = entries[lastIndex]
 
-  if (!prevAction) return createPrev(universal)
+  if (!prevAction) return createPrevEmpty(universal)
 
-  const direction = n === 1 ? 'forward' : 'backward'
-  const kind = direction === 'forward' ? 'push' : 'back'
+  const direction = n === -1 ? 'forward' : 'backward'
+  const kind = n === -1 ? 'push' : 'back'
 
   const { location, ...act } = prevAction
   const { basename = '' } = act
@@ -172,3 +153,26 @@ export const createPrevEntries = (
     universal
   }
 }
+
+export const createPrevEmpty = (universal: boolean) => ({
+  type: '',
+  params: {},
+  query: {},
+  hash: '',
+  state: {},
+
+  url: '',
+  pathname: '',
+  search: '',
+  key: '',
+  basename: '',
+  scene: '',
+  direction: 'forward',
+
+  kind: '',
+  entries: [],
+  index: -1,
+  length: 0,
+
+  universal
+})

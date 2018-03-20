@@ -103,7 +103,7 @@ createTest('cache.clear(func)', {
 
   await dispatch(({ cache }) => {
     cache.clear((cache, api, opts) => {
-      return {}
+      for (const k in cache) delete cache[k]
     })
   })
 

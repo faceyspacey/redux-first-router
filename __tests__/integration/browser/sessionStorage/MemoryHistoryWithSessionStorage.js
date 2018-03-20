@@ -1,4 +1,5 @@
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
+import { getItem } from '../../../../src/history/utils/sessionStorage'
 
 // MemoryHistory can be used as a fallback in the browser (ie. 8/9)
 // Those browsers do support SessionStorage, so we have capabilities to remember
@@ -35,6 +36,7 @@ createTest('restore history from history fallback', {
   THIRD: '/third'
 }, { browser: true }, [], async ({ snap, getLocation, getState }) => {
   expect(getState()).toMatchSnapshot()
+  expect(getItem('history')).toMatchSnapshot()
 
   // firstRoute dispatched by `createTest`
   expect(getLocation().type).toEqual('FIRST')
@@ -52,4 +54,6 @@ createTest('restore history from history fallback', {
   await snap({ type: 'FIRST' })
   expect(getLocation().index).toEqual(3)
   expect(getLocation().length).toEqual(4)
+
+  expect(getItem('history')).toMatchSnapshot()
 })

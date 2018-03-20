@@ -52,11 +52,14 @@ import {
 
 export default class BrowserHistory extends History {
   constructor(routes, opts = {}) {
+    opts.restoreHistory = opts.restoreHistory || restoreHistory
+    opts.saveHistory = opts.saveHistory || saveHistory
+
     const { id, ...initialHistoryState } = getInitialHistoryState()
     const defaultLocation = getWindowLocation(initialHistoryState, routes, opts)
-    const { n, index, entries } = restoreHistory(defaultLocation, routes, opts)
+    const { n, index, entries } = opts.restoreHistory(defaultLocation, routes, opts)
 
-    super(routes, opts, { n, index, entries, saveHistory })
+    super(routes, opts, { n, index, entries })
 
     this._id = id
     this._setupPopHandling()

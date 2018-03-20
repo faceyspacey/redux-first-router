@@ -1,20 +1,23 @@
 import { createAction } from './utils'
 import { actionToUrl } from '../utils'
+import { createPrevEmpty } from '../core/createReducer'
+import { nestAction } from '../middleware/transformAction/utils'
+
 
 export default class History {
-  constructor(routes, options, config) {
-    const { n, index, entries, saveHistory } = config
+  constructor(routes, opts, config) {
+    const { n, index, entries } = config
 
-    this.saveHistory = saveHistory || function() {}
+    this.saveHistory = opts.saveHistory || function() {}
 
     this.routes = routes
-    this.options = options
+    this.options = opts
 
     this.entries = []
     this.index = -1
     this.length = 0
     this.kind = 'init'
-    this.n = 1
+    this.n = n
     this.action = null
 
     const kind = 'load'
@@ -90,7 +93,8 @@ export default class History {
     const index = this.index + n
     const entries = this.entries.slice(0)
     const action = entries[index] = { ...this.entries[index] }
-    const location = { kind, index, entries, manualKind, revertPop }
+    const n2 = manualKind === 'back' ? -1 : 1
+    const location = { kind, index, entries, manualKind, revertPop, n: n2 }
     const commit = (action) => this._jump(action, n, isPop)
 
     state = typeof state === 'function' ? state(action.state) : state
@@ -99,6 +103,11 @@ export default class History {
 
     if (!this.entries[index]) {
       throw new Error(`[rudy] no entry at index: ${index}. Consider using \`history.canJump(n)\`.`)
+    }
+
+    if (kind === 'jump') {
+      const prev = this._createPrevState(location) || createPrevEmpty()
+      action.prev = prev
     }
 
     return this._notify(action, location, commit, notify)
@@ -155,14 +164,27 @@ export default class History {
 
 
     index = index !== undefined ? index : entries.length - 1
+    let n = manualKind === 'next' ? 1 : -1
 
     if (!manualKind) {
       if (entries.length > 1) {
-        if (index === entries.length - 1) manualKind = 'next'   // assume the user would be going forward in the new entries stack, i.e. if at head
-        else if (index === this.index) manualKind = 'replace'
-        else manualKind = index < this.index ? 'back' : 'next'  // assume the user is going 'back' if lower than current index, and 'next' otherwise
+        if (index === entries.length - 1) {
+          manualKind = 'next'   // assume the user would be going forward in the new entries stack, i.e. if at head
+          n = 1
+        }
+        else if (index === this.index) {
+          manualKind = 'replace'
+          n = this.n
+        }
+        else {
+          manualKind = index < this.index ? 'back' : 'next'  // assume the user is going 'back' if lower than current index, and 'next' otherwise
+          n = index < this.index ? -1 : 1
+        }
       }
-      else manualKind = 'load'                                  // if one entry, set kind to 'load' so app can behave as if it's loaded for the first time
+      else {
+        manualKind = 'load'                                  // if one entry, set kind to 'load' so app can behave as if it's loaded for the first time
+        n = 1
+      }
     }
 
     if (!entries[index]) {
@@ -171,9 +193,28 @@ export default class History {
 
     const kind = 'reset'
     const action = { ...entries[index] }
+    const location = { kind, index, entries, manualKind, n }
     const commit = (action) => this._reset(action)
 
-    return this._notify(action, { kind, index, entries, manualKind }, commit, notify)
+    const prev = this._createPrevState(location) || createPrevEmpty()
+    const from = manualKind === 'replace' && { ...this.action, ...this.action.location }
+    action.prev = prev
+    action.from = from
+
+    return this._notify(action, location, commit, notify)
+  }
+
+  _createPrevState({ n, index: i, length, entries }) {
+    const index = i - n
+    const entry = entries[index]
+
+    if (!entry) return
+
+    const { location, ...action } = entry
+    action.location = { ...location, kind: 'push', index, length, entries, n }
+    const act = nestAction(undefined, action) // build the action for that entry, and create what the resulting state shape would have looked like
+
+    return Object.assign(act, act.location) // do what the location reducer does where it maps `...action.location` flatly on to `action`
   }
 
   _findResetFirstAction(action) {
@@ -230,9 +271,14 @@ export default class History {
 
   _notify(action, location, commit, notify = true) {
     location.length = location.entries.length
+
+    const { index, n: direction } = location
+    const n = direction ||
+      (index > this.index ? 1 : (index === this.index ? this.n : -1))
+
     action = {
       ...action,
-      location: { ...action.location, ...location }
+      location: { ...action.location, ...location, n }
     }
 
     action.manualKind = action.location.manualKind
@@ -258,9 +304,8 @@ export default class History {
   }
 
   _updateHistory(action) {
-    const { entries, length, index, kind } = action.location
-    const n = index > this.index ? 1 : (index === 0 ? this.n : -1)
-    Object.assign(this, { entries, length, index, kind, n, action })
+    const { entries, length, index, kind, n } = action.location
+    Object.assign(this, { entries, length, index, kind, action, n })
     this.saveHistory(this)
   }
 

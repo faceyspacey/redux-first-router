@@ -3,7 +3,7 @@
 exports[`restore history from history fallback 1`] = `
 Object {
   "basename": "",
-  "direction": "backward",
+  "direction": "forward",
   "entries": Array [
     Object {
       "basename": "",
@@ -153,7 +153,6 @@ Object {
       },
     ],
     "index": 0,
-    "n": 1,
   },
   "id": "345678",
   "key": "345678",
@@ -185,7 +184,6 @@ Object {
       },
     ],
     "index": 1,
-    "n": 1,
   },
   "id": "345678",
   "key": "345678",
@@ -217,7 +215,6 @@ Object {
       },
     ],
     "index": 2,
-    "n": 1,
   },
   "id": "345678",
   "key": "345678",
@@ -255,7 +252,6 @@ Object {
       },
     ],
     "index": 3,
-    "n": 1,
   },
   "id": "345678",
   "key": "345678",
@@ -420,7 +416,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "backward",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",
@@ -693,7 +689,7 @@ Object {
     "pop": true,
     "prev": Object {
       "basename": "",
-      "direction": "backward",
+      "direction": "forward",
       "entries": Array [
         Object {
           "basename": "",

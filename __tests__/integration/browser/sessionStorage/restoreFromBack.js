@@ -1,4 +1,5 @@
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
+import { getItem } from '../../../../src/history/utils/sessionStorage'
 
 beforeAll(async () => {
   const routesMap = {
@@ -27,6 +28,7 @@ createTest('restore history from sessionStorage', {
   THIRD: '/third'
 }, { browser: true }, [], async ({ snapPop, getLocation }) => {
   expect(getLocation()).toMatchSnapshot()
+  expect(getItem('history')).toMatchSnapshot()
 
   await snapPop('forward')
   await snapPop('forward')
@@ -36,4 +38,6 @@ createTest('restore history from sessionStorage', {
 
   expect(getLocation().index).toEqual(2)
   expect(getLocation().length).toEqual(3)
+
+  expect(getItem('history')).toMatchSnapshot()
 })

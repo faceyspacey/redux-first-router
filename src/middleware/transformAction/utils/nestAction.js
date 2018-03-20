@@ -2,14 +2,14 @@ import { typeToScene, isNotFound } from '../../../utils'
 
 export default (req, action, prevState, fromAction, statusCode) => {
   const { location, type, params = {}, query = {}, state = {}, hash = '', basename: bn = '' } = action
-  const { kind: k, entries, index, length, pathname, search, url, key } = location
+  const { kind: k, entries, index, length, pathname, search, url, key, n } = location
 
   const prev = createPrev(prevState)
   const from = createFrom(fromAction)
   const scene = typeToScene(type)
-  const pop = !!req.tmp.revertPop
-  const kind = req.tmp.load ? 'load' : (from ? k.replace('push', 'replace') : k)
-  const direction = getDirection(kind, index, prevState)
+  const pop = !!(req && req.tmp.revertPop)
+  const kind = (req && req.tmp.load) ? 'load' : (from ? k.replace('push', 'replace') : k)
+  const direction = n === -1 ? 'backward' : 'forward'
   const basename = bn.substr(1)
   const status = from ? (statusCode || 302) : (isNotFound(type) ? 404 : 200)
 
@@ -74,8 +74,4 @@ const createStateReference = (location) => {
   return ref
 }
 
-const getDirection = (kind, currIndex, prevState = {}) =>
-  /replace|setState/.test(kind)
-    ? prevState.direction
-    : currIndex < prevState.index ? 'backward' : 'forward'
 

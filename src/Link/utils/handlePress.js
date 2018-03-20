@@ -12,7 +12,9 @@ export default (
   onClick?: ?OnClick,
   target: ?string,
   isRedirect?: boolean,
-  e: SyntheticEvent
+  e: SyntheticEvent,
+  fullUrl: string,
+  history: Object
 ) => {
   const prevented = e.defaultPrevented
   const notModified = !isModified(e)
@@ -38,6 +40,15 @@ export default (
   ) {
     action = isRedirect ? redirect(action) : action
     return dispatch(action)
+  }
+
+  if (!action && !target && fullUrl.indexOf('http') === 0) {
+    if (history.index === 0) {
+      history.forwardedOut = true // used to patch an edge case, see `history/utils/sessionStorage.js.getIndexAndEntries`
+      history.saveHistory(history)
+    }
+
+    window.location.href = fullUrl
   }
 }
 

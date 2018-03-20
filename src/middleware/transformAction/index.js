@@ -4,7 +4,7 @@ import { historyAction, reduxAction } from './utils'
 export default () => (req, next) => {
   if (!isRouteAction(req)) return next()
 
-  req = /jump|reset/.test(req.getKind()) ? historyAction(req) : reduxAction(req)
+  req = reduxAction(req)
 
   if (req.getKind() === 'setState') return req.enter()
   if (isDoubleDispatch(req)) return handleDouble(req) // don't dispatch the same action twice

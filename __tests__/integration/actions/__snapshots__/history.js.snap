@@ -2014,7 +2014,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -2151,7 +2151,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -3564,7 +3564,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
-    "direction": "forward",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -3660,7 +3660,7 @@ exports[`dispatch(jump(n, state, byIndex, kind)): {"type":"@@rudy/CALL_HISTORY",
 Object {
   "location": Object {
     "basename": "",
-    "direction": "forward",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "",
@@ -5588,7 +5588,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5697,7 +5697,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -5867,7 +5867,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
@@ -6004,7 +6004,7 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
+      "direction": "backward",
       "entries": Array [
         Object {
           "basename": "",
