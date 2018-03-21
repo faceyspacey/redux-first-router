@@ -7048,6 +7048,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -7068,9 +7069,11 @@ Object {
         "key": "345678",
         "kind": "load",
         "length": 1,
-        "n": 1,
         "pathname": "/first",
+        "pop": false,
+        "scene": "",
         "search": "",
+        "status": 200,
         "url": "/first",
       },
       "params": Object {},
@@ -7157,6 +7160,7 @@ Object {
       "basename": "",
       "hash": "",
       "location": Object {
+        "direction": "forward",
         "entries": Array [
           Object {
             "basename": "",
@@ -7177,9 +7181,11 @@ Object {
         "key": "345678",
         "kind": "load",
         "length": 1,
-        "n": 1,
         "pathname": "/first",
+        "pop": false,
+        "scene": "",
         "search": "",
+        "status": 200,
         "url": "/first",
       },
       "params": Object {},

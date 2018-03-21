@@ -69,14 +69,14 @@ export default (
   const onError = call('onError')(api)
   const nextPromise = options.compose(middlewares, api, true)
 
-  const middleware = (store: Store) => {
-    const getTitle = () => selectTitleState(store.getState() || {})
-    const getLocation = (s) => selectLocationState(s || store.getState() || {})
+  const middleware = ({ dispatch, getState }: Store) => {
+    const getTitle = () => selectTitleState(getState() || {})
+    const getLocation = (s) => selectLocationState(s || getState() || {})
     const { shouldTransition, createRequest } = options // middlewares may mutably monkey-patch these in above call to `compose`
 
-    Object.assign(api, { store, getTitle, getLocation })
-    store.getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)
-    history.listen(store.dispatch) // dispatch actions in response to browser back/next buttons, etc
+    Object.assign(api, { getTitle, getLocation, dispatch, getState })
+    getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)
+    history.listen(dispatch) // dispatch actions in response to browser back/next buttons, etc
 
     return (dispatch: Dispatch) => (action: Object) => {
       if (!shouldTransition(action, api)) return dispatch(action) // short-circuit and pass through Redux middleware normally

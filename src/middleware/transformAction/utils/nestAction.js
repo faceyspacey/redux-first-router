@@ -5,7 +5,7 @@ export default (action, prevState, fromAction, statusCode, tmp = {}) => {
   const { kind: k, entries, index, length, pathname, search, url, key, n } = location
 
   const prev = createPrev(prevState)
-  const from = createFrom(fromAction)
+  const from = createActionReference(fromAction)
   const scene = typeToScene(type)
   const pop = !!tmp.revertPop
   const kind = tmp.load ? 'load' : (from ? k.replace('push', 'replace') : k)
@@ -44,32 +44,32 @@ export default (action, prevState, fromAction, statusCode, tmp = {}) => {
 const createPrev = (prevState) => createStateReference(prevState)
 
 // create `state.from` + `state.blocked` values as idiomatic full-information rudy actions that can be re-dispatched
-export const createFrom = (fromAction) => {
-  if (!fromAction) return null
+export const createActionReference = (actionOrState) => {
+  if (!actionOrState) return null
 
-  // if redirect(action) from outside of pipeline, we receive the state instead (see ./reduxAction.js)
-  if (!fromAction.location) {
-    const { type, params, query, state, hash, basename, ...location } = fromAction
-    const from = { type, params, query, state, hash, basename }
-    from.location = createStateReference(location)
-    return from
+  // if redirect action from outside of pipeline, we receive the state instead (see ./formatAction.js)
+  if (!actionOrState.location) {
+    const { type, params, query, state, hash, basename, ...rest } = actionOrState
+    const location = createStateReference(rest)
+    const action = { type, params, query, state, hash, basename, location }
+    return action
   }
 
   // if redirect occurred during pipeline, we receive an action representing the previous state
   return {
-    ...fromAction,
-    location: createStateReference(fromAction.location)
+    ...actionOrState,
+    location: createStateReference(actionOrState.location)
   }
 }
 
 const createStateReference = (location) => {
-  const ref = { ...location }
+  const state = { ...location }
 
-  delete ref.prev
-  delete ref.universal
-  delete ref.from
-  delete ref.blocked
-  delete ref.location
+  delete state.prev
+  delete state.universal
+  delete state.from
+  delete state.blocked
+  delete state.location
 
-  return ref
+  return state
 }

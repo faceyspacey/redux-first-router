@@ -1,7 +1,7 @@
 import { createAction } from './utils'
 import { actionToUrl } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
-import { nestAction } from '../middleware/transformAction/utils'
+import { nestAction, createActionReference } from '../middleware/transformAction/utils'
 
 
 export default class History {
@@ -25,8 +25,32 @@ export default class History {
     const location = { kind, n, index, entries }
     const commit = (action) => this._updateHistory(action)
 
-    this.firstAction = this._notify(action, location, commit, false)
+    this.firstAction = this._notify(action, location, { commit }, false)
   }
+
+  // get entries() {
+  //   return this.getLocation().entries
+  // }
+
+  // get index() {
+  //   return this.getLocation().index
+  // }
+
+  // get length() {
+  //   return this.getLocation().length
+  // }
+
+  // get kind() {
+  //   return this.getLocation().kind
+  // }
+
+  // get n() {
+  //   return this.getLocation().direction === 'forward' ? 1 : -1
+  // }
+
+  // get action() {
+  //   return this.getLocation().entries
+  // }
 
   createAction(path, state, basename) {
     const { type } = this.action || this.firstAction
@@ -50,7 +74,7 @@ export default class History {
     const entries = this._pushToFront(action, this.entries, index, kind)
     const commit = (action) => this._push(action)
 
-    return this._notify(action, { kind, index, entries }, commit, notify)
+    return this._notify(action, { kind, index, entries }, { commit }, notify)
   }
 
   replace(path, state = {}, basename, notify = true) {
@@ -69,7 +93,7 @@ export default class History {
 
     entries[index] = action
 
-    return this._notify(action, { kind, entries, index }, commit, notify)
+    return this._notify(action, { kind, entries, index }, { commit }, notify)
   }
 
   replacePop(path, state = {}, basename, notify = true, pop) {
@@ -81,7 +105,7 @@ export default class History {
 
     entries[index] = action
 
-    return this._notify(action, { kind, entries, index }, commit, notify)
+    return this._notify(action, { kind, entries, index }, { commit }, notify)
   }
 
   jump(n, state, byIndex = false, manualKind, notify = true, revertPop) {
@@ -92,10 +116,12 @@ export default class History {
     const isPop = !!revertPop
     const index = this.index + n
     const entries = this.entries.slice(0)
-    let action = entries[index] = { ...this.entries[index] }
+    const action = entries[index] = { ...this.entries[index] }
     const n2 = manualKind === 'back' ? -1 : 1
-    const location = { kind, index, entries, manualKind, revertPop, n: n2 }
+    const location = { kind, index, entries, n: n2 }
+    const prev = kind === 'jump' && (this._createPrev(location) || createPrevEmpty())
     const commit = (action) => this._jump(action, n, isPop)
+    const extras = { commit, manualKind, revertPop, prev }
 
     state = typeof state === 'function' ? state(action.state) : state
 
@@ -105,12 +131,7 @@ export default class History {
       throw new Error(`[rudy] no entry at index: ${index}. Consider using \`history.canJump(n)\`.`)
     }
 
-    if (kind === 'jump') {
-      const prev = this._createPrevState(location) || createPrevEmpty()
-      action = { ...action, prev } // insure `prev` does not appear on entries[index]
-    }
-
-    return this._notify(action, location, commit, notify)
+    return this._notify(action, location, extras, notify)
   }
 
   setState(state, n, byIndex = false, notify = true) {
@@ -131,7 +152,7 @@ export default class History {
       throw new Error(`[rudy] no entry at index: ${i}. Consider using \`history.canJump(n)\`.`)
     }
 
-    return this._notify(action, { kind, index, entries }, commit, notify)
+    return this._notify(action, { kind, index, entries }, { commit }, notify)
   }
 
   back(state, notify = true) {
@@ -193,18 +214,16 @@ export default class History {
 
     const kind = 'reset'
     const action = { ...entries[index] }
-    const location = { kind, index, entries, manualKind, n }
+    const location = { kind, index, entries, n }
     const commit = (action) => this._reset(action)
 
-    const prev = this._createPrevState(location) || createPrevEmpty()
+    const prev = this._createPrev(location) || createPrevEmpty()
     const from = manualKind === 'replace' && { ...this.action }
-    action.prev = prev
-    action.from = from
 
-    return this._notify(action, location, commit, notify)
+    return this._notify(action, location, { commit, manualKind, prev, from }, notify)
   }
 
-  _createPrevState({ n, index: i, entries }) {
+  _createPrev({ n, index: i, entries }) {
     const length = entries.length
     const index = i - n
     const entry = entries[index]
@@ -263,41 +282,26 @@ export default class History {
 
   // UTILS:
 
-  // _notify(action, notify = true) {
-  //   action.type = UPDATE_HISTORY
-  //   action.commit = this._once(action.commit)
-  //   if (notify && this._listener) return this._listener(action)
-  //   return action
-  // }
-
-  _notify(action, location, commit, notify = true) {
-    location.length = location.entries.length
-
-    const { index, n: direction } = location
-    const n = direction ||
-      (index > this.index ? 1 : (index === this.index ? this.n : -1))
+  _notify(action, location, extras, notify = true) {
+    const { index, entries, n: n1 } = location
+    const n = n1 || (index > this.index ? 1 : (index === this.index ? this.n : -1))
+    const { length } = entries
 
     action = {
       ...action,
-      location: { ...action.location, ...location, n }
+      ...extras,
+      commit: this._once(extras.commit),
+      location: { ...action.location, ...location, length, n }
     }
-
-    action.manualKind = action.location.manualKind
-    action.revertPop = action.location.revertPop
-
-    delete action.location.manualKind
-    delete action.location.revertPop
-
-    action.commit = this._once(commit, action)
 
     if (notify && this._listener) return this._listener(action)
     return action
   }
 
-  _once(commit, action) {
+  _once(commit) {
     let committed = false
 
-    return () => {
+    return (action) => {
       if (committed) return
       committed = true
       return commit(action)
@@ -306,9 +310,6 @@ export default class History {
 
   _updateHistory(action) {
     const { entries, length, index, kind, n } = action.location
-    delete action.manualKind
-    delete action.revertPop
-    delete action.commit
     Object.assign(this, { entries, length, index, kind, action, n })
     this.saveHistory(this)
   }
