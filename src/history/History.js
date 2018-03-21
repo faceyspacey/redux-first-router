@@ -92,7 +92,7 @@ export default class History {
     const isPop = !!revertPop
     const index = this.index + n
     const entries = this.entries.slice(0)
-    const action = entries[index] = { ...this.entries[index] }
+    let action = entries[index] = { ...this.entries[index] }
     const n2 = manualKind === 'back' ? -1 : 1
     const location = { kind, index, entries, manualKind, revertPop, n: n2 }
     const commit = (action) => this._jump(action, n, isPop)
@@ -107,7 +107,7 @@ export default class History {
 
     if (kind === 'jump') {
       const prev = this._createPrevState(location) || createPrevEmpty()
-      action.prev = prev
+      action = { ...action, prev } // insure `prev` does not appear on entries[index]
     }
 
     return this._notify(action, location, commit, notify)
@@ -197,14 +197,15 @@ export default class History {
     const commit = (action) => this._reset(action)
 
     const prev = this._createPrevState(location) || createPrevEmpty()
-    const from = manualKind === 'replace' && { ...this.action, ...this.action.location }
+    const from = manualKind === 'replace' && { ...this.action }
     action.prev = prev
     action.from = from
 
     return this._notify(action, location, commit, notify)
   }
 
-  _createPrevState({ n, index: i, length, entries }) {
+  _createPrevState({ n, index: i, entries }) {
+    const length = entries.length
     const index = i - n
     const entry = entries[index]
 
@@ -212,7 +213,7 @@ export default class History {
 
     const { location, ...action } = entry
     action.location = { ...location, kind: 'push', index, length, entries, n }
-    const act = nestAction(undefined, action) // build the action for that entry, and create what the resulting state shape would have looked like
+    const act = nestAction(action) // build the action for that entry, and create what the resulting state shape would have looked like
 
     return Object.assign(act, act.location) // do what the location reducer does where it maps `...action.location` flatly on to `action`
   }
@@ -305,6 +306,9 @@ export default class History {
 
   _updateHistory(action) {
     const { entries, length, index, kind, n } = action.location
+    delete action.manualKind
+    delete action.revertPop
+    delete action.commit
     Object.assign(this, { entries, length, index, kind, action, n })
     this.saveHistory(this)
   }

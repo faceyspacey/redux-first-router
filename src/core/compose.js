@@ -22,6 +22,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
       if (req.tmp.cancelled) { // if a new request comes in before this one commits/enters, cancel it by not calling next middleware
         const ret = i === 0 && result !== undefined ? result : false
         console.log('CANCELED', i, req.location && req.location.url)
+        req.history.canceled = req.action
         return Promise.resolve(ret) // short-circuit, dont call next middleware
       }
 

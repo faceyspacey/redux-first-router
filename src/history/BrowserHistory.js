@@ -101,7 +101,7 @@ export default class BrowserHistory extends History {
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
       // did it via browser back/next buttons
-      this.currentPop = this.jump(n, undefined, false, kind, true, revertPop)
+      this.currentPop = this.jump(n, undefined, false, kind, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
     }
 
     // you don't really need to worry about the below utility work:
@@ -126,7 +126,7 @@ export default class BrowserHistory extends History {
 
   _push(action, awaitLoc) {
     const { state, location: { key, url } } = action
-
+    console.log(action.type, (awaitLoc || this.action).type, !!this.canceled)
     return this._awaitLocation(awaitLoc || this.action, '_push')
       .then(() => window.history.pushState({ id: this._id, key, state }, null, url))
       .then(() => this._updateHistory(action))
@@ -211,8 +211,8 @@ export default class BrowserHistory extends History {
   _awaitLocation(action, name) {
     return new Promise(resolve => {
       const { url } = action.location
-      const ready = () => url === createPath(window.location)
-      return tryChange(ready, resolve, name)
+      const ready = () => url === createPath(window.location) && url
+      return tryChange(ready, resolve, name, this)
     })
   }
 }
@@ -234,10 +234,14 @@ const rapidChangeWorkaround = (ready, complete, name) => {
   tries++
 
   if (!ready() && tries < maxTries) {
-    console.log('tries', tries + 1, name)
+    // console.log('tries', tries + 1, name)
     setTimeout(() => rapidChangeWorkaround(ready, complete, name), 9)
   }
   else {
+    if (process.env.NODE_ENV === 'test' && !ready()) {
+      throw new Error('BrowserHistory.rapidChangeWorkAround failed to be "ready"')
+    }
+
     complete()
     tries = 0
 

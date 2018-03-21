@@ -14,7 +14,6 @@ export class Request {
     const { store, routes, options, getLocation, ctx } = api
     const isNewPipeline = !action.tmp
     const pendingRequest = ctx.pending
-    const fromHistory = action.commit
     const state = getLocation()
     const route = routes[action.type] || {}
     const prevRoute = state.kind === 'init'
@@ -27,17 +26,17 @@ export class Request {
     const tmp = this.tmp = action.tmp || {}
     delete action.tmp
 
-    tmp.load = tmp.load || (fromHistory && action.location.kind === 'load')
-
+    tmp.load = tmp.load || (action.location && action.location.kind === 'load')
 
     // maintain `busy` status throughout a primary parent route changing pipeline even if
     // there are pathlessRoutes, anonymousThunks (which don't have paths) called by them
-    ctx.busy = ctx.busy || !!route.path || fromHistory
+    ctx.busy = ctx.busy || !!route.path
 
     // cancel pending not committed requests if new ones quickly come in
-    if (route.path || fromHistory) {
+    if (route.path) {
       if (pendingRequest && isNewPipeline) {
         pendingRequest.tmp.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
+        pendingRequest.tmp.revertPop && pendingRequest.tmp.revertPop()
       }
 
       ctx.pending = this
@@ -55,9 +54,9 @@ export class Request {
     this.initialLocation = state
     this.error = null
 
-    // commitHistory is supplied by history-generated actions, and by redux-generated actions
-    // it will be added by the `transformAction` middleware, overwriting `noOp` below
-    this.commitHistory = fromHistory ? action.commit : noOp
+    // commitHistory is supplied by history-generated actions. For redux-generated actions
+    // it will be added soon by the `transformAction` middleware
+    this.commitHistory = action.commit
     this.commitDispatch = next // standard redux next dispatch from our redux middleware
 
     // available when browser back/next buttons used. It's used in 2 cases:
@@ -75,7 +74,7 @@ export class Request {
 
     return Promise.all([
       this.commitDispatch(this.action),
-      this.commitHistory()
+      this.commitHistory && this.commitHistory()
     ]).then(([res]) => res)
   }
 

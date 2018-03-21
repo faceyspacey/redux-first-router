@@ -8,15 +8,29 @@ createTest('pop then regular action (cancel pop)', {
     beforeEnter: () => new Promise(res => setTimeout(res, 70))
   },
   THIRD: '/third'
-}, { browser: true }, [], async ({ snapPop, snap, dispatch, getLocation }) => {
+}, { browser: true }, [], async ({ snapPop, snap, pop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 
-  snapPop('back') // canceled
+  expect(window.location.pathname).toEqual('/third')
+
+  pop('back') // canceled
   await awaitUrlChange()
-  await snap({ type: 'FIRST' })
+
+  await snap({ type: 'FIRST' }) // cancels "back to SECOND"
 
   expect(getLocation().type).toEqual('FIRST')
   expect(getLocation().index).toEqual(3) // would otherwise equal 0 due to automatic back/next handling
+  expect(getLocation().length).toEqual(4) // would otherwise be 3
+  expect(window.location.pathname).toEqual('/')
+
+  // now let's test the real hidden browser history track to make sure it matches what we expect!!!!:
+  await pop('back')
+  expect(window.location.pathname).toEqual('/third')
+
+  await pop('back')
+  expect(window.location.pathname).toEqual('/second')
+
+  await pop('back')
   expect(window.location.pathname).toEqual('/')
 })

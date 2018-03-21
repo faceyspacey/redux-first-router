@@ -76,15 +76,14 @@ export const createInitialState = (
   routes: RoutesMap,
   options: Options
 ): LocationState => {
-  const { type, params = {}, query = {}, state = {}, hash = '', basename = '' } = action
-  const { entries, index, length, pathname, search, url, key, n } = action.location
-
+  const { type, params = {}, query = {}, state = {}, hash = '', location } = action
+  const { entries, index, length, pathname, search, url, key, n } = location
+  const basename = action.basename ? action.basename.substr(1) : ''
   const scene = typeToScene(type)
   const universal = isServer()
   const status = isNotFound(type) ? 404 : 200
-
   const direction = n === -1 ? 'backward' : 'forward'
-  const prev = createPrev(action, routes, options, universal)
+  const prev = createPrev(location, routes, options, universal)
 
   return {
     type,
@@ -97,7 +96,7 @@ export const createInitialState = (
     pathname,
     search,
     key,
-    basename: basename.substr(1),
+    basename,
     scene,
     direction,
     status,
@@ -115,12 +114,12 @@ export const createInitialState = (
 }
 
 export const createPrev = (
-  action,
+  location,
   routes,
   opts,
   universal
 ) => {
-  const { n, index, entries } = action.location // needs to use real lastIndex instead of -1
+  const { n, index, entries, length } = location // needs to use real lastIndex instead of -1
   const lastIndex = index + n // the entry action we want is the opposite of the direction the user is going
   const prevAction = entries[lastIndex]
 
@@ -128,16 +127,15 @@ export const createPrev = (
 
   const direction = n === -1 ? 'forward' : 'backward'
   const kind = n === -1 ? 'push' : 'back'
-
-  const { location, ...act } = prevAction
-  const { basename = '' } = act
-  const { url, pathname, search, key } = location
-  const scene = routes[act.type].scene || ''
+  const { location: loc, ...action } = prevAction
+  const { url, pathname, search, key } = loc
+  const basename = action.basename ? action.basename.substr(1) : ''
+  const scene = routes[action.type].scene || ''
 
   return {
-    ...act,
+    ...action,
 
-    basename: basename.substr(1),
+    basename,
     url,
     pathname,
     search,
@@ -148,7 +146,7 @@ export const createPrev = (
     kind,
     entries,
     index: lastIndex,
-    length: entries.length,
+    length,
 
     universal
   }
