@@ -14,12 +14,11 @@ module.exports = {
 
 /** if you want to extend History, here is how you do it:
 
-import { History, utils } from 'rudy/smart-history'
-const { createLocation } = utils.location
+import History from 'rudy/history/BrowserHistory'
 
-export default class MySmarterHistory extends History {
+class MyHistory extends History {
   push(path) {
-    const location = createLocation(path)
+    const location = this.createAction(path)
     // do something custom
   }
 }
@@ -27,15 +26,13 @@ export default class MySmarterHistory extends History {
 // usage:
 
 import { createRouter } from 'rudy'
-import MySmarterHistory from '../somewhere-in-your-app/MySmarterHistory'
+import { createHistory as creatHist } from 'rudy/core'
 
-const createSmarterHistory = (opts) => {
-  if (opts.someCondition) return new MySmarterHistory(opts)
-  return createSmartHistory(opts)
+const createHistory = (routes, opts) => {
+  if (opts.someCondition) return new MyHistory(routes, opts)
+  return creatHist(routes, opts)
 }
 
-const { middleware, reducer, firstRoute } = createRouter(routes, {
-  createHistory: createSmarterHistory
-})
+const { middleware, reducer, firstRoute } = createRouter(routes, { createHistory })
 
 */

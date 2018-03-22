@@ -18,6 +18,11 @@ module.exports = wallaby => {
     ],
 
     tests: [
+      // '__tests__/integration/browser/pop/popCancelsAction.js',
+      // '__tests__/integration/browser/sessionStorage/historyFallback.js',
+      '__tests__/integration/browser/sessionStorage/historyFallbackWithRedirectBeforeEnter.js',
+      // '__tests__/integration/redirects.js',
+
       // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/actions/**/*.js',
       // '__tests__/integration/createScene/**/*.js',
@@ -75,7 +80,7 @@ module.exports = wallaby => {
       // '__tests__/integration/overrideOptionse.js',
       // '__tests__/integration/thunkCaching.js',
 
-      '__tests__/integration/redirects.js',
+      // '__tests__/integration/redirects.js',
       // '__tests__/integration/returnFalse.js',
       // '__tests__/integration/multipleRedirects.js',
       // '__tests__/integration/complexRedirects.js',

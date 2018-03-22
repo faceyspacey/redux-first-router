@@ -13,4 +13,5 @@ export default (basename: string, action: ?Action) => {
   return { ...action, basename }
 }
 
-// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoutes
+// NOTE: the first form with type `CHANGE_BASENAME` will trigger the pathlessRoute middleware
+// see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoute

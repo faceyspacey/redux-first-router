@@ -2,7 +2,7 @@ import resolvePathname from 'resolve-pathname'
 import { parsePath, createPath, stripBasename, findBasename, formatSlashes } from './index'
 import { urlToAction } from '../../utils'
 
-export const createLocation = (path, state, key, currentLocation, basename) => {
+export const createLocation = (path, state, key, curr, basename) => {
   let location
 
   if (typeof path === 'string') {
@@ -22,13 +22,15 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
 
   const { pathname } = location
 
-  if (currentLocation) {
+  if (curr) {
     // Resolve incomplete/relative pathname relative to current location.
     if (!pathname) {
-      location.pathname = currentLocation.pathname
+      location.basename = curr.basename
+      location.pathname = curr.pathname
     }
     else if (pathname.charAt(0) !== '/') {
-      location.pathname = resolvePathname(pathname, currentLocation.pathname)
+      location.basename = curr.basename
+      location.pathname = resolvePathname(pathname, curr.pathname)
     }
   }
   else if (!pathname) {
@@ -48,13 +50,14 @@ export const createLocation = (path, state, key, currentLocation, basename) => {
   return location
 }
 
-export const createAction = (entry, routes, opts, state, key, basename, currLoc, scene) => {
+export const createAction = (entry, routes, opts, state, basename, currLoc, key) => {
   if (typeof entry === 'string') {
     const foundBasename = findBasename(entry, opts.basenames)
     entry = foundBasename ? stripBasename(entry, foundBasename) : entry
     basename = foundBasename || basename
   }
 
+  const scene = currLoc && routes[currLoc.type].scene
   const location = createLocation(entry, state, key, currLoc, basename)
   const action = urlToAction(location, routes, opts, scene)
 
@@ -69,11 +72,11 @@ export const createAction = (entry, routes, opts, state, key, basename, currLoc,
 }
 
 export const getWindowLocation = (historyState, routes, opts) => {
-  const { key = '123456790', state = {} } = historyState || {}
+  const { key = createKey(), state = {} } = historyState || {}
   const { pathname, search, hash } = window.location
   const url = pathname + search + hash
 
-  return createAction(url, routes, opts, state, key)
+  return createAction(url, routes, opts, state, undefined, undefined, key)
 }
 
 export const createKey = () =>

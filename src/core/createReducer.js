@@ -23,7 +23,7 @@ export default (
 
   if (r && r.path && (l.url !== st.url || /load|reset/.test(l.kind))) {
     const { type, params, query, state, hash, basename } = action
-    const universal = st.universal
+    const { universal } = st
     const s = { type, params, query, state, hash, universal, basename, ...l }
     if (st.ready === false) s.ready = true
     return s
@@ -32,6 +32,21 @@ export default (
   if (action.type === ADD_ROUTES) {
     const { routesAdded } = action.payload
     return { ...st, routesAdded }
+  }
+
+  if (action.type === SET_FROM) {
+    const { ref } = action.payload
+    return { ...st, from: ref }
+  }
+
+  if (action.type === BLOCK) {
+    const { ref } = action.payload
+    return { ...st, blocked: ref }
+  }
+
+  if (action.type === UNBLOCK) {
+    const { blocked, ...state } = st
+    return state
   }
 
   if (l && l.kind === 'setState') {
@@ -50,21 +65,6 @@ export default (
 
   if (action.type.indexOf('_START') > -1) {
     return { ...st, ready: false }
-  }
-
-  if (action.type === BLOCK) {
-    const { ref } = action.payload
-    return { ...st, blocked: ref }
-  }
-
-  if (action.type === UNBLOCK) {
-    const { blocked, ...state } = st
-    return state
-  }
-
-  if (action.type === SET_FROM) {
-    const { ref } = action.payload
-    return { ...st, from: ref }
   }
 
   return st

@@ -1,7 +1,7 @@
 import { BLOCK, UNBLOCK, SET_FROM } from '../types'
 import { redirect } from '../actions'
 import { createAction } from '../utils'
-import { createActionReference } from '../middleware/transformAction/utils'
+import { createActionRef } from '../middleware/transformAction/utils'
 
 export default (
   action,
@@ -64,10 +64,11 @@ export class Request {
     this.tmp.committed = true
     this.history.pendingPop = null
 
-    return Promise.all([
-      this.commitDispatch(this.action),
-      this.commitHistory && this.commitHistory(this.action)
-    ]).then(([res]) => res)
+    return Promise.resolve(this.commitDispatch(this.action)) // syncronous 99.99% percent of the time (state needs to be updated before history updates URL etc)
+      .then((res) => {
+        if (!this.commitHistory) return res
+        return this.commitHistory(this.action).then(() => res)
+      })
   }
 
   dispatch = (action) => {
@@ -147,12 +148,12 @@ export class Request {
 
   block = () => {
     this.ctx.confirm = this.confirm
-    const ref = createActionReference(this.action)
+    const ref = createActionRef(this.action)
     return this.realDispatch({ type: BLOCK, payload: { ref } })
   }
 
   setFrom = () => {
-    const ref = createActionReference(this.action)
+    const ref = createActionRef(this.action)
     return this.realDispatch({ type: SET_FROM, payload: { ref } })
   }
 

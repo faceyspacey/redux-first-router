@@ -76,7 +76,7 @@ export default (
 
     Object.assign(api, { getTitle, getLocation, dispatch, getState })
     getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)
-    history.listen(dispatch) // dispatch actions in response to browser back/next buttons, etc
+    history.listen(dispatch, getLocation) // dispatch actions in response to pops, use redux location state as single source of truth
 
     return (dispatch: Dispatch) => (action: Object) => {
       if (!shouldTransition(action, api)) return dispatch(action) // short-circuit and pass through Redux middleware normally

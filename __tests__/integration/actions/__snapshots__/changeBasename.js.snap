@@ -1,5 +1,350 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`automatically inherit existing basename: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "/bar",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/bar/first",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIRST",
+  },
+  Object {
+    "basename": "/bar",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/redirected",
+      "search": "",
+      "url": "/bar/redirected",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "REDIRECTED",
+  },
+]
+`;
+
+exports[`automatically inherit existing basename: 1 - history_index 1`] = `1`;
+
+exports[`automatically inherit existing basename: 1 - response 1`] = `
+Object {
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
+}
+`;
+
+exports[`automatically inherit existing basename: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`automatically inherit existing basename: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`automatically inherit existing basename: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "bar",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "/bar",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/bar/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "/bar",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "search": "",
+          "url": "/bar/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "push",
+    "length": 2,
+    "params": Object {},
+    "pathname": "/redirected",
+    "pop": false,
+    "prev": Object {
+      "basename": "bar",
+      "direction": "forward",
+      "entries": Array [
+        Object {
+          "basename": "/bar",
+          "hash": "",
+          "location": Object {
+            "key": "345678",
+            "pathname": "/first",
+            "search": "",
+            "url": "/bar/first",
+          },
+          "params": Object {},
+          "query": Object {},
+          "state": Object {},
+          "type": "FIRST",
+        },
+      ],
+      "hash": "",
+      "index": 0,
+      "key": "345678",
+      "kind": "load",
+      "length": 1,
+      "params": Object {},
+      "pathname": "/first",
+      "pop": false,
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "status": 200,
+      "type": "FIRST",
+      "url": "/bar/first",
+    },
+    "query": Object {},
+    "ready": true,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "REDIRECTED",
+    "universal": false,
+    "url": "/bar/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
+}
+`;
+
+exports[`automatically inherit existing basename: 1 - title 1`] = `"REDIRECTED"`;
+
+exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "/bar",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/first",
+      "search": "",
+      "url": "/bar/first",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIRST",
+  },
+]
+`;
+
+exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - history_index 1`] = `0`;
+
+exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "bar",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "/bar",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/bar/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "init",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [],
+      "hash": "",
+      "index": -1,
+      "key": "",
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "universal": false,
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/bar/first",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - response 1`] = `
+Object {
+  "basename": "bar",
+  "hash": "",
+  "location": Object {
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "/bar",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/bar/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "pathname": "/first",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [],
+      "hash": "",
+      "index": -1,
+      "key": "",
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/bar/first",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "bar",
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "/bar",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/first",
+          "search": "",
+          "url": "/bar/first",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "params": Object {},
+    "pathname": "/first",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "direction": "forward",
+      "entries": Array [],
+      "hash": "",
+      "index": -1,
+      "key": "",
+      "kind": "",
+      "length": 0,
+      "params": Object {},
+      "pathname": "",
+      "query": Object {},
+      "scene": "",
+      "search": "",
+      "state": Object {},
+      "type": "",
+      "url": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/bar/first",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - title 1`] = `"FIRST"`;
+
 exports[`dispatch(changeBasename(name)) with existing basename: 1 - history_entries 1`] = `
 Array [
   Object {

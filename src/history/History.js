@@ -1,7 +1,7 @@
 import { createAction } from './utils'
 import { actionToUrl } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
-import { nestAction, createActionReference } from '../middleware/transformAction/utils'
+import { createStateRef, createActionRef } from '../middleware/transformAction/utils'
 
 
 export default class History {
@@ -9,59 +9,81 @@ export default class History {
     const { n, index, entries } = config
 
     this.saveHistory = opts.saveHistory || function() {}
-
     this.routes = routes
     this.options = opts
-
-    this.entries = []
-    this.index = -1
-    this.length = 0
-    this.kind = 'init'
-    this.n = n
-    this.action = null
 
     const kind = 'load'
     const action = entries[index]
     const location = { kind, n, index, entries }
-    const commit = (action) => this._updateHistory(action)
+    const commit = function() {}
 
     this.firstAction = this._notify(action, location, { commit }, false)
   }
 
-  // get entries() {
-  //   return this.getLocation().entries
-  // }
+  listen(dispatch, getLocation) {
+    this._listener = dispatch
+    this.getLocation = getLocation
+    return () => this.unlisten()
+  }
 
-  // get index() {
-  //   return this.getLocation().index
-  // }
+  unlisten() {
+    this._listener = null
+  }
 
-  // get length() {
-  //   return this.getLocation().length
-  // }
+  get location() {
+    return this.getLocation() // assigned by
+  }
 
-  // get kind() {
-  //   return this.getLocation().kind
-  // }
+  get action() {
+    return createActionRef(this.location)
+  }
 
-  // get n() {
-  //   return this.getLocation().direction === 'forward' ? 1 : -1
-  // }
+  get kind() {
+    return this.location.kind
+  }
 
-  // get action() {
-  //   return this.getLocation().entries
-  // }
+  get n() {
+    return this.location.direction === 'forward' ? 1 : -1
+  }
 
-  createAction(path, state, basename) {
-    const { type } = this.action || this.firstAction
-    const scene = this.routes[type].scene
-    return createAction(path, this.routes, this.options, state, undefined, basename, this.action, scene)
+  get type() {
+    return this.location.type
+  }
+
+  get url() {
+    return this.location.url
+  }
+
+  get prevUrl() {
+    if (this.kind === 'load') return this.location.from.location.url // called by `BrowserHistory._replace` on redirects when `prev` state is empty
+    return this.location.prev.url
+  }
+
+  get basename() {
+    return this.location.basename
+  }
+
+  get entries() {
+    return this.location.entries
+  }
+
+  get index() {
+    return this.location.index
+  }
+
+  get length() {
+    return this.location.length
+  }
+
+  createAction(path, state, basename = this.basename) {
+    const { routes, options, location } = this
+    return createAction(path, routes, options, state, basename, location)
   }
 
   // API:
 
-  push(path, state = {}, basename, notify = true) {
-    const action = this.createAction(path, state, basename)
+  push(path, state = {}, notify = true) {
+    const action = this.createAction(path, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -77,8 +99,8 @@ export default class History {
     return this._notify(action, { kind, index, entries }, { commit }, notify)
   }
 
-  replace(path, state = {}, basename, notify = true) {
-    const action = this.createAction(path, state, basename)
+  replace(path, state = {}, notify = true) {
+    const action = this.createAction(path, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'replace')
@@ -96,9 +118,9 @@ export default class History {
     return this._notify(action, { kind, entries, index }, { commit }, notify)
   }
 
-  replacePop(path, state = {}, basename, notify = true, pop) {
-    const action = this.createAction(path, state, basename)
-    const index = pop.index
+  replacePop(path, state = {}, notify = true, pop) {
+    const action = this.createAction(path, state)
+    const { index } = pop
     const entries = pop.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
     const commit = (action) => this._replace(action, pop.action, pop.n)
@@ -142,7 +164,7 @@ export default class History {
     const i = this.index + n
     const entries = this.entries.slice(0)
     const changedAction = entries[i] = { ...this.entries[i] }
-    const action = n === 0 ? changedAction : this.action // insure if state set on current entry, location is not stale
+    const action = n === 0 ? changedAction : { ...this.action } // insure if state set on current entry, location is not stale
     const commit = (action) => this._setState(action, n)
 
     state = typeof state === 'function' ? state(changedAction.state) : state
@@ -163,7 +185,7 @@ export default class History {
     return this.jump(1, state, false, 'next', notify)
   }
 
-  reset(entries, index, manualKind, basename, notify = true) {
+  reset(entries, index, manualKind, notify = true) {
     if (entries.length === 1) {
       const entry = this._findResetFirstAction(entries[0])
       entries.unshift(entry)
@@ -173,14 +195,14 @@ export default class History {
       if (typeof entry === 'object' && entry.type) {
         const action = entry
         const { url, state } = actionToUrl(action, this.routes, this.options)
-        return this.createAction(url, state, action.basename || basename)
+        return this.createAction(url, state, action.basename)
       }
       else if (Array.isArray(entry)) {
         const [url, state] = entry
-        return this.createAction(url, state, basename)
+        return this.createAction(url, state)
       }
 
-      return this.createAction(entry, undefined, basename)
+      return this.createAction(entry)
     })
 
 
@@ -224,17 +246,15 @@ export default class History {
   }
 
   _createPrev({ n, index: i, entries }) {
-    const length = entries.length
     const index = i - n
     const entry = entries[index]
+    const { length } = entries
 
     if (!entry) return
 
     const { location, ...action } = entry
     action.location = { ...location, kind: 'push', index, length, entries, n }
-    const act = nestAction(action) // build the action for that entry, and create what the resulting state shape would have looked like
-
-    return Object.assign(act, act.location) // do what the location reducer does where it maps `...action.location` flatly on to `action`
+    return createStateRef(action, true) // build the action for that entry, and create what the resulting state shape would have looked like
   }
 
   _findResetFirstAction(action) {
@@ -271,15 +291,6 @@ export default class History {
     return !!this.entries[this.index + n]
   }
 
-  listen(fn) {
-    this._listener = fn
-    return () => this.unlisten()
-  }
-
-  unlisten() {
-    this._listener = null
-  }
-
   // UTILS:
 
   _notify(action, location, extras, notify = true) {
@@ -302,16 +313,15 @@ export default class History {
     let committed = false
 
     return (action) => {
-      if (committed) return
+      if (committed) return Promise.resolve()
       committed = true
-      return commit(action)
-    }
-  }
 
-  _updateHistory(action) {
-    const { entries, length, index, kind, n } = action.location
-    Object.assign(this, { entries, length, index, kind, action, n })
-    this.saveHistory(this)
+      return Promise.resolve(commit(action))
+        .then(() => {
+          const { index, entries } = this // will retreive these from redux state, which ALWAYS updates first
+          this.saveHistory({ index, entries })
+        })
+    }
   }
 
   _isBack(action) {
@@ -351,4 +361,11 @@ export default class History {
 
     return n || 0
   }
+
+  // BrowseHistory overrides these
+  _push() {}
+  _replace() {}
+  _jump() {}
+  _setState() {}
+  _reset() {}
 }

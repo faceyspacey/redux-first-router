@@ -39,26 +39,6 @@ export default class MemoryHistory extends History {
 
     super(routes, opts, { n, index, entries })
   }
-
-  _push(action) {
-    return this._updateHistory(action)
-  }
-
-  _replace(action) {
-    return this._updateHistory(action)
-  }
-
-  _jump(action) {
-    return this._updateHistory(action)
-  }
-
-  _setState(action) {
-    return this._updateHistory(action)
-  }
-
-  _reset(action) {
-    return this._updateHistory(action)
-  }
 }
 
 // UTILS:

@@ -44,8 +44,8 @@ export default (
 
   if (!action && !target && fullUrl.indexOf('http') === 0) {
     if (history.index === 0) {
-      history.forwardedOut = true // used to patch an edge case, see `history/utils/sessionStorage.js.getIndexAndEntries`
-      history.saveHistory(history)
+      const { index, entries } = history
+      history.saveHistory({ index, entries, forwardedOut: true }) // used to patch an edge case, see `history/utils/sessionStorage.js.getIndexAndEntries`
     }
 
     window.location.href = fullUrl

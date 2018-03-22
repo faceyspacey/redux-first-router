@@ -19,3 +19,11 @@ createTest('dispatch(changeBasename(name)) with existing basename', {}, {
   '/foo/first',
   changeBasename('/bar')
 ])
+
+createTest('automatically inherit existing basename', {}, {
+  basenames: ['/bar'],
+  log: true
+}, [
+  '/bar/first',
+  { type: 'REDIRECTED' }
+])
