@@ -1,10 +1,10 @@
-import { typeToScene, isNotFound } from '../../../utils'
+import { typeToScene, isNotFound } from './index'
 
 const nestAction = (action, prevState, fromAction, statusCode, tmp = {}) => {
   const { location, type, params = {}, query = {}, state = {}, hash = '', basename: bn = '' } = action
   const { kind: k, entries, index, length, pathname, search, url, key, n } = location
 
-  const prev = createPrev(prevState)
+  const prev = createActionRef(prevState)
   const from = createActionRef(fromAction)
   const scene = typeToScene(type)
   const pop = !!tmp.revertPop
@@ -17,42 +17,44 @@ const nestAction = (action, prevState, fromAction, statusCode, tmp = {}) => {
     type,
     params,
     query,
-    hash,
     state,
+    hash,
     basename,
     location: {
+      kind: /jump|reset/.test(k) ? k : kind,
+      direction,
       url,
       pathname,
       search,
       key,
       scene,
-      direction,
-      status,
 
       prev,
       from,
+      blocked: null,
 
-      kind: /jump|reset/.test(k) ? k : kind,
       entries,
       index,
       length,
-      pop
+
+      pop,
+      status
     }
   }
 }
 
 export default nestAction
 
-const createPrev = (prevState) => createStateRef(prevState)
-
-// create `state.from` + `state.blocked` values as idiomatic full-information rudy actions that can be re-dispatched
-export const createActionRef = (actionOrState) => {
+// create `state.prev/from/blocked`  values as idiomatic full-information rudy actions that can be re-dispatched
+export const createActionRef = (actionOrState, shouldNest = false) => {
   if (!actionOrState) return null
 
-  // if redirect action from outside of pipeline, we receive the state instead (see ./formatAction.js)
+  actionOrState = shouldNest ? nestAction(actionOrState) : actionOrState // history.jump/reset requires creating an entire action from primary action key/vals
+
+  // if `prev` or redirect action from outside of pipeline, we receive the state instead (see ./formatAction.js)
   if (!actionOrState.location) {
     const { type, params, query, state, hash, basename, ...rest } = actionOrState
-    const location = createStateRef(rest)
+    const location = createLocationRef(rest)
     const action = { type, params, query, state, hash, basename, location }
     return action
   }
@@ -60,21 +62,26 @@ export const createActionRef = (actionOrState) => {
   // if redirect occurred during pipeline, we receive an action representing the previous state
   return {
     ...actionOrState,
-    location: createStateRef(actionOrState.location)
+    location: createLocationRef(actionOrState.location)
   }
 }
 
-export const createStateRef = (actionOrState, shouldNest = false) => {
-  actionOrState = shouldNest ? nestAction(actionOrState) : actionOrState // history.jump/reset requires creating an entire action from primary action key/vals
-
+const createLocationRef = (actionOrState, shouldNest = false) => {
   const location = actionOrState && actionOrState.location
   const state = { ...location, ...actionOrState }
 
   delete state.prev
-  delete state.universal
   delete state.from
   delete state.blocked
+  delete state.universal
   delete state.location
+
+  delete state.length
+  delete state.kind
+  delete state.entries
+  delete state.pop
+  delete state.status
+  delete state.direction
 
   return state
 }

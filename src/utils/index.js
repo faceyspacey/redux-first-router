@@ -6,6 +6,7 @@ export { default as isRedirect } from './isRedirect'
 
 export { default as actionToUrl } from './actionToUrl'
 export { default as urlToAction } from './urlToAction'
+export { default as nestAction, createActionRef } from './nestAction'
 
 export { default as doesRedirect } from './doesRedirect'
 export { default as shouldTransition } from './shouldTransition'

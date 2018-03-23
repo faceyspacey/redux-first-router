@@ -5,7 +5,7 @@ import {
   supportsHistory,
   canUseDOM,
   hasSessionStorage,
-  createPath,
+  locationToUrl,
   formatSlashes
 } from '../history/utils'
 
@@ -21,7 +21,7 @@ export default (routes, opts = {}) => {
   }
 
   opts.useSessionStorage = hasSessionStorage() // give MemoryHistory browser fallback a chance to remember entries through sessionStorage
-  opts.initialEntries = [createPath(window.location)]
+  opts.initialEntries = [locationToUrl(window.location)]
 
   return new MemoryHistory(routes, opts)
 }

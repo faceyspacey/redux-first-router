@@ -2,18 +2,18 @@
 // instead of pushing a new entry to preserve proper movement along history track
 
 export default (n, url, history, tmp) => {
-  const { index, entries, url: prevUrl } = tmp.prevAction.location
+  const { entries, index } = tmp.prevAction.location
 
   if (!isNAdjacentToSameUrl(url, history, n)) {
+    const { url: prevUrl } = tmp.prevAction.location
     n = tmp.revertPop ? null : n // if this back/next movement is due to a user-triggered pop (browser back/next buttons), we don't need to shift the browser history by n, since it's already been done
-    const action = { location: { url: prevUrl } }
-    return { n, entries, index, action }
+    return { n, entries, index, prevUrl }
   }
 
   const newIndex = index + n
-  const action = entries[newIndex]
+  const { url: prevUrl } = entries[newIndex].location
   n = tmp.revertPop ? n : n * 2
-  return { n, entries, index: newIndex, action }
+  return { n, entries, index: newIndex, prevUrl }
 }
 
 const isNAdjacentToSameUrl = (url, history, n) => {

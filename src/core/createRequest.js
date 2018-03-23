@@ -1,7 +1,6 @@
 import { BLOCK, UNBLOCK, SET_FROM } from '../types'
 import { redirect } from '../actions'
-import { createAction } from '../utils'
-import { createActionRef } from '../middleware/transformAction/utils'
+import { createAction, createActionRef } from '../utils'
 
 export default (
   action,

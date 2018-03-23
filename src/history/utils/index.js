@@ -1,29 +1,26 @@
+export { default as createAction } from './createAction'
+
+export {
+  urlToLocation,
+  locationToUrl,
+  formatSlashes,
+  stripBasename,
+  findBasename
+} from './url'
+
 export {
   canUseDOM,
   supportsHistory,
   hasSessionStorage,
   isExtraneousPopstateEvent,
-  createPopListenerFuncs
+  addPopListener,
+  removePopListener
 } from './dom'
-
-export {
-  createLocation,
-  createAction,
-  getWindowLocation,
-  createKey
-} from './location'
-
-export {
-  formatSlashes,
-  stripBasename,
-  findBasename,
-  parsePath,
-  createPath
-} from './path'
 
 export {
   saveHistory,
   restoreHistory,
   getHistoryState,
-  getInitialHistoryState
+  getInitialHistoryState,
+  getInitialN
 } from './sessionStorage'

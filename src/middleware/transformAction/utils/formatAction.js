@@ -1,5 +1,5 @@
-import { isRedirect, actionToUrl } from '../../../utils'
-import { nestAction, replacePopAction, findNeighboringN } from './index'
+import { isRedirect, actionToUrl, nestAction } from '../../../utils'
+import { replacePopAction, findNeighboringN } from './index'
 
 export default (req) => {
   const { action, routes, options, history, prevRoute, getLocation, tmp } = req

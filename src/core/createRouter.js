@@ -1,4 +1,5 @@
 // @flow
+import qs from 'qs'
 import type { RoutesMapInput, Options, Store, Dispatch } from '../flow-types'
 import { compose, createHistory, createReducer, createInitialState, createRequest } from './index'
 
@@ -53,6 +54,8 @@ export default (
   options.createRequest = options.createRequest || createRequest
   options.compose = options.compose || compose
   options.onError = typeof onErr !== 'undefined' ? onErr : defaultOnError
+  options.parseQuery = options.parseQuery || qs.parse
+  options.stringifyQuery = options.stringifyQuery || qs.stringify
 
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)

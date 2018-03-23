@@ -53,6 +53,7 @@ exports[`automatically dispatch action object returned from thunk: 1 - state 1`]
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -95,38 +96,19 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "location": Object {
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "url": "/first",
-          },
-          "params": Object {},
-          "query": Object {},
-          "state": Object {},
-          "type": "FIRST",
-        },
-      ],
       "hash": "",
-      "index": 0,
-      "key": "345678",
-      "kind": "load",
-      "length": 1,
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/first",
+        "scene": "",
+        "search": "",
+        "url": "/first",
+      },
       "params": Object {},
-      "pathname": "/first",
-      "pop": false,
       "query": Object {},
-      "scene": "",
-      "search": "",
       "state": Object {},
-      "status": 200,
       "type": "FIRST",
-      "url": "/first",
     },
     "query": Object {},
     "scene": "",
@@ -199,6 +181,7 @@ exports[`automatically infer non action object to be payload: 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -241,38 +224,19 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
-      "entries": Array [
-        Object {
-          "basename": "",
-          "hash": "",
-          "location": Object {
-            "key": "345678",
-            "pathname": "/first",
-            "search": "",
-            "url": "/first",
-          },
-          "params": Object {},
-          "query": Object {},
-          "state": Object {},
-          "type": "FIRST",
-        },
-      ],
       "hash": "",
-      "index": 0,
-      "key": "345678",
-      "kind": "load",
-      "length": 1,
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/first",
+        "scene": "",
+        "search": "",
+        "url": "/first",
+      },
       "params": Object {},
-      "pathname": "/first",
-      "pop": false,
       "query": Object {},
-      "scene": "",
-      "search": "",
       "state": Object {},
-      "status": 200,
       "type": "FIRST",
-      "url": "/first",
     },
     "query": Object {},
     "ready": true,

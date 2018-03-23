@@ -1,8 +1,8 @@
 import { isServer, actionToUrl } from '../../../utils'
-import { createLocation } from '../../../history/utils'
+import { createLocation, createAction } from '../../../history/utils'
 
 const defaultCreateCacheKey = (action, name) => {
-  const { type, location, basename } = action
+  const { type, basename, location } = action
   const { pathname, search } = location
   return `${name}|${type}|${basename}|${pathname}|${search}` // don't cache using URL hash, as in 99.999% of all apps its the same route
 }
@@ -64,9 +64,7 @@ export default (api, name, config) => {
     else {                                        // delete all/some callbacks for precise item (default)
       const action = invalidator
       const { url } = actionToUrl(action, api.routes, api.options)
-      const loc = createLocation(url)
-      const act = { ...action, location: { ...action.location, ...loc } }
-
+      const act = createAction(url, api.routes, api.options)
       const names = opts.name === undefined ? callbacks : [].concat(opts.name)
 
       names.forEach(name => {

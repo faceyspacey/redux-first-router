@@ -5,6 +5,7 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -31,21 +32,19 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
-      "entries": Array [],
       "hash": "",
-      "index": -1,
-      "key": "",
-      "kind": "",
-      "length": 0,
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
       "params": Object {},
-      "pathname": "",
       "query": Object {},
-      "scene": "",
-      "search": "",
       "state": Object {},
       "type": "",
-      "url": "",
     },
     "scene": "",
     "search": "",
@@ -63,6 +62,7 @@ exports[`firstRoute(true) resolves early on enter: state 1`] = `
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -91,21 +91,19 @@ Object {
     "pop": false,
     "prev": Object {
       "basename": "",
-      "direction": "forward",
-      "entries": Array [],
       "hash": "",
-      "index": -1,
-      "key": "",
-      "kind": "",
-      "length": 0,
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
       "params": Object {},
-      "pathname": "",
       "query": Object {},
-      "scene": "",
-      "search": "",
       "state": Object {},
       "type": "",
-      "url": "",
     },
     "query": Object {},
     "scene": "",

@@ -31,6 +31,7 @@
   "dependencies": {
     "path-to-regexp": "^2.1.0",
     "prop-types": "^15.6.0",
+    "qs": "^6.5.1",
     "resolve-pathname": "^2.2.0"
   },
   "devDependencies": {
@@ -57,7 +58,6 @@
     "jest-localstorage-mock": "^2.2.0",
     "lint-staged": "^3.4.0",
     "prettier": "^1.7.0",
-    "query-string": "^4.3.4",
     "react": "^16.1.1",
     "react-redux": "^5.0.6",
     "react-test-renderer": "^16.1.1",
@@ -81,7 +81,9 @@
       "**/__tests__/integration/**/*.js?(x)"
     ],
     "setupTestFrameworkScriptFile": "./__test-helpers__/setupJest.js",
-    "setupFiles": ["jest-localstorage-mock"],
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
     "moduleFileExtensions": [
       "js"
     ]

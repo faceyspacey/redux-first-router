@@ -1,4 +1,4 @@
-import { parsePath, createKey, hasSessionStorage, createAction } from './index'
+import { urlToLocation, hasSessionStorage, createAction } from './index'
 
 // PREFIXING:
 
@@ -120,7 +120,7 @@ export const getHistoryState = () => {
 export const getInitialHistoryState = () => {
   const currentState = getHistoryState()
 
-  const id = (_id = currentState.id || createId())
+  const id = (_id = currentState.id || createKey())
   const key = currentState.key || createKey()
   const newState = Object.assign({}, currentState, { id, key })
   window.history.replaceState(newState, null, window.location.href)
@@ -155,14 +155,11 @@ const getIndexAndEntries = (history, routes, opts) => {
 
   entries = entries.map(e => {
     const path = e.url.replace(e.basename, '')
-    const entry = { ...e, ...parsePath(path) }
+    const entry = { ...e, ...urlToLocation(path) }
     return createAction(entry, routes, opts)
   })
 
-  // when entries are restored on load, the direction is always backward if on an index > 0
-  // because the corresponding entrices are removed (it's as if you are going back from an
-  // external URL, which you are
-  const n = index > 0 ? -1 : 1
+  const n = getInitialN(index, entries)
 
   return { n, index, entries }
 }
@@ -174,5 +171,13 @@ const getId = () => {
   return `${_id}/`
 }
 
-const createId = () =>
+const createKey = () =>
   Math.random().toString(36).substr(2, 6)
+
+// When entries are restored on load, the direction is always forward if on an index > 0
+// because the corresponding entries are removed (just like a `push`), and you are now at the head.
+//
+// Otherwise, if there are multiple entries and you are on the first, you're considered
+// to be going back, but if there is one, you're logically going forward.
+export const getInitialN = (index, entries) =>
+  index > 0 ? 1 : (entries.length > 1 ? -1 : 1)

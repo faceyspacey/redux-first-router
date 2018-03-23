@@ -1,8 +1,6 @@
 import { createAction } from './utils'
-import { actionToUrl } from '../utils'
+import { actionToUrl, createActionRef } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
-import { createStateRef, createActionRef } from '../middleware/transformAction/utils'
-
 
 export default class History {
   constructor(routes, opts, config) {
@@ -15,9 +13,9 @@ export default class History {
     const kind = 'load'
     const action = entries[index]
     const location = { kind, n, index, entries }
-    const commit = function() {}
+    const commit = function() {} // action already committed, by virtue of browser loading the URL
 
-    this.firstAction = this._notify(action, location, { commit }, false)
+    this.firstAction = this._notify(action, location, commit, false)
   }
 
   listen(dispatch, getLocation) {
@@ -32,10 +30,6 @@ export default class History {
 
   get location() {
     return this.getLocation() // assigned by
-  }
-
-  get action() {
-    return createActionRef(this.location)
   }
 
   get kind() {
@@ -56,7 +50,7 @@ export default class History {
 
   get prevUrl() {
     if (this.kind === 'load') return this.location.from.location.url // called by `BrowserHistory._replace` on redirects when `prev` state is empty
-    return this.location.prev.url
+    return this.location.prev.location.url
   }
 
   get basename() {
@@ -75,9 +69,9 @@ export default class History {
     return this.location.length
   }
 
-  createAction(path, state, basename = this.basename) {
+  createAction(path, state, basename) {
     const { routes, options, location } = this
-    return createAction(path, routes, options, state, basename, location)
+    return createAction(path, routes, options, state, null, basename, location)
   }
 
   // API:
@@ -94,9 +88,10 @@ export default class History {
 
     const index = back ? this.index - 1 : this.index + 1
     const entries = this._pushToFront(action, this.entries, index, kind)
+    const location = { kind, index, entries }
     const commit = (action) => this._push(action)
 
-    return this._notify(action, { kind, index, entries }, { commit }, notify)
+    return this._notify(action, location, commit, notify)
   }
 
   replace(path, state = {}, notify = true) {
@@ -111,49 +106,49 @@ export default class History {
 
     const index = this.index
     const entries = this.entries.slice(0)
+    const location = { kind, entries, index }
     const commit = (action) => this._replace(action)
 
     entries[index] = action
 
-    return this._notify(action, { kind, entries, index }, { commit }, notify)
+    return this._notify(action, location, commit, notify)
   }
 
   replacePop(path, state = {}, notify = true, pop) {
     const action = this.createAction(path, state)
-    const { index } = pop
+    const { index, prevUrl, n } = pop
     const entries = pop.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
-    const commit = (action) => this._replace(action, pop.action, pop.n)
+    const location = { kind, entries, index }
+    const commit = (action) => this._replace(action, prevUrl, n)
 
     entries[index] = action
 
-    return this._notify(action, { kind, entries, index }, { commit }, notify)
+    return this._notify(action, location, commit, notify)
   }
 
-  jump(n, state, byIndex = false, manualKind, notify = true, revertPop) {
+  jump(n, state, byIndex = false, kindOverride, notify = true, revertPop) {
     n = this._resolveN(n, byIndex)
-    manualKind = manualKind || (n < 0 ? 'back' : 'next')
+    kindOverride = kindOverride || (n < 0 ? 'back' : 'next') // users can choose what direction to make the `jump` look like it came from
 
-    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'jump')
+    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'jump') // back/next kinds are just more specifically named jumps
     const isPop = !!revertPop
-    const index = this.index + n
+    const index = this.index + n // n in this case may be values other than -1, 1, but only for the index
     const entries = this.entries.slice(0)
     const action = entries[index] = { ...this.entries[index] }
-    const n2 = manualKind === 'back' ? -1 : 1
+    const n2 = kindOverride === 'back' ? -1 : 1 // now we need to provide the standard -1/1 value for n
     const location = { kind, index, entries, n: n2 }
-    const prev = kind === 'jump' && (this._createPrev(location) || createPrevEmpty())
+    const prev = kind === 'jump' && this._createPrev(location) // jumps can fake the value of `prev` state
     const commit = (action) => this._jump(action, n, isPop)
-    const extras = { commit, manualKind, revertPop, prev }
 
     state = typeof state === 'function' ? state(action.state) : state
-
     action.state = { ...action.state, ...state }
 
     if (!this.entries[index]) {
       throw new Error(`[rudy] no entry at index: ${index}. Consider using \`history.canJump(n)\`.`)
     }
 
-    return this._notify(action, location, extras, notify)
+    return this._notify(action, location, commit, notify, { prev, revertPop })
   }
 
   setState(state, n, byIndex = false, notify = true) {
@@ -164,7 +159,8 @@ export default class History {
     const i = this.index + n
     const entries = this.entries.slice(0)
     const changedAction = entries[i] = { ...this.entries[i] }
-    const action = n === 0 ? changedAction : { ...this.action } // insure if state set on current entry, location is not stale
+    const action = n === 0 ? changedAction : createActionRef(this.location) // insure if state set on current entry, state is set in entries array as well
+    const location = { kind, index, entries }
     const commit = (action) => this._setState(action, n)
 
     state = typeof state === 'function' ? state(changedAction.state) : state
@@ -174,7 +170,7 @@ export default class History {
       throw new Error(`[rudy] no entry at index: ${i}. Consider using \`history.canJump(n)\`.`)
     }
 
-    return this._notify(action, { kind, index, entries }, { commit }, notify)
+    return this._notify(action, location, commit, notify)
   }
 
   back(state, notify = true) {
@@ -185,64 +181,48 @@ export default class History {
     return this.jump(1, state, false, 'next', notify)
   }
 
-  reset(entries, index, manualKind, notify = true) {
+  reset(entries, index, kindOverride, notify = true) {
     if (entries.length === 1) {
-      const entry = this._findResetFirstAction(entries[0])
+      const entry = this._findResetFirstAction(entries[0]) // browser must always have at least 2 entries, so one can be pushed, erasing old entries from the stack
       entries.unshift(entry)
     }
 
     entries = entries.map(entry => {
-      if (typeof entry === 'object' && entry.type) {
+      if (typeof entry === 'object' && entry.type) {  // entry as action object
         const action = entry
         const { url, state } = actionToUrl(action, this.routes, this.options)
         return this.createAction(url, state, action.basename)
       }
-      else if (Array.isArray(entry)) {
+      else if (Array.isArray(entry)) {                // entry as array of [url, state]
         const [url, state] = entry
         return this.createAction(url, state)
       }
 
-      return this.createAction(entry)
+      return this.createAction(entry)                 // entry as url string
     })
 
 
-    index = index !== undefined ? index : entries.length - 1
-    let n = manualKind === 'next' ? 1 : -1
-
-    if (!manualKind) {
-      if (entries.length > 1) {
-        if (index === entries.length - 1) {
-          manualKind = 'next'   // assume the user would be going forward in the new entries stack, i.e. if at head
-          n = 1
-        }
-        else if (index === this.index) {
-          manualKind = 'replace'
-          n = this.n
-        }
-        else {
-          manualKind = index < this.index ? 'back' : 'next'  // assume the user is going 'back' if lower than current index, and 'next' otherwise
-          n = index < this.index ? -1 : 1
-        }
-      }
-      else {
-        manualKind = 'load'                                  // if one entry, set kind to 'load' so app can behave as if it's loaded for the first time
-        n = 1
-      }
-    }
+    index = index !== undefined ? index : entries.length - 1 // default index is head of array
 
     if (!entries[index]) {
       throw new Error(`[rudy] no location entry at index: ${index}.`)
     }
+
+    const n = kindOverride
+      ? kindOverride === 'next' ? 1 : -1 // user manually chose which direction to pretend to be going
+      : index !== entries.length - 1
+        ? index > this.index ? 1 : (index === this.index ? this.n : -1) // create direction relative to index of current entries
+        : 1 // at the front of the array, always use "forward" direction
 
     const kind = 'reset'
     const action = { ...entries[index] }
     const location = { kind, index, entries, n }
     const commit = (action) => this._reset(action)
 
-    const prev = this._createPrev(location) || createPrevEmpty()
-    const from = manualKind === 'replace' && { ...this.action }
+    const prev = this._createPrev(location)
+    const from = index === this.index && createActionRef(this.location) // if index stays the same, treat as "replace"
 
-    return this._notify(action, location, { commit, manualKind, prev, from }, notify)
+    return this._notify(action, location, commit, notify, { prev, from })
   }
 
   _createPrev({ n, index: i, entries }) {
@@ -250,23 +230,27 @@ export default class History {
     const entry = entries[index]
     const { length } = entries
 
-    if (!entry) return
+    if (!entry) return createPrevEmpty()
 
     const { location, ...action } = entry
     action.location = { ...location, kind: 'push', index, length, entries, n }
-    return createStateRef(action, true) // build the action for that entry, and create what the resulting state shape would have looked like
+    return createActionRef(action, true) // build the action for that entry, and create what the resulting state shape would have looked like
   }
 
-  _findResetFirstAction(action) {
+  _findResetFirstAction(entry) {
     const { routes, options } = this
 
+    // the user can configure what the default first entry is
     if (options.resetFirstEntry) {
       return typeof options.resetFirstEntry === 'function'
-        ? options.resetFirstEntry(action)
+        ? options.resetFirstEntry(entry)
         : options.resetFirstEntry
     }
 
-    if (typeof action === 'object' && action.type) {
+    // if not, we have little choice but to put a HOME or NOT_FOUND action at the front of the entries
+    if (typeof entry === 'object' && entry.type) {
+      const action = entry
+
       if (routes[action.type].path !== '/') {
         const homeType = Object.keys(routes).find(type => routes[type].path === '/')
         return homeType ? { type: homeType } : { type: 'NOT_FOUND' }
@@ -275,7 +259,8 @@ export default class History {
       return { type: 'NOT_FOUND' }
     }
 
-    const path = Array.isArray(action) ? action[0] : action
+    // entries may also be supplied as paths or arrays also containing state, eg:  [[path, state], [path, state]]
+    const path = Array.isArray(entry) ? entry[0] : entry
     const notFoundPath = routes.NOT_FOUND.path
 
     if (path !== '/') {
@@ -293,7 +278,7 @@ export default class History {
 
   // UTILS:
 
-  _notify(action, location, extras, notify = true) {
+  _notify(action, location, commit, notify = true, extras) {
     const { index, entries, n: n1 } = location
     const n = n1 || (index > this.index ? 1 : (index === this.index ? this.n : -1))
     const { length } = entries
@@ -301,7 +286,7 @@ export default class History {
     action = {
       ...action,
       ...extras,
-      commit: this._once(extras.commit),
+      commit: this._once(commit),
       location: { ...action.location, ...location, length, n }
     }
 

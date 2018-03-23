@@ -24,7 +24,7 @@ export default (
   if (r && r.path && (l.url !== st.url || /load|reset/.test(l.kind))) {
     const { type, params, query, state, hash, basename } = action
     const { universal } = st
-    const s = { type, params, query, state, hash, universal, basename, ...l }
+    const s = { type, params, query, state, hash, basename, universal, ...l }
     if (st.ready === false) s.ready = true
     return s
   }
@@ -45,8 +45,7 @@ export default (
   }
 
   if (action.type === UNBLOCK) {
-    const { blocked, ...state } = st
-    return state
+    return { ...st, blocked: null }
   }
 
   if (l && l.kind === 'setState') {
@@ -86,30 +85,31 @@ export const createInitialState = (
   const prev = createPrev(location, routes, options, universal)
 
   return {
+    kind: 'init',
+    direction,
+
     type,
     params,
     query,
-    hash,
     state,
+    hash,
+    basename,
 
     url,
     pathname,
     search,
     key,
-    basename,
     scene,
-    direction,
-    status,
 
-    kind: 'init',
+    prev,
+
     entries,
     index,
     length,
-    pop: false,
 
     universal,
-
-    prev
+    pop: false,
+    status
   }
 }
 
@@ -120,13 +120,12 @@ export const createPrev = (
   universal
 ) => {
   const { n, index, entries, length } = location // needs to use real lastIndex instead of -1
-  const lastIndex = index + n // the entry action we want is the opposite of the direction the user is going
+  const n2 = n * -1
+  const lastIndex = index + n2 // the entry action we want is the opposite of the direction the user is going
   const prevAction = entries[lastIndex]
 
   if (!prevAction) return createPrevEmpty(universal)
 
-  const direction = n === -1 ? 'forward' : 'backward'
-  const kind = n === -1 ? 'push' : 'back'
   const { location: loc, ...action } = prevAction
   const { url, pathname, search, key } = loc
   const basename = action.basename ? action.basename.substr(1) : ''
@@ -134,21 +133,15 @@ export const createPrev = (
 
   return {
     ...action,
-
     basename,
-    url,
-    pathname,
-    search,
-    key,
-    scene,
-    direction,
-
-    kind,
-    entries,
-    index: lastIndex,
-    length,
-
-    universal
+    location: {
+      url,
+      pathname,
+      search,
+      key,
+      scene,
+      index: lastIndex
+    }
   }
 }
 
@@ -156,21 +149,15 @@ export const createPrevEmpty = (universal: boolean) => ({
   type: '',
   params: {},
   query: {},
-  hash: '',
   state: {},
-
-  url: '',
-  pathname: '',
-  search: '',
-  key: '',
+  hash: '',
   basename: '',
-  scene: '',
-  direction: 'forward',
-
-  kind: '',
-  entries: [],
-  index: -1,
-  length: 0,
-
-  universal
+  location: {
+    url: '',
+    pathname: '',
+    search: '',
+    key: '',
+    scene: '',
+    index: -1
+  }
 })

@@ -1,7 +1,6 @@
 // @flow
-import qs from 'query-string'
 import { matchUrl } from './index'
-import { parsePath } from '../history/utils'
+import { urlToLocation } from '../history/utils'
 import { notFound } from '../actions'
 
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
@@ -15,7 +14,7 @@ export default (
   const { url, basename = '', state = {} } = typeof loc === 'string' ? { url: loc } : loc
   const types = Object.keys(routes).filter(type => routes[type].path)
   const path = url.replace(basename, '')
-  const l = parsePath(path)
+  const l = urlToLocation(path)
 
   for (let i = 0; i < types.length; i++) {
     const type = types[i]
@@ -119,4 +118,4 @@ const transformers = { fromPath, fromSearch, fromHash }
 const isNumber = (val: string) => /^\d+$/.test(val)
 
 const parseQuery = (search, routes, opts) =>
-  (routes.NOT_FOUND.parseQuery || opts.parseQuery || qs.parse)(search)
+  (routes.NOT_FOUND.parseQuery || opts.parseQuery)(search)

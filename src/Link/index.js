@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 
 import { matchUrl } from '../utils'
-import { parsePath } from '../history/utils'
+import { urlToLocation } from '../history/utils'
 
 import { toUrlAndAction, handlePress, preventDefault } from './utils'
 import type { To, OnClick } from './utils'
@@ -134,7 +134,7 @@ const navLinkProps = (props: Props, fullUrl: string, action: ?ReceivedAction) =>
   } = props
 
   const { getLocation, options, routes } = rudy
-  const { pathname, query, hash } = parsePath(fullUrl)
+  const { pathname, query, hash } = urlToLocation(fullUrl)
   const matchers = { path: pathname, query: q && query, hash: h && hash }
   const opts = { partial, strict }
   const route = routes[action.type] || {}

@@ -1,7 +1,6 @@
 // @flow
-import pathToRegexp from 'path-to-regexp'
-import qs from 'query-string'
-import { matchQuery, matchVal } from './matchUrl'
+import { compile } from 'path-to-regexp'
+import { matchQuery, matchHash } from './matchUrl'
 
 import type {
   Route,
@@ -24,12 +23,11 @@ export default (
     throw new Error('[rudy] invalid query object')
   }
 
-  if (route.hash !== undefined && !matchVal(hash, route.hash, 'hash', route, opts)) {
+  if (route.hash !== undefined && matchHash(hash, route.hash, route, opts) == null) {
     throw new Error('[rudy] invalid hash value')
   }
 
-  const toPath = toPathCache[path] || pathToRegexp.compile(path)
-  toPathCache[path] = toPath
+  const toPath = toPathCache[path] = toPathCache[path] || compile(path)
 
   const p = toPath(params, { encode: x => x })
   const s = query ? `?${search}` : ''
@@ -39,5 +37,5 @@ export default (
 }
 
 const stringify = (query, r: Route, o: Options) =>
-  (r.stringifyQuery || o.stringifyQuery || qs.stringify)(query, { encode: true })
+  (r.stringifyQuery || o.stringifyQuery)(query)
 

@@ -1,4 +1,4 @@
-import { enhanceRoutes, shouldCall, createCache } from './utils'
+import { enhanceRoutes, shouldCall, createCache, autoDispatch } from './utils'
 import { noOp } from '../../utils'
 
 export default (name, config = {}) => (api) => {
@@ -15,15 +15,15 @@ export default (name, config = {}) => (api) => {
   }
 
   return (req, next = noOp) => {
-    const rt = prev ? req.prevRoute : req.route
+    const route = prev ? req.prevRoute : req.route
 
-    const isCached = cache && api.cache.isCached(name, rt, req)
+    const isCached = cache && api.cache.isCached(name, route, req)
     if (isCached) return next()
 
-    const calls = req.options.shouldCall(name, rt, req, config)
+    const calls = req.options.shouldCall(name, route, req, config)
     if (!calls) return next()
 
-    const r = (calls.route && rt[name]) || noOp
+    const r = (calls.route && route[name]) || noOp
     const o = (calls.options && !skipOpts && req.options[name]) || noOp
 
     if (start) {
@@ -33,8 +33,8 @@ export default (name, config = {}) => (api) => {
     }
 
     return Promise.all([
-      Promise.resolve(r(req)).then(r => autoDis(req, r, rt, name, next)),
-      Promise.resolve(o(req)).then(o => autoDis(req, o, rt, name, next, true))
+      autoDispatch(req, r, route, name),
+      autoDispatch(req, o, route, name, true)
     ]).then(([r, o]) => {
       req._start = false
 
@@ -72,30 +72,10 @@ export default (name, config = {}) => (api) => {
       if (cache) req.cache.cacheAction(name, req.action)
 
       const res = r !== undefined ? r : o
-      return complete(next)(res)
+      return next().then(() => res)
     })
   }
 }
 
 const isFalse = (r, o) => r === false || o === false
-
-const complete = (next) => (res) => next().then(() => res)
-
-const autoDis = (req, res, route, name, next, isOptCb) => {
-  if (res === false) return false
-  const hasReturn = res === null || (res && !res._dispatched) // `res._dispatched` indicates it was manually dispatched
-
-  if (hasReturn && isAutoDispatch(route, req.options, isOptCb)) { // if no dispatch was detected, and a result was returned, dispatch it automatically
-    return Promise.resolve(req.dispatch(res))
-  }
-
-  return res
-}
-
-const isAutoDispatch = (route, options, isOptCb) =>
-  isOptCb
-    ? options.autoDispatch === undefined ? true : options.autoDispatch
-    : route.autoDispatch !== undefined
-      ? route.autoDispatch
-      : options.autoDispatch === undefined ? true : options.autoDispatch
 

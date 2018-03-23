@@ -1,10 +1,11 @@
 import History from './History'
 
 import {
-  createPath,
-  getWindowLocation,
+  createAction,
+  locationToUrl,
   isExtraneousPopstateEvent,
-  createPopListenerFuncs,
+  addPopListener,
+  removePopListener,
   getHistoryState,
   getInitialHistoryState,
   restoreHistory,
@@ -56,7 +57,7 @@ export default class BrowserHistory extends History {
     opts.saveHistory = opts.saveHistory || saveHistory
 
     const { id, ...initialHistoryState } = getInitialHistoryState()
-    const defaultLocation = getWindowLocation(initialHistoryState, routes, opts)
+    const defaultLocation = createWindowAction(initialHistoryState, routes, opts)
     const { n, index, entries } = opts.restoreHistory(defaultLocation, routes, opts)
 
     super(routes, opts, { n, index, entries })
@@ -96,7 +97,12 @@ export default class BrowserHistory extends History {
       }
 
       const kind = n === -1 ? 'back' : 'next'
-      const revertPop = this._once(() => this._forceGo(n * -1))
+
+      let reverted = false
+      const revertPop = () => {
+        if (!reverted) this._forceGo(n * -1)
+        reverted = true
+      }
 
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
@@ -108,15 +114,15 @@ export default class BrowserHistory extends History {
 
     const onPopState = event => {
       if (isExtraneousPopstateEvent(event)) return // Ignore extraneous popstate events in WebKit.
-      handlePop(getWindowLocation(event.state, this.routes, this.options))
+      handlePop(createWindowAction(event.state, this.routes, this.options))
     }
 
     const onHashChange = () => {
-      handlePop(getWindowLocation(getHistoryState(), this.routes, this.options))
+      handlePop(createWindowAction(getHistoryState(), this.routes, this.options))
     }
 
-    const funcs = createPopListenerFuncs(onPopState, onHashChange)
-    Object.assign(this, funcs) // merge: `_addPopListener`, `_removePopListener`
+    this._addPopListener = () => addPopListener(onPopState, onHashChange)
+    this._removePopListener = () => removePopListener(onPopState, onHashChange)
   }
 
   _forceGo(n) {
@@ -200,7 +206,7 @@ export default class BrowserHistory extends History {
   _awaitLocation(actOrUrl, name) {
     return new Promise(resolve => {
       const url = typeof actOrUrl === 'string' ? actOrUrl : actOrUrl.location.url
-      const ready = () => url === createPath(window.location)
+      const ready = () => url === locationToUrl(window.location)
       return tryChange(ready, resolve, name, this)
     })
   }
@@ -240,4 +246,12 @@ const rapidChangeWorkaround = (ready, complete, name) => {
       rapidChangeWorkaround(again, com, name)
     }
   }
+}
+
+const createWindowAction = (historyState, routes, opts) => {
+  const { key = '0123456789', state = {} } = historyState || {}
+  const { pathname, search, hash } = window.location
+  const url = pathname + search + hash
+
+  return createAction(url, routes, opts, state, key)
 }
