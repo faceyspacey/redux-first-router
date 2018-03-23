@@ -13,6 +13,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -27,6 +28,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/third",
+          "scene": "",
           "search": "",
           "url": "/third",
         },

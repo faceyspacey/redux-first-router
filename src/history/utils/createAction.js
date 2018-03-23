@@ -17,6 +17,8 @@ export default (loc, routes, opts, state, key, basename, curr = {}) => {
   delete location.hash
   delete location.state
 
+  location.scene = routes[action.type].scene || ''
+
   return {
     ...action,
     location

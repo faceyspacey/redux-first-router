@@ -228,13 +228,13 @@ export default class History {
   _createPrev({ n, index: i, entries }) {
     const index = i - n
     const entry = entries[index]
-    const { length } = entries
 
     if (!entry) return createPrevEmpty()
 
-    const { location, ...action } = entry
-    action.location = { ...location, kind: 'push', index, length, entries, n }
-    return createActionRef(action, true) // build the action for that entry, and create what the resulting state shape would have looked like
+    const scene = this.routes[entry.type].scene || ''
+    const action = { ...entry, location: { ...entry.location, index, scene } }
+
+    return createActionRef(action) // build the action for that entry, and create what the resulting state shape would have looked like
   }
 
   _findResetFirstAction(entry) {

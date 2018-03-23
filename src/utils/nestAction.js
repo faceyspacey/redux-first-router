@@ -47,10 +47,8 @@ const nestAction = (action, prevState, fromAction, statusCode, tmp = {}) => {
 export default nestAction
 
 // create `state.prev/from/blocked`  values as idiomatic full-information rudy actions that can be re-dispatched
-export const createActionRef = (actionOrState, shouldNest = false) => {
+export const createActionRef = (actionOrState) => {
   if (!actionOrState) return null
-
-  actionOrState = shouldNest ? nestAction(actionOrState) : actionOrState // history.jump/reset requires creating an entire action from primary action key/vals
 
   // if `prev` or redirect action from outside of pipeline, we receive the state instead (see ./formatAction.js)
   if (!actionOrState.location) {

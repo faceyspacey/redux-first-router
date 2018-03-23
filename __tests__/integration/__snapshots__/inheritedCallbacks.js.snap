@@ -24,6 +24,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -50,6 +51,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -111,6 +113,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -168,6 +171,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -233,6 +237,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -259,6 +264,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -320,6 +326,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -377,6 +384,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -444,6 +452,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -470,6 +479,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -537,6 +547,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },

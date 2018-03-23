@@ -8,6 +8,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -22,6 +23,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/not-found",
+      "scene": "",
       "search": "",
       "url": "/not-found",
     },
@@ -49,6 +51,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -63,6 +66,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
+          "scene": "",
           "search": "",
           "url": "/not-found",
         },
@@ -124,6 +128,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -138,6 +143,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
+          "scene": "",
           "search": "",
           "url": "/not-found",
         },
@@ -195,6 +201,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -209,6 +216,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/not-found",
+      "scene": "",
       "search": "",
       "url": "/not-found",
     },
@@ -238,6 +246,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -252,6 +261,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
+          "scene": "",
           "search": "",
           "url": "/not-found",
         },
@@ -317,6 +327,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -331,6 +342,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
+          "scene": "",
           "search": "",
           "url": "/not-found",
         },
@@ -392,6 +404,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -406,6 +419,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/scene-level-not-found",
+      "scene": "",
       "search": "",
       "url": "/scene-level-not-found",
     },
@@ -435,6 +449,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -449,6 +464,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/scene-level-not-found",
+          "scene": "",
           "search": "",
           "url": "/scene-level-not-found",
         },
@@ -514,6 +530,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -528,6 +545,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/scene-level-not-found",
+          "scene": "",
           "search": "",
           "url": "/scene-level-not-found",
         },
@@ -593,6 +611,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/non-existent",
+      "scene": "",
       "search": "",
       "url": "/non-existent",
     },
@@ -619,6 +638,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/non-existent",
+          "scene": "",
           "search": "",
           "url": "/non-existent",
         },
@@ -680,6 +700,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/non-existent",
+          "scene": "",
           "search": "",
           "url": "/non-existent",
         },
@@ -737,6 +758,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/non-existent",
+          "scene": "",
           "search": "",
           "url": "/non-existent",
         },

@@ -8,6 +8,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -54,6 +55,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -112,6 +114,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -126,6 +129,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/foo",
+      "scene": "",
       "search": "",
       "url": "/foo",
     },
@@ -153,6 +157,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -167,6 +172,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/foo",
+          "scene": "",
           "search": "",
           "url": "/foo",
         },
@@ -229,6 +235,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -243,6 +250,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/foo",
+          "scene": "",
           "search": "",
           "url": "/foo",
         },
@@ -301,6 +309,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -353,6 +362,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -411,6 +421,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -425,6 +436,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/bar",
+      "scene": "",
       "search": "",
       "url": "/bar",
     },
@@ -462,6 +474,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -476,6 +489,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/bar",
+          "scene": "",
           "search": "",
           "url": "/bar",
         },

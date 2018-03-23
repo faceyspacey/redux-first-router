@@ -8,6 +8,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -22,6 +23,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/redirected-again-after",
+      "scene": "",
       "search": "",
       "url": "/redirected-again-after",
     },
@@ -49,6 +51,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -63,6 +66,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/redirected-again-after",
+          "scene": "",
           "search": "",
           "url": "/redirected-again-after",
         },
@@ -149,6 +153,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -163,6 +168,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/redirected-again-after",
+          "scene": "",
           "search": "",
           "url": "/redirected-again-after",
         },
@@ -235,6 +241,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/first",
+      "scene": "",
       "search": "",
       "url": "/first",
     },
@@ -249,6 +256,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/redirected-again",
+      "scene": "",
       "search": "",
       "url": "/redirected-again",
     },
@@ -276,6 +284,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -290,6 +299,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/redirected-again",
+          "scene": "",
           "search": "",
           "url": "/redirected-again",
         },
@@ -374,6 +384,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/first",
+          "scene": "",
           "search": "",
           "url": "/first",
         },
@@ -388,6 +399,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/redirected-again",
+          "scene": "",
           "search": "",
           "url": "/redirected-again",
         },

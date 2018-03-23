@@ -82,7 +82,7 @@ export const createInitialState = (
   const universal = isServer()
   const status = isNotFound(type) ? 404 : 200
   const direction = n === -1 ? 'backward' : 'forward'
-  const prev = createPrev(location, routes, options, universal)
+  const prev = createPrev(location, routes, options)
 
   return {
     kind: 'init',
@@ -119,14 +119,13 @@ export const createPrev = (
   location,
   routes,
   opts,
-  universal
 ) => {
   const { n, index, entries, length } = location // needs to use real lastIndex instead of -1
   const n2 = n * -1
   const lastIndex = index + n2 // the entry action we want is the opposite of the direction the user is going
   const prevAction = entries[lastIndex]
 
-  if (!prevAction) return createPrevEmpty(universal)
+  if (!prevAction) return createPrevEmpty()
 
   const { location: loc, ...action } = prevAction
   const { url, pathname, search, key } = loc
@@ -147,7 +146,7 @@ export const createPrev = (
   }
 }
 
-export const createPrevEmpty = (universal: boolean) => ({
+export const createPrevEmpty = () => ({
   type: '',
   params: {},
   query: {},
