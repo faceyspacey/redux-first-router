@@ -129,7 +129,7 @@ export default class History {
     action.state = { ...action.state, ...state }
 
     if (!this.entries[index]) {
-      throw new Error(`[rudy] no entry at index: ${index}. Consider using \`history.canJump(n)\`.`)
+      throw new Error(`[rudy] no entry at index: ${index}.`)
     }
 
     return this._notify(action, location, commit, notify, { prev, revertPop })
@@ -151,7 +151,7 @@ export default class History {
     changedAction.state = { ...changedAction.state, ...state }
 
     if (!this.entries[i]) {
-      throw new Error(`[rudy] no entry at index: ${i}. Consider using \`history.canJump(n)\`.`)
+      throw new Error(`[rudy] no entry at index: ${i}`)
     }
 
     return this._notify(action, location, commit, notify)

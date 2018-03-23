@@ -19,9 +19,8 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
         return Promise.resolve(ret)
       }
 
-      if (req.tmp.cancelled) { // if a new request comes in before this one commits/enters, cancel it by not calling next middleware
+      if (req.tmp.canceled) { // if a new request comes in before this one commits/enters, cancel it by not calling next middleware
         const ret = i === 0 && result !== undefined ? result : false
-        console.log('CANCELED', i, req.location && req.location.url)
         req.history.canceled = req.action
         return Promise.resolve(ret) // short-circuit, dont call next middleware
       }
@@ -58,7 +57,6 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
           // if a middleware return `false`, the pipeline is terminated and now there is no longer a "pending" route change
           if (res === false && !req.tmp.committed) {
             const newRequestCameIn = req.ctx.pending !== req
-            console.log('NEW REQUEST CAME IN?', newRequestCameIn)
             req.ctx.pending = newRequestCameIn ? req.ctx.pending : false // preserve potential incoming request that came in during async callback that returned false, otherwise indicate the initial request is no longer pending
 
             // call window.history.go(-1 | 1) to go back to URL/route whose `beforeLeave` returned `false`

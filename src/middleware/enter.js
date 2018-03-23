@@ -16,9 +16,9 @@ export default (api) => async (req, next) => {
       })
     }, 0) // insure callbacks like `onEnter` are called after `ReactDOM.render`, which should immediately be called after dispatching `firstRoute()`
 
-    // in `createRouter.js` this flag will indicate to keep the pipeline still busy
-    // so that dispatches in `thunk` and other callbacks after `enter` are treated
-    // as redirects, as automatically happens throughout the pipeline
+    // in `createRouter.js` this flag will indicate to keep the pipeline still "busy" so
+    // that dispatches in `thunk` and other callbacks after `enter` are treated as redirects,
+    // as automatically happens throughout the pipeline. It becomes unbusy in the timeout above.
     req.clientLoadBusy = true
     return res
   }

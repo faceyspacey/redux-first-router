@@ -83,7 +83,7 @@ export default (
 
     return (dispatch: Dispatch) => (action: Object) => {
       if (!shouldTransition(action, api)) return dispatch(action) // short-circuit and pass through Redux middleware normally
-      if (action.tmp && action.tmp.cancelled) return Promise.resolve(action)
+      if (action.tmp && action.tmp.canceled) return Promise.resolve(action)
 
       const req = createRequest(action, api, dispatch) // the `Request` arg passed to all middleware
       const mw = req.route.middleware
@@ -96,8 +96,9 @@ export default (
           return onError(req)
         })
         .then(res => {
-          const isRouteChangingPipeline = req.route.path && !req.tmp.cancelled && !req.clientLoadBusy
-          req.ctx.busy = isRouteChangingPipeline ? false : req.ctx.busy
+          const { route, tmp, ctx, clientLoadBusy } = req
+          const isRoutePipeline = route.path && !tmp.canceled && !clientLoadBusy
+          ctx.busy = isRoutePipeline ? false : ctx.busy
           return res
         })
     }

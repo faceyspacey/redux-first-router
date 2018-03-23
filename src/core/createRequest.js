@@ -30,7 +30,7 @@ export class Request {
     // cancel pending not committed requests if new ones quickly come in
     if (isRouteAction) {
       if (pendingRequest && isNewPipeline) {
-        pendingRequest.tmp.cancelled = true // `compose` will return early on pending requests, effectively cancelling them
+        pendingRequest.tmp.canceled = true // `compose` will return early on pending requests, effectively cancelling them
         pendingRequest.tmp.revertPop && pendingRequest.tmp.revertPop() // cancel any actions triggered by browser pops
       }
 
@@ -81,7 +81,7 @@ export class Request {
 
       if (this.ctx.busy) {
         // keep track of previous action to properly replace instead of push during back/next redirects
-        // see `middleware/transformAction/utils/formatAction.js`
+        // while setting to `state.from`. See `middleware/transformAction/utils/formatAction.js`
         action.tmp.from = this.tmp.from || this.action
       }
     }
@@ -151,11 +151,6 @@ export class Request {
     return this.realDispatch({ type: BLOCK, payload: { ref } })
   }
 
-  setFrom = () => {
-    const ref = createActionRef(this.action)
-    return this.realDispatch({ type: SET_FROM, payload: { ref } })
-  }
-
   getKind = () => {
     if (this.tmp.load) return 'load'
     return this.action.location && this.action.location.kind
@@ -163,5 +158,34 @@ export class Request {
 
   isUniversal = () => {
     return this.getLocation().universal
+  }
+
+  isDoubleDispatch = () => {
+    return this.action.location.url === this.getLocation().url
+      && !/load|reset|jump/.test(this.getKind()) // on `load`, the `firstRoute` action will trigger the same URL as stored in state; the others must always pass through
+  }
+
+  handleDoubleDispatch = () => {
+    this.ctx.pending = false
+    this.history.pendingPop = null
+
+    if (!this.tmp.from) return this.action // primary use case
+
+    // below is code related to occuring during a redirect (i.e. because `this.tmp.from` exists)
+    this.ctx.doubleDispatchRedirect = this.action // if it happens to be within a route-changing pipline that redirects, insure the parent pipeline short-circuits while setting `state.from` (see below + `call/index.js`)
+    if (this.tmp.revertPop) this.tmp.revertPop()
+
+    return this.action
+  }
+
+  handleDoubleDispatchRedirect = (res) => {
+    const attemptedAction = this.ctx.doubleDispatchRedirect
+    delete this.ctx.doubleDispatchRedirect
+    this.canceled = true
+
+    const ref = createActionRef(this.action)
+    this.realDispatch({ type: SET_FROM, payload: { ref } })
+
+    return res !== undefined ? res : attemptedAction
   }
 }
