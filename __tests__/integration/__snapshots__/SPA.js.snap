@@ -33,6 +33,7 @@ exports[`callbacks called on load if SPA: firstRoute - /first - 1 - initial_stat
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -50,6 +51,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

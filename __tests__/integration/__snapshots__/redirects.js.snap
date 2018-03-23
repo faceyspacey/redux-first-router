@@ -33,6 +33,7 @@ exports[`redirect after enter (on firstRoute): firstRoute - /first - 1 - initial
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -50,6 +51,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",
@@ -347,6 +349,7 @@ exports[`redirect before enter (on firstRoute): firstRoute - /first - 1 - initia
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -364,6 +367,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

@@ -186,6 +186,7 @@ exports[`allow double dispatch when kind === "load": firstRoute - /first - 1 - i
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -203,6 +204,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

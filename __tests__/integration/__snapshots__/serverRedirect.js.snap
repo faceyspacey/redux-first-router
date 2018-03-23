@@ -33,6 +33,7 @@ exports[`redirect on server not dispatched; instead redirect info returned: firs
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -50,6 +51,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

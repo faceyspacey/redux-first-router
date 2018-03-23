@@ -41,6 +41,7 @@ exports[`beforeEnter + thunk callbacks NOT called if isHydrate: firstRoute - /fi
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -58,6 +59,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

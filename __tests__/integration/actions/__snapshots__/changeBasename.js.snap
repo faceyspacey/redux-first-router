@@ -148,6 +148,7 @@ exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - 
 Object {
   "location": Object {
     "basename": "bar",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -165,6 +166,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",
@@ -534,6 +536,7 @@ exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /fo
 Object {
   "location": Object {
     "basename": "foo",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -551,6 +554,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

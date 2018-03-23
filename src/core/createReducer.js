@@ -102,6 +102,8 @@ export const createInitialState = (
     scene,
 
     prev,
+    from: null,
+    blocked: null,
 
     entries,
     index,

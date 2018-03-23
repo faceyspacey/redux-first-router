@@ -29,6 +29,7 @@ exports[`callback can be array of functions: firstRoute - /first - 1 - initial_s
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -46,6 +47,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",
@@ -182,6 +184,7 @@ exports[`callback can be array of inherited callbacks: firstRoute - /first - 1 -
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -199,6 +202,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

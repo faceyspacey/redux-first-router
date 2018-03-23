@@ -932,6 +932,7 @@ exports[`beforeLeave return false: firstRoute - /first - 1 - initial_state 1`] =
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -949,6 +950,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",
@@ -1322,6 +1324,7 @@ exports[`beforeLeave return undefined: firstRoute - /first - 1 - initial_state 1
 Object {
   "location": Object {
     "basename": "",
+    "blocked": null,
     "direction": "forward",
     "entries": Array [
       Object {
@@ -1339,6 +1342,7 @@ Object {
         "type": "FIRST",
       },
     ],
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",

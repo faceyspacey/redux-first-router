@@ -23,6 +23,7 @@ const nestAction = (action, prevState, fromAction, statusCode, tmp = {}) => {
     location: {
       kind: /jump|reset/.test(k) ? k : kind,
       direction,
+
       url,
       pathname,
       search,
@@ -62,26 +63,23 @@ export const createActionRef = (actionOrState, shouldNest = false) => {
   // if redirect occurred during pipeline, we receive an action representing the previous state
   return {
     ...actionOrState,
-    location: createLocationRef(actionOrState.location)
+    location: createLocationRef({ ...actionOrState.location })
   }
 }
 
-const createLocationRef = (actionOrState, shouldNest = false) => {
-  const location = actionOrState && actionOrState.location
-  const state = { ...location, ...actionOrState }
+const createLocationRef = (loc) => {
+  delete loc.prev
+  delete loc.from
+  delete loc.blocked
+  delete loc.universal
 
-  delete state.prev
-  delete state.from
-  delete state.blocked
-  delete state.universal
-  delete state.location
+  delete loc.length
+  delete loc.kind
+  delete loc.entries
+  delete loc.pop
+  delete loc.status
+  delete loc.direction
+  delete loc.universal
 
-  delete state.length
-  delete state.kind
-  delete state.entries
-  delete state.pop
-  delete state.status
-  delete state.direction
-
-  return state
+  return loc
 }
