@@ -10,11 +10,7 @@ import type {
   Options
 } from '../flow-types'
 
-export default (
-  initialState: Object,
-  routes: RoutesMap,
-  options: Options
-) => (
+export default (initialState: Object, routes: RoutesMap) => (
   st: LocationState = initialState,
   action: Action
 ): LocationState => {
@@ -70,11 +66,7 @@ export default (
 }
 
 
-export const createInitialState = (
-  action: History,
-  routes: RoutesMap,
-  options: Options
-): LocationState => {
+export const createInitialState = (action: Action): LocationState => {
   const { type, params = {}, query = {}, state = {}, hash = '', location } = action
   const { entries, index, length, pathname, search, url, key, n } = location
   const basename = action.basename ? action.basename.substr(1) : ''
@@ -82,7 +74,7 @@ export const createInitialState = (
   const universal = isServer()
   const status = isNotFound(type) ? 404 : 200
   const direction = n === -1 ? 'backward' : 'forward'
-  const prev = createPrev(location, routes, options)
+  const prev = createPrev(location)
 
   return {
     kind: 'init',
@@ -115,33 +107,18 @@ export const createInitialState = (
   }
 }
 
-export const createPrev = (
-  location,
-  routes,
-  opts,
-) => {
-  const { n, index, entries, length } = location // needs to use real lastIndex instead of -1
-  const n2 = n * -1
-  const lastIndex = index + n2 // the entry action we want is the opposite of the direction the user is going
-  const prevAction = entries[lastIndex]
+export const createPrev = (location) => {
+  const { n, index: i, entries } = location // needs to use real lastIndex instead of -1
+  const index = i + (n * -1) // the entry action we want is the opposite of the direction the user is going
+  const prevAction = entries[index]
 
   if (!prevAction) return createPrevEmpty()
 
-  const { location: loc, ...action } = prevAction
-  const { url, pathname, search, key } = loc
-  const basename = action.basename ? action.basename.substr(1) : ''
-  const scene = routes[action.type].scene || ''
-
   return {
-    ...action,
-    basename,
+    ...prevAction,
     location: {
-      url,
-      pathname,
-      search,
-      key,
-      scene,
-      index: lastIndex
+      ...prevAction.location,
+      index
     }
   }
 }

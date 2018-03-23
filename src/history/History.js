@@ -29,32 +29,7 @@ export default class History {
   }
 
   get location() {
-    return this.getLocation() // assigned by
-  }
-
-  get kind() {
-    return this.location.kind
-  }
-
-  get n() {
-    return this.location.direction === 'forward' ? 1 : -1
-  }
-
-  get type() {
-    return this.location.type
-  }
-
-  get url() {
-    return this.location.url
-  }
-
-  get prevUrl() {
-    if (this.kind === 'load') return this.location.from.location.url // called by `BrowserHistory._replace` on redirects when `prev` state is empty
-    return this.location.prev.location.url
-  }
-
-  get basename() {
-    return this.location.basename
+    return this.getLocation()
   }
 
   get entries() {
@@ -65,8 +40,17 @@ export default class History {
     return this.location.index
   }
 
-  get length() {
-    return this.location.length
+  get url() {
+    return this.location.url
+  }
+
+  get prevUrl() {
+    if (this.location.kind === 'load') return this.location.from.location.url // called by `BrowserHistory._replace` on redirects when `prev` state is empty
+    return this.location.prev.location.url
+  }
+
+  get n() {
+    return this.location.direction === 'forward' ? 1 : -1 // direction in userland is a string, but in here a number
   }
 
   createAction(path, state, basename) {

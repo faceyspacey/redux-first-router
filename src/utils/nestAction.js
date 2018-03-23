@@ -1,6 +1,6 @@
 import { typeToScene, isNotFound } from './index'
 
-const nestAction = (action, prevState, fromAction, statusCode, tmp = {}) => {
+export default (action, prevState, fromAction, statusCode, tmp = {}) => {
   const { location, type, params = {}, query = {}, state = {}, hash = '', basename: bn = '' } = action
   const { kind: k, entries, index, length, pathname, search, url, key, n } = location
 
@@ -44,9 +44,6 @@ const nestAction = (action, prevState, fromAction, statusCode, tmp = {}) => {
   }
 }
 
-export default nestAction
-
-// create `state.prev/from/blocked`  values as idiomatic full-information rudy actions that can be re-dispatched
 export const createActionRef = (actionOrState) => {
   if (!actionOrState) return null
 
@@ -77,6 +74,7 @@ const createLocationRef = (loc) => {
   delete loc.pop
   delete loc.status
   delete loc.direction
+  delete loc.n
   delete loc.universal
 
   return loc
