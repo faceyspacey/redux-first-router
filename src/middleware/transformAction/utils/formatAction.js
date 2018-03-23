@@ -13,7 +13,7 @@ export default (req) => {
   let pop
   let n
 
-  if (!tmp.committed && (n = findNeighboringN(tmp.prevAction, history))) {
+  if (!tmp.committed && (n = findNeighboringN(tmp.from, history))) {
     method = 'replacePop'
     pop = replacePopAction(n, url, history, tmp)
   }

@@ -10,7 +10,6 @@ export default () => (req, next) => {
 
   const { type, params, query, hash, state, location } = req.action
   Object.assign(req, { type, params, query, hash, state, location }) // assign to `req` for conevenience (less destructuring in callbacks)
-  req.tmp.from = req.action // record attempted route for potential redirects
 
   return next().then(() => req.action)
 }

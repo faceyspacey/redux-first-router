@@ -23,7 +23,7 @@ module.exports = wallaby => {
       // '__tests__/integration/browser/sessionStorage/historyFallbackWithRedirectBeforeEnter.js',
       // '__tests__/integration/redirects.js',
 
-      '__tests__/integration/browser/**/*.js',
+      // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/actions/**/*.js',
       // '__tests__/integration/createScene/**/*.js',
 
@@ -64,7 +64,7 @@ module.exports = wallaby => {
       // '__tests__/integration/dontDoubleDispatch.js',
 
       // '__tests__/integration/createAction.js',
-      // '__tests__/integration/createRequest.js',
+      '__tests__/integration/createRequest.js',
 
       // '__tests__/integration/firstRoute.js',
       // '__tests__/integration/SPA.js',
@@ -82,7 +82,7 @@ module.exports = wallaby => {
 
       // '__tests__/integration/redirects.js',
       // '__tests__/integration/returnFalse.js',
-      // '__tests__/integration/multipleRedirects.js',
+      '__tests__/integration/multipleRedirects.js',
       // '__tests__/integration/complexRedirects.js',
       // '__tests__/integration/serverRedirect.js',
       // '__tests__/integration/redirectShortcut.js',

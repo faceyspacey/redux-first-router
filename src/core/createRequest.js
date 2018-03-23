@@ -81,8 +81,8 @@ export class Request {
 
       if (this.ctx.busy) {
         // keep track of previous action to properly replace instead of push during back/next redirects
-        // see `middleware/transformAction/utils/reduxAction.js`
-        action.tmp.prevAction = this.tmp.prevAction || this.action
+        // see `middleware/transformAction/utils/formatAction.js`
+        action.tmp.from = this.tmp.from || this.action
       }
     }
 

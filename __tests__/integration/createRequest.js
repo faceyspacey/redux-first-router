@@ -34,7 +34,8 @@ createTest('callback "req" argument has all goodies', {
       expect(req.ctx).toMatchObject({ pending: false, busy: true })
       expect(req.tmp).toMatchObject({
         committed: true,
-        from: { type: 'SECOND' }
+        load: undefined,
+        revertPop: undefined
       })
     }
   }

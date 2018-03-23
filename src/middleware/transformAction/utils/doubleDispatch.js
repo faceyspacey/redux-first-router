@@ -2,7 +2,7 @@ export default (req) => {
   req.ctx.pending = false
   req.history.pendingPop = null
 
-  if (!req.tmp.prevAction) return req.action // primary use case
+  if (!req.tmp.from) return req.action // primary use case
 
   req.ctx.doubleDispatchRedirect = req.action // if it happens to be within a route-changing pipline that redirects,
   if (req.tmp.revertPop) req.tmp.revertPop() // insure the parent pipeline short-ciruits while setting `state.from` (see `call/index.js`)
