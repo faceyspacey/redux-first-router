@@ -16,15 +16,18 @@ export default (
   opts: Options = {},
   prevRoute?: Object
 ): string => {
-  const { type, params, query, hash, basename = '' } = action
+  const { type, params, query, hash, basename: bn = '' } = action
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
-
-  if (typeof path !== 'string') throw new Error('[rudy] invalid route path')
-
   const state = toState(action.state, route, opts, action)
+  const basename = bn && bn.charAt(0) !== '/' ? `/${bn}` : bn
+  const isWrongBasename = basename && !opts.basenames.includes(basename)
 
   try {
+    if (isWrongBasename) {
+      throw new Error(`[rudy] basename "${basename}" not in options.basenames`)
+    }
+
     const pathname = compileUrl(
       path,
       toPath(params, route, opts, action),
@@ -42,7 +45,8 @@ export default (
       console.error(`[rudy] unable to compile action "${type}" to URL`, action, e)
     }
 
-    const url = basename + notFoundUrl(action, routes, prevRoute)
+    const bn = isWrongBasename ? '' : basename
+    const url = bn + notFoundUrl(action, routes, prevRoute)
     return { url, state: {} }
   }
 }

@@ -113,6 +113,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "foo",
     },
@@ -257,6 +258,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/redirected",
     "pop": false,

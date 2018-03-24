@@ -67,18 +67,18 @@ export default (initialState: Object, routes: RoutesMap) => (
 
 
 export const createInitialState = (action: Action): LocationState => {
-  const { type, params = {}, query = {}, state = {}, hash = '', location } = action
-  const { entries, index, length, pathname, search, url, key, n } = location
-  const basename = action.basename ? action.basename.substr(1) : ''
-  const scene = typeToScene(type)
-  const universal = isServer()
-  const status = isNotFound(type) ? 404 : 200
+  const { location, type, basename, params, query, state, hash } = action
+  const { entries, index, length, pathname, search, url, key, scene, n } = location
+
   const direction = n === -1 ? 'backward' : 'forward'
   const prev = createPrev(location)
+  const universal = isServer()
+  const status = isNotFound(type) ? 404 : 200
 
   return {
     kind: 'init',
     direction,
+    n,
 
     type,
     params,

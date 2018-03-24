@@ -1,6 +1,6 @@
 import { BLOCK, UNBLOCK, SET_FROM } from '../types'
 import { redirect } from '../actions'
-import { createAction, createActionRef } from '../utils'
+import { isAction, createActionRef } from '../utils'
 
 export default (
   action,
@@ -46,6 +46,7 @@ export class Request {
     this.route = route
     this.prevRoute = prevRoute
     this.error = null
+    this.scene = route.scene || ''
 
     this.realDispatch = api.dispatch
     this.commitDispatch = next // standard redux next dispatch from our redux middleware
@@ -93,7 +94,7 @@ export class Request {
 
     if (typeof action !== 'function') {
       if (!this._start) {
-        action = createAction(action, this)       // automatically turn payload-only actions into real actions with routeType_COMPLETE|_DONE as type
+        action = this.populateAction(action, this)       // automatically turn payload-only actions into real actions with routeType_COMPLETE|_DONE as type
       }
       else if (this._start) {
         // a callback immediately before `enter` has the final action/payload dispatched attached
@@ -187,5 +188,27 @@ export class Request {
     this.realDispatch({ type: SET_FROM, payload: { ref } })
 
     return res !== undefined ? res : attemptedAction
+  }
+
+  populateAction = (act) => {
+    let type
+
+    const action = isAction(act)
+      ? act
+      : typeof act === 'string' && (type = this.isActionType(act))
+        ? { type }
+        : { payload: act }
+
+    action.type = action.type ||
+      (this.tmp.committed ? `${this.type}_COMPLETE` : `${this.type}_DONE`)
+
+    return action
+  }
+
+  isActionType = (str) => {
+    if (this.routes[str]) return str
+    if (this.routes[`${this.scene}/${str}`]) return str
+    if (/^[A-Z0-9_/]+$/.test(str)) return str
+    if (str.indexOf('@@') === 0) return str
   }
 }

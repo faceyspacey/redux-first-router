@@ -1,5 +1,6 @@
 import History from './History'
-import { createAction, restoreHistory, saveHistory, getInitialN } from './utils'
+import { urlToAction } from '../utils'
+import { restoreHistory, saveHistory, getInitialN } from './utils'
 
 // NOTE ON HISTORY STUBS:
 
@@ -48,7 +49,7 @@ export default class MemoryHistory extends History {
 const create = (routes, opts, initialIndex, initialEntries) => {
   const n = getInitialN(initialIndex, initialEntries) // initial direction the user is going across the history track
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
-  const entries = initialEntries.map(e => createAction(e, routes, opts))
+  const entries = initialEntries.map(e => urlToAction(e, routes, opts))
   return { n, index, entries }
 }
 
@@ -60,7 +61,7 @@ const create = (routes, opts, initialIndex, initialEntries) => {
 
 const restore = (routes, opts, initialIndex, initialEntries) => {
   const entry = initialEntries[0]
-  const defaultLocation = createAction(entry, routes, opts)
+  const defaultLocation = urlToAction(entry, routes, opts)
   const { n, index, entries } = restoreHistory(defaultLocation, routes, opts) // impure
   return { n, index, entries }
 }

@@ -30,7 +30,7 @@ export default (
   const toPath = toPathCache[path] = toPathCache[path] || compile(path)
 
   const p = toPath(params, { encode: x => x })
-  const s = query ? `?${search}` : ''
+  const s = search ? `?${search}` : ''
   const h = hash ? `#${hash}` : ''
 
   return p + s + h

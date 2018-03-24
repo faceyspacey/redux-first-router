@@ -81,6 +81,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -159,6 +160,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -274,6 +276,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -352,6 +355,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -471,6 +475,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -553,6 +558,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -723,6 +729,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -808,6 +815,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -901,6 +909,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -988,6 +997,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -1123,6 +1133,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -1213,6 +1224,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -1342,6 +1354,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -1428,6 +1441,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -1577,6 +1591,7 @@ Object {
     "key": "345678",
     "kind": "jump",
     "length": 3,
+    "n": -1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -1670,6 +1685,7 @@ Object {
     "key": "345678",
     "kind": "jump",
     "length": 3,
+    "n": -1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -1785,6 +1801,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -1863,6 +1880,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -1978,6 +1996,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -2056,6 +2075,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -2175,6 +2195,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -2257,6 +2278,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -2382,6 +2404,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -2468,6 +2491,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -2621,6 +2645,7 @@ Object {
     "key": "345678",
     "kind": "jump",
     "length": 3,
+    "n": 1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -2718,6 +2743,7 @@ Object {
     "key": "345678",
     "kind": "jump",
     "length": 3,
+    "n": 1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -2873,6 +2899,7 @@ Object {
     "key": "345678",
     "kind": "jump",
     "length": 3,
+    "n": -1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -2972,6 +2999,7 @@ Object {
     "key": "345678",
     "kind": "jump",
     "length": 3,
+    "n": -1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -3089,6 +3117,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -3167,6 +3196,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -3286,6 +3316,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -3368,6 +3399,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -3470,6 +3502,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 1,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -3548,6 +3581,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -3652,6 +3686,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 1,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -3734,6 +3769,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -3790,7 +3826,7 @@ Array [
     "type": "SECOND",
   },
   Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "hash": "something",
     "location": Object {
       "key": "345678",
@@ -3840,7 +3876,7 @@ Object {
         "type": "SECOND",
       },
       Object {
-        "basename": "/base-name",
+        "basename": "base-name",
         "hash": "something",
         "location": Object {
           "key": "345678",
@@ -3865,6 +3901,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -3931,7 +3968,7 @@ Object {
         "type": "SECOND",
       },
       Object {
-        "basename": "/base-name",
+        "basename": "base-name",
         "hash": "something",
         "location": Object {
           "key": "345678",
@@ -3957,6 +3994,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -4018,7 +4056,7 @@ Array [
     "type": "SECOND",
   },
   Object {
-    "basename": "/base-name",
+    "basename": "base-name",
     "hash": "something",
     "location": Object {
       "key": "345678",
@@ -4068,7 +4106,7 @@ Object {
         "type": "SECOND",
       },
       Object {
-        "basename": "/base-name",
+        "basename": "base-name",
         "hash": "something",
         "location": Object {
           "key": "345678",
@@ -4093,6 +4131,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -4159,7 +4198,7 @@ Object {
         "type": "SECOND",
       },
       Object {
-        "basename": "/base-name",
+        "basename": "base-name",
         "hash": "something",
         "location": Object {
           "key": "345678",
@@ -4185,6 +4224,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -4307,6 +4347,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -4385,6 +4426,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -4500,6 +4542,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": -1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -4578,6 +4621,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -4723,6 +4767,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 3,
+    "n": -1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -4816,6 +4861,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 3,
+    "n": -1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -4931,6 +4977,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -5009,6 +5056,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -5184,6 +5232,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 4,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -5292,6 +5341,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 4,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -5407,6 +5457,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -5485,6 +5536,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -5615,6 +5667,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -5708,6 +5761,7 @@ Object {
     "key": "345678",
     "kind": "reset",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -5797,6 +5851,7 @@ Object {
     "key": "345678",
     "kind": "setState",
     "length": 1,
+    "n": 1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -5864,6 +5919,7 @@ Object {
     "key": "345678",
     "kind": "load",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -5985,6 +6041,7 @@ Object {
     "key": "345678",
     "kind": "setState",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -6065,6 +6122,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -6184,6 +6242,7 @@ Object {
     "key": "345678",
     "kind": "setState",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -6264,6 +6323,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -6383,6 +6443,7 @@ Object {
     "key": "345678",
     "kind": "setState",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -6463,6 +6524,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -6552,6 +6614,7 @@ Object {
     "key": "345678",
     "kind": "setState",
     "length": 1,
+    "n": 1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -6619,6 +6682,7 @@ Object {
     "key": "345678",
     "kind": "load",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,

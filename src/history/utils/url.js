@@ -1,5 +1,5 @@
 export const urlToLocation = (url) => {
-  if (typeof url === 'object') return url // already a location object
+  if (typeof url === 'object' && url.pathname) return url
 
   let pathname = url || '/'
   let search = ''
@@ -21,7 +21,7 @@ export const urlToLocation = (url) => {
 }
 
 export const locationToUrl = location => {
-  if (typeof location === 'string') return location // already a url
+  if (typeof location === 'string') return location
 
   const { pathname, search, hash } = location
 
@@ -40,17 +40,24 @@ export const locationToUrl = location => {
 
 
 export const stripBasename = (path, bn) =>
-  new RegExp(`^${bn}(\\/|\\?|#|$)`, 'i').test(path) ? path.substr(bn.length) : path
+  path.indexOf(bn) === 0 ? path.substr(bn.length) : path
 
 export const findBasename = (path, bns = []) =>
   bns.find(bn => path.indexOf(bn) === 0)
 
 
-export const formatSlashes = path =>
-  path === '' ? path : stripTrailingSlash(addLeadingSlash(path))
+export const formatSlashes = (path, stripLeading = false) => {
+  if (path === '') return path
+  return stripLeading
+    ? stripTrailingSlash(stripLeadingSlash(path))
+    : stripTrailingSlash(addLeadingSlash(path))
+}
 
 const addLeadingSlash = path =>
   path.charAt(0) === '/' ? path : `/${path}`
+
+const stripLeadingSlash = path =>
+  path.charAt(0) === '/' ? path.substr(1) : path
 
 const stripTrailingSlash = path =>
   path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path

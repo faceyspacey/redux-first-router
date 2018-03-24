@@ -3,7 +3,10 @@ import { replacePopAction, findNeighboringN } from './index'
 
 export default (req) => {
   const { action, routes, options, history, prevRoute, getLocation, tmp } = req
-  const { url, state } = actionToUrl(action, routes, options, prevRoute)
+  const { url, state } = !req.commitHistory
+    ? actionToUrl(action, routes, options, prevRoute)
+    : { url: action.location.url, state: action.state }
+
   const redirect = isRedirect(action)
   const redirectCommitted = redirect && (tmp.committed || !tmp.from || tmp.load)   // committed after `enter`, or if a redirect triggered from outside the pipeline, or on load where it must always be treated as a `replace` since the URL is already settled
   const status = action.location && action.location.status
@@ -13,9 +16,9 @@ export default (req) => {
   let pop
   let n
 
-  if (!tmp.committed && (n = findNeighboringN(tmp.from, history))) {
+  if (!tmp.committed && (n = findNeighboringN(tmp.from, curr))) {
     method = 'replacePop'
-    pop = replacePopAction(n, url, history, tmp)
+    pop = replacePopAction(n, url, curr, tmp)
   }
 
   if (!req.commitHistory) {

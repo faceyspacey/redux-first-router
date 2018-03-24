@@ -1,4 +1,5 @@
-import { urlToLocation, hasSessionStorage, createAction } from './index'
+import { hasSessionStorage } from './index'
+import { urlToAction } from '../../utils'
 
 // PREFIXING:
 
@@ -48,12 +49,7 @@ const getSetItem = (key, val) => {
 
 // called every time the history entries or index changes
 export const saveHistory = ({ index, entries, forwardedOut }) => {
-  entries = entries.map(e => ({
-    url: e.location.url,
-    key: e.location.key,
-    state: e.state,
-    basename: e.basename
-  }))
+  entries = entries.map(e => [e.location.url, e.location.key, e.state])
 
   const history = forwardedOut
     ? { index, entries, forwardedOut } // used to patch an edge case, see `getIndexAndEntries` below
@@ -75,8 +71,8 @@ export const saveHistory = ({ index, entries, forwardedOut }) => {
 
 // called on startup
 export const restoreHistory = (defaultLocation, routes, opts) => {
-  const { state, basename, location: { url, key } } = defaultLocation // used if first time visiting site during session
-  const defaultHistory = { n: 1, index: 0, entries: [{ url, key, state, basename }] }
+  const { state, location: { url, key } } = defaultLocation // used if first time visiting site during session
+  const defaultHistory = { n: 1, index: 0, entries: [[url, key, state]] }
 
   if (!hasSessionStorage()) {
     const state = getHistoryState()
@@ -153,14 +149,8 @@ const getIndexAndEntries = (history, routes, opts) => {
     entries = entries.slice(0, index + 1)
   }
 
-  entries = entries.map(e => {
-    const path = e.url.replace(e.basename, '')
-    const entry = { ...e, ...urlToLocation(path) }
-    return createAction(entry, routes, opts)
-  })
-
+  entries = entries.map(([url, key, state]) => urlToAction(url, routes, opts, state, key))
   const n = getInitialN(index, entries)
-
   return { n, index, entries }
 }
 

@@ -73,6 +73,7 @@ Object {
   "key": "345678",
   "kind": "load",
   "length": 3,
+  "n": -1,
   "params": Object {},
   "pathname": "/redirected",
   "pop": false,
@@ -108,24 +109,21 @@ exports[`restore history from history fallback with redirect before enter 2`] = 
 Object {
   "history": Object {
     "entries": Array [
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/redirected",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/second",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/third",
-      },
+      Array [
+        "/redirected",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/second",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/third",
+        "345678",
+        Object {},
+      ],
     ],
     "index": 0,
   },
@@ -139,24 +137,21 @@ exports[`restore history from history fallback with redirect before enter 3`] = 
 Object {
   "history": Object {
     "entries": Array [
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/redirected",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/second",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/third",
-      },
+      Array [
+        "/redirected",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/second",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/third",
+        "345678",
+        Object {},
+      ],
     ],
     "index": 1,
   },
@@ -170,24 +165,21 @@ exports[`restore history from history fallback with redirect before enter 4`] = 
 Object {
   "history": Object {
     "entries": Array [
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/redirected",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/second",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/third",
-      },
+      Array [
+        "/redirected",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/second",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/third",
+        "345678",
+        Object {},
+      ],
     ],
     "index": 2,
   },
@@ -201,30 +193,26 @@ exports[`restore history from history fallback with redirect before enter 5`] = 
 Object {
   "history": Object {
     "entries": Array [
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/redirected",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/second",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/third",
-      },
-      Object {
-        "basename": "",
-        "key": "345678",
-        "state": Object {},
-        "url": "/redirected",
-      },
+      Array [
+        "/redirected",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/second",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/third",
+        "345678",
+        Object {},
+      ],
+      Array [
+        "/redirected",
+        "345678",
+        Object {},
+      ],
     ],
     "index": 3,
   },
@@ -397,6 +385,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 3,
+    "n": 1,
     "pathname": "/second",
     "pop": true,
     "prev": Object {
@@ -487,6 +476,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 3,
+    "n": 1,
     "pathname": "/third",
     "pop": true,
     "prev": Object {
@@ -592,6 +582,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 3,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": true,
@@ -684,6 +675,7 @@ Object {
     "key": "345678",
     "kind": "next",
     "length": 3,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": true,
@@ -891,6 +883,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 4,
+    "n": 1,
     "params": Object {},
     "pathname": "/redirected",
     "pop": false,

@@ -1,16 +1,16 @@
 // @flow
 import pathToRegexp from 'path-to-regexp'
-import { urlToLocation, locationToUrl } from '../history/utils'
+import { urlToLocation } from '../history/utils'
 import type { Route, Options } from '../flow-types'
 
 export default (
-  location: string | Location,
+  loc: string | Location,
   matchers: Matchers,
   options?: Object = {},
   route: Route,
   opts: Options = {}
 ) => {
-  const { pathname, search, hash: h } = urlToLocation(location)
+  const { pathname, search, hash: h } = urlToLocation(loc)
 
   const { match, keys } = matchPath(pathname, matchers.path, options)
   if (!match) return null
@@ -43,7 +43,6 @@ export default (
   // return {
   //   path: matchers.path,
   //   url, // called `url` instead of `path` for compatibility with React Router
-  //   fullUrl: url === '/' ? url : locationToUrl({ pathname: path, search, hash }), // MAYBE WE DONT WANT THIS??
   //   isExact: pathname === path,
   //   params: fromPath ? fromPath(params, route, opts) : params,
   //   query: fromSearch ? fromSearch(query, route, opts) : query,

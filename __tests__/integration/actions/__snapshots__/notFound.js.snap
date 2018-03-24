@@ -81,6 +81,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/not-found",
     "pop": false,
     "prev": Object {
@@ -159,6 +160,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/not-found",
     "pop": false,
@@ -278,6 +280,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/not-found",
     "pop": false,
     "prev": Object {
@@ -360,6 +363,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/not-found",
     "pop": false,
@@ -419,7 +423,7 @@ Array [
     "location": Object {
       "key": "345678",
       "pathname": "/scene-level-not-found",
-      "scene": "",
+      "scene": "scene",
       "search": "",
       "url": "/scene-level-not-found",
     },
@@ -464,7 +468,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/scene-level-not-found",
-          "scene": "",
+          "scene": "scene",
           "search": "",
           "url": "/scene-level-not-found",
         },
@@ -481,6 +485,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/scene-level-not-found",
     "pop": false,
     "prev": Object {
@@ -545,7 +550,7 @@ Object {
         "location": Object {
           "key": "345678",
           "pathname": "/scene-level-not-found",
-          "scene": "",
+          "scene": "scene",
           "search": "",
           "url": "/scene-level-not-found",
         },
@@ -563,6 +568,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/scene-level-not-found",
     "pop": false,
@@ -654,6 +660,7 @@ Object {
     "key": "345678",
     "kind": "init",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/non-existent",
     "pop": false,
@@ -715,6 +722,7 @@ Object {
     "key": "345678",
     "kind": "load",
     "length": 1,
+    "n": 1,
     "pathname": "/non-existent",
     "pop": false,
     "prev": Object {
@@ -774,6 +782,7 @@ Object {
     "key": "345678",
     "kind": "load",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/non-existent",
     "pop": false,

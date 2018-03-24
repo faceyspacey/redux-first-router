@@ -17,10 +17,9 @@ export { default as compileUrl } from './compileUrl'
 export { default as formatRoutes, formatRoute } from './formatRoutes'
 export { default as typeToScene } from './typeToScene'
 
+export { default as redirectShortcut } from './redirectShortcut'
+export { default as callRoute } from './callRoute'
+
 export { default as noOp } from './noOp'
 
 export { default as createSelector } from './createSelector'
-export { default as createAction } from './createAction'
-
-export { default as redirectShortcut } from './redirectShortcut'
-export { default as callRoute } from './callRoute'

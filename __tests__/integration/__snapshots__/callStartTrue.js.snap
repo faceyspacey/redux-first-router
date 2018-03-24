@@ -81,6 +81,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -162,6 +163,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,

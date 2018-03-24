@@ -1,7 +1,6 @@
 import History from './History'
-
+import { urlToAction } from '../utils'
 import {
-  createAction,
   locationToUrl,
   isExtraneousPopstateEvent,
   addPopListener,
@@ -11,6 +10,7 @@ import {
   restoreHistory,
   saveHistory
 } from './utils'
+
 
 
 // 1) HISTORY RESTORATION:
@@ -67,6 +67,8 @@ export default class BrowserHistory extends History {
   }
 
   listen(dispatch, getLocation) {
+    if (this.dispatch) return () => this.unlisten() // we don't allow/need multiple listeners currently
+
     super.listen(dispatch, getLocation)
     this._addPopListener()
 
@@ -107,10 +109,8 @@ export default class BrowserHistory extends History {
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
       // did it via browser back/next buttons
-      this.currentPop = this.jump(n, undefined, false, kind, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
+      this.currentPop = this.jump(n, null, false, kind, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
     }
-
-    // you don't really need to worry about the below utility work:
 
     const onPopState = event => {
       if (isExtraneousPopstateEvent(event)) return // Ignore extraneous popstate events in WebKit.
@@ -253,5 +253,5 @@ const createWindowAction = (historyState, routes, opts) => {
   const { pathname, search, hash } = window.location
   const url = pathname + search + hash
 
-  return createAction(url, routes, opts, state, key)
+  return urlToAction(url, routes, opts, state, key)
 }

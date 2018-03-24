@@ -87,6 +87,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/foo/bar",
     "pop": false,
     "prev": Object {
@@ -171,6 +172,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param1": "foo",
       "param2": "bar",
@@ -295,6 +297,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/foo/bar",
     "pop": false,
     "prev": Object {
@@ -379,6 +382,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param1": "foo",
       "param2": "bar",
@@ -501,6 +505,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/james-gillmore",
     "pop": false,
     "prev": Object {
@@ -583,6 +588,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "James Gillmore",
     },
@@ -704,6 +710,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/james-gillmore",
     "pop": false,
     "prev": Object {
@@ -786,6 +793,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "James Gillmore",
     },
@@ -907,6 +915,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/100",
     "pop": false,
     "prev": Object {
@@ -989,6 +998,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": 100,
     },
@@ -1110,6 +1120,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/100",
     "pop": false,
     "prev": Object {
@@ -1192,6 +1203,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": 100,
     },
@@ -1309,6 +1321,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/foo/bar",
     "pop": false,
     "prev": Object {
@@ -1387,6 +1400,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third/foo/bar",
     "pop": false,
@@ -1502,6 +1516,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/not-found",
     "pop": false,
     "prev": Object {
@@ -1580,6 +1595,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/not-found",
     "pop": false,
@@ -1699,6 +1715,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -1781,6 +1798,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "0": "",
     },
@@ -1898,6 +1916,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/not-found",
     "pop": false,
     "prev": Object {
@@ -1976,6 +1995,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/not-found",
     "pop": false,
@@ -2095,6 +2115,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
     "pop": false,
     "prev": Object {
@@ -2177,6 +2198,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "key": "correct with spaces",
     },
@@ -2298,6 +2320,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
     "pop": false,
     "prev": Object {
@@ -2380,6 +2403,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "key": "correct with spaces",
     },
@@ -2507,6 +2531,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js",
     "pop": false,
     "prev": Object {
@@ -2595,6 +2620,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "branch": "master",
       "filePath": "src/core/createRouter.js",
@@ -2725,6 +2751,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/repo1/faceyspacey/rudy/blob/master/core/createRouter.js",
     "pop": false,
     "prev": Object {
@@ -2813,6 +2840,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "branch": "master",
       "filePath": "core/createRouter.js",
@@ -2933,6 +2961,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/not-found",
     "pop": false,
     "prev": Object {
@@ -3011,6 +3040,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/not-found",
     "pop": false,
@@ -3132,6 +3162,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/foo/bar/bla/baz/yo/sdf",
     "pop": false,
     "prev": Object {
@@ -3216,6 +3247,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "segments1": "foo/bar",
       "segments2": "baz/yo/sdf",
@@ -3340,6 +3372,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/foo/bar/bla/baz/yo/sdf",
     "pop": false,
     "prev": Object {
@@ -3424,6 +3457,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "segments1": "foo/bar",
       "segments2": "baz/yo/sdf",
@@ -3542,6 +3576,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -3620,6 +3655,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -3739,6 +3775,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/foo",
     "pop": false,
     "prev": Object {
@@ -3821,6 +3858,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "foo",
     },
@@ -3942,6 +3980,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/foo",
     "pop": false,
     "prev": Object {
@@ -4024,6 +4063,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "foo",
     },
@@ -4141,6 +4181,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -4219,6 +4260,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -4334,6 +4376,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -4412,6 +4455,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -4527,6 +4571,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -4605,6 +4650,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -4724,6 +4770,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/100",
     "pop": false,
     "prev": Object {
@@ -4806,6 +4853,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "100",
     },
@@ -4927,6 +4975,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/100",
     "pop": false,
     "prev": Object {
@@ -5009,6 +5058,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "100",
     },
@@ -5126,6 +5176,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -5204,6 +5255,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,
@@ -5323,6 +5375,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/list",
     "pop": false,
     "prev": Object {
@@ -5405,6 +5458,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "0": "list",
     },
@@ -5522,6 +5576,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -5600,6 +5655,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/second",
     "pop": false,
@@ -5723,6 +5779,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/repo2/faceyspacey/rudy/blob/master",
     "pop": false,
     "prev": Object {
@@ -5809,6 +5866,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "branch": "master",
       "repo": "rudy",
@@ -5936,6 +5994,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/repo1/faceyspacey/rudy/blob/master",
     "pop": false,
     "prev": Object {
@@ -6022,6 +6081,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "branch": "master",
       "repo": "rudy",
@@ -6145,6 +6205,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
     "pop": false,
     "prev": Object {
@@ -6227,6 +6288,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "key": "correct with spaces",
     },
@@ -6348,6 +6410,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
     "pop": false,
     "prev": Object {
@@ -6430,6 +6493,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "key": "correct with spaces",
     },
@@ -6551,6 +6615,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/100",
     "pop": false,
     "prev": Object {
@@ -6633,6 +6698,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "id": "100",
     },
@@ -6750,6 +6816,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/foo",
     "pop": false,
     "prev": Object {
@@ -6828,6 +6895,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/third/foo",
     "pop": false,
@@ -6943,6 +7011,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/not-found",
     "pop": false,
     "prev": Object {
@@ -7021,6 +7090,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/not-found",
     "pop": false,
@@ -7140,6 +7210,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/100",
     "pop": false,
     "prev": Object {
@@ -7222,6 +7293,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "id": "100",
     },
@@ -7343,6 +7415,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second",
     "pop": false,
     "prev": Object {
@@ -7425,6 +7498,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "bar",
     },
@@ -7546,6 +7620,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -7628,6 +7703,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "foo": "bar",
     },
@@ -7753,6 +7829,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third",
     "pop": false,
     "prev": Object {
@@ -7839,6 +7916,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "foo": "bar",
     },
@@ -7962,6 +8040,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/bar",
     "pop": false,
     "prev": Object {
@@ -8044,6 +8123,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "bar",
     },
@@ -8165,6 +8245,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/all",
     "pop": false,
     "prev": Object {
@@ -8247,6 +8328,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "0": "all",
     },
@@ -8368,6 +8450,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/third/list",
     "pop": false,
     "prev": Object {
@@ -8450,6 +8533,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "0": "list",
     },
@@ -8567,6 +8651,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/not-found",
     "pop": false,
     "prev": Object {
@@ -8645,6 +8730,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/not-found",
     "pop": false,

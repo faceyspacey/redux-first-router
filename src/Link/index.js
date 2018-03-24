@@ -112,7 +112,7 @@ const LinkInner = (props) => {
   )
 }
 
-const navLinkProps = (props: Props, fullUrl: string, action: ?ReceivedAction) => {
+const navLinkProps = (props: Props, toFullUrl: string, action: ?ReceivedAction) => {
   if (!props.url) return
 
   const {
@@ -134,7 +134,7 @@ const navLinkProps = (props: Props, fullUrl: string, action: ?ReceivedAction) =>
   } = props
 
   const { getLocation, options, routes } = rudy
-  const { pathname, query, hash } = urlToLocation(fullUrl)
+  const { pathname, query, hash } = urlToLocation(toFullUrl)
   const matchers = { path: pathname, query: q && query, hash: h && hash }
   const opts = { partial, strict }
   const route = routes[action.type] || {}

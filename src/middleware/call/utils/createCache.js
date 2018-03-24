@@ -1,5 +1,4 @@
-import { isServer, actionToUrl } from '../../../utils'
-import { createLocation, createAction } from '../../../history/utils'
+import { isServer, actionToUrl, urlToAction } from '../../../utils'
 
 const defaultCreateCacheKey = (action, name) => {
   const { type, basename, location } = action
@@ -64,7 +63,7 @@ export default (api, name, config) => {
     else {                                        // delete all/some callbacks for precise item (default)
       const action = invalidator
       const { url } = actionToUrl(action, api.routes, api.options)
-      const act = createAction(url, api.routes, api.options)
+      const act = urlToAction(url, api.routes, api.options)
       const names = opts.name === undefined ? callbacks : [].concat(opts.name)
 
       names.forEach(name => {

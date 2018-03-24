@@ -1,5 +1,3 @@
-export { default as createAction } from './createAction'
-
 export {
   urlToLocation,
   locationToUrl,

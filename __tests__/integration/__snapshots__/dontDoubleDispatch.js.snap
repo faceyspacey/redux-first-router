@@ -66,6 +66,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -131,6 +132,7 @@ Object {
     "key": "345678",
     "kind": "load",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -216,6 +218,7 @@ Object {
     "key": "345678",
     "kind": "init",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -277,6 +280,7 @@ Object {
     "key": "345678",
     "kind": "load",
     "length": 1,
+    "n": 1,
     "pathname": "/first",
     "pop": false,
     "prev": Object {
@@ -336,6 +340,7 @@ Object {
     "key": "345678",
     "kind": "load",
     "length": 1,
+    "n": 1,
     "params": Object {},
     "pathname": "/first",
     "pop": false,
@@ -437,6 +442,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 3,
+    "n": 1,
     "pathname": "/second/foo",
     "pop": false,
     "prev": Object {
@@ -605,6 +611,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "pathname": "/second/foo",
     "pop": false,
     "prev": Object {
@@ -706,6 +713,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 3,
+    "n": 1,
     "pathname": "/second/foo",
     "pop": false,
     "prev": Object {
@@ -804,6 +812,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "foo",
     },
@@ -888,6 +897,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 2,
+    "n": 1,
     "params": Object {
       "param": "foo",
     },

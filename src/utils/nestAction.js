@@ -1,16 +1,16 @@
-import { typeToScene, isNotFound } from './index'
+import { isNotFound } from './index'
 
 export default (action, prevState, fromAction, statusCode, tmp = {}) => {
-  const { location, type, params = {}, query = {}, state = {}, hash = '', basename: bn = '' } = action
-  const { kind: k, entries, index, length, pathname, search, url, key, n } = location
+  const { location, type, basename, params, query, state, hash } = action
+  const { entries, index, length, pathname, search, url, key, scene, n } = location
 
   const prev = createActionRef(prevState)
   const from = createActionRef(fromAction)
-  const scene = typeToScene(type)
-  const pop = !!tmp.revertPop
-  const kind = tmp.load ? 'load' : (from ? k.replace('push', 'replace') : k)
+
+  const kind = resolveKind(location.kind, tmp.load, from)
   const direction = n === -1 ? 'backward' : 'forward'
-  const basename = bn.substr(1)
+
+  const pop = !!tmp.revertPop
   const status = from ? (statusCode || 302) : (isNotFound(type) ? 404 : 200)
 
   return {
@@ -21,8 +21,9 @@ export default (action, prevState, fromAction, statusCode, tmp = {}) => {
     hash,
     basename,
     location: {
-      kind: /jump|reset/.test(k) ? k : kind,
+      kind,
       direction,
+      n,
 
       url,
       pathname,
@@ -79,3 +80,10 @@ const createLocationRef = (loc) => {
 
   return loc
 }
+
+const resolveKind = (kind, isLoad, from) =>
+  isLoad
+    ? 'load' // insure redirects don't change kind on load
+    : !from || /jump|reset/.test(kind)
+      ? kind // PRIMARY USE CASE: preverse the standard kind
+      : kind.replace('push', 'replace') // pipeline redirects before enter are in fact pushes, but users shouldn't have to think about that

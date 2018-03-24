@@ -126,6 +126,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 3,
+    "n": -1,
     "pathname": "/third",
     "pop": true,
     "prev": Object {
@@ -236,6 +237,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 3,
+    "n": 1,
     "params": Object {},
     "pathname": "/third",
     "pop": false,

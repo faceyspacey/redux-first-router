@@ -96,6 +96,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 2,
+    "n": 1,
     "pathname": "/redirected-again-after",
     "pop": false,
     "prev": Object {
@@ -199,6 +200,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/redirected-again-after",
     "pop": false,
@@ -329,6 +331,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 2,
+    "n": 1,
     "pathname": "/redirected-again",
     "pop": false,
     "prev": Object {
@@ -430,6 +433,7 @@ Object {
     "key": "345678",
     "kind": "replace",
     "length": 2,
+    "n": 1,
     "params": Object {},
     "pathname": "/redirected-again",
     "pop": false,

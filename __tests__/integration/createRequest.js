@@ -25,6 +25,7 @@ createTest('callback "req" argument has all goodies', {
       expect(req.route).toBeDefined()
       expect(req.prevRoute).toBeDefined()
       expect(req.error).toEqual(null)
+      expect(req.scene).toEqual('')
       expect(req.commitHistory).toBeDefined()
       expect(req.commitDispatch).toBeDefined()
 

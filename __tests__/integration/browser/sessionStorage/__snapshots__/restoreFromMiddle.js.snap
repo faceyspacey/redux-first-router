@@ -43,6 +43,7 @@ Object {
   "key": "345678",
   "kind": "load",
   "length": 2,
+  "n": 1,
   "params": Object {},
   "pathname": "/second",
   "pop": false,
@@ -76,18 +77,16 @@ Object {
 exports[`restore history from sessionStorage 2`] = `
 Object {
   "entries": Array [
-    Object {
-      "basename": "",
-      "key": "345678",
-      "state": Object {},
-      "url": "/",
-    },
-    Object {
-      "basename": "",
-      "key": "345678",
-      "state": Object {},
-      "url": "/second",
-    },
+    Array [
+      "/",
+      "345678",
+      Object {},
+    ],
+    Array [
+      "/second",
+      "345678",
+      Object {},
+    ],
   ],
   "index": 1,
 }
@@ -96,18 +95,16 @@ Object {
 exports[`restore history from sessionStorage 3`] = `
 Object {
   "entries": Array [
-    Object {
-      "basename": "",
-      "key": "345678",
-      "state": Object {},
-      "url": "/",
-    },
-    Object {
-      "basename": "",
-      "key": "345678",
-      "state": Object {},
-      "url": "/second",
-    },
+    Array [
+      "/",
+      "345678",
+      Object {},
+    ],
+    Array [
+      "/second",
+      "345678",
+      Object {},
+    ],
   ],
   "index": 0,
 }
@@ -194,6 +191,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "pathname": "/",
     "pop": true,
     "prev": Object {
@@ -272,6 +270,7 @@ Object {
     "key": "345678",
     "kind": "back",
     "length": 2,
+    "n": -1,
     "params": Object {},
     "pathname": "/",
     "pop": true,

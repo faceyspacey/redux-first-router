@@ -1,25 +1,67 @@
 // @flow
+import resolvePathname from 'resolve-pathname'
 import { matchUrl } from './index'
-import { urlToLocation } from '../history/utils'
 import { notFound } from '../actions'
+import { urlToLocation, locationToUrl, stripBasename, findBasename, formatSlashes } from '../history/utils'
 
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
-export default (
+export default (loc, routes, opts, state, key, basename, curr = {}) => {
+  if (typeof loc === 'string') {
+    const foundBasename = findBasename(loc, opts.basenames)
+    loc = foundBasename ? stripBasename(loc, foundBasename) : loc
+    basename = foundBasename || basename
+  }
+
+  const { scene } = routes[curr.type] || {}
+  const location = createLocation(loc, state, key, basename, curr)
+  const action = createAction(location, routes, opts, scene)
+
+  delete location.basename // these are needed for `urlToAction`, but `urlToAction` then puts them on the action instead of `action.location`
+  delete location.hash
+  delete location.state
+
+  location.scene = routes[action.type].scene || ''
+
+  return {
+    ...action,
+    location
+  }
+}
+
+const createLocation = (loc, state, key, basename, curr) => {
+  loc = typeof loc === 'string'
+    ? urlToLocation(loc)
+    : { ...loc, search: loc.search || '', hash: loc.hash || '' }
+
+  if (!loc.pathname) {
+    loc.pathname = curr.pathname || '/'
+  }
+  else if (curr.pathname && loc.pathname.charAt(0) !== '/') {
+    loc.pathname = resolvePathname(loc.pathname, curr.pathname) // Resolve incomplete/relative pathname relative to current location.
+  }
+
+  loc.state = { ...loc.state, ...state }
+  loc.key = loc.key || key || Math.random().toString(36).substr(2, 6)
+  loc.basename = formatSlashes(loc.basename || basename || curr.basename || '', true)
+  loc.url = (loc.basename ? `/${loc.basename}` : '') + locationToUrl(loc)
+
+  return loc
+}
+
+const createAction = (
   loc: Object,
   routes: RoutesMap,
   opts: Options,
   scene: string = ''
 ): ReceivedAction => {
-  const { url, basename = '', state = {} } = typeof loc === 'string' ? { url: loc } : loc
+  const { basename, state = {} } = loc
   const types = Object.keys(routes).filter(type => routes[type].path)
-  const path = url.replace(basename, '')
-  const l = urlToLocation(path)
 
   for (let i = 0; i < types.length; i++) {
     const type = types[i]
     const route = routes[type]
-    const match = matchUrl(l, route, transformers, route, opts)
+    const match = matchUrl(loc, route, transformers, route, opts)
 
     if (match) {
       const { params, query, hash } = match
@@ -28,13 +70,15 @@ export default (
     }
   }
 
+
   const type = routes[`${scene}/NOT_FOUND`] && `${scene}/NOT_FOUND`// try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
+
   return {
     ...notFound(state, type),
     basename,
     params: {},
-    query: l.search ? parseQuery(l.search, routes, opts) : {}, // keep this info
-    hash: l.hash || ''
+    query: loc.search ? parseQuery(loc.search, routes, opts) : {}, // keep this info
+    hash: loc.hash || ''
   }
 }
 
@@ -72,7 +116,7 @@ const defaultFromPath = (
     (opts.capitalizedWords && route.capitalizedWords !== false)
 
   if (capitalize) {
-    return decodedVal.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
+    return decodedVal.replace(/-/g, ' ').replace(/\b\w/g, ltr => ltr.toUpperCase()) // 'my-category' -> 'My Category'
   }
 
   return opts.fromPath

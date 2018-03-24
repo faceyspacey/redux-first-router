@@ -141,6 +141,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 4,
+    "n": 1,
     "pathname": "/",
     "pop": false,
     "prev": Object {
@@ -251,6 +252,7 @@ Object {
     "key": "345678",
     "kind": "push",
     "length": 4,
+    "n": 1,
     "params": Object {},
     "pathname": "/",
     "pop": false,

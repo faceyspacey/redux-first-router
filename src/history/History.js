@@ -1,5 +1,4 @@
-import { createAction } from './utils'
-import { actionToUrl, createActionRef } from '../utils'
+import { actionToUrl, urlToAction, createActionRef } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
@@ -18,15 +17,40 @@ export default class History {
     this.firstAction = this._notify(action, location, commit, false)
   }
 
+  // CORE:
+
   listen(dispatch, getLocation) {
-    this._listener = dispatch
+    this.dispatch = dispatch
     this.getLocation = getLocation
     return () => this.unlisten()
   }
 
   unlisten() {
-    this._listener = null
+    this.dispatch = null
   }
+
+  _notify(action, location, commit, notify = true, extras) {
+    const { index, entries, n: n1 } = location
+    const n = n1 || (index > this.index ? 1 : (index === this.index ? this.n : -1))
+    const { length } = entries
+
+    action = {
+      ...action,
+      ...extras,
+      commit: this._once(commit),
+      location: { ...action.location, ...location, length, n }
+    }
+
+    if (notify && this.dispatch) return this.dispatch(action)
+    return action
+  }
+
+  _createAction(path, state, basename) {
+    const { routes, options, location } = this
+    return urlToAction(path, routes, options, state, null, basename, location)
+  }
+
+  // LOCATION STATE GETTERS (single source of truth!, unidirectional!):
 
   get location() {
     return this.getLocation()
@@ -44,24 +68,19 @@ export default class History {
     return this.location.url
   }
 
-  get prevUrl() {
-    if (this.location.kind === 'load') return this.location.from.location.url // called by `BrowserHistory._replace` on redirects when `prev` state is empty
-    return this.location.prev.location.url
-  }
-
   get n() {
-    return this.location.direction === 'forward' ? 1 : -1 // direction in userland is a string, but in here a number
+    return this.location.n
   }
 
-  createAction(path, state, basename) {
-    const { routes, options, location } = this
-    return createAction(path, routes, options, state, null, basename, location)
+  get prevUrl() {
+    if (this.location.kind === 'load') return this.location.from.location.url // used by `BrowserHistory._replace` on redirects when `prev` state is empty
+    return this.location.prev.location.url
   }
 
   // API:
 
   push(path, state = {}, notify = true) {
-    const action = this.createAction(path, state)
+    const action = this._createAction(path, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -79,7 +98,7 @@ export default class History {
   }
 
   replace(path, state = {}, notify = true) {
-    const action = this.createAction(path, state)
+    const action = this._createAction(path, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'replace')
@@ -88,7 +107,7 @@ export default class History {
       return this.jump(back ? -1 : 1, state, undefined, undefined, notify)
     }
 
-    const index = this.index
+    const { index } = this
     const entries = this.entries.slice(0)
     const location = { kind, entries, index }
     const commit = (action) => this._replace(action)
@@ -99,7 +118,7 @@ export default class History {
   }
 
   replacePop(path, state = {}, notify = true, pop) {
-    const action = this.createAction(path, state)
+    const action = this._createAction(path, state)
     const { index, prevUrl, n } = pop
     const entries = pop.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
@@ -135,11 +154,19 @@ export default class History {
     return this._notify(action, location, commit, notify, { prev, revertPop })
   }
 
+  back(state, notify = true) {
+    return this.jump(-1, state, false, 'back', notify)
+  }
+
+  next(state, notify = true) {
+    return this.jump(1, state, false, 'next', notify)
+  }
+
   setState(state, n, byIndex = false, notify = true) {
     n = this._resolveN(n, byIndex)
 
     const kind = 'setState'
-    const index = this.index
+    const { index } = this
     const i = this.index + n
     const entries = this.entries.slice(0)
     const changedAction = entries[i] = { ...this.entries[i] }
@@ -157,14 +184,6 @@ export default class History {
     return this._notify(action, location, commit, notify)
   }
 
-  back(state, notify = true) {
-    return this.jump(-1, state, false, 'back', notify)
-  }
-
-  next(state, notify = true) {
-    return this.jump(1, state, false, 'next', notify)
-  }
-
   reset(entries, index, kindOverride, notify = true) {
     if (entries.length === 1) {
       const entry = this._findResetFirstAction(entries[0]) // browser must always have at least 2 entries, so one can be pushed, erasing old entries from the stack
@@ -175,14 +194,14 @@ export default class History {
       if (typeof entry === 'object' && entry.type) {  // entry as action object
         const action = entry
         const { url, state } = actionToUrl(action, this.routes, this.options)
-        return this.createAction(url, state, action.basename)
+        return this._createAction(url, state, action.basename)
       }
       else if (Array.isArray(entry)) {                // entry as array of [url, state]
         const [url, state] = entry
-        return this.createAction(url, state)
+        return this._createAction(url, state)
       }
 
-      return this.createAction(entry)                 // entry as url string
+      return this._createAction(entry)                 // entry as url string
     })
 
 
@@ -208,6 +227,13 @@ export default class History {
 
     return this._notify(action, location, commit, notify, { prev, from })
   }
+
+  canJump(n, byIndex) {
+    n = this._resolveN(n, byIndex)
+    return !!this.entries[this.index + n]
+  }
+
+  // UTILS:
 
   _createPrev({ n, index: i, entries }) {
     const index = i - n
@@ -253,29 +279,6 @@ export default class History {
     }
 
     return notFoundPath
-  }
-
-  canJump(n, byIndex) {
-    n = this._resolveN(n, byIndex)
-    return !!this.entries[this.index + n]
-  }
-
-  // UTILS:
-
-  _notify(action, location, commit, notify = true, extras) {
-    const { index, entries, n: n1 } = location
-    const n = n1 || (index > this.index ? 1 : (index === this.index ? this.n : -1))
-    const { length } = entries
-
-    action = {
-      ...action,
-      ...extras,
-      commit: this._once(commit),
-      location: { ...action.location, ...location, length, n }
-    }
-
-    if (notify && this._listener) return this._listener(action)
-    return action
   }
 
   _once(commit) {
@@ -331,7 +334,7 @@ export default class History {
     return n || 0
   }
 
-  // BrowseHistory overrides these
+  // BrowseHistory (or 3rd party implementations) override these
   _push() {}
   _replace() {}
   _jump() {}
