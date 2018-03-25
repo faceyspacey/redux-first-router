@@ -32,10 +32,10 @@ module.exports = wallaby => {
 
 
       // '__tests__/integration/actions/addRoutes.js',
-      '__tests__/integration/actions/changeBasename.js',
+      // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/actions/notFound.js',
       // '__tests__/integration/actions/redirect.js',
-      // '__tests__/integration/actions/history.js',
+      '__tests__/integration/actions/history.js',
 
       // '__tests__/integration/createScene/actionCreators.js',
       // '__tests__/integration/createScene/options.js',

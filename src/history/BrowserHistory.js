@@ -165,7 +165,7 @@ export default class BrowserHistory extends History {
       .then(() => this._replace(action, action))
   }
 
-  _setState(action, n) {
+  _set(action, n) {
     const { prevUrl } = this
     const loc = action.location.entries[this.index + n]
 

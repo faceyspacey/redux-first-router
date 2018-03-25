@@ -8,9 +8,14 @@ export { default as confirm } from './confirm'
 export {
   push,
   replace,
-  setState,
   jump,
   back,
   next,
-  reset
+  reset,
+  set,
+  setParams,
+  setQuery,
+  setState,
+  setHash,
+  setBasename
 } from './history'

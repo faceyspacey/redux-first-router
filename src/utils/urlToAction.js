@@ -41,7 +41,7 @@ const createLocation = (loc, state, key, basename, curr) => {
 
   loc.state = { ...loc.state, ...state }
   loc.key = loc.key || key || Math.random().toString(36).substr(2, 6)
-  loc.basename = cleanBasename(loc.basename || basename || curr.basename || '', true)
+  loc.basename = cleanBasename(loc.basename || basename || curr.basename, true)
   loc.url = (loc.basename ? `/${loc.basename}` : '') + locationToUrl(loc)
 
   return loc

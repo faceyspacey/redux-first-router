@@ -44,9 +44,10 @@ export default (initialState: Object, routes: RoutesMap) => (
     return { ...st, blocked: null }
   }
 
-  if (l && l.kind === 'setState') {
-    const { state, location: { entries } } = action
-    return { ...st, state, entries }
+  if (l && l.kind === 'set') {
+    const { entries } = action.location
+    const { params, query, state, hash, basename } = action
+    return { ...st, entries, params, query, state, hash, basename }
   }
 
   if (action.type.indexOf('_ERROR') > -1) {

@@ -1,4 +1,4 @@
-import { actionToUrl, urlToAction, createActionRef } from '../utils'
+import { actionToUrl, urlToAction, createActionRef, cleanBasename } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
@@ -162,23 +162,74 @@ export default class History {
     return this.jump(1, state, false, 'next', notify)
   }
 
-  setState(state, n, byIndex = false, notify = true) {
+  setParams(params, n, byIndex, notify) {
+    return this.set({ params }, n, byIndex, notify)
+  }
+
+  setQuery(query, n, byIndex, notify) {
+    return this.set({ query }, n, byIndex, notify)
+  }
+
+  setState(state, n, byIndex, notify) {
+    return this.set({ state }, n, byIndex, notify)
+  }
+
+  setHash(hash, n, byIndex, notify) {
+    return this.set({ hash }, n, byIndex, notify)
+  }
+
+  setBasename(basename, n, byIndex, notify) {
+    return this.set({ basename }, n, byIndex, notify)
+  }
+
+  set(act, n, byIndex = false, notify = true) {
     n = this._resolveN(n, byIndex)
 
-    const kind = 'setState'
+    const kind = 'set'
     const { index } = this
     const i = this.index + n
     const entries = this.entries.slice(0)
-    const changedAction = entries[i] = { ...this.entries[i] }
-    const action = n === 0 ? changedAction : createActionRef(this.location) // insure if state set on current entry, state is set in entries array as well
+    const entry = entries[i] = { ...this.entries[i] }
+    const action = n === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if n === 0, not just entry in entries
     const info = { kind, index, entries }
-    const commit = (action) => this._setState(action, n)
-
-    state = typeof state === 'function' ? state(changedAction.state) : state
-    changedAction.state = { ...changedAction.state, ...state }
+    const commit = (action) => this._set(action, n)
 
     if (!this.entries[i]) {
       throw new Error(`[rudy] no entry at index: ${i}`)
+    }
+
+    if (typeof act === 'function') {
+      const newEntry = act(entry)
+      Object.assign(entry, newEntry)
+      entry.basename = cleanBasename(entry.basename, true)
+    }
+    else {
+      let { params, query, state, hash, basename: bn } = act
+
+      if (params) {
+        params = typeof params === 'function' ? params(entry.query) : params
+        entry.params = { ...entry.params, ...params }
+      }
+
+      if (query) {
+        query = typeof query === 'function' ? query(entry.query) : query
+        entry.query = { ...entry.query, ...query }
+      }
+
+      if (state) {
+        state = typeof state === 'function' ? state(entry.state) : state
+        entry.state = { ...entry.state, ...state }
+      }
+
+      if (hash) {
+        hash = typeof hash === 'function' ? hash(entry.hash) : hash
+        entry.hash = hash
+      }
+
+      if (bn) {
+        bn = typeof bn === 'function' ? bn(entry.basename) : bn
+        entry.basename = cleanBasename(bn, true)
+      }
     }
 
     return this._notify(action, info, commit, notify)
@@ -338,6 +389,6 @@ export default class History {
   _push() {}
   _replace() {}
   _jump() {}
-  _setState() {}
+  _set() {}
   _reset() {}
 }

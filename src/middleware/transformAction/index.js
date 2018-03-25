@@ -5,7 +5,7 @@ export default () => (req, next) => {
 
   req.action = formatAction(req)
 
-  if (req.getKind() === 'setState') return req.enter()          // skip callbacks + go straight to reducer + update browser history
+  if (req.getKind() === 'set') req.enter() // skip callbacks + go straight to reducer + update browser history
   if (req.isDoubleDispatch()) return req.handleDoubleDispatch() // don't dispatch the same action twice
 
   const { type, params, query, hash, state, location } = req.action

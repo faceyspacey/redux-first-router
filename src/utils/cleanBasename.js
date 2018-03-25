@@ -1,5 +1,6 @@
 export default (path, stripLeading = false) => {
-  if (path === '') return path
+  if (!path) return ''
+
   return stripLeading
     ? stripTrailingSlash(stripLeadingSlash(path))
     : stripTrailingSlash(addLeadingSlash(path))
