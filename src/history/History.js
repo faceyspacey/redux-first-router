@@ -193,9 +193,7 @@ export default class History {
     }
 
     if (typeof act === 'function') {
-      const newEntry = act(entry)
-      Object.assign(entry, newEntry)
-      entry.basename = cleanBasename(entry.basename)
+      Object.assign(entry, act(entry))
     }
     else {
       let { params, query, state, hash, basename: bn } = act
@@ -222,7 +220,7 @@ export default class History {
 
       if (bn) {
         bn = typeof bn === 'function' ? bn(entry.basename) : bn
-        entry.basename = cleanBasename(bn)
+        entry.basename = bn
       }
     }
 

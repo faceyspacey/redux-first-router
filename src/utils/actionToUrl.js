@@ -1,5 +1,5 @@
 // @flow
-import { compileUrl } from './index'
+import { compileUrl, cleanBasename } from './index'
 
 import type {
   Route,
@@ -16,11 +16,11 @@ export default (
   prevRoute?: Object
 ): string => {
   const { routes, options: opts } = api
-  const { type, params, query, hash, basename: bn = '' } = action
+  const { type, params, query, hash, basename: bn } = action
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
   const state = toState(action.state, route, opts)
-  const basename = bn && bn.charAt(0) !== '/' ? `/${bn}` : bn
+  const basename = cleanBasename(bn)
   const isWrongBasename = basename && !opts.basenames.includes(basename)
 
   try {
