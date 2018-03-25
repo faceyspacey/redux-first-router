@@ -3,7 +3,7 @@ import createTest from '../../../../__helpers__/createTest'
 createTest('pop', {
   FIRST: '/',
   SECOND: '/second'
-}, { browser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await snapPop('back')
 

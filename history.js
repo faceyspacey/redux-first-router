@@ -4,9 +4,8 @@ module.exports = {
   MemoryHistory: require('./core/history/MemoryHistory.js').default,
   BrowserHistory: require('./core/history/BrowserHistory.js').default,
   utils: {
-    dom: require('./dist/history/utils/dom.js'),
-    location: require('./core/history/utils/location.js'),
-    path: require('./dist/history/utils/path.js'),
+    supports: require('./dist/history/utils/supports.js'),
+    popListener: require('./core/history/utils/popListener.js'),
     sessionStorage: require('./core/history/utils/sessionStorage.js'),
   }
 }

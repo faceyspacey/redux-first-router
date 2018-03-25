@@ -1,9 +1,7 @@
 // @flow
 import resolvePathname from 'resolve-pathname'
-import { matchUrl } from './index'
+import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
-import { urlToLocation, locationToUrl, stripBasename, findBasename, formatSlashes } from '../history/utils'
-
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
 export default (loc, routes, opts, state, key, basename, curr = {}) => {
@@ -43,7 +41,7 @@ const createLocation = (loc, state, key, basename, curr) => {
 
   loc.state = { ...loc.state, ...state }
   loc.key = loc.key || key || Math.random().toString(36).substr(2, 6)
-  loc.basename = formatSlashes(loc.basename || basename || curr.basename || '', true)
+  loc.basename = cleanBasename(loc.basename || basename || curr.basename || '', true)
   loc.url = (loc.basename ? `/${loc.basename}` : '') + locationToUrl(loc)
 
   return loc
@@ -163,3 +161,10 @@ const isNumber = (val: string) => /^\d+$/.test(val)
 
 const parseQuery = (search, routes, opts) =>
   (routes.NOT_FOUND.parseQuery || opts.parseQuery)(search)
+
+const stripBasename = (path, bn) =>
+  path.indexOf(bn) === 0 ? path.substr(bn.length) : path
+
+const findBasename = (path, bns = []) =>
+  bns.find(bn => path.indexOf(bn) === 0)
+

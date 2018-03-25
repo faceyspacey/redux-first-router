@@ -16,7 +16,7 @@ export default async (...allArgs) => {
 
   if (options.skip) return
 
-  options.browser = options.browser || false
+  options.testBrowser = options.testBrowser || false
 
   if (!actions) {
     actions = Object.keys(routesMap).filter(type => !/FIRST|REDIRECTED/.test(type))
@@ -144,7 +144,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       ? null
       : await store.dispatch(firstRoute(false))
 
-    const pop = opts.browser && createPop(history)
+    const pop = opts.testBrowser && createPop(history)
     let defaultPrefix = 0
 
     await callback({

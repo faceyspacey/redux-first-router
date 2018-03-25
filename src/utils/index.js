@@ -6,7 +6,9 @@ export { default as isRedirect } from './isRedirect'
 
 export { default as actionToUrl } from './actionToUrl'
 export { default as urlToAction } from './urlToAction'
-export { default as nestAction, createActionRef } from './nestAction'
+
+export { default as locationToUrl } from './locationToUrl'
+export { default as urlToLocation } from './urlToLocation'
 
 export { default as doesRedirect } from './doesRedirect'
 export { default as shouldTransition } from './shouldTransition'
@@ -23,3 +25,7 @@ export { default as callRoute } from './callRoute'
 export { default as noOp } from './noOp'
 
 export { default as createSelector } from './createSelector'
+
+export { default as nestAction, createActionRef } from './nestAction'
+
+export { default as cleanBasename } from './cleanBasename'

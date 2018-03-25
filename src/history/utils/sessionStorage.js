@@ -1,4 +1,4 @@
-import { hasSessionStorage } from './index'
+import { supportsSessionStorage } from './index'
 import { urlToAction } from '../../utils'
 
 // PREFIXING:
@@ -57,7 +57,7 @@ export const saveHistory = ({ index, entries, forwardedOut }) => {
 
   // here's the key aspect of the fallback. essentially we keep updating history state
   // via `replaceState` so every entry has everything that would be in `sessionStorage`
-  if (!hasSessionStorage()) {
+  if (!supportsSessionStorage()) {
     const state = getHistoryState()
     delete state.forwardedOut
     const newState = { ...state, history }
@@ -74,7 +74,7 @@ export const restoreHistory = (defaultLocation, routes, opts) => {
   const { state, location: { url, key } } = defaultLocation // used if first time visiting site during session
   const defaultHistory = { n: 1, index: 0, entries: [[url, key, state]] }
 
-  if (!hasSessionStorage()) {
+  if (!supportsSessionStorage()) {
     const state = getHistoryState()
 
     // we gotta of course call `replaceState` on first load as well

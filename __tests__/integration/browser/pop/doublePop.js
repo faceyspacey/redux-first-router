@@ -7,7 +7,7 @@ createTest('double pop', {
     beforeEnter: () => new Promise(res => setTimeout(res, 30))
   },
   THIRD: '/third'
-}, { browser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 

@@ -8,7 +8,7 @@ createTest('pop then regular action (cancel pop)', {
     beforeEnter: () => new Promise(res => setTimeout(res, 70))
   },
   THIRD: '/third'
-}, { browser: true }, [], async ({ snap, pop, dispatch, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snap, pop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 

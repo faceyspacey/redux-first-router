@@ -3,9 +3,9 @@ import createTest, { setupStore } from '../../../../__helpers__/createTest'
 // when there is no `sessionStorage`, we fallback to our innovative solution of
 // storing all session info on EVERY entry of the real browser history!
 
-jest.mock('../../../../src/history/utils/dom', () => ({
-  ...require.requireActual('../../../../src/history/utils/dom'),
-  hasSessionStorage: jest.fn(() => false)
+jest.mock('../../../../src/history/utils/supports', () => ({
+  ...require.requireActual('../../../../src/history/utils/supports'),
+  supportsSessionStorage: jest.fn(() => false)
 }))
 
 beforeAll(async () => {
@@ -33,7 +33,7 @@ createTest('restore history from history fallback', {
   FIRST: '/',
   SECOND: '/second',
   THIRD: '/third'
-}, { browser: true }, [], async ({ snapPop, snap, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, snap, getLocation }) => {
   expect(getLocation()).toMatchSnapshot()
 
   // firstRoute dispatched by `createTest`

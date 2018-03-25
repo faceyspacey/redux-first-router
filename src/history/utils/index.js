@@ -1,19 +1,14 @@
 export {
-  urlToLocation,
-  locationToUrl,
-  formatSlashes,
-  stripBasename,
-  findBasename
-} from './url'
+  supportsDom,
+  supportsHistory,
+  supportsSessionStorage
+} from './supports'
 
 export {
-  canUseDOM,
-  supportsHistory,
-  hasSessionStorage,
-  isExtraneousPopstateEvent,
   addPopListener,
-  removePopListener
-} from './dom'
+  removePopListener,
+  isExtraneousPopstateEvent
+} from './popListener'
 
 export {
   saveHistory,

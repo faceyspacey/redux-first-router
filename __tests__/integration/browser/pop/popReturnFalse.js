@@ -7,7 +7,7 @@ createTest('pop from route that wont let you leave', {
     path: '/second',
     beforeLeave: () => false
   }
-}, { browser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   const res = await snapPop('back')
   console.log(res)

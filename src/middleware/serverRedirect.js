@@ -1,5 +1,4 @@
 import { isServer, isRedirect, actionToUrl } from '../utils'
-import { formatSlashes } from '../history/utils'
 
 export default (api) => (req, next) => {
   if (isServer() && isRedirect(req.action)) {

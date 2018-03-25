@@ -10,7 +10,7 @@ createTest('regular action then pop (cancel regular action)', {
     path: '/third',
     beforeEnter: () => new Promise(res => setTimeout(res, 50))
   }
-}, { browser: true }, [], async ({ snapPop, pop, dispatch, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, pop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   expect(window.location.pathname).toEqual('/second')
 

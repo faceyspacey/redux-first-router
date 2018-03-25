@@ -1,18 +1,12 @@
 import BrowserHistory from '../history/BrowserHistory'
 import MemoryHistory from '../history/MemoryHistory'
-
-import {
-  supportsHistory,
-  canUseDOM,
-  hasSessionStorage,
-  locationToUrl,
-  formatSlashes
-} from '../history/utils'
+import { supportsHistory, supportsDom } from '../history/utils'
+import { locationToUrl, cleanBasename } from '../utils'
 
 export default (routes, opts = {}) => {
-  opts.basenames = (opts.basenames || []).map(bn => formatSlashes(bn))
+  opts.basenames = (opts.basenames || []).map(bn => cleanBasename(bn))
 
-  if (opts.browser === false || !canUseDOM) {
+  if (!supportsDom() || opts.testBrowser === false) {
     return new MemoryHistory(routes, opts)
   }
 
@@ -20,8 +14,6 @@ export default (routes, opts = {}) => {
     return new BrowserHistory(routes, opts)
   }
 
-  opts.useSessionStorage = hasSessionStorage() // give MemoryHistory browser fallback a chance to remember entries through sessionStorage
   opts.initialEntries = [locationToUrl(window.location)]
-
   return new MemoryHistory(routes, opts)
 }

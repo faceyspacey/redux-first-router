@@ -5,9 +5,9 @@ import { getItem } from '../../../../src/history/utils/sessionStorage'
 // Those browsers do support SessionStorage, so we have capabilities to remember
 // entries even in those older browsers.
 
-jest.mock('../../../../src/history/utils/dom', () => ({
-  ...require.requireActual('../../../../src/history/utils/dom'),
-  hasSessionStorage: jest.fn(() => true),
+jest.mock('../../../../src/history/utils/supports', () => ({
+  ...require.requireActual('../../../../src/history/utils/supports'),
+  supportsSessionStorage: jest.fn(() => true),
   supportsHistory: jest.fn(() => false)
 }))
 
@@ -34,7 +34,7 @@ createTest('restore history from history fallback', {
   FIRST: '/',
   SECOND: '/second',
   THIRD: '/third'
-}, { browser: true }, [], async ({ snap, getLocation, getState }) => {
+}, { testBrowser: true }, [], async ({ snap, getLocation, getState }) => {
   expect(getState()).toMatchSnapshot()
   expect(getItem('history')).toMatchSnapshot()
 

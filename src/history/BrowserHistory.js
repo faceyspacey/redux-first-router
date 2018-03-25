@@ -1,14 +1,13 @@
 import History from './History'
-import { urlToAction } from '../utils'
+import { urlToAction, locationToUrl } from '../utils'
 import {
-  locationToUrl,
-  isExtraneousPopstateEvent,
   addPopListener,
   removePopListener,
-  getHistoryState,
-  getInitialHistoryState,
+  isExtraneousPopstateEvent,
   restoreHistory,
-  saveHistory
+  saveHistory,
+  getHistoryState,
+  getInitialHistoryState
 } from './utils'
 
 

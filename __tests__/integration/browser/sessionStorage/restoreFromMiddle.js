@@ -28,7 +28,7 @@ createTest('restore history from sessionStorage', {
   FIRST: '/',
   SECOND: '/second',
   THIRD: '/third'
-}, { browser: true }, [], async ({ snapPop, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, getLocation }) => {
   expect(getLocation()).toMatchSnapshot()
   expect(getItem('history')).toMatchSnapshot()
 

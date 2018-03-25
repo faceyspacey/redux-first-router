@@ -11,7 +11,7 @@ createTest('pop redirect', {
   },
   SECOND: '/second',
   THIRD: '/third'
-}, { browser: true }, [], async ({ snapPop, pop, dispatch, getState, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, pop, dispatch, getState, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await snapPop('back')
 

@@ -5,8 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 
-import { matchUrl } from '../utils'
-import { urlToLocation } from '../history/utils'
+import { matchUrl, urlToLocation } from '../utils'
 
 import { toUrlAndAction, handlePress, preventDefault } from './utils'
 import type { To, OnClick } from './utils'

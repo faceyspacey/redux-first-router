@@ -8,7 +8,7 @@ createTest('double pop (when 4th index same as prev)', {
   },
   THIRD: '/third',
   FOURTH: '/fourth'
-}, { browser: true }, [], async ({ pop, snapPop, dispatch, getLocation }) => {
+}, { testBrowser: true }, [], async ({ pop, snapPop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
   await dispatch({ type: 'FIRST' }) // HERE'S WHAT WE ARE TESTING

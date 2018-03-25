@@ -7,7 +7,7 @@ createTest('pop back then forward', {
     beforeEnter: () => new Promise(res => setTimeout(res, 120))
   },
   THIRD: '/third'
-}, { browser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
+}, { testBrowser: true }, [], async ({ snapPop, dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 
