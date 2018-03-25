@@ -67,10 +67,10 @@ export default class BrowserHistory extends History {
   }
 
   listen(dispatch, getLocation) {
-    if (this.dispatch) return () => this.unlisten() // we don't allow/need multiple listeners currently
-
-    super.listen(dispatch, getLocation)
-    this._addPopListener()
+    if (!this.dispatch) { // we don't allow/need multiple listeners currently
+      super.listen(dispatch, getLocation)
+      this._addPopListener()
+    }
 
     return () => this.unlisten()
   }
@@ -206,7 +206,10 @@ export default class BrowserHistory extends History {
   _awaitUrl(actOrUrl, name) {
     return new Promise(resolve => {
       const url = typeof actOrUrl === 'string' ? actOrUrl : actOrUrl.location.url
-      const ready = () => url === locationToUrl(window.location)
+      const ready = () => {
+        console.log('ready', url, locationToUrl(window.location))
+        return url === locationToUrl(window.location)
+      }
       return tryChange(ready, resolve, name, this)
     })
   }

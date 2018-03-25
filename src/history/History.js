@@ -67,7 +67,10 @@ export default class History {
   }
 
   get prevUrl() {
-    if (this.location.kind === 'load') return this.location.from.location.url // used by `BrowserHistory._replace` on redirects when `prev` state is empty
+    if (this.location.kind === 'load' && this.location.from) {
+      return this.location.from.location.url // used by `BrowserHistory._replace` on redirects when `prev` state is empty
+    }
+
     return this.location.prev.location.url
   }
 
@@ -185,7 +188,9 @@ export default class History {
     const entries = this.entries.slice(0)
     const entry = entries[i] = { ...this.entries[i] }
     const action = n === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if n === 0, not just entry in entries
+    const prev = this._createPrev({ n: 0, index, entries })
     const info = { kind, index, entries }
+
     const commit = (action) => this._set(action, n)
 
     if (!this.entries[i]) {
@@ -225,6 +230,7 @@ export default class History {
     }
 
     Object.assign(entry, toFSRA(entry, this))
+    action.location.prev = prev
 
     return this._notify(action, info, commit, notify)
   }

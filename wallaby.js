@@ -22,8 +22,9 @@ module.exports = wallaby => {
       // '__tests__/integration/browser/sessionStorage/historyFallback.js',
       // '__tests__/integration/browser/sessionStorage/historyFallbackWithRedirectBeforeEnter.js',
       // '__tests__/integration/redirects.js',
+      '__tests__/integration/browser/history/**/*.js',
 
-      '__tests__/integration/browser/**/*.js',
+      // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/actions/**/*.js',
       // '__tests__/integration/createScene/**/*.js',
 
