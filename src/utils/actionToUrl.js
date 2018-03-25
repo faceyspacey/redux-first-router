@@ -41,7 +41,10 @@ export default (
     return { url, state }
   }
   catch (e) {
-    if (process.env.NODE_ENV === 'test') {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(`[rudy] unable to compile action "${type}" to URL`, action, e)
+    }
+    else if (process.env.NODE_ENV === 'test') {
       console.log(`[rudy] unable to compile action "${type}" to URL`, action, e)
     }
 

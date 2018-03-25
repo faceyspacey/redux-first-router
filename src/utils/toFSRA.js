@@ -6,8 +6,9 @@ import { actionToUrl, urlToAction } from './index'
 // Standard Rudy practice is to convert incoming actions to their full URL form (url + state)
 // and then convert that to a FSRA. THIS DOES BOTH STEPS IN ONE WHEN NECESSSARY (i.e. for actions).
 //
-// The `transformAction` middleware does this, though without using this utility function.
-// Instead `urlToAction` is called indirectly when the middleware calls `history.push/etc`.
+// For reference, the `transformAction` middleware also performs both steps, though without
+// using this utility function. Instead `urlToAction` is called indirectly when the middleware
+// calls `history.push/etc`.
 //
 // This is used by Rudy itself in a few places where we have to work with existing entries/actions,
 // eg: `history.set` and `history.reset`. But it's highly useful in userland.
