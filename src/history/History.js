@@ -47,7 +47,7 @@ export default class History {
 
   _createAction(path, state, basename) {
     const { routes, options, location } = this
-    return urlToAction(path, routes, options, state, null, basename, location)
+    return urlToAction(path, routes, options, state, null, location, basename)
   }
 
   // LOCATION STATE GETTERS (single source of truth, unidirectional):
@@ -201,7 +201,7 @@ export default class History {
     if (typeof act === 'function') {
       const newEntry = act(entry)
       Object.assign(entry, newEntry)
-      entry.basename = cleanBasename(entry.basename, true)
+      entry.basename = cleanBasename(entry.basename)
     }
     else {
       let { params, query, state, hash, basename: bn } = act
@@ -228,9 +228,12 @@ export default class History {
 
       if (bn) {
         bn = typeof bn === 'function' ? bn(entry.basename) : bn
-        entry.basename = cleanBasename(bn, true)
+        entry.basename = cleanBasename(bn)
       }
     }
+
+    const { url, state } = actionToUrl(entry, this.routes, this.options)
+    Object.assign(entry, this._createAction(url, state, entry.basename))
 
     return this._notify(action, info, commit, notify)
   }

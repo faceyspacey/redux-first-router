@@ -17,6 +17,11 @@ export default (initialState: Object, routes: RoutesMap) => (
   const r = routes[action.type]
   const l = action.location
 
+  if (l && l.kind === 'set') {
+    const { commit, location: { kind, ...location }, ...act } = action
+    return { ...st, ...act, ...location }
+  }
+
   if (r && r.path && (l.url !== st.url || /load|reset/.test(l.kind))) {
     const { type, params, query, state, hash, basename } = action
     const { universal } = st
@@ -42,12 +47,6 @@ export default (initialState: Object, routes: RoutesMap) => (
 
   if (action.type === UNBLOCK) {
     return { ...st, blocked: null }
-  }
-
-  if (l && l.kind === 'set') {
-    const { entries } = action.location
-    const { params, query, state, hash, basename } = action
-    return { ...st, entries, params, query, state, hash, basename }
   }
 
   if (action.type.indexOf('_ERROR') > -1) {

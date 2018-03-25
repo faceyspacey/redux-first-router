@@ -4,56 +4,55 @@ import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
-export default (loc, routes, opts, state, key, basename, curr = {}) => {
-  if (typeof loc === 'string') {
-    const foundBasename = findBasename(loc, opts.basenames)
-    loc = foundBasename ? stripBasename(loc, foundBasename) : loc
-    basename = foundBasename || basename
-  }
+export default (url, routes, opts, state, key, curr = {}, bn = '') => {
+  const { basename, slashBasename } = createBasename(url, opts, bn, curr)
 
-  const { scene } = routes[curr.type] || {}
-  const location = createLocation(loc, state, key, basename, curr)
-  const action = createAction(location, routes, opts, scene)
-
-  delete location.basename // these are needed for `urlToAction`, but `urlToAction` then puts them on the action instead of `action.location`
-  delete location.hash
-  delete location.state
-
-  location.scene = routes[action.type].scene || ''
+  const location = createLocation(url, opts, slashBasename, curr)
+  const action = createAction(location, routes, opts, state, curr)
 
   return {
-    ...action,
-    location
+    ...action, // { type, params, query, state, hash }
+    basename,
+    location: {
+      scene: routes[action.type].scene || '',
+      key: key || Math.random().toString(36).substr(2, 6),
+      url: slashBasename + locationToUrl(location),
+      pathname: location.pathname,
+      search: location.search
+    }
   }
 }
 
-const createLocation = (loc, state, key, basename, curr) => {
-  loc = typeof loc === 'string'
-    ? urlToLocation(loc)
-    : { ...loc, search: loc.search || '', hash: loc.hash || '' }
+const createBasename = (url, opts, bn, curr) => {
+  bn = findBasename(url, opts.basenames) || bn || curr.basename
 
-  if (!loc.pathname) {
-    loc.pathname = curr.pathname || '/'
+  const slashBasename = cleanBasename(bn)
+  const basename = slashBasename.replace(/^\//, '') // eg: '/base' -> 'base'
+
+  return { basename, slashBasename } // { 'base', '/base' }
+}
+
+const createLocation = (url, opts, bn, curr) => {
+  if (!url) {
+    url = curr.pathname || '/'
   }
-  else if (curr.pathname && loc.pathname.charAt(0) !== '/') {
-    loc.pathname = resolvePathname(loc.pathname, curr.pathname) // Resolve incomplete/relative pathname relative to current location.
+  else if (curr.pathname && url.charAt(0) !== '/') {
+    url = resolvePathname(url, curr.pathname) // resolve pathname relative to current location
+  }
+  else {
+    url = stripBasename(url, bn) // eg: /base/foo?a=b#bar -> /foo?a=b#bar
   }
 
-  loc.state = { ...loc.state, ...state }
-  loc.key = loc.key || key || Math.random().toString(36).substr(2, 6)
-  loc.basename = cleanBasename(loc.basename || basename || curr.basename, true)
-  loc.url = (loc.basename ? `/${loc.basename}` : '') + locationToUrl(loc)
-
-  return loc
+  return urlToLocation(url) // gets us: { pathname, search, hash } properly formatted
 }
 
 const createAction = (
   loc: Object,
   routes: RoutesMap,
   opts: Options,
-  scene: string = ''
+  st: Object = {},
+  curr: Object
 ): ReceivedAction => {
-  const { basename, state = {} } = loc
   const types = Object.keys(routes).filter(type => routes[type].path)
 
   for (let i = 0; i < types.length; i++) {
@@ -63,22 +62,24 @@ const createAction = (
 
     if (match) {
       const { params, query, hash } = match
-      const st = fromState(state, route, opts)
-      return { type, params, query, hash, basename, state: st }
+      const state = fromState(st, route, opts)
+      return { type, params, query, hash, state }
     }
   }
 
-
+  const { scene } = routes[curr.type] || {}
   const type = routes[`${scene}/NOT_FOUND`] && `${scene}/NOT_FOUND`// try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
 
   return {
-    ...notFound(state, type),
-    basename,
+    ...notFound(st, type),
     params: {},
     query: loc.search ? parseQuery(loc.search, routes, opts) : {}, // keep this info
     hash: loc.hash || ''
   }
 }
+
+
+// EVERYTHING BELOW IS RELATED TO THE TRANSFORMERS PASSED TO `matchUrl`:
 
 const fromPath = (params: Object, route: Route, opts: Options) => {
   const from = route.fromPath || defaultFromPath

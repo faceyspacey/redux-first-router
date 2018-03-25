@@ -19,7 +19,7 @@ export default (
   const { type, params, query, hash, basename: bn = '' } = action
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
-  const state = toState(action.state, route, opts, action)
+  const state = toState(action.state, route, opts)
   const basename = bn && bn.charAt(0) !== '/' ? `/${bn}` : bn
   const isWrongBasename = basename && !opts.basenames.includes(basename)
 
@@ -30,9 +30,9 @@ export default (
 
     const pathname = compileUrl(
       path,
-      toPath(params, route, opts, action),
-      toSearch(query, route, opts, action),
-      toHash(hash, route, opts, action),
+      toPath(params, route, opts),
+      toSearch(query, route, opts),
+      toHash(hash, route, opts),
       route,
       opts
     ) || '/'
@@ -41,8 +41,8 @@ export default (
     return { url, state }
   }
   catch (e) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error(`[rudy] unable to compile action "${type}" to URL`, action, e)
+    if (process.env.NODE_ENV === 'test') {
+      console.log(`[rudy] unable to compile action "${type}" to URL`, action, e)
     }
 
     const bn = isWrongBasename ? '' : basename
@@ -51,7 +51,7 @@ export default (
   }
 }
 
-const toPath = (params: ?Object, route: Route, opts: Options, action) => {
+const toPath = (params: ?Object, route: Route, opts: Options) => {
   const def = route.defaultParams || opts.defaultParams
   params = def
     ? typeof def === 'function' ? def(params, route, opts) : { ...def, ...params }
@@ -95,7 +95,7 @@ const defaultToPath = (
     : val === undefined ? undefined : encodedVal
 }
 
-const toSearch = (query: ?Object, route: Route, opts: Options, action) => {
+const toSearch = (query: ?Object, route: Route, opts: Options) => {
   const def = route.defaultQuery || opts.defaultQuery
   query = def
     ? typeof def === 'function' ? def(query, route, opts) : { ...def, ...query }
@@ -116,14 +116,14 @@ const toSearch = (query: ?Object, route: Route, opts: Options, action) => {
   return query
 }
 
-const toState = (state: ?Object, route: Route, opts: Options, action) => {
+const toState = (state: ?Object, route: Route, opts: Options) => {
   const def = route.defaultState || opts.defaultState
   return def
     ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
     : state
 }
 
-const toHash = (hash: ?string = '', route: Route, opts: Options, action) => {
+const toHash = (hash: ?string = '', route: Route, opts: Options) => {
   const def = route.defaultHash || opts.defaultHash
   hash = def
     ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
@@ -137,12 +137,11 @@ const notFoundUrl = (action, routes, prevRoute: Object = {}) => {
   const route = routes[action.type] || {}
   const hasScene = action.type.indexOf('/NOT_FOUND') > -1
   const scene = route.scene || prevRoute.scene || ''
-
-  action.type = hasScene
+  const type = hasScene
     ? action.type
     : routes[`${scene}/NOT_FOUND`] // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
       ? `${scene}/NOT_FOUND`
       : 'NOT_FOUND'
 
-  return routes[action.type].path || routes.NOT_FOUND.path
+  return routes[type].path || routes.NOT_FOUND.path
 }
