@@ -1,4 +1,4 @@
-import { isServer, actionToFSRA } from '../../../utils'
+import { isServer, toFSRA } from '../../../utils'
 
 const defaultCreateCacheKey = (action, name) => {
   const { type, basename, location } = action
@@ -62,7 +62,7 @@ export default (api, name, config) => {
     }
     else {                                        // delete all/some callbacks for precise item (default)
       const action = invalidator
-      const act = actionToFSRA(action, api)
+      const act = toFSRA(action, api)
       const names = opts.name === undefined ? callbacks : [].concat(opts.name)
 
       names.forEach(name => {

@@ -55,9 +55,10 @@ export default class BrowserHistory extends History {
     opts.restoreHistory = opts.restoreHistory || restoreHistory
     opts.saveHistory = opts.saveHistory || saveHistory
 
+    const api = { routes, options: opts }
     const { id, ...initialHistoryState } = getInitialHistoryState()
-    const defaultLocation = createWindowAction(initialHistoryState, routes, opts)
-    const { n, index, entries } = opts.restoreHistory(defaultLocation, routes, opts)
+    const defaultLocation = createWindowAction(initialHistoryState, api)
+    const { n, index, entries } = opts.restoreHistory(defaultLocation, api)
 
     super(routes, opts, { n, index, entries })
 
@@ -113,11 +114,11 @@ export default class BrowserHistory extends History {
 
     const onPopState = event => {
       if (isExtraneousPopstateEvent(event)) return // Ignore extraneous popstate events in WebKit.
-      handlePop(createWindowAction(event.state, this.routes, this.options))
+      handlePop(createWindowAction(event.state, this))
     }
 
     const onHashChange = () => {
-      handlePop(createWindowAction(getHistoryState(), this.routes, this.options))
+      handlePop(createWindowAction(getHistoryState(), this))
     }
 
     this._addPopListener = () => addPopListener(onPopState, onHashChange)
@@ -247,10 +248,10 @@ const rapidChangeWorkaround = (ready, complete, name) => {
   }
 }
 
-const createWindowAction = (historyState, routes, opts) => {
+const createWindowAction = (historyState, api) => {
   const { key = '0123456789', state = {} } = historyState || {}
   const { pathname, search, hash } = window.location
   const url = pathname + search + hash
 
-  return urlToAction(url, routes, opts, state, key)
+  return urlToAction(url, api, state, key)
 }

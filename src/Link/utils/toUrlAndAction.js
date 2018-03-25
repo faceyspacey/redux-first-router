@@ -34,7 +34,7 @@ export default (
     action = to
 
     try {
-      url = actionToUrl(action, routes, options)
+      url = actionToUrl(action, { routes, options })
       basename = action.basename || basename || ''
     }
     catch (e) {
@@ -63,7 +63,7 @@ export default (
   const isExternal = url.indexOf('http') === 0
 
   if (!action && !isExternal) {
-    action = urlToAction(url, routes, options)
+    action = urlToAction(url, { routes, options })
   }
 
   if (basename) {

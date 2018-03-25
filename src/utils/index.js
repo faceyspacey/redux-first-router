@@ -6,7 +6,7 @@ export { default as isRedirect } from './isRedirect'
 
 export { default as actionToUrl } from './actionToUrl'
 export { default as urlToAction } from './urlToAction'
-export { default as actionToFSRA } from './actionToFSRA'
+export { default as toFSRA } from './toFSRA'
 
 export { default as locationToUrl } from './locationToUrl'
 export { default as urlToLocation } from './urlToLocation'

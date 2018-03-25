@@ -1,15 +1,14 @@
-import { actionToUrl, urlToAction, createActionRef, cleanBasename } from '../utils'
+import { urlToAction, toFSRA, createActionRef, cleanBasename } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
-  constructor(routes, opts, restoredInfo) {
-    const { n, index, entries } = restoredInfo
-
-    this.saveHistory = opts.saveHistory || function() {}
+  constructor(routes, options, restoredInfo) {
+    this.saveHistory = options.saveHistory || function() {}
     this.routes = routes
-    this.options = opts
+    this.options = options
 
     const kind = 'load'
+    const { n, index, entries } = restoredInfo
     const action = entries[index]
     const info = { kind, n, index, entries }
     const commit = function() {} // action already committed, by virtue of browser loading the URL
@@ -45,11 +44,6 @@ export default class History {
     return action
   }
 
-  _createAction(path, state, basename) {
-    const { routes, options, location } = this
-    return urlToAction(path, routes, options, state, null, location, basename)
-  }
-
   // LOCATION STATE GETTERS (single source of truth, unidirectional):
 
   get location() {
@@ -80,7 +74,7 @@ export default class History {
   // API:
 
   push(path, state = {}, notify = true) {
-    const action = this._createAction(path, state)
+    const action = urlToAction(path, this, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -98,7 +92,7 @@ export default class History {
   }
 
   replace(path, state = {}, notify = true) {
-    const action = this._createAction(path, state)
+    const action = urlToAction(path, this, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'replace')
@@ -118,7 +112,7 @@ export default class History {
   }
 
   replacePop(path, state = {}, notify = true, pop) {
-    const action = this._createAction(path, state)
+    const action = urlToAction(path, this, state)
     const { index, prevUrl, n } = pop
     const entries = pop.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
@@ -232,8 +226,7 @@ export default class History {
       }
     }
 
-    const { url, state } = actionToUrl(entry, this.routes, this.options)
-    Object.assign(entry, this._createAction(url, state, entry.basename))
+    Object.assign(entry, toFSRA(entry, this))
 
     return this._notify(action, info, commit, notify)
   }
@@ -244,21 +237,7 @@ export default class History {
       entries.unshift(entry)
     }
 
-    entries = entries.map(entry => {
-      if (typeof entry === 'object' && entry.type) {  // entry as action object
-        const action = entry
-        const { url, state } = actionToUrl(action, this.routes, this.options)
-        return this._createAction(url, state, action.basename)
-      }
-      else if (Array.isArray(entry)) {                // entry as array of [url, state]
-        const [url, state] = entry
-        return this._createAction(url, state)
-      }
-
-      return this._createAction(entry)                 // entry as url string
-    })
-
-
+    entries = entries.map(e => toFSRA(e, this))
     index = index !== undefined ? index : entries.length - 1 // default index is head of array
 
     if (!entries[index]) {

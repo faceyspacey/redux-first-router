@@ -2,9 +2,9 @@ import { isRedirect, actionToUrl, nestAction } from '../../../utils'
 import { replacePopAction, findNeighboringN } from './index'
 
 export default (req) => {
-  const { action, routes, options, history, prevRoute, getLocation, tmp } = req
+  const { action, history, prevRoute, getLocation, tmp } = req
   const { url, state } = !req.commitHistory
-    ? actionToUrl(action, routes, options, prevRoute)
+    ? actionToUrl(action, req, prevRoute)
     : { url: action.location.url, state: action.state }
 
   const redirect = isRedirect(action)

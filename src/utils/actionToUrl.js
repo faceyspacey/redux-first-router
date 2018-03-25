@@ -12,10 +12,10 @@ import type {
 
 export default (
   action: Action,
-  routes: RoutesMap,
-  opts: Options = {},
+  api: Object,
   prevRoute?: Object
 ): string => {
+  const { routes, options: opts } = api
   const { type, params, query, hash, basename: bn = '' } = action
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route

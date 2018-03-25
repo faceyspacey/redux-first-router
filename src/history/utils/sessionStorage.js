@@ -49,7 +49,7 @@ const getSetItem = (key, val) => {
 
 // called every time the history entries or index changes
 export const saveHistory = ({ index, entries, forwardedOut }) => {
-  entries = entries.map(e => [e.location.url, e.location.key, e.state])
+  entries = entries.map(e => [e.location.url, e.state, e.location.key])
 
   const history = forwardedOut
     ? { index, entries, forwardedOut } // used to patch an edge case, see `getIndexAndEntries` below
@@ -70,9 +70,9 @@ export const saveHistory = ({ index, entries, forwardedOut }) => {
 }
 
 // called on startup
-export const restoreHistory = (defaultLocation, routes, opts) => {
+export const restoreHistory = (defaultLocation, api) => {
   const { state, location: { url, key } } = defaultLocation // used if first time visiting site during session
-  const defaultHistory = { n: 1, index: 0, entries: [[url, key, state]] }
+  const defaultHistory = { n: 1, index: 0, entries: [[url, state, key]] }
 
   if (!supportsSessionStorage()) {
     const state = getHistoryState()
@@ -85,11 +85,11 @@ export const restoreHistory = (defaultLocation, routes, opts) => {
       window.history.replaceState(newState, null, window.location.href)
     }
 
-    return getIndexAndEntries(state.history || defaultHistory, routes, opts)
+    return getIndexAndEntries(state.history || defaultHistory, api)
   }
 
   // `getSet` simply sets the `defaultHistory` in `sessionStorage` if it's a fresh visitation
-  return getIndexAndEntries(getSetItem('history', defaultHistory), routes, opts)
+  return getIndexAndEntries(getSetItem('history', defaultHistory), api)
 }
 
 export const getHistoryState = () => {
@@ -127,7 +127,7 @@ export const getInitialHistoryState = () => {
 
 // FACADE HELPERS:
 
-const getIndexAndEntries = (history, routes, opts) => {
+const getIndexAndEntries = (history, api) => {
   let { index, entries, forwardedOut } = history
 
   // We must remove entries after the index in case the user opened a link to
@@ -149,7 +149,7 @@ const getIndexAndEntries = (history, routes, opts) => {
     entries = entries.slice(0, index + 1)
   }
 
-  entries = entries.map(([url, key, state]) => urlToAction(url, routes, opts, state, key))
+  entries = entries.map(([url, state, key]) => urlToAction(url, api, state, key))
   const n = getInitialN(index, entries)
   return { n, index, entries }
 }

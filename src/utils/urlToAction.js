@@ -4,8 +4,11 @@ import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
-export default (url, routes, opts, state, key, curr = {}, bn = '') => {
-  const { basename, slashBasename } = createBasename(url, opts, bn, curr)
+export default (url, api, state, key) => {
+  const { getLocation, routes, options: opts } = api
+  const curr = getLocation ? getLocation() : {}
+
+  const { basename, slashBasename } = createBasename(url, opts, curr)
 
   const location = createLocation(url, opts, slashBasename, curr)
   const action = createAction(location, routes, opts, state, curr)
@@ -23,8 +26,8 @@ export default (url, routes, opts, state, key, curr = {}, bn = '') => {
   }
 }
 
-const createBasename = (url, opts, bn, curr) => {
-  bn = findBasename(url, opts.basenames) || bn || curr.basename
+const createBasename = (url, opts, curr) => {
+  const bn = findBasename(url, opts.basenames) || curr.basename
 
   const slashBasename = cleanBasename(bn)
   const basename = slashBasename.replace(/^\//, '') // eg: '/base' -> 'base'
@@ -153,7 +156,7 @@ const fromState = (state: Object, route: Route, opts: Options) => {
   const def = route.defaultState || opts.defaultState
   return def
     ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
-    : state
+    : state || {}
 }
 
 const transformers = { fromPath, fromSearch, fromHash }

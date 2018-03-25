@@ -79,13 +79,13 @@ Object {
   "entries": Array [
     Array [
       "/",
-      "345678",
       Object {},
+      "345678",
     ],
     Array [
       "/second",
-      "345678",
       Object {},
+      "345678",
     ],
   ],
   "index": 1,
@@ -97,13 +97,13 @@ Object {
   "entries": Array [
     Array [
       "/",
-      "345678",
       Object {},
+      "345678",
     ],
     Array [
       "/second",
-      "345678",
       Object {},
+      "345678",
     ],
   ],
   "index": 0,

@@ -16,25 +16,26 @@ export default class MemoryHistory extends History {
     opts.saveHistory = opts.saveHistory || (useSessionStorage && saveHistory)
     opts.restoreHistory = opts.restoreHistory || (useSessionStorage && restore)
 
+    const api = { routes, options: opts }
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
     const { n, index, entries } = opts.restoreHistory
-      ? opts.restoreHistory(routes, opts, initialIndex, initialEntries) // when used as a browser fallback, we restore from sessionStorage
-      : create(routes, opts, initialIndex, initialEntries) // this happens 99% of the time in the browser
+      ? opts.restoreHistory(api, initialIndex, initialEntries) // when used as a browser fallback, we restore from sessionStorage
+      : create(api, initialIndex, initialEntries) // this happens 99% of the time in the browser
 
     super(routes, opts, { n, index, entries })
   }
 }
 
-const create = (routes, opts, initialIndex, initialEntries) => {
+const create = (api, initialIndex, initialEntries) => {
   const n = getInitialN(initialIndex, initialEntries) // initial direction the user is going across the history track
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
-  const entries = initialEntries.map(e => urlToAction(e, routes, opts))
+  const entries = initialEntries.map(e => urlToAction(e, api))
   return { n, index, entries }
 }
 
-const restore = (routes, opts, initialIndex, initialEntries) => {
+const restore = (api, initialIndex, initialEntries) => {
   const entry = initialEntries[0]
-  const defaultLocation = urlToAction(entry, routes, opts)
-  const { n, index, entries } = restoreHistory(defaultLocation, routes, opts) // impure
+  const defaultLocation = urlToAction(entry, api)
+  const { n, index, entries } = restoreHistory(defaultLocation, api) // impure
   return { n, index, entries }
 }

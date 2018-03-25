@@ -97,18 +97,18 @@ Object {
   "entries": Array [
     Array [
       "/",
-      "345678",
       Object {},
+      "345678",
     ],
     Array [
       "/second",
-      "345678",
       Object {},
+      "345678",
     ],
     Array [
       "/third",
-      "345678",
       Object {},
+      "345678",
     ],
   ],
   "index": 0,
@@ -120,23 +120,23 @@ Object {
   "entries": Array [
     Array [
       "/",
-      "345678",
       Object {},
+      "345678",
     ],
     Array [
       "/second",
-      "345678",
       Object {},
+      "345678",
     ],
     Array [
       "/third",
-      "345678",
       Object {},
+      "345678",
     ],
     Array [
       "/",
-      "345678",
       Object {},
+      "345678",
     ],
   ],
   "index": 3,
