@@ -14,7 +14,7 @@ import { restoreHistory, saveHistory, getInitialN, supportsSession } from './uti
 // [[path, state, key?], [path, state, key?], etc] or: [path, state, key?]
 
 export default class MemoryHistory extends History {
-  restore() {
+  _restore() {
     const { options: opts } = this
     const { initialIndex: i = 0, initialEntries: ents = ['/'], initialN: n } = opts
     const useSession = supportsSession() && opts.testBrowser !== false

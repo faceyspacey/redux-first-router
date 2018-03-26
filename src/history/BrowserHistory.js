@@ -49,7 +49,7 @@ import {
 // so client code can control when the URL actually changes, and possibly deny it
 
 export default class BrowserHistory extends History {
-  restore() {
+  _restore() {
     this.options.restore = this.options.restore || restoreHistory
     this.options.save = this.options.save || saveHistory
 

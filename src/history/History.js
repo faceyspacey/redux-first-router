@@ -2,14 +2,14 @@ import { urlToAction, toAction, createActionRef, cleanBasename } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
-  constructor(routes, options) {
+  constructor(routes, options = {}) {
     this.routes = routes
     this.options = options
 
     options.basenames = (options.basenames || []).map(bn => cleanBasename(bn))
 
     const kind = 'load'
-    const { n, index, entries } = this.restore()
+    const { n, index, entries } = this._restore() // delegate to child classes to restore
     const action = entries[index]
     const info = { kind, n, index, entries }
     const commit = function() {} // action already committed, by virtue of browser loading the URL
@@ -371,7 +371,12 @@ export default class History {
     return n || 0
   }
 
-  // BrowseHistory (or 3rd party implementations) override these
+  // All child classes *should* implement this:
+  _restore() {
+    return { n: 1, index: 0, entries: [toAction('/', this)] }
+  }
+
+  // BrowseHistory (or 3rd party implementations) override these to provide sideFX
   _push() {}
   _replace() {}
   _jump() {}
