@@ -49,16 +49,13 @@ import {
 // so client code can control when the URL actually changes, and possibly deny it
 
 export default class BrowserHistory extends History {
-  constructor(routes, opts = {}) {
-    opts.restoreHistory = opts.restoreHistory || restoreHistory
-    opts.saveHistory = opts.saveHistory || saveHistory
-
-    const api = { routes, options: opts }
-    const { n, index, entries } = opts.restoreHistory(api)
-
-    super(routes, opts, { n, index, entries })
+  restore() {
+    this.options.restore = this.options.restore || restoreHistory
+    this.options.save = this.options.save || saveHistory
 
     this._setupPopHandling()
+
+    return this.options.restore(this)
   }
 
   listen(dispatch, getLocation) {

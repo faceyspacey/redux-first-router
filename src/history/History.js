@@ -2,13 +2,14 @@ import { urlToAction, toAction, createActionRef, cleanBasename } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
-  constructor(routes, options, restoredInfo) {
-    this.saveHistory = options.saveHistory || function() {}
+  constructor(routes, options) {
     this.routes = routes
     this.options = options
 
+    options.basenames = (options.basenames || []).map(bn => cleanBasename(bn))
+
     const kind = 'load'
-    const { n, index, entries } = restoredInfo
+    const { n, index, entries } = this.restore()
     const action = entries[index]
     const info = { kind, n, index, entries }
     const commit = function() {} // action already committed, by virtue of browser loading the URL
@@ -326,7 +327,8 @@ export default class History {
 
       return Promise.resolve(commit(action))
         .then(() => {
-          this.saveHistory(this.location) // will retreive these from redux state, which ALWAYS updates first
+          if (!this.options.save) return
+          this.options.save(this.location) // will retreive these from redux state, which ALWAYS updates first
         })
     }
   }
