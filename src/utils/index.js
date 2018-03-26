@@ -30,3 +30,4 @@ export { default as createSelector } from './createSelector'
 export { default as nestAction, createActionRef } from './nestAction'
 
 export { default as cleanBasename } from './cleanBasename'
+export { default as parseSearch } from './parseSearch'

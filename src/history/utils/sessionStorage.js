@@ -16,7 +16,7 @@ import { urlToAction } from '../../utils'
 // It's a bit crazy, but it works very well, and there's plenty of space allowed for storing
 // things there to get a lot of mileage out of it. We store the minimum amount of data necessary.
 //
-// Firefox has the lowest limit of 640kb per entry. IE has 1mb and chrome has at least 10mb:
+// Firefox has the lowest limit of 640kb PER ENTRY. IE has 1mb and chrome has at least 10mb:
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
 
@@ -38,10 +38,10 @@ export const get = () => supportsSession() ? sessionGet() : historyGet()
 // HISTORY FACADE:
 
 export const pushState = (url) =>
-  window.history.pushState({ id: sessionId() }, null, url) // insure every entry has the sessionId (callbe by `BrowserHistory`)
+  window.history.pushState({ id: sessionId() }, null, url) // insure every entry has the sessionId (called by `BrowserHistory`)
 
 export const replaceState = (url) =>
-  window.history.replaceState({ id: sessionId() }, null, url) // fallback simply overwrites state soon after, and doesnt use `id`
+  window.history.replaceState({ id: sessionId() }, null, url) // FYI: fallback simply overwrites state soon after, which is fine because only session uses `id`
 
 const historySet = (history) =>
   window.history.replaceState(history, null) // set on current entry
@@ -96,11 +96,8 @@ const initializeHistory = () => {
   const { pathname, search, hash } = window.location
   const url = pathname + search + hash
   const state = {}
-  const key = '345678'
-  const history = { n: 1, index: 0, entries: [[url, state, key]] } // default history saved on first load
-
-  if (!supportsSession()) historySet(history) // call `history.replaceState` on first load to insure this entry has all the state
-  return history
+  const key = createId()
+  return { n: 1, index: 0, entries: [[url, state, key]] } // default history on first load
 }
 
 // We must remove entries after the index in case the user opened a link to
@@ -150,7 +147,6 @@ const getHistoryState = () => {
   try {
     return window.history.state || {}
   }
-  catch (e) {
-    return {}
-  }
+  catch (e) {}
+  return {}
 }

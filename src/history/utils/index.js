@@ -13,6 +13,8 @@ export {
 export {
   saveHistory,
   restoreHistory,
+  get,
+  set,
   pushState,
   replaceState,
   getInitialN

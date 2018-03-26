@@ -6,9 +6,7 @@ import { cleanBasename } from '../utils'
 export default (routes, opts = {}) => {
   opts.basenames = (opts.basenames || []).map(bn => cleanBasename(bn))
 
-  if (opts.testBrowser === false || !supportsDom() || !supportsHistory()) {
-    return new MemoryHistory(routes, opts)
-  }
-
-  return new BrowserHistory(routes, opts)
+  return supportsDom() && supportsHistory() && opts.testBrowser !== false
+    ? new BrowserHistory(routes, opts)
+    : new MemoryHistory(routes, opts)
 }

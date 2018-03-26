@@ -36,6 +36,14 @@ export default (
   return p + s + h
 }
 
-const stringify = (query, r: Route, o: Options) =>
-  (r.stringifyQuery || o.stringifyQuery)(query)
+const stringify = (query, r: Route, o: Options) => {
+  const search = (r.stringifyQuery || o.stringifyQuery)(query)
+
+  if (process.env.NODE_ENV === 'development' && search.length > 2000) {
+    // https://stackoverflow.com/questions/812925/what-is-the-maximum-possible-length-of-a-query-string
+    console.error(`[rudy] query is too long: ${search.length} chars (max: 2000)`)
+  }
+
+  return search
+}
 

@@ -76,7 +76,7 @@ const createAction = (
   return {
     ...notFound(st, type),
     params: {},
-    query: loc.search ? parseQuery(loc.search, routes, opts) : {}, // keep this info
+    query: loc.search ? parseSearch(loc.search, routes, opts) : {}, // keep this info
     hash: loc.hash || ''
   }
 }
@@ -161,10 +161,10 @@ const fromState = (state: Object, route: Route, opts: Options) => {
 
 const transformers = { fromPath, fromSearch, fromHash }
 
-const isNumber = (val: string) => /^\d+$/.test(val)
+const isNumber = (str: string) => !isNaN(str) && !isNaN(parseFloat(str))
 
-const parseQuery = (search, routes, opts) =>
-  (routes.NOT_FOUND.parseQuery || opts.parseQuery)(search)
+const parseSearch = (search, routes, opts) =>
+  (routes.NOT_FOUND.parseSearch || opts.parseSearch)(search)
 
 const stripBasename = (path, bn) =>
   path.indexOf(bn) === 0 ? path.substr(bn.length) : path

@@ -106,7 +106,7 @@ export const matchVal = (val, expected, key, route, opts) => {
 
 const parseSearch = (search: string, route: Route, opts: Options) => {
   if (queries[search]) return queries[search]
-  const parse = route.parseQuery || opts.parseQuery
+  const parse = route.parseSearch || opts.parseSearch
   return queries[search] = parse(search)
 }
 
@@ -137,11 +137,6 @@ const compilePath = (
 
   return compiledPattern
 }
-
-
-
-
-
 
 
 type CompileOptions = {
