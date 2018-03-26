@@ -166,20 +166,17 @@ export default class BrowserHistory extends History {
       .then(() => this._replace(action, action))
   }
 
-  _set(action, n) {
-    const { prevUrl } = this
-    const act = action.location.entries[this.index + n]
-
+  _set(action, currUrl, n) {
     if (!n) {
-      return this._replace(act)
+      return this._replace(action, currUrl)
     }
 
-    return this._awaitUrl(prevUrl)
+    return this._awaitUrl(action, '_setN start')
       .then(() => this._forceGo(n))
-      .then(() => this._awaitUrl(act))
-      .then(() => this._replace(act))
+      .then(() => this._awaitUrl(currUrl, '_setN before replace'))
+      .then(() => this._replace(action))
       .then(() => this._forceGo(-n))
-      .then(() => this._awaitUrl(prevUrl))
+      .then(() => this._awaitUrl(action, 'setN return'))
   }
 
   _reset(action) {

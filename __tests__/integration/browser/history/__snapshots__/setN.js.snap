@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`set(action, n) 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/bar",
+      Object {
+        "hell": "yea",
+      },
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
+exports[`set(action, n) 2`] = `
+Object {
+  "basename": "",
+  "blocked": null,
+  "direction": "forward",
+  "entries": Array [
+    Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/bar",
+        "scene": "",
+        "search": "",
+        "url": "/bar",
+      },
+      "params": Object {
+        "foo": "bar",
+      },
+      "query": Object {},
+      "state": Object {
+        "hell": "yea",
+      },
+      "type": "FIRST",
+    },
+    Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+  ],
+  "from": null,
+  "hash": "",
+  "index": 1,
+  "key": "345678",
+  "kind": "push",
+  "length": 2,
+  "n": 1,
+  "params": Object {},
+  "pathname": "/second",
+  "pop": false,
+  "prev": Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "index": 0,
+      "key": "345678",
+      "pathname": "/",
+      "scene": "",
+      "search": "",
+      "url": "/",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIRST",
+  },
+  "query": Object {},
+  "scene": "",
+  "search": "",
+  "state": Object {},
+  "status": 200,
+  "type": "SECOND",
+  "universal": false,
+  "url": "/second",
+}
+`;

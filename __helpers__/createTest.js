@@ -264,22 +264,33 @@ const createRoutes = (routesMap) => {
     }
   }
 
-  return {
-    FIRST: {
+  // we add them like this (rather than merging over them) to preserve natural order
+  // the tests would like the routes defined in. Order matters for matching types to URLs.
+  // This essentially replicates what would typically happen in userland where they aren't
+  // override routes for the convenience of tests.
+  if (!routes.FIRST) {
+    routes.FIRST = {
       path: '/first'
-    },
-    NEVER_USED_PATHLESS: { // insures pathless routes can co-exist with regular routes
+    }
+  }
+
+  if (!routes.NEVER_USED_PATHLESS) {
+    routes.NEVER_USED_PATHLESS = {
       thunk: jest.fn()
-    },
-    REDIRECTED: {
+    }
+  }
+
+  if (!routes.REDIRECTED) {
+    routes.REDIRECTED = {
       path: '/redirected',
       beforeEnter: () => {
         return new Promise(res => setTimeout(res, 1))
       },
       onComplete: jest.fn(() => 'redirect_complete')
-    },
-    ...routes
+    }
   }
+
+  return routes
 }
 
 const createOptions = (opts = {}) => {

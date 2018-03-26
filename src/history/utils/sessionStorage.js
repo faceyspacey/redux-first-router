@@ -48,7 +48,7 @@ const getSetItem = (key, val) => {
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
 // called every time the history entries or index changes
-export const saveHistory = ({ index, entries, forwardedOut }) => {
+export const saveHistory = ({ index, entries }, forwardedOut) => {
   entries = entries.map(e => [e.location.url, e.state, e.location.key])
 
   const history = forwardedOut
@@ -56,7 +56,7 @@ export const saveHistory = ({ index, entries, forwardedOut }) => {
     : { index, entries }
 
   // here's the key aspect of the fallback. essentially we keep updating history state
-  // via `replaceState` so every entry has everything that would be in `sessionStorage`
+  // via `replaceState` so EVERY entry has everything that would be in `sessionStorage`
   if (!supportsSessionStorage()) {
     const state = getHistoryState()
     delete state.forwardedOut

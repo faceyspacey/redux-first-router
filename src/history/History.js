@@ -188,10 +188,10 @@ export default class History {
     const entries = this.entries.slice(0)
     const entry = entries[i] = { ...this.entries[i] }
     const action = n === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if n === 0, not just entry in entries
-    const prev = this._createPrev({ n: 0, index, entries })
     const info = { kind, index, entries }
 
-    const commit = (action) => this._set(action, n)
+    const currUrl = n === 0 ? this.url : entry.location.url
+    const commit = (action) => this._set(action, currUrl, n)
 
     if (!this.entries[i]) {
       throw new Error(`[rudy] no entry at index: ${i}`)
@@ -230,7 +230,6 @@ export default class History {
     }
 
     Object.assign(entry, toFSRA(entry, this))
-    action.location.prev = prev
 
     return this._notify(action, info, commit, notify)
   }
@@ -327,8 +326,7 @@ export default class History {
 
       return Promise.resolve(commit(action))
         .then(() => {
-          const { index, entries } = this // will retreive these from redux state, which ALWAYS updates first
-          this.saveHistory({ index, entries })
+          this.saveHistory(this.location) // will retreive these from redux state, which ALWAYS updates first
         })
     }
   }

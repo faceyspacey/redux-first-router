@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`set(action) 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/?hell=yea#yolo",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
+exports[`set(action) 2`] = `
+Object {
+  "basename": "",
+  "blocked": null,
+  "direction": "forward",
+  "entries": Array [
+    Object {
+      "basename": "",
+      "hash": "yolo",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "hell=yea",
+        "url": "/?hell=yea#yolo",
+      },
+      "params": Object {},
+      "query": Object {
+        "hell": "yea",
+      },
+      "state": Object {},
+      "type": "FIRST",
+    },
+  ],
+  "from": null,
+  "hash": "yolo",
+  "index": 0,
+  "key": "345678",
+  "kind": "load",
+  "length": 1,
+  "n": 1,
+  "params": Object {},
+  "pathname": "/",
+  "pop": false,
+  "prev": Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "index": -1,
+      "key": "",
+      "pathname": "",
+      "scene": "",
+      "search": "",
+      "url": "",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "",
+  },
+  "query": Object {
+    "hell": "yea",
+  },
+  "scene": "",
+  "search": "hell=yea",
+  "state": Object {},
+  "status": 200,
+  "type": "FIRST",
+  "universal": false,
+  "url": "/?hell=yea#yolo",
+}
+`;
