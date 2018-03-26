@@ -91,118 +91,102 @@ Object {
 
 exports[`restore history from history fallback 2`] = `
 Object {
-  "history": Object {
-    "entries": Array [
-      Array [
-        "/",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/second",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/third",
-        Object {},
-        "345678",
-      ],
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
     ],
-    "index": 0,
-  },
-  "id": "345678",
-  "key": "345678",
-  "state": Object {},
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+  "out": undefined,
 }
 `;
 
 exports[`restore history from history fallback 3`] = `
 Object {
-  "history": Object {
-    "entries": Array [
-      Array [
-        "/",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/second",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/third",
-        Object {},
-        "345678",
-      ],
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
     ],
-    "index": 1,
-  },
-  "id": "345678",
-  "key": "345678",
-  "state": Object {},
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+  "out": undefined,
 }
 `;
 
 exports[`restore history from history fallback 4`] = `
 Object {
-  "history": Object {
-    "entries": Array [
-      Array [
-        "/",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/second",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/third",
-        Object {},
-        "345678",
-      ],
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
     ],
-    "index": 2,
-  },
-  "id": "345678",
-  "key": "345678",
-  "state": Object {},
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+  "out": undefined,
 }
 `;
 
 exports[`restore history from history fallback 5`] = `
 Object {
-  "history": Object {
-    "entries": Array [
-      Array [
-        "/",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/second",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/third",
-        Object {},
-        "345678",
-      ],
-      Array [
-        "/",
-        Object {},
-        "345678",
-      ],
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
     ],
-    "index": 3,
-  },
-  "id": "345678",
-  "key": "345678",
-  "state": Object {},
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 3,
+  "out": undefined,
 }
 `;
 

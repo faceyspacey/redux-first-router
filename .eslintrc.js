@@ -64,6 +64,7 @@ module.exports = {
     'flowtype/no-weak-types': 1,
     'consistent-return': 0,
     'no-nested-ternary': 0,
+    'no-empty': 0,
     'no-cond-assign': 0,
     'no-return-assign': 1,
     'no-continue': 1,
@@ -120,7 +121,7 @@ module.exports = {
     'max-len': [
       'error',
       {
-        code: 80,
+        code: 86,
         tabWidth: 2,
         ignoreUrls: true,
         ignoreComments: true,

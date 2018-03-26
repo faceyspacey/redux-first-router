@@ -1,4 +1,4 @@
-import { urlToAction, toFSRA, createActionRef, cleanBasename } from '../utils'
+import { urlToAction, toAction, createActionRef, cleanBasename } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
@@ -229,7 +229,7 @@ export default class History {
       }
     }
 
-    Object.assign(entry, toFSRA(entry, this))
+    Object.assign(entry, toAction(entry, this))
 
     return this._notify(action, info, commit, notify)
   }
@@ -240,7 +240,7 @@ export default class History {
       entries.unshift(entry)
     }
 
-    entries = entries.map(e => toFSRA(e, this))
+    entries = entries.map(e => toAction(e, this))
     index = index !== undefined ? index : entries.length - 1 // default index is head of array
 
     if (!entries[index]) {

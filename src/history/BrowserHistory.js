@@ -1,16 +1,14 @@
 import History from './History'
-import { urlToAction, locationToUrl } from '../utils'
+import { locationToUrl } from '../utils'
 import {
   addPopListener,
   removePopListener,
-  isExtraneousPopstateEvent,
+  isExtraneousPopEvent,
   restoreHistory,
   saveHistory,
-  getHistoryState,
-  getInitialHistoryState
+  pushState,
+  replaceState
 } from './utils'
-
-
 
 // 1) HISTORY RESTORATION:
 // * FROM SESSION_STORAGE (WITH A FALLBACK TO OUR "HISTORY_STORAGE" SOLUTION)
@@ -56,13 +54,10 @@ export default class BrowserHistory extends History {
     opts.saveHistory = opts.saveHistory || saveHistory
 
     const api = { routes, options: opts }
-    const { id, ...initialHistoryState } = getInitialHistoryState()
-    const defaultLocation = createWindowAction(initialHistoryState, api)
-    const { n, index, entries } = opts.restoreHistory(defaultLocation, api)
+    const { n, index, entries } = opts.restoreHistory(api)
 
     super(routes, opts, { n, index, entries })
 
-    this._id = id
     this._setupPopHandling()
   }
 
@@ -80,16 +75,25 @@ export default class BrowserHistory extends History {
     super.unlisten()
   }
 
+  _didPopForward(url) {
+    const e = this.entries[this.index + 1]
+    return e && e.location.url === url
+  }
+
   _setupPopHandling() {
-    const handlePop = loc => {
+    const handlePop = () => {
       if (this._popForced) return (this._popForced = false)
+
+      const { pathname, search, hash } = window.location
+      const url = pathname + search + hash
+
       let n
 
       if (!this.pendingPop) {
-        n = this._isNext(loc) ? 1 : -1
+        n = this._didPopForward(url) ? 1 : -1
         this.pendingPop = n
       }
-      else if (loc.location.url === this.url) {
+      else if (url === this.url) {
         n = this.pendingPop * -1 // switch directions
         return this._forceGo(n * -1)
       }
@@ -112,14 +116,8 @@ export default class BrowserHistory extends History {
       this.currentPop = this.jump(n, null, false, kind, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
     }
 
-    const onPopState = event => {
-      if (isExtraneousPopstateEvent(event)) return // Ignore extraneous popstate events in WebKit.
-      handlePop(createWindowAction(event.state, this))
-    }
-
-    const onHashChange = () => {
-      handlePop(createWindowAction(getHistoryState(), this))
-    }
+    const onPopState = e => !isExtraneousPopEvent(e) && handlePop() // Ignore extraneous popstate events in WebKit.
+    const onHashChange = handlePop
 
     this._addPopListener = () => addPopListener(onPopState, onHashChange)
     this._removePopListener = () => removePopListener(onPopState, onHashChange)
@@ -131,24 +129,24 @@ export default class BrowserHistory extends History {
   }
 
   _push(action, awaitUrl) {
-    const { state, location: { key, url } } = action
+    const { url } = action.location
 
     return this._awaitUrl(awaitUrl || this.prevUrl, '_push')
-      .then(() => window.history.pushState({ id: this._id, key, state }, null, url))
+      .then(() => pushState(url))
   }
 
   _replace(action, awaitUrl, n) {
-    const { state, location: { key, url } } = action
+    const { url } = action.location
 
     if (n) {
       this._forceGo(n)
 
       return this._awaitUrl(awaitUrl, '_replaceBackNext')
-        .then(() => window.history.replaceState({ id: this._id, key, state }, null, url))
+        .then(() => replaceState(url))
     }
 
     return this._awaitUrl(awaitUrl || this.prevUrl, '_replace')
-      .then(() => window.history.replaceState({ id: this._id, key, state }, null, url))
+      .then(() => replaceState(url))
   }
 
   _jump(action, n, isPop) {
@@ -248,10 +246,3 @@ const rapidChangeWorkaround = (ready, complete, name) => {
   }
 }
 
-const createWindowAction = (historyState, api) => {
-  const { key = '0123456789', state = {} } = historyState || {}
-  const { pathname, search, hash } = window.location
-  const url = pathname + search + hash
-
-  return urlToAction(url, api, state, key)
-}

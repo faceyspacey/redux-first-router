@@ -21,7 +21,7 @@ export const supportsHistory = () => {
 
 let _hasSession
 
-export const supportsSessionStorage = () => {
+export const supportsSession = () => {
   if (_hasSession !== undefined) return _hasSession
   if (typeof window === 'undefined') return _hasSession = false
 

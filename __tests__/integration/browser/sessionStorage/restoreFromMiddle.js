@@ -1,5 +1,5 @@
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
-import { getItem } from '../../../../src/history/utils/sessionStorage'
+import { get } from '../../../../src/history/utils/sessionStorage'
 
 // note restoreFromMiddle is in fact the same as restoreFromFront
 // since `sessionStorage.js` clips all entries after the current index
@@ -30,7 +30,7 @@ createTest('restore history from sessionStorage', {
   THIRD: '/third'
 }, { testBrowser: true }, [], async ({ snapPop, getLocation }) => {
   expect(getLocation()).toMatchSnapshot()
-  expect(getItem('history')).toMatchSnapshot()
+  expect(get()).toMatchSnapshot()
 
   await snapPop('back')
 
@@ -43,5 +43,5 @@ createTest('restore history from sessionStorage', {
   // just like the real browser when you push a whole new website
   expect(getLocation().length).toEqual(2)
 
-  expect(getItem('history')).toMatchSnapshot()
+  expect(get()).toMatchSnapshot()
 })

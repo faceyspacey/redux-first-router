@@ -1,5 +1,5 @@
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
-import { getItem } from '../../../../src/history/utils/sessionStorage'
+import { get } from '../../../../src/history/utils/sessionStorage'
 
 // MemoryHistory can be used as a fallback in the browser (ie. 8/9)
 // Those browsers do support SessionStorage, so we have capabilities to remember
@@ -7,7 +7,7 @@ import { getItem } from '../../../../src/history/utils/sessionStorage'
 
 jest.mock('../../../../src/history/utils/supports', () => ({
   ...require.requireActual('../../../../src/history/utils/supports'),
-  supportsSessionStorage: jest.fn(() => true),
+  supportsSession: jest.fn(() => true),
   supportsHistory: jest.fn(() => false)
 }))
 
@@ -36,7 +36,7 @@ createTest('restore history from history fallback', {
   THIRD: '/third'
 }, { testBrowser: true }, [], async ({ snap, getLocation, getState }) => {
   expect(getState()).toMatchSnapshot()
-  expect(getItem('history')).toMatchSnapshot()
+  expect(get()).toMatchSnapshot()
 
   // firstRoute dispatched by `createTest`
   expect(getLocation().type).toEqual('FIRST')
@@ -55,5 +55,5 @@ createTest('restore history from history fallback', {
   expect(getLocation().index).toEqual(3)
   expect(getLocation().length).toEqual(4)
 
-  expect(getItem('history')).toMatchSnapshot()
+  expect(get()).toMatchSnapshot()
 })

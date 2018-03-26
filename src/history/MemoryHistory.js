@@ -1,6 +1,6 @@
 import History from './History'
-import { urlToAction } from '../utils'
-import { restoreHistory, saveHistory, getInitialN, supportsSessionStorage } from './utils'
+import { toAction } from '../utils'
+import { restoreHistory, saveHistory, getInitialN, supportsSession } from './utils'
 
 // Even though this is used primarily in environments without `window` (server + React Native),
 // it's also used as a fallback in browsers lacking the `history` API (ie9). In that now rare case,
@@ -10,32 +10,25 @@ import { restoreHistory, saveHistory, getInitialN, supportsSessionStorage } from
 
 export default class MemoryHistory extends History {
   constructor(routes, opts = {}) {
-    const { initialIndex = 0, initialEntries: ents = ['/'] } = opts
-    const useSessionStorage = supportsSessionStorage() && opts.testBrowser !== false
+    const { initialIndex = 0, initialEntries: ents = ['/'], initialN } = opts
+    const useSession = supportsSession() && opts.testBrowser !== false
 
-    opts.saveHistory = opts.saveHistory || (useSessionStorage && saveHistory)
-    opts.restoreHistory = opts.restoreHistory || (useSessionStorage && restore)
+    opts.saveHistory = opts.saveHistory || (useSession && saveHistory)
+    opts.restoreHistory = opts.restoreHistory || (useSession && restoreHistory)
 
     const api = { routes, options: opts }
     const initialEntries = !Array.isArray(ents) ? [ents] : ents
     const { n, index, entries } = opts.restoreHistory
-      ? opts.restoreHistory(api, initialIndex, initialEntries) // when used as a browser fallback, we restore from sessionStorage
-      : create(api, initialIndex, initialEntries) // this happens 99% of the time in the browser
+      ? opts.restoreHistory(api) // when used as a browser fallback, we restore from sessionStorage
+      : create(api, initialIndex, initialEntries, initialN) // this happens 99% of the time in the browser
 
     super(routes, opts, { n, index, entries })
   }
 }
 
-const create = (api, initialIndex, initialEntries) => {
-  const n = getInitialN(initialIndex, initialEntries) // initial direction the user is going across the history track
+const create = (api, initialIndex, initialEntries, initialN) => {
   const index = Math.min(Math.max(initialIndex, 0), initialEntries.length - 1)
-  const entries = initialEntries.map(e => urlToAction(e, api))
-  return { n, index, entries }
-}
-
-const restore = (api, initialIndex, initialEntries) => {
-  const entry = initialEntries[0]
-  const defaultLocation = urlToAction(entry, api)
-  const { n, index, entries } = restoreHistory(defaultLocation, api) // impure
+  const n = initialN || getInitialN(index, initialEntries) // initial direction the user is going across the history track
+  const entries = initialEntries.map(e => toAction(e, api))
   return { n, index, entries }
 }
