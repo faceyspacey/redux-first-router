@@ -1,4 +1,4 @@
-import { toAction, toEntries, createActionRef, cleanBasename } from '../utils'
+import { toAction, toEntries, createActionRef, cleanBasename, isAction } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
@@ -75,15 +75,12 @@ export default class History {
 
   push(path, state = {}, notify = true) {
     const action = toAction(this, path, state)
-    const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
-    const next = this._isNext(action)
-    const kind = back ? 'back' : (next ? 'next' : 'push')
+    const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (/back|next/.test(kind)) {
-      return this.jump(back ? -1 : 1, state, undefined, undefined, notify)
-    }
+    if (n) return this.jump(n, state, undefined, undefined, notify)
 
-    const index = back ? this.index - 1 : this.index + 1
+    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'push')
+    const index = n === -1 ? this.index - 1 : this.index + 1
     const entries = this._pushToFront(action, this.entries, index, kind)
     const info = { kind, index, entries }
     const commit = (action) => this._push(action)
@@ -93,14 +90,11 @@ export default class History {
 
   replace(path, state = {}, notify = true) {
     const action = toAction(this, path, state)
-    const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
-    const next = this._isNext(action)
-    const kind = back ? 'back' : (next ? 'next' : 'replace')
+    const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (/back|next/.test(kind)) {
-      return this.jump(back ? -1 : 1, state, undefined, undefined, notify)
-    }
+    if (n) return this.jump(n, state, undefined, undefined, notify)
 
+    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'replace')
     const { index } = this
     const entries = this.entries.slice(0)
     const info = { kind, entries, index }
@@ -124,19 +118,20 @@ export default class History {
     return this._notify(action, info, commit, notify)
   }
 
-  jump(n, state, byIndex = false, kindOverride, notify = true, revertPop) {
-    n = this._resolveN(n, byIndex)
-    kindOverride = kindOverride || (n < 0 ? 'back' : 'next') // users can choose what direction to make the `jump` look like it came from
+  jump(delta, state, byIndex = false, n, notify = true, revertPop) {
+    delta = this._resolveDelta(delta, byIndex)
+    n = n || (delta < 0 ? -1 : 1) // users can choose what direction to make the `jump` look like it came from
 
-    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'jump') // back/next kinds are just more specifically named jumps
+    const kind = delta === -1 ? 'back' : (delta === 1 ? 'next' : 'jump') // back/next kinds are just more specifically named jumps
+    const isMovingAdjacently = kind !== 'jump'
     const isPop = !!revertPop
-    const index = this.index + n // n in this case may be values other than -1, 1, but only for the index
+    const index = this.index + delta
     const entries = this.entries.slice(0)
     const action = entries[index] = { ...this.entries[index] }
-    const n2 = kindOverride === 'back' ? -1 : 1 // now we need to provide the standard -1/1 value for n
-    const info = { kind, index, entries, n: n2 }
-    const prev = kind === 'jump' && this._createPrev(info) // jumps can fake the value of `prev` state
-    const commit = (action) => this._jump(action, n, isPop)
+    const info = { kind, index, entries, n }
+    const currentEntry = isMovingAdjacently && this.entries[this.index] // for `replace` to adjacent entries we need to override `prev` to be the current entry; `push` doesn't have this issue, but their `prev` value is the same
+    const prev = this._createPrev(info, currentEntry) // jumps can fake the value of `prev` state
+    const commit = (action) => this._jump(action, delta, isPop)
 
     state = typeof state === 'function' ? state(action.state) : state
     action.state = { ...action.state, ...state }
@@ -149,56 +144,99 @@ export default class History {
   }
 
   back(state, notify = true) {
-    return this.jump(-1, state, false, 'back', notify)
+    return this.jump(-1, state, false, -1, notify)
   }
 
   next(state, notify = true) {
-    return this.jump(1, state, false, 'next', notify)
+    return this.jump(1, state, false, 1, notify)
   }
 
-  setParams(params, n, byIndex, notify) {
-    return this.set({ params }, n, byIndex, notify)
+  setParams(params, delta, byIndex, notify) {
+    return this.set({ params }, delta, byIndex, notify)
   }
 
-  setQuery(query, n, byIndex, notify) {
-    return this.set({ query }, n, byIndex, notify)
+  setQuery(query, delta, byIndex, notify) {
+    return this.set({ query }, delta, byIndex, notify)
   }
 
-  setState(state, n, byIndex, notify) {
-    return this.set({ state }, n, byIndex, notify)
+  setState(state, delta, byIndex, notify) {
+    return this.set({ state }, delta, byIndex, notify)
   }
 
-  setHash(hash, n, byIndex, notify) {
-    return this.set({ hash }, n, byIndex, notify)
+  setHash(hash, delta, byIndex, notify) {
+    return this.set({ hash }, delta, byIndex, notify)
   }
 
-  setBasename(basename, n, byIndex, notify) {
-    return this.set({ basename }, n, byIndex, notify)
+  setBasename(basename, delta, byIndex, notify) {
+    return this.set({ basename }, delta, byIndex, notify)
   }
 
-  set(act, n, byIndex = false, notify = true) {
-    n = this._resolveN(n, byIndex)
+  set(act, delta, byIndex = false, notify = true) {
+    delta = this._resolveDelta(delta, byIndex)
 
     const kind = 'set'
     const { index } = this
-    const i = this.index + n
+    const i = this.index + delta
     const entries = this.entries.slice(0)
-    const entry = entries[i] = { ...this.entries[i] }
-    const action = n === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if n === 0, not just entry in entries
+    let entry = entries[i] = { ...this.entries[i] }
+    const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
     const info = { kind, index, entries }
 
-    const targetUrl = n === 0 ? this.url : entry.location.url
-    const commit = (action) => this._set(action, targetUrl, n)
+    const targetUrl = delta === 0 ? this.url : entry.location.url
+    const commit = (action) => this._set(action, targetUrl, delta)
 
     if (!this.entries[i]) {
       throw new Error(`[rudy] no entry at index: ${i}`)
     }
 
-    if (typeof act === 'function') {
-      Object.assign(entry, act(entry))
+    entry = this._setEntry(entry, act)
+
+    if (i === this.location.prev.location.index) {
+      action.prev = { ...entry, location: { ...entry.location, index: i } } // insure `state.prev` matches changed entry
+    }
+
+    return this._notify(action, info, commit, notify)
+  }
+
+  reset(ents, i, n, notify = true) {
+    if (ents.length === 1) {
+      const entry = this._findResetFirstAction(ents[0]) // browser must always have at least 2 entries, so one can be pushed, erasing old entries from the stack
+      ents.unshift(entry)
+    }
+
+    i = i !== undefined ? i : ents.length - 1
+
+    n = n || (i !== ents.length - 1
+      ? i > this.index ? 1 : (i === this.index ? this.n : -1) // create direction relative to index of current entries
+      : 1) // at the front of the array, always use "forward" direction
+
+    const kind = 'reset'
+    const { index, entries } = toEntries(this, ents, i, n)
+    const action = { ...entries[index] }
+    const info = { kind, index, entries, n }
+    const commit = (action) => this._reset(action)
+
+    if (!entries[index]) throw new Error(`[rudy] no entry at index: ${index}.`)
+
+    const prev = this._createPrev(info)
+    const from = index === this.index && createActionRef(this.location) // if index stays the same, treat as "replace"
+
+    return this._notify(action, info, commit, notify, { prev, from })
+  }
+
+  canJump(delta, byIndex) {
+    delta = this._resolveDelta(delta, byIndex)
+    return !!this.entries[this.index + delta]
+  }
+
+  // UTILS:
+
+  _setEntry(entry, action) {
+    if (typeof action === 'function') {
+      Object.assign(entry, action(entry))
     }
     else {
-      let { params, query, state, hash, basename: bn } = act
+      let { params, query, state, hash, basename: bn } = action
 
       if (params) {
         params = typeof params === 'function' ? params(entry.query) : params
@@ -226,53 +264,12 @@ export default class History {
       }
     }
 
-    Object.assign(entry, toAction(this, entry))
-
-    if (i === this.location.prev.location.index) {
-      action.prev = { ...entry, location: { ...entry.location, index: i } } // insure `state.prev` matches changed entry
-    }
-
-    return this._notify(action, info, commit, notify)
+    return Object.assign(entry, toAction(this, entry))
   }
 
-  reset(entries, index, kindOverride, notify = true) {
-    if (entries.length === 1) {
-      const entry = this._findResetFirstAction(entries[0]) // browser must always have at least 2 entries, so one can be pushed, erasing old entries from the stack
-      entries.unshift(entry)
-    }
-
-    entries = entries.map(e => toAction(this, e))
-    index = index !== undefined ? index : entries.length - 1 // default index is head of array
-
-    if (!entries[index]) throw new Error(`[rudy] no entry at index: ${index}.`)
-
-    const n = kindOverride
-      ? kindOverride === 'next' ? 1 : -1 // user manually chose which direction to pretend to be going
-      : index !== entries.length - 1
-        ? index > this.index ? 1 : (index === this.index ? this.n : -1) // create direction relative to index of current entries
-        : 1 // at the front of the array, always use "forward" direction
-
-    const kind = 'reset'
-    const action = { ...entries[index] }
-    const info = { kind, index, entries, n }
-    const commit = (action) => this._reset(action)
-
-    const prev = this._createPrev(info)
-    const from = index === this.index && createActionRef(this.location) // if index stays the same, treat as "replace"
-
-    return this._notify(action, info, commit, notify, { prev, from })
-  }
-
-  canJump(n, byIndex) {
-    n = this._resolveN(n, byIndex)
-    return !!this.entries[this.index + n]
-  }
-
-  // UTILS:
-
-  _createPrev({ n, index: i, entries }) {
-    const index = i - n
-    const entry = entries[index]
+  _createPrev({ n, index: i, entries }, currentEntry) {
+    const index = i - n // reverse of n direction to get prev
+    const entry = currentEntry || entries[index]
 
     if (!entry) return createPrevEmpty()
 
@@ -331,14 +328,18 @@ export default class History {
     }
   }
 
-  _isBack(action) {
-    const e = this.entries[this.index - 1]
-    return e && e.location.url === action.location.url
+  _findAdjacentN(action) {
+    return this._findBackN(action) || this._findNextN(action)
   }
 
-  _isNext(action) {
+  _findBackN(action) {
+    const e = this.entries[this.index - 1]
+    return e && e.location.url === action.location.url && -1
+  }
+
+  _findNextN(action) {
     const e = this.entries[this.index + 1]
-    return e && e.location.url === action.location.url
+    return e && e.location.url === action.location.url && 1
   }
 
   _pushToFront(action, prevEntries, index) {
@@ -356,17 +357,17 @@ export default class History {
     return entries
   }
 
-  _resolveN(n, byIndex) {
-    if (typeof n === 'string') {
-      const index = this.entries.findIndex(e => e.location.key === n)
+  _resolveDelta(delta, byIndex) {
+    if (typeof delta === 'string') {
+      const index = this.entries.findIndex(e => e.location.key === delta)
       return index - this.index
     }
 
     if (byIndex) {
-      return n - this.index
+      return delta - this.index
     }
 
-    return n || 0
+    return delta || 0
   }
 
   // All child classes *should* implement this:

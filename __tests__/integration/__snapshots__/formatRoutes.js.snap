@@ -105,7 +105,6 @@ Object {
         "index": 0,
         "key": "345678",
         "pathname": "/missed",
-        "ready": true,
         "scene": "",
         "search": "",
         "url": "/missed",

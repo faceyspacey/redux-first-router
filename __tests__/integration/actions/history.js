@@ -11,7 +11,8 @@ import {
   setQuery,
   setState,
   setHash,
-  setBasename
+  setBasename,
+  redirect
 } from '../../../src/actions'
 
 const routes = {
@@ -51,6 +52,17 @@ createTest('automatically interpret push to next entry as a kind === "next"', ro
   await snap({ type: 'SECOND' })
 })
 
+createTest('automatically interpret replace to previous entry as a kind === "back"', routes, [], async ({ dispatch, snap }) => {
+  await dispatch({ type: 'SECOND' })
+  await snap(redirect({ type: 'FIRST' }))
+})
+
+createTest('automatically interpret replace to next entry as a kind === "next"', routes, [], async ({ dispatch, snap }) => {
+  await dispatch({ type: 'SECOND' })
+  await dispatch({ type: 'FIRST' })
+  await snap(redirect({ type: 'SECOND' }))
+})
+
 createTest('dispatch(jump(n))', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
 
@@ -61,12 +73,12 @@ createTest('dispatch(jump(n))', routes, [], async ({ dispatch, snap }) => {
 
   await snap(jump(-1))
 
-  await dispatch(({ history }) => {
-    expect(history.canJump(1)).toEqual(true)
-    expect(history.canJump(-1)).toEqual(false)
-  })
+  // await dispatch(({ history }) => {
+  //   expect(history.canJump(1)).toEqual(true)
+  //   expect(history.canJump(-1)).toEqual(false)
+  // })
 
-  await snap(jump(1))
+  // await snap(jump(1))
 })
 
 createTest('dispatch(jump(n, state, byIndex === true))', routes, [], async ({ dispatch, snap }) => {
@@ -78,12 +90,12 @@ createTest('dispatch(jump(n, state, byIndex === true))', routes, [], async ({ di
 // you can force the kind to be whatever you want,
 // which will presume the user came from a different direction;
 // otherwise it's automatically inferred
-createTest('dispatch(jump(n, state, byIndex, kind))', routes, [], async ({ dispatch, snap, getLocation }) => {
+createTest('dispatch(jump(n, state, byIndex, n))', routes, [], async ({ dispatch, snap, getLocation }) => {
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 
-  await snap(jump(0, { foo: 'bar' }, true, 'next')) // would normally be "back"
-  await snap(jump(2, { foo: 'bar' }, true, 'back')) // would normally be "next"
+  await snap(jump(0, { foo: 'bar' }, true, 1)) // would normally be "back"
+  await snap(jump(2, { foo: 'bar' }, true, -1)) // would normally be "next"
 })
 
 // when you jump more than one entry, middleware/transformAction/utils/historyAction.js re-creates `state.location.prev`
@@ -94,11 +106,11 @@ createTest('dispatch(jump(-2))', routes, [], async ({ dispatch, snap }) => {
   await snap(jump(-2))
 })
 
-createTest('dispatch(reset(entries)) - last element inferred, next kind inferred', routes, [
+createTest('dispatch(reset(entries)) - last element inferred, n 1 inferred', routes, [
   reset(['/second', '/third'])
 ])
 
-createTest('dispatch(reset(entries, index)) - next kind inferred)', routes, [
+createTest('dispatch(reset(entries, index)) - n 1 inferred)', routes, [
   reset(['/second', '/third'], 1)
 ])
 
@@ -110,16 +122,20 @@ createTest('dispatch(reset(entries, index)) - load kind inferred (because only o
   reset(['/second'])
 ])
 
-createTest('dispatch(reset(entries, index)) - kind kind forced)', routes, [
-  reset(['/second', '/third', '/fourth'], 1, 'back')
+createTest('dispatch(reset(entries, index, n)) - n -1 faked)', routes, [
+  reset(['/second', '/third', '/fourth'], 1, -1)
 ])
 
-createTest('dispatch(reset(entries, index)) - back kind inferred', routes, [], async ({ dispatch, snap }) => {
+createTest('dispatch(reset(entries, index, n)) - n 1 faked)', routes, [
+  reset(['/second', '/third', '/fourth'], 1, 1)
+])
+
+createTest('dispatch(reset(entries, index)) - n -1 inferred', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
   await snap(reset(['/second', '/third'], 0))
 })
 
-createTest('dispatch(reset(entries, index)) - next kind inferred because > than current index', routes, [], async ({ dispatch, snap }) => {
+createTest('dispatch(reset(entries, index)) - n 1 inferred because > than current index', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
   await snap(reset(['/fourth', '/second', '/third', '/first'], 2))
 })

@@ -23,8 +23,6 @@ const isNAdjacentToSameUrl = (url, curr, n) => {
 }
 
 export const findNeighboringN = (from, curr) => {
-  if (!from) return
-
   const { entries, index } = curr
 
   const prev = entries[index - 1]

@@ -17,19 +17,19 @@ export const replace = (path: string, state: ?Object) => ({
   }
 })
 
-export const jump = (n: number | string, state: ?Object, byIndex: ?boolean, kind: ?string) => ({
+export const jump = (delta: number | string, state: ?Object, byIndex: ?boolean, n: ?number) => ({
   type: CALL_HISTORY,
   payload: {
     method: 'jump',
-    args: [n, state, byIndex, kind]
+    args: [delta, state, byIndex, n]
   }
 })
 
-export const reset = (entries: Array<string | Object>, index: ?number, kind: ?string) => ({
+export const reset = (entries: Array<string | Object>, index: ?number, n: ?number) => ({
   type: CALL_HISTORY,
   payload: {
     method: 'reset',
-    args: [entries, index, kind]
+    args: [entries, index, n]
   }
 })
 

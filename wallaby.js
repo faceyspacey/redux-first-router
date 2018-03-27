@@ -19,11 +19,11 @@ module.exports = wallaby => {
 
     tests: [
       // '__tests__/integration/browser/pop/popCancelsAction.js',
-      // '__tests__/integration/browser/sessionStorage/historyFallback.js',
+      '__tests__/integration/browser/sessionStorage/historyFallbackWithRedirectBeforeEnter.js',
       // '__tests__/integration/browser/pop/pop.js',
       // '__tests__/integration/browser/sessionStorage/restoreFromFront.js',
       // '__tests__/integration/redirects.js',
-      '__tests__/integration/browser/history/**/*.js',
+      // '__tests__/integration/browser/history/**/*.js',
 
       // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/actions/**/*.js',

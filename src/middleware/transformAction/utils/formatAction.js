@@ -16,7 +16,7 @@ export default (req) => {
   let pop
   let n
 
-  if (!tmp.committed && (n = findNeighboringN(tmp.from, curr))) {
+  if (!tmp.committed && tmp.from && (n = findNeighboringN(tmp.from, curr))) {
     method = 'replacePop'
     pop = replacePopAction(n, url, curr, tmp)
   }
@@ -28,8 +28,8 @@ export default (req) => {
   }
 
   // reset + jump actions provide custom `prev/from`
-  const prev = action.prev || (tmp.load || redirectCommitted ? curr.prev : curr)  // `init` comes before initial `load` action, but they share the same `prev` state, as they are essentially the same, except the former is the initial state before any actions are dispatched; -- about `prev` vs `from`: `prev` maintains proper entries array, notwithstanding any redirects, whereas `from` honors where the user tried to go, but never became the location state
-  const from = action.from || (redirect ? tmp.from || curr : undefined)           // `from` represents the route the user would have gone to had there been no redirect; `curr` used when redirect comes from outside of pipeline via `redirect` action creator
+  const prev = req.action.prev || (tmp.load || redirectCommitted ? curr.prev : curr)  // `init` comes before initial `load` action, but they share the same `prev` state, as they are essentially the same, except the former is the initial state before any actions are dispatched; -- about `prev` vs `from`: `prev` maintains proper entries array, notwithstanding any redirects, whereas `from` honors where the user tried to go, but never became the location state
+  const from = req.action.from || (redirect ? tmp.from || curr : undefined)           // `from` represents the route the user would have gone to had there been no redirect; `curr` used when redirect comes from outside of pipeline via `redirect` action creator
 
   return nestAction(req.action, prev, from, status, tmp)
 }

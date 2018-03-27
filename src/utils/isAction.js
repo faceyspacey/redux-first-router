@@ -2,4 +2,6 @@
 
 export default (a: any) =>
   a &&
-  (a.type || a.payload || a.meta || a.params || a.query || a.state || a.hash)
+  (a.type
+    || a.params || a.query || a.state || a.hash || a.basename
+    || a.payload || a.meta)

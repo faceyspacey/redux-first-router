@@ -77,6 +77,7 @@ const createLocationRef = (loc) => {
   delete loc.direction
   delete loc.n
   delete loc.universal
+  delete loc.ready
 
   return loc
 }
