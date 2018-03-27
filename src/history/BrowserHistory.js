@@ -170,10 +170,13 @@ export default class BrowserHistory extends History {
       return this._replace(action, targetUrl)
     }
 
+    const { index, entries } = action.location
+    const changedAction = entries[index + n]
+
     return this._awaitUrl(action, '_setN start')
       .then(() => this._forceGo(n))
       .then(() => this._awaitUrl(targetUrl, '_setN before replace'))
-      .then(() => this._replace(action, targetUrl))
+      .then(() => this._replace(changedAction, targetUrl))
       .then(() => this._forceGo(-n))
       .then(() => this._awaitUrl(action, 'setN return'))
   }

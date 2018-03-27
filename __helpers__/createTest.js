@@ -409,7 +409,7 @@ const expectOnError = (prefix, obj) => {
 // for testing pops in a "real" browser (as simulated by Jest)
 
 const createPop = (history) => {
-  return (direction = 'back') => {
+  return async (direction = 'back') => {
     history.currentPop = null
     window.history[direction]()
     return awaitPop(history)
