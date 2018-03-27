@@ -4,11 +4,11 @@ import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
-export default (api, url, state, key) => {
+export default (api, url, state = {}, key = createKey()) => {
   const { getLocation, routes, options: opts } = api
   const curr = getLocation ? getLocation() : {}
 
-  const { basename, slashBasename } = createBasename(url, opts, curr)
+  const { basename, slashBasename } = resolveBasename(url, opts, state, curr)
 
   const location = createLocation(url, opts, slashBasename, curr)
   const action = createAction(location, routes, opts, state, curr)
@@ -17,22 +17,13 @@ export default (api, url, state, key) => {
     ...action, // { type, params, query, state, hash }
     basename,
     location: {
+      key,
       scene: routes[action.type].scene || '',
-      key: key || Math.random().toString(36).substr(2, 6),
       url: slashBasename + locationToUrl(location),
       pathname: location.pathname,
       search: location.search
     }
   }
-}
-
-const createBasename = (url, opts, curr) => {
-  const bn = findBasename(url, opts.basenames) || curr.basename
-
-  const slashBasename = cleanBasename(bn)
-  const basename = slashBasename.replace(/^\//, '') // eg: '/base' -> 'base'
-
-  return { basename, slashBasename } // { 'base', '/base' }
 }
 
 const createLocation = (url, opts, bn, curr) => {
@@ -157,7 +148,7 @@ const formatState = (state: Object, route: Route, opts: Options) => {
   const def = route.defaultState || opts.defaultState
   return def
     ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
-    : state || {}
+    : state
 } // state has no string counter part in the address bar, so there is no `fromState`
 
 const isNumber = (str: string) => !isNaN(str) && !isNaN(parseFloat(str))
@@ -165,9 +156,28 @@ const isNumber = (str: string) => !isNaN(str) && !isNaN(parseFloat(str))
 const parseSearch = (search, routes, opts) =>
   (routes.NOT_FOUND.parseSearch || opts.parseSearch)(search)
 
+
+// BASENAME HANDLING:
+
+const resolveBasename = (url, opts, state, curr) => {
+  const bn = state._emptyBn ? '' : findBasename(url, opts.basenames) || curr.basename
+
+  const slashBasename = cleanBasename(bn)
+  const basename = slashBasename.replace(/^\//, '') // eg: '/base' -> 'base'
+
+  delete state._emptyBn // not cool kyle
+
+  return { basename, slashBasename } // { 'base', '/base' }
+}
+
 const stripBasename = (path, bn) =>
   path.indexOf(bn) === 0 ? path.substr(bn.length) : path
 
 const findBasename = (path, bns = []) =>
   bns.find(bn => path.indexOf(bn) === 0)
+
+
+// MISC
+
+const createKey = () => Math.random().toString(36).substr(2, 6)
 

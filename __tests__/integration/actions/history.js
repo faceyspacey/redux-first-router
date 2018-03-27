@@ -36,7 +36,7 @@ createTest('dispatch(back/next())', routes, [], async ({ dispatch, snap }) => {
 
   await snap(back({ foo: 'bar' }))
   await snap(next({ yo: 'dog' }))
-  await snap(back(() => ({ clear: 'old state' }))) // if you want to clear state, use the function form without merging prev state
+  await snap(back(() => ({ more: 'state' })))
   await snap(next({ bla: 'sdf' })) // merge states
   await snap(back())
 })

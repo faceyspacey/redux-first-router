@@ -77,7 +77,7 @@ export default class History {
     const action = toAction(this, path, state)
     const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (n) return this.jump(n, state, undefined, undefined, notify)
+    if (n) return this.jump(n, { state }, undefined, undefined, notify)
 
     const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'push')
     const index = n === -1 ? this.index - 1 : this.index + 1
@@ -92,7 +92,7 @@ export default class History {
     const action = toAction(this, path, state)
     const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (n) return this.jump(n, state, undefined, undefined, notify)
+    if (n) return this.jump(n, { state }, undefined, undefined, notify)
 
     const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'replace')
     const { index } = this
@@ -105,38 +105,23 @@ export default class History {
     return this._notify(action, info, commit, notify)
   }
 
-  replacePop(path, state = {}, notify = true, pop) {
-    const action = toAction(this, path, state)
-    const { index, prevUrl, n } = pop
-    const entries = pop.entries.slice(0)
-    const kind = index < this.index ? 'back' : 'next'
-    const info = { kind, entries, index }
-    const commit = (action) => this._replace(action, prevUrl, n)
-
-    entries[index] = action
-
-    return this._notify(action, info, commit, notify)
-  }
-
   jump(delta, act, byIndex = false, n, notify = true, revertPop) {
-    let { state } = isAction(act) ? act : { state: act }
-
     delta = this._resolveDelta(delta, byIndex)
     n = n || (delta < 0 ? -1 : 1) // users can choose what direction to make the `jump` look like it came from
 
     const kind = delta === -1 ? 'back' : (delta === 1 ? 'next' : 'jump') // back/next kinds are just more specifically named jumps
     const isMovingAdjacently = kind !== 'jump'
-    const isPop = !!revertPop
+    const isPop = !!revertPop // passed by BrowserHistory's `handlePop`
     const index = this.index + delta
     const entries = this.entries.slice(0)
-    const action = entries[index] = { ...this.entries[index] }
+    const action = entries[index] = this._transformEntry(this.entries[index], act)
     const info = { kind, index, entries, n }
+
     const currentEntry = isMovingAdjacently && this.entries[this.index] // for `replace` to adjacent entries we need to override `prev` to be the current entry; `push` doesn't have this issue, but their `prev` value is the same
     const prev = this._createPrev(info, currentEntry) // jumps can fake the value of `prev` state
-    const commit = (action) => this._jump(action, delta, isPop)
 
-    state = typeof state === 'function' ? state(action.state) : state
-    action.state = { ...action.state, ...state }
+    const oldUrl = this.entries[index].location.url
+    const commit = (action) => this._jump(action, oldUrl, delta, isPop)
 
     if (!this.entries[index]) {
       throw new Error(`[rudy] no entry at index: ${index}.`)
@@ -146,11 +131,36 @@ export default class History {
   }
 
   back(state, notify = true) {
-    return this.jump(-1, state, false, -1, notify)
+    return this.jump(-1, { state }, false, -1, notify)
   }
 
   next(state, notify = true) {
-    return this.jump(1, state, false, 1, notify)
+    return this.jump(1, { state }, false, 1, notify)
+  }
+
+  set(act, delta, byIndex = false, notify = true) {
+    delta = this._resolveDelta(delta, byIndex)
+
+    const kind = 'set'
+    const { index } = this
+    const i = this.index + delta
+    const entries = this.entries.slice(0)
+    const entry = entries[i] = this._transformEntry(this.entries[i], act)
+    const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
+    const info = { kind, index, entries }
+
+    const oldUrl = delta === 0 ? this.url : this.entries[i].location.url // this must be the current URL for the target so that `BrowserHistory` url awaiting works, as the target's URL may change in `this._transformEntry`
+    const commit = (action) => this._set(action, oldUrl, delta)
+
+    if (!this.entries[i]) {
+      throw new Error(`[rudy] no entry at index: ${i}`)
+    }
+
+    if (i === this.location.prev.location.index) {
+      action.prev = { ...entry, location: { ...entry.location, index: i } } // edge case: insure `state.prev` matches changed entry IF CHANGED ENTRY HAPPENS TO ALSO BE THE PREV
+    }
+
+    return this._notify(action, info, commit, notify)
   }
 
   setParams(params, delta, byIndex, notify) {
@@ -173,29 +183,17 @@ export default class History {
     return this.set({ basename }, delta, byIndex, notify)
   }
 
-  set(act, delta, byIndex = false, notify = true) {
-    delta = this._resolveDelta(delta, byIndex)
+  replacePop(path, state = {}, notify = true, info) {
+    const action = toAction(this, path, state)
+    const { index, prevUrl, n } = info
+    const entries = info.entries.slice(0)
+    const kind = index < this.index ? 'back' : 'next'
+    const newInfo = { kind, entries, index }
+    const commit = (action) => this._replace(action, prevUrl, n)
 
-    const kind = 'set'
-    const { index } = this
-    const i = this.index + delta
-    const entries = this.entries.slice(0)
-    const entry = entries[i] = this._transformEntry(this.entries[i], act)
-    const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
-    const info = { kind, index, entries }
+    entries[index] = action
 
-    const targetUrl = delta === 0 ? this.url : this.entries[i].location.url // this must be the current URL for the target so that `BrowserHistory` url awaiting works, as the target's URL may change in `this._transformEntry`
-    const commit = (action) => this._set(action, targetUrl, delta)
-
-    if (!this.entries[i]) {
-      throw new Error(`[rudy] no entry at index: ${i}`)
-    }
-
-    if (i === this.location.prev.location.index) {
-      action.prev = { ...entry, location: { ...entry.location, index: i } } // edge case: insure `state.prev` matches changed entry IF CHANGED ENTRY HAPPENS TO ALSO BE THE PREV
-    }
-
-    return this._notify(action, info, commit, notify)
+    return this._notify(action, newInfo, commit, notify)
   }
 
   reset(ents, i, n, notify = true) {
@@ -238,6 +236,7 @@ export default class History {
       return toAction(this, action(entry))
     }
 
+    action = isAction(action) ? action : { state: action }
     let { params, query, state, hash, basename: bn } = action
 
     if (params) {
@@ -252,6 +251,7 @@ export default class History {
 
     if (state) {
       state = typeof state === 'function' ? state(entry.state) : state
+
       entry.state = { ...entry.state, ...state }
     }
 

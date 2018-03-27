@@ -1060,8 +1060,8 @@ Array [
     "params": Object {},
     "query": Object {},
     "state": Object {
-      "clear": "old state",
       "foo": "bar",
+      "more": "state",
     },
     "type": "FIRST",
   },
@@ -1100,8 +1100,8 @@ Array [
     "params": Object {},
     "query": Object {},
     "state": Object {
-      "clear": "old state",
       "foo": "bar",
+      "more": "state",
     },
     "type": "FIRST",
   },
@@ -1151,8 +1151,8 @@ Object {
         "params": Object {},
         "query": Object {},
         "state": Object {
-          "clear": "old state",
           "foo": "bar",
+          "more": "state",
         },
         "type": "FIRST",
       },
@@ -1208,8 +1208,8 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {
-    "clear": "old state",
     "foo": "bar",
+    "more": "state",
   },
   "type": "FIRST",
 }
@@ -1236,8 +1236,8 @@ Object {
         "params": Object {},
         "query": Object {},
         "state": Object {
-          "clear": "old state",
           "foo": "bar",
+          "more": "state",
         },
         "type": "FIRST",
       },
@@ -1295,8 +1295,8 @@ Object {
   "params": Object {},
   "query": Object {},
   "state": Object {
-    "clear": "old state",
     "foo": "bar",
+    "more": "state",
   },
   "type": "FIRST",
 }
@@ -1330,8 +1330,8 @@ Object {
         "params": Object {},
         "query": Object {},
         "state": Object {
-          "clear": "old state",
           "foo": "bar",
+          "more": "state",
         },
         "type": "FIRST",
       },
@@ -1385,8 +1385,8 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {
-      "clear": "old state",
       "foo": "bar",
+      "more": "state",
     },
     "status": 200,
     "type": "FIRST",
@@ -1417,8 +1417,8 @@ Object {
         "params": Object {},
         "query": Object {},
         "state": Object {
-          "clear": "old state",
           "foo": "bar",
+          "more": "state",
         },
         "type": "FIRST",
       },
@@ -1474,8 +1474,8 @@ Object {
     "scene": "",
     "search": "",
     "state": Object {
-      "clear": "old state",
       "foo": "bar",
+      "more": "state",
     },
     "status": 200,
     "type": "FIRST",
@@ -1505,8 +1505,8 @@ Array [
     "params": Object {},
     "query": Object {},
     "state": Object {
-      "clear": "old state",
       "foo": "bar",
+      "more": "state",
     },
     "type": "FIRST",
   },
@@ -1554,8 +1554,8 @@ Object {
         "params": Object {},
         "query": Object {},
         "state": Object {
-          "clear": "old state",
           "foo": "bar",
+          "more": "state",
         },
         "type": "FIRST",
       },
@@ -1600,8 +1600,8 @@ Object {
       "params": Object {},
       "query": Object {},
       "state": Object {
-        "clear": "old state",
         "foo": "bar",
+        "more": "state",
       },
       "type": "FIRST",
     },
@@ -1644,8 +1644,8 @@ Object {
         "params": Object {},
         "query": Object {},
         "state": Object {
-          "clear": "old state",
           "foo": "bar",
+          "more": "state",
         },
         "type": "FIRST",
       },
@@ -1692,8 +1692,8 @@ Object {
       "params": Object {},
       "query": Object {},
       "state": Object {
-        "clear": "old state",
         "foo": "bar",
+        "more": "state",
       },
       "type": "FIRST",
     },

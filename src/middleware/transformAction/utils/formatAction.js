@@ -8,21 +8,21 @@ export default (req) => {
     : { url: action.location.url, state: action.state }
 
   const redirect = isRedirect(action)
-  const redirectCommitted = redirect && (tmp.committed || !tmp.from || tmp.load)   // committed after `enter`, or if a redirect triggered from outside the pipeline, or on load where it must always be treated as a `replace` since the URL is already settled
+  const redirectCommitted = redirect && (tmp.committed || !tmp.from || tmp.load)  // committed after `enter`, or if a redirect triggered from outside the pipeline, or on load where it must always be treated as a `replace` since the URL is already settled
   const status = action.location && action.location.status
   const curr = getLocation()
 
   let method = redirectCommitted ? 'replace' : 'push'                             // redirects before committing are just pushes (since the original route was never pushed)
-  let pop
+  let info
   let n
 
   if (!tmp.committed && tmp.from && (n = findNeighboringN(tmp.from, curr))) {
     method = 'replacePop'
-    pop = replacePopAction(n, url, curr, tmp)
+    info = replacePopAction(n, url, curr, tmp)
   }
 
   if (!req.commitHistory) {
-    const { commit, ...action } = history[method](url, state, false, pop)         // get returned the same action as functions passed to `history.listen`
+    const { commit, ...action } = history[method](url, state, false, info)        // get returned the same action as functions passed to `history.listen`
     req.commitHistory = commit                                                    // put this here so `enter` middleware can commit the history, etc
     req.action = action
   }

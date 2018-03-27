@@ -16,28 +16,29 @@ export default (
   prevRoute?: Object
 ): string => {
   const { routes, options: opts } = api
-  const { type, params, query, hash, basename: bn } = action
+  const { type, params, query, state, hash, basename } = action
 
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
 
   const p = formatParams(params, route, opts)
   const q = formatQuery(query, route, opts)
+  const s = formatState(state, route, opts)
   const h = formatHash(hash, route, opts)
-  const state = formatState(action.state, route, opts)
 
-  const basename = cleanBasename(bn)
-  const isWrongBasename = basename && !opts.basenames.includes(basename)
+  const bn = cleanBasename(basename)
+  const isWrongBasename = bn && !opts.basenames.includes(bn)
+  if (basename === '') s._emptyBn = true // not cool kyle
 
   try {
     if (isWrongBasename) {
-      throw new Error(`[rudy] basename "${basename}" not in options.basenames`)
+      throw new Error(`[rudy] basename "${bn}" not in options.basenames`)
     }
 
     const pathname = compileUrl(path, p, q, h, route, opts) || '/' // path-to-regexp throws for failed compilations; we made our queries + hashes also throw to conform
-    const url = basename + pathname
+    const url = bn + pathname
 
-    return { url, state }
+    return { url, state: s }
   }
   catch (e) {
     if (process.env.NODE_ENV === 'development') {
@@ -47,9 +48,9 @@ export default (
       console.log(`[rudy] unable to compile action "${type}" to URL`, action, e)
     }
 
-    const bn = isWrongBasename ? '' : basename
-    const url = bn + notFoundUrl(action, routes, opts, q, h, prevRoute)
-    return { url, state }
+    const base = isWrongBasename ? '' : bn
+    const url = base + notFoundUrl(action, routes, opts, q, h, prevRoute)
+    return { url, state: s }
   }
 }
 
@@ -118,7 +119,7 @@ const formatQuery = (query: ?Object, route: Route, opts: Options) => {
   return query
 }
 
-const formatHash = (hash: ?string = '', route: Route, opts: Options) => {
+const formatHash = (hash: string = '', route: Route, opts: Options) => {
   const def = route.defaultHash || opts.defaultHash
   hash = def
     ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)

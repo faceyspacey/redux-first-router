@@ -15,30 +15,14 @@ createTest('set(action, n)', {
   expect(locationToUrl(window.location)).toEqual('/')
 
   await dispatch({ type: 'SECOND' })
+  await snap(jump(-1))
 
-  const action = {
-    params: { foo: 'bar' },
-    query: { hell: 'yea' },
-    hash: 'yolo',
-    basename: 'base',
-    state: { something: 123 }
-  }
-
-  await snap(jump(-1, action))
-
-  expect(getLocation().entries[0]).toMatchObject(action)
-
-  expect(get().entries[0][0]).toEqual('/base/bar?hell=yea#yolo')
-  expect(get().entries[0][1]).toEqual(action.state)
-
-  expect(locationToUrl(window.location)).toEqual('/base/bar?hell=yea#yolo')
+  expect(get().entries[0][0]).toEqual('/')
+  expect(locationToUrl(window.location)).toEqual('/')
 
   expect(get()).toMatchSnapshot()
   expect(getLocation()).toMatchSnapshot()
 
   await snapPop('forward')
   expect(locationToUrl(window.location)).toEqual('/second')
-
-  await snapPop('back')
-  expect(locationToUrl(window.location)).toEqual('/base/bar?hell=yea#yolo')
 })

@@ -16,15 +16,15 @@ Object {
       "345678",
     ],
   ],
-  "index": 1,
+  "index": 0,
 }
 `;
 
 exports[`set(action, n) 2`] = `
 Object {
-  "basename": "",
+  "basename": "base",
   "blocked": null,
-  "direction": "forward",
+  "direction": "backward",
   "entries": Array [
     Object {
       "basename": "base",
@@ -64,65 +64,45 @@ Object {
     },
   ],
   "from": null,
-  "hash": "",
-  "index": 1,
+  "hash": "yolo",
+  "index": 0,
   "key": "345678",
-  "kind": "push",
+  "kind": "back",
   "length": 2,
-  "n": 1,
-  "params": Object {},
-  "pathname": "/second",
+  "n": -1,
+  "params": Object {
+    "foo": "bar",
+  },
+  "pathname": "/bar",
   "pop": false,
   "prev": Object {
-    "basename": "base",
-    "hash": "yolo",
+    "basename": "",
+    "hash": "",
     "location": Object {
-      "index": 0,
+      "index": 1,
       "key": "345678",
-      "pathname": "/bar",
+      "pathname": "/second",
       "scene": "",
-      "search": "hell=yea",
-      "url": "/base/bar?hell=yea#yolo",
+      "search": "",
+      "url": "/second",
     },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SECOND",
   },
-  "query": Object {},
+  "query": Object {
+    "hell": "yea",
+  },
   "scene": "",
-  "search": "",
-  "state": Object {},
+  "search": "hell=yea",
+  "state": Object {
+    "something": 123,
+  },
   "status": 200,
-  "type": "SECOND",
+  "type": "FIRST",
   "universal": false,
-  "url": "/second",
-}
-`;
-
-exports[`set(action, n) 3`] = `
-Object {
-  "entries": Array [
-    Array [
-      "/base/bar?hell=yea#yolo",
-      Object {
-        "something": 123,
-      },
-      "345678",
-    ],
-    Array [
-      "/second",
-      Object {},
-      "345678",
-    ],
-  ],
-  "index": 0,
+  "url": "/base/bar?hell=yea#yolo",
 }
 `;
 
@@ -208,98 +188,11 @@ Array [
 ]
 `;
 
-exports[`set(action, n):  - history_index 1`] = `0`;
+exports[`set(action, n):  - history_index 1`] = `1`;
 
-exports[`set(action, n):  - history_index 2`] = `1`;
+exports[`set(action, n):  - history_index 2`] = `0`;
 
 exports[`set(action, n):  - response 1`] = `
-Object {
-  "basename": "base",
-  "hash": "yolo",
-  "location": Object {
-    "blocked": null,
-    "direction": "backward",
-    "entries": Array [
-      Object {
-        "basename": "base",
-        "hash": "yolo",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/bar",
-          "scene": "",
-          "search": "hell=yea",
-          "url": "/base/bar?hell=yea#yolo",
-        },
-        "params": Object {
-          "foo": "bar",
-        },
-        "query": Object {
-          "hell": "yea",
-        },
-        "state": Object {
-          "something": 123,
-        },
-        "type": "FIRST",
-      },
-      Object {
-        "basename": "",
-        "hash": "",
-        "location": Object {
-          "key": "345678",
-          "pathname": "/second",
-          "scene": "",
-          "search": "",
-          "url": "/second",
-        },
-        "params": Object {},
-        "query": Object {},
-        "state": Object {},
-        "type": "SECOND",
-      },
-    ],
-    "from": null,
-    "index": 0,
-    "key": "345678",
-    "kind": "back",
-    "length": 2,
-    "n": -1,
-    "pathname": "/bar",
-    "pop": true,
-    "prev": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 1,
-        "key": "345678",
-        "pathname": "/second",
-        "scene": "",
-        "search": "",
-        "url": "/second",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "SECOND",
-    },
-    "scene": "",
-    "search": "hell=yea",
-    "status": 200,
-    "url": "/base/bar?hell=yea#yolo",
-  },
-  "params": Object {
-    "foo": "bar",
-  },
-  "query": Object {
-    "hell": "yea",
-  },
-  "state": Object {
-    "something": 123,
-  },
-  "type": "FIRST",
-}
-`;
-
-exports[`set(action, n):  - response 2`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -386,18 +279,11 @@ Object {
 }
 `;
 
-exports[`set(action, n):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`set(action, n):  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`set(action, n):  - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`set(action, n):  - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`set(action, n):  - state 1`] = `
+exports[`set(action, n):  - response 2`] = `
 Object {
+  "basename": "base",
+  "hash": "yolo",
   "location": Object {
-    "basename": "base",
     "blocked": null,
     "direction": "backward",
     "entries": Array [
@@ -439,15 +325,11 @@ Object {
       },
     ],
     "from": null,
-    "hash": "yolo",
     "index": 0,
     "key": "345678",
     "kind": "back",
     "length": 2,
     "n": -1,
-    "params": Object {
-      "foo": "bar",
-    },
     "pathname": "/bar",
     "pop": true,
     "prev": Object {
@@ -466,24 +348,33 @@ Object {
       "state": Object {},
       "type": "SECOND",
     },
-    "query": Object {
-      "hell": "yea",
-    },
     "scene": "",
     "search": "hell=yea",
-    "state": Object {
-      "something": 123,
-    },
     "status": 200,
-    "type": "FIRST",
-    "universal": false,
     "url": "/base/bar?hell=yea#yolo",
   },
-  "title": "FIRST",
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {
+    "hell": "yea",
+  },
+  "state": Object {
+    "something": 123,
+  },
+  "type": "FIRST",
 }
 `;
 
-exports[`set(action, n):  - state 2`] = `
+exports[`set(action, n):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`set(action, n):  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`set(action, n):  - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`set(action, n):  - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`set(action, n):  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -572,6 +463,320 @@ Object {
 }
 `;
 
-exports[`set(action, n):  - title 1`] = `"FIRST"`;
+exports[`set(action, n):  - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "base",
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/base/bar?hell=yea#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "hash": "yolo",
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 2,
+    "n": -1,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/bar",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "query": Object {
+      "hell": "yea",
+    },
+    "scene": "",
+    "search": "hell=yea",
+    "state": Object {
+      "something": 123,
+    },
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/base/bar?hell=yea#yolo",
+  },
+  "title": "FIRST",
+}
+`;
 
-exports[`set(action, n):  - title 2`] = `"SECOND"`;
+exports[`set(action, n):  - title 1`] = `"SECOND"`;
+
+exports[`set(action, n):  - title 2`] = `"FIRST"`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "scene": "",
+      "search": "hell=yea",
+      "url": "/base/bar?hell=yea#yolo",
+    },
+    "params": Object {
+      "foo": "bar",
+    },
+    "query": Object {
+      "hell": "yea",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "",
+      "url": "/second",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SECOND",
+  },
+]
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - history_index 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - response 1`] = `
+Object {
+  "basename": "base",
+  "hash": "yolo",
+  "location": Object {
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/base/bar?hell=yea#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 2,
+    "n": -1,
+    "pathname": "/bar",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "scene": "",
+    "search": "hell=yea",
+    "status": 200,
+    "url": "/base/bar?hell=yea#yolo",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {
+    "hell": "yea",
+  },
+  "state": Object {
+    "something": 123,
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "base",
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/base/bar?hell=yea#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "hash": "yolo",
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 2,
+    "n": -1,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/bar",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SECOND",
+    },
+    "query": Object {
+      "hell": "yea",
+    },
+    "scene": "",
+    "search": "hell=yea",
+    "state": Object {
+      "something": 123,
+    },
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/base/bar?hell=yea#yolo",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - title 1`] = `"FIRST"`;

@@ -149,7 +149,7 @@ export default class BrowserHistory extends History {
       .then(() => replaceState(url))
   }
 
-  _jump(action, n, isPop) {
+  _jump(action, oldUrl, n, isPop) {
     const { prevUrl } = this
 
     if (!n) { // possibly the user mathematically calculated a jump of `0`
@@ -160,13 +160,13 @@ export default class BrowserHistory extends History {
 
     return this._awaitUrl(prevUrl, 'jump prev')
       .then(() => this._forceGo(n))
-      .then(() => this._awaitUrl(action, 'jump loc'))
-      .then(() => this._replace(action, action))
+      .then(() => this._awaitUrl(oldUrl, 'jump loc'))
+      .then(() => this._replace(action, oldUrl))
   }
 
-  _set(action, targetUrl, n) {
+  _set(action, oldUrl, n) {
     if (!n) {
-      return this._replace(action, targetUrl)
+      return this._replace(action, oldUrl)
     }
 
     const { index, entries } = action.location
@@ -174,8 +174,8 @@ export default class BrowserHistory extends History {
 
     return this._awaitUrl(action, '_setN start')
       .then(() => this._forceGo(n))
-      .then(() => this._awaitUrl(targetUrl, '_setN before replace'))
-      .then(() => this._replace(changedAction, targetUrl))
+      .then(() => this._awaitUrl(oldUrl, '_setN before replace'))
+      .then(() => this._replace(changedAction, oldUrl))
       .then(() => this._forceGo(-n))
       .then(() => this._awaitUrl(action, 'setN return'))
   }

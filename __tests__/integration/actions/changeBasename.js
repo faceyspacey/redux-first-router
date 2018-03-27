@@ -1,6 +1,5 @@
 import createTest from '../../../__helpers__/createTest'
 import { changeBasename } from '../../../src/actions'
-import createScene from '../../../src/createScene'
 
 createTest('dispatch(changeBasename(name))', {}, {
   basenames: ['/foo']
@@ -47,4 +46,11 @@ createTest('incorrect basename dispatches NOT_FOUND', {}, {
 }, [
   '/foo/first',
   changeBasename('/wrong')
+])
+
+createTest('support setting basename back to empty string', {}, {
+  basenames: ['/bar']
+}, [
+  '/bar/first',
+  { type: 'REDIRECTED', basename: '' }
 ])
