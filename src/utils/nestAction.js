@@ -87,4 +87,4 @@ const resolveKind = (kind, isLoad, from) =>
     ? 'load' // insure redirects don't change kind on load
     : !from || /jump|reset/.test(kind)
       ? kind // PRIMARY USE CASE: preverse the standard kind
-      : kind.replace('push', 'replace') // pipeline redirects before enter are in fact pushes, but users shouldn't have to think about that
+      : kind.replace('push', 'replace') // pipeline redirects before enter are in fact pushes, but users shouldn't have to think about that -- using `kind.replace` preserves back/next kinds

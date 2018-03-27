@@ -178,21 +178,19 @@ export default class History {
     const { index } = this
     const i = this.index + delta
     const entries = this.entries.slice(0)
-    let entry = entries[i] = { ...this.entries[i] }
+    const entry = entries[i] = this._transformEntry(this.entries[i], act)
     const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
     const info = { kind, index, entries }
 
-    const targetUrl = delta === 0 ? this.url : entry.location.url
+    const targetUrl = delta === 0 ? this.url : this.entries[i].location.url
     const commit = (action) => this._set(action, targetUrl, delta)
 
     if (!this.entries[i]) {
       throw new Error(`[rudy] no entry at index: ${i}`)
     }
 
-    entry = this._setEntry(entry, act)
-
     if (i === this.location.prev.location.index) {
-      action.prev = { ...entry, location: { ...entry.location, index: i } } // insure `state.prev` matches changed entry
+      action.prev = { ...entry, location: { ...entry.location, index: i } } // edge case: insure `state.prev` matches changed entry IF CHANGED ENTRY HAPPENS TO ALSO BE THE PREV
     }
 
     return this._notify(action, info, commit, notify)
@@ -231,40 +229,41 @@ export default class History {
 
   // UTILS:
 
-  _setEntry(entry, action) {
+  _transformEntry(entry, action) {
+    entry = { ...entry }
+
     if (typeof action === 'function') {
-      Object.assign(entry, action(entry))
-    }
-    else {
-      let { params, query, state, hash, basename: bn } = action
-
-      if (params) {
-        params = typeof params === 'function' ? params(entry.query) : params
-        entry.params = { ...entry.params, ...params }
-      }
-
-      if (query) {
-        query = typeof query === 'function' ? query(entry.query) : query
-        entry.query = { ...entry.query, ...query }
-      }
-
-      if (state) {
-        state = typeof state === 'function' ? state(entry.state) : state
-        entry.state = { ...entry.state, ...state }
-      }
-
-      if (hash) {
-        hash = typeof hash === 'function' ? hash(entry.hash) : hash
-        entry.hash = hash
-      }
-
-      if (bn) {
-        bn = typeof bn === 'function' ? bn(entry.basename) : bn
-        entry.basename = bn
-      }
+      return toAction(this, action(entry))
     }
 
-    return Object.assign(entry, toAction(this, entry))
+    let { params, query, state, hash, basename: bn } = action
+
+    if (params) {
+      params = typeof params === 'function' ? params(entry.query) : params
+      entry.params = { ...entry.params, ...params }
+    }
+
+    if (query) {
+      query = typeof query === 'function' ? query(entry.query) : query
+      entry.query = { ...entry.query, ...query }
+    }
+
+    if (state) {
+      state = typeof state === 'function' ? state(entry.state) : state
+      entry.state = { ...entry.state, ...state }
+    }
+
+    if (hash) {
+      hash = typeof hash === 'function' ? hash(entry.hash) : hash
+      entry.hash = hash
+    }
+
+    if (bn) {
+      bn = typeof bn === 'function' ? bn(entry.basename) : bn
+      entry.basename = bn
+    }
+
+    return toAction(this, entry)
   }
 
   _createPrev({ n, index: i, entries }, currentEntry) {
