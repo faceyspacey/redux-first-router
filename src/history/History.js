@@ -118,7 +118,9 @@ export default class History {
     return this._notify(action, info, commit, notify)
   }
 
-  jump(delta, state, byIndex = false, n, notify = true, revertPop) {
+  jump(delta, act, byIndex = false, n, notify = true, revertPop) {
+    let { state } = isAction(act) ? act : { state: act }
+
     delta = this._resolveDelta(delta, byIndex)
     n = n || (delta < 0 ? -1 : 1) // users can choose what direction to make the `jump` look like it came from
 
@@ -182,7 +184,7 @@ export default class History {
     const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
     const info = { kind, index, entries }
 
-    const targetUrl = delta === 0 ? this.url : this.entries[i].location.url
+    const targetUrl = delta === 0 ? this.url : this.entries[i].location.url // this must be the current URL for the target so that `BrowserHistory` url awaiting works, as the target's URL may change in `this._transformEntry`
     const commit = (action) => this._set(action, targetUrl, delta)
 
     if (!this.entries[i]) {
