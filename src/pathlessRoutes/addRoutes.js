@@ -14,12 +14,11 @@ export default (req) => {
   const newRoutes = formatRoutes(routes, formatter, true)
   const callbacks = options.callbacks || []
 
-  callbacks.forEach(name => {
-    enhanceRoutes(name, newRoutes, options)
-  })
+  callbacks.forEach(name => enhanceRoutes(name, newRoutes, options))
 
   Object.assign(allRoutes, newRoutes)
 
+  action.payload.routes = newRoutes
   action.payload.routesAdded = Object.keys(routes).length // we need something to triggering updating of Link components when routes added
 
   req.commitDispatch(action)

@@ -604,13 +604,13 @@ Array [
   },
   Object {
     "basename": "",
-    "hash": "",
+    "hash": "missed",
     "location": Object {
       "key": "345678",
       "pathname": "/not-found",
       "scene": "",
       "search": "",
-      "url": "/not-found",
+      "url": "/not-found#missed",
     },
     "params": Object {},
     "query": Object {},
@@ -625,7 +625,7 @@ exports[`hash equals string {"type":"SECOND","hash":"missed"}: 2 - history_index
 exports[`hash equals string {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
   "basename": "",
-  "hash": "",
+  "hash": "missed",
   "location": Object {
     "blocked": null,
     "direction": "forward",
@@ -647,13 +647,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -688,7 +688,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 404,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "params": Object {},
   "query": Object {},
@@ -725,13 +725,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -740,7 +740,7 @@ Object {
       },
     ],
     "from": null,
-    "hash": "",
+    "hash": "missed",
     "index": 1,
     "key": "345678",
     "kind": "push",
@@ -772,7 +772,7 @@ Object {
     "status": 404,
     "type": "NOT_FOUND",
     "universal": false,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "title": "NOT_FOUND",
 }
@@ -1384,13 +1384,13 @@ Array [
   },
   Object {
     "basename": "",
-    "hash": "",
+    "hash": "missed",
     "location": Object {
       "key": "345678",
       "pathname": "/not-found",
       "scene": "",
       "search": "",
-      "url": "/not-found",
+      "url": "/not-found#missed",
     },
     "params": Object {},
     "query": Object {},
@@ -1405,7 +1405,7 @@ exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - history
 exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
   "basename": "",
-  "hash": "",
+  "hash": "missed",
   "location": Object {
     "blocked": null,
     "direction": "forward",
@@ -1427,13 +1427,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -1468,7 +1468,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 404,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "params": Object {},
   "query": Object {},
@@ -1505,13 +1505,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -1520,7 +1520,7 @@ Object {
       },
     ],
     "from": null,
-    "hash": "",
+    "hash": "missed",
     "index": 1,
     "key": "345678",
     "kind": "push",
@@ -1552,7 +1552,7 @@ Object {
     "status": 404,
     "type": "NOT_FOUND",
     "universal": false,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "title": "NOT_FOUND",
 }
@@ -2164,13 +2164,13 @@ Array [
   },
   Object {
     "basename": "",
-    "hash": "",
+    "hash": "missed",
     "location": Object {
       "key": "345678",
       "pathname": "/not-found",
       "scene": "",
       "search": "",
-      "url": "/not-found",
+      "url": "/not-found#missed",
     },
     "params": Object {},
     "query": Object {},
@@ -2185,7 +2185,7 @@ exports[`hash matched by regex {"type":"SECOND","hash":"missed"}: 2 - history_in
 exports[`hash matched by regex {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
   "basename": "",
-  "hash": "",
+  "hash": "missed",
   "location": Object {
     "blocked": null,
     "direction": "forward",
@@ -2207,13 +2207,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -2248,7 +2248,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 404,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "params": Object {},
   "query": Object {},
@@ -2285,13 +2285,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -2300,7 +2300,7 @@ Object {
       },
     ],
     "from": null,
-    "hash": "",
+    "hash": "missed",
     "index": 1,
     "key": "345678",
     "kind": "push",
@@ -2332,7 +2332,7 @@ Object {
     "status": 404,
     "type": "NOT_FOUND",
     "universal": false,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "title": "NOT_FOUND",
 }
@@ -2749,13 +2749,13 @@ Array [
   },
   Object {
     "basename": "",
-    "hash": "",
+    "hash": "missed",
     "location": Object {
       "key": "345678",
       "pathname": "/not-found",
       "scene": "",
       "search": "",
-      "url": "/not-found",
+      "url": "/not-found#missed",
     },
     "params": Object {},
     "query": Object {},
@@ -2770,7 +2770,7 @@ exports[`hash required not to be there {"type":"SECOND","hash":"missed"}: 2 - hi
 exports[`hash required not to be there {"type":"SECOND","hash":"missed"}: 2 - response 1`] = `
 Object {
   "basename": "",
-  "hash": "",
+  "hash": "missed",
   "location": Object {
     "blocked": null,
     "direction": "forward",
@@ -2792,13 +2792,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -2833,7 +2833,7 @@ Object {
     "scene": "",
     "search": "",
     "status": 404,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "params": Object {},
   "query": Object {},
@@ -2870,13 +2870,13 @@ Object {
       },
       Object {
         "basename": "",
-        "hash": "",
+        "hash": "missed",
         "location": Object {
           "key": "345678",
           "pathname": "/not-found",
           "scene": "",
           "search": "",
-          "url": "/not-found",
+          "url": "/not-found#missed",
         },
         "params": Object {},
         "query": Object {},
@@ -2885,7 +2885,7 @@ Object {
       },
     ],
     "from": null,
-    "hash": "",
+    "hash": "missed",
     "index": 1,
     "key": "345678",
     "kind": "push",
@@ -2917,7 +2917,7 @@ Object {
     "status": 404,
     "type": "NOT_FOUND",
     "universal": false,
-    "url": "/not-found",
+    "url": "/not-found#missed",
   },
   "title": "NOT_FOUND",
 }

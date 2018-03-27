@@ -10,13 +10,23 @@ const routes = {
 
 createTest('set(action, n)', routes, {
   testBrowser: true,
+  basenames: ['/base'],
   convertNumbers: true
 }, [], async ({ dispatch, getLocation }) => {
   await dispatch({ type: 'SECOND' })
-  await dispatch(set({ params: { foo: 'bar' }, state: { hell: 'yea' } }, -1))
 
-  expect(getLocation().entries[0].params).toEqual({ foo: 'bar' })
-  expect(get().entries[0][1]).toEqual({ hell: 'yea' })
+  const action = {
+    params: { foo: 'bar' },
+    query: { hell: 'yea' },
+    hash: 'yolo',
+    basename: '/base',
+    state: { something: 123 }
+  }
+
+  await dispatch(set(action, -1))
+
+  expect(getLocation().entries[0].params).toEqual(action.params)
+  expect(get().entries[0][1]).toEqual(action.state)
 
   expect(locationToUrl(window.location)).toEqual('/second')
 

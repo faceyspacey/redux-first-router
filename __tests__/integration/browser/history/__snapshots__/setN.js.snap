@@ -4,9 +4,9 @@ exports[`set(action, n) 1`] = `
 Object {
   "entries": Array [
     Array [
-      "/bar",
+      "/base/bar?hell=yea#yolo",
       Object {
-        "hell": "yea",
+        "something": 123,
       },
       "345678",
     ],
@@ -27,21 +27,23 @@ Object {
   "direction": "forward",
   "entries": Array [
     Object {
-      "basename": "",
-      "hash": "",
+      "basename": "base",
+      "hash": "yolo",
       "location": Object {
         "key": "345678",
         "pathname": "/bar",
         "scene": "",
-        "search": "",
-        "url": "/bar",
+        "search": "hell=yea",
+        "url": "/base/bar?hell=yea#yolo",
       },
       "params": Object {
         "foo": "bar",
       },
-      "query": Object {},
-      "state": Object {
+      "query": Object {
         "hell": "yea",
+      },
+      "state": Object {
+        "something": 123,
       },
       "type": "FIRST",
     },

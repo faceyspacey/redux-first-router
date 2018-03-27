@@ -61,11 +61,12 @@ const createAction = (
   for (let i = 0; i < types.length; i++) {
     const type = types[i]
     const route = routes[type]
+    const transformers = { formatParams, formatQuery, formatHash }
     const match = matchUrl(loc, route, transformers, route, opts)
 
     if (match) {
       const { params, query, hash } = match
-      const state = fromState(st, route, opts)
+      const state = formatState(st, route, opts)
       return { type, params, query, hash, state }
     }
   }
@@ -75,7 +76,7 @@ const createAction = (
 
   return {
     ...notFound(st, type),
-    params: {},
+    params: {}, // we can't know these in this case
     query: loc.search ? parseSearch(loc.search, routes, opts) : {}, // keep this info
     hash: loc.hash || ''
   }
@@ -84,7 +85,7 @@ const createAction = (
 
 // EVERYTHING BELOW IS RELATED TO THE TRANSFORMERS PASSED TO `matchUrl`:
 
-const fromPath = (params: Object, route: Route, opts: Options) => {
+const formatParams = (params: Object, route: Route, opts: Options) => {
   const from = route.fromPath || defaultFromPath
 
   for (const key in params) {
@@ -126,7 +127,7 @@ const defaultFromPath = (
     : decodedVal
 }
 
-const fromSearch = (query: Object, route: Route, opts: Options) => {
+const formatQuery = (query: Object, route: Route, opts: Options) => {
   const from = route.fromSearch || opts.fromSearch
 
   if (from) {
@@ -142,7 +143,7 @@ const fromSearch = (query: Object, route: Route, opts: Options) => {
     : query
 }
 
-const fromHash = (hash: string, route: Route, opts: Options) => {
+const formatHash = (hash: string, route: Route, opts: Options) => {
   const from = route.fromHash || opts.fromHash
   hash = from ? from(hash, route, opts) : hash
 
@@ -152,14 +153,12 @@ const fromHash = (hash: string, route: Route, opts: Options) => {
     : hash
 }
 
-const fromState = (state: Object, route: Route, opts: Options) => {
+const formatState = (state: Object, route: Route, opts: Options) => {
   const def = route.defaultState || opts.defaultState
   return def
     ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
     : state || {}
-}
-
-const transformers = { fromPath, fromSearch, fromHash }
+} // state has no string counter part in the address bar, so there is no `fromState`
 
 const isNumber = (str: string) => !isNaN(str) && !isNaN(parseFloat(str))
 

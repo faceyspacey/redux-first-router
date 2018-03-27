@@ -11,18 +11,21 @@ import {
 } from '../pathlessRoutes'
 
 export default (
-  routes: RoutesMapInput,
+  input: RoutesMapInput,
   formatter: ?Function,
   isAddRoutes: boolean = false
 ): RoutesMap => {
-  if (!isAddRoutes) {
-    routes.NOT_FOUND = routes.NOT_FOUND || { path: '/not-found' }
+  const routes = isAddRoutes ? input : {}
 
-    routes[ADD_ROUTES] = routes[ADD_ROUTES] || { thunk: addRoutes, dispatch: false }
-    routes[CHANGE_BASENAME] = routes[CHANGE_BASENAME] || { thunk: changeBasename, dispatch: false }
-    routes[CLEAR_CACHE] = routes[CLEAR_CACHE] || { thunk: clearCache }
-    routes[CONFIRM] = routes[CONFIRM] || { thunk: confirm, dispatch: false }
-    routes[CALL_HISTORY] = routes[CALL_HISTORY] || { thunk: callHistory, dispatch: false }
+  if (!isAddRoutes) {
+    routes.NOT_FOUND = input.NOT_FOUND || { path: '/not-found' }
+    Object.assign(routes, input) // insure '/not-found' matches over '/:param?' -- yes, browsers respect order assigned for non-numeric keys
+
+    routes[ADD_ROUTES] = input[ADD_ROUTES] || { thunk: addRoutes, dispatch: false }
+    routes[CHANGE_BASENAME] = input[CHANGE_BASENAME] || { thunk: changeBasename, dispatch: false }
+    routes[CLEAR_CACHE] = input[CLEAR_CACHE] || { thunk: clearCache }
+    routes[CONFIRM] = input[CONFIRM] || { thunk: confirm, dispatch: false }
+    routes[CALL_HISTORY] = input[CALL_HISTORY] || { thunk: callHistory, dispatch: false }
   }
 
   const types = Object.keys(routes)

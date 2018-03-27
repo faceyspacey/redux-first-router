@@ -4,8 +4,10 @@ exports[`set(action) 1`] = `
 Object {
   "entries": Array [
     Array [
-      "/?hell=yea#yolo",
-      Object {},
+      "/base/?hell=yea#yolo",
+      Object {
+        "something": 123,
+      },
       "345678",
     ],
   ],
@@ -15,25 +17,27 @@ Object {
 
 exports[`set(action) 2`] = `
 Object {
-  "basename": "",
+  "basename": "base",
   "blocked": null,
   "direction": "forward",
   "entries": Array [
     Object {
-      "basename": "",
+      "basename": "base",
       "hash": "yolo",
       "location": Object {
         "key": "345678",
         "pathname": "/",
         "scene": "",
         "search": "hell=yea",
-        "url": "/?hell=yea#yolo",
+        "url": "/base/?hell=yea#yolo",
       },
       "params": Object {},
       "query": Object {
         "hell": "yea",
       },
-      "state": Object {},
+      "state": Object {
+        "something": 123,
+      },
       "type": "FIRST",
     },
   ],
@@ -68,10 +72,98 @@ Object {
   },
   "scene": "",
   "search": "hell=yea",
-  "state": Object {},
+  "state": Object {
+    "something": 123,
+  },
   "status": 200,
   "type": "FIRST",
   "universal": false,
-  "url": "/?hell=yea#yolo",
+  "url": "/base/?hell=yea#yolo",
+}
+`;
+
+exports[`set(action) 3`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar?hello=world#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
+exports[`set(action) 4`] = `
+Object {
+  "basename": "base",
+  "blocked": null,
+  "direction": "forward",
+  "entries": Array [
+    Object {
+      "basename": "base",
+      "hash": "yolo",
+      "location": Object {
+        "key": "345678",
+        "pathname": "/bar",
+        "scene": "",
+        "search": "hello=world",
+        "url": "/base/bar?hello=world#yolo",
+      },
+      "params": Object {
+        "foo": "bar",
+      },
+      "query": Object {
+        "hello": "world",
+      },
+      "state": Object {
+        "something": 123,
+      },
+      "type": "FIRST",
+    },
+  ],
+  "from": null,
+  "hash": "yolo",
+  "index": 0,
+  "key": "345678",
+  "kind": "load",
+  "length": 1,
+  "n": 1,
+  "params": Object {
+    "foo": "bar",
+  },
+  "pathname": "/bar",
+  "pop": false,
+  "prev": Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "index": -1,
+      "key": "",
+      "pathname": "",
+      "scene": "",
+      "search": "",
+      "url": "",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "",
+  },
+  "query": Object {
+    "hello": "world",
+  },
+  "scene": "",
+  "search": "hello=world",
+  "state": Object {
+    "something": 123,
+  },
+  "status": 200,
+  "type": "FIRST",
+  "universal": false,
+  "url": "/base/bar?hello=world#yolo",
 }
 `;

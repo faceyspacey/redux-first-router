@@ -113,7 +113,7 @@ export default class BrowserHistory extends History {
       this.currentPop = this.jump(n, null, false, kind, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
     }
 
-    const onPopState = e => !isExtraneousPopEvent(e) && handlePop() // Ignore extraneous popstate events in WebKit.
+    const onPopState = e => !isExtraneousPopEvent(e) && handlePop() // ignore extraneous popstate events in WebKit
     const onHashChange = handlePop
 
     this._addPopListener = () => addPopListener(onPopState, onHashChange)
@@ -125,10 +125,10 @@ export default class BrowserHistory extends History {
     window.history.go(n) // revert
   }
 
-  _push(action, awaitUrl) {
+  _push(action) {
     const { url } = action.location
 
-    return this._awaitUrl(awaitUrl || this.prevUrl, '_push')
+    return this._awaitUrl(this.prevUrl, '_push')
       .then(() => pushState(url))
   }
 

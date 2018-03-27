@@ -373,7 +373,8 @@ export default class History {
 
   // All child classes *should* implement this:
   _restore() {
-    return { n: 1, index: 0, entries: [toAction('/', this)] }
+    const entries = [toAction('/', this)]
+    return { n: 1, index: 0, entries }
   }
 
   // BrowseHistory (or 3rd party implementations) override these to provide sideFX

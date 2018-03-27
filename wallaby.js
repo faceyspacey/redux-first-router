@@ -21,9 +21,9 @@ module.exports = wallaby => {
       // '__tests__/integration/browser/pop/popCancelsAction.js',
       // '__tests__/integration/browser/sessionStorage/historyFallback.js',
       // '__tests__/integration/browser/pop/pop.js',
-      '__tests__/integration/browser/sessionStorage/restoreFromFront.js',
+      // '__tests__/integration/browser/sessionStorage/restoreFromFront.js',
       // '__tests__/integration/redirects.js',
-      // '__tests__/integration/browser/history/**/*.js',
+      '__tests__/integration/browser/history/**/*.js',
 
       // '__tests__/integration/browser/**/*.js',
       // '__tests__/integration/actions/**/*.js',
@@ -89,6 +89,8 @@ module.exports = wallaby => {
       // '__tests__/integration/serverRedirect.js',
       // '__tests__/integration/redirectShortcut.js',
       // '__tests__/integration/dispatchFrom.js',
+
+      // '__tests__/integration/uninheritedHistory.js',
     ],
 
     env: {

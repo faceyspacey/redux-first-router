@@ -3,20 +3,35 @@ import { get } from '../../../../src/history/utils/sessionStorage'
 import { locationToUrl } from '../../../../src/utils'
 import { set } from '../../../../src/actions'
 
-const routes = {
-  FIRST: {
-    path: '/:foo?'
-  }
-}
 
-createTest('set(action)', routes, {
-  testBrowser: true
+createTest('set(action)', {
+  FIRST: '/:foo?'
+}, {
+  testBrowser: true,
+  basenames: ['/base']
 }, [], async ({ dispatch, getLocation }) => {
-  await dispatch(set({ query: { hell: 'yea' }, hash: 'yolo' }))
+  const action = {
+    query: { hell: 'yea' },
+    hash: 'yolo',
+    basename: '/base',
+    state: { something: 123 }
+  }
+  await dispatch(set(action))
 
   expect(getLocation().hash).toEqual('yolo')
-  expect(locationToUrl(window.location)).toEqual('/?hell=yea#yolo')
-  expect(get().entries[0][0]).toEqual('/?hell=yea#yolo')
+  expect(locationToUrl(window.location)).toEqual('/base/?hell=yea#yolo')
+  expect(get().entries[0][0]).toEqual('/base/?hell=yea#yolo')
+
+  expect(get()).toMatchSnapshot()
+  expect(getLocation()).toMatchSnapshot()
+
+  // for good measure, test overwriting it
+  action.params = { foo: 'bar' }
+  action.query = { hello: 'world', hell: undefined }
+  await dispatch(set(action))
+
+  expect(locationToUrl(window.location)).toEqual('/base/bar?hello=world#yolo')
+  expect(get().entries[0][0]).toEqual('/base/bar?hello=world#yolo')
 
   expect(get()).toMatchSnapshot()
   expect(getLocation()).toMatchSnapshot()

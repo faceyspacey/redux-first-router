@@ -19,23 +19,20 @@ export default (
   const { type, params, query, hash, basename: bn } = action
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
-  const state = toState(action.state, route, opts)
   const basename = cleanBasename(bn)
   const isWrongBasename = basename && !opts.basenames.includes(basename)
+
+  const p = formatParams(params, route, opts)
+  const q = formatQuery(query, route, opts)
+  const h = formatHash(hash, route, opts)
+  const state = formatState(action.state, route, opts)
 
   try {
     if (isWrongBasename) {
       throw new Error(`[rudy] basename "${basename}" not in options.basenames`)
     }
 
-    const pathname = compileUrl(
-      path,
-      toPath(params, route, opts),
-      toSearch(query, route, opts),
-      toHash(hash, route, opts),
-      route,
-      opts
-    ) || '/'
+    const pathname = compileUrl(path, p, q, h, route, opts) || '/'
 
     const url = basename + pathname
     return { url, state }
@@ -49,12 +46,12 @@ export default (
     }
 
     const bn = isWrongBasename ? '' : basename
-    const url = bn + notFoundUrl(action, routes, prevRoute)
-    return { url, state: {} }
+    const url = bn + notFoundUrl(action, routes, opts, q, h, prevRoute)
+    return { url, state }
   }
 }
 
-const toPath = (params: ?Object, route: Route, opts: Options) => {
+const formatParams = (params: ?Object, route: Route, opts: Options) => {
   const def = route.defaultParams || opts.defaultParams
   params = def
     ? typeof def === 'function' ? def(params, route, opts) : { ...def, ...params }
@@ -98,7 +95,7 @@ const defaultToPath = (
     : val === undefined ? undefined : encodedVal
 }
 
-const toSearch = (query: ?Object, route: Route, opts: Options) => {
+const formatQuery = (query: ?Object, route: Route, opts: Options) => {
   const def = route.defaultQuery || opts.defaultQuery
   query = def
     ? typeof def === 'function' ? def(query, route, opts) : { ...def, ...query }
@@ -119,14 +116,7 @@ const toSearch = (query: ?Object, route: Route, opts: Options) => {
   return query
 }
 
-const toState = (state: ?Object, route: Route, opts: Options) => {
-  const def = route.defaultState || opts.defaultState
-  return def
-    ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
-    : state
-}
-
-const toHash = (hash: ?string = '', route: Route, opts: Options) => {
+const formatHash = (hash: ?string = '', route: Route, opts: Options) => {
   const def = route.defaultHash || opts.defaultHash
   hash = def
     ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
@@ -136,7 +126,14 @@ const toHash = (hash: ?string = '', route: Route, opts: Options) => {
   return to ? to(hash, route, opts) : hash
 }
 
-const notFoundUrl = (action, routes, prevRoute: Object = {}) => {
+const formatState = (state: ?Object = {}, route: Route, opts: Options) => {
+  const def = route.defaultState || opts.defaultState
+  return def
+    ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
+    : state
+} // state has no string counter part in the address bar, so there is no `toState`
+
+const notFoundUrl = (action, routes, opts: Options, query, hash, prevRoute: Object = {}) => {
   const route = routes[action.type] || {}
   const hasScene = action.type.indexOf('/NOT_FOUND') > -1
   const scene = route.scene || prevRoute.scene || ''
@@ -146,5 +143,8 @@ const notFoundUrl = (action, routes, prevRoute: Object = {}) => {
       ? `${scene}/NOT_FOUND`
       : 'NOT_FOUND'
 
-  return routes[type].path || routes.NOT_FOUND.path
+  const p = routes[type].path || routes.NOT_FOUND.path
+  const s = query ? opts.stringifyQuery(query, { addQueryPrefix: true }) : ''
+  const h = hash ? `#${hash}` : ''
+  return p + s + h
 }

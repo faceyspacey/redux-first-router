@@ -27,12 +27,12 @@ export default (
     return params
   }, {})
 
-  const { fromPath, fromSearch, fromHash } = options
+  const { formatParams, formatQuery, formatHash } = options
 
   return {
-    params: fromPath ? fromPath(params, route, opts) : params,
-    query: fromSearch ? fromSearch(query, route, opts) : query,
-    hash: fromHash ? fromHash(hash || '', route, opts) : (hash || ''),
+    params: formatParams ? formatParams(params, route, opts) : params,
+    query: formatQuery ? formatQuery(query, route, opts) : query,
+    hash: formatHash ? formatHash(hash || '', route, opts) : (hash || ''),
     matchedPath: matchers.path === '/' && path === '' ? '/' : path, // the matched portion of the URL/path
     matchers,
     partial: !!options.partial

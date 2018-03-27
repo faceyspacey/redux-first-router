@@ -1,5 +1,5 @@
 export default (url) => {
-  if (typeof url === 'object' && url.pathname) return url
+  if (typeof url === 'object' && url.pathname !== undefined) return url
 
   let pathname = url || '/'
   let search = ''
@@ -16,6 +16,8 @@ export default (url) => {
     search = pathname.substr(searchIndex + 1)   // remove ? from search
     pathname = pathname.substr(0, searchIndex)  // remove search value from pathname
   }
+
+  pathname = pathname || '/' // could be empty on URLs that like: '?foo=bar#hash
 
   return { pathname, search, hash }
 }
