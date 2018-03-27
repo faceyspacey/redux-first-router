@@ -1,4 +1,4 @@
-import { urlToAction, toAction, createActionRef, cleanBasename } from '../utils'
+import { toAction, toEntries, createActionRef, cleanBasename } from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
@@ -68,17 +68,13 @@ export default class History {
   }
 
   get prevUrl() {
-    if (this.location.kind === 'load' && this.location.from) {
-      return this.location.from.location.url // used by `BrowserHistory._replace` on redirects when `prev` state is empty
-    }
-
     return this.location.prev.location.url
   }
 
   // API:
 
   push(path, state = {}, notify = true) {
-    const action = urlToAction(path, this, state)
+    const action = toAction(this, path, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'push')
@@ -96,7 +92,7 @@ export default class History {
   }
 
   replace(path, state = {}, notify = true) {
-    const action = urlToAction(path, this, state)
+    const action = toAction(this, path, state)
     const back = this._isBack(action) // automatically determine if the user is just going back or next to a URL already visited
     const next = this._isNext(action)
     const kind = back ? 'back' : (next ? 'next' : 'replace')
@@ -116,7 +112,7 @@ export default class History {
   }
 
   replacePop(path, state = {}, notify = true, pop) {
-    const action = urlToAction(path, this, state)
+    const action = toAction(this, path, state)
     const { index, prevUrl, n } = pop
     const entries = pop.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
@@ -191,8 +187,8 @@ export default class History {
     const action = n === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if n === 0, not just entry in entries
     const info = { kind, index, entries }
 
-    const currUrl = n === 0 ? this.url : entry.location.url
-    const commit = (action) => this._set(action, currUrl, n)
+    const targetUrl = n === 0 ? this.url : entry.location.url
+    const commit = (action) => this._set(action, targetUrl, n)
 
     if (!this.entries[i]) {
       throw new Error(`[rudy] no entry at index: ${i}`)
@@ -230,7 +226,11 @@ export default class History {
       }
     }
 
-    Object.assign(entry, toAction(entry, this))
+    Object.assign(entry, toAction(this, entry))
+
+    if (i === this.location.prev.location.index) {
+      action.prev = { ...entry, location: { ...entry.location, index: i } } // insure `state.prev` matches changed entry
+    }
 
     return this._notify(action, info, commit, notify)
   }
@@ -241,12 +241,10 @@ export default class History {
       entries.unshift(entry)
     }
 
-    entries = entries.map(e => toAction(e, this))
+    entries = entries.map(e => toAction(this, e))
     index = index !== undefined ? index : entries.length - 1 // default index is head of array
 
-    if (!entries[index]) {
-      throw new Error(`[rudy] no location entry at index: ${index}.`)
-    }
+    if (!entries[index]) throw new Error(`[rudy] no entry at index: ${index}.`)
 
     const n = kindOverride
       ? kindOverride === 'next' ? 1 : -1 // user manually chose which direction to pretend to be going
@@ -373,8 +371,7 @@ export default class History {
 
   // All child classes *should* implement this:
   _restore() {
-    const entries = [toAction('/', this)]
-    return { n: 1, index: 0, entries }
+    return toEntries(this) // by default creates action array for a single entry: ['/']
   }
 
   // BrowseHistory (or 3rd party implementations) override these to provide sideFX

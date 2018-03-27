@@ -30,7 +30,7 @@ beforeAll(async () => {
   await store.dispatch({ type: 'FIRST' }) // history.entries will be at first entry now
 })
 
-createTest('restore history from history fallback', {
+createTest('restore history from sessionStorage when using MemoryHistory as fallback', {
   FIRST: '/',
   SECOND: '/second',
   THIRD: '/third'

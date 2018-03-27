@@ -17,24 +17,26 @@ export default (
 ): string => {
   const { routes, options: opts } = api
   const { type, params, query, hash, basename: bn } = action
+
   const route = routes[type]
   const path = typeof route === 'object' ? route.path : route
-  const basename = cleanBasename(bn)
-  const isWrongBasename = basename && !opts.basenames.includes(basename)
 
   const p = formatParams(params, route, opts)
   const q = formatQuery(query, route, opts)
   const h = formatHash(hash, route, opts)
   const state = formatState(action.state, route, opts)
 
+  const basename = cleanBasename(bn)
+  const isWrongBasename = basename && !opts.basenames.includes(basename)
+
   try {
     if (isWrongBasename) {
       throw new Error(`[rudy] basename "${basename}" not in options.basenames`)
     }
 
-    const pathname = compileUrl(path, p, q, h, route, opts) || '/'
-
+    const pathname = compileUrl(path, p, q, h, route, opts) || '/' // path-to-regexp throws for failed compilations; we made our queries + hashes also throw to conform
     const url = basename + pathname
+
     return { url, state }
   }
   catch (e) {
@@ -144,7 +146,8 @@ const notFoundUrl = (action, routes, opts: Options, query, hash, prevRoute: Obje
       : 'NOT_FOUND'
 
   const p = routes[type].path || routes.NOT_FOUND.path
-  const s = query ? opts.stringifyQuery(query, { addQueryPrefix: true }) : ''
+  const s = query ? opts.stringifyQuery(query, { addQueryPrefix: true }) : '' // preserve these (why? because we can)
   const h = hash ? `#${hash}` : ''
+
   return p + s + h
 }

@@ -4,7 +4,7 @@ import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
 import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
 
-export default (url, api, state, key) => {
+export default (api, url, state, key) => {
   const { getLocation, routes, options: opts } = api
   const curr = getLocation ? getLocation() : {}
 

@@ -142,6 +142,10 @@ export default class BrowserHistory extends History {
         .then(() => replaceState(url))
     }
 
+    if (this.location.kind === 'load') {
+      awaitUrl = locationToUrl(window.location) // special case: redirects on load have no previous URL
+    }
+
     return this._awaitUrl(awaitUrl || this.prevUrl, '_replace')
       .then(() => replaceState(url))
   }
@@ -161,15 +165,15 @@ export default class BrowserHistory extends History {
       .then(() => this._replace(action, action))
   }
 
-  _set(action, currUrl, n) {
+  _set(action, targetUrl, n) {
     if (!n) {
-      return this._replace(action, currUrl)
+      return this._replace(action, targetUrl)
     }
 
     return this._awaitUrl(action, '_setN start')
       .then(() => this._forceGo(n))
-      .then(() => this._awaitUrl(currUrl, '_setN before replace'))
-      .then(() => this._replace(action))
+      .then(() => this._awaitUrl(targetUrl, '_setN before replace'))
+      .then(() => this._replace(action, targetUrl))
       .then(() => this._forceGo(-n))
       .then(() => this._awaitUrl(action, 'setN return'))
   }

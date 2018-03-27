@@ -19,7 +19,7 @@ beforeAll(async () => {
   history.unlisten()
 })
 
-createTest('restore history from sessionStorage', {
+createTest('restore history when index === entries.length - 1', {
   FIRST: '/',
   SECOND: '/second',
   THIRD: '/third'

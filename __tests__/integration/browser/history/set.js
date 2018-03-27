@@ -3,7 +3,6 @@ import { get } from '../../../../src/history/utils/sessionStorage'
 import { locationToUrl } from '../../../../src/utils'
 import { set } from '../../../../src/actions'
 
-
 createTest('set(action)', {
   FIRST: '/:foo?'
 }, {

@@ -62,7 +62,7 @@ export default (api, name, config) => {
     }
     else {                                        // delete all/some callbacks for precise item (default)
       const action = invalidator
-      const act = toAction(action, api)
+      const act = toAction(api, action)
       const names = opts.name === undefined ? callbacks : [].concat(opts.name)
 
       names.forEach(name => {

@@ -1,6 +1,6 @@
 // @flow
 import resolvePathname from 'resolve-pathname'
-import { actionToUrl, urlToAction } from '../../utils'
+import { actionToUrl, toAction } from '../../utils'
 import { stripBasename, findBasename } from '../../history/utils'
 import type { RoutesMap, Options } from '../../flow-types'
 
@@ -63,7 +63,8 @@ export default (
   const isExternal = url.indexOf('http') === 0
 
   if (!action && !isExternal) {
-    action = urlToAction(url, { routes, options })
+    const api = { routes, options }
+    action = toAction(api, url)
   }
 
   if (basename) {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`restore history from history fallback 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -92,7 +92,7 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback 2`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback 2`] = `
 Object {
   "entries": Array [
     Array [
@@ -115,7 +115,7 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback 3`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback 3`] = `
 Object {
   "entries": Array [
     Array [
@@ -143,7 +143,7 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback: {"type":"FIRST"} - history_entries 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -208,9 +208,9 @@ Array [
 ]
 `;
 
-exports[`restore history from history fallback: {"type":"FIRST"} - history_index 1`] = `3`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - history_index 1`] = `3`;
 
-exports[`restore history from history fallback: {"type":"FIRST"} - response 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -315,11 +315,11 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`restore history from history fallback: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`restore history from history fallback: {"type":"FIRST"} - state 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -426,9 +426,9 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback: {"type":"FIRST"} - title 1`] = `"FIRST"`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - title 1`] = `"FIRST"`;
 
-exports[`restore history from history fallback: {"type":"SECOND"} - history_entries 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -478,9 +478,9 @@ Array [
 ]
 `;
 
-exports[`restore history from history fallback: {"type":"SECOND"} - history_index 1`] = `1`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - history_index 1`] = `1`;
 
-exports[`restore history from history fallback: {"type":"SECOND"} - response 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -570,11 +570,11 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback: {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`restore history from history fallback: {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`restore history from history fallback: {"type":"SECOND"} - state 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -666,9 +666,9 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback: {"type":"SECOND"} - title 1`] = `"SECOND"`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
-exports[`restore history from history fallback: {"type":"THIRD"} - history_entries 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -718,9 +718,9 @@ Array [
 ]
 `;
 
-exports[`restore history from history fallback: {"type":"THIRD"} - history_index 1`] = `2`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - history_index 1`] = `2`;
 
-exports[`restore history from history fallback: {"type":"THIRD"} - response 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -810,11 +810,11 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback: {"type":"THIRD"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`restore history from history fallback: {"type":"THIRD"} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`restore history from history fallback: {"type":"THIRD"} - state 1`] = `
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -906,4 +906,4 @@ Object {
 }
 `;
 
-exports[`restore history from history fallback: {"type":"THIRD"} - title 1`] = `"THIRD"`;
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - title 1`] = `"THIRD"`;

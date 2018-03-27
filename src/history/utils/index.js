@@ -16,6 +16,5 @@ export {
   get,
   set,
   pushState,
-  replaceState,
-  getInitialN
+  replaceState
 } from './sessionStorage'

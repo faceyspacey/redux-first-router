@@ -1,5 +1,5 @@
 import { supportsSession, supportsHistory } from './index'
-import { urlToAction } from '../../utils'
+import { toEntries } from '../../utils'
 
 // API:
 
@@ -21,7 +21,7 @@ import { urlToAction } from '../../utils'
 
 
 export const saveHistory = ({ index, entries }, out) => {
-  entries = entries.map(e => [e.location.url, e.state, e.location.key])
+  entries = entries.map(e => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
   set({ index, entries, out })
 }
 
@@ -38,10 +38,10 @@ export const get = () => supportsSession() ? sessionGet() : historyGet()
 // HISTORY FACADE:
 
 export const pushState = (url) =>
-  window.history.pushState({ id: sessionId() }, null, url) // insure every entry has the sessionId (called by `BrowserHistory`)
+  window.history.pushState({ id: sessionId() }, null, url)    // insure every entry has the sessionId (called by `BrowserHistory`)
 
 export const replaceState = (url) =>
-  window.history.replaceState({ id: sessionId() }, null, url) // FYI: fallback simply overwrites state soon after, which is fine because only session uses `id`
+  window.history.replaceState({ id: sessionId() }, null, url) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
 
 const historySet = (history) =>
   window.history.replaceState(history, null) // set on current entry
@@ -60,15 +60,13 @@ let _id
 
 const PREFIX = '@@rudy/'
 
-const sessionId = () => _id = _id || createSessionId() // `MemoryHistory` used as a fallback for <=IE9 in the browser won't be able to have unique IDs
-
-const createId = () => Math.random().toString(36).substr(2, 6)
+const sessionId = () => _id = _id || createSessionId()
 
 const key = () => PREFIX + sessionId()
 
 const sessionSet = (val) => window.sessionStorage.setItem(key(), JSON.stringify(val))
 
-const sessionGet = () => { // exported for tests
+const sessionGet = () => {
   try {
     const json = window.sessionStorage.getItem(key())
     return JSON.parse(json)
@@ -82,7 +80,7 @@ const createSessionId = () => {
   const state = getHistoryState()
 
   if (!state.id) {
-    state.id = createId()
+    state.id = Math.random().toString(36).substr(2, 6)
     historySet(state)
   }
 
@@ -95,9 +93,7 @@ const createSessionId = () => {
 const initializeHistory = () => {
   const { pathname, search, hash } = window.location
   const url = pathname + search + hash
-  const state = {}
-  const key = createId()
-  return { n: 1, index: 0, entries: [[url, state, key]] } // default history on first load
+  return { n: 1, index: 0, entries: [url] } // default history on first load
 }
 
 // We must remove entries after the index in case the user opened a link to
@@ -113,20 +109,10 @@ const initializeHistory = () => {
 // of push the new entry! To circumvent that, use Rudy's <Link /> component and it will
 // save the `out` flag (just before linking out) that insures this is addressed:
 const format = (history, api) => {
-  const { index, out, entries: ents } = history
-  const ents2 = index > 0 || out ? ents.slice(0, index + 1) : ents
-  const entries = ents2.map(([url, state, key]) => urlToAction(url, api, state, key))
-  const n = getInitialN(index, entries)
-
-  return { n, index, entries }
+  const { entries, index, out } = history
+  const ents = index > 0 || out ? entries.slice(0, index + 1) : entries
+  return toEntries(api, ents, index)
 }
-
-// When entries are restored on load, the direction is always forward if on an index > 0
-// because the corresponding entries are removed (just like a `push`), and you are now at the head.
-// Otherwise, if there are multiple entries and you are on the first, you're considered
-// to be going back, but if there is one, you're logically going forward.
-export const getInitialN = (index, entries) =>
-  index > 0 ? 1 : (entries.length > 1 ? -1 : 1)
 
 // IE11 sometimes throws when accessing `history.state`:
 //
@@ -138,11 +124,11 @@ export const getInitialN = (index, entries) =>
 // which means it wouldn't have any state to remember in the first place
 //
 // B) in IE11 on load in iframes, which also won't need to remember state, as iframes
-// usually aren't for navigating to other sites (and back). But this may just be issue A)
+// usually aren't for navigating to other sites (and back). This may just be issue A)
 //
 // ALSO NOTE: this would only matter when using our history state fallback, as we don't use
 // `history.state` with `sessionStorage`, with one exception: `state.id`. The `id` is used for
-// a single edge case: having multiple windows open--see the below comment for why.
+// a single edge case: having multiple windows open (see "Session Storage Facade" above).
 const getHistoryState = () => {
   try {
     return window.history.state || {}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`restore history from sessionStorage 1`] = `
+exports[`restore history when index > 0 1`] = `
 Object {
   "basename": "",
   "blocked": null,
@@ -74,7 +74,7 @@ Object {
 }
 `;
 
-exports[`restore history from sessionStorage 2`] = `
+exports[`restore history when index > 0 2`] = `
 Object {
   "entries": Array [
     Array [
@@ -92,7 +92,7 @@ Object {
 }
 `;
 
-exports[`restore history from sessionStorage 3`] = `
+exports[`restore history when index > 0 3`] = `
 Object {
   "entries": Array [
     Array [
@@ -110,7 +110,7 @@ Object {
 }
 `;
 
-exports[`restore history from sessionStorage:  - history_entries 1`] = `
+exports[`restore history when index > 0:  - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -145,9 +145,9 @@ Array [
 ]
 `;
 
-exports[`restore history from sessionStorage:  - history_index 1`] = `0`;
+exports[`restore history when index > 0:  - history_index 1`] = `0`;
 
-exports[`restore history from sessionStorage:  - response 1`] = `
+exports[`restore history when index > 0:  - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -222,11 +222,11 @@ Object {
 }
 `;
 
-exports[`restore history from sessionStorage:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`restore history when index > 0:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`restore history from sessionStorage:  - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`restore history when index > 0:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`restore history from sessionStorage:  - state 1`] = `
+exports[`restore history when index > 0:  - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -303,4 +303,4 @@ Object {
 }
 `;
 
-exports[`restore history from sessionStorage:  - title 1`] = `"FIRST"`;
+exports[`restore history when index > 0:  - title 1`] = `"FIRST"`;
