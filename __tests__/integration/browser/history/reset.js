@@ -84,23 +84,3 @@ createTest('set(action, n)', {
   expect(locationToUrl(window.location)).toEqual('/base/bar#yolo')
 })
 
-
-// createTest('dispatch(reset(actions)) - entries as action objects', {
-//   SECOND: '/second',
-//   FIRST: '/:foo?'
-// }, {
-//   testBrowser: true,
-//   basenames: ['/base', '/another'],
-//   convertNumbers: true
-// }, [
-//   reset([{
-//     type: 'SECOND',
-//     state: { bla: 'sdf' }
-//   }, {
-//     type: 'THIRD',
-//     basename: '/base',
-//     state: { abc: 'def' },
-//     hash: 'something',
-//     query: { foo: 'bar', baz: 'yo' }
-//   }])
-// ])

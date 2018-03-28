@@ -16,6 +16,8 @@ export default async (...allArgs) => {
     options = {}
   }
 
+  Object.assign(options, JSON.parse(process.env.RUDY_OPTIONS)) // do things like force all tests to log -- see ../.testsConfig.json
+
   if (options.skip) return
 
   options.testBrowser = options.testBrowser || false
@@ -121,7 +123,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
     snapRoutes(num, routes)
     snapOptions(num, options)
 
-    if (opts.log || true) {
+    if (opts.log) {
       if (typeof opts.log !== 'function') {
         console.log(store.getState().location)
       }
@@ -161,6 +163,8 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       getState: store.getState,
       getLocation: () => store.getState().location,
       snapChange: (prefix, res) => {
+        if (opts.dontSnap) return res
+
         if (typeof prefix === 'string') {
           return snapChange(prefix, res, store, history, opts)
         }
@@ -173,6 +177,8 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
 
         const res = await store.dispatch(action)
 
+        if (opts.dontSnap) return res
+
         snapChange(prefix, res, store, history, opts)
         snapRoutes(prefix, routes)
         snapOptions(prefix, options)
@@ -182,6 +188,8 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       snapPop: async (direction, prefix = '') => {
         const res = await pop(direction)
 
+        if (opts.dontSnap) return res
+
         snapChange(prefix, res, store, history, opts)
         snapRoutes(prefix, routes)
         snapOptions(prefix, options)
@@ -190,7 +198,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       }
     })
 
-    if (opts.log || true) {
+    if (opts.log) {
       if (typeof opts.log !== 'function') {
         console.log(store.getState().location)
       }
