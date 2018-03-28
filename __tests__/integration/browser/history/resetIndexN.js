@@ -2,7 +2,7 @@ import createTest from '../../../../__helpers__/createTest'
 import { locationToUrl } from '../../../../src/utils'
 import { reset } from '../../../../src/actions'
 
-createTest('reset(actions)', {
+createTest('reset(actions, index)', {
   SECOND: '/second',
   THIRD: '/third',
   FOURTH: '/fourth',
@@ -17,7 +17,7 @@ createTest('reset(actions)', {
 }, {
   testBrowser: true,
   basenames: ['/base']
-}, [], async ({ dispatch, snap, snapPop, pop }) => {
+}, [], async ({ dispatch, snap, snapPop }) => {
   expect(locationToUrl(window.location)).toEqual('/')
 
   await dispatch({ type: 'SECOND' })
@@ -48,8 +48,20 @@ createTest('reset(actions)', {
     { type: 'ELEVENTH' }
   ]
 
-  await snap(reset(actions))
+  await snap(reset(actions, 6, -1))
 
+  expect(locationToUrl(window.location)).toEqual('/seventh')
+
+  await snapPop('forward')
+  expect(locationToUrl(window.location)).toEqual('/eighth')
+
+  await snapPop('forward')
+  expect(locationToUrl(window.location)).toEqual('/ninth')
+
+  await snapPop('forward')
+  expect(locationToUrl(window.location)).toEqual('/tenth')
+
+  await snapPop('forward')
   expect(locationToUrl(window.location)).toEqual('/eleventh')
 
   await snapPop('back')
@@ -79,7 +91,7 @@ createTest('reset(actions)', {
   await snapPop('back')
   expect(locationToUrl(window.location)).toEqual('/second?hell=yea#works')
 
-  await pop('back')
+  await snapPop('back')
   expect(locationToUrl(window.location)).toEqual('/base/bar#yolo')
 })
 

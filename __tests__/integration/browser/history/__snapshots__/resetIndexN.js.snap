@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`reset(actions):  - history_entries 1`] = `
+exports[`reset(actions, index):  - history_entries 1`] = `
 Array [
   Object {
     "basename": "base",
@@ -178,7 +178,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 2`] = `
+exports[`reset(actions, index):  - history_entries 2`] = `
 Array [
   Object {
     "basename": "base",
@@ -356,7 +356,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 3`] = `
+exports[`reset(actions, index):  - history_entries 3`] = `
 Array [
   Object {
     "basename": "base",
@@ -534,7 +534,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 4`] = `
+exports[`reset(actions, index):  - history_entries 4`] = `
 Array [
   Object {
     "basename": "base",
@@ -712,7 +712,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 5`] = `
+exports[`reset(actions, index):  - history_entries 5`] = `
 Array [
   Object {
     "basename": "base",
@@ -890,7 +890,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 6`] = `
+exports[`reset(actions, index):  - history_entries 6`] = `
 Array [
   Object {
     "basename": "base",
@@ -1068,7 +1068,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 7`] = `
+exports[`reset(actions, index):  - history_entries 7`] = `
 Array [
   Object {
     "basename": "base",
@@ -1246,7 +1246,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 8`] = `
+exports[`reset(actions, index):  - history_entries 8`] = `
 Array [
   Object {
     "basename": "base",
@@ -1424,7 +1424,7 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_entries 9`] = `
+exports[`reset(actions, index):  - history_entries 9`] = `
 Array [
   Object {
     "basename": "base",
@@ -1602,25 +1602,1797 @@ Array [
 ]
 `;
 
-exports[`reset(actions):  - history_index 1`] = `9`;
+exports[`reset(actions, index):  - history_entries 10`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "scene": "",
+      "search": "",
+      "url": "/base/bar#yolo",
+    },
+    "params": Object {
+      "foo": "bar",
+    },
+    "query": Object {},
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+  Object {
+    "basename": "",
+    "hash": "works",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "hell=yea",
+      "url": "/second?hell=yea#works",
+    },
+    "params": Object {},
+    "query": Object {
+      "hell": "yea",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "SECOND",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/third",
+      "scene": "",
+      "search": "",
+      "url": "/third",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "THIRD",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fourth",
+      "scene": "",
+      "search": "",
+      "url": "/fourth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FOURTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fifth",
+      "scene": "",
+      "search": "",
+      "url": "/fifth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIFTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/sixth",
+      "scene": "",
+      "search": "",
+      "url": "/sixth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SIXTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/seventh",
+      "scene": "",
+      "search": "",
+      "url": "/seventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SEVENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eighth",
+      "scene": "",
+      "search": "",
+      "url": "/eighth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "EIGHTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/ninth",
+      "scene": "",
+      "search": "",
+      "url": "/ninth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "NINTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/tenth",
+      "scene": "",
+      "search": "",
+      "url": "/tenth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "TENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eleventh",
+      "scene": "",
+      "search": "",
+      "url": "/eleventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "ELEVENTH",
+  },
+]
+`;
 
-exports[`reset(actions):  - history_index 2`] = `8`;
+exports[`reset(actions, index):  - history_entries 11`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "scene": "",
+      "search": "",
+      "url": "/base/bar#yolo",
+    },
+    "params": Object {
+      "foo": "bar",
+    },
+    "query": Object {},
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+  Object {
+    "basename": "",
+    "hash": "works",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "hell=yea",
+      "url": "/second?hell=yea#works",
+    },
+    "params": Object {},
+    "query": Object {
+      "hell": "yea",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "SECOND",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/third",
+      "scene": "",
+      "search": "",
+      "url": "/third",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "THIRD",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fourth",
+      "scene": "",
+      "search": "",
+      "url": "/fourth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FOURTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fifth",
+      "scene": "",
+      "search": "",
+      "url": "/fifth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIFTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/sixth",
+      "scene": "",
+      "search": "",
+      "url": "/sixth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SIXTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/seventh",
+      "scene": "",
+      "search": "",
+      "url": "/seventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SEVENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eighth",
+      "scene": "",
+      "search": "",
+      "url": "/eighth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "EIGHTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/ninth",
+      "scene": "",
+      "search": "",
+      "url": "/ninth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "NINTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/tenth",
+      "scene": "",
+      "search": "",
+      "url": "/tenth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "TENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eleventh",
+      "scene": "",
+      "search": "",
+      "url": "/eleventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "ELEVENTH",
+  },
+]
+`;
 
-exports[`reset(actions):  - history_index 3`] = `7`;
+exports[`reset(actions, index):  - history_entries 12`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "scene": "",
+      "search": "",
+      "url": "/base/bar#yolo",
+    },
+    "params": Object {
+      "foo": "bar",
+    },
+    "query": Object {},
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+  Object {
+    "basename": "",
+    "hash": "works",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "hell=yea",
+      "url": "/second?hell=yea#works",
+    },
+    "params": Object {},
+    "query": Object {
+      "hell": "yea",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "SECOND",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/third",
+      "scene": "",
+      "search": "",
+      "url": "/third",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "THIRD",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fourth",
+      "scene": "",
+      "search": "",
+      "url": "/fourth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FOURTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fifth",
+      "scene": "",
+      "search": "",
+      "url": "/fifth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIFTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/sixth",
+      "scene": "",
+      "search": "",
+      "url": "/sixth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SIXTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/seventh",
+      "scene": "",
+      "search": "",
+      "url": "/seventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SEVENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eighth",
+      "scene": "",
+      "search": "",
+      "url": "/eighth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "EIGHTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/ninth",
+      "scene": "",
+      "search": "",
+      "url": "/ninth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "NINTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/tenth",
+      "scene": "",
+      "search": "",
+      "url": "/tenth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "TENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eleventh",
+      "scene": "",
+      "search": "",
+      "url": "/eleventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "ELEVENTH",
+  },
+]
+`;
 
-exports[`reset(actions):  - history_index 4`] = `6`;
+exports[`reset(actions, index):  - history_entries 13`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "scene": "",
+      "search": "",
+      "url": "/base/bar#yolo",
+    },
+    "params": Object {
+      "foo": "bar",
+    },
+    "query": Object {},
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+  Object {
+    "basename": "",
+    "hash": "works",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "hell=yea",
+      "url": "/second?hell=yea#works",
+    },
+    "params": Object {},
+    "query": Object {
+      "hell": "yea",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "SECOND",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/third",
+      "scene": "",
+      "search": "",
+      "url": "/third",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "THIRD",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fourth",
+      "scene": "",
+      "search": "",
+      "url": "/fourth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FOURTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fifth",
+      "scene": "",
+      "search": "",
+      "url": "/fifth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIFTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/sixth",
+      "scene": "",
+      "search": "",
+      "url": "/sixth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SIXTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/seventh",
+      "scene": "",
+      "search": "",
+      "url": "/seventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SEVENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eighth",
+      "scene": "",
+      "search": "",
+      "url": "/eighth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "EIGHTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/ninth",
+      "scene": "",
+      "search": "",
+      "url": "/ninth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "NINTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/tenth",
+      "scene": "",
+      "search": "",
+      "url": "/tenth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "TENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eleventh",
+      "scene": "",
+      "search": "",
+      "url": "/eleventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "ELEVENTH",
+  },
+]
+`;
 
-exports[`reset(actions):  - history_index 5`] = `5`;
+exports[`reset(actions, index):  - history_entries 14`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "scene": "",
+      "search": "",
+      "url": "/base/bar#yolo",
+    },
+    "params": Object {
+      "foo": "bar",
+    },
+    "query": Object {},
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+  Object {
+    "basename": "",
+    "hash": "works",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "hell=yea",
+      "url": "/second?hell=yea#works",
+    },
+    "params": Object {},
+    "query": Object {
+      "hell": "yea",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "SECOND",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/third",
+      "scene": "",
+      "search": "",
+      "url": "/third",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "THIRD",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fourth",
+      "scene": "",
+      "search": "",
+      "url": "/fourth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FOURTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fifth",
+      "scene": "",
+      "search": "",
+      "url": "/fifth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIFTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/sixth",
+      "scene": "",
+      "search": "",
+      "url": "/sixth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SIXTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/seventh",
+      "scene": "",
+      "search": "",
+      "url": "/seventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "SEVENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eighth",
+      "scene": "",
+      "search": "",
+      "url": "/eighth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "EIGHTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/ninth",
+      "scene": "",
+      "search": "",
+      "url": "/ninth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "NINTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/tenth",
+      "scene": "",
+      "search": "",
+      "url": "/tenth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "TENTH",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/eleventh",
+      "scene": "",
+      "search": "",
+      "url": "/eleventh",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "ELEVENTH",
+  },
+]
+`;
 
-exports[`reset(actions):  - history_index 6`] = `4`;
+exports[`reset(actions, index):  - history_index 1`] = `7`;
 
-exports[`reset(actions):  - history_index 7`] = `3`;
+exports[`reset(actions, index):  - history_index 2`] = `8`;
 
-exports[`reset(actions):  - history_index 8`] = `2`;
+exports[`reset(actions, index):  - history_index 3`] = `9`;
 
-exports[`reset(actions):  - history_index 9`] = `1`;
+exports[`reset(actions, index):  - history_index 4`] = `10`;
 
-exports[`reset(actions):  - response 1`] = `
+exports[`reset(actions, index):  - history_index 5`] = `9`;
+
+exports[`reset(actions, index):  - history_index 6`] = `8`;
+
+exports[`reset(actions, index):  - history_index 7`] = `7`;
+
+exports[`reset(actions, index):  - history_index 8`] = `6`;
+
+exports[`reset(actions, index):  - history_index 9`] = `5`;
+
+exports[`reset(actions, index):  - history_index 10`] = `4`;
+
+exports[`reset(actions, index):  - history_index 11`] = `3`;
+
+exports[`reset(actions, index):  - history_index 12`] = `2`;
+
+exports[`reset(actions, index):  - history_index 13`] = `1`;
+
+exports[`reset(actions, index):  - history_index 14`] = `0`;
+
+exports[`reset(actions, index):  - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "index": 7,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "pathname": "/eighth",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 6,
+        "key": "345678",
+        "pathname": "/seventh",
+        "scene": "",
+        "search": "",
+        "url": "/seventh",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SEVENTH",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/eighth",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "EIGHTH",
+}
+`;
+
+exports[`reset(actions, index):  - response 2`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "index": 8,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "pathname": "/ninth",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 7,
+        "key": "345678",
+        "pathname": "/eighth",
+        "scene": "",
+        "search": "",
+        "url": "/eighth",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "EIGHTH",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/ninth",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "NINTH",
+}
+`;
+
+exports[`reset(actions, index):  - response 3`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "index": 9,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "pathname": "/tenth",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 8,
+        "key": "345678",
+        "pathname": "/ninth",
+        "scene": "",
+        "search": "",
+        "url": "/ninth",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "NINTH",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/tenth",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "TENTH",
+}
+`;
+
+exports[`reset(actions, index):  - response 4`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "index": 10,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "pathname": "/eleventh",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 9,
+        "key": "345678",
+        "pathname": "/tenth",
+        "scene": "",
+        "search": "",
+        "url": "/tenth",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "TENTH",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/eleventh",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "ELEVENTH",
+}
+`;
+
+exports[`reset(actions, index):  - response 5`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -1838,7 +3610,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 2`] = `
+exports[`reset(actions, index):  - response 6`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -2056,7 +3828,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 3`] = `
+exports[`reset(actions, index):  - response 7`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -2274,7 +4046,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 4`] = `
+exports[`reset(actions, index):  - response 8`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -2492,7 +4264,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 5`] = `
+exports[`reset(actions, index):  - response 9`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -2710,7 +4482,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 6`] = `
+exports[`reset(actions, index):  - response 10`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -2928,7 +4700,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 7`] = `
+exports[`reset(actions, index):  - response 11`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -3146,7 +4918,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 8`] = `
+exports[`reset(actions, index):  - response 12`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -3364,7 +5136,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - response 9`] = `
+exports[`reset(actions, index):  - response 13`] = `
 Object {
   "basename": "",
   "hash": "works",
@@ -3586,177 +5358,289 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 3`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 4`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 5`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 6`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 7`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 8`] = `0`;
-
-exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 9`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 2`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 3`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 4`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 5`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 6`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 7`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 8`] = `0`;
-
-exports[`reset(actions):  - routes - REDIRECTED - onComplete 9`] = `0`;
-
-exports[`reset(actions):  - sessionStorage 1`] = `
+exports[`reset(actions, index):  - response 14`] = `
 Object {
-  "entries": Array [
-    Array [
-      "/base/bar#yolo",
+  "basename": "base",
+  "hash": "yolo",
+  "location": Object {
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
       Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 11,
+    "n": -1,
+    "pathname": "/bar",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "works",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "hell=yea",
+        "url": "/second?hell=yea#works",
+      },
+      "params": Object {},
+      "query": Object {
+        "hell": "yea",
+      },
+      "state": Object {
         "something": 123,
       },
-      "345678",
-    ],
-    Array [
-      "/second?hell=yea#works",
-      Object {
-        "something": 123,
-      },
-      "345678",
-    ],
-    Array [
-      "/third",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/fourth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/fifth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/sixth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/seventh",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/eighth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/ninth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/tenth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/eleventh",
-      Object {},
-      "345678",
-    ],
-  ],
-  "index": 9,
+      "type": "SECOND",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/base/bar#yolo",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {},
+  "state": Object {
+    "something": 123,
+  },
+  "type": "FIRST",
 }
 `;
 
-exports[`reset(actions):  - sessionStorage 2`] = `
-Object {
-  "entries": Array [
-    Array [
-      "/base/bar#yolo",
-      Object {
-        "something": 123,
-      },
-      "345678",
-    ],
-    Array [
-      "/second?hell=yea#works",
-      Object {
-        "something": 123,
-      },
-      "345678",
-    ],
-    Array [
-      "/third",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/fourth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/fifth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/sixth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/seventh",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/eighth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/ninth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/tenth",
-      Object {},
-      "345678",
-    ],
-    Array [
-      "/eleventh",
-      Object {},
-      "345678",
-    ],
-  ],
-  "index": 8,
-}
-`;
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`reset(actions):  - sessionStorage 3`] = `
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 3`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 4`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 5`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 6`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 7`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 8`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 9`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 10`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 11`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 12`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 13`] = `0`;
+
+exports[`reset(actions, index):  - routes - NEVER_USED_PATHLESS - thunk 14`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 2`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 3`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 4`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 5`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 6`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 7`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 8`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 9`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 10`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 11`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 12`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 13`] = `0`;
+
+exports[`reset(actions, index):  - routes - REDIRECTED - onComplete 14`] = `0`;
+
+exports[`reset(actions, index):  - sessionStorage 1`] = `
 Object {
   "entries": Array [
     Array [
@@ -3823,7 +5707,409 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - sessionStorage 4`] = `
+exports[`reset(actions, index):  - sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 8,
+}
+`;
+
+exports[`reset(actions, index):  - sessionStorage 3`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 9,
+}
+`;
+
+exports[`reset(actions, index):  - sessionStorage 4`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 10,
+}
+`;
+
+exports[`reset(actions, index):  - sessionStorage 5`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 9,
+}
+`;
+
+exports[`reset(actions, index):  - sessionStorage 6`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 8,
+}
+`;
+
+exports[`reset(actions, index):  - sessionStorage 7`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 7,
+}
+`;
+
+exports[`reset(actions, index):  - sessionStorage 8`] = `
 Object {
   "entries": Array [
     Array [
@@ -3890,7 +6176,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - sessionStorage 5`] = `
+exports[`reset(actions, index):  - sessionStorage 9`] = `
 Object {
   "entries": Array [
     Array [
@@ -3957,7 +6243,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - sessionStorage 6`] = `
+exports[`reset(actions, index):  - sessionStorage 10`] = `
 Object {
   "entries": Array [
     Array [
@@ -4024,7 +6310,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - sessionStorage 7`] = `
+exports[`reset(actions, index):  - sessionStorage 11`] = `
 Object {
   "entries": Array [
     Array [
@@ -4091,7 +6377,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - sessionStorage 8`] = `
+exports[`reset(actions, index):  - sessionStorage 12`] = `
 Object {
   "entries": Array [
     Array [
@@ -4158,7 +6444,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - sessionStorage 9`] = `
+exports[`reset(actions, index):  - sessionStorage 13`] = `
 Object {
   "entries": Array [
     Array [
@@ -4225,7 +6511,954 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 1`] = `
+exports[`reset(actions, index):  - sessionStorage 14`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
+exports[`reset(actions, index):  - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 7,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/eighth",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 6,
+        "key": "345678",
+        "pathname": "/seventh",
+        "scene": "",
+        "search": "",
+        "url": "/seventh",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "SEVENTH",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "EIGHTH",
+    "universal": false,
+    "url": "/eighth",
+  },
+  "title": "EIGHTH",
+}
+`;
+
+exports[`reset(actions, index):  - state 2`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 8,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/ninth",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 7,
+        "key": "345678",
+        "pathname": "/eighth",
+        "scene": "",
+        "search": "",
+        "url": "/eighth",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "EIGHTH",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "NINTH",
+    "universal": false,
+    "url": "/ninth",
+  },
+  "title": "NINTH",
+}
+`;
+
+exports[`reset(actions, index):  - state 3`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 9,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/tenth",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 8,
+        "key": "345678",
+        "pathname": "/ninth",
+        "scene": "",
+        "search": "",
+        "url": "/ninth",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "NINTH",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "TENTH",
+    "universal": false,
+    "url": "/tenth",
+  },
+  "title": "TENTH",
+}
+`;
+
+exports[`reset(actions, index):  - state 4`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 10,
+    "key": "345678",
+    "kind": "next",
+    "length": 11,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/eleventh",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 9,
+        "key": "345678",
+        "pathname": "/tenth",
+        "scene": "",
+        "search": "",
+        "url": "/tenth",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "TENTH",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "ELEVENTH",
+    "universal": false,
+    "url": "/eleventh",
+  },
+  "title": "ELEVENTH",
+}
+`;
+
+exports[`reset(actions, index):  - state 5`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4445,7 +7678,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 2`] = `
+exports[`reset(actions, index):  - state 6`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4665,7 +7898,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 3`] = `
+exports[`reset(actions, index):  - state 7`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -4885,7 +8118,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 4`] = `
+exports[`reset(actions, index):  - state 8`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -5105,7 +8338,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 5`] = `
+exports[`reset(actions, index):  - state 9`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -5325,7 +8558,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 6`] = `
+exports[`reset(actions, index):  - state 10`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -5545,7 +8778,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 7`] = `
+exports[`reset(actions, index):  - state 11`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -5765,7 +8998,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 8`] = `
+exports[`reset(actions, index):  - state 12`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -5985,7 +9218,7 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - state 9`] = `
+exports[`reset(actions, index):  - state 13`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -6209,43 +9442,291 @@ Object {
 }
 `;
 
-exports[`reset(actions):  - title 1`] = `"TENTH"`;
+exports[`reset(actions, index):  - state 14`] = `
+Object {
+  "location": Object {
+    "basename": "base",
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "hash": "yolo",
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 11,
+    "n": -1,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/bar",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "works",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "hell=yea",
+        "url": "/second?hell=yea#works",
+      },
+      "params": Object {},
+      "query": Object {
+        "hell": "yea",
+      },
+      "state": Object {
+        "something": 123,
+      },
+      "type": "SECOND",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "something": 123,
+    },
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/base/bar#yolo",
+  },
+  "title": "FIRST",
+}
+`;
 
-exports[`reset(actions):  - title 2`] = `"NINTH"`;
+exports[`reset(actions, index):  - title 1`] = `"EIGHTH"`;
 
-exports[`reset(actions):  - title 3`] = `"EIGHTH"`;
+exports[`reset(actions, index):  - title 2`] = `"NINTH"`;
 
-exports[`reset(actions):  - title 4`] = `"SEVENTH"`;
+exports[`reset(actions, index):  - title 3`] = `"TENTH"`;
 
-exports[`reset(actions):  - title 5`] = `"SIXTH"`;
+exports[`reset(actions, index):  - title 4`] = `"ELEVENTH"`;
 
-exports[`reset(actions):  - title 6`] = `"FIFTH"`;
+exports[`reset(actions, index):  - title 5`] = `"TENTH"`;
 
-exports[`reset(actions):  - title 7`] = `"FOURTH"`;
+exports[`reset(actions, index):  - title 6`] = `"NINTH"`;
 
-exports[`reset(actions):  - title 8`] = `"THIRD"`;
+exports[`reset(actions, index):  - title 7`] = `"EIGHTH"`;
 
-exports[`reset(actions):  - title 9`] = `"SECOND"`;
+exports[`reset(actions, index):  - title 8`] = `"SEVENTH"`;
 
-exports[`reset(actions):  - windowLocation 1`] = `"/tenth"`;
+exports[`reset(actions, index):  - title 9`] = `"SIXTH"`;
 
-exports[`reset(actions):  - windowLocation 2`] = `"/ninth"`;
+exports[`reset(actions, index):  - title 10`] = `"FIFTH"`;
 
-exports[`reset(actions):  - windowLocation 3`] = `"/eighth"`;
+exports[`reset(actions, index):  - title 11`] = `"FOURTH"`;
 
-exports[`reset(actions):  - windowLocation 4`] = `"/seventh"`;
+exports[`reset(actions, index):  - title 12`] = `"THIRD"`;
 
-exports[`reset(actions):  - windowLocation 5`] = `"/sixth"`;
+exports[`reset(actions, index):  - title 13`] = `"SECOND"`;
 
-exports[`reset(actions):  - windowLocation 6`] = `"/fifth"`;
+exports[`reset(actions, index):  - title 14`] = `"FIRST"`;
 
-exports[`reset(actions):  - windowLocation 7`] = `"/fourth"`;
+exports[`reset(actions, index):  - windowLocation 1`] = `"/eighth"`;
 
-exports[`reset(actions):  - windowLocation 8`] = `"/third"`;
+exports[`reset(actions, index):  - windowLocation 2`] = `"/ninth"`;
 
-exports[`reset(actions):  - windowLocation 9`] = `"/second?hell=yea#works"`;
+exports[`reset(actions, index):  - windowLocation 3`] = `"/tenth"`;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - history_entries 1`] = `
+exports[`reset(actions, index):  - windowLocation 4`] = `"/eleventh"`;
+
+exports[`reset(actions, index):  - windowLocation 5`] = `"/tenth"`;
+
+exports[`reset(actions, index):  - windowLocation 6`] = `"/ninth"`;
+
+exports[`reset(actions, index):  - windowLocation 7`] = `"/eighth"`;
+
+exports[`reset(actions, index):  - windowLocation 8`] = `"/seventh"`;
+
+exports[`reset(actions, index):  - windowLocation 9`] = `"/sixth"`;
+
+exports[`reset(actions, index):  - windowLocation 10`] = `"/fifth"`;
+
+exports[`reset(actions, index):  - windowLocation 11`] = `"/fourth"`;
+
+exports[`reset(actions, index):  - windowLocation 12`] = `"/third"`;
+
+exports[`reset(actions, index):  - windowLocation 13`] = `"/second?hell=yea#works"`;
+
+exports[`reset(actions, index):  - windowLocation 14`] = `"/base/bar#yolo"`;
+
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - history_entries 1`] = `
 Array [
   Object {
     "basename": "base",
@@ -6423,15 +9904,15 @@ Array [
 ]
 `;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - history_index 1`] = `10`;
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - history_index 1`] = `6`;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - response 1`] = `
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
   "location": Object {
     "blocked": null,
-    "direction": "forward",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "base",
@@ -6608,46 +10089,46 @@ Object {
       },
     ],
     "from": null,
-    "index": 10,
+    "index": 6,
     "key": "345678",
     "kind": "reset",
     "length": 11,
-    "n": 1,
-    "pathname": "/eleventh",
+    "n": -1,
+    "pathname": "/seventh",
     "pop": false,
     "prev": Object {
       "basename": "",
       "hash": "",
       "location": Object {
-        "index": 9,
+        "index": 7,
         "key": "345678",
-        "pathname": "/tenth",
+        "pathname": "/eighth",
         "scene": "",
         "search": "",
-        "url": "/tenth",
+        "url": "/eighth",
       },
       "params": Object {},
       "query": Object {},
       "state": Object {},
-      "type": "TENTH",
+      "type": "EIGHTH",
     },
     "scene": "",
     "search": "",
     "status": 200,
-    "url": "/eleventh",
+    "url": "/seventh",
   },
   "params": Object {},
   "query": Object {},
   "state": Object {},
-  "type": "ELEVENTH",
+  "type": "SEVENTH",
 }
 `;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - sessionStorage 1`] = `
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - sessionStorage 1`] = `
 Object {
   "entries": Array [
     Array [
@@ -6710,16 +10191,16 @@ Object {
       "345678",
     ],
   ],
-  "index": 10,
+  "index": 6,
 }
 `;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - state 1`] = `
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
     "blocked": null,
-    "direction": "forward",
+    "direction": "backward",
     "entries": Array [
       Object {
         "basename": "base",
@@ -6897,43 +10378,43 @@ Object {
     ],
     "from": null,
     "hash": "",
-    "index": 10,
+    "index": 6,
     "key": "345678",
     "kind": "reset",
     "length": 11,
-    "n": 1,
+    "n": -1,
     "params": Object {},
-    "pathname": "/eleventh",
+    "pathname": "/seventh",
     "pop": false,
     "prev": Object {
       "basename": "",
       "hash": "",
       "location": Object {
-        "index": 9,
+        "index": 7,
         "key": "345678",
-        "pathname": "/tenth",
+        "pathname": "/eighth",
         "scene": "",
         "search": "",
-        "url": "/tenth",
+        "url": "/eighth",
       },
       "params": Object {},
       "query": Object {},
       "state": Object {},
-      "type": "TENTH",
+      "type": "EIGHTH",
     },
     "query": Object {},
     "scene": "",
     "search": "",
     "state": Object {},
     "status": 200,
-    "type": "ELEVENTH",
+    "type": "SEVENTH",
     "universal": false,
-    "url": "/eleventh",
+    "url": "/seventh",
   },
-  "title": "ELEVENTH",
+  "title": "SEVENTH",
 }
 `;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - title 1`] = `"ELEVENTH"`;
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - title 1`] = `"SEVENTH"`;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - windowLocation 1`] = `"/eleventh"`;
+exports[`reset(actions, index): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],6,-1]}} - windowLocation 1`] = `"/seventh"`;

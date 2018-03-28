@@ -98,7 +98,8 @@ export default class History {
     const { index } = this
     const entries = this.entries.slice(0)
     const info = { kind, entries, index }
-    const commit = (action) => this._replace(action)
+    const currUrl = this.url
+    const commit = (action) => this._replace(action, currUrl)
 
     entries[index] = action
 
@@ -120,8 +121,9 @@ export default class History {
     const currentEntry = isMovingAdjacently && this.entries[this.index] // for `replace` to adjacent entries we need to override `prev` to be the current entry; `push` doesn't have this issue, but their `prev` value is the same
     const prev = this._createPrev(info, currentEntry) // jumps can fake the value of `prev` state
 
+    const currUrl = this.url
     const oldUrl = this.entries[index].location.url
-    const commit = (action) => this._jump(action, oldUrl, delta, isPop)
+    const commit = (action) => this._jump(action, currUrl, oldUrl, delta, isPop)
 
     if (!this.entries[index]) {
       throw new Error(`[rudy] no entry at index: ${index}.`)

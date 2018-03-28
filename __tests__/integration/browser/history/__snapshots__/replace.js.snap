@@ -1,0 +1,477 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "",
+      "url": "/second",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {
+      "foo": "bar",
+    },
+    "type": "SECOND",
+  },
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/fourth",
+      "scene": "",
+      "search": "",
+      "url": "/fourth",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {
+      "hey": "yo",
+    },
+    "type": "FOURTH",
+  },
+]
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - history_index 1`] = `1`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "hey": "yo",
+        },
+        "type": "FOURTH",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/third",
+        "scene": "",
+        "search": "",
+        "url": "/third",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "THIRD",
+    },
+    "index": 1,
+    "key": "345678",
+    "kind": "replace",
+    "length": 2,
+    "n": 1,
+    "pathname": "/fourth",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {
+        "foo": "bar",
+      },
+      "type": "SECOND",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/fourth",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "hey": "yo",
+  },
+  "type": "FOURTH",
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/second",
+      Object {
+        "foo": "bar",
+      },
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {
+        "hey": "yo",
+      },
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "hey": "yo",
+        },
+        "type": "FOURTH",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/third",
+        "scene": "",
+        "search": "",
+        "url": "/third",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "THIRD",
+    },
+    "hash": "",
+    "index": 1,
+    "key": "345678",
+    "kind": "replace",
+    "length": 2,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/fourth",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "",
+        "url": "/second",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {
+        "foo": "bar",
+      },
+      "type": "SECOND",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "hey": "yo",
+    },
+    "status": 302,
+    "type": "FOURTH",
+    "universal": false,
+    "url": "/fourth",
+  },
+  "title": "FOURTH",
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - title 1`] = `"FOURTH"`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - windowLocation 1`] = `"/fourth"`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/second",
+      "scene": "",
+      "search": "",
+      "url": "/second",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {
+      "foo": "bar",
+    },
+    "type": "SECOND",
+  },
+]
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - history_index 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "SECOND",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "index": 0,
+    "key": "345678",
+    "kind": "replace",
+    "length": 1,
+    "n": 1,
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 302,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {
+    "foo": "bar",
+  },
+  "type": "SECOND",
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/second",
+      Object {
+        "foo": "bar",
+      },
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "foo": "bar",
+        },
+        "type": "SECOND",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "replace",
+    "length": 1,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "foo": "bar",
+    },
+    "status": 302,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - title 1`] = `"SECOND"`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - windowLocation 1`] = `"/second"`;

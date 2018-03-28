@@ -4,6 +4,7 @@ import { jump } from '../../../../src/actions'
 
 createTest('set(action, n)', {
   SECOND: '/second',
+  THIRD: '/third',
   FIRST: '/:foo?'
 }, {
   testBrowser: true
@@ -11,8 +12,12 @@ createTest('set(action, n)', {
   expect(locationToUrl(window.location)).toEqual('/')
 
   await dispatch({ type: 'SECOND' })
+  await dispatch({ type: 'THIRD' })
 
-  await snap(jump(-1))
+  expect(locationToUrl(window.location)).toEqual('/third')
+
+  await snap(jump(-2))
+
   expect(locationToUrl(window.location)).toEqual('/')
 
   await snapPop('forward')
@@ -20,6 +25,6 @@ createTest('set(action, n)', {
 
   await snapPop('back')
 
-  await snap(jump(1))
-  expect(locationToUrl(window.location)).toEqual('/second')
+  await dispatch(jump(2))
+  expect(locationToUrl(window.location)).toEqual('/third')
 })

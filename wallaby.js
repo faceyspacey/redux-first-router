@@ -27,7 +27,7 @@ module.exports = wallaby => {
       // '__tests__/integration/browser/sessionStorage/restoreFromFront.js',
       // '__tests__/integration/redirects.js',
 
-      '__tests__/integration/browser/history/reset.js',
+      '__tests__/integration/browser/history/replace.js',
       // '__tests__/integration/browser/history/**/*.js',
 
       // '__tests__/integration/browser/**/*.js',

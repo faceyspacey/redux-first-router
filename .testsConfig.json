@@ -2,6 +2,6 @@
   "log": true,
   "availableOptions": {
     "log": true,
-    "dontSnap": true
+    "snipesOnly": true
   }
 }

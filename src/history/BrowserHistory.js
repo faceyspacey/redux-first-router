@@ -122,6 +122,7 @@ export default class BrowserHistory extends History {
   _forceGo(n) {
     this._popForced = true
     window.history.go(n) // revert
+    return Promise.resolve()
   }
 
   _push(action, awaitUrl) {
@@ -149,16 +150,14 @@ export default class BrowserHistory extends History {
       .then(() => replaceState(url))
   }
 
-  _jump(action, oldUrl, n, isPop) {
-    const { prevUrl } = this
-
+  _jump(action, currUrl, oldUrl, n, isPop) {
     if (!n) { // possibly the user mathematically calculated a jump of `0`
       return this._replace(action)
     }
 
     if (isPop) return // pop already handled by browser back/next buttons and real history state is already up to date
 
-    return this._awaitUrl(prevUrl, 'jump prev')
+    return this._awaitUrl(currUrl, 'jump prev')
       .then(() => this._forceGo(n))
       .then(() => this._awaitUrl(oldUrl, 'jump loc'))
       .then(() => this._replace(action, oldUrl))
@@ -183,23 +182,20 @@ export default class BrowserHistory extends History {
   _reset(action, oldUrl, oldFirstUrl, reverseN) {
     const { index, entries } = action.location
     const lastIndex = entries.length - 1
-    const stayAtEnd = index === lastIndex
-
-    console.log(oldUrl, oldFirstUrl, reverseN)
-    console.log(locationToUrl(window.location))
+    const reverseDeltaToIndex = index - lastIndex
+    const indexUrl = entries[index].location.url
 
     return this._awaitUrl(oldUrl)
       .then(() => this._forceGo(reverseN))
       .then(() => this._awaitUrl(oldFirstUrl))
       .then(() => {
-        // this._replace(entries[0])
-        // entries.slice(1).forEach(e => this._push(e))
         replaceState(entries[0].location.url)
         entries.slice(1).forEach(e => pushState(e.location.url))
 
-        // if (!stayAtEnd) {
-        //   this._forceGo(index - lastIndex)
-        // }
+        if (reverseDeltaToIndex) {
+          return this._forceGo(reverseDeltaToIndex)
+            .then(() => this._awaitUrl(indexUrl, 'resetIndex _forceGo'))
+        }
       })
   }
 

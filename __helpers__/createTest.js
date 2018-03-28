@@ -163,7 +163,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       getState: store.getState,
       getLocation: () => store.getState().location,
       snapChange: (prefix, res) => {
-        if (opts.dontSnap) return res
+        if (opts.snipesOnly) return res
 
         if (typeof prefix === 'string') {
           return snapChange(prefix, res, store, history, opts)
@@ -177,7 +177,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
 
         const res = await store.dispatch(action)
 
-        if (opts.dontSnap) return res
+        if (opts.snipesOnly) return res
 
         snapChange(prefix, res, store, history, opts)
         snapRoutes(prefix, routes)
@@ -188,7 +188,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       snapPop: async (direction, prefix = '') => {
         const res = await pop(direction)
 
-        if (opts.dontSnap) return res
+        if (opts.snipesOnly) return res
 
         snapChange(prefix, res, store, history, opts)
         snapRoutes(prefix, routes)

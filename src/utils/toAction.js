@@ -6,7 +6,7 @@ import { actionToUrl, urlToAction } from './index'
 // Standard Rudy practice is to convert incoming actions to their full URL form (url + state)
 // and then convert that to a FSRA. THIS DOES BOTH STEPS IN ONE WHEN NECESSSARY (i.e. for actions).
 
-export default (api, entry, state, key) => {
+export default (api, entry, st, k) => {
   if (Array.isArray(entry)) {             // entry as array of [url, state, key?]
     const [url, state, key] = entry
     return urlToAction(api, url, state, key)
@@ -17,6 +17,6 @@ export default (api, entry, state, key) => {
     return urlToAction(api, url, state, key)
   }
 
-  return urlToAction(api, entry, state, key)         // entry as url string
+  return urlToAction(api, entry, st, k)         // entry as url string
 }
 
