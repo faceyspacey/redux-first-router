@@ -21,7 +21,7 @@ export default (req) => {
     info = replacePopAction(n, url, curr, tmp)
   }
 
-  if (!req.commitHistory) {
+  if (!req.commitHistory || method === 'replacePop') {
     const { commit, ...action } = history[method](url, state, false, info)        // get returned the same action as functions passed to `history.listen`
     req.commitHistory = commit                                                    // put this here so `enter` middleware can commit the history, etc
     req.action = action

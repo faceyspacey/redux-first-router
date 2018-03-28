@@ -23,5 +23,5 @@ export default (api) => async (req, next) => {
     return res
   }
 
-  return next().then(() => res)
+  return res.then(next).then(() => res)
 }

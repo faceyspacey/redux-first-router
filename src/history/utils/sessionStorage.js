@@ -30,6 +30,8 @@ export const restoreHistory = (api) => {
   return format(history, api)
 }
 
+export const clear = () => supportsSession() ? sessionClear() : historyClear()
+
 export const set = (v) => supportsSession() ? sessionSet(v) : historySet(v)
 
 export const get = () => supportsSession() ? sessionGet() : historyGet()
@@ -42,6 +44,9 @@ export const pushState = (url) =>
 
 export const replaceState = (url) =>
   window.history.replaceState({ id: sessionId() }, null, url) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
+
+const historyClear = () =>
+  window.history.replaceState({}, null)
 
 const historySet = (history) =>
   window.history.replaceState(history, null) // set on current entry
@@ -63,6 +68,8 @@ const PREFIX = '@@rudy/'
 const sessionId = () => _id = _id || createSessionId()
 
 const key = () => PREFIX + sessionId()
+
+const sessionClear = () => window.sessionStorage.setItem(key(), '')
 
 const sessionSet = (val) => window.sessionStorage.setItem(key(), JSON.stringify(val))
 

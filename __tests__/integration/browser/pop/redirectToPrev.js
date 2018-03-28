@@ -4,7 +4,7 @@ createTest('pop redirect to prev URL', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    beforeEnter: async ({ prevRoute }) => {
+    beforeEnter: async ({ prevRoute, dispatch }) => {
       if (prevRoute.type !== 'THIRD') return
       await new Promise(res => setTimeout(res, 1))
       return { type: 'FIRST' }

@@ -18,7 +18,7 @@ export default (
   const { routes, options: opts } = api
   const { type, params, query, state, hash, basename } = action
 
-  const route = routes[type]
+  const route = routes[type] || {}
   const path = typeof route === 'object' ? route.path : route
 
   const p = formatParams(params, route, opts)

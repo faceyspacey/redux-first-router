@@ -73,7 +73,7 @@ export default class History {
 
   // API:
 
-  push(path, state = {}, notify = true) {
+  push(path, state = path.state || {}, notify = true) {
     const action = toAction(this, path, state)
     const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
@@ -83,12 +83,13 @@ export default class History {
     const index = n === -1 ? this.index - 1 : this.index + 1
     const entries = this._pushToFront(action, this.entries, index, kind)
     const info = { kind, index, entries }
-    const commit = (action) => this._push(action)
+    const awaitUrl = this.url
+    const commit = (action) => this._push(action, awaitUrl)
 
     return this._notify(action, info, commit, notify)
   }
 
-  replace(path, state = {}, notify = true) {
+  replace(path, state = path.state || {}, notify = true) {
     const action = toAction(this, path, state)
     const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
@@ -191,6 +192,7 @@ export default class History {
     const entries = info.entries.slice(0)
     const kind = index < this.index ? 'back' : 'next'
     const newInfo = { kind, entries, index }
+
     const commit = (action) => this._replace(action, prevUrl, n)
 
     entries[index] = action

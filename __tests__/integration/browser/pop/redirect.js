@@ -19,4 +19,5 @@ createTest('pop redirect', {
   expect(getLocation().entries[0].location.url).toEqual('/third')
 
   expect(window.location.pathname).toEqual('/third')
+  expect(getLocation().type).toEqual('THIRD')
 })

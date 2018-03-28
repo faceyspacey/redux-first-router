@@ -128,7 +128,7 @@ export default class BrowserHistory extends History {
   _push(action, awaitUrl) {
     const { url } = action.location
 
-    return this._awaitUrl(awaitUrl || this.prevUrl, '_push')
+    return this._awaitUrl(awaitUrl, '_push')
       .then(() => pushState(url))
   }
 
@@ -146,13 +146,13 @@ export default class BrowserHistory extends History {
       awaitUrl = locationToUrl(window.location) // special case: redirects on load have no previous URL
     }
 
-    return this._awaitUrl(awaitUrl || this.prevUrl, '_replace')
+    return this._awaitUrl(awaitUrl, '_replace')
       .then(() => replaceState(url))
   }
 
   _jump(action, currUrl, oldUrl, n, isPop) {
     if (!n) { // possibly the user mathematically calculated a jump of `0`
-      return this._replace(action)
+      return this._replace(action, currUrl)
     }
 
     if (isPop) return // pop already handled by browser back/next buttons and real history state is already up to date

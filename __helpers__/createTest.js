@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux'
-import { get } from '../src/history/utils/sessionStorage'
+import awaitUrlChange from './awaitUrlChange'
+import { get, clear } from '../src/history/utils/sessionStorage'
 import { locationToUrl } from '../src/utils'
 import { createRouter } from '../src'
 
@@ -131,6 +132,8 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
         opts.log(store.getState().location)
       }
     }
+
+    history.unlisten()
   })
 }
 
@@ -206,6 +209,8 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         opts.log(store.getState().location)
       }
     }
+
+    history.unlisten()
   })
 }
 
@@ -459,4 +464,26 @@ const awaitPop = async (history, tries = 1) => {
 
   await new Promise(res => setTimeout(res, 3))
   return history.currentPop || awaitPop(history, ++tries)
+}
+
+
+// needed to put multiple browser tests in the same file
+
+export const resetBrowser = async () => {
+  const storage = get()
+  const index = storage && storage.index
+
+  if (index) {
+    const delta = index * -1
+    const oldUrl = locationToUrl(window.location)
+
+    window.history.go(delta)
+
+    if (oldUrl !== '/') { // will otherwise fail because the last route was also `/` (all browser tests start on `/`)
+      await awaitUrlChange() // we need for `go` to complete
+    }
+  }
+
+  window.history.replaceState({}, null, '/') // insure if the index was 0 but there was a replace on it, that we are back at '/'
+  clear()
 }

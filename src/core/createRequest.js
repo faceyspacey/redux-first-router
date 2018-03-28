@@ -1,4 +1,4 @@
-import { BLOCK, UNBLOCK, SET_FROM } from '../types'
+import { BLOCK, UNBLOCK, SET_FROM, CALL_HISTORY } from '../types'
 import { redirect } from '../actions'
 import { isAction, createActionRef } from '../utils'
 
@@ -76,8 +76,9 @@ export class Request {
     const type = action && action.type
     const route = this.routes[type]
     const isRouteAction = route && route.path
+    const linkPipelines = route || typeof action === 'function'
 
-    if (route || typeof action === 'function') {
+    if (linkPipelines) {
       action.tmp = this.tmp                      // keep the same `tmp` object across all redirects (or potential redirects in anonymous thunks)
 
       if (this.ctx.busy) {
@@ -109,7 +110,7 @@ export class Request {
 
     return Promise.resolve(dispatch(action))    // dispatch transformed action
       .then(res => {
-        if (oldUrl !== this.getLocation().url || this.ctx.serverRedirect) {
+        if (oldUrl !== this.getLocation().url || this.ctx.serverRedirect || (action.type === CALL_HISTORY && action.payload.method.indexOf('set') !== 0)) {
           this.redirect = res                   // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
         }
 
@@ -184,7 +185,10 @@ export class Request {
     delete this.ctx.doubleDispatchRedirect
     this.canceled = true
 
-    const ref = createActionRef(this.action)
+    const ref = this.action.type === CALL_HISTORY
+      ? createActionRef(attemptedAction.location.from) // when history action creators are used in pipeline, we have to address this from the perspective of the `callHistory` middleware
+      : createActionRef(this.action)
+
     this.realDispatch({ type: SET_FROM, payload: { ref } })
 
     return res !== undefined ? res : attemptedAction
