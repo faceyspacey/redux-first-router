@@ -178,6 +178,34 @@ exports[`double pop (when 4th index same as prev):  - routes - REDIRECTED - onCo
 
 exports[`double pop (when 4th index same as prev):  - routes - SECOND - beforeEnter 1`] = `2`;
 
+exports[`double pop (when 4th index same as prev):  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
 exports[`double pop (when 4th index same as prev):  - state 1`] = `
 Object {
   "location": Object {

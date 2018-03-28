@@ -427,6 +427,52 @@ exports[`restore history when index === 0:  - routes - REDIRECTED - onComplete 1
 
 exports[`restore history when index === 0:  - routes - REDIRECTED - onComplete 2`] = `0`;
 
+exports[`restore history when index === 0:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
+exports[`restore history when index === 0:  - sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+}
+`;
+
 exports[`restore history when index === 0:  - state 1`] = `
 Object {
   "location": Object {

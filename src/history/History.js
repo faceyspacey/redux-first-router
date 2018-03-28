@@ -212,7 +212,10 @@ export default class History {
     const { index, entries } = toEntries(this, ents, i, n)
     const action = { ...entries[index] }
     const info = { kind, index, entries, n }
-    const commit = (action) => this._reset(action)
+    const oldUrl = this.url
+    const oldFirstUrl = this.entries[0].location.url
+    const reverseN = -this.index
+    const commit = (action) => this._reset(action, oldUrl, oldFirstUrl, reverseN)
 
     if (!entries[index]) throw new Error(`[rudy] no entry at index: ${index}.`)
 

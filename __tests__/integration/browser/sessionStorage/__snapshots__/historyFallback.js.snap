@@ -482,6 +482,54 @@ exports[`restore history from history fallback:  - routes - REDIRECTED - onCompl
 
 exports[`restore history from history fallback:  - routes - REDIRECTED - onComplete 2`] = `0`;
 
+exports[`restore history from history fallback:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback:  - sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+  "out": undefined,
+}
+`;
+
 exports[`restore history from history fallback:  - state 1`] = `
 Object {
   "location": Object {
@@ -845,6 +893,35 @@ Object {
 exports[`restore history from history fallback: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`restore history from history fallback: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 3,
+  "out": undefined,
+}
+`;
 
 exports[`restore history from history fallback: {"type":"FIRST"} - state 1`] = `
 Object {

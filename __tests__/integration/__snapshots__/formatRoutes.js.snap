@@ -286,6 +286,8 @@ Object {
 
 exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - title 1`] = `"NOT_FOUND"`;
 
+exports[`options.formatRoute: 1 - options - formatRoute 1`] = `9`;
+
 exports[`options.formatRoute: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`options.formatRoute: 1 - routes - REDIRECTED - onComplete 1`] = `0`;

@@ -37,6 +37,18 @@ Array [
 
 exports[`core capabilities can be overriden as options: 1 - history_index 1`] = `1`;
 
+exports[`core capabilities can be overriden as options: 1 - options - compose 1`] = `2`;
+
+exports[`core capabilities can be overriden as options: 1 - options - createHistory 1`] = `1`;
+
+exports[`core capabilities can be overriden as options: 1 - options - createReducer 1`] = `1`;
+
+exports[`core capabilities can be overriden as options: 1 - options - createRequest 1`] = `2`;
+
+exports[`core capabilities can be overriden as options: 1 - options - shouldCall 1`] = `12`;
+
+exports[`core capabilities can be overriden as options: 1 - options - title 1`] = `2`;
+
 exports[`core capabilities can be overriden as options: 1 - response 1`] = `
 Object {
   "basename": "",

@@ -116,6 +116,24 @@ exports[`pop:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`pop:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`pop:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
 exports[`pop:  - state 1`] = `
 Object {
   "location": Object {

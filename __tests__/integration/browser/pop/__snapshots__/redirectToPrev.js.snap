@@ -163,6 +163,29 @@ exports[`pop redirect to prev URL:  - routes - REDIRECTED - onComplete 1`] = `0`
 
 exports[`pop redirect to prev URL:  - routes - SECOND - beforeEnter 1`] = `2`;
 
+exports[`pop redirect to prev URL:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
 exports[`pop redirect to prev URL:  - state 1`] = `
 Object {
   "location": Object {

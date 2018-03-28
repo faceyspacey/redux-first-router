@@ -896,6 +896,10 @@ exports[`hash matched by function "/third#correct": 3 - routes - NEVER_USED_PATH
 
 exports[`hash matched by function "/third#correct": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`hash matched by function "/third#correct": 3 - routes - SECOND - hash 1`] = `0`;
+
+exports[`hash matched by function "/third#correct": 3 - routes - THIRD - hash 1`] = `1`;
+
 exports[`hash matched by function "/third#correct": 3 - state 1`] = `
 Object {
   "location": Object {
@@ -1090,6 +1094,10 @@ Object {
 exports[`hash matched by function "/third#missed": 4 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`hash matched by function "/third#missed": 4 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`hash matched by function "/third#missed": 4 - routes - SECOND - hash 1`] = `0`;
+
+exports[`hash matched by function "/third#missed": 4 - routes - THIRD - hash 1`] = `1`;
 
 exports[`hash matched by function "/third#missed": 4 - state 1`] = `
 Object {
@@ -1286,6 +1294,10 @@ exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - routes
 
 exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - routes - SECOND - hash 1`] = `2`;
+
+exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - routes - THIRD - hash 1`] = `0`;
+
 exports[`hash matched by function {"type":"SECOND","hash":"correct"}: 1 - state 1`] = `
 Object {
   "location": Object {
@@ -1480,6 +1492,10 @@ Object {
 exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - routes - SECOND - hash 1`] = `1`;
+
+exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - routes - THIRD - hash 1`] = `0`;
 
 exports[`hash matched by function {"type":"SECOND","hash":"missed"}: 2 - state 1`] = `
 Object {
@@ -4016,6 +4032,8 @@ exports[`route.defaultHash "/third": 4 - routes - NEVER_USED_PATHLESS - thunk 1`
 
 exports[`route.defaultHash "/third": 4 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultHash "/third": 4 - routes - THIRD - defaultHash 1`] = `1`;
+
 exports[`route.defaultHash "/third": 4 - state 1`] = `
 Object {
   "location": Object {
@@ -4210,6 +4228,8 @@ Object {
 exports[`route.defaultHash "/third#CORRECT": 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.defaultHash "/third#CORRECT": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.defaultHash "/third#CORRECT": 3 - routes - THIRD - defaultHash 1`] = `1`;
 
 exports[`route.defaultHash "/third#CORRECT": 3 - state 1`] = `
 Object {
@@ -4406,6 +4426,8 @@ exports[`route.defaultHash {"type":"SECOND","hash":"correct"}: 1 - routes - NEVE
 
 exports[`route.defaultHash {"type":"SECOND","hash":"correct"}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultHash {"type":"SECOND","hash":"correct"}: 1 - routes - THIRD - defaultHash 1`] = `0`;
+
 exports[`route.defaultHash {"type":"SECOND","hash":"correct"}: 1 - state 1`] = `
 Object {
   "location": Object {
@@ -4600,6 +4622,8 @@ Object {
 exports[`route.defaultHash {"type":"SECOND"}: 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.defaultHash {"type":"SECOND"}: 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.defaultHash {"type":"SECOND"}: 2 - routes - THIRD - defaultHash 1`] = `0`;
 
 exports[`route.defaultHash {"type":"SECOND"}: 2 - state 1`] = `
 Object {
@@ -4796,6 +4820,14 @@ exports[`route.toHash/fromHash "/third": 4 - routes - NEVER_USED_PATHLESS - thun
 
 exports[`route.toHash/fromHash "/third": 4 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.toHash/fromHash "/third": 4 - routes - SECOND - fromHash 1`] = `0`;
+
+exports[`route.toHash/fromHash "/third": 4 - routes - SECOND - toHash 1`] = `0`;
+
+exports[`route.toHash/fromHash "/third": 4 - routes - THIRD - fromHash 1`] = `1`;
+
+exports[`route.toHash/fromHash "/third": 4 - routes - THIRD - toHash 1`] = `0`;
+
 exports[`route.toHash/fromHash "/third": 4 - state 1`] = `
 Object {
   "location": Object {
@@ -4990,6 +5022,14 @@ Object {
 exports[`route.toHash/fromHash "/third#CORRECT": 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.toHash/fromHash "/third#CORRECT": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.toHash/fromHash "/third#CORRECT": 3 - routes - SECOND - fromHash 1`] = `0`;
+
+exports[`route.toHash/fromHash "/third#CORRECT": 3 - routes - SECOND - toHash 1`] = `0`;
+
+exports[`route.toHash/fromHash "/third#CORRECT": 3 - routes - THIRD - fromHash 1`] = `1`;
+
+exports[`route.toHash/fromHash "/third#CORRECT": 3 - routes - THIRD - toHash 1`] = `0`;
 
 exports[`route.toHash/fromHash "/third#CORRECT": 3 - state 1`] = `
 Object {
@@ -5186,6 +5226,14 @@ exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - routes - 
 
 exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - routes - SECOND - fromHash 1`] = `1`;
+
+exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - routes - SECOND - toHash 1`] = `1`;
+
+exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - routes - THIRD - fromHash 1`] = `0`;
+
+exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - routes - THIRD - toHash 1`] = `0`;
+
 exports[`route.toHash/fromHash {"type":"SECOND","hash":"correct"}: 1 - state 1`] = `
 Object {
   "location": Object {
@@ -5380,6 +5428,14 @@ Object {
 exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - routes - SECOND - fromHash 1`] = `1`;
+
+exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - routes - SECOND - toHash 1`] = `1`;
+
+exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - routes - THIRD - fromHash 1`] = `0`;
+
+exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - routes - THIRD - toHash 1`] = `0`;
 
 exports[`route.toHash/fromHash {"type":"SECOND"}: 2 - state 1`] = `
 Object {

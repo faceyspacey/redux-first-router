@@ -45,6 +45,24 @@ exports[`pop from route that wont let you leave:  - routes - REDIRECTED - onComp
 
 exports[`pop from route that wont let you leave:  - routes - SECOND - beforeLeave 1`] = `1`;
 
+exports[`pop from route that wont let you leave:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
 exports[`pop from route that wont let you leave:  - state 1`] = `
 Object {
   "location": Object {

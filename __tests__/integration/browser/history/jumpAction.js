@@ -9,7 +9,7 @@ createTest('set(action, n)', {
   FIRST: '/:foo?'
 }, {
   testBrowser: true,
-  basenames: ['/base', '/another'],
+  basenames: ['/base'],
   convertNumbers: true
 }, [], async ({ dispatch, snap, getLocation, snapPop }) => {
   expect(locationToUrl(window.location)).toEqual('/')

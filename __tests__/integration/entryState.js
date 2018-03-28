@@ -50,8 +50,8 @@ createTest('route.defaultState', {
 }, [
   { type: 'SECOND', state: { key: 'correct' } },
   { type: 'SECOND' }
-], async ({ history, store, snapChange }) => {
+], async ({ history, snapChange }) => {
   const res = await history.push('/third', { abc: 123 })
-  snapChange(res, store, history)
+  snapChange(res)
 })
 

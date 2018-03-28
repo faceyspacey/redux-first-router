@@ -2152,6 +2152,14 @@ exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces
 
 exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - SECOND - fromPath 1`] = `0`;
+
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - SECOND - toPath 1`] = `0`;
+
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - THIRD - fromPath 1`] = `1`;
+
+exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - routes - THIRD - toPath 1`] = `0`;
+
 exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - state 1`] = `
 Object {
   "location": Object {
@@ -2356,6 +2364,14 @@ Object {
 exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - routes - SECOND - fromPath 1`] = `1`;
+
+exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - routes - SECOND - toPath 1`] = `1`;
+
+exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - routes - THIRD - fromPath 1`] = `0`;
+
+exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - routes - THIRD - toPath 1`] = `0`;
 
 exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - state 1`] = `
 Object {
@@ -6159,6 +6175,10 @@ Array [
 
 exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - history_index 1`] = `1`;
 
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - options - fromPath 1`] = `1`;
+
+exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - options - toPath 1`] = `0`;
+
 exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - response 1`] = `
 Object {
   "basename": "",
@@ -6363,6 +6383,10 @@ Array [
 `;
 
 exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - history_index 1`] = `1`;
+
+exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - options - fromPath 1`] = `1`;
+
+exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - options - toPath 1`] = `1`;
 
 exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - response 1`] = `
 Object {
@@ -7452,6 +7476,8 @@ exports[`route.defaultParams "/second": 4 - routes - NEVER_USED_PATHLESS - thunk
 
 exports[`route.defaultParams "/second": 4 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultParams "/second": 4 - routes - THIRD - defaultParams 1`] = `0`;
+
 exports[`route.defaultParams "/second": 4 - state 1`] = `
 Object {
   "location": Object {
@@ -7656,6 +7682,8 @@ Object {
 exports[`route.defaultParams "/third": 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.defaultParams "/third": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.defaultParams "/third": 3 - routes - THIRD - defaultParams 1`] = `1`;
 
 exports[`route.defaultParams "/third": 3 - state 1`] = `
 Object {
@@ -7868,6 +7896,8 @@ exports[`route.defaultParams "/third?key=correct": 2 - routes - NEVER_USED_PATHL
 
 exports[`route.defaultParams "/third?key=correct": 2 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultParams "/third?key=correct": 2 - routes - THIRD - defaultParams 1`] = `1`;
+
 exports[`route.defaultParams "/third?key=correct": 2 - state 1`] = `
 Object {
   "location": Object {
@@ -8076,6 +8106,8 @@ Object {
 exports[`route.defaultParams {"type":"SECOND"}: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.defaultParams {"type":"SECOND"}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.defaultParams {"type":"SECOND"}: 1 - routes - THIRD - defaultParams 1`] = `0`;
 
 exports[`route.defaultParams {"type":"SECOND"}: 1 - state 1`] = `
 Object {

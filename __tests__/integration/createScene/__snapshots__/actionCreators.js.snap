@@ -118,9 +118,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.notFound(state): 13 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.notFound(state): 13 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.notFound(state): 13 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.notFound(state): 13 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.notFound(state): 13 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.notFound(state): 13 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.notFound(state): 13 - state 1`] = `
 Object {
@@ -235,9 +243,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.notFound.complete(payload): 14 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.notFound.complete(payload): 14 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.notFound.complete(payload): 14 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.notFound.complete(payload): 14 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.notFound.complete(payload): 14 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.notFound.complete(payload): 14 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.notFound.complete(payload): 14 - state 1`] = `
 Object {
@@ -416,9 +432,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.second(): 1 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.second(): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.second(): 1 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.second(): 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.second(): 1 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.second(): 1 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.second(): 1 - state 1`] = `
 Object {
@@ -528,9 +552,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.second(action with wrong type): 5 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.second(action with wrong type): 5 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.second(action with wrong type): 5 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.second(action with wrong type): 5 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.second(action with wrong type): 5 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.second(action with wrong type): 5 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.second(action with wrong type): 5 - state 1`] = `
 Object {
@@ -714,9 +746,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.second(params): 3 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.second(params): 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.second(params): 3 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.second(params): 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.second(params): 3 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.second(params): 3 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.second(params): 3 - state 1`] = `
 Object {
@@ -919,9 +959,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.second(partialAction): 2 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.second(partialAction): 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.second(partialAction): 2 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.second(partialAction): 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.second(partialAction): 2 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.second(partialAction): 2 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.second(partialAction): 2 - state 1`] = `
 Object {
@@ -1124,9 +1172,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.second(thunk): 4 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.second(thunk): 4 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.second(thunk): 4 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.second(thunk): 4 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.second(thunk): 4 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.second(thunk): 4 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.second(thunk): 4 - state 1`] = `
 Object {
@@ -1243,9 +1299,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.second.complete(thunk): 11 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.second.complete(thunk): 11 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.second.complete(thunk): 11 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.second.complete(thunk): 11 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.second.complete(thunk): 11 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.second.complete(thunk): 11 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.second.complete(thunk): 11 - state 1`] = `
 Object {
@@ -1344,9 +1408,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.third.complete(payload): 10 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.third.complete(payload): 10 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.third.complete(payload): 10 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.third.complete(payload): 10 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.third.complete(payload): 10 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.third.complete(payload): 10 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.third.complete(payload): 10 - state 1`] = `
 Object {
@@ -1443,9 +1515,17 @@ Object {
 }
 `;
 
+exports[`createScene() actions.third.error(new Error): 8 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() actions.third.error(new Error): 8 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() actions.third.error(new Error): 8 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() actions.third.error(new Error): 8 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() actions.third.error(new Error): 8 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() actions.third.error(new Error): 8 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() actions.third.error(new Error): 8 - state 1`] = `
 Object {
@@ -1545,9 +1625,17 @@ Object {
 }
 `;
 
+exports[`createScene() route with just action creator: 12 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() route with just action creator: 12 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() route with just action creator: 12 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() route with just action creator: 12 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() route with just action creator: 12 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() route with just action creator: 12 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() route with just action creator: 12 - state 1`] = `
 Object {
@@ -1731,9 +1819,17 @@ Object {
 }
 `;
 
+exports[`createScene() route.action - custom action creator: 6 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() route.action - custom action creator: 6 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() route.action - custom action creator: 6 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() route.action - custom action creator: 6 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() route.action - custom action creator: 6 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() route.action - custom action creator: 6 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() route.action - custom action creator: 6 - state 1`] = `
 Object {
@@ -1936,9 +2032,17 @@ Object {
 }
 `;
 
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - state 1`] = `
 Object {
@@ -2055,9 +2159,17 @@ Object {
 }
 `;
 
+exports[`createScene() route.error - custom error action creator: 9 - routes - FOURTH - customCreator 1`] = `0`;
+
 exports[`createScene() route.error - custom error action creator: 9 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
+exports[`createScene() route.error - custom error action creator: 9 - routes - PLAIN - action 1`] = `0`;
+
 exports[`createScene() route.error - custom error action creator: 9 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`createScene() route.error - custom error action creator: 9 - routes - SECOND - error 1`] = `0`;
+
+exports[`createScene() route.error - custom error action creator: 9 - routes - THIRD - action 1`] = `0`;
 
 exports[`createScene() route.error - custom error action creator: 9 - state 1`] = `
 Object {

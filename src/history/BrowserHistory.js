@@ -124,10 +124,10 @@ export default class BrowserHistory extends History {
     window.history.go(n) // revert
   }
 
-  _push(action) {
+  _push(action, awaitUrl) {
     const { url } = action.location
 
-    return this._awaitUrl(this.prevUrl, '_push')
+    return this._awaitUrl(awaitUrl || this.prevUrl, '_push')
       .then(() => pushState(url))
   }
 
@@ -180,24 +180,26 @@ export default class BrowserHistory extends History {
       .then(() => this._awaitUrl(action, 'setN return'))
   }
 
-  _reset(action) {
+  _reset(action, oldUrl, oldFirstUrl, reverseN) {
     const { index, entries } = action.location
-    const { prevUrl } = this
     const lastIndex = entries.length - 1
     const stayAtEnd = index === lastIndex
-    const act = this.entries[0]
-    const n = -this.index // jump to beginning of entries stack
 
-    return this._awaitUrl(prevUrl)
-      .then(() => this._forceGo(n))
-      .then(() => this._awaitUrl(act))
+    console.log(oldUrl, oldFirstUrl, reverseN)
+    console.log(locationToUrl(window.location))
+
+    return this._awaitUrl(oldUrl)
+      .then(() => this._forceGo(reverseN))
+      .then(() => this._awaitUrl(oldFirstUrl))
       .then(() => {
-        this._replace(entries[0])
-        entries.slice(1).forEach(e => this._push(e))
+        // this._replace(entries[0])
+        // entries.slice(1).forEach(e => this._push(e))
+        replaceState(entries[0].location.url)
+        entries.slice(1).forEach(e => pushState(e.location.url))
 
-        if (!stayAtEnd) {
-          this._forceGo(index - lastIndex)
-        }
+        // if (!stayAtEnd) {
+        //   this._forceGo(index - lastIndex)
+        // }
       })
   }
 

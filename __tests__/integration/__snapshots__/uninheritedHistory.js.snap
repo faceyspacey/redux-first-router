@@ -37,6 +37,8 @@ Array [
 
 exports[`History class can be used directly: 1 - history_index 1`] = `1`;
 
+exports[`History class can be used directly: 1 - options - createHistory 1`] = `1`;
+
 exports[`History class can be used directly: 1 - response 1`] = `
 Object {
   "basename": "",

@@ -148,6 +148,29 @@ exports[`double pop:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`double pop:  - routes - SECOND - beforeEnter 1`] = `2`;
 
+exports[`double pop:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
 exports[`double pop:  - state 1`] = `
 Object {
   "location": Object {

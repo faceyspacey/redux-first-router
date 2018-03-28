@@ -5159,6 +5159,8 @@ Array [
 
 exports[`options.createCacheKey: {"type":"FIRST"} - history_index 1`] = `0`;
 
+exports[`options.createCacheKey: {"type":"FIRST"} - options - createCacheKey 1`] = `4`;
+
 exports[`options.createCacheKey: {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -5392,6 +5394,10 @@ Array [
 exports[`options.createCacheKey: {"type":"SECOND"} - history_index 1`] = `1`;
 
 exports[`options.createCacheKey: {"type":"SECOND"} - history_index 2`] = `1`;
+
+exports[`options.createCacheKey: {"type":"SECOND"} - options - createCacheKey 1`] = `3`;
+
+exports[`options.createCacheKey: {"type":"SECOND"} - options - createCacheKey 2`] = `5`;
 
 exports[`options.createCacheKey: {"type":"SECOND"} - response 1`] = `
 Object {

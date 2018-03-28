@@ -506,6 +506,54 @@ exports[`restore history from history fallback with redirect before enter:  - ro
 
 exports[`restore history from history fallback with redirect before enter:  - routes - REDIRECTED - onComplete 2`] = `1`;
 
+exports[`restore history from history fallback with redirect before enter:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+  "out": undefined,
+}
+`;
+
+exports[`restore history from history fallback with redirect before enter:  - sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+  "out": undefined,
+}
+`;
+
 exports[`restore history from history fallback with redirect before enter:  - state 1`] = `
 Object {
   "location": Object {
@@ -775,6 +823,35 @@ exports[`restore history from history fallback with redirect before enter: {"typ
 exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `2`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 3,
+  "out": undefined,
+}
+`;
 
 exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - state 1`] = `
 Object {

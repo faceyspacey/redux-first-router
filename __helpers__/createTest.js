@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux'
+import { get } from '../src/history/utils/sessionStorage'
 import { createRouter } from '../src'
 
 export default async (...allArgs) => {
@@ -100,20 +101,20 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
 
     if (routesMap.FIRST || initialPath !== '/first') {
       const prefix = 'firstRoute - ' + initialPath + ' - ' + num
-      snapChange(prefix, res, store, history, initialState)
+      snapChange(prefix, res, store, history, opts, initialState)
     }
 
     if (typeof item === 'string' && item.charAt(0) === '/') {
       const url = item
       const res = await history.push(url)
 
-      snapChange(num, res, store, history)
+      snapChange(num, res, store, history, opts)
     }
     else if (item) {
       const action = typeof item === 'string' ? { type: item } : item
       const res = await store.dispatch(action)
 
-      snapChange(num, res, store, history)
+      snapChange(num, res, store, history, opts)
     }
 
     snapRoutes(num, routes)
@@ -158,19 +159,20 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       dispatch: store.dispatch,
       getState: store.getState,
       getLocation: () => store.getState().location,
-      snapChange: (...args) => {
-        if (typeof args[0] === 'string') {
-          return snapChange(...args)
+      snapChange: (prefix, res) => {
+        if (typeof prefix === 'string') {
+          return snapChange(prefix, res, store, history, opts)
         }
 
-        return snapChange(++defaultPrefix, ...args)
+        res = prefix
+        return snapChange(++defaultPrefix, res, store, history, opts)
       },
       snap: async (action, prefix = '') => {
         prefix = prefix || JSON.stringify(action) || 'function'
 
         const res = await store.dispatch(action)
 
-        snapChange(prefix, res, store, history)
+        snapChange(prefix, res, store, history, opts)
         snapRoutes(prefix, routes)
         snapOptions(prefix, options)
 
@@ -179,7 +181,7 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
       snapPop: async (direction, prefix = '') => {
         const res = await pop(direction)
 
-        snapChange(prefix, res, store, history)
+        snapChange(prefix, res, store, history, opts)
         snapRoutes(prefix, routes)
         snapOptions(prefix, options)
 
@@ -257,7 +259,7 @@ const createRoutes = (routesMap) => {
 
     const route = routes[type]
 
-    for (const cb of callbacks) {
+    for (const cb in route) {
       if (typeof route[cb] === 'function') {
         route[cb] = jest.fn(route[cb])
       }
@@ -296,7 +298,7 @@ const createRoutes = (routesMap) => {
 const createOptions = (opts = {}) => {
   const options = { ...opts }
 
-  for (const cb of callbacks) {
+  for (const cb in options) {
     if (typeof opts[cb] === 'function') {
       options[cb] = jest.fn(opts[cb])
     }
@@ -324,9 +326,20 @@ const snapCallbacks = (prefix, obj) => {
   expectThunk(prefix, obj)
   expectOnComplete(prefix, obj)
   expectOnError(prefix, obj)
+
+  snapOtherFunctions(prefix, obj)
 }
 
-const snapChange = (prefix, res, store, history, initialState) => {
+// snapshot the number of calls of all additional functions that aren't middleware callbacks
+const snapOtherFunctions = (prefix, obj) => {
+  for (const k in obj) {
+    if (!callbacks.includes(k) && typeof obj[k] === 'function' && obj[k].mock) {
+      expect(obj[k].mock.calls.length).toMatchSnapshot(prefix + ' - ' + k)
+    }
+  }
+}
+
+const snapChange = (prefix, res, store, history, opts = {}, initialState) => {
   if (initialState) expectInitialState(prefix, initialState)
 
   expectState(prefix, store)
@@ -334,6 +347,8 @@ const snapChange = (prefix, res, store, history, initialState) => {
   expectEntries(prefix, history)
   expectIndex(prefix, history)
   expectTitle(prefix)
+
+  if (opts.testBrowser) expectSessionStorage(prefix)
 }
 
 // all these expect functions are broken out separately so we can easily see the
@@ -361,6 +376,10 @@ const expectIndex = (prefix, history) => {
 
 const expectTitle = (prefix) => {
   expect(document.title).toMatchSnapshot(prefix + ' - title')
+}
+
+const expectSessionStorage = (prefix) => {
+  expect(get()).toMatchSnapshot(prefix + ' - sessionStorage')
 }
 
 const expectBeforeLeave = (prefix, obj) => {

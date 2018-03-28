@@ -319,6 +319,34 @@ exports[`restore history from sessionStorage when using MemoryHistory as fallbac
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 3,
+}
+`;
+
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {
@@ -574,6 +602,29 @@ exports[`restore history from sessionStorage when using MemoryHistory as fallbac
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - state 1`] = `
 Object {
   "location": Object {
@@ -813,6 +864,29 @@ Object {
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+}
+`;
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - state 1`] = `
 Object {

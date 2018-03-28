@@ -335,6 +335,8 @@ exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - rou
 
 exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - routes - THIRD - defaultState 1`] = `0`;
+
 exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - state 1`] = `
 Object {
   "location": Object {
@@ -541,6 +543,8 @@ Object {
 exports[`route.defaultState {"type":"SECOND"}: 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.defaultState {"type":"SECOND"}: 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.defaultState {"type":"SECOND"}: 2 - routes - THIRD - defaultState 1`] = `0`;
 
 exports[`route.defaultState {"type":"SECOND"}: 2 - state 1`] = `
 Object {

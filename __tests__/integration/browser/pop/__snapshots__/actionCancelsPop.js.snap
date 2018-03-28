@@ -178,6 +178,34 @@ exports[`pop then regular action (cancel pop): {"type":"FIRST"} - routes - REDIR
 
 exports[`pop then regular action (cancel pop): {"type":"FIRST"} - routes - SECOND - beforeEnter 1`] = `2`;
 
+exports[`pop then regular action (cancel pop): {"type":"FIRST"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 3,
+}
+`;
+
 exports[`pop then regular action (cancel pop): {"type":"FIRST"} - state 1`] = `
 Object {
   "location": Object {

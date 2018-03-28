@@ -2542,6 +2542,8 @@ exports[`route.defaultQuery "/third": 4 - routes - NEVER_USED_PATHLESS - thunk 1
 
 exports[`route.defaultQuery "/third": 4 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultQuery "/third": 4 - routes - THIRD - defaultQuery 1`] = `1`;
+
 exports[`route.defaultQuery "/third": 4 - state 1`] = `
 Object {
   "location": Object {
@@ -2749,6 +2751,8 @@ Object {
 exports[`route.defaultQuery "/third?key=correct": 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.defaultQuery "/third?key=correct": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.defaultQuery "/third?key=correct": 3 - routes - THIRD - defaultQuery 1`] = `1`;
 
 exports[`route.defaultQuery "/third?key=correct": 3 - state 1`] = `
 Object {
@@ -2960,6 +2964,8 @@ exports[`route.defaultQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - rou
 
 exports[`route.defaultQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - routes - THIRD - defaultQuery 1`] = `0`;
+
 exports[`route.defaultQuery {"type":"SECOND","query":{"key":"correct"}}: 1 - state 1`] = `
 Object {
   "location": Object {
@@ -3167,6 +3173,8 @@ exports[`route.defaultQuery {"type":"SECOND"}: 2 - routes - NEVER_USED_PATHLESS 
 
 exports[`route.defaultQuery {"type":"SECOND"}: 2 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.defaultQuery {"type":"SECOND"}: 2 - routes - THIRD - defaultQuery 1`] = `0`;
+
 exports[`route.defaultQuery {"type":"SECOND"}: 2 - state 1`] = `
 Object {
   "location": Object {
@@ -3365,6 +3373,14 @@ Object {
 exports[`route.toQuery/fromQuery "/third": 4 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.toQuery/fromQuery "/third": 4 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.toQuery/fromQuery "/third": 4 - routes - SECOND - fromSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery "/third": 4 - routes - SECOND - toSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery "/third": 4 - routes - THIRD - fromSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery "/third": 4 - routes - THIRD - toSearch 1`] = `0`;
 
 exports[`route.toQuery/fromQuery "/third": 4 - state 1`] = `
 Object {
@@ -3566,6 +3582,14 @@ Object {
 exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - SECOND - fromSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - SECOND - toSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - THIRD - fromSearch 1`] = `1`;
+
+exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - routes - THIRD - toSearch 1`] = `0`;
 
 exports[`route.toQuery/fromQuery "/third?key=CORRECT%20WITH%20SPACESKEY": 3 - state 1`] = `
 Object {
@@ -3772,6 +3796,14 @@ exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with s
 
 exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - routes - SECOND - fromSearch 1`] = `1`;
+
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - routes - SECOND - toSearch 1`] = `1`;
+
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - routes - THIRD - fromSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - routes - THIRD - toSearch 1`] = `0`;
+
 exports[`route.toQuery/fromQuery {"type":"SECOND","query":{"key":"correct with spaces"}}: 1 - state 1`] = `
 Object {
   "location": Object {
@@ -3970,6 +4002,14 @@ Object {
 exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - routes - SECOND - fromSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - routes - SECOND - toSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - routes - THIRD - fromSearch 1`] = `0`;
+
+exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - routes - THIRD - toSearch 1`] = `0`;
 
 exports[`route.toQuery/fromQuery {"type":"SECOND"}: 2 - state 1`] = `
 Object {

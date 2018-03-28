@@ -43,6 +43,8 @@ exports[`routes can specify route.middleware array to override global middleware
 
 exports[`routes can specify route.middleware array to override global middleware: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`routes can specify route.middleware array to override global middleware: 1 - routes - SECOND - onTransition 1`] = `1`;
+
 exports[`routes can specify route.middleware array to override global middleware: 1 - state 1`] = `
 Object {
   "location": Object {
@@ -165,6 +167,10 @@ exports[`routes can specify route.middleware as function to override global midd
 exports[`routes can specify route.middleware as function to override global middleware: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`routes can specify route.middleware as function to override global middleware: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - routes - SECOND - middleware 1`] = `1`;
+
+exports[`routes can specify route.middleware as function to override global middleware: 1 - routes - SECOND - onTransition 1`] = `1`;
 
 exports[`routes can specify route.middleware as function to override global middleware: 1 - state 1`] = `
 Object {

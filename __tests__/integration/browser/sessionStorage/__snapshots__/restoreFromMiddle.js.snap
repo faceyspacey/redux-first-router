@@ -226,6 +226,24 @@ exports[`restore history when index > 0:  - routes - NEVER_USED_PATHLESS - thunk
 
 exports[`restore history when index > 0:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`restore history when index > 0:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
 exports[`restore history when index > 0:  - state 1`] = `
 Object {
   "location": Object {

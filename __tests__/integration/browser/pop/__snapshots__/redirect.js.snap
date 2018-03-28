@@ -133,6 +133,24 @@ exports[`pop redirect:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`pop redirect:  - routes - REDIRECTED - onComplete 1`] = `0`;
 
+exports[`pop redirect:  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
 exports[`pop redirect:  - state 1`] = `
 Object {
   "location": Object {

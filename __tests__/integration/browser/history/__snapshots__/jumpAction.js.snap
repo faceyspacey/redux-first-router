@@ -374,6 +374,46 @@ exports[`set(action, n):  - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`set(action, n):  - routes - REDIRECTED - onComplete 2`] = `0`;
 
+exports[`set(action, n):  - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar?hell=yea#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 1,
+}
+`;
+
+exports[`set(action, n):  - sessionStorage 2`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar?hell=yea#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
 exports[`set(action, n):  - state 1`] = `
 Object {
   "location": Object {
@@ -689,6 +729,26 @@ Object {
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar?hell=yea#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - state 1`] = `
 Object {
