@@ -244,3 +244,5 @@ Object {
 `;
 
 exports[`pop redirect:  - title 1`] = `"THIRD"`;
+
+exports[`pop redirect:  - windowLocation 1`] = `"/third"`;

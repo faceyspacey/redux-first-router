@@ -314,3 +314,5 @@ Object {
 `;
 
 exports[`double pop (when 4th index same as prev):  - title 1`] = `"SECOND"`;
+
+exports[`double pop (when 4th index same as prev):  - windowLocation 1`] = `"/second"`;

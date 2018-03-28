@@ -294,3 +294,5 @@ Object {
 `;
 
 exports[`pop redirect to prev URL:  - title 1`] = `"FIRST"`;
+
+exports[`pop redirect to prev URL:  - windowLocation 1`] = `"/"`;

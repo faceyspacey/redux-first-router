@@ -6227,6 +6227,24 @@ exports[`set(action, n):  - title 8`] = `"THIRD"`;
 
 exports[`set(action, n):  - title 9`] = `"SECOND"`;
 
+exports[`set(action, n):  - windowLocation 1`] = `"/tenth"`;
+
+exports[`set(action, n):  - windowLocation 2`] = `"/ninth"`;
+
+exports[`set(action, n):  - windowLocation 3`] = `"/eighth"`;
+
+exports[`set(action, n):  - windowLocation 4`] = `"/seventh"`;
+
+exports[`set(action, n):  - windowLocation 5`] = `"/sixth"`;
+
+exports[`set(action, n):  - windowLocation 6`] = `"/fifth"`;
+
+exports[`set(action, n):  - windowLocation 7`] = `"/fourth"`;
+
+exports[`set(action, n):  - windowLocation 8`] = `"/third"`;
+
+exports[`set(action, n):  - windowLocation 9`] = `"/second?hell=yea#works"`;
+
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - history_entries 1`] = `
 Array [
   Object {
@@ -6917,3 +6935,5 @@ Object {
 `;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - title 1`] = `"ELEVENTH"`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - windowLocation 1`] = `"/eleventh"`;

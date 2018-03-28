@@ -1,8 +1,6 @@
 import createTest from '../../../../__helpers__/createTest'
-import { get } from '../../../../src/history/utils/sessionStorage'
 import { locationToUrl } from '../../../../src/utils'
 import { reset } from '../../../../src/actions'
-
 
 createTest('set(action, n)', {
   SECOND: '/second',

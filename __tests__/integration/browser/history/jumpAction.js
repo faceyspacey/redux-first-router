@@ -1,8 +1,6 @@
 import createTest from '../../../../__helpers__/createTest'
-import { get } from '../../../../src/history/utils/sessionStorage'
 import { locationToUrl } from '../../../../src/utils'
 import { jump } from '../../../../src/actions'
-
 
 createTest('set(action, n)', {
   SECOND: '/second',
@@ -11,7 +9,7 @@ createTest('set(action, n)', {
   testBrowser: true,
   basenames: ['/base'],
   convertNumbers: true
-}, [], async ({ dispatch, snap, getLocation, snapPop }) => {
+}, [], async ({ dispatch, snap, snapPop }) => {
   expect(locationToUrl(window.location)).toEqual('/')
 
   await dispatch({ type: 'SECOND' })
@@ -25,16 +23,7 @@ createTest('set(action, n)', {
   }
 
   await snap(jump(-1, action))
-
-  expect(getLocation().entries[0]).toMatchObject(action)
-
-  expect(get().entries[0][0]).toEqual('/base/bar?hell=yea#yolo')
-  expect(get().entries[0][1]).toEqual(action.state)
-
   expect(locationToUrl(window.location)).toEqual('/base/bar?hell=yea#yolo')
-
-  expect(get()).toMatchSnapshot()
-  expect(getLocation()).toMatchSnapshot()
 
   await snapPop('forward')
   expect(locationToUrl(window.location)).toEqual('/second')

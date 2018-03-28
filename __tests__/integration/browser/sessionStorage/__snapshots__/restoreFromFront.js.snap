@@ -660,3 +660,7 @@ Object {
 exports[`restore history when index === entries.length - 1:  - title 1`] = `"SECOND"`;
 
 exports[`restore history when index === entries.length - 1:  - title 2`] = `"FIRST"`;
+
+exports[`restore history when index === entries.length - 1:  - windowLocation 1`] = `"/second"`;
+
+exports[`restore history when index === entries.length - 1:  - windowLocation 2`] = `"/"`;

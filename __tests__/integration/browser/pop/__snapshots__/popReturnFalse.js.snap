@@ -156,3 +156,5 @@ Object {
 `;
 
 exports[`pop from route that wont let you leave:  - title 1`] = `"SECOND"`;
+
+exports[`pop from route that wont let you leave:  - windowLocation 1`] = `"/"`;

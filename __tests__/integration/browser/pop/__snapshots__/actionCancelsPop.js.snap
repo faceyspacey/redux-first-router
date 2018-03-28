@@ -314,3 +314,5 @@ Object {
 `;
 
 exports[`pop then regular action (cancel pop): {"type":"FIRST"} - title 1`] = `"FIRST"`;
+
+exports[`pop then regular action (cancel pop): {"type":"FIRST"} - windowLocation 1`] = `"/"`;

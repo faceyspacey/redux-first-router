@@ -212,3 +212,5 @@ Object {
 `;
 
 exports[`pop:  - title 1`] = `"FIRST"`;
+
+exports[`pop:  - windowLocation 1`] = `"/"`;

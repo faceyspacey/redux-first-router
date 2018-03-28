@@ -660,3 +660,7 @@ Object {
 exports[`restore history when index === 0:  - title 1`] = `"SECOND"`;
 
 exports[`restore history when index === 0:  - title 2`] = `"THIRD"`;
+
+exports[`restore history when index === 0:  - windowLocation 1`] = `"/second"`;
+
+exports[`restore history when index === 0:  - windowLocation 2`] = `"/third"`;

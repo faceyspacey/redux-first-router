@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux'
 import { get } from '../src/history/utils/sessionStorage'
+import { locationToUrl } from '../src/utils'
 import { createRouter } from '../src'
 
 export default async (...allArgs) => {
@@ -348,7 +349,10 @@ const snapChange = (prefix, res, store, history, opts = {}, initialState) => {
   expectIndex(prefix, history)
   expectTitle(prefix)
 
-  if (opts.testBrowser) expectSessionStorage(prefix)
+  if (opts.testBrowser) {
+    expectSessionStorage(prefix)
+    expectWindowLocation(prefix)
+  }
 }
 
 // all these expect functions are broken out separately so we can easily see the
@@ -381,6 +385,11 @@ const expectTitle = (prefix) => {
 const expectSessionStorage = (prefix) => {
   expect(get()).toMatchSnapshot(prefix + ' - sessionStorage')
 }
+
+const expectWindowLocation = (prefix) => {
+  expect(locationToUrl(window.location)).toMatchSnapshot(prefix + ' - windowLocation')
+}
+
 
 const expectBeforeLeave = (prefix, obj) => {
   if (typeof obj.beforeLeave === 'function' && obj.beforeLeave.mock) {

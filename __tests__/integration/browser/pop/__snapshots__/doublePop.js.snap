@@ -264,3 +264,5 @@ Object {
 `;
 
 exports[`double pop:  - title 1`] = `"SECOND"`;
+
+exports[`double pop:  - windowLocation 1`] = `"/second"`;

@@ -456,6 +456,8 @@ Object {
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - title 1`] = `"FIRST"`;
 
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - windowLocation 1`] = `"/"`;
+
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - history_entries 1`] = `
 Array [
   Object {
@@ -719,6 +721,8 @@ Object {
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - windowLocation 1`] = `"/"`;
+
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - history_entries 1`] = `
 Array [
   Object {
@@ -981,3 +985,5 @@ Object {
 `;
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - title 1`] = `"THIRD"`;
+
+exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - windowLocation 1`] = `"/"`;

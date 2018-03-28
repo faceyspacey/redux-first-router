@@ -1,6 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`set(action) 1`] = `
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/",
+      "scene": "",
+      "search": "hell=yea",
+      "url": "/base/?hell=yea#yolo",
+    },
+    "params": Object {},
+    "query": Object {
+      "hell": "yea",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+]
+`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - history_index 1`] = `0`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - response 1`] = `
+Object {
+  "basename": "base",
+  "commit": [Function],
+  "hash": "yolo",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/base/?hell=yea#yolo",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+    ],
+    "index": 0,
+    "key": "345678",
+    "kind": "set",
+    "length": 1,
+    "n": 1,
+    "pathname": "/",
+    "scene": "",
+    "search": "hell=yea",
+    "url": "/base/?hell=yea#yolo",
+  },
+  "params": Object {},
+  "query": Object {
+    "hell": "yea",
+  },
+  "state": Object {
+    "something": 123,
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - sessionStorage 1`] = `
 Object {
   "entries": Array [
     Array [
@@ -15,74 +93,165 @@ Object {
 }
 `;
 
-exports[`set(action) 2`] = `
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - state 1`] = `
 Object {
-  "basename": "base",
-  "blocked": null,
-  "direction": "forward",
-  "entries": Array [
-    Object {
-      "basename": "base",
-      "hash": "yolo",
+  "location": Object {
+    "basename": "base",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/base/?hell=yea#yolo",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "hash": "yolo",
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
       "location": Object {
-        "key": "345678",
-        "pathname": "/",
+        "index": -1,
+        "key": "",
+        "pathname": "",
         "scene": "",
-        "search": "hell=yea",
-        "url": "/base/?hell=yea#yolo",
+        "search": "",
+        "url": "",
       },
       "params": Object {},
-      "query": Object {
-        "hell": "yea",
-      },
-      "state": Object {
-        "something": 123,
-      },
-      "type": "FIRST",
+      "query": Object {},
+      "state": Object {},
+      "type": "",
     },
-  ],
-  "from": null,
-  "hash": "yolo",
-  "index": 0,
-  "key": "345678",
-  "kind": "load",
-  "length": 1,
-  "n": 1,
-  "params": Object {},
-  "pathname": "/",
-  "pop": false,
-  "prev": Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "index": -1,
-      "key": "",
-      "pathname": "",
-      "scene": "",
-      "search": "",
-      "url": "",
+    "query": Object {
+      "hell": "yea",
     },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "",
+    "scene": "",
+    "search": "hell=yea",
+    "state": Object {
+      "something": 123,
+    },
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/base/?hell=yea#yolo",
   },
-  "query": Object {
-    "hell": "yea",
-  },
-  "scene": "",
-  "search": "hell=yea",
-  "state": Object {
-    "something": 123,
-  },
-  "status": 200,
-  "type": "FIRST",
-  "universal": false,
-  "url": "/base/?hell=yea#yolo",
+  "title": "FIRST",
 }
 `;
 
-exports[`set(action) 3`] = `
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - title 1`] = `"FIRST"`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - windowLocation 1`] = `"/base/?hell=yea#yolo"`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "base",
+    "hash": "yolo",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/bar",
+      "scene": "",
+      "search": "hello=world",
+      "url": "/base/bar?hello=world#yolo",
+    },
+    "params": Object {
+      "foo": "bar",
+    },
+    "query": Object {
+      "hello": "world",
+    },
+    "state": Object {
+      "something": 123,
+    },
+    "type": "FIRST",
+  },
+]
+`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - history_index 1`] = `0`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - response 1`] = `
+Object {
+  "basename": "base",
+  "commit": [Function],
+  "hash": "yolo",
+  "location": Object {
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "hello=world",
+          "url": "/base/bar?hello=world#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {
+          "hello": "world",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+    ],
+    "index": 0,
+    "key": "345678",
+    "kind": "set",
+    "length": 1,
+    "n": 1,
+    "pathname": "/bar",
+    "scene": "",
+    "search": "hello=world",
+    "url": "/base/bar?hello=world#yolo",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {
+    "hello": "world",
+  },
+  "state": Object {
+    "something": 123,
+  },
+  "type": "FIRST",
+}
+`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - routes - REDIRECTED - onComplete 1`] = `0`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - sessionStorage 1`] = `
 Object {
   "entries": Array [
     Array [
@@ -97,73 +266,80 @@ Object {
 }
 `;
 
-exports[`set(action) 4`] = `
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - state 1`] = `
 Object {
-  "basename": "base",
-  "blocked": null,
-  "direction": "forward",
-  "entries": Array [
-    Object {
-      "basename": "base",
-      "hash": "yolo",
+  "location": Object {
+    "basename": "base",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "hello=world",
+          "url": "/base/bar?hello=world#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {
+          "hello": "world",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "hash": "yolo",
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "n": 1,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/bar",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
       "location": Object {
-        "key": "345678",
-        "pathname": "/bar",
+        "index": -1,
+        "key": "",
+        "pathname": "",
         "scene": "",
-        "search": "hello=world",
-        "url": "/base/bar?hello=world#yolo",
+        "search": "",
+        "url": "",
       },
-      "params": Object {
-        "foo": "bar",
-      },
-      "query": Object {
-        "hello": "world",
-      },
-      "state": Object {
-        "something": 123,
-      },
-      "type": "FIRST",
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
     },
-  ],
-  "from": null,
-  "hash": "yolo",
-  "index": 0,
-  "key": "345678",
-  "kind": "load",
-  "length": 1,
-  "n": 1,
-  "params": Object {
-    "foo": "bar",
-  },
-  "pathname": "/bar",
-  "pop": false,
-  "prev": Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "index": -1,
-      "key": "",
-      "pathname": "",
-      "scene": "",
-      "search": "",
-      "url": "",
+    "query": Object {
+      "hello": "world",
     },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "",
+    "scene": "",
+    "search": "hello=world",
+    "state": Object {
+      "something": 123,
+    },
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/base/bar?hello=world#yolo",
   },
-  "query": Object {
-    "hello": "world",
-  },
-  "scene": "",
-  "search": "hello=world",
-  "state": Object {
-    "something": 123,
-  },
-  "status": 200,
-  "type": "FIRST",
-  "universal": false,
-  "url": "/base/bar?hello=world#yolo",
+  "title": "FIRST",
 }
 `;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - title 1`] = `"FIRST"`;
+
+exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - windowLocation 1`] = `"/base/bar?hello=world#yolo"`;

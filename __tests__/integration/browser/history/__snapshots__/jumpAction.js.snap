@@ -1,111 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`set(action, n) 1`] = `
-Object {
-  "entries": Array [
-    Array [
-      "/base/bar?hell=yea#yolo",
-      Object {
-        "something": 123,
-      },
-      "345678",
-    ],
-    Array [
-      "/second",
-      Object {},
-      "345678",
-    ],
-  ],
-  "index": 0,
-}
-`;
-
-exports[`set(action, n) 2`] = `
-Object {
-  "basename": "base",
-  "blocked": null,
-  "direction": "backward",
-  "entries": Array [
-    Object {
-      "basename": "base",
-      "hash": "yolo",
-      "location": Object {
-        "key": "345678",
-        "pathname": "/bar",
-        "scene": "",
-        "search": "hell=yea",
-        "url": "/base/bar?hell=yea#yolo",
-      },
-      "params": Object {
-        "foo": "bar",
-      },
-      "query": Object {
-        "hell": "yea",
-      },
-      "state": Object {
-        "something": 123,
-      },
-      "type": "FIRST",
-    },
-    Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "key": "345678",
-        "pathname": "/second",
-        "scene": "",
-        "search": "",
-        "url": "/second",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "SECOND",
-    },
-  ],
-  "from": null,
-  "hash": "yolo",
-  "index": 0,
-  "key": "345678",
-  "kind": "back",
-  "length": 2,
-  "n": -1,
-  "params": Object {
-    "foo": "bar",
-  },
-  "pathname": "/bar",
-  "pop": false,
-  "prev": Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "index": 1,
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  "query": Object {
-    "hell": "yea",
-  },
-  "scene": "",
-  "search": "hell=yea",
-  "state": Object {
-    "something": 123,
-  },
-  "status": 200,
-  "type": "FIRST",
-  "universal": false,
-  "url": "/base/bar?hell=yea#yolo",
-}
-`;
-
 exports[`set(action, n):  - history_entries 1`] = `
 Array [
   Object {
@@ -596,6 +490,10 @@ exports[`set(action, n):  - title 1`] = `"SECOND"`;
 
 exports[`set(action, n):  - title 2`] = `"FIRST"`;
 
+exports[`set(action, n):  - windowLocation 1`] = `"/second"`;
+
+exports[`set(action, n):  - windowLocation 2`] = `"/base/bar?hell=yea#yolo"`;
+
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - history_entries 1`] = `
 Array [
   Object {
@@ -840,3 +738,5 @@ Object {
 `;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - title 1`] = `"FIRST"`;
+
+exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - windowLocation 1`] = `"/base/bar?hell=yea#yolo"`;

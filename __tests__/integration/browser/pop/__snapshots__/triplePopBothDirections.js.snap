@@ -264,3 +264,5 @@ Object {
 `;
 
 exports[`pop back then forward:  - title 1`] = `"SECOND"`;
+
+exports[`pop back then forward:  - windowLocation 1`] = `"/second"`;

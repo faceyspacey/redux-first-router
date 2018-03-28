@@ -322,3 +322,5 @@ Object {
 `;
 
 exports[`restore history when index > 0:  - title 1`] = `"FIRST"`;
+
+exports[`restore history when index > 0:  - windowLocation 1`] = `"/"`;

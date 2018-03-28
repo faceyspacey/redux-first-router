@@ -294,3 +294,5 @@ Object {
 `;
 
 exports[`pop redirect to current URL:  - title 1`] = `"THIRD"`;
+
+exports[`pop redirect to current URL:  - windowLocation 1`] = `"/second"`;

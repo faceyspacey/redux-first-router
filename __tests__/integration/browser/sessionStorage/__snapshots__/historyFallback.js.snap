@@ -718,6 +718,10 @@ exports[`restore history from history fallback:  - title 1`] = `"SECOND"`;
 
 exports[`restore history from history fallback:  - title 2`] = `"THIRD"`;
 
+exports[`restore history from history fallback:  - windowLocation 1`] = `"/second"`;
+
+exports[`restore history from history fallback:  - windowLocation 2`] = `"/third"`;
+
 exports[`restore history from history fallback: {"type":"FIRST"} - history_entries 1`] = `
 Array [
   Object {
@@ -1031,3 +1035,5 @@ Object {
 `;
 
 exports[`restore history from history fallback: {"type":"FIRST"} - title 1`] = `"FIRST"`;
+
+exports[`restore history from history fallback: {"type":"FIRST"} - windowLocation 1`] = `"/"`;

@@ -742,6 +742,10 @@ exports[`restore history from history fallback with redirect before enter:  - ti
 
 exports[`restore history from history fallback with redirect before enter:  - title 2`] = `"THIRD"`;
 
+exports[`restore history from history fallback with redirect before enter:  - windowLocation 1`] = `"/second"`;
+
+exports[`restore history from history fallback with redirect before enter:  - windowLocation 2`] = `"/third"`;
+
 exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - history_entries 1`] = `
 Array [
   Object {
@@ -977,3 +981,5 @@ Object {
 `;
 
 exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - title 1`] = `"REDIRECTED"`;
+
+exports[`restore history from history fallback with redirect before enter: {"type":"FIRST"} - windowLocation 1`] = `"/redirected"`;
