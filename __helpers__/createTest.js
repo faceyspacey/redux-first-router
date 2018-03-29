@@ -17,7 +17,12 @@ export default async (...allArgs) => {
     options = {}
   }
 
-  Object.assign(options, JSON.parse(process.env.RUDY_OPTIONS)) // do things like force all tests to log -- see ../.testsConfig.json
+
+  options = Object.assign({}, JSON.parse(process.env.RUDY_OPTIONS), options) // do things like force all tests to log -- see ../.testsConfig.json
+
+  options.wallabyErrors = options.wallabyErrors !== undefined
+    ? options.wallabyErrors
+    : process.env.WALLABY === 'true'
 
   if (options.skip) return
 

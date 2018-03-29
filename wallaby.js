@@ -3,6 +3,7 @@ const config = require('./.testsConfig.json')
 module.exports = wallaby => {
   process.env.NODE_ENV = 'test'
   process.env.RUDY_OPTIONS = JSON.stringify(config)
+  process.env.WALLABY = true
 
   return {
     files: [

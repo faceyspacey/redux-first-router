@@ -34,7 +34,8 @@ module.exports = {
     expect: true,
     beforeEach: true,
     beforeAll: true,
-    jestUtils: true
+    jestUtils: true,
+    log: true
   },
   // 'import/resolver': {
   //   node: {

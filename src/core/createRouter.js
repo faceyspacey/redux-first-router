@@ -7,7 +7,8 @@ import {
   createSelector,
   formatRoutes,
   shouldTransition,
-  parseSearch
+  parseSearch,
+  onError as defaultOnError
 } from '../utils'
 
 import {
@@ -19,8 +20,6 @@ import {
   enter,
   changePageTitle
 } from '../middleware'
-
-import { onError as defaultOnError } from '../middleware/call/utils'
 
 export default (
   routesInput: RoutesMapInput = {},
@@ -92,6 +91,7 @@ export default (
 
       return next(req) // start middleware pipeline
         .catch(error => {
+          if (options.wallabyErrors) throw error // wallaby UI is linkable if we don't re-throw errors (we'll see errors for the few tests of errors outside of wallaby)
           req.error = error
           req.errorType = `${req.action.type}_ERROR`
           return onError(req)

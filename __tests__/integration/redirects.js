@@ -13,10 +13,10 @@ createTest('redirect before enter', {
 createTest('redirect after enter', {
   SECOND: {
     path: '/second',
-    thunk: jest.fn(({ dispatch }) => {
+    thunk: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED' })
-    }),
-    onComplete: jest.fn()
+    },
+    onComplete: function() {}
   }
 })
 

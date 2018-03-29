@@ -73,9 +73,8 @@ export class Request {
 
   dispatch = (action) => {
     const dispatch = this.realDispatch
-    const type = action && action.type
+    const type = action && action.type // actions as payloads (which can be `null`) allowed
     const route = this.routes[type]
-    const isRouteAction = route && route.path
     const linkPipelines = route || typeof action === 'function'
 
     if (linkPipelines) {
@@ -88,7 +87,9 @@ export class Request {
       }
     }
 
-    if (this.ctx.busy && isRouteAction) { // convert actions to redirects only if "busy" in a route changing pipeline
+    if (this.ctx.busy && route && route.path && // convert actions to redirects only if "busy" in a route changing pipeline
+      !(action.location && action.location.kind === 'set') // history `set` actions should not be transformed to redirects
+    ) {
       const status = action.location && action.location.status
       action = redirect(action, status || 302)
     }
@@ -110,7 +111,14 @@ export class Request {
 
     return Promise.resolve(dispatch(action))    // dispatch transformed action
       .then(res => {
-        if (oldUrl !== this.getLocation().url || this.ctx.serverRedirect || (action.type === CALL_HISTORY && action.payload.method.indexOf('set') !== 0)) {
+        const urlChanged = oldUrl !== this.getLocation().url
+
+        if (this.ctx.serverRedirect || // short-circuit when a server redirected is detected
+          (
+            (urlChanged || action.type === CALL_HISTORY) && // short-circuit if the URL changed || or history action creators used
+            !(res && res.location && res.location.kind === 'set') // but `set` should not short-circuit ever (note: they are only allowed after enter; otherwise an informative error is thrown)
+          )
+        ) {
           this.redirect = res                   // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
         }
 

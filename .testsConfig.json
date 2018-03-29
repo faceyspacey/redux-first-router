@@ -2,6 +2,7 @@
   "log": true,
   "availableOptions": {
     "log": true,
-    "snipesOnly": true
+    "snipesOnly": true,
+    "wallabyErrors": true
   }
 }

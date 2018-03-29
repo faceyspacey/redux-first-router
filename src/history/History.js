@@ -116,6 +116,11 @@ export default class History {
     const isPop = !!revertPop // passed by BrowserHistory's `handlePop`
     const index = this.index + delta
     const entries = this.entries.slice(0)
+
+    if (!this.entries[index]) {
+      throw new Error(`[rudy] jump() - no entry at index: ${index}.`)
+    }
+
     const action = entries[index] = this._transformEntry(this.entries[index], act)
     const info = { kind, index, entries, n }
 
@@ -125,10 +130,6 @@ export default class History {
     const currUrl = this.url
     const oldUrl = this.entries[index].location.url
     const commit = (action) => this._jump(action, currUrl, oldUrl, delta, isPop)
-
-    if (!this.entries[index]) {
-      throw new Error(`[rudy] no entry at index: ${index}.`)
-    }
 
     return this._notify(action, info, commit, notify, { prev, revertPop })
   }
@@ -148,16 +149,17 @@ export default class History {
     const { index } = this
     const i = this.index + delta
     const entries = this.entries.slice(0)
+
+    if (!this.entries[i]) {
+      throw new Error(`[rudy] set() - no entry at index: ${i}`)
+    }
+
     const entry = entries[i] = this._transformEntry(this.entries[i], act)
     const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
     const info = { kind, index, entries }
 
     const oldUrl = delta === 0 ? this.url : this.entries[i].location.url // this must be the current URL for the target so that `BrowserHistory` url awaiting works, as the target's URL may change in `this._transformEntry`
     const commit = (action) => this._set(action, oldUrl, delta)
-
-    if (!this.entries[i]) {
-      throw new Error(`[rudy] no entry at index: ${i}`)
-    }
 
     if (i === this.location.prev.location.index) {
       action.prev = { ...entry, location: { ...entry.location, index: i } } // edge case: insure `state.prev` matches changed entry IF CHANGED ENTRY HAPPENS TO ALSO BE THE PREV

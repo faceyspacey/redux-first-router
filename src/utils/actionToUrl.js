@@ -137,16 +137,17 @@ const formatState = (state: ?Object = {}, route: Route, opts: Options) => {
 } // state has no string counter part in the address bar, so there is no `toState`
 
 const notFoundUrl = (action, routes, opts: Options, query, hash, prevRoute: Object = {}) => {
-  const route = routes[action.type] || {}
-  const hasScene = action.type.indexOf('/NOT_FOUND') > -1
+  const type = action.type || ''
+  const route = routes[type] || {}
+  const hasScene = type.indexOf('/NOT_FOUND') > -1
   const scene = route.scene || prevRoute.scene || ''
-  const type = hasScene
-    ? action.type
+  const t = hasScene
+    ? type
     : routes[`${scene}/NOT_FOUND`] // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
       ? `${scene}/NOT_FOUND`
       : 'NOT_FOUND'
 
-  const p = routes[type].path || routes.NOT_FOUND.path
+  const p = routes[t].path || routes.NOT_FOUND.path
   const s = query ? opts.stringifyQuery(query, { addQueryPrefix: true }) : '' // preserve these (why? because we can)
   const h = hash ? `#${hash}` : ''
 
