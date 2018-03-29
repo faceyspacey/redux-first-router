@@ -21,7 +21,7 @@ createTest('push after enter', {
   }
 }, { testBrowser: true })
 
-createTest('push before enter (on firstRoute)', {
+createTest('push before enter on load', {
   FIRST: {
     path: '/',
     beforeEnter: () => push('/redirected'),
@@ -29,10 +29,17 @@ createTest('push before enter (on firstRoute)', {
   }
 }, { testBrowser: true })
 
-createTest('push after enter (on firstRoute)', {
+createTest('push after enter on load', {
   FIRST: {
     path: '/',
     thunk: () => push('/redirected'),
     onComplete: function() {}
   }
 }, { testBrowser: true })
+
+createTest('push in pathlessRoute', {
+  FIRST: '/',
+  PATHLESS: {
+    thunk: () => push('/redirected')
+  }
+}, { testBrowser: true }, [{ type: 'PATHLESS' }])

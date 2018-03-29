@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`replace after enter (on firstRoute): 1 - routes - FIRST - onComplete 1`] = `0`;
+exports[`replace after enter on load: 1 - routes - FIRST - onComplete 1`] = `0`;
 
-exports[`replace after enter (on firstRoute): 1 - routes - FIRST - thunk 1`] = `1`;
+exports[`replace after enter on load: 1 - routes - FIRST - thunk 1`] = `1`;
 
-exports[`replace after enter (on firstRoute): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`replace after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`replace after enter (on firstRoute): 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+exports[`replace after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - history_entries 1`] = `
+exports[`replace after enter on load: firstRoute - /first - 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -28,9 +28,9 @@ Array [
 ]
 `;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - history_index 1`] = `0`;
+exports[`replace after enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - initial_state 1`] = `
+exports[`replace after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -92,14 +92,14 @@ Object {
 }
 `;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - response 1`] = `
+exports[`replace after enter on load: firstRoute - /first - 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
   "type": "REDIRECTED_COMPLETE",
 }
 `;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - sessionStorage 1`] = `
+exports[`replace after enter on load: firstRoute - /first - 1 - sessionStorage 1`] = `
 Object {
   "entries": Array [
     Array [
@@ -112,7 +112,7 @@ Object {
 }
 `;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - state 1`] = `
+exports[`replace after enter on load: firstRoute - /first - 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -190,9 +190,9 @@ Object {
 }
 `;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - title 1`] = `"REDIRECTED"`;
+exports[`replace after enter on load: firstRoute - /first - 1 - title 1`] = `"REDIRECTED"`;
 
-exports[`replace after enter (on firstRoute): firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
+exports[`replace after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
 exports[`replace after enter: 1 - history_entries 1`] = `
 Array [
@@ -584,15 +584,15 @@ exports[`replace after enter: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`replace after enter: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
-exports[`replace before enter (on firstRoute): 1 - routes - FIRST - beforeEnter 1`] = `1`;
+exports[`replace before enter on load: 1 - routes - FIRST - beforeEnter 1`] = `1`;
 
-exports[`replace before enter (on firstRoute): 1 - routes - FIRST - thunk 1`] = `0`;
+exports[`replace before enter on load: 1 - routes - FIRST - thunk 1`] = `0`;
 
-exports[`replace before enter (on firstRoute): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`replace before enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`replace before enter (on firstRoute): 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+exports[`replace before enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - history_entries 1`] = `
+exports[`replace before enter on load: firstRoute - /first - 1 - history_entries 1`] = `
 Array [
   Object {
     "basename": "",
@@ -612,9 +612,9 @@ Array [
 ]
 `;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - history_index 1`] = `0`;
+exports[`replace before enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - initial_state 1`] = `
+exports[`replace before enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -676,14 +676,14 @@ Object {
 }
 `;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - response 1`] = `
+exports[`replace before enter on load: firstRoute - /first - 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
   "type": "REDIRECTED_COMPLETE",
 }
 `;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - sessionStorage 1`] = `
+exports[`replace before enter on load: firstRoute - /first - 1 - sessionStorage 1`] = `
 Object {
   "entries": Array [
     Array [
@@ -696,7 +696,7 @@ Object {
 }
 `;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - state 1`] = `
+exports[`replace before enter on load: firstRoute - /first - 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -774,9 +774,9 @@ Object {
 }
 `;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - title 1`] = `"REDIRECTED"`;
+exports[`replace before enter on load: firstRoute - /first - 1 - title 1`] = `"REDIRECTED"`;
 
-exports[`replace before enter (on firstRoute): firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
+exports[`replace before enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
 exports[`replace before enter: 1 - history_entries 1`] = `
 Array [
@@ -1132,3 +1132,356 @@ Object {
 exports[`replace before enter: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`replace before enter: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
+
+exports[`replace in pathlessRoute: 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/redirected",
+      "scene": "",
+      "search": "",
+      "url": "/redirected",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "REDIRECTED",
+  },
+]
+`;
+
+exports[`replace in pathlessRoute: 1 - history_index 1`] = `0`;
+
+exports[`replace in pathlessRoute: 1 - response 1`] = `
+Object {
+  "payload": "redirect_complete",
+  "type": "REDIRECTED_COMPLETE",
+}
+`;
+
+exports[`replace in pathlessRoute: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`replace in pathlessRoute: 1 - routes - PATHLESS - thunk 1`] = `1`;
+
+exports[`replace in pathlessRoute: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`replace in pathlessRoute: 1 - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/redirected",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
+exports[`replace in pathlessRoute: 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "REDIRECTED",
+      },
+    ],
+    "from": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 0,
+        "key": "345678",
+        "pathname": "/",
+        "scene": "",
+        "search": "",
+        "url": "/",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "FIRST",
+    },
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "replace",
+    "length": 1,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/redirected",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "query": Object {},
+    "ready": true,
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 302,
+    "type": "REDIRECTED",
+    "universal": false,
+    "url": "/redirected",
+  },
+  "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
+}
+`;
+
+exports[`replace in pathlessRoute: 1 - title 1`] = `"REDIRECTED"`;
+
+exports[`replace in pathlessRoute: 1 - windowLocation 1`] = `"/redirected"`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - history_entries 1`] = `
+Array [
+  Object {
+    "basename": "",
+    "hash": "",
+    "location": Object {
+      "key": "345678",
+      "pathname": "/",
+      "scene": "",
+      "search": "",
+      "url": "/",
+    },
+    "params": Object {},
+    "query": Object {},
+    "state": Object {},
+    "type": "FIRST",
+  },
+]
+`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - history_index 1`] = `0`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "init",
+    "length": 1,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/",
+  },
+  "title": "@@redux/INIT",
+}
+`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "n": 1,
+    "pathname": "/",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "FIRST",
+}
+`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
+}
+`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 0,
+    "key": "345678",
+    "kind": "load",
+    "length": 1,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": -1,
+        "key": "",
+        "pathname": "",
+        "scene": "",
+        "search": "",
+        "url": "",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {},
+      "type": "",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/",
+  },
+  "title": "FIRST",
+}
+`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
+
+exports[`replace in pathlessRoute: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;

@@ -24,32 +24,12 @@ beforeEach(async () => {
 createTest('jump(-2) before enter', {
   FIRST: '/',
   SECOND: '/second',
-  THIRD: {
-    path: '/third',
-    beforeEnter: () => jump(-2)
-  }
-}, { testBrowser: true }, [])
-
-createTest('jump(-2) after enter', {
-  FIRST: '/',
-  SECOND: '/second',
-  THIRD: {
-    path: '/third',
-    thunk: () => jump(-2)
-  }
-}, { testBrowser: true }, [])
-
-createTest('jump(-2) before enter', {
-  FIRST: '/',
-  SECOND: '/second',
   THIRD: '/third',
   FOURTH: {
     path: '/fourth',
     beforeEnter: () => jump(-2)
   }
-}, { testBrowser: true }, [], async ({ snap }) => {
-  await snap({ type: 'FOURTH' })
-})
+}, { testBrowser: true }, [{ type: 'FOURTH' }])
 
 createTest('jump(-2) after enter', {
   FIRST: '/',
@@ -59,9 +39,25 @@ createTest('jump(-2) after enter', {
     path: '/fourth',
     thunk: () => jump(-2)
   }
-}, { testBrowser: true }, [], async ({ snap }) => {
-  await snap({ type: 'FOURTH' })
-})
+}, { testBrowser: true }, [{ type: 'FOURTH' }])
+
+createTest('jump(-2) before enter on load', {
+  FIRST: '/',
+  SECOND: '/second',
+  THIRD: {
+    path: '/third',
+    beforeEnter: () => jump(-2)
+  }
+}, { testBrowser: true }, [])
+
+createTest('jump(-2) after enter on load', {
+  FIRST: '/',
+  SECOND: '/second',
+  THIRD: {
+    path: '/third',
+    thunk: () => jump(-2)
+  }
+}, { testBrowser: true }, [])
 
 createTest('jump(-2) in pathlessRoute', {
   FIRST: '/',
@@ -70,6 +66,15 @@ createTest('jump(-2) in pathlessRoute', {
   PATHLESS: {
     thunk: () => jump(-2)
   }
-}, { testBrowser: true }, [], async ({ snap }) => {
-  await snap({ type: 'PATHLESS' })
-})
+}, { testBrowser: true }, [{ type: 'PATHLESS' }])
+
+createTest('jump(-2, action) after enter on load', {
+  FIRST: {
+    path: '/'
+  },
+  SECOND: '/second',
+  THIRD: {
+    path: '/third',
+    thunk: () => jump(-2, { query: { hell: 'yea' } })
+  }
+}, { testBrowser: true }, [])

@@ -1,46 +1,45 @@
 import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
-import { replace } from '../../../../src/actions'
+import { push } from '../../../../src/actions'
 
 beforeEach(resetBrowser)
 
-createTest('replace before enter', {
+createTest('dispatch before enter', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    beforeEnter: () => replace('/redirected'),
+    beforeEnter: () => ({ type: 'REDIRECTED' }),
     thunk: function() {}
   }
 }, { testBrowser: true })
 
-createTest('replace after enter', {
+createTest('dispatch after enter', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    thunk: () => replace('/redirected'),
+    thunk: () => ({ type: 'REDIRECTED' }),
     onComplete: function() {}
   }
 }, { testBrowser: true })
 
-createTest('replace before enter on load', {
+createTest('dispatch before enter on load', {
   FIRST: {
     path: '/',
-    beforeEnter: () => replace('/redirected'),
+    beforeEnter: () => ({ type: 'REDIRECTED' }),
     thunk: function() {}
   }
 }, { testBrowser: true })
 
-
-createTest('replace after enter on load', {
+createTest('dispatch after enter on load', {
   FIRST: {
     path: '/',
-    thunk: () => replace('/redirected'),
+    thunk: () => ({ type: 'REDIRECTED' }),
     onComplete: function() {}
   }
 }, { testBrowser: true })
 
-createTest('replace in pathlessRoute', {
+createTest('dispatch in pathlessRoute', {
   FIRST: '/',
   PATHLESS: {
-    thunk: () => replace('/redirected')
+    thunk: () => ({ type: 'REDIRECTED' })
   }
 }, { testBrowser: true }, [{ type: 'PATHLESS' }])

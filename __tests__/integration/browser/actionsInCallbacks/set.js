@@ -27,7 +27,7 @@ createTest('set after enter', {
   }
 }, { testBrowser: true })
 
-createTest('set before enter (on firstRoute) throws error', {
+createTest('set before enter on load throws error', {
   FIRST: {
     path: '/',
     beforeEnter: () => set({ query: { hell: 'yea' } }),
@@ -38,7 +38,7 @@ createTest('set before enter (on firstRoute) throws error', {
   wallabyErrors: false
 })
 
-createTest('set after enter (on firstRoute)', {
+createTest('set after enter on load', {
   FIRST: {
     path: '/',
     thunk: ({ query }) => {
@@ -48,3 +48,10 @@ createTest('set after enter (on firstRoute)', {
     onComplete: function() {}
   }
 }, { testBrowser: true })
+
+createTest('set in pathlessRoute', {
+  FIRST: '/',
+  PATHLESS: {
+    thunk: () => set({ query: { hell: 'yea' } })
+  }
+}, { testBrowser: true }, [{ type: 'PATHLESS' }])
