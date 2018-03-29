@@ -1,79 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`set(action, n):  - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`set(action, n):  - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`set(action, n):  - history_index 1`] = `1`;
-
-exports[`set(action, n):  - history_index 2`] = `0`;
-
 exports[`set(action, n):  - response 1`] = `
 Object {
   "basename": "",
@@ -430,43 +356,6 @@ exports[`set(action, n):  - windowLocation 1`] = `"/second"`;
 
 exports[`set(action, n):  - windowLocation 2`] = `"/"`;
 
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - history_index 1`] = `0`;
-
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - response 1`] = `
 Object {
   "basename": "",
@@ -644,43 +533,6 @@ Object {
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - title 1`] = `"FIRST"`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[-1,null,null,null]}} - windowLocation 1`] = `"/"`;
-
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - history_index 1`] = `1`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"jump","args":[1,null,null,null]}} - response 1`] = `
 Object {

@@ -1,44 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`createScene(routes, { scene, basename }) actions.notFound(state): 13 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "base-name",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found-foo",
-      "scene": "SCENE",
-      "search": "",
-      "url": "/base-name/not-found-foo",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-    },
-    "type": "SCENE/NOT_FOUND",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.notFound(state): 13 - history_index 1`] = `1`;
-
 exports[`createScene(routes, { scene, basename }) actions.notFound(state): 13 - response 1`] = `
 Object {
   "basename": "base-name",
@@ -213,28 +174,6 @@ Object {
 
 exports[`createScene(routes, { scene, basename }) actions.notFound(state): 13 - title 1`] = `"SCENE/NOT_FOUND"`;
 
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - history_index 1`] = `0`;
-
 exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - response 1`] = `
 Object {
   "basename": "/base-name",
@@ -319,43 +258,6 @@ Object {
 `;
 
 exports[`createScene(routes, { scene, basename }) actions.notFound.complete(payload): 14 - title 1`] = `"FIRST"`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "base-name",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "SCENE",
-      "search": "",
-      "url": "/base-name/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SCENE/SECOND",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(): 1 - history_index 1`] = `1`;
 
 exports[`createScene(routes, { scene, basename }) actions.second(): 1 - response 1`] = `
 Object {
@@ -523,28 +425,6 @@ Object {
 
 exports[`createScene(routes, { scene, basename }) actions.second(): 1 - title 1`] = `"SCENE/SECOND"`;
 
-exports[`createScene(routes, { scene, basename }) actions.second(action with wrong type): 5 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(action with wrong type): 5 - history_index 1`] = `0`;
-
 exports[`createScene(routes, { scene, basename }) actions.second(action with wrong type): 5 - response 1`] = `
 Object {
   "basename": "/base-name",
@@ -627,45 +507,6 @@ Object {
 `;
 
 exports[`createScene(routes, { scene, basename }) actions.second(action with wrong type): 5 - title 1`] = `"FIRST"`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "base-name",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/bar",
-      "scene": "SCENE",
-      "search": "",
-      "url": "/base-name/second/bar",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SCENE/SECOND",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - history_index 1`] = `1`;
 
 exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - response 1`] = `
 Object {
@@ -841,45 +682,6 @@ Object {
 
 exports[`createScene(routes, { scene, basename }) actions.second(params): 3 - title 1`] = `"SCENE/SECOND"`;
 
-exports[`createScene(routes, { scene, basename }) actions.second(partialAction): 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "base-name",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/bar",
-      "scene": "SCENE",
-      "search": "",
-      "url": "/base-name/second/bar",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SCENE/SECOND",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(partialAction): 2 - history_index 1`] = `1`;
-
 exports[`createScene(routes, { scene, basename }) actions.second(partialAction): 2 - response 1`] = `
 Object {
   "basename": "base-name",
@@ -1053,45 +855,6 @@ Object {
 `;
 
 exports[`createScene(routes, { scene, basename }) actions.second(partialAction): 2 - title 1`] = `"SCENE/SECOND"`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "base-name",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/FIRST",
-      "scene": "SCENE",
-      "search": "",
-      "url": "/base-name/second/FIRST",
-    },
-    "params": Object {
-      "foo": "FIRST",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SCENE/SECOND",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - history_index 1`] = `1`;
 
 exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - response 1`] = `
 Object {
@@ -1267,28 +1030,6 @@ Object {
 
 exports[`createScene(routes, { scene, basename }) actions.second(thunk): 4 - title 1`] = `"SCENE/SECOND"`;
 
-exports[`createScene(routes, { scene, basename }) actions.second.complete(thunk): 11 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.second.complete(thunk): 11 - history_index 1`] = `0`;
-
 exports[`createScene(routes, { scene, basename }) actions.second.complete(thunk): 11 - response 1`] = `
 Object {
   "basename": "/base-name",
@@ -1375,28 +1116,6 @@ Object {
 `;
 
 exports[`createScene(routes, { scene, basename }) actions.second.complete(thunk): 11 - title 1`] = `"FIRST"`;
-
-exports[`createScene(routes, { scene, basename }) actions.third.complete(payload): 10 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.third.complete(payload): 10 - history_index 1`] = `0`;
 
 exports[`createScene(routes, { scene, basename }) actions.third.complete(payload): 10 - response 1`] = `
 Object {
@@ -1485,28 +1204,6 @@ Object {
 
 exports[`createScene(routes, { scene, basename }) actions.third.complete(payload): 10 - title 1`] = `"FIRST"`;
 
-exports[`createScene(routes, { scene, basename }) actions.third.error(new Error): 8 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) actions.third.error(new Error): 8 - history_index 1`] = `0`;
-
 exports[`createScene(routes, { scene, basename }) actions.third.error(new Error): 8 - response 1`] = `
 Object {
   "basename": "/base-name",
@@ -1593,28 +1290,6 @@ Object {
 
 exports[`createScene(routes, { scene, basename }) actions.third.error(new Error): 8 - title 1`] = `"FIRST"`;
 
-exports[`createScene(routes, { scene, basename }) route with just action creator: 12 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) route with just action creator: 12 - history_index 1`] = `0`;
-
 exports[`createScene(routes, { scene, basename }) route with just action creator: 12 - response 1`] = `
 Object {
   "basename": "/base-name",
@@ -1700,45 +1375,6 @@ Object {
 `;
 
 exports[`createScene(routes, { scene, basename }) route with just action creator: 12 - title 1`] = `"SCENE/PLAIN - {\\"foo\\":\\"bar\\"}"`;
-
-exports[`createScene(routes, { scene, basename }) route.action - custom action creator: 6 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "base-name",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/baz",
-      "scene": "SCENE",
-      "search": "",
-      "url": "/base-name/third/baz",
-    },
-    "params": Object {
-      "foo": "baz",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SCENE/THIRD",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) route.action - custom action creator: 6 - history_index 1`] = `1`;
 
 exports[`createScene(routes, { scene, basename }) route.action - custom action creator: 6 - response 1`] = `
 Object {
@@ -1914,45 +1550,6 @@ Object {
 
 exports[`createScene(routes, { scene, basename }) route.action - custom action creator: 6 - title 1`] = `"SCENE/THIRD"`;
 
-exports[`createScene(routes, { scene, basename }) route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "base-name",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth/baz",
-      "scene": "SCENE",
-      "search": "",
-      "url": "/base-name/fourth/baz",
-    },
-    "params": Object {
-      "foo": "baz",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SCENE/FOURTH",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - history_index 1`] = `1`;
-
 exports[`createScene(routes, { scene, basename }) route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - response 1`] = `
 Object {
   "basename": "base-name",
@@ -2126,28 +1723,6 @@ Object {
 `;
 
 exports[`createScene(routes, { scene, basename }) route.action: [] - custom action creators (array) - actions.fourth.customCreator(): 7 - title 1`] = `"SCENE/FOURTH"`;
-
-exports[`createScene(routes, { scene, basename }) route.error - custom error action creator: 9 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`createScene(routes, { scene, basename }) route.error - custom error action creator: 9 - history_index 1`] = `0`;
 
 exports[`createScene(routes, { scene, basename }) route.error - custom error action creator: 9 - response 1`] = `
 Object {

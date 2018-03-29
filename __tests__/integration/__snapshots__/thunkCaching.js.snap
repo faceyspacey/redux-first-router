@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cache.clear(): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(): {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`cache.clear(): {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -196,80 +159,6 @@ Object {
 `;
 
 exports[`cache.clear(): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`cache.clear(): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`cache.clear(): {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`cache.clear(): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -591,43 +480,6 @@ exports[`cache.clear(): {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`cache.clear(): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`cache.clear(action): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(action): {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`cache.clear(action): {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -787,80 +639,6 @@ Object {
 `;
 
 exports[`cache.clear(action): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`cache.clear(action): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(action): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(action): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`cache.clear(action): {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`cache.clear(action): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -1182,43 +960,6 @@ exports[`cache.clear(action): {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`cache.clear(action): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -1378,80 +1119,6 @@ Object {
 `;
 
 exports[`cache.clear(action, { name: "thunk" }): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -1773,80 +1440,6 @@ exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - title 1`] =
 
 exports[`cache.clear(action, { name: "thunk" }): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`cache.clear(func): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(func): {"type":"FIRST"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(func): {"type":"FIRST"} - history_index 1`] = `0`;
-
-exports[`cache.clear(func): {"type":"FIRST"} - history_index 2`] = `0`;
-
 exports[`cache.clear(func): {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -2166,117 +1759,6 @@ Object {
 exports[`cache.clear(func): {"type":"FIRST"} - title 1`] = `"FIRST"`;
 
 exports[`cache.clear(func): {"type":"FIRST"} - title 2`] = `"FIRST"`;
-
-exports[`cache.clear(func): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(func): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(func): {"type":"SECOND"} - history_entries 3`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(func): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`cache.clear(func): {"type":"SECOND"} - history_index 2`] = `1`;
-
-exports[`cache.clear(func): {"type":"SECOND"} - history_index 3`] = `1`;
 
 exports[`cache.clear(func): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -2758,43 +2240,6 @@ exports[`cache.clear(func): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
 exports[`cache.clear(func): {"type":"SECOND"} - title 3`] = `"SECOND"`;
 
-exports[`cache.clear(string): {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(string): {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`cache.clear(string): {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -2954,80 +2399,6 @@ Object {
 `;
 
 exports[`cache.clear(string): {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`cache.clear(string): {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(string): {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cache.clear(string): {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`cache.clear(string): {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`cache.clear(string): {"type":"SECOND"} - response 1`] = `
 Object {
@@ -3349,43 +2720,6 @@ exports[`cache.clear(string): {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`cache.clear(string): {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`cached thunk only called once: {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cached thunk only called once: {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`cached thunk only called once: {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -3545,80 +2879,6 @@ Object {
 `;
 
 exports[`cached thunk only called once: {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`cached thunk only called once: {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cached thunk only called once: {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`cached thunk only called once: {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`cached thunk only called once: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`cached thunk only called once: {"type":"SECOND"} - response 1`] = `
 Object {
@@ -3940,43 +3200,6 @@ exports[`cached thunk only called once: {"type":"SECOND"} - title 1`] = `"SECOND
 
 exports[`cached thunk only called once: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -4136,80 +3359,6 @@ Object {
 `;
 
 exports[`clearCache(invalidator) - action creator: {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - response 1`] = `
 Object {
@@ -4531,43 +3680,6 @@ exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - title 1`]
 
 exports[`clearCache(invalidator) - action creator: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`options.cache === false: {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.cache === false: {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`options.cache === false: {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -4727,80 +3839,6 @@ Object {
 `;
 
 exports[`options.cache === false: {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`options.cache === false: {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.cache === false: {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.cache === false: {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`options.cache === false: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`options.cache === false: {"type":"SECOND"} - response 1`] = `
 Object {
@@ -5122,43 +4160,6 @@ exports[`options.cache === false: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`options.cache === false: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`options.createCacheKey: {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.createCacheKey: {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`options.createCacheKey: {"type":"FIRST"} - options - createCacheKey 1`] = `4`;
 
 exports[`options.createCacheKey: {"type":"FIRST"} - response 1`] = `
@@ -5320,80 +4321,6 @@ Object {
 `;
 
 exports[`options.createCacheKey: {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`options.createCacheKey: {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.createCacheKey: {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.createCacheKey: {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`options.createCacheKey: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`options.createCacheKey: {"type":"SECOND"} - options - createCacheKey 1`] = `3`;
 
@@ -5719,43 +4646,6 @@ exports[`options.createCacheKey: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`options.createCacheKey: {"type":"SECOND"} - title 2`] = `"SECOND"`;
 
-exports[`route.cache === false: {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.cache === false: {"type":"FIRST"} - history_index 1`] = `0`;
-
 exports[`route.cache === false: {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -5915,80 +4805,6 @@ Object {
 `;
 
 exports[`route.cache === false: {"type":"FIRST"} - title 1`] = `"FIRST"`;
-
-exports[`route.cache === false: {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.cache === false: {"type":"SECOND"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.cache === false: {"type":"SECOND"} - history_index 1`] = `1`;
-
-exports[`route.cache === false: {"type":"SECOND"} - history_index 2`] = `1`;
 
 exports[`route.cache === false: {"type":"SECOND"} - response 1`] = `
 Object {

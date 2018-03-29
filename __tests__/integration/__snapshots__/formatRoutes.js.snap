@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`custom NOT_FOUND route: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/missed",
-      "scene": "",
-      "search": "",
-      "url": "/missed",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-available",
-      "scene": "",
-      "search": "",
-      "url": "/not-available",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`custom NOT_FOUND route: 1 - history_index 1`] = `1`;
-
 exports[`custom NOT_FOUND route: 1 - response 1`] = `
 Object {
   "payload": "thunk done",
@@ -129,28 +92,6 @@ Object {
 `;
 
 exports[`custom NOT_FOUND route: 1 - title 1`] = `"NOT_FOUND"`;
-
-exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/missed",
-      "scene": "",
-      "search": "",
-      "url": "/missed",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - history_index 1`] = `0`;
 
 exports[`custom NOT_FOUND route: firstRoute - /missed - 1 - initial_state 1`] = `
 Object {
@@ -291,28 +232,6 @@ exports[`options.formatRoute: 1 - options - formatRoute 1`] = `9`;
 exports[`options.formatRoute: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`options.formatRoute: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`options.formatRoute: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`options.formatRoute: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`options.formatRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -500,43 +419,6 @@ Object {
 
 exports[`options.formatRoute: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
-exports[`route as thunk function (pathless route): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`route as thunk function (pathless route): 1 - history_index 1`] = `1`;
-
 exports[`route as thunk function (pathless route): 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -631,28 +513,6 @@ exports[`route as thunk function (pathless route): 1 - title 1`] = `"REDIRECTED"
 exports[`routes as path string: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`routes as path string: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`routes as path string: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`routes as path string: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`routes as path string: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`anonymous thunks can be dispatched "SECOND": 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`anonymous thunks can be dispatched "SECOND": 1 - history_index 1`] = `1`;
-
 exports[`anonymous thunks can be dispatched "SECOND": 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -229,43 +192,6 @@ Object {
   "title": "REDIRECTED_COMPLETE - \\"redirect_complete\\"",
 }
 `;
-
-exports[`anonymous thunks can return actions for automatic dispatch "SECOND": 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`anonymous thunks can return actions for automatic dispatch "SECOND": 1 - history_index 1`] = `1`;
 
 exports[`anonymous thunks can return actions for automatic dispatch "SECOND": 1 - response 1`] = `
 Object {

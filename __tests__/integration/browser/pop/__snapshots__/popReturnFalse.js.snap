@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pop from route that wont let you leave:  - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`pop from route that wont let you leave:  - history_index 1`] = `1`;
-
 exports[`pop from route that wont let you leave:  - response 1`] = `false`;
 
 exports[`pop from route that wont let you leave:  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;

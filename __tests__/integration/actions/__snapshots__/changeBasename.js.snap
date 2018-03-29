@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`automatically inherit existing basename: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/bar/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/bar/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`automatically inherit existing basename: 1 - history_index 1`] = `1`;
-
 exports[`automatically inherit existing basename: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -127,28 +90,6 @@ Object {
 `;
 
 exports[`automatically inherit existing basename: 1 - title 1`] = `"REDIRECTED"`;
-
-exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/bar/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - history_index 1`] = `0`;
 
 exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - initial_state 1`] = `
 Object {
@@ -336,43 +277,6 @@ Object {
 
 exports[`automatically inherit existing basename: firstRoute - /bar/first - 1 - title 1`] = `"FIRST"`;
 
-exports[`basenames without leading slashes are treated the same: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/bar/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`basenames without leading slashes are treated the same: 1 - history_index 1`] = `1`;
-
 exports[`basenames without leading slashes are treated the same: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -463,28 +367,6 @@ Object {
 `;
 
 exports[`basenames without leading slashes are treated the same: 1 - title 1`] = `"REDIRECTED"`;
-
-exports[`basenames without leading slashes are treated the same: firstRoute - /foo/first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`basenames without leading slashes are treated the same: firstRoute - /foo/first - 1 - history_index 1`] = `0`;
 
 exports[`basenames without leading slashes are treated the same: firstRoute - /foo/first - 1 - initial_state 1`] = `
 Object {
@@ -672,43 +554,6 @@ Object {
 
 exports[`basenames without leading slashes are treated the same: firstRoute - /foo/first - 1 - title 1`] = `"FIRST"`;
 
-exports[`dispatch(changeBasename(name)) with existing basename: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/bar/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`dispatch(changeBasename(name)) with existing basename: 1 - history_index 1`] = `1`;
-
 exports[`dispatch(changeBasename(name)) with existing basename: 1 - response 1`] = `
 Object {
   "basename": "bar",
@@ -866,28 +711,6 @@ Object {
 `;
 
 exports[`dispatch(changeBasename(name)) with existing basename: 1 - title 1`] = `"FIRST"`;
-
-exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /foo/first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /foo/first - 1 - history_index 1`] = `0`;
 
 exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /foo/first - 1 - initial_state 1`] = `
 Object {
@@ -1075,43 +898,6 @@ Object {
 
 exports[`dispatch(changeBasename(name)) with existing basename: firstRoute - /foo/first - 1 - title 1`] = `"FIRST"`;
 
-exports[`dispatch(changeBasename(name)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`dispatch(changeBasename(name)): 1 - history_index 1`] = `1`;
-
 exports[`dispatch(changeBasename(name)): 1 - response 1`] = `
 Object {
   "basename": "foo",
@@ -1270,43 +1056,6 @@ Object {
 
 exports[`dispatch(changeBasename(name)): 1 - title 1`] = `"FIRST"`;
 
-exports[`dispatch(changeBasename(name, action)) with existing basename: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/bar/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`dispatch(changeBasename(name, action)) with existing basename: 1 - history_index 1`] = `1`;
-
 exports[`dispatch(changeBasename(name, action)) with existing basename: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -1397,28 +1146,6 @@ Object {
 `;
 
 exports[`dispatch(changeBasename(name, action)) with existing basename: 1 - title 1`] = `"REDIRECTED"`;
-
-exports[`dispatch(changeBasename(name, action)) with existing basename: firstRoute - /foo/first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`dispatch(changeBasename(name, action)) with existing basename: firstRoute - /foo/first - 1 - history_index 1`] = `0`;
 
 exports[`dispatch(changeBasename(name, action)) with existing basename: firstRoute - /foo/first - 1 - initial_state 1`] = `
 Object {
@@ -1606,43 +1333,6 @@ Object {
 
 exports[`dispatch(changeBasename(name, action)) with existing basename: firstRoute - /foo/first - 1 - title 1`] = `"FIRST"`;
 
-exports[`dispatch(changeBasename(name, action)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/foo/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`dispatch(changeBasename(name, action)): 1 - history_index 1`] = `1`;
-
 exports[`dispatch(changeBasename(name, action)): 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -1733,43 +1423,6 @@ Object {
 `;
 
 exports[`dispatch(changeBasename(name, action)): 1 - title 1`] = `"REDIRECTED"`;
-
-exports[`incorrect basename dispatches NOT_FOUND: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/foo/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`incorrect basename dispatches NOT_FOUND: 1 - history_index 1`] = `1`;
 
 exports[`incorrect basename dispatches NOT_FOUND: 1 - response 1`] = `
 Object {
@@ -1928,28 +1581,6 @@ Object {
 `;
 
 exports[`incorrect basename dispatches NOT_FOUND: 1 - title 1`] = `"NOT_FOUND"`;
-
-exports[`incorrect basename dispatches NOT_FOUND: firstRoute - /foo/first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "foo",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/foo/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`incorrect basename dispatches NOT_FOUND: firstRoute - /foo/first - 1 - history_index 1`] = `0`;
 
 exports[`incorrect basename dispatches NOT_FOUND: firstRoute - /foo/first - 1 - initial_state 1`] = `
 Object {
@@ -2137,43 +1768,6 @@ Object {
 
 exports[`incorrect basename dispatches NOT_FOUND: firstRoute - /foo/first - 1 - title 1`] = `"FIRST"`;
 
-exports[`support setting basename back to empty string: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/bar/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`support setting basename back to empty string: 1 - history_index 1`] = `1`;
-
 exports[`support setting basename back to empty string: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -2264,28 +1858,6 @@ Object {
 `;
 
 exports[`support setting basename back to empty string: 1 - title 1`] = `"REDIRECTED"`;
-
-exports[`support setting basename back to empty string: firstRoute - /bar/first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "bar",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/bar/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`support setting basename back to empty string: firstRoute - /bar/first - 1 - history_index 1`] = `0`;
 
 exports[`support setting basename back to empty string: firstRoute - /bar/first - 1 - initial_state 1`] = `
 Object {

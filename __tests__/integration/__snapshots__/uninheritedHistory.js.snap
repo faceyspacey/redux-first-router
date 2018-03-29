@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`History class can be used directly: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`History class can be used directly: 1 - history_index 1`] = `1`;
-
 exports[`History class can be used directly: 1 - options - createHistory 1`] = `1`;
 
 exports[`History class can be used directly: 1 - response 1`] = `
@@ -196,28 +159,6 @@ Object {
 `;
 
 exports[`History class can be used directly: 1 - title 1`] = `"SECOND"`;
-
-exports[`History class can be used directly: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`History class can be used directly: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`History class can be used directly: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

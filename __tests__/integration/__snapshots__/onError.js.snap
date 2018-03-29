@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`currentType_ERROR dispatched if no onError callback provided: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`currentType_ERROR dispatched if no onError callback provided: 1 - history_index 1`] = `1`;
-
 exports[`currentType_ERROR dispatched if no onError callback provided: 1 - response 1`] = `
 Object {
   "error": [Error: thunk-failed],
@@ -131,43 +94,6 @@ Object {
 
 exports[`currentType_ERROR dispatched if no onError callback provided: 1 - title 1`] = `"SECOND"`;
 
-exports[`default options.onError skipped if options.onError === null: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`default options.onError skipped if options.onError === null: 1 - history_index 1`] = `1`;
-
 exports[`default options.onError skipped if options.onError === null: 1 - response 1`] = `undefined`;
 
 exports[`default options.onError skipped if options.onError === null: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
@@ -256,43 +182,6 @@ Object {
 `;
 
 exports[`default options.onError skipped if options.onError === null: 1 - title 1`] = `"SECOND"`;
-
-exports[`route onError called if other callbacks throw: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route onError called if other callbacks throw: 1 - history_index 1`] = `1`;
 
 exports[`route onError called if other callbacks throw: 1 - response 1`] = `
 Object {
@@ -389,43 +278,6 @@ Object {
 `;
 
 exports[`route onError called if other callbacks throw: 1 - title 1`] = `"SECOND"`;
-
-exports[`route onError dispatches redirect: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`route onError dispatches redirect: 1 - history_index 1`] = `1`;
 
 exports[`route onError dispatches redirect: 1 - response 1`] = `
 Object {

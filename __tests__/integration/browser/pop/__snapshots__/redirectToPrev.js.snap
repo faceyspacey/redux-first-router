@@ -1,57 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pop redirect to prev URL:  - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`pop redirect to prev URL:  - history_index 1`] = `0`;
-
 exports[`pop redirect to prev URL:  - response 1`] = `
 Object {
   "basename": "",

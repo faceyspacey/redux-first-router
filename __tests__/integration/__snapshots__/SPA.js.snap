@@ -8,28 +8,6 @@ exports[`callbacks called on load if SPA: 1 - routes - NEVER_USED_PATHLESS - thu
 
 exports[`callbacks called on load if SPA: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
-exports[`callbacks called on load if SPA: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`callbacks called on load if SPA: firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`callbacks called on load if SPA: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {

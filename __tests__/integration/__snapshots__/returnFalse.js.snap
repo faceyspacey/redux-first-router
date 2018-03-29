@@ -229,28 +229,6 @@ Object {
 }
 `;
 
-exports[`beforeEnter return false: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`beforeEnter return false: 1 - history_index 1`] = `0`;
-
 exports[`beforeEnter return false: 1 - response 1`] = `false`;
 
 exports[`beforeEnter return false: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
@@ -824,28 +802,6 @@ Object {
 }
 `;
 
-exports[`beforeLeave return false: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`beforeLeave return false: 1 - history_index 1`] = `0`;
-
 exports[`beforeLeave return false: 1 - response 1`] = `false`;
 
 exports[`beforeLeave return false: 1 - routes - FIRST - beforeLeave 1`] = `1`;
@@ -934,28 +890,6 @@ Object {
 `;
 
 exports[`beforeLeave return false: 1 - title 1`] = `"FIRST"`;
-
-exports[`beforeLeave return false: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`beforeLeave return false: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`beforeLeave return false: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1143,43 +1077,6 @@ Object {
 
 exports[`beforeLeave return false: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
-exports[`beforeLeave return undefined: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`beforeLeave return undefined: 1 - history_index 1`] = `1`;
-
 exports[`beforeLeave return undefined: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -1341,28 +1238,6 @@ Object {
 `;
 
 exports[`beforeLeave return undefined: 1 - title 1`] = `"SECOND"`;
-
-exports[`beforeLeave return undefined: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`beforeLeave return undefined: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`beforeLeave return undefined: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1549,43 +1424,6 @@ Object {
 `;
 
 exports[`beforeLeave return undefined: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
-
-exports[`thunk return false: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`thunk return false: 1 - history_index 1`] = `1`;
 
 exports[`thunk return false: 1 - response 1`] = `false`;
 

@@ -6,58 +6,6 @@ exports[`jump(-2) after enter on load: 1 - routes - REDIRECTED - onComplete 1`] 
 
 exports[`jump(-2) after enter on load: 1 - routes - THIRD - thunk 1`] = `1`;
 
-exports[`jump(-2) after enter on load: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2) after enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`jump(-2) after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -389,73 +337,6 @@ exports[`jump(-2) after enter on load: firstRoute - /first - 1 - title 1`] = `"F
 
 exports[`jump(-2) after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
-exports[`jump(-2) after enter: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-]
-`;
-
-exports[`jump(-2) after enter: 1 - history_index 1`] = `1`;
-
 exports[`jump(-2) after enter: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -735,58 +616,6 @@ Object {
 exports[`jump(-2) after enter: 1 - title 1`] = `"SECOND"`;
 
 exports[`jump(-2) after enter: 1 - windowLocation 1`] = `"/second"`;
-
-exports[`jump(-2) after enter: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2) after enter: firstRoute - /first - 1 - history_index 1`] = `2`;
 
 exports[`jump(-2) after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1094,58 +923,6 @@ exports[`jump(-2) before enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk
 exports[`jump(-2) before enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`jump(-2) before enter on load: 1 - routes - THIRD - beforeEnter 1`] = `1`;
-
-exports[`jump(-2) before enter on load: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2) before enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`jump(-2) before enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1478,58 +1255,6 @@ exports[`jump(-2) before enter on load: firstRoute - /first - 1 - title 1`] = `"
 
 exports[`jump(-2) before enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
-exports[`jump(-2) before enter: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2) before enter: 1 - history_index 1`] = `0`;
-
 exports[`jump(-2) before enter: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -1774,58 +1499,6 @@ Object {
 exports[`jump(-2) before enter: 1 - title 1`] = `"FIRST"`;
 
 exports[`jump(-2) before enter: 1 - windowLocation 1`] = `"/"`;
-
-exports[`jump(-2) before enter: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2) before enter: firstRoute - /first - 1 - history_index 1`] = `2`;
 
 exports[`jump(-2) before enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -2128,58 +1801,6 @@ exports[`jump(-2) before enter: firstRoute - /first - 1 - title 1`] = `"THIRD"`;
 
 exports[`jump(-2) before enter: firstRoute - /first - 1 - windowLocation 1`] = `"/third"`;
 
-exports[`jump(-2) in pathlessRoute: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2) in pathlessRoute: 1 - history_index 1`] = `0`;
-
 exports[`jump(-2) in pathlessRoute: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -2394,58 +2015,6 @@ Object {
 exports[`jump(-2) in pathlessRoute: 1 - title 1`] = `"FIRST"`;
 
 exports[`jump(-2) in pathlessRoute: 1 - windowLocation 1`] = `"/"`;
-
-exports[`jump(-2) in pathlessRoute: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2) in pathlessRoute: firstRoute - /first - 1 - history_index 1`] = `2`;
 
 exports[`jump(-2) in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -2753,60 +2322,6 @@ exports[`jump(-2, action) after enter on load: 1 - routes - NEVER_USED_PATHLESS 
 exports[`jump(-2, action) after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`jump(-2, action) after enter on load: 1 - routes - THIRD - thunk 1`] = `1`;
-
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/?hell=yea",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

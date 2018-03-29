@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`action.state as function: {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "baz": "bla",
-      "foo": "BAR",
-    },
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`action.state as function: {"type":"SECOND"} - history_index 1`] = `1`;
-
 exports[`action.state as function: {"type":"SECOND"} - response 1`] = `
 Object {
   "basename": "",
@@ -209,46 +169,6 @@ Object {
 `;
 
 exports[`action.state as function: {"type":"SECOND"} - title 1`] = `"SECOND"`;
-
-exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-      "key": "correct",
-    },
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - history_index 1`] = `1`;
 
 exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - response 1`] = `
 Object {
@@ -422,45 +342,6 @@ Object {
 
 exports[`route.defaultState {"type":"SECOND","state":{"key":"correct"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`route.defaultState {"type":"SECOND"}: 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-    },
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.defaultState {"type":"SECOND"}: 2 - history_index 1`] = `1`;
-
 exports[`route.defaultState {"type":"SECOND"}: 2 - response 1`] = `
 Object {
   "basename": "",
@@ -629,46 +510,6 @@ Object {
 
 exports[`route.defaultState {"type":"SECOND"}: 2 - title 1`] = `"SECOND"`;
 
-exports[`route.defaultState snipes: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "abc": 123,
-      "foo": "bar",
-    },
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`route.defaultState snipes: 1 - history_index 1`] = `1`;
-
 exports[`route.defaultState snipes: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -834,45 +675,6 @@ Object {
 `;
 
 exports[`route.defaultState snipes: 1 - title 1`] = `"THIRD"`;
-
-exports[`state attached to history entry: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-    },
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`state attached to history entry: 1 - history_index 1`] = `1`;
 
 exports[`state attached to history entry: 1 - response 1`] = `
 Object {
@@ -1119,46 +921,6 @@ Object {
   "url": "/second",
 }
 `;
-
-exports[`state merged on back/next: {"type":"SECOND","state":{"baz":"bla"}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "baz": "bla",
-      "foo": "bar",
-    },
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`state merged on back/next: {"type":"SECOND","state":{"baz":"bla"}} - history_index 1`] = `1`;
 
 exports[`state merged on back/next: {"type":"SECOND","state":{"baz":"bla"}} - response 1`] = `
 Object {

@@ -185,12 +185,12 @@ export default class BrowserHistory extends History {
     const reverseDeltaToIndex = index - lastIndex
     const indexUrl = entries[index].location.url
 
-    return this._awaitUrl(oldUrl)
+    return this._awaitUrl(oldUrl, 'reset oldUrl')
       .then(() => this._forceGo(reverseN))
-      .then(() => this._awaitUrl(oldFirstUrl))
+      .then(() => this._awaitUrl(oldFirstUrl, 'reset oldFirstUrl'))
       .then(() => {
-        replaceState(entries[0].location.url)
-        entries.slice(1).forEach(e => pushState(e.location.url))
+        replaceState(entries[0].location.url) // we always insure resets have at least 2 entries, and the first can only operate via `replaceState`
+        entries.slice(1).forEach(e => pushState(e.location.url)) // we have to push at least one entry to erase the old entries in the real browser history
 
         if (reverseDeltaToIndex) {
           return this._forceGo(reverseDeltaToIndex)

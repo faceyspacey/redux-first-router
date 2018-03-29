@@ -8,30 +8,6 @@ exports[`set after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] =
 
 exports[`set after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`set after enter on load: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/?hell=yea",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`set after enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`set after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -241,45 +217,6 @@ exports[`set after enter on load: firstRoute - /first - 1 - title 1`] = `"FIRST"
 
 exports[`set after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/?hell=yea"`;
 
-exports[`set after enter: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`set after enter: 1 - history_index 1`] = `1`;
-
 exports[`set after enter: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -449,28 +386,6 @@ Object {
 exports[`set after enter: 1 - title 1`] = `"SECOND"`;
 
 exports[`set after enter: 1 - windowLocation 1`] = `"/second?hell=yea"`;
-
-exports[`set after enter: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`set after enter: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`set after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -681,28 +596,6 @@ exports[`set before enter on load throws error: 1 - routes - NEVER_USED_PATHLESS
 
 exports[`set before enter on load throws error: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`set before enter on load throws error: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`set before enter on load throws error: firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`set before enter on load throws error: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -842,28 +735,6 @@ exports[`set before enter on load throws error: firstRoute - /first - 1 - title 
 
 exports[`set before enter on load throws error: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
-exports[`set before enter throws error: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`set before enter throws error: 1 - history_index 1`] = `0`;
-
 exports[`set before enter throws error: 1 - response 1`] = `
 Object {
   "error": [Error: [rudy] "set" cant be used before enter -- redirect instead],
@@ -959,28 +830,6 @@ Object {
 exports[`set before enter throws error: 1 - title 1`] = `"@@rudy/CALL_HISTORY_ERROR"`;
 
 exports[`set before enter throws error: 1 - windowLocation 1`] = `"/"`;
-
-exports[`set before enter throws error: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`set before enter throws error: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`set before enter throws error: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1183,30 +1032,6 @@ exports[`set before enter throws error: firstRoute - /first - 1 - title 1`] = `"
 
 exports[`set before enter throws error: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
-exports[`set in pathlessRoute: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/?hell=yea",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`set in pathlessRoute: 1 - history_index 1`] = `0`;
-
 exports[`set in pathlessRoute: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -1339,28 +1164,6 @@ Object {
 exports[`set in pathlessRoute: 1 - title 1`] = `"FIRST"`;
 
 exports[`set in pathlessRoute: 1 - windowLocation 1`] = `"/?hell=yea"`;
-
-exports[`set in pathlessRoute: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`set in pathlessRoute: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`set in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

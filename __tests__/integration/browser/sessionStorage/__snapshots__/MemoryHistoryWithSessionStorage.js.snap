@@ -143,73 +143,6 @@ Object {
 }
 `;
 
-exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - history_index 1`] = `3`;
-
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - response 1`] = `
 Object {
   "basename": "",
@@ -458,58 +391,6 @@ exports[`restore history from sessionStorage when using MemoryHistory as fallbac
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"FIRST"} - windowLocation 1`] = `"/"`;
 
-exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - history_index 1`] = `1`;
-
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - response 1`] = `
 Object {
   "basename": "",
@@ -722,58 +603,6 @@ Object {
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - title 1`] = `"SECOND"`;
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"SECOND"} - windowLocation 1`] = `"/"`;
-
-exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - history_index 1`] = `2`;
 
 exports[`restore history from sessionStorage when using MemoryHistory as fallback: {"type":"THIRD"} - response 1`] = `
 Object {

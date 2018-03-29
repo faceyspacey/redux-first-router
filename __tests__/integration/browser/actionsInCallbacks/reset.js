@@ -1,8 +1,10 @@
-import createTest from '../../../../__helpers__/createTest'
+import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
 import { locationToUrl } from '../../../../src/utils'
 import { reset } from '../../../../src/actions'
 
-createTest('reset(actions)', {
+beforeEach(resetBrowser)
+
+const routes = {
   SECOND: '/second',
   THIRD: '/third',
   FOURTH: '/fourth',
@@ -13,42 +15,47 @@ createTest('reset(actions)', {
   NINTH: '/ninth',
   TENTH: '/tenth',
   ELEVENTH: '/eleventh',
+  MAIN: {
+    path: '/main',
+    thunk: () => {
+      const actions = [
+        {
+          type: 'FIRST',
+          params: { foo: 'bar' },
+          hash: 'yolo',
+          basename: 'base',
+          state: { something: 123 }
+        },
+        {
+          type: 'SECOND',
+          query: { hell: 'yea' },
+          hash: 'works',
+          state: { something: 123 }
+        },
+        { type: 'THIRD' },
+        { type: 'FOURTH' },
+        { type: 'FIFTH' },
+        { type: 'SIXTH' },
+        { type: 'SEVENTH' },
+        { type: 'EIGHTH' },
+        { type: 'NINTH' },
+        { type: 'TENTH' },
+        { type: 'ELEVENTH' }
+      ]
+
+      return reset(actions)
+    }
+  },
   FIRST: '/:foo?'
-}, {
-  testBrowser: true,
-  basenames: ['/base']
-}, [], async ({ dispatch, snap, snapPop, pop }) => {
+}
+
+const sniper = async ({ dispatch, snap, snapPop }) => {
   expect(locationToUrl(window.location)).toEqual('/')
 
   await dispatch({ type: 'SECOND' })
   expect(locationToUrl(window.location)).toEqual('/second')
 
-  const actions = [
-    {
-      type: 'FIRST',
-      params: { foo: 'bar' },
-      hash: 'yolo',
-      basename: 'base',
-      state: { something: 123 }
-    },
-    {
-      type: 'SECOND',
-      query: { hell: 'yea' },
-      hash: 'works',
-      state: { something: 123 }
-    },
-    { type: 'THIRD' },
-    { type: 'FOURTH' },
-    { type: 'FIFTH' },
-    { type: 'SIXTH' },
-    { type: 'SEVENTH' },
-    { type: 'EIGHTH' },
-    { type: 'NINTH' },
-    { type: 'TENTH' },
-    { type: 'ELEVENTH' }
-  ]
-
-  await snap(reset(actions))
+  await snap({ type: 'MAIN' })
 
   expect(locationToUrl(window.location)).toEqual('/eleventh')
 
@@ -81,5 +88,30 @@ createTest('reset(actions)', {
 
   await snapPop('back')
   expect(locationToUrl(window.location)).toEqual('/base/bar#yolo')
-})
+}
 
+createTest('reset(actions) afterEnter', routes, {
+  testBrowser: true,
+  basenames: ['/base']
+}, [], sniper)
+
+createTest('reset(actions) beforeEnter', {
+  ...routes,
+  MAIN: {
+    path: '/main',
+    beforeEnter: routes.MAIN.thunk
+  }
+}, {
+  testBrowser: true,
+  basenames: ['/base']
+}, [], sniper)
+
+createTest('reset(actions) pathlessRoute', {
+  ...routes,
+  MAIN: {
+    thunk: routes.MAIN.thunk
+  }
+}, {
+  testBrowser: true,
+  basenames: ['/base']
+}, [], sniper)

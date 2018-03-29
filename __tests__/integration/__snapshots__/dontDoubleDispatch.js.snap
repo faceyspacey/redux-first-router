@@ -1,27 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`allow double dispatch when kind === "load": 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`allow double dispatch when kind === "load": 1 - history_index 1`] = `0`;
-
 exports[`allow double dispatch when kind === "load": 1 - response 1`] = `
 Object {
   "basename": "",
@@ -166,28 +144,6 @@ Object {
 `;
 
 exports[`allow double dispatch when kind === "load": 1 - title 1`] = `"FIRST"`;
-
-exports[`allow double dispatch when kind === "load": firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`allow double dispatch when kind === "load": firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`allow double dispatch when kind === "load": firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -480,88 +436,6 @@ Object {
   "type": "SECOND",
 }
 `;
-
-exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "bla",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/foo",
-      "scene": "",
-      "search": "foo=bar",
-      "url": "/second/foo?foo=bar#bla",
-    },
-    "params": Object {
-      "param": "foo",
-    },
-    "query": Object {
-      "foo": "bar",
-    },
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "bla",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/foo",
-      "scene": "",
-      "search": "foo=bar",
-      "url": "/second/foo?foo=bar#bla",
-    },
-    "params": Object {
-      "param": "foo",
-    },
-    "query": Object {
-      "foo": "bar",
-    },
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - history_index 1`] = `1`;
-
-exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - history_index 2`] = `1`;
 
 exports[`do NOT dispatch actions with identical URLs more than once: {"type":"SECOND","params":{"param":"foo"},"query":{"foo":"bar"},"hash":"bla"} - response 1`] = `
 Object {

@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`bi-directional params transformation "/third/foo/bar": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/foo/bar",
-      "scene": "",
-      "search": "",
-      "url": "/third/foo/bar",
-    },
-    "params": Object {
-      "param1": "foo",
-      "param2": "bar",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`bi-directional params transformation "/third/foo/bar": 2 - history_index 1`] = `1`;
-
 exports[`bi-directional params transformation "/third/foo/bar": 2 - response 1`] = `
 Object {
   "basename": "",
@@ -209,46 +169,6 @@ Object {
 `;
 
 exports[`bi-directional params transformation "/third/foo/bar": 2 - title 1`] = `"THIRD"`;
-
-exports[`bi-directional params transformation {"type":"SECOND","params":{"param1":"foo","param2":"bar"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/foo/bar",
-      "scene": "",
-      "search": "",
-      "url": "/second/foo/bar",
-    },
-    "params": Object {
-      "param1": "foo",
-      "param2": "bar",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`bi-directional params transformation {"type":"SECOND","params":{"param1":"foo","param2":"bar"}}: 1 - history_index 1`] = `1`;
 
 exports[`bi-directional params transformation {"type":"SECOND","params":{"param1":"foo","param2":"bar"}}: 1 - response 1`] = `
 Object {
@@ -420,45 +340,6 @@ Object {
 
 exports[`bi-directional params transformation {"type":"SECOND","params":{"param1":"foo","param2":"bar"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`capitalizedWords "/third/james-gillmore": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/james-gillmore",
-      "scene": "",
-      "search": "",
-      "url": "/third/james-gillmore",
-    },
-    "params": Object {
-      "param": "James Gillmore",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`capitalizedWords "/third/james-gillmore": 2 - history_index 1`] = `1`;
-
 exports[`capitalizedWords "/third/james-gillmore": 2 - response 1`] = `
 Object {
   "basename": "",
@@ -624,45 +505,6 @@ Object {
 `;
 
 exports[`capitalizedWords "/third/james-gillmore": 2 - title 1`] = `"THIRD"`;
-
-exports[`capitalizedWords {"type":"SECOND","params":{"param":"James Gillmore"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/james-gillmore",
-      "scene": "",
-      "search": "",
-      "url": "/second/james-gillmore",
-    },
-    "params": Object {
-      "param": "James Gillmore",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`capitalizedWords {"type":"SECOND","params":{"param":"James Gillmore"}}: 1 - history_index 1`] = `1`;
 
 exports[`capitalizedWords {"type":"SECOND","params":{"param":"James Gillmore"}}: 1 - response 1`] = `
 Object {
@@ -830,45 +672,6 @@ Object {
 
 exports[`capitalizedWords {"type":"SECOND","params":{"param":"James Gillmore"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`convertNumbers "/third/100": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/100",
-      "scene": "",
-      "search": "",
-      "url": "/third/100",
-    },
-    "params": Object {
-      "param": 100,
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`convertNumbers "/third/100": 2 - history_index 1`] = `1`;
-
 exports[`convertNumbers "/third/100": 2 - response 1`] = `
 Object {
   "basename": "",
@@ -1034,45 +837,6 @@ Object {
 `;
 
 exports[`convertNumbers "/third/100": 2 - title 1`] = `"THIRD"`;
-
-exports[`convertNumbers {"type":"SECOND","params":{"param":100}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/100",
-      "scene": "",
-      "search": "",
-      "url": "/second/100",
-    },
-    "params": Object {
-      "param": 100,
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`convertNumbers {"type":"SECOND","params":{"param":100}}: 1 - history_index 1`] = `1`;
 
 exports[`convertNumbers {"type":"SECOND","params":{"param":100}}: 1 - response 1`] = `
 Object {
@@ -1240,43 +1004,6 @@ Object {
 
 exports[`convertNumbers {"type":"SECOND","params":{"param":100}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/foo/bar",
-      "scene": "",
-      "search": "",
-      "url": "/third/foo/bar",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - history_index 1`] = `1`;
-
 exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - response 1`] = `
 Object {
   "basename": "",
@@ -1435,43 +1162,6 @@ Object {
 
 exports[`dispatch NOT_FOUND if not matched "/third/foo/bar": 2 - title 1`] = `"NOT_FOUND"`;
 
-exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - history_index 1`] = `1`;
-
 exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -1629,45 +1319,6 @@ Object {
 `;
 
 exports[`dispatch NOT_FOUND if not matched {"type":"SECOND","params":{"missed":"foo"}}: 1 - title 1`] = `"NOT_FOUND"`;
-
-exports[`does not parse a blank string "" as NaN "/third": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {
-      "0": "",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`does not parse a blank string "" as NaN "/third": 2 - history_index 1`] = `1`;
 
 exports[`does not parse a blank string "" as NaN "/third": 2 - response 1`] = `
 Object {
@@ -1835,43 +1486,6 @@ Object {
 
 exports[`does not parse a blank string "" as NaN "/third": 2 - title 1`] = `"THIRD"`;
 
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - history_index 1`] = `1`;
-
 exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -2029,45 +1643,6 @@ Object {
 `;
 
 exports[`does not parse a blank string "" as NaN {"type":"SECOND"}: 1 - title 1`] = `"NOT_FOUND"`;
-
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
-      "scene": "",
-      "search": "",
-      "url": "/third/correct%20with%20spaceskeycorrect with spaces",
-    },
-    "params": Object {
-      "key": "correct with spaces",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - history_index 1`] = `1`;
 
 exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - response 1`] = `
 Object {
@@ -2243,45 +1818,6 @@ Object {
 
 exports[`fromPath + toPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - title 1`] = `"THIRD"`;
 
-exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
-      "scene": "",
-      "search": "",
-      "url": "/second/correct%20with%20spaceskeycorrect with spaces",
-    },
-    "params": Object {
-      "key": "correct with spaces",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - history_index 1`] = `1`;
-
 exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -2455,48 +1991,6 @@ Object {
 `;
 
 exports[`fromPath + toPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - title 1`] = `"SECOND"`;
-
-exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js",
-      "scene": "",
-      "search": "",
-      "url": "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js",
-    },
-    "params": Object {
-      "branch": "master",
-      "filePath": "src/core/createRouter.js",
-      "repo": "rudy",
-      "user": "faceyspacey",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "REPO2",
-  },
-]
-`;
-
-exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js": 2 - history_index 1`] = `1`;
 
 exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js": 2 - response 1`] = `
 Object {
@@ -2676,48 +2170,6 @@ Object {
 
 exports[`match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master/src/core/createRouter.js": 2 - title 1`] = `"REPO2"`;
 
-exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master","filePath":"core/createRouter.js"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/repo1/faceyspacey/rudy/blob/master/core/createRouter.js",
-      "scene": "",
-      "search": "",
-      "url": "/repo1/faceyspacey/rudy/blob/master/core/createRouter.js",
-    },
-    "params": Object {
-      "branch": "master",
-      "filePath": "core/createRouter.js",
-      "repo": "rudy",
-      "user": "faceyspacey",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "REPO1",
-  },
-]
-`;
-
-exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master","filePath":"core/createRouter.js"}}: 1 - history_index 1`] = `1`;
-
 exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master","filePath":"core/createRouter.js"}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -2896,43 +2348,6 @@ Object {
 
 exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master","filePath":"core/createRouter.js"}}: 1 - title 1`] = `"REPO1"`;
 
-exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"missed"}}: 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"missed"}}: 3 - history_index 1`] = `1`;
-
 exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"missed"}}: 3 - response 1`] = `
 Object {
   "basename": "",
@@ -3090,46 +2505,6 @@ Object {
 `;
 
 exports[`match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"missed"}}: 3 - title 1`] = `"NOT_FOUND"`;
-
-exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/bla/baz/yo/sdf": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/foo/bar/bla/baz/yo/sdf",
-      "scene": "",
-      "search": "",
-      "url": "/third/foo/bar/bla/baz/yo/sdf",
-    },
-    "params": Object {
-      "segments1": "foo/bar",
-      "segments2": "baz/yo/sdf",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/bla/baz/yo/sdf": 2 - history_index 1`] = `1`;
 
 exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/bla/baz/yo/sdf": 2 - response 1`] = `
 Object {
@@ -3301,46 +2676,6 @@ Object {
 
 exports[`match MULTIPLE "multi segment params" as single param "/third/foo/bar/bla/baz/yo/sdf": 2 - title 1`] = `"THIRD"`;
 
-exports[`match MULTIPLE "multi segment params" as single param {"type":"SECOND","params":{"segments1":"foo/bar","segments2":"baz/yo/sdf"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/foo/bar/bla/baz/yo/sdf",
-      "scene": "",
-      "search": "",
-      "url": "/second/foo/bar/bla/baz/yo/sdf",
-    },
-    "params": Object {
-      "segments1": "foo/bar",
-      "segments2": "baz/yo/sdf",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`match MULTIPLE "multi segment params" as single param {"type":"SECOND","params":{"segments1":"foo/bar","segments2":"baz/yo/sdf"}}: 1 - history_index 1`] = `1`;
-
 exports[`match MULTIPLE "multi segment params" as single param {"type":"SECOND","params":{"segments1":"foo/bar","segments2":"baz/yo/sdf"}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -3511,43 +2846,6 @@ Object {
 
 exports[`match MULTIPLE "multi segment params" as single param {"type":"SECOND","params":{"segments1":"foo/bar","segments2":"baz/yo/sdf"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`match optional params "/third": 4 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`match optional params "/third": 4 - history_index 1`] = `1`;
-
 exports[`match optional params "/third": 4 - response 1`] = `
 Object {
   "basename": "",
@@ -3705,45 +3003,6 @@ Object {
 `;
 
 exports[`match optional params "/third": 4 - title 1`] = `"THIRD"`;
-
-exports[`match optional params "/third/foo": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/foo",
-      "scene": "",
-      "search": "",
-      "url": "/third/foo",
-    },
-    "params": Object {
-      "param": "foo",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`match optional params "/third/foo": 2 - history_index 1`] = `1`;
 
 exports[`match optional params "/third/foo": 2 - response 1`] = `
 Object {
@@ -3911,45 +3170,6 @@ Object {
 
 exports[`match optional params "/third/foo": 2 - title 1`] = `"THIRD"`;
 
-exports[`match optional params {"type":"SECOND","params":{"param":"foo"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/foo",
-      "scene": "",
-      "search": "",
-      "url": "/second/foo",
-    },
-    "params": Object {
-      "param": "foo",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`match optional params {"type":"SECOND","params":{"param":"foo"}}: 1 - history_index 1`] = `1`;
-
 exports[`match optional params {"type":"SECOND","params":{"param":"foo"}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -4116,43 +3336,6 @@ Object {
 
 exports[`match optional params {"type":"SECOND","params":{"param":"foo"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`match optional params {"type":"SECOND"}: 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`match optional params {"type":"SECOND"}: 3 - history_index 1`] = `1`;
-
 exports[`match optional params {"type":"SECOND"}: 3 - response 1`] = `
 Object {
   "basename": "",
@@ -4310,43 +3493,6 @@ Object {
 `;
 
 exports[`match optional params {"type":"SECOND"}: 3 - title 1`] = `"SECOND"`;
-
-exports[`never returns an empty string when path has single optional param that is undefined "/third": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`never returns an empty string when path has single optional param that is undefined "/third": 2 - history_index 1`] = `1`;
 
 exports[`never returns an empty string when path has single optional param that is undefined "/third": 2 - response 1`] = `
 Object {
@@ -4506,43 +3652,6 @@ Object {
 
 exports[`never returns an empty string when path has single optional param that is undefined "/third": 2 - title 1`] = `"THIRD"`;
 
-exports[`never returns an empty string when path has single optional param that is undefined {"type":"SECOND","params":{}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`never returns an empty string when path has single optional param that is undefined {"type":"SECOND","params":{}}: 1 - history_index 1`] = `1`;
-
 exports[`never returns an empty string when path has single optional param that is undefined {"type":"SECOND","params":{}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -4700,45 +3809,6 @@ Object {
 `;
 
 exports[`never returns an empty string when path has single optional param that is undefined {"type":"SECOND","params":{}}: 1 - title 1`] = `"SECOND"`;
-
-exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/100",
-      "scene": "",
-      "search": "",
-      "url": "/third/100",
-    },
-    "params": Object {
-      "param": "100",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - history_index 1`] = `1`;
 
 exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - response 1`] = `
 Object {
@@ -4906,45 +3976,6 @@ Object {
 
 exports[`numbers NOT converted without convertNumbers option "/third/100": 2 - title 1`] = `"THIRD"`;
 
-exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/100",
-      "scene": "",
-      "search": "",
-      "url": "/second/100",
-    },
-    "params": Object {
-      "param": "100",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - history_index 1`] = `1`;
-
 exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -5111,43 +4142,6 @@ Object {
 
 exports[`numbers NOT converted without convertNumbers option {"type":"SECOND","params":{"param":100}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`optional static segments ("aliases") "/third": 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`optional static segments ("aliases") "/third": 3 - history_index 1`] = `1`;
-
 exports[`optional static segments ("aliases") "/third": 3 - response 1`] = `
 Object {
   "basename": "",
@@ -5305,45 +4299,6 @@ Object {
 `;
 
 exports[`optional static segments ("aliases") "/third": 3 - title 1`] = `"THIRD"`;
-
-exports[`optional static segments ("aliases") "/third/list": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/list",
-      "scene": "",
-      "search": "",
-      "url": "/third/list",
-    },
-    "params": Object {
-      "0": "list",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`optional static segments ("aliases") "/third/list": 2 - history_index 1`] = `1`;
 
 exports[`optional static segments ("aliases") "/third/list": 2 - response 1`] = `
 Object {
@@ -5511,43 +4466,6 @@ Object {
 
 exports[`optional static segments ("aliases") "/third/list": 2 - title 1`] = `"THIRD"`;
 
-exports[`optional static segments ("aliases") {"type":"SECOND"}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`optional static segments ("aliases") {"type":"SECOND"}: 1 - history_index 1`] = `1`;
-
 exports[`optional static segments ("aliases") {"type":"SECOND"}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -5705,47 +4623,6 @@ Object {
 `;
 
 exports[`optional static segments ("aliases") {"type":"SECOND"}: 1 - title 1`] = `"SECOND"`;
-
-exports[`optionally match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/repo2/faceyspacey/rudy/blob/master",
-      "scene": "",
-      "search": "",
-      "url": "/repo2/faceyspacey/rudy/blob/master",
-    },
-    "params": Object {
-      "branch": "master",
-      "repo": "rudy",
-      "user": "faceyspacey",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "REPO2",
-  },
-]
-`;
-
-exports[`optionally match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master": 2 - history_index 1`] = `1`;
 
 exports[`optionally match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master": 2 - response 1`] = `
 Object {
@@ -5921,47 +4798,6 @@ Object {
 
 exports[`optionally match "multi segment params" as single param "/repo2/faceyspacey/rudy/blob/master": 2 - title 1`] = `"REPO2"`;
 
-exports[`optionally match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/repo1/faceyspacey/rudy/blob/master",
-      "scene": "",
-      "search": "",
-      "url": "/repo1/faceyspacey/rudy/blob/master",
-    },
-    "params": Object {
-      "branch": "master",
-      "repo": "rudy",
-      "user": "faceyspacey",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "REPO1",
-  },
-]
-`;
-
-exports[`optionally match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master"}}: 1 - history_index 1`] = `1`;
-
 exports[`optionally match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master"}}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -6136,45 +4972,6 @@ Object {
 
 exports[`optionally match "multi segment params" as single param {"type":"REPO1","params":{"user":"faceyspacey","repo":"rudy","branch":"master"}}: 1 - title 1`] = `"REPO1"`;
 
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/correct%20with%20spaceskeycorrect with spaces",
-      "scene": "",
-      "search": "",
-      "url": "/third/correct%20with%20spaceskeycorrect with spaces",
-    },
-    "params": Object {
-      "key": "correct with spaces",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - history_index 1`] = `1`;
-
 exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - options - fromPath 1`] = `1`;
 
 exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - options - toPath 1`] = `0`;
@@ -6344,45 +5141,6 @@ Object {
 `;
 
 exports[`options.to/fromPath "/third/correct%20with%20spaceskeycorrect with spaces": 2 - title 1`] = `"THIRD"`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/correct%20with%20spaceskeycorrect with spaces",
-      "scene": "",
-      "search": "",
-      "url": "/second/correct%20with%20spaceskeycorrect with spaces",
-    },
-    "params": Object {
-      "key": "correct with spaces",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - history_index 1`] = `1`;
 
 exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - options - fromPath 1`] = `1`;
 
@@ -6554,45 +5312,6 @@ Object {
 
 exports[`options.to/fromPath {"type":"SECOND","params":{"key":"correct with spaces"}}: 1 - title 1`] = `"SECOND"`;
 
-exports[`regex parameters "/third/100": 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/100",
-      "scene": "",
-      "search": "",
-      "url": "/third/100",
-    },
-    "params": Object {
-      "id": "100",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`regex parameters "/third/100": 3 - history_index 1`] = `1`;
-
 exports[`regex parameters "/third/100": 3 - response 1`] = `
 Object {
   "basename": "",
@@ -6759,43 +5478,6 @@ Object {
 
 exports[`regex parameters "/third/100": 3 - title 1`] = `"THIRD"`;
 
-exports[`regex parameters "/third/foo": 4 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/foo",
-      "scene": "",
-      "search": "",
-      "url": "/third/foo",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`regex parameters "/third/foo": 4 - history_index 1`] = `1`;
-
 exports[`regex parameters "/third/foo": 4 - response 1`] = `
 Object {
   "basename": "",
@@ -6954,43 +5636,6 @@ Object {
 
 exports[`regex parameters "/third/foo": 4 - title 1`] = `"NOT_FOUND"`;
 
-exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - history_index 1`] = `1`;
-
 exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - response 1`] = `
 Object {
   "basename": "",
@@ -7148,45 +5793,6 @@ Object {
 `;
 
 exports[`regex parameters {"type":"SECOND","params":{"id":"foo"}}: 2 - title 1`] = `"NOT_FOUND"`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/100",
-      "scene": "",
-      "search": "",
-      "url": "/second/100",
-    },
-    "params": Object {
-      "id": "100",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - history_index 1`] = `1`;
 
 exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - response 1`] = `
 Object {
@@ -7353,45 +5959,6 @@ Object {
 `;
 
 exports[`regex parameters {"type":"SECOND","params":{"id":100}}: 1 - title 1`] = `"SECOND"`;
-
-exports[`route.defaultParams "/second": 4 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {
-      "param": "bar",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.defaultParams "/second": 4 - history_index 1`] = `1`;
 
 exports[`route.defaultParams "/second": 4 - response 1`] = `
 Object {
@@ -7561,45 +6128,6 @@ Object {
 
 exports[`route.defaultParams "/second": 4 - title 1`] = `"SECOND"`;
 
-exports[`route.defaultParams "/third": 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`route.defaultParams "/third": 3 - history_index 1`] = `1`;
-
 exports[`route.defaultParams "/third": 3 - response 1`] = `
 Object {
   "basename": "",
@@ -7767,47 +6295,6 @@ Object {
 `;
 
 exports[`route.defaultParams "/third": 3 - title 1`] = `"THIRD"`;
-
-exports[`route.defaultParams "/third?key=correct": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "key=correct",
-      "url": "/third?key=correct",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {
-      "key": "correct",
-    },
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`route.defaultParams "/third?key=correct": 2 - history_index 1`] = `1`;
 
 exports[`route.defaultParams "/third?key=correct": 2 - response 1`] = `
 Object {
@@ -7985,45 +6472,6 @@ Object {
 
 exports[`route.defaultParams "/third?key=correct": 2 - title 1`] = `"THIRD"`;
 
-exports[`route.defaultParams {"type":"SECOND"}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second/bar",
-      "scene": "",
-      "search": "",
-      "url": "/second/bar",
-    },
-    "params": Object {
-      "param": "bar",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.defaultParams {"type":"SECOND"}: 1 - history_index 1`] = `1`;
-
 exports[`route.defaultParams {"type":"SECOND"}: 1 - response 1`] = `
 Object {
   "basename": "",
@@ -8192,45 +6640,6 @@ Object {
 
 exports[`route.defaultParams {"type":"SECOND"}: 1 - title 1`] = `"SECOND"`;
 
-exports[`static regexes "/third/all": 3 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/all",
-      "scene": "",
-      "search": "",
-      "url": "/third/all",
-    },
-    "params": Object {
-      "0": "all",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`static regexes "/third/all": 3 - history_index 1`] = `1`;
-
 exports[`static regexes "/third/all": 3 - response 1`] = `
 Object {
   "basename": "",
@@ -8397,45 +6806,6 @@ Object {
 
 exports[`static regexes "/third/all": 3 - title 1`] = `"THIRD"`;
 
-exports[`static regexes "/third/list": 2 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third/list",
-      "scene": "",
-      "search": "",
-      "url": "/third/list",
-    },
-    "params": Object {
-      "0": "list",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-]
-`;
-
-exports[`static regexes "/third/list": 2 - history_index 1`] = `1`;
-
 exports[`static regexes "/third/list": 2 - response 1`] = `
 Object {
   "basename": "",
@@ -8601,43 +6971,6 @@ Object {
 `;
 
 exports[`static regexes "/third/list": 2 - title 1`] = `"THIRD"`;
-
-exports[`static regexes {"type":"SECOND"}: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`static regexes {"type":"SECOND"}: 1 - history_index 1`] = `1`;
 
 exports[`static regexes {"type":"SECOND"}: 1 - response 1`] = `
 Object {

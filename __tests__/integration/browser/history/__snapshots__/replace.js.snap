@@ -1,46 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "hey": "yo",
-    },
-    "type": "FOURTH",
-  },
-]
-`;
-
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - history_index 1`] = `1`;
-
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - response 1`] = `
 Object {
   "basename": "",
@@ -268,30 +227,6 @@ Object {
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - title 1`] = `"FOURTH"`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/fourth",{"hey":"yo"}]}} - windowLocation 1`] = `"/fourth"`;
-
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-    },
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - history_index 1`] = `0`;
 
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"replace","args":["/second",{"foo":"bar"}]}} - response 1`] = `
 Object {

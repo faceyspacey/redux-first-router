@@ -16,28 +16,6 @@ exports[`inherit all callbacks from another route: 1 - routes - SECOND - onCompl
 
 exports[`inherit all callbacks from another route: 1 - routes - SECOND - thunk 1`] = `1`;
 
-exports[`inherit all callbacks from another route: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`inherit all callbacks from another route: firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`inherit all callbacks from another route: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -231,28 +209,6 @@ exports[`inherit individual callback from another route: 1 - routes - NEVER_USED
 exports[`inherit individual callback from another route: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`inherit individual callback from another route: 1 - routes - SECOND - thunk 1`] = `1`;
-
-exports[`inherit individual callback from another route: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`inherit individual callback from another route: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`inherit individual callback from another route: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -449,28 +405,6 @@ exports[`recursively inherit callback: 1 - routes - REDIRECTED - onComplete 1`] 
 exports[`recursively inherit callback: 1 - routes - SECOND - thunk 1`] = `1`;
 
 exports[`recursively inherit callback: 1 - routes - THIRD - thunk 1`] = `1`;
-
-exports[`recursively inherit callback: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`recursively inherit callback: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`recursively inherit callback: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

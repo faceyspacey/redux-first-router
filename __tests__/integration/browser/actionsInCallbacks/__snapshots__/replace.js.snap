@@ -8,28 +8,6 @@ exports[`replace after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1
 
 exports[`replace after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
-exports[`replace after enter on load: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`replace after enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`replace after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -194,43 +172,6 @@ exports[`replace after enter on load: firstRoute - /first - 1 - title 1`] = `"RE
 
 exports[`replace after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
-exports[`replace after enter: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`replace after enter: 1 - history_index 1`] = `1`;
-
 exports[`replace after enter: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -360,28 +301,6 @@ Object {
 exports[`replace after enter: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`replace after enter: 1 - windowLocation 1`] = `"/redirected"`;
-
-exports[`replace after enter: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`replace after enter: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`replace after enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -592,28 +511,6 @@ exports[`replace before enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 
 
 exports[`replace before enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
-exports[`replace before enter on load: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`replace before enter on load: firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`replace before enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -778,28 +675,6 @@ exports[`replace before enter on load: firstRoute - /first - 1 - title 1`] = `"R
 
 exports[`replace before enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/redirected"`;
 
-exports[`replace before enter: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`replace before enter: 1 - history_index 1`] = `0`;
-
 exports[`replace before enter: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -909,28 +784,6 @@ Object {
 exports[`replace before enter: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`replace before enter: 1 - windowLocation 1`] = `"/redirected"`;
-
-exports[`replace before enter: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`replace before enter: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`replace before enter: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -1133,28 +986,6 @@ exports[`replace before enter: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`replace before enter: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
 
-exports[`replace in pathlessRoute: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`replace in pathlessRoute: 1 - history_index 1`] = `0`;
-
 exports[`replace in pathlessRoute: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -1262,28 +1093,6 @@ Object {
 exports[`replace in pathlessRoute: 1 - title 1`] = `"REDIRECTED"`;
 
 exports[`replace in pathlessRoute: 1 - windowLocation 1`] = `"/redirected"`;
-
-exports[`replace in pathlessRoute: firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/",
-      "scene": "",
-      "search": "",
-      "url": "/",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`replace in pathlessRoute: firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`replace in pathlessRoute: firstRoute - /first - 1 - initial_state 1`] = `
 Object {

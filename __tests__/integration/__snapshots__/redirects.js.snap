@@ -8,28 +8,6 @@ exports[`redirect after enter (on firstRoute): 1 - routes - NEVER_USED_PATHLESS 
 
 exports[`redirect after enter (on firstRoute): 1 - routes - REDIRECTED - onComplete 1`] = `1`;
 
-exports[`redirect after enter (on firstRoute): firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`redirect after enter (on firstRoute): firstRoute - /first - 1 - history_index 1`] = `0`;
-
 exports[`redirect after enter (on firstRoute): firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
@@ -179,43 +157,6 @@ Object {
 
 exports[`redirect after enter (on firstRoute): firstRoute - /first - 1 - title 1`] = `"REDIRECTED"`;
 
-exports[`redirect after enter: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`redirect after enter: 1 - history_index 1`] = `1`;
-
 exports[`redirect after enter: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -333,28 +274,6 @@ exports[`redirect before enter (on firstRoute): 1 - routes - FIRST - thunk 1`] =
 exports[`redirect before enter (on firstRoute): 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`redirect before enter (on firstRoute): 1 - routes - REDIRECTED - onComplete 1`] = `1`;
-
-exports[`redirect before enter (on firstRoute): firstRoute - /first - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`redirect before enter (on firstRoute): firstRoute - /first - 1 - history_index 1`] = `0`;
 
 exports[`redirect before enter (on firstRoute): firstRoute - /first - 1 - initial_state 1`] = `
 Object {
@@ -504,43 +423,6 @@ Object {
 `;
 
 exports[`redirect before enter (on firstRoute): firstRoute - /first - 1 - title 1`] = `"REDIRECTED"`;
-
-exports[`redirect before enter: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`redirect before enter: 1 - history_index 1`] = `1`;
 
 exports[`redirect before enter: 1 - response 1`] = `
 Object {

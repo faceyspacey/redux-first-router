@@ -1,1625 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`reset(actions):  - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 2`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 3`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 4`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 5`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 6`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 7`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 8`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_entries 9`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions):  - history_index 1`] = `9`;
-
-exports[`reset(actions):  - history_index 2`] = `8`;
-
-exports[`reset(actions):  - history_index 3`] = `7`;
-
-exports[`reset(actions):  - history_index 4`] = `6`;
-
-exports[`reset(actions):  - history_index 5`] = `5`;
-
-exports[`reset(actions):  - history_index 6`] = `4`;
-
-exports[`reset(actions):  - history_index 7`] = `3`;
-
-exports[`reset(actions):  - history_index 8`] = `2`;
-
-exports[`reset(actions):  - history_index 9`] = `1`;
-
 exports[`reset(actions):  - response 1`] = `
 Object {
   "basename": "",
@@ -3586,6 +1966,232 @@ Object {
 }
 `;
 
+exports[`reset(actions):  - response 10`] = `
+Object {
+  "basename": "base",
+  "hash": "yolo",
+  "location": Object {
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 11,
+    "n": -1,
+    "pathname": "/bar",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "works",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "hell=yea",
+        "url": "/second?hell=yea#works",
+      },
+      "params": Object {},
+      "query": Object {
+        "hell": "yea",
+      },
+      "state": Object {
+        "something": 123,
+      },
+      "type": "SECOND",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/base/bar#yolo",
+  },
+  "params": Object {
+    "foo": "bar",
+  },
+  "query": Object {},
+  "state": Object {
+    "something": 123,
+  },
+  "type": "FIRST",
+}
+`;
+
 exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 2`] = `0`;
@@ -3604,6 +2210,8 @@ exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 8`] = `0`;
 
 exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 9`] = `0`;
 
+exports[`reset(actions):  - routes - NEVER_USED_PATHLESS - thunk 10`] = `0`;
+
 exports[`reset(actions):  - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`reset(actions):  - routes - REDIRECTED - onComplete 2`] = `0`;
@@ -3621,6 +2229,8 @@ exports[`reset(actions):  - routes - REDIRECTED - onComplete 7`] = `0`;
 exports[`reset(actions):  - routes - REDIRECTED - onComplete 8`] = `0`;
 
 exports[`reset(actions):  - routes - REDIRECTED - onComplete 9`] = `0`;
+
+exports[`reset(actions):  - routes - REDIRECTED - onComplete 10`] = `0`;
 
 exports[`reset(actions):  - sessionStorage 1`] = `
 Object {
@@ -4222,6 +2832,73 @@ Object {
     ],
   ],
   "index": 1,
+}
+`;
+
+exports[`reset(actions):  - sessionStorage 10`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/base/bar#yolo",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/second?hell=yea#works",
+      Object {
+        "something": 123,
+      },
+      "345678",
+    ],
+    Array [
+      "/third",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fourth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/fifth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/sixth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/seventh",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eighth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/ninth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/tenth",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/eleventh",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 0,
 }
 `;
 
@@ -6209,6 +4886,234 @@ Object {
 }
 `;
 
+exports[`reset(actions):  - state 10`] = `
+Object {
+  "location": Object {
+    "basename": "base",
+    "blocked": null,
+    "direction": "backward",
+    "entries": Array [
+      Object {
+        "basename": "base",
+        "hash": "yolo",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/bar",
+          "scene": "",
+          "search": "",
+          "url": "/base/bar#yolo",
+        },
+        "params": Object {
+          "foo": "bar",
+        },
+        "query": Object {},
+        "state": Object {
+          "something": 123,
+        },
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "works",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "hell=yea",
+          "url": "/second?hell=yea#works",
+        },
+        "params": Object {},
+        "query": Object {
+          "hell": "yea",
+        },
+        "state": Object {
+          "something": 123,
+        },
+        "type": "SECOND",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/third",
+          "scene": "",
+          "search": "",
+          "url": "/third",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "THIRD",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fourth",
+          "scene": "",
+          "search": "",
+          "url": "/fourth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FOURTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/fifth",
+          "scene": "",
+          "search": "",
+          "url": "/fifth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIFTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/sixth",
+          "scene": "",
+          "search": "",
+          "url": "/sixth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SIXTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/seventh",
+          "scene": "",
+          "search": "",
+          "url": "/seventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SEVENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eighth",
+          "scene": "",
+          "search": "",
+          "url": "/eighth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "EIGHTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/ninth",
+          "scene": "",
+          "search": "",
+          "url": "/ninth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "NINTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/tenth",
+          "scene": "",
+          "search": "",
+          "url": "/tenth",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "TENTH",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/eleventh",
+          "scene": "",
+          "search": "",
+          "url": "/eleventh",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "ELEVENTH",
+      },
+    ],
+    "from": null,
+    "hash": "yolo",
+    "index": 0,
+    "key": "345678",
+    "kind": "back",
+    "length": 11,
+    "n": -1,
+    "params": Object {
+      "foo": "bar",
+    },
+    "pathname": "/bar",
+    "pop": true,
+    "prev": Object {
+      "basename": "",
+      "hash": "works",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/second",
+        "scene": "",
+        "search": "hell=yea",
+        "url": "/second?hell=yea#works",
+      },
+      "params": Object {},
+      "query": Object {
+        "hell": "yea",
+      },
+      "state": Object {
+        "something": 123,
+      },
+      "type": "SECOND",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {
+      "something": 123,
+    },
+    "status": 200,
+    "type": "FIRST",
+    "universal": false,
+    "url": "/base/bar#yolo",
+  },
+  "title": "FIRST",
+}
+`;
+
 exports[`reset(actions):  - title 1`] = `"TENTH"`;
 
 exports[`reset(actions):  - title 2`] = `"NINTH"`;
@@ -6226,6 +5131,8 @@ exports[`reset(actions):  - title 7`] = `"FOURTH"`;
 exports[`reset(actions):  - title 8`] = `"THIRD"`;
 
 exports[`reset(actions):  - title 9`] = `"SECOND"`;
+
+exports[`reset(actions):  - title 10`] = `"FIRST"`;
 
 exports[`reset(actions):  - windowLocation 1`] = `"/tenth"`;
 
@@ -6245,185 +5152,7 @@ exports[`reset(actions):  - windowLocation 8`] = `"/third"`;
 
 exports[`reset(actions):  - windowLocation 9`] = `"/second?hell=yea#works"`;
 
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "base",
-    "hash": "yolo",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/base/bar#yolo",
-    },
-    "params": Object {
-      "foo": "bar",
-    },
-    "query": Object {},
-    "state": Object {
-      "something": 123,
-    },
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "works",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "hell=yea",
-      "url": "/second?hell=yea#works",
-    },
-    "params": Object {},
-    "query": Object {
-      "hell": "yea",
-    },
-    "state": Object {
-      "something": 123,
-    },
-    "type": "SECOND",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/third",
-      "scene": "",
-      "search": "",
-      "url": "/third",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "THIRD",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fourth",
-      "scene": "",
-      "search": "",
-      "url": "/fourth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOURTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/fifth",
-      "scene": "",
-      "search": "",
-      "url": "/fifth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIFTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/sixth",
-      "scene": "",
-      "search": "",
-      "url": "/sixth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SIXTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/seventh",
-      "scene": "",
-      "search": "",
-      "url": "/seventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SEVENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eighth",
-      "scene": "",
-      "search": "",
-      "url": "/eighth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "EIGHTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/ninth",
-      "scene": "",
-      "search": "",
-      "url": "/ninth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NINTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/tenth",
-      "scene": "",
-      "search": "",
-      "url": "/tenth",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "TENTH",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/eleventh",
-      "scene": "",
-      "search": "",
-      "url": "/eleventh",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "ELEVENTH",
-  },
-]
-`;
-
-exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - history_index 1`] = `10`;
+exports[`reset(actions):  - windowLocation 10`] = `"/base/bar#yolo"`;
 
 exports[`reset(actions): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"reset","args":[[{"type":"FIRST","params":{"foo":"bar"},"hash":"yolo","basename":"base","state":{"something":123}},{"type":"SECOND","query":{"hell":"yea"},"hash":"works","state":{"something":123}},{"type":"THIRD"},{"type":"FOURTH"},{"type":"FIFTH"},{"type":"SIXTH"},{"type":"SEVENTH"},{"type":"EIGHTH"},{"type":"NINTH"},{"type":"TENTH"},{"type":"ELEVENTH"}],null,null]}} - response 1`] = `
 Object {

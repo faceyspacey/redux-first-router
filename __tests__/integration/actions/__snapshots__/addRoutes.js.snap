@@ -1,27 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - history_index 1`] = `0`;
-
 exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - response 1`] = `
 Object {
   "payload": Object {
@@ -106,43 +84,6 @@ Object {
 `;
 
 exports[`dispatch(addRoutes(routes)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo"}}}} - title 1`] = `"FIRST"`;
-
-exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/foo",
-      "scene": "",
-      "search": "",
-      "url": "/foo",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOO",
-  },
-]
-`;
-
-exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - history_index 1`] = `1`;
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - response 1`] = `
 Object {
@@ -304,28 +245,6 @@ Object {
 
 exports[`dispatch(addRoutes(routes)): {"type":"FOO"} - title 1`] = `"FOO"`;
 
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-]
-`;
-
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - history_index 1`] = `0`;
-
 exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - response 1`] = `
 Object {
   "payload": Object {
@@ -416,43 +335,6 @@ Object {
 `;
 
 exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"@@rudy/ADD_ROUTES","payload":{"routes":{"FOO":{"path":"/foo","thunk":"BAZ"},"BAZ":{"path":"/baz"}}}} - title 1`] = `"FIRST"`;
-
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/bar",
-      "scene": "",
-      "search": "",
-      "url": "/bar",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FOO",
-  },
-]
-`;
-
-exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - history_index 1`] = `1`;
 
 exports[`dispatch(addRoutes(routes, formatRoute)): {"type":"FOO"} - response 1`] = `
 Object {

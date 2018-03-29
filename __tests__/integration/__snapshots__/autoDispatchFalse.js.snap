@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - history_index 1`] = `1`;
-
 exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - response 1`] = `"foo"`;
 
 exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
@@ -123,43 +86,6 @@ Object {
 `;
 
 exports[`options.autoDispatch: false does not automatically dispatch callback return values: 1 - title 1`] = `"SECOND"`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/second",
-      "scene": "",
-      "search": "",
-      "url": "/second",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "SECOND",
-  },
-]
-`;
-
-exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - history_index 1`] = `1`;
 
 exports[`route.autoDispatch: false does not automatically dispatch callback return values: 1 - response 1`] = `"foo"`;
 

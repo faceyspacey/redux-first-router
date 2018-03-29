@@ -1,44 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`redirect shortcut /w params passed on: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected/foo",
-      "scene": "",
-      "search": "",
-      "url": "/redirected/foo",
-    },
-    "params": Object {
-      "param": "foo",
-    },
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`redirect shortcut /w params passed on: 1 - history_index 1`] = `1`;
-
 exports[`redirect shortcut /w params passed on: 1 - response 1`] = `
 Object {
   "payload": "redirect_complete",
@@ -150,43 +111,6 @@ Object {
 `;
 
 exports[`redirect shortcut /w params passed on: 1 - title 1`] = `"REDIRECTED"`;
-
-exports[`redirect to type specified as redirect route option value: 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/redirected",
-      "scene": "",
-      "search": "",
-      "url": "/redirected",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "REDIRECTED",
-  },
-]
-`;
-
-exports[`redirect to type specified as redirect route option value: 1 - history_index 1`] = `1`;
 
 exports[`redirect to type specified as redirect route option value: 1 - response 1`] = `
 Object {

@@ -1,42 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dispatch(notFound()): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`dispatch(notFound()): 1 - history_index 1`] = `1`;
-
 exports[`dispatch(notFound()): 1 - response 1`] = `
 Object {
   "basename": "",
@@ -194,45 +157,6 @@ Object {
 `;
 
 exports[`dispatch(notFound()): 1 - title 1`] = `"NOT_FOUND"`;
-
-exports[`dispatch(notFound(state)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/not-found",
-      "scene": "",
-      "search": "",
-      "url": "/not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-    },
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`dispatch(notFound(state)): 1 - history_index 1`] = `1`;
 
 exports[`dispatch(notFound(state)): 1 - response 1`] = `
 Object {
@@ -399,45 +323,6 @@ Object {
 `;
 
 exports[`dispatch(notFound(state)): 1 - title 1`] = `"NOT_FOUND"`;
-
-exports[`dispatch(notFound(state, forcedType)): 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/first",
-      "scene": "",
-      "search": "",
-      "url": "/first",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "FIRST",
-  },
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/scene-level-not-found",
-      "scene": "scene",
-      "search": "",
-      "url": "/scene-level-not-found",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {
-      "foo": "bar",
-    },
-    "type": "scene/NOT_FOUND",
-  },
-]
-`;
-
-exports[`dispatch(notFound(state, forcedType)): 1 - history_index 1`] = `1`;
 
 exports[`dispatch(notFound(state, forcedType)): 1 - response 1`] = `
 Object {
@@ -608,28 +493,6 @@ exports[`dispatch(notFound(state, forcedType)): 1 - title 1`] = `"scene/NOT_FOUN
 exports[`notFound on first load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
 exports[`notFound on first load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
-
-exports[`notFound on first load: firstRoute - /non-existent - 1 - history_entries 1`] = `
-Array [
-  Object {
-    "basename": "",
-    "hash": "",
-    "location": Object {
-      "key": "345678",
-      "pathname": "/non-existent",
-      "scene": "",
-      "search": "",
-      "url": "/non-existent",
-    },
-    "params": Object {},
-    "query": Object {},
-    "state": Object {},
-    "type": "NOT_FOUND",
-  },
-]
-`;
-
-exports[`notFound on first load: firstRoute - /non-existent - 1 - history_index 1`] = `0`;
 
 exports[`notFound on first load: firstRoute - /non-existent - 1 - initial_state 1`] = `
 Object {
