@@ -99,7 +99,7 @@ module.exports = wallaby => {
       // '__tests__/integration/dispatchFrom.js',
 
       // '__tests__/integration/uninheritedHistory.js',
-      '__tests__/integration/historyActionsInCallbacks.js',
+      '__tests__/integration/browser/actionsInCallbacks/jump2N.js',
     ],
 
     env: {
