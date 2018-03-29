@@ -363,8 +363,6 @@ const snapChange = (prefix, res, store, history, opts = {}, initialState) => {
 
   expectState(prefix, store)
   expectResponse(prefix, res)
-  expectEntries(prefix, history)
-  expectIndex(prefix, history)
   expectTitle(prefix)
 
   if (opts.testBrowser) {
@@ -386,14 +384,6 @@ const expectState = (prefix, store) => {
 
 const expectResponse = (prefix, res) => {
   expect(res).toMatchSnapshot(prefix + ' - response')
-}
-
-const expectEntries = (prefix, history) => {
-  expect(history.entries).toMatchSnapshot(prefix + ' - history_entries')
-}
-
-const expectIndex = (prefix, history) => {
-  expect(history.index).toMatchSnapshot(prefix + ' - history_index')
 }
 
 const expectTitle = (prefix) => {
