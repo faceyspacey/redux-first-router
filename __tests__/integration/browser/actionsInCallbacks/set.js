@@ -7,12 +7,18 @@ createTest('set before enter throws error', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    beforeEnter: () => set({ query: { hell: 'yea' } }),
+    beforeEnter: ({ query }) => {
+      if (query.hell) return
+      return set({ query: { hell: 'yea' } })
+    },
     thunk: function() {}
   }
 }, {
   testBrowser: true,
   wallabyErrors: false
+}, [], async ({ dispatch, snap, getLocation }) => {
+  await dispatch({ type: 'REDIRECTED' })
+  await snap({ type: 'SECOND' })
 })
 
 createTest('set after enter', {
@@ -30,7 +36,10 @@ createTest('set after enter', {
 createTest('set before enter on load throws error', {
   FIRST: {
     path: '/',
-    beforeEnter: () => set({ query: { hell: 'yea' } }),
+    beforeEnter: ({ query }) => {
+      if (query.hell) return
+      return set({ query: { hell: 'yea' } })
+    },
     thunk: function() {}
   }
 }, {

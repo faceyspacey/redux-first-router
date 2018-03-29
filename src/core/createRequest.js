@@ -87,9 +87,7 @@ export class Request {
       }
     }
 
-    if (this.ctx.busy && route && route.path && // convert actions to redirects only if "busy" in a route changing pipeline
-      !(action.location && action.location.kind === 'set') // history `set` actions should not be transformed to redirects
-    ) {
+    if (this.ctx.busy && route && route.path ) {
       const status = action.location && action.location.status
       action = redirect(action, status || 302)
     }
@@ -116,7 +114,7 @@ export class Request {
         if (this.ctx.serverRedirect || // short-circuit when a server redirected is detected
           (
             (urlChanged || action.type === CALL_HISTORY) && // short-circuit if the URL changed || or history action creators used
-            !(res && res.location && res.location.kind === 'set') // but `set` should not short-circuit ever (note: they are only allowed after enter; otherwise an informative error is thrown)
+            !(this.tmp.committed && res && res.location && res.location.kind === 'set') // but `set` should not short-circuit ever (note: they are only allowed after enter; otherwise an informative error is thrown)
           )
         ) {
           this.redirect = res                   // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
