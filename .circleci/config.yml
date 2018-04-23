@@ -12,16 +12,16 @@ jobs:
            command: npm run lint
       - run:
          name: Run unit test
-         command: npm run test-unit
-  surge:
-     docker:
-       - image: circleci/node:8.5
-     working_directory: ~/repo
-     steps:
-       - checkout
-       - run: npm install
-       - run: npm run build
-       - run: npm run deploy-surge -- -d seek-asia-style-guide--$CIRCLE_SHA1.surge.sh
+         command: npm run test
+#  surge:
+#     docker:
+#       - image: circleci/node:8.5
+#     working_directory: ~/repo
+#     steps:
+#       - checkout
+#       - run: npm install
+#       - run: npm run build
+#       - run: npm run deploy-surge -- -d seek-asia-style-guide--$CIRCLE_SHA1.surge.sh
   deploy:
     docker:
       - image: circleci/node:8.5
@@ -29,11 +29,8 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: git config --global user.name "Circle-CI";
-      - run: git config --global user.email "srp-dev@seekasia.com";
-      - run: npm run build-gh-pages
-      - run: npm run deploy-gh-pages
-      - run: npm run semantic-release
+      - run: npm run prepublish
+#      - run: npm run semantic-release
 workflows:
   version: 2
   status-check:
@@ -41,22 +38,22 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: master
-      - surge:
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: master
-  deploy-ghpages:
+              ignore: rudy
+#      - surge:
+#          requires:
+#            - build
+#          filters:
+#            branches:
+#              ignore: master
+  deploy:
     jobs:
       - build:
           filters:
             branches:
-              only: master
+              only: rudy
       - deploy:
           requires:
             - build
           filters:
             branches:
-              only: master
+              only: rudy
