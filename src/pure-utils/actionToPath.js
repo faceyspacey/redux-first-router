@@ -20,7 +20,8 @@ export default (
     ? _payloadToParams(route, action.payload)
     : action.payload
 
-  const path = compileParamsToPath(routePath, params) || '/'
+  let path = compileParamsToPath(routePath, params) || '/'
+  path = path.replace(/%26/g, '&');
 
   const query =
     action.query ||
