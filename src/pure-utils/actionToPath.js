@@ -17,8 +17,9 @@ export default (
   const route = routesMap[action.type]
   const routePath = typeof route === 'object' ? route.path : route
   const params = _payloadToParams(route, action.payload)
-  const path = compileParamsToPath(routePath, params) || '/'
-
+  let path = compileParamsToPath(routePath, params) || '/'
+  path = path.replace(/%26/g, '&')
+  
   const query =
     action.query ||
     (action.meta && action.meta.query) ||

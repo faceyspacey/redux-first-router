@@ -1,6 +1,6 @@
 {
-  "name": "redux-first-router",
-  "version": "2.1.1",
+  "name": "seek-gdp-redux-first-router",
+  "version": "0.0.0-rudy",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "module": "dist/es",
@@ -9,9 +9,8 @@
   },
   "scripts": {
     "build": "babel src -d dist",
-    "build:es": "BABEL_ENV=es babel src -d dist/es",
-    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js -o dist/redux-first-router.js",
-    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js -o dist/redux-first-router.min.js",
+    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/seek-gdp-redux-first-router.js",
+    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/seek-gdp-redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "npm run flow-copy && flow; test $? -eq 0 -o $? -eq 2",
@@ -25,9 +24,13 @@
     "local-semantic-release": "git checkout master; git pull origin master && npm run standard-version && git push --follow-tags origin master && npm publish",
     "prepublishOnly": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min && npm run build:es"
   },
+  "release": {
+    "verifyConditions": "condition-circle",
+    "branch": "rudy"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/faceyspacey/redux-first-router.git"
+    "url": "https://github.com/seekinternational/seek-gdp-redux-first-router.git"
   },
   "author": "James Gillmore <james@faceyspacey.com>",
   "maintainers": [
@@ -35,9 +38,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/faceyspacey/redux-first-router/issues"
+    "url": "https://github.com/seekinternational/seek-gdp-redux-first-router/issues"
   },
-  "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
+  "homepage": "https://github.com/seekinternational/seek-gdp-redux-first-router#readme",
   "dependencies": {
     "rudy-history": "^1.0.0",
     "rudy-match-path": "^0.3.0"
@@ -54,6 +57,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "commitizen": "^2.9.6",
+    "condition-circle": "~1.5.0",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",

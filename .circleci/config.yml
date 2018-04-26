@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.5
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: npm install
+      - run:
+         name: Run unit test
+         command: npm run test
+  deploy:
+    docker:
+      - image: circleci/node:8.5
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run prepublish
+      - run: npm run semantic-release
+workflows:
+  version: 2
+  status-check:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: rudy
+  deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: rudy
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: rudy
