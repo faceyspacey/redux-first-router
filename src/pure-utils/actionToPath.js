@@ -18,8 +18,12 @@ export default (
   const routePath = typeof route === 'object' ? route.path : route
   const params = _payloadToParams(route, action.payload)
   let path = compileParamsToPath(routePath, params) || '/'
-  path = path.replace(/%26/g, '&')
-  
+  try {
+    path = decodeURIComponent(path)
+  }
+  catch (e) {
+    // Ok
+  }
   const query =
     action.query ||
     (action.meta && action.meta.query) ||

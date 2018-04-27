@@ -1,6 +1,6 @@
 {
   "name": "seek-gdp-redux-first-router",
-  "version": "0.0.0-rudy",
+  "version": "0.0.1-rudy",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "module": "dist/es",
