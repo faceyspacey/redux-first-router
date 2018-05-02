@@ -129,9 +129,9 @@ export default async function configureStore(req, res) {
   return store
 }
 
-const doesRedirect = ({ kind, pathname }, res) => {
+const doesRedirect = ({ kind, pathname, search }, res) => {
   if (kind === 'redirect') {
-    res.redirect(302, pathname) // the request completes here, therefore we must short-circuit after
+    res.redirect(302, search ? `${pathname}?${search}` : pathname); // the request completes here, therefore we must short-circuit after
     return true
   }
 }
