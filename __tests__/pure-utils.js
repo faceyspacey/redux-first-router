@@ -143,7 +143,7 @@ describe('pathToAction(path, routesMap)', () => {
     expect(action.payload.param).toEqual('FOO BAR PARAM')
   })
 
-  it('parse path containing number param into action with payload value set as integer instead of string', () => {
+  it('by default parse path containing number param into action with payload value set as integer instead of string', () => {
     const path = '/info/69'
     const routesMap = {
       INFO_PARAM: { path: '/info/:param/' }
@@ -152,6 +152,17 @@ describe('pathToAction(path, routesMap)', () => {
     const action = pathToAction(path, routesMap) /*? */
     expect(typeof action.payload.param).toEqual('number')
     expect(action.payload.param).toEqual(69)
+  })
+
+  it('with parseNumbers as false do not parse path containing number param into action with payload value set as integer instead of string', () => {
+    const path = '/info/69'
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/', parseNumbers: false }
+    }
+
+    const action = pathToAction(path, routesMap) /*? */
+    expect(typeof action.payload.param).toEqual('string')
+    expect(action.payload.param).toEqual('69')
   })
 
   it('does not parse a blank string "" as NaN', () => {
