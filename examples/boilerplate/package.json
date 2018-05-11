@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
-    "start:prod": "npm run build && npm run serve",
+    "start:prod": "npm run build && npm run serve ",
     "serve": "cross-env NODE_ENV=production node buildServer/index.js",
     "build": "npm run build:client && npm run build:server && npm run build:node",
     "build:client": "rimraf buildClient && cross-env NODE_ENV=production webpack --progress -p --config webpack/client.prod.js",

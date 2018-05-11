@@ -1,4 +1,4 @@
-import { redirect } from 'redux-first-router'
+import { redirect } from 'rudy/actions'
 
 export default {
   HOME: {
@@ -6,11 +6,16 @@ export default {
     onEnter: () => {
       console.log(document.querySelector('.Home__content--319uD'))
     },
-    beforeEnter: async (req) => {
-      if (typeof window !== 'undefined' && window.foo) await new Promise(res => setTimeout(res, 3000))
+    beforeEnter: async req => {
+      if (typeof window !== 'undefined' && window.foo) {
+        await new Promise(res => setTimeout(res, 3000)).catch(console.log)
+      }
 
       if (typeof window !== 'undefined' && window.foo) {
-        const res = await req.dispatch({ type: 'LIST', params: { category: 'react' } })
+        const res = await req.dispatch({
+          type: 'LIST',
+          params: { category: 'react' }
+        })
       }
     }
     // beforeLeave: async ({ type }) => {

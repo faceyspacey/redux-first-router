@@ -170,11 +170,8 @@ const resolveBasename = (url, opts, state, curr) => {
   return { basename, slashBasename } // { 'base', '/base' }
 }
 
-const stripBasename = (path, bn) =>
-  path.indexOf(bn) === 0 ? path.substr(bn.length) : path
-
-const findBasename = (path, bns = []) =>
-  bns.find(bn => path.indexOf(bn) === 0)
+export const stripBasename = (path, bn) => path.indexOf(bn) === 0 ? path.substr(bn.length) : path
+export const findBasename = (path, bns = []) => bns.find(bn => path.indexOf(bn) === 0)
 
 
 // MISC
