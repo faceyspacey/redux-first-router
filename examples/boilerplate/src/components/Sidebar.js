@@ -1,37 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link, { NavLink } from 'redux-first-router-link'
+import { NavLink } from 'rudy/Link'
+import styles from '../css/Sidebar.css'
 
-import styles from '../css/Sidebar'
-
+//TODO: fix NavLink when object is passed via the "to" prop
 const Sidebar = ({ path, dispatch }) => (
   <div className={styles.sidebar}>
     <h2>SEO-FRIENDLY LINKS</h2>
 
     <NavLink to='/' activeClassName={styles.active}>
-      Home
+        Home
     </NavLink>
 
-    <NavLink
-      activeClassName={styles.active}
-      to={{ type: 'LIST', params: { category: 'redux' } }}
+    <span
+      role='link'
+      tabIndex='0'
+      onClick={() =>
+          dispatch({ type: 'LIST', params: { category: 'redux' } })}
     >
-      Redux
-    </NavLink>
+        Redux
+    </span>
+    <span
+      role='link'
+      tabIndex='0'
+      onClick={() =>
+          dispatch({ type: 'LIST', params: { category: 'react' } })}
+    >
+        React
+    </span>
 
-    <NavLink
-      activeClassName={styles.active}
-      to={{ type: 'LIST', params: { category: 'react' } }}
+    <span
+      role='link'
+      tabIndex='0'
+      onClick={() => dispatch({ type: 'NOT_FOUND' })}
     >
-      React
-    </NavLink>
-
-    <NavLink
-      activeClassName={styles.active}
-      to={{ type: 'NOT_FOUND' }}
-    >
-      NOT_FOUND
-    </NavLink>
+        NOT_FOUND
+    </span>
 
     <div style={{ height: 20 }} />
 
@@ -43,25 +47,27 @@ const Sidebar = ({ path, dispatch }) => (
       className={isActive(path, '/')}
       onClick={() => dispatch({ type: 'HOME' })}
     >
-      Home
+        Home
     </span>
 
     <span
       role='link'
       tabIndex='0'
       className={isActive(path, '/list/redux')}
-      onClick={() => dispatch({ type: 'LIST', params: { category: 'redux' } })}
+      onClick={() =>
+          dispatch({ type: 'LIST', params: { category: 'redux' } })}
     >
-      Redux
+        Redux
     </span>
 
     <span
       role='link'
       tabIndex='0'
       className={isActive(path, '/list/react')}
-      onClick={() => dispatch({ type: 'LIST', params: { category: 'react' } })}
+      onClick={() =>
+          dispatch({ type: 'LIST', params: { category: 'react' } })}
     >
-      React
+        React
     </span>
   </div>
 )
