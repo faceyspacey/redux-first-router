@@ -1,6 +1,6 @@
 // @flow
-import { ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY } from '../types'
-import type { RoutesMap, RoutesMapInput } from '../flow-types'
+import { ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY, NOT_FOUND } from '../types'
+import type { RoutesMap, RoutesMapInput, RouteInput, RouteNames } from '../flow-types'
 
 import {
   addRoutes,
@@ -18,7 +18,7 @@ export default (
   const routes = isAddRoutes ? input : {}
 
   if (!isAddRoutes) {
-    routes.NOT_FOUND = input.NOT_FOUND || { path: '/not-found' }
+    routes[NOT_FOUND] = input.NOT_FOUND || { path: '/not-found' }
     Object.assign(routes, input) // insure '/not-found' matches over '/:param?' -- yes, browsers respect order assigned for non-numeric keys
 
     routes[ADD_ROUTES] = input[ADD_ROUTES] || { thunk: addRoutes, dispatch: false }
@@ -28,10 +28,10 @@ export default (
     routes[CALL_HISTORY] = input[CALL_HISTORY] || { thunk: callHistory, dispatch: false }
   }
 
-  const types = Object.keys(routes)
+  const types: RouteNames = Object.keys(routes)
 
-  types.forEach(type => {
-    const route = formatRoute(routes[type], type, routes, formatter, isAddRoutes)
+  types.forEach((type: string) => {
+    const route : Object = formatRoute(routes[type], type, routes, formatter, isAddRoutes)
     route.type = type
     routes[type] = route
   })
@@ -39,7 +39,7 @@ export default (
   return routes
 }
 
-export const formatRoute = (r, type, routes, formatter, isAddRoutes) => {
+export const formatRoute = (r: RouteInput, type: string, routes: RoutesMap, formatter: ?Function, isAddRoutes: boolean = false) => {
   const route = typeof r === 'string' ? { path: r } : r
 
   if (formatter) {
