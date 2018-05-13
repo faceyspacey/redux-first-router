@@ -33,10 +33,11 @@ export type Route = {
   thunk?: StandardCallback,
   onComplete?: StandardCallback,
   onFail?: StandardCallback,
-  navKey?: string
+  navKey?: string,
+  type?: string
 }
 
-export type RouteInput = string | Route
+export type RouteInput = Function | Route
 
 export type RoutesMapInput = {
   [key: string]: RouteInput
