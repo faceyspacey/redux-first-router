@@ -21,17 +21,29 @@ export default (
     routes[NOT_FOUND] = input.NOT_FOUND || { path: '/not-found' }
     Object.assign(routes, input) // insure '/not-found' matches over '/:param?' -- yes, browsers respect order assigned for non-numeric keys
 
-    routes[ADD_ROUTES] = input[ADD_ROUTES] || { thunk: addRoutes, dispatch: false }
-    routes[CHANGE_BASENAME] = input[CHANGE_BASENAME] || { thunk: changeBasename, dispatch: false }
-    routes[CLEAR_CACHE] = input[CLEAR_CACHE] || { thunk: clearCache }
-    routes[CONFIRM] = input[CONFIRM] || { thunk: confirm, dispatch: false }
-    routes[CALL_HISTORY] = input[CALL_HISTORY] || { thunk: callHistory, dispatch: false }
+    routes[ADD_ROUTES] = input[ADD_ROUTES] ||
+      { thunk: addRoutes, dispatch: false }
+    routes[CHANGE_BASENAME] = input[CHANGE_BASENAME] ||
+      { thunk: changeBasename, dispatch: false }
+    routes[CLEAR_CACHE] = input[CLEAR_CACHE] ||
+      { thunk: clearCache }
+    routes[CONFIRM] = input[CONFIRM] ||
+      { thunk: confirm, dispatch: false }
+    routes[CALL_HISTORY] = input[CALL_HISTORY] ||
+      { thunk: callHistory, dispatch: false }
   }
 
   const types: RouteNames = Object.keys(routes)
 
   types.forEach((type: string) => {
-    const route : Object = formatRoute(routes[type], type, routes, formatter, isAddRoutes)
+    const route : Object = formatRoute(
+      routes[type],
+      type,
+      routes,
+      formatter,
+      isAddRoutes
+    )
+
     route.type = type
     routes[type] = route
   })
@@ -39,7 +51,13 @@ export default (
   return routes
 }
 
-export const formatRoute = (r: RouteInput, type: string, routes: RoutesMap, formatter: ?Function, isAddRoutes: boolean = false) => {
+export const formatRoute = (
+  r: RouteInput,
+  type: string,
+  routes: RoutesMap,
+  formatter: ?Function,
+  isAddRoutes: boolean = false
+): RouteInput => {
   const route = typeof r === 'string' ? { path: r } : r
 
   if (formatter) {
