@@ -28,7 +28,6 @@ export default (
   const isWrongBasename = bn && !opts.basenames.includes(bn)
   // $FlowFixMe
   // TODO: Find out what needs to happen here.. ?not cool kyle?
-  // $FlowFixMe
   if (basename === '') s._emptyBn = true // not cool kyle
 
   try {
