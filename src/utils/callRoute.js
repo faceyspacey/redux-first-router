@@ -1,7 +1,7 @@
 // @flow
-import type { Action, RoutesMap } from '../flow-types'
+import type { Action, Routes } from '../flow-types'
 
-export default (routes: RoutesMap) => (
+export default (routes: Routes) => (
   action: Action | string,
   key?: string,
   ...args: Array<any>

@@ -10,8 +10,12 @@ const res = p => path.resolve(__dirname, p)
 // within Webpack and can properly make connections to client modules:
 const externals = fs
   .readdirSync(res('../node_modules'))
-  .filter(x =>
-    !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks|path-to-regexp/.test(x))
+  .filter(
+    x =>
+      !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks|path-to-regexp/.test(
+        x
+      )
+  )
   .reduce((externals, mod) => {
     externals[mod] = `commonjs ${mod}`
     return externals
@@ -53,8 +57,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      'rudy': path.resolve(__dirname, '../../../src'),
-      // 'redux-first-router-link': path.resolve(__dirname, '../../../src/Link')
+      'redux-first-router': path.resolve(__dirname, '../../../src'),
+      'redux-first-router-link': path.resolve(__dirname, '../../../src/Link')
     }
   },
   plugins: [

@@ -1,6 +1,6 @@
 // @flow
-import { ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY, NOT_FOUND } from '../types'
-import type { RoutesMap, RoutesMapInput, RouteInput, RouteNames } from '../flow-types'
+import { ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY } from '../types'
+import type { Routes, RoutesInput, RouteInput, RouteNames } from '../flow-types'
 
 import {
   addRoutes,
@@ -11,14 +11,14 @@ import {
 } from '../pathlessRoutes'
 
 export default (
-  input: RoutesMapInput,
+  input: RoutesInput,
   formatter: ?Function,
   isAddRoutes: boolean = false
-): RoutesMap => {
+): Routes => {
   const routes = isAddRoutes ? input : {}
 
   if (!isAddRoutes) {
-    routes[NOT_FOUND] = input.NOT_FOUND || { path: '/not-found' }
+    routes.NOT_FOUND = input.NOT_FOUND || { path: '/not-found' }
     Object.assign(routes, input) // insure '/not-found' matches over '/:param?' -- yes, browsers respect order assigned for non-numeric keys
 
     routes[ADD_ROUTES] = input[ADD_ROUTES] ||
@@ -54,7 +54,7 @@ export default (
 export const formatRoute = (
   r: RouteInput,
   type: string,
-  routes: RoutesMap,
+  routes: Routes,
   formatter: ?Function,
   isAddRoutes: boolean = false
 ): RouteInput => {

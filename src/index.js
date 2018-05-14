@@ -6,7 +6,6 @@ export { default as createScene } from './createScene'
 export type {
   RouteInput,
   Route,
-  RoutesMap,
   Routes,
   RouteNames,
   Options,

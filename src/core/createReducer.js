@@ -4,13 +4,13 @@ import { isServer, typeToScene, isNotFound } from '../utils'
 
 import type {
   LocationState,
-  RoutesMap,
+  Routes,
   Action,
   History,
   Options
 } from '../flow-types'
 
-export default (initialState: Object, routes: RoutesMap) => (
+export default (initialState: Object, routes: Routes) => (
   st: LocationState = initialState,
   action: Action
 ): LocationState => {
