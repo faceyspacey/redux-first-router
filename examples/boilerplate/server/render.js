@@ -20,7 +20,8 @@ export default ({ clientStats }) => async (req, res, next) => {
   console.log('REQUESTED PATH:', req.path)
   console.log('CHUNK NAMES RENDERED', chunkNames)
 
-  return res.send(`<!doctype html>
+  return res.send(
+    `<!doctype html>
       <html>
         <head>
           <meta charset="utf-8">
@@ -34,11 +35,11 @@ export default ({ clientStats }) => async (req, res, next) => {
           <script type='text/javascript' src='/static/vendor.js'></script>
           ${js}
         </body>
-      </html>`)
+      </html>`
+  )
 }
 
-const createApp = (App, store) => (
+const createApp = (App, store) =>
   <Provider store={store}>
     <App />
   </Provider>
-)

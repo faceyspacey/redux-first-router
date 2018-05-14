@@ -3,11 +3,9 @@ import { compileUrl, cleanBasename } from './index'
 
 import type {
   Route,
-  Payload,
-  Params,
   Routes,
   ReceivedAction as Action,
-  RoutesMap
+  Options
 } from '../flow-types'
 
 export default (
@@ -142,7 +140,7 @@ const formatState = (state: ?Object = {}, route: Route, opts: Options) => {
 
 const notFoundUrl = (
   action: Action,
-  routes: RoutesMap,
+  routes: Routes,
   opts: Options,
   query,
   hash: string,
