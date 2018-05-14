@@ -24,8 +24,11 @@ export type StandardCallback = (
 export type Route = {
   path?: string,
   capitalizedWords?: boolean,
-  toPath?: (param: string, key?: string) => string,
+  toPath?: Path,
   fromPath?: (path: string, key?: string) => string,
+  toHash?: (hash: string, route: Route, opts: Options) => string,
+  defaultHash?: Function | string,
+  toSearch?: Function,
   beforeLeave?: BeforeLeave,
   beforeEnter?: StandardCallback,
   onEnter?: StandardCallback,
@@ -92,6 +95,14 @@ export type NavigationToAction = (
   navigationAction: ?NavigationAction
 }
 
+export type Path = (
+  val: string,
+  key: string,
+  encodedVal: string,
+  route: Route,
+  opts: Options
+) => (string | Object)
+
 export type Options = {
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
@@ -110,6 +121,13 @@ export type Options = {
   basename?: string,
   initialEntries?: string | Array<string>,
   createHistory?: (options?: Object) => History,
+  defaultParams: Options,
+  defaultState?: Object,
+  toPath?: Path,
+  toHash?: (hash: string, route: Route, opts: Options) => string,
+  defaultHash?: Function | string,
+  defaultQuery?: ?Object,
+  toSearch?: any,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
@@ -178,21 +196,25 @@ export type HistoryData = {
 }
 
 export type Action = {
-  type: string,
-  payload: Payload,
   meta: Meta,
+  type: string,
+  kind?: ?string,
   query?: Object,
-  navKey?: ?string,
-  kind?: ?string
+  payload: Payload,
+  navKey?: ?string
 }
 
 export type ReceivedAction = {
   type: string,
-  payload: Payload,
   meta?: Object,
+  hash?: string,
+  state?: Object,
   query?: Object,
   search?: string,
-  navKey?: ?string
+  params: ?Params,
+  payload: Payload,
+  navKey?: ?string,
+  basename?: ?string
 }
 
 export type ReceivedActionMeta = {
