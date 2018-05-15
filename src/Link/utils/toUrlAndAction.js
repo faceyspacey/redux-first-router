@@ -1,14 +1,14 @@
 // @flow
 import resolvePathname from 'resolve-pathname'
 import { actionToUrl, toAction } from '../../utils'
-import { stripBasename, findBasename } from '../../history/utils'
-import type { RoutesMap, Options } from '../../flow-types'
+import { findBasename, stripBasename } from '../../utils/urlToAction'
+import type { Routes, Options } from '../../flow-types'
 
 export type To = string | Array<string> | Object
 
 export default (
   to?: ?To,
-  routes: RoutesMap,
+  routes: Routes,
   basename: ?string = '',
   currentPathname: string,
   options: Options
