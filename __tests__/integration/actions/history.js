@@ -81,10 +81,10 @@ createTest('dispatch(jump(n))', routes, [], async ({ dispatch, snap }) => {
   // await snap(jump(1))
 })
 
-createTest('dispatch(jump(n, byIndex === true, state))', routes, [], async ({ dispatch, snap }) => {
+createTest('dispatch(jump(n, byIndex === true, act))', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
-  await snap(jump(0, true, undefined, { foo: 'bar' }))
-  await snap(jump(1, true, undefined, { foo: 'bar' }))
+  await snap(jump(0, true, undefined, { state: { foo: 'bar' } }))
+  await snap(jump(1, true, undefined, { state: { foo: 'bar' } }))
 })
 
 // you can force the kind to be whatever you want,
@@ -94,8 +94,8 @@ createTest('dispatch(jump(n, byIndex, n, state))', routes, [], async ({ dispatch
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 
-  await snap(jump(0, true, 1, { foo: 'bar' })) // would normally be "back"
-  await snap(jump(2, true, -1, { foo: 'bar' })) // would normally be "next"
+  await snap(jump(0, true, 1, { state: { foo: 'bar' } })) // would normally be "back"
+  await snap(jump(2, true, -1, { state: { foo: 'bar' } })) // would normally be "next"
 })
 
 // when you jump more than one entry, middleware/transformAction/utils/historyAction.js re-creates `state.location.prev`
