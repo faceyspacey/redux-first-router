@@ -37,7 +37,8 @@ export type Route = {
   onComplete?: StandardCallback,
   onFail?: StandardCallback,
   navKey?: string,
-  type?: string
+  type?: string,
+  scene?: string
 }
 
 export type RouteInput = Function | Route
