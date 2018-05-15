@@ -7,4 +7,3 @@ export default (req): boolean => {
   return universal && !isServer() && req.getKind() === 'load'
 }
 
-

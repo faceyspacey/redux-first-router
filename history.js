@@ -6,7 +6,7 @@ module.exports = {
   utils: {
     supports: require('./dist/history/utils/supports.js'),
     popListener: require('./core/history/utils/popListener.js'),
-    sessionStorage: require('./core/history/utils/sessionStorage.js'),
+    sessionStorage: require('./core/history/utils/sessionStorage.js')
   }
 }
 
