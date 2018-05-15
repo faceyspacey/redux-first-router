@@ -1,9 +1,9 @@
 // @flow
 
 import { ADD_ROUTES } from '../types'
-import type { RoutesMap } from '../flow-types'
+import type { Routes } from '../flow-types'
 
-export default (routes: RoutesMap, formatRoute: ?Function) => ({
+export default (routes: Routes, formatRoute: ?Function) => ({
   type: ADD_ROUTES,
   payload: { routes, formatRoute }
 })

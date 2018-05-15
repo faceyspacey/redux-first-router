@@ -3,7 +3,9 @@ import { compileUrl, cleanBasename } from './index'
 
 import type {
   Route,
-  Options,
+  Payload,
+  Params,
+  Routes,
   ReceivedAction as Action,
   RoutesMap
 } from '../flow-types'

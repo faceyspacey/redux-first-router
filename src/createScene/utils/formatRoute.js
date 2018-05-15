@@ -1,8 +1,13 @@
 // @flow
 import { isNotFound, typeToScene, formatRoute } from '../../utils'
-import type { RouteInput, RoutesMap } from '../../flow-types'
+import type { RouteInput, Routes } from '../../flow-types'
 
-export default (r: RouteInput, type: string, routes: RoutesMap, formatter: ?Function) => {
+export default (
+  r: RouteInput,
+  type: string,
+  routes: Routes,
+  formatter: ?Function
+) => {
   const route = formatRoute(r, type, routes, formatter)
 
   route.scene = typeToScene(type)

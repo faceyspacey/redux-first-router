@@ -2,13 +2,13 @@
 import resolvePathname from 'resolve-pathname'
 import { actionToUrl, toAction } from '../../utils'
 import { findBasename, stripBasename } from '../../utils/urlToAction'
-import type { RoutesMap, Options } from '../../flow-types'
+import type { Routes, Options } from '../../flow-types'
 
 export type To = string | Array<string> | Object
 
 export default (
   to?: ?To,
-  routes: RoutesMap,
+  routes: Routes,
   basename: ?string = '',
   currentPathname: string,
   options: Options

@@ -1,6 +1,6 @@
 // @flow
 import { ADD_ROUTES, CHANGE_BASENAME, CLEAR_CACHE, CONFIRM, CALL_HISTORY } from '../types'
-import type { RoutesMap, RoutesMapInput, RouteInput, RouteNames } from '../flow-types'
+import type { Routes, RoutesInput, RouteInput, RouteNames } from '../flow-types'
 
 import {
   addRoutes,
@@ -11,10 +11,10 @@ import {
 } from '../pathlessRoutes'
 
 export default (
-  input: RoutesMapInput,
+  input: RoutesInput,
   formatter: ?Function,
   isAddRoutes: boolean = false
-): RoutesMap => {
+): Routes => {
   const routes = isAddRoutes ? input : {}
 
   if (!isAddRoutes) {
@@ -54,7 +54,7 @@ export default (
 export const formatRoute = (
   r: RouteInput,
   type: string,
-  routes: RoutesMap,
+  routes: Routes,
   formatter: ?Function,
   isAddRoutes: boolean = false
 ): RouteInput => {
