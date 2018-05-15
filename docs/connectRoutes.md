@@ -80,14 +80,14 @@ const { middleware, enhancer, reducer } = connectRoutes(history)
 ```
 
 
-## RoutesMap
+## Routes
 
-The `routesMap` was pretty much covered in the [readme](../README.md), but to be thorough,
+The `routes` was pretty much covered in the [readme](../README.md), but to be thorough,
 we'll explain it in depth, as well as describe the missing details about the `toPath` and `fromPath` functions. Here's its
 *Flow type*:
 
 ```javascript
-type RoutesMap = {
+type Routes = {
   [key: string]: string | RouteObject,
 }
 

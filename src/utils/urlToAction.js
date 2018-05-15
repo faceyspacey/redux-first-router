@@ -2,7 +2,7 @@
 import resolvePathname from 'resolve-pathname'
 import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
-import type { RoutesMap, ReceivedAction, Route, Options } from '../flow-types'
+import type { Routes, ReceivedAction, Route, Options } from '../flow-types'
 
 export default (api, url, state = {}, key = createKey()) => {
   const { getLocation, routes, options: opts } = api
@@ -42,7 +42,7 @@ const createLocation = (url, opts, bn, curr) => {
 
 const createAction = (
   loc: Object,
-  routes: RoutesMap,
+  routes: Routes,
   opts: Options,
   st: Object = {},
   curr: Object
@@ -170,11 +170,8 @@ const resolveBasename = (url, opts, state, curr) => {
   return { basename, slashBasename } // { 'base', '/base' }
 }
 
-const stripBasename = (path, bn) =>
-  path.indexOf(bn) === 0 ? path.substr(bn.length) : path
-
-const findBasename = (path, bns = []) =>
-  bns.find(bn => path.indexOf(bn) === 0)
+export const stripBasename = (path, bn) => path.indexOf(bn) === 0 ? path.substr(bn.length) : path
+export const findBasename = (path, bns = []) => bns.find(bn => path.indexOf(bn) === 0)
 
 
 // MISC

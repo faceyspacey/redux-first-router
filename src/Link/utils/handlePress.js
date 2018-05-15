@@ -1,12 +1,12 @@
 // @flow
 import { redirect } from '../../actions'
-import type { RoutesMap, ReceivedAction } from '../../index'
+import type { Routes, ReceivedAction } from '../../index'
 import type { To } from './toUrl'
 
 export type OnClick = false | ((SyntheticEvent) => ?boolean)
 export default (
   action: ?ReceivedAction,
-  routes: RoutesMap,
+  routes: Routes,
   shouldDispatch: boolean,
   dispatch: Function,
   onClick?: ?OnClick,

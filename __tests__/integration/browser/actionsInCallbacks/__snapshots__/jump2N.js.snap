@@ -2317,13 +2317,13 @@ exports[`jump(-2) in pathlessRoute: firstRoute - /first - 1 - title 1`] = `"THIR
 
 exports[`jump(-2) in pathlessRoute: firstRoute - /first - 1 - windowLocation 1`] = `"/third"`;
 
-exports[`jump(-2, action) after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+exports[`jump(-2, any, any, action) after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
-exports[`jump(-2, action) after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
+exports[`jump(-2, any, any, action) after enter on load: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
-exports[`jump(-2, action) after enter on load: 1 - routes - THIRD - thunk 1`] = `1`;
+exports[`jump(-2, any, any, action) after enter on load: 1 - routes - THIRD - thunk 1`] = `1`;
 
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
+exports[`jump(-2, any, any, action) after enter on load: firstRoute - /first - 1 - initial_state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -2415,7 +2415,7 @@ Object {
 }
 `;
 
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - response 1`] = `
+exports[`jump(-2, any, any, action) after enter on load: firstRoute - /first - 1 - response 1`] = `
 Object {
   "basename": "",
   "hash": "",
@@ -2524,7 +2524,7 @@ Object {
 }
 `;
 
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - sessionStorage 1`] = `
+exports[`jump(-2, any, any, action) after enter on load: firstRoute - /first - 1 - sessionStorage 1`] = `
 Object {
   "entries": Array [
     Array [
@@ -2547,7 +2547,7 @@ Object {
 }
 `;
 
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - state 1`] = `
+exports[`jump(-2, any, any, action) after enter on load: firstRoute - /first - 1 - state 1`] = `
 Object {
   "location": Object {
     "basename": "",
@@ -2658,6 +2658,6 @@ Object {
 }
 `;
 
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
+exports[`jump(-2, any, any, action) after enter on load: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
-exports[`jump(-2, action) after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/?hell=yea"`;
+exports[`jump(-2, any, any, action) after enter on load: firstRoute - /first - 1 - windowLocation 1`] = `"/?hell=yea"`;

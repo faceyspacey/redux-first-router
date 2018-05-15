@@ -24,8 +24,11 @@ export type StandardCallback = (
 export type Route = {
   path?: string,
   capitalizedWords?: boolean,
-  toPath?: (param: string, key?: string) => string,
+  toPath?: Path,
   fromPath?: (path: string, key?: string) => string,
+  toHash?: (hash: string, route: Route, opts: Options) => string,
+  defaultHash?: Function | string,
+  toSearch?: Function,
   beforeLeave?: BeforeLeave,
   beforeEnter?: StandardCallback,
   onEnter?: StandardCallback,
@@ -33,16 +36,18 @@ export type Route = {
   thunk?: StandardCallback,
   onComplete?: StandardCallback,
   onFail?: StandardCallback,
-  navKey?: string
+  navKey?: string,
+  type?: string,
+  scene?: string
 }
 
-export type RouteInput = string | Route
+export type RouteInput = Function | Route
 
-export type RoutesMapInput = {
+export type RoutesInput = {
   [key: string]: RouteInput
 }
 
-export type RoutesMap = {
+export type Routes = {
   [key: string]: Route
 }
 
@@ -63,7 +68,6 @@ export type Navigators = {
   [key: string]: Navigator
 }
 
-export type Routes = Array<Route>
 export type RouteNames = Array<string>
 
 export type SelectLocationState = (state: Object) => LocationState
@@ -84,12 +88,20 @@ export type ActionToNavigation = (
 export type NavigationToAction = (
   navigators: Navigators,
   store: Store,
-  routesMap: RoutesMap,
+  routesMap: Routes,
   action: Object
 ) => {
   action: Object,
   navigationAction: ?NavigationAction
 }
+
+export type Path = (
+  val: string,
+  key: string,
+  encodedVal: string,
+  route: Route,
+  opts: Options
+) => (string | Object)
 
 export type Options = {
   title?: string | SelectTitleState,
@@ -109,6 +121,13 @@ export type Options = {
   basename?: string,
   initialEntries?: string | Array<string>,
   createHistory?: (options?: Object) => History,
+  defaultParams: Options,
+  defaultState?: Object,
+  toPath?: Path,
+  toHash?: (hash: string, route: Route, opts: Options) => string,
+  defaultHash?: Function | string,
+  defaultQuery?: ?Object,
+  toSearch?: any,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
@@ -132,7 +151,7 @@ export type LocationState = {
   prev: Location,
   kind: ?string,
   history: ?HistoryData,
-  routesMap: RoutesMap,
+  routesMap: Routes,
   universal?: true
 }
 
@@ -177,21 +196,25 @@ export type HistoryData = {
 }
 
 export type Action = {
-  type: string,
-  payload: Payload,
   meta: Meta,
+  type: string,
+  kind?: ?string,
   query?: Object,
-  navKey?: ?string,
-  kind?: ?string
+  payload: Payload,
+  navKey?: ?string
 }
 
 export type ReceivedAction = {
   type: string,
-  payload: Payload,
   meta?: Object,
+  hash?: string,
+  state?: Object,
   query?: Object,
   search?: string,
-  navKey?: ?string
+  params: ?Params,
+  payload: Payload,
+  navKey?: ?string,
+  basename?: ?string
 }
 
 export type ReceivedActionMeta = {
