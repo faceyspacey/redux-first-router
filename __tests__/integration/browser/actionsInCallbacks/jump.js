@@ -7,7 +7,7 @@ createTest('jump before enter', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    beforeEnter: () => jump(0, undefined, true)
+    beforeEnter: () => jump(0, true)
   }
 }, { testBrowser: true })
 

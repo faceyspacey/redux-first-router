@@ -411,7 +411,6 @@ exports[`set(action, n):  - windowLocation 2`] = `"/second"`;
 exports[`set(action, n): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"params":{"foo":"bar"},"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},-1,null]}} - response 1`] = `
 Object {
   "basename": "",
-  "commit": [Function],
   "hash": "",
   "location": Object {
     "entries": Array [

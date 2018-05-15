@@ -2,7 +2,6 @@ import { formatAction } from './utils'
 
 export default () => (req, next) => {
   if (!req.route.path) return next()
-  if (req.getKind() === 'set') return req.enter() // skip callbacks + go straight to reducer + update browser history
 
   req.action = formatAction(req)
 

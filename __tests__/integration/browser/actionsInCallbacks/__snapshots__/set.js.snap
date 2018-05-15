@@ -2,7 +2,7 @@
 
 exports[`set after enter on load: 1 - routes - FIRST - onComplete 1`] = `1`;
 
-exports[`set after enter on load: 1 - routes - FIRST - thunk 1`] = `2`;
+exports[`set after enter on load: 1 - routes - FIRST - thunk 1`] = `1`;
 
 exports[`set after enter on load: 1 - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
 
@@ -75,8 +75,6 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
-    "blocked": null,
-    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -96,48 +94,14 @@ Object {
         "type": "FIRST",
       },
     ],
-    "from": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 0,
-        "key": "345678",
-        "pathname": "/",
-        "scene": "",
-        "search": "",
-        "url": "/",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "FIRST",
-    },
     "index": 0,
     "key": "345678",
-    "kind": "load",
+    "kind": "set",
     "length": 1,
     "n": 1,
     "pathname": "/",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": -1,
-        "key": "",
-        "pathname": "",
-        "scene": "",
-        "search": "",
-        "url": "",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "",
-    },
     "scene": "",
     "search": "hell=yea",
-    "status": 302,
     "url": "/?hell=yea",
   },
   "params": Object {},
@@ -187,22 +151,7 @@ Object {
         "type": "FIRST",
       },
     ],
-    "from": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 0,
-        "key": "345678",
-        "pathname": "/",
-        "scene": "",
-        "search": "",
-        "url": "/",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "FIRST",
-    },
+    "from": null,
     "hash": "",
     "index": 0,
     "key": "345678",
@@ -234,7 +183,7 @@ Object {
     "scene": "",
     "search": "hell=yea",
     "state": Object {},
-    "status": 302,
+    "status": 200,
     "type": "FIRST",
     "universal": false,
     "url": "/?hell=yea",
@@ -252,8 +201,6 @@ Object {
   "basename": "",
   "hash": "",
   "location": Object {
-    "blocked": null,
-    "direction": "forward",
     "entries": Array [
       Object {
         "basename": "",
@@ -288,48 +235,14 @@ Object {
         "type": "SECOND",
       },
     ],
-    "from": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 1,
-        "key": "345678",
-        "pathname": "/second",
-        "scene": "",
-        "search": "",
-        "url": "/second",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "SECOND",
-    },
     "index": 1,
     "key": "345678",
-    "kind": "replace",
+    "kind": "set",
     "length": 2,
     "n": 1,
     "pathname": "/second",
-    "pop": false,
-    "prev": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 0,
-        "key": "345678",
-        "pathname": "/",
-        "scene": "",
-        "search": "",
-        "url": "/",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "FIRST",
-    },
     "scene": "",
     "search": "hell=yea",
-    "status": 302,
     "url": "/second?hell=yea",
   },
   "params": Object {},
@@ -347,7 +260,7 @@ exports[`set after enter: 1 - routes - REDIRECTED - onComplete 1`] = `0`;
 
 exports[`set after enter: 1 - routes - SECOND - onComplete 1`] = `1`;
 
-exports[`set after enter: 1 - routes - SECOND - thunk 1`] = `2`;
+exports[`set after enter: 1 - routes - SECOND - thunk 1`] = `1`;
 
 exports[`set after enter: 1 - sessionStorage 1`] = `
 Object {
@@ -407,26 +320,11 @@ Object {
         "type": "SECOND",
       },
     ],
-    "from": Object {
-      "basename": "",
-      "hash": "",
-      "location": Object {
-        "index": 1,
-        "key": "345678",
-        "pathname": "/second",
-        "scene": "",
-        "search": "",
-        "url": "/second",
-      },
-      "params": Object {},
-      "query": Object {},
-      "state": Object {},
-      "type": "SECOND",
-    },
+    "from": null,
     "hash": "",
     "index": 1,
     "key": "345678",
-    "kind": "replace",
+    "kind": "push",
     "length": 2,
     "n": 1,
     "params": Object {},
@@ -454,7 +352,7 @@ Object {
     "scene": "",
     "search": "hell=yea",
     "state": Object {},
-    "status": 302,
+    "status": 200,
     "type": "SECOND",
     "universal": false,
     "url": "/second?hell=yea",
@@ -740,7 +638,7 @@ Object {
 
 exports[`set before enter on load throws error: firstRoute - /first - 1 - response 1`] = `
 Object {
-  "error": [Error: [rudy] "set" cant be used before enter -- redirect instead],
+  "error": [Error: [rudy] you can only set state on a previous url before enter],
   "type": "@@rudy/CALL_HISTORY_ERROR",
 }
 `;
@@ -770,7 +668,7 @@ Object {
         "type": "FIRST",
       },
     ],
-    "error": [Error: [rudy] "set" cant be used before enter -- redirect instead],
+    "error": [Error: [rudy] you can only set state on a previous url before enter],
     "errorType": "@@rudy/CALL_HISTORY_ERROR",
     "from": null,
     "hash": "",
@@ -817,7 +715,7 @@ exports[`set before enter on load throws error: firstRoute - /first - 1 - window
 
 exports[`set before enter throws error: {"type":"SECOND"} - response 1`] = `
 Object {
-  "error": [Error: [rudy] "set" cant be used before enter -- redirect instead],
+  "error": [Error: [rudy] you can only set state on a previous url before enter],
   "type": "@@rudy/CALL_HISTORY_ERROR",
 }
 `;
@@ -886,7 +784,7 @@ Object {
         "type": "REDIRECTED",
       },
     ],
-    "error": [Error: [rudy] "set" cant be used before enter -- redirect instead],
+    "error": [Error: [rudy] you can only set state on a previous url before enter],
     "errorType": "@@rudy/CALL_HISTORY_ERROR",
     "from": null,
     "hash": "",
@@ -935,7 +833,6 @@ exports[`set before enter throws error: {"type":"SECOND"} - windowLocation 1`] =
 exports[`set in pathlessRoute: 1 - response 1`] = `
 Object {
   "basename": "",
-  "commit": [Function],
   "hash": "",
   "location": Object {
     "entries": Array [
@@ -1265,3 +1162,230 @@ Object {
 exports[`set in pathlessRoute: firstRoute - /first - 1 - title 1`] = `"FIRST"`;
 
 exports[`set in pathlessRoute: firstRoute - /first - 1 - windowLocation 1`] = `"/"`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - response 1`] = `
+Object {
+  "basename": "",
+  "hash": "",
+  "location": Object {
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "hell": "yea",
+        },
+        "type": "REDIRECTED",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "index": 2,
+    "key": "345678",
+    "kind": "push",
+    "length": 3,
+    "n": 1,
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/redirected",
+        "scene": "",
+        "search": "",
+        "url": "/redirected",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {
+        "hell": "yea",
+      },
+      "type": "REDIRECTED",
+    },
+    "scene": "",
+    "search": "",
+    "status": 200,
+    "url": "/second",
+  },
+  "params": Object {},
+  "query": Object {},
+  "state": Object {},
+  "type": "SECOND",
+}
+`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - routes - NEVER_USED_PATHLESS - thunk 1`] = `0`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - routes - REDIRECTED - onComplete 1`] = `1`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - routes - SECOND - beforeEnter 1`] = `1`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - routes - SECOND - thunk 1`] = `1`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - sessionStorage 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "/",
+      Object {},
+      "345678",
+    ],
+    Array [
+      "/redirected",
+      Object {
+        "hell": "yea",
+      },
+      "345678",
+    ],
+    Array [
+      "/second",
+      Object {},
+      "345678",
+    ],
+  ],
+  "index": 2,
+}
+`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - state 1`] = `
+Object {
+  "location": Object {
+    "basename": "",
+    "blocked": null,
+    "direction": "forward",
+    "entries": Array [
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/",
+          "scene": "",
+          "search": "",
+          "url": "/",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "FIRST",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/redirected",
+          "scene": "",
+          "search": "",
+          "url": "/redirected",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {
+          "hell": "yea",
+        },
+        "type": "REDIRECTED",
+      },
+      Object {
+        "basename": "",
+        "hash": "",
+        "location": Object {
+          "key": "345678",
+          "pathname": "/second",
+          "scene": "",
+          "search": "",
+          "url": "/second",
+        },
+        "params": Object {},
+        "query": Object {},
+        "state": Object {},
+        "type": "SECOND",
+      },
+    ],
+    "from": null,
+    "hash": "",
+    "index": 2,
+    "key": "345678",
+    "kind": "push",
+    "length": 3,
+    "n": 1,
+    "params": Object {},
+    "pathname": "/second",
+    "pop": false,
+    "prev": Object {
+      "basename": "",
+      "hash": "",
+      "location": Object {
+        "index": 1,
+        "key": "345678",
+        "pathname": "/redirected",
+        "scene": "",
+        "search": "",
+        "url": "/redirected",
+      },
+      "params": Object {},
+      "query": Object {},
+      "state": Object {
+        "hell": "yea",
+      },
+      "type": "REDIRECTED",
+    },
+    "query": Object {},
+    "scene": "",
+    "search": "",
+    "state": Object {},
+    "status": 200,
+    "type": "SECOND",
+    "universal": false,
+    "url": "/second",
+  },
+  "title": "SECOND",
+}
+`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - title 1`] = `"SECOND"`;
+
+exports[`setState before enter sets state on prev entry: {"type":"SECOND"} - windowLocation 1`] = `"/second"`;

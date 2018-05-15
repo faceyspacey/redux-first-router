@@ -77,7 +77,7 @@ export default class History {
     const action = toAction(this, path, state)
     const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (n) return this.jump(n, { state }, undefined, undefined, notify)
+    if (n) return this.jump(n, false, undefined, { state }, notify)
 
     const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'push')
     const index = n === -1 ? this.index - 1 : this.index + 1
@@ -93,7 +93,7 @@ export default class History {
     const action = toAction(this, path, state)
     const n = this._findAdjacentN(action) // automatically determine if the user is just going back or next to a URL already visited
 
-    if (n) return this.jump(n, { state }, undefined, undefined, notify)
+    if (n) return this.jump(n, false, undefined, { state }, notify)
 
     const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'replace')
     const { index } = this
@@ -107,7 +107,7 @@ export default class History {
     return this._notify(action, info, commit, notify)
   }
 
-  jump(delta, act, byIndex = false, n, notify = true, revertPop) {
+  jump(delta, byIndex = false, n, act, notify = true, revertPop) {
     delta = this._resolveDelta(delta, byIndex)
     n = n || (delta < 0 ? -1 : 1) // users can choose what direction to make the `jump` look like it came from
 
@@ -135,11 +135,11 @@ export default class History {
   }
 
   back(state, notify = true) {
-    return this.jump(-1, { state }, false, -1, notify)
+    return this.jump(-1, false, -1, { state }, notify)
   }
 
   next(state, notify = true) {
-    return this.jump(1, { state }, false, 1, notify)
+    return this.jump(1, false, 1, { state }, notify)
   }
 
   set(act, delta, byIndex = false, notify = true) {
@@ -166,26 +166,6 @@ export default class History {
     }
 
     return this._notify(action, info, commit, notify)
-  }
-
-  setParams(params, delta, byIndex, notify) {
-    return this.set({ params }, delta, byIndex, notify)
-  }
-
-  setQuery(query, delta, byIndex, notify) {
-    return this.set({ query }, delta, byIndex, notify)
-  }
-
-  setState(state, delta, byIndex, notify) {
-    return this.set({ state }, delta, byIndex, notify)
-  }
-
-  setHash(hash, delta, byIndex, notify) {
-    return this.set({ hash }, delta, byIndex, notify)
-  }
-
-  setBasename(basename, delta, byIndex, notify) {
-    return this.set({ basename }, delta, byIndex, notify)
   }
 
   replacePop(path, state = {}, notify = true, info) {

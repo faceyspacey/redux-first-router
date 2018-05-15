@@ -109,7 +109,7 @@ export default class BrowserHistory extends History {
       // revertPop will be called if route change blocked by `core/compose.js` or used as
       // a flag by `this._jump` below to do nothing in the browser, since the user already
       // did it via browser back/next buttons
-      this.currentPop = this.jump(n, null, false, n, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
+      this.currentPop = this.jump(n, false, n, null, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
     }
 
     const onPopState = e => !isExtraneousPopEvent(e) && handlePop() // ignore extraneous popstate events in WebKit

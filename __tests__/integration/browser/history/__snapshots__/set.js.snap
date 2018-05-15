@@ -3,7 +3,6 @@
 exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hell":"yea"},"hash":"yolo","basename":"base","state":{"something":123}},null,null]}} - response 1`] = `
 Object {
   "basename": "base",
-  "commit": [Function],
   "hash": "yolo",
   "location": Object {
     "entries": Array [
@@ -144,7 +143,6 @@ exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","a
 exports[`set(action): {"type":"@@rudy/CALL_HISTORY","payload":{"method":"set","args":[{"query":{"hello":"world"},"hash":"yolo","basename":"base","state":{"something":123},"params":{"foo":"bar"}},null,null]}} - response 1`] = `
 Object {
   "basename": "base",
-  "commit": [Function],
   "hash": "yolo",
   "location": Object {
     "entries": Array [

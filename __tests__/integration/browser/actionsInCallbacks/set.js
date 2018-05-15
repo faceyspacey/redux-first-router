@@ -1,5 +1,5 @@
 import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
-import { set } from '../../../../src/actions'
+import { set, setState } from '../../../../src/actions'
 
 beforeEach(resetBrowser)
 
@@ -7,16 +7,28 @@ createTest('set before enter throws error', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    beforeEnter: ({ query }) => {
-      if (query.hell) return
-      return set({ query: { hell: 'yea' } })
-    },
+    beforeEnter: () => set({ query: { hell: 'yea' } }),
     thunk: function() {}
   }
 }, {
   testBrowser: true,
   wallabyErrors: false
-}, [], async ({ dispatch, snap, getLocation }) => {
+}, [], async ({ dispatch, snap }) => {
+  await dispatch({ type: 'REDIRECTED' })
+  await snap({ type: 'SECOND' })
+})
+
+createTest('setState before enter sets state on prev entry', {
+  FIRST: '/',
+  SECOND: {
+    path: '/second',
+    beforeEnter: () => setState({ hell: 'yea' }),
+    thunk: function() {}
+  }
+}, {
+  testBrowser: true,
+  wallabyErrors: false
+}, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'REDIRECTED' })
   await snap({ type: 'SECOND' })
 })
@@ -25,10 +37,7 @@ createTest('set after enter', {
   FIRST: '/',
   SECOND: {
     path: '/second',
-    thunk: ({ query }) => {
-      if (query.hell) return
-      return set({ query: { hell: 'yea' } })
-    },
+    thunk: () => set({ query: { hell: 'yea' } }),
     onComplete: function() {}
   }
 }, { testBrowser: true })
@@ -36,10 +45,7 @@ createTest('set after enter', {
 createTest('set before enter on load throws error', {
   FIRST: {
     path: '/',
-    beforeEnter: ({ query }) => {
-      if (query.hell) return
-      return set({ query: { hell: 'yea' } })
-    },
+    beforeEnter: () => set({ query: { hell: 'yea' } }),
     thunk: function() {}
   }
 }, {
@@ -50,10 +56,7 @@ createTest('set before enter on load throws error', {
 createTest('set after enter on load', {
   FIRST: {
     path: '/',
-    thunk: ({ query }) => {
-      if (query.hell) return
-      return set({ query: { hell: 'yea' } })
-    },
+    thunk: () => set({ query: { hell: 'yea' } }),
     onComplete: function() {}
   }
 }, { testBrowser: true })

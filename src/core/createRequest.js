@@ -64,7 +64,7 @@ export class Request {
     this.tmp.committed = true
     this.history.pendingPop = null
 
-    return Promise.resolve(this.commitDispatch(this.action)) // syncronous 99.99% percent of the time (state needs to be updated before history updates URL etc)
+    return Promise.resolve(this.commitDispatch(this.action)) // syncronous 99% percent of the time (state needs to be updated before history updates URL etc)
       .then((res) => {
         if (!this.commitHistory) return res
         return this.commitHistory(this.action).then(() => res)
@@ -87,7 +87,9 @@ export class Request {
       }
     }
 
-    if (this.ctx.busy && route && route.path ) {
+    if (this.ctx.busy && route && route.path && // convert actions to redirects only if "busy" in a route changing pipeline
+      !(action.location && action.location.kind === 'set') // history `set` actions should not be transformed to redirects
+    ) {
       const status = action.location && action.location.status
       action = redirect(action, status || 302)
     }
@@ -114,7 +116,7 @@ export class Request {
         if (this.ctx.serverRedirect || // short-circuit when a server redirected is detected
           (
             (urlChanged || action.type === CALL_HISTORY) && // short-circuit if the URL changed || or history action creators used
-            !(this.tmp.committed && res && res.location && res.location.kind === 'set') // but `set` should not short-circuit ever (note: they are only allowed after enter; otherwise an informative error is thrown)
+            !(res && res.location && res.location.kind === 'set') // but `set` should not short-circuit ever
           )
         ) {
           this.redirect = res                   // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)

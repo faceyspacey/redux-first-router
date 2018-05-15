@@ -2,7 +2,7 @@ import createTest from '../../../../__helpers__/createTest'
 import { locationToUrl } from '../../../../src/utils'
 import { jump } from '../../../../src/actions'
 
-createTest('set(action, n)', {
+createTest('jump(delta, any, any, action)', {
   SECOND: '/second',
   FIRST: '/:foo?'
 }, {
@@ -22,7 +22,7 @@ createTest('set(action, n)', {
     state: { something: 123 }
   }
 
-  await snap(jump(-1, action))
+  await snap(jump(-1, undefined, undefined, action))
   expect(locationToUrl(window.location)).toEqual('/base/bar?hell=yea#yolo')
 
   await snapPop('forward')

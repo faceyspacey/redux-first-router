@@ -81,21 +81,21 @@ createTest('dispatch(jump(n))', routes, [], async ({ dispatch, snap }) => {
   // await snap(jump(1))
 })
 
-createTest('dispatch(jump(n, state, byIndex === true))', routes, [], async ({ dispatch, snap }) => {
+createTest('dispatch(jump(n, byIndex === true, state))', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
-  await snap(jump(0, { foo: 'bar' }, true))
-  await snap(jump(1, { foo: 'bar' }, true))
+  await snap(jump(0, true, undefined, { foo: 'bar' }))
+  await snap(jump(1, true, undefined, { foo: 'bar' }))
 })
 
 // you can force the kind to be whatever you want,
 // which will presume the user came from a different direction;
 // otherwise it's automatically inferred
-createTest('dispatch(jump(n, state, byIndex, n))', routes, [], async ({ dispatch, snap, getLocation }) => {
+createTest('dispatch(jump(n, byIndex, n, state))', routes, [], async ({ dispatch, snap }) => {
   await dispatch({ type: 'SECOND' })
   await dispatch({ type: 'THIRD' })
 
-  await snap(jump(0, { foo: 'bar' }, true, 1)) // would normally be "back"
-  await snap(jump(2, { foo: 'bar' }, true, -1)) // would normally be "next"
+  await snap(jump(0, true, 1, { foo: 'bar' })) // would normally be "back"
+  await snap(jump(2, true, -1, { foo: 'bar' })) // would normally be "next"
 })
 
 // when you jump more than one entry, middleware/transformAction/utils/historyAction.js re-creates `state.location.prev`

@@ -40,7 +40,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
         const next = (...args) => Promise.resolve(dispatch(i + 1, ...args))
         const prom = Promise.resolve(fn(req, next, ...args)) // insure middleware is a promise
 
-        const retrn = prom.then(res => {
+        return prom.then(res => {
           if (res) {
             delete res._dispatched // delete these temporary flags so user doesn't see them (used for `autoDispatch` feature)
           }
@@ -67,8 +67,6 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
           result = result !== undefined ? result : res // insure last middleware return stays the final return of `dispatch` after chain rewinds
           return i === 0 ? result : res // but allow middleware calls to `next` to be returned regular return of next middleware
         })
-
-        return retrn
       }
       catch (err) {
         return Promise.reject(err)
