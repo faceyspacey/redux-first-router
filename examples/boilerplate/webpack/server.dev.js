@@ -53,8 +53,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      'rudy': path.resolve(__dirname, '../../../src'),
-      // 'redux-first-router-link': path.resolve(__dirname, '../../../src/Link')
+      'rudy': path.resolve(__dirname, '../../../src')
     }
   },
   plugins: [
