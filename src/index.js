@@ -18,7 +18,8 @@ export {
   getOptions
 } from './connectRoutes'
 
-export const NOT_FOUND = '@@redux-first-router/NOT_FOUND'
+export const PREFIX = '@@redux-first-router'
+export const NOT_FOUND = `${PREFIX}/NOT_FOUND`
 
 export { default as redirect } from './action-creators/redirect'
 
