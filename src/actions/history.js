@@ -1,7 +1,9 @@
 // @flow
 import { CALL_HISTORY } from '../types'
+import type { HistoryRouteAction } from '../flow-types'
 
-export const push = (path: string, state: ?Object) => ({
+
+export const push = (path: string, state: ?Object): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'push',
@@ -9,7 +11,7 @@ export const push = (path: string, state: ?Object) => ({
   }
 })
 
-export const replace = (path: string, state: ?Object) => ({
+export const replace = (path: string, state: ?Object): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'replace',
@@ -17,7 +19,8 @@ export const replace = (path: string, state: ?Object) => ({
   }
 })
 
-export const jump = (delta: number | string, state: ?Object, byIndex: ?boolean, n: ?number) => ({
+
+export const jump = (delta: number | string, state: ?Object, byIndex: ?boolean, n: ?number): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'jump',
@@ -25,7 +28,7 @@ export const jump = (delta: number | string, state: ?Object, byIndex: ?boolean, 
   }
 })
 
-export const reset = (entries: Array<string | Object>, index: ?number, n: ?number) => ({
+export const reset = (entries: Array<string | Object>, index: ?number, n: ?number): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'reset',
@@ -33,7 +36,7 @@ export const reset = (entries: Array<string | Object>, index: ?number, n: ?numbe
   }
 })
 
-export const back = (state: ?(Object | Function)) => ({
+export const back = (state: ?(Object | Function)): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'back',
@@ -41,7 +44,7 @@ export const back = (state: ?(Object | Function)) => ({
   }
 })
 
-export const next = (state: ?(Object | Function)) => ({
+export const next = (state: ?(Object | Function)): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'next',
@@ -49,7 +52,7 @@ export const next = (state: ?(Object | Function)) => ({
   }
 })
 
-export const set = (action: Object | Function, n: ?(number | string), byIndex: ?boolean) => ({
+export const set = (action: Object | Function, n: ?(number | string), byIndex: ?boolean): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'set',
@@ -57,7 +60,7 @@ export const set = (action: Object | Function, n: ?(number | string), byIndex: ?
   }
 })
 
-export const setParams = (params: Object | Function, n: ?(number | string), byIndex: ?boolean) => ({
+export const setParams = (params: Object | Function, n: ?(number | string), byIndex: ?boolean): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'set',
@@ -65,7 +68,7 @@ export const setParams = (params: Object | Function, n: ?(number | string), byIn
   }
 })
 
-export const setQuery = (query: Object | Function, n: ?(number | string), byIndex: ?boolean) => ({
+export const setQuery = (query: Object | Function, n: ?(number | string), byIndex: ?boolean): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'set',
@@ -73,7 +76,7 @@ export const setQuery = (query: Object | Function, n: ?(number | string), byInde
   }
 })
 
-export const setState = (state: Object | Function, n: ?(number | string), byIndex: ?boolean) => ({
+export const setState = (state: Object | Function, n: ?(number | string), byIndex: ?boolean): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'set',
@@ -81,7 +84,7 @@ export const setState = (state: Object | Function, n: ?(number | string), byInde
   }
 })
 
-export const setHash = (hash: Object | Function, n: ?(number | string), byIndex: ?boolean) => ({
+export const setHash = (hash: Object | Function, n: ?(number | string), byIndex: ?boolean): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'set',
@@ -89,7 +92,7 @@ export const setHash = (hash: Object | Function, n: ?(number | string), byIndex:
   }
 })
 
-export const setBasename = (basename: Object | Function, n: ?(number | string), byIndex: ?boolean) => ({
+export const setBasename = (basename: Object | Function, n: ?(number | string), byIndex: ?boolean): HistoryRouteAction => ({
   type: CALL_HISTORY,
   payload: {
     method: 'set',
@@ -97,4 +100,4 @@ export const setBasename = (basename: Object | Function, n: ?(number | string), 
   }
 })
 
-// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoute
+// NOTE: see `src/utils/formatRoutes.js` for implementation of corresponding pathlessRoute

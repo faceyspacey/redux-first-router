@@ -1,5 +1,6 @@
 // @flow
-import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
+import type {Dispatch as ReduxDispatch, Store as ReduxStore} from 'redux'
+import {CALL_HISTORY} from './types'
 
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
@@ -194,6 +195,15 @@ export type HistoryData = {
   index: number,
   length: number
 }
+
+export type HistoryRouteAction = {
+  payload: {
+    args: Array<mixed>,
+    method: string
+  },
+  type: string
+}
+
 
 export type Action = {
   meta: Meta,

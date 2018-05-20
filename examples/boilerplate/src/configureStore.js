@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
-import { createRouter } from 'redux-first-router'
-import * as actionCreators from 'redux-first-router/actions'
+import { createRouter } from 'rudy'
+import * as actionCreators from 'rudy/actions'
 
 import routes from './routes'
 import * as reducers from './reducers'
