@@ -20,14 +20,13 @@ export default (
   const path: string | void | string | void = typeof route === 'object' ? route.path : route
 
   const p: void | {} = formatParams(params, route, opts)
-  const q = formatQuery(query, route, opts)
+  const q: mixed = formatQuery(query, route, opts)
   const s: ?Object = formatState(state, route, opts)
   const h: string = formatHash(hash, route, opts)
 
   const bn = cleanBasename(basename)
   const isWrongBasename = bn && !opts.basenames.includes(bn)
   // $FlowFixMe
-  // TODO: Find out what needs to happen here.. ?not cool kyle?
   if (basename === '') s._emptyBn = true // not cool kyle
 
   try {
@@ -159,6 +158,7 @@ const notFoundUrl = (
       : 'NOT_FOUND'
 
   const p = routes[t].path || routes.NOT_FOUND.path || ''
+  // $FlowFixMe
   const s: string = query ? opts.stringifyQuery(query, { addQueryPrefix: true }) : '' // preserve these (why? because we can)
   const h: string = hash ? `#${hash}` : ''
 
