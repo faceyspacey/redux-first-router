@@ -1,6 +1,6 @@
 // @flow
-import type {Dispatch as ReduxDispatch, Store as ReduxStore} from 'redux'
-import {CALL_HISTORY} from './types'
+import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
+import { CALL_HISTORY } from './types'
 
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
