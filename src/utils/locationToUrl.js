@@ -1,4 +1,7 @@
-export default (location) => {
+// @flow
+import type { ReceivedAction } from '../flow-types'
+
+export default (location: ReceivedAction): string => {
   if (typeof location === 'string') return location
 
   const { pathname, search, hash } = location

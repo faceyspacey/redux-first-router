@@ -169,6 +169,7 @@ export type Location = {
 export type ActionMetaLocation = {
   current: Location,
   prev: Location,
+  from: string,
   kind: ?string,
   history: ?HistoryData
 }
@@ -226,7 +227,8 @@ export type ReceivedAction = {
   params: ?Params,
   payload: Payload,
   navKey?: ?string,
-  basename?: ?string
+  basename?: ?string,
+  pathname?: string
 }
 
 export type ReceivedActionMeta = {
@@ -268,7 +270,9 @@ export type History = {
 
 export type LocationActionMeta = {
   url: string,
-  status: number
+  status: number,
+  kind?: string,
+  from?: string
 }
 
 export type LocationAction = {
