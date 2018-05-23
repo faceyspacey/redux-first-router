@@ -1,6 +1,6 @@
 // @flow
-import type {Dispatch as ReduxDispatch, Store as ReduxStore} from 'redux'
-import {CALL_HISTORY} from './types'
+import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
+import { CALL_HISTORY } from './types'
 
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
@@ -124,7 +124,7 @@ export type Options = {
   createHistory?: (options?: Object) => History,
   defaultParams: Options,
   defaultState?: Object,
-  toPath?: Path,
+  toPath?: ?any,
   toHash?: (hash: string, route: Route, opts: Options) => string,
   defaultHash?: Function | string,
   defaultQuery?: ?Object,
