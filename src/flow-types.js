@@ -1,6 +1,6 @@
 // @flow
-import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
-import { CALL_HISTORY } from './types'
+import type {Dispatch as ReduxDispatch, Store as ReduxStore} from 'redux'
+import {CALL_HISTORY} from './types'
 
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
@@ -264,6 +264,15 @@ export type History = {
   length: number,
   location: HistoryLocation,
   block: (func: BlockFunction) => void
+}
+
+export type LocationActionMeta = {
+  url: string,
+  status: number
+}
+
+export type LocationAction = {
+  location: LocationActionMeta
 }
 
 export type HistoryLocation = {

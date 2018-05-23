@@ -1,6 +1,8 @@
+// @flow
 import { isRedirect } from './index'
+import type { LocationAction } from '../flow-types'
 
-export default (action, redirectFunc) => {
+export default (action: LocationAction, redirectFunc: Function | Object): boolean => {
   if (isRedirect(action)) {
     const url = action.location.url
     const status = action.location.status || 302
