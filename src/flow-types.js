@@ -39,7 +39,8 @@ export type Route = {
   onFail?: StandardCallback,
   navKey?: string,
   type?: string,
-  scene?: string
+  scene?: string,
+  stringifyQuery?: (?Object) => string
 }
 
 export type RouteInput = Function | Route
@@ -135,7 +136,8 @@ export type Options = {
     actionToNavigation: ActionToNavigation,
     navigationToAction: NavigationToAction
   },
-  extra?: any
+  extra?: any,
+  stringifyQuery: (?Object) => string
 }
 
 export type ScrollBehavior = Object
