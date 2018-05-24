@@ -1,1 +1,2 @@
-export default () => Promise.resolve()
+// @flow
+export default (): Promise<void> => Promise.resolve()
