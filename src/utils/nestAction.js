@@ -1,6 +1,8 @@
+// @flow
 import { isNotFound } from './index'
+import type { ActionToNavigation, LocationState } from '../flow-types'
 
-export default (action, prevState, fromAction, statusCode, tmp = {}) => {
+export default (action: ActionToNavigation, prevState: LocationState, fromAction: LocationState, statusCode: number, tmp: Object = {}) => {
   const { location, type, basename, params, query, state, hash } = action
   const { entries, index, length, pathname, search, url, key, scene, n } = location
 
@@ -45,7 +47,7 @@ export default (action, prevState, fromAction, statusCode, tmp = {}) => {
   }
 }
 
-export const createActionRef = (actionOrState) => {
+export const createActionRef = (actionOrState: Object) => {
   if (!actionOrState) return null
 
   // if `prev` or redirect action from outside of pipeline, we receive the state instead (see ./formatAction.js)

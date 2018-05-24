@@ -40,7 +40,9 @@ export type Route = {
   navKey?: string,
   type?: string,
   scene?: string,
-  stringifyQuery?: (?Object) => string
+  stringifyQuery?: (?Object) => string,
+  parseSearch: (?string) => Object,
+
 }
 
 export type RouteInput = Function | Route
@@ -105,6 +107,7 @@ export type Path = (
   opts: Options
 ) => (string | Object)
 
+// TODO: Question: Is can this be split up to sub-types at some point.
 export type Options = {
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
@@ -123,13 +126,14 @@ export type Options = {
   basename?: string,
   initialEntries?: string | Array<string>,
   createHistory?: (options?: Object) => History,
-  defaultParams: Options,
+  defaultParams?: Options,
   defaultState?: Object,
   toPath?: ?any,
   toHash?: (hash: string, route: Route, opts: Options) => string,
   defaultHash?: Function | string,
   defaultQuery?: ?Object,
   toSearch?: any,
+  parseSearch?: (?string) => Object,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
@@ -137,7 +141,7 @@ export type Options = {
     navigationToAction: NavigationToAction
   },
   extra?: any,
-  stringifyQuery: (?Object) => string
+  stringifyQuery?: (?Object) => string
 }
 
 export type ScrollBehavior = Object
