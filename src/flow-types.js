@@ -42,7 +42,7 @@ export type Route = {
   scene?: string,
   stringifyQuery?: (?Object) => string,
   parseSearch: (?string) => Object,
-
+  redirect?: Function
 }
 
 export type RouteInput = Function | Route
