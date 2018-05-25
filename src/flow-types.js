@@ -154,8 +154,6 @@ export type Options = {
   },
 }
 
-
-
 export type ScrollBehavior = Object
 
 export type Params = Object
