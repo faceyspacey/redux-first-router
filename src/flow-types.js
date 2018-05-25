@@ -24,25 +24,25 @@ export type StandardCallback = (
 
 export type Route = {
   path?: string,
-  capitalizedWords?: boolean,
   toPath?: Path,
-  fromPath?: (path: string, key?: string) => string,
-  toHash?: (hash: string, route: Route, opts: Options) => string,
-  defaultHash?: Function | string,
-  toSearch?: Function,
-  beforeLeave?: BeforeLeave,
-  beforeEnter?: StandardCallback,
-  onEnter?: StandardCallback,
-  onLeave?: StandardCallback,
-  thunk?: StandardCallback,
-  onComplete?: StandardCallback,
-  onFail?: StandardCallback,
-  navKey?: string,
   type?: string,
   scene?: string,
-  stringifyQuery?: (?Object) => string,
+  navKey?: string,
+  redirect?: Function,
+  toSearch?: Function,
+  thunk?: StandardCallback,
+  beforeLeave?: BeforeLeave,
+  onFail?: StandardCallback,
+  capitalizedWords?: boolean,
+  onEnter?: StandardCallback,
+  onLeave?: StandardCallback,
+  onComplete?: StandardCallback,
+  beforeEnter?: StandardCallback,
+  defaultHash?: Function | string,
   parseSearch: (?string) => Object,
-  redirect?: Function
+  stringifyQuery?: (?Object) => string,
+  fromPath?: (path: string, key?: string) => string,
+  toHash?: (hash: string, route: Route, opts: Options) => string
 }
 
 export type RouteInput = Function | Route
@@ -109,39 +109,39 @@ export type Path = (
 
 // TODO: Question: Is can this be split up to sub-types at some point.
 export type Options = {
-  title?: string | SelectTitleState,
-  location?: string | SelectLocationState,
-  notFoundPath?: string,
+  extra?: any,
+  toPath?: ?any,
+  toSearch?: any,
+  basename?: string,
   scrollTop?: boolean,
+  notFoundPath?: string,
+  defaultState?: Object,
+  defaultQuery?: ?Object,
+  defaultParams?: Options,
+  thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
-  beforeEnter?: StandardCallback,
+  onFail?: StandardCallback,
   onEnter?: StandardCallback,
   onLeave?: StandardCallback,
-  thunk?: StandardCallback,
   onComplete?: StandardCallback,
-  onFail?: StandardCallback,
   onBackNext?: StandardCallback,
-  restoreScroll?: History => ScrollBehavior,
-  querySerializer?: QuerySerializer,
-  basename?: string,
-  initialEntries?: string | Array<string>,
-  createHistory?: (options?: Object) => History,
-  defaultParams?: Options,
-  defaultState?: Object,
-  toPath?: ?any,
-  toHash?: (hash: string, route: Route, opts: Options) => string,
+  beforeEnter?: StandardCallback,
   defaultHash?: Function | string,
-  defaultQuery?: ?Object,
-  toSearch?: any,
+  title?: string | SelectTitleState,
+  querySerializer?: QuerySerializer,
   parseSearch?: (?string) => Object,
+  stringifyQuery?: (?Object) => string,
+  location?: string | SelectLocationState,
+  initialEntries?: string | Array<string>,
+  restoreScroll?: History => ScrollBehavior,
+  createHistory?: (options?: Object) => History,
+  toHash?: (hash: string, route: Route, opts: Options) => string,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
     actionToNavigation: ActionToNavigation,
     navigationToAction: NavigationToAction
   },
-  extra?: any,
-  stringifyQuery?: (?Object) => string
 }
 
 export type ScrollBehavior = Object
@@ -150,16 +150,16 @@ export type Params = Object
 export type Payload = Object
 
 export type LocationState = {
-  pathname: string,
   type: string,
-  payload: Payload,
-  query?: Object,
-  search?: string,
-  prev: Location,
   kind: ?string,
-  history: ?HistoryData,
+  query?: Object,
+  prev: Location,
+  search?: string,
+  universal?: true,
+  pathname: string,
+  payload: Payload,
   routesMap: Routes,
-  universal?: true
+  history: ?HistoryData,
 }
 
 export type Location = {

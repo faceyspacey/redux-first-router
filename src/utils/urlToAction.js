@@ -4,7 +4,16 @@ import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
 import type { Routes, ReceivedAction, Route, Options } from '../flow-types'
 
-export default (api, url, state = {}, key = createKey()) => {
+export default (
+  api: {
+    routes: Routes,
+    options: Options,
+    getLocation: Function
+  },
+  url: string,
+  state: Object = {},
+  key: string = createKey()
+) => {
   const { getLocation, routes, options: opts } = api
   const curr = getLocation ? getLocation() : {}
 

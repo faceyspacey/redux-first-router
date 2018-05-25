@@ -2,8 +2,7 @@
 import { toAction } from './index'
 import type { Route } from '../flow-types'
 
-export default (api: Route, entries: Array<string | Object> = [], index: number, n) => {
-  console.log({ api, entries, index, n })
+export default (api: Route, entries: Array<mixed>, index: number, n: ?number) => {
   entries = isSingleEntry(entries) ? [entries] : entries
   entries = entries.length === 0 ? ['/'] : entries
   entries = entries.map(e => toAction(api, e))
@@ -21,8 +20,8 @@ export default (api: Route, entries: Array<string | Object> = [], index: number,
 // Otherwise, if there are multiple entries and you are on the first, you're considered
 // to be going back, but if there is one, you're logically going forward.
 
-export const findInitialN = (index, entries) =>
+export const findInitialN = (index: number, entries: Array<mixed>) =>
   index > 0 ? 1 : (entries.length > 1 ? -1 : 1)
-
 const isSingleEntry = (e) => !Array.isArray(e) ||
+  // $FlowFixMe
   (typeof e[0] === 'string' && typeof e[1] === 'object' && !e[1].type) // pattern match: [string, state]
