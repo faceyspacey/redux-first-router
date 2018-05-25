@@ -24,7 +24,7 @@ export default (
   else if (typeof entry === 'object') {   // entry as action object
     const key = entry.location && entry.location.key // preserve existing key if existing FSRA
     const { url, state } = actionToUrl(entry, api)
-    return urlToAction(api, entry, st, k)
+    return urlToAction(api, url, state, key)
   }
   return urlToAction(api, entry, st, k)         // entry as url string
 }
