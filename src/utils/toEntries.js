@@ -1,6 +1,9 @@
+// @flow
 import { toAction } from './index'
+import type { Route } from '../flow-types'
 
-export default (api, entries = [], index, n) => {
+export default (api: Route, entries: Array<string | Object> = [], index: number, n) => {
+  console.log({ api, entries, index, n })
   entries = isSingleEntry(entries) ? [entries] : entries
   entries = entries.length === 0 ? ['/'] : entries
   entries = entries.map(e => toAction(api, e))
