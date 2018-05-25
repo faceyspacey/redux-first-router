@@ -2,7 +2,7 @@
 import resolvePathname from 'resolve-pathname'
 import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
-import type { Routes, ReceivedAction, Route, Options } from '../flow-types'
+import type { Routes, HistoryLocation, NavigationAction, Route, Options } from '../flow-types'
 
 export default (
   api: {
@@ -50,12 +50,12 @@ const createLocation = (url, opts, bn, curr) => {
 }
 
 const createAction = (
-  loc: Object,
+  loc: HistoryLocation,
   routes: Routes,
   opts: Options,
   st: Object = {},
-  curr: Object
-): ReceivedAction => {
+  curr: Object = {}
+): NavigationAction => {
   const types = Object.keys(routes).filter(type => routes[type].path)
 
   for (let i = 0; i < types.length; i++) {
@@ -72,6 +72,9 @@ const createAction = (
   }
 
   const { scene } = routes[curr.type] || {}
+
+  // TODO: Need some clairfication on scene stuff
+  // $FlowFixMe
   const type = routes[`${scene}/NOT_FOUND`] && `${scene}/NOT_FOUND`// try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
 
   return {
@@ -107,7 +110,7 @@ const defaultFromPath = (
   val: string,
   route: Route,
   opts: Options
-) => {
+): string | number => {
   const convertNum = route.convertNumbers ||
     (opts.convertNumbers && route.convertNumbers !== false)
 
@@ -122,18 +125,18 @@ const defaultFromPath = (
     return decodedVal.replace(/-/g, ' ').replace(/\b\w/g, ltr => ltr.toUpperCase()) // 'my-category' -> 'My Category'
   }
 
-  return opts.fromPath
-    ? opts.fromPath(decodedVal, key, val, route, opts)
-    : decodedVal
+  return opts.fromPath ? opts.fromPath(decodedVal, key, val, route, opts) : decodedVal
 }
 
 const formatQuery = (query: Object, route: Route, opts: Options) => {
+  // TODO: Is this fromPath ? its got the same props going into it?
+  // $FlowFixMe
   const from = route.fromSearch || opts.fromSearch
 
   if (from) {
     for (const key in query) {
       query[key] = from(query[key], key, route, opts)
-      if (query[key] === undefined) delete query[key] === undefined // allow undefined values to be overriden by defaultQuery
+      if (query[key] === undefined) delete query[key] === undefined // allow undefined values to be overridden by defaultQuery
     }
   }
 
@@ -144,7 +147,10 @@ const formatQuery = (query: Object, route: Route, opts: Options) => {
 }
 
 const formatHash = (hash: string, route: Route, opts: Options) => {
+  // TODO: is this toHash?
+  // $FlowFixMe
   const from = route.fromHash || opts.fromHash
+  // $FlowFixMe
   hash = from ? from(hash, route, opts) : hash
 
   const def = route.defaultHash || opts.defaultHash
@@ -169,6 +175,8 @@ const parseSearch = (search, routes, opts) =>
 // BASENAME HANDLING:
 
 const resolveBasename = (url, opts, state, curr) => {
+  // TODO: Whats going on with this huge option type?
+  // $FlowFixMe
   const bn = state._emptyBn ? '' : findBasename(url, opts.basenames) || curr.basename
 
   const slashBasename = cleanBasename(bn)
@@ -179,9 +187,11 @@ const resolveBasename = (url, opts, state, curr) => {
   return { basename, slashBasename } // { 'base', '/base' }
 }
 
-export const stripBasename = (path, bn) => path.indexOf(bn) === 0 ? path.substr(bn.length) : path
-export const findBasename = (path, bns = []) => bns.find(bn => path.indexOf(bn) === 0)
+export const stripBasename = (path: string, bn: string) =>
+  path.indexOf(bn) === 0 ? path.substr(bn.length) : path
 
+export const findBasename = (path: string, bns: Array<string> = []) =>
+  bns.find(bn => path.indexOf(bn) === 0)
 
 // MISC
 

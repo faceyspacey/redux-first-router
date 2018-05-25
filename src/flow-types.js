@@ -22,6 +22,14 @@ export type StandardCallback = (
   bag: Bag
 ) => ?any | Promise<any>
 
+export type FromPath = (
+  path: string,
+  key?: string,
+  val?: string,
+  route?: Route,
+  opts?: Options
+) => string
+
 export type Route = {
   path?: string,
   toPath?: Path,
@@ -41,7 +49,8 @@ export type Route = {
   defaultHash?: Function | string,
   parseSearch: (?string) => Object,
   stringifyQuery?: (?Object) => string,
-  fromPath?: (path: string, key?: string) => string,
+  fromSearch?: Function,
+  fromPath?: FromPath,
   toHash?: (hash: string, route: Route, opts: Options) => string
 }
 
@@ -136,6 +145,7 @@ export type Options = {
   restoreScroll?: History => ScrollBehavior,
   createHistory?: (options?: Object) => History,
   toHash?: (hash: string, route: Route, opts: Options) => string,
+  fromPath?: FromPath,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
@@ -143,6 +153,8 @@ export type Options = {
     navigationToAction: NavigationToAction
   },
 }
+
+
 
 export type ScrollBehavior = Object
 
@@ -285,7 +297,8 @@ export type LocationAction = {
 
 export type HistoryLocation = {
   pathname: string,
-  search?: string
+  search?: string,
+  hash?: string
 }
 
 export type HistoryAction = string
