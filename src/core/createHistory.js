@@ -1,11 +1,11 @@
+// @flow
 import BrowserHistory from '../history/BrowserHistory'
 import MemoryHistory from '../history/MemoryHistory'
 import { supportsHistory, supportsDom } from '../history/utils'
+import type { Routes, Options } from '../flow-types'
 
-
-export default (routes, opts = {}) => {
-  return supportsDom() && supportsHistory() && opts.testBrowser !== false
+export default (routes: Routes, opts: Options = {}) =>
+  supportsDom() && supportsHistory() && opts.testBrowser !== false
     ? new BrowserHistory(routes, opts)
     : new MemoryHistory(routes, opts)
-}
 
