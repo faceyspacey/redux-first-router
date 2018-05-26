@@ -48,7 +48,7 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     }
 
     subtypes.forEach(name => {
-      const suffix = '_' + name.toUpperCase()
+      const suffix = `_${name.toUpperCase()}`
       const cleanType = `${tClean}${suffix}`
       const realType = `${prefix}${t}${suffix}`
 
@@ -60,7 +60,7 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
   }, { types: {}, actions: {}, routes: {} })
 
   const { types, actions } = result
-
+  // $FlowFixMe
   if (log && /^(development|test)$/.test(process.env.NODE_ENV)) {
     result.exportString = logExports(types, actions, result.routes, opts)
   }

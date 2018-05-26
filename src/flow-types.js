@@ -47,7 +47,7 @@ export type Route = {
   onComplete?: StandardCallback,
   beforeEnter?: StandardCallback,
   defaultHash?: Function | string,
-  parseSearch: (?string) => Object,
+  parseSearch?: (?string) => Object,
   stringifyQuery?: (?Object) => string,
   fromSearch?: Function,
   fromPath?: FromPath,
@@ -132,6 +132,7 @@ export type Options = {
   onFail?: StandardCallback,
   onEnter?: StandardCallback,
   onLeave?: StandardCallback,
+  onError?:StandardCallback
   onComplete?: StandardCallback,
   onBackNext?: StandardCallback,
   beforeEnter?: StandardCallback,
@@ -145,6 +146,9 @@ export type Options = {
   restoreScroll?: History => ScrollBehavior,
   createHistory?: (options?: Object) => History,
   toHash?: (hash: string, route: Route, opts: Options) => string,
+  shouldTransition?: StandardCallback,
+  createRequest?: StandardCallback,
+  compose?: StandardCallback,
   fromPath?: FromPath,
   navigators?: {
     navigators: Navigators,
@@ -152,6 +156,7 @@ export type Options = {
     actionToNavigation: ActionToNavigation,
     navigationToAction: NavigationToAction
   },
+
 }
 
 export type ScrollBehavior = Object
@@ -228,7 +233,17 @@ export type Action = {
   kind?: ?string,
   query?: Object,
   payload: Payload,
-  navKey?: ?string
+  navKey?: ?string,
+  tmp?: Object
+}
+
+export type CreateReducerAction = {
+  type: string,
+  basename?: string,
+  hash?: string,
+  location?: SelectLocationState,
+  params?: Object,
+  state?: Object
 }
 
 export type ReceivedAction = {
@@ -293,7 +308,7 @@ export type LocationAction = {
   location: LocationActionMeta
 }
 
-export type Redirect = {
+export type RequestAPI = {
   cache: {
     isCached: Function,
     cacheAction: Function,
@@ -309,7 +324,7 @@ export type Redirect = {
   has: Function,
   register: Function,
   options: Options,
-  history: ()=>({
+  history: () => ({
     routes: Routes,
     options: Options,
     firstAction: Action,
@@ -370,4 +385,27 @@ export type Cache = {
   isCached: Function,
   cacheAction: Function,
   clear: Function
+}
+
+
+export type ComposeCurryArgs = Redirect
+
+export type Prev = {
+  type: string,
+  hash: string,
+  query: Object,
+  state: Object,
+  params: Params,
+  basename: string,
+  location: SelectLocationState
+}
+
+
+export type RequestAction = {
+  type: string,
+  hash: string,
+  query: Object,
+  commit: Action,
+  params: Params,
+  location: LocationState
 }

@@ -2,7 +2,7 @@
 import type { Action } from '../flow-types'
 import { CHANGE_BASENAME } from '../types'
 
-export default (basename: string, action: ?Action) => {
+export default (basename: string, action: ?Action): Object => {
   if (!action) {
     return {
       type: CHANGE_BASENAME,
