@@ -1,5 +1,6 @@
 // @flow
 import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
+import { CALL_HISTORY } from './types'
 
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
@@ -21,24 +22,36 @@ export type StandardCallback = (
   bag: Bag
 ) => ?any | Promise<any>
 
+export type FromPath = (
+  path: string,
+  key?: string,
+  val?: string,
+  route?: Route,
+  opts?: Options
+) => string
+
 export type Route = {
   path?: string,
-  capitalizedWords?: boolean,
   toPath?: Path,
-  fromPath?: (path: string, key?: string) => string,
-  toHash?: (hash: string, route: Route, opts: Options) => string,
-  defaultHash?: Function | string,
+  type?: string,
+  scene?: string,
+  navKey?: string,
+  redirect?: Function,
   toSearch?: Function,
+  thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
-  beforeEnter?: StandardCallback,
+  onFail?: StandardCallback,
+  capitalizedWords?: boolean,
   onEnter?: StandardCallback,
   onLeave?: StandardCallback,
-  thunk?: StandardCallback,
   onComplete?: StandardCallback,
-  onFail?: StandardCallback,
-  navKey?: string,
-  type?: string,
-  scene?: string
+  beforeEnter?: StandardCallback,
+  defaultHash?: Function | string,
+  parseSearch?: (?string) => Object,
+  stringifyQuery?: (?Object) => string,
+  fromSearch?: Function,
+  fromPath?: FromPath,
+  toHash?: (hash: string, route: Route, opts: Options) => string
 }
 
 export type RouteInput = Function | Route
@@ -103,38 +116,48 @@ export type Path = (
   opts: Options
 ) => (string | Object)
 
+// TODO: Question: Is can this be split up to sub-types at some point.
 export type Options = {
-  title?: string | SelectTitleState,
-  location?: string | SelectLocationState,
-  notFoundPath?: string,
+  extra?: any,
+  toPath?: ?any,
+  toSearch?: any,
+  basename?: string,
+  basenames?: Array<string>,
   scrollTop?: boolean,
+  notFoundPath?: string,
+  defaultState?: Object,
+  defaultQuery?: ?Object,
+  defaultParams?: Options,
+  thunk?: StandardCallback,
   beforeLeave?: BeforeLeave,
-  beforeEnter?: StandardCallback,
+  onFail?: StandardCallback,
   onEnter?: StandardCallback,
   onLeave?: StandardCallback,
-  thunk?: StandardCallback,
+  onError?: StandardCallback,
   onComplete?: StandardCallback,
-  onFail?: StandardCallback,
   onBackNext?: StandardCallback,
-  restoreScroll?: History => ScrollBehavior,
-  querySerializer?: QuerySerializer,
-  basename?: string,
-  initialEntries?: string | Array<string>,
-  createHistory?: (options?: Object) => History,
-  defaultParams: Options,
-  defaultState?: Object,
-  toPath?: Path,
-  toHash?: (hash: string, route: Route, opts: Options) => string,
+  beforeEnter?: StandardCallback,
   defaultHash?: Function | string,
-  defaultQuery?: ?Object,
-  toSearch?: any,
+  title?: string | SelectTitleState,
+  querySerializer?: QuerySerializer,
+  parseSearch?: (?string) => Object,
+  stringifyQuery?: (?Object) => string,
+  location?: string | SelectLocationState,
+  initialEntries?: string | Array<string>,
+  restoreScroll?: History => ScrollBehavior,
+  createHistory?: (options?: Object) => History,
+  toHash?: (hash: string, route: Route, opts: Options) => string,
+  shouldTransition?: StandardCallback,
+  createRequest?: StandardCallback,
+  compose?: StandardCallback,
+  fromPath?: FromPath,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
     actionToNavigation: ActionToNavigation,
     navigationToAction: NavigationToAction
   },
-  extra?: any
+
 }
 
 export type ScrollBehavior = Object
@@ -143,16 +166,16 @@ export type Params = Object
 export type Payload = Object
 
 export type LocationState = {
-  pathname: string,
   type: string,
-  payload: Payload,
-  query?: Object,
-  search?: string,
-  prev: Location,
   kind: ?string,
-  history: ?HistoryData,
+  query?: Object,
+  prev: Location,
+  search?: string,
+  universal?: true,
+  pathname: string,
+  payload: Payload,
   routesMap: Routes,
-  universal?: true
+  history: ?HistoryData,
 }
 
 export type Location = {
@@ -166,6 +189,7 @@ export type Location = {
 export type ActionMetaLocation = {
   current: Location,
   prev: Location,
+  from: string,
   kind: ?string,
   history: ?HistoryData
 }
@@ -195,13 +219,32 @@ export type HistoryData = {
   length: number
 }
 
+export type HistoryRouteAction = {
+  payload: {
+    args: Array<mixed>,
+    method: string
+  },
+  type: string
+}
+
+
 export type Action = {
   meta: Meta,
   type: string,
   kind?: ?string,
   query?: Object,
   payload: Payload,
-  navKey?: ?string
+  navKey?: ?string,
+  tmp?: Object
+}
+
+export type CreateReducerAction = {
+  type: string,
+  basename?: string,
+  hash?: string,
+  location?: SelectLocationState,
+  params?: Object,
+  state?: Object
 }
 
 export type ReceivedAction = {
@@ -214,7 +257,8 @@ export type ReceivedAction = {
   params: ?Params,
   payload: Payload,
   navKey?: ?string,
-  basename?: ?string
+  basename?: ?string,
+  pathname?: string
 }
 
 export type ReceivedActionMeta = {
@@ -254,9 +298,68 @@ export type History = {
   block: (func: BlockFunction) => void
 }
 
+export type LocationActionMeta = {
+  url: string,
+  status: number,
+  kind?: string,
+  from?: string
+}
+
+export type LocationAction = {
+  location: LocationActionMeta
+}
+
+export type RequestAPI = {
+  cache: {
+    isCached: Function,
+    cacheAction: Function,
+    clear: Function
+  },
+  routes: Routes,
+  getTitle: Function,
+  resolveFirstRouteOnEnter: boolean,
+  dispatch: Dispatch,
+  getLocation: Function,
+  getState: GetState,
+  ctx: Object,
+  has: Function,
+  register: Function,
+  options: Options,
+  history: () => ({
+    routes: Routes,
+    options: Options,
+    firstAction: Action,
+    dispatch: Dispatch,
+    getLocation: Function
+  })
+}
+
 export type HistoryLocation = {
   pathname: string,
-  search?: string
+  search?: string,
+  hash?: string
+}
+
+export type AddRoutes = {
+  action: Action,
+  options: Options,
+  routes: Routes,
+  has: Function
+}
+
+export type ClearCache = {
+  action: Action,
+  cache: Cache,
+  has: Function
+}
+
+export type CallHistory = { routes: Routes, options: Options, firstAction: Action }
+
+export type HistoryActionDispatcher = {
+  dispatch: Dispatch,
+  action: Action,
+  history: CallHistory,
+  has: Function
 }
 
 export type HistoryAction = string
@@ -269,4 +372,41 @@ export type CreateActionsOptions = {
   logExports: ?boolean,
   scene: ?string,
   basename: ?string
+}
+
+export type Confirm = {
+  action: Action,
+  ctx: Object,
+  has: Function,
+  _dispatched?: boolean
+}
+
+
+export type Cache = {
+  isCached: Function,
+  cacheAction: Function,
+  clear: Function
+}
+
+
+export type ComposeCurryArgs = Redirect
+
+export type Prev = {
+  type: string,
+  hash: string,
+  query: Object,
+  state: Object,
+  params: Params,
+  basename: string,
+  location: SelectLocationState
+}
+
+
+export type RequestAction = {
+  type: string,
+  hash: string,
+  query: Object,
+  commit: Action,
+  params: Params,
+  location: LocationState
 }

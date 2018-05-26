@@ -35,7 +35,7 @@ export default (
 
   const types: RouteNames = Object.keys(routes)
 
-  types.forEach((type: string) => {
+  types.forEach((type: string): void => {
     const route : Object = formatRoute(
       routes[type],
       type,

@@ -1,3 +1,4 @@
+// @flow
 let _hasHistory
 
 export const supportsHistory = () => {

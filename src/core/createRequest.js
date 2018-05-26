@@ -1,15 +1,35 @@
+// @flow
 import { BLOCK, UNBLOCK, SET_FROM, CALL_HISTORY } from '../types'
 import { redirect } from '../actions'
 import { isAction, createActionRef } from '../utils'
+import type { ActionMetaLocation, Action, RequestAPI, Route, Routes, Dispatch } from '../flow-types'
 
 export default (
-  action,
-  api,
-  next
-) => new Request(action, api, next)
+  action: Action,
+  api: RequestAPI,
+  next: Function
+): Request => new Request(action, api, next)
 
 export class Request {
-  constructor(action, api, next) {
+  tmp: Object;
+  action: Action;
+  ctx: Object;
+  route: Route;
+  prevRoute: Route;
+  error: null | boolean;
+  scene: string;
+  realDispatch: Dispatch;
+  commitDispatch: Dispatch | Function;
+  commitHistory: void | Function;
+  history: Object;
+  routes: Routes;
+  redirect: ActionMetaLocation;
+  getLocation: () => Object;
+  last: Object;
+  canceled: boolean;
+  type: string;
+
+  constructor(action: Action, api: RequestAPI, next: Function): void {
     const { routes, options, getLocation, ctx } = api
     const isNewPipeline = !action.tmp
     const pendingRequest = ctx.pending
@@ -59,7 +79,7 @@ export class Request {
     this.tmp.revertPop = this.tmp.revertPop || action.revertPop
   }
 
-  enter = () => {
+  enter = (): Promise<any> => {
     this.ctx.pending = false
     this.tmp.committed = true
     this.history.pendingPop = null
@@ -71,7 +91,7 @@ export class Request {
       })
   }
 
-  dispatch = (action) => {
+  dispatch = (action: Object): Promise<any> => {
     const dispatch = this.realDispatch
     const type = action && action.type // actions as payloads (which can be `null`) allowed
     const route = this.routes[type]
@@ -128,7 +148,7 @@ export class Request {
       })
   }
 
-  confirm = (canLeave = true) => {
+  confirm = (canLeave: boolean = true): Dispatch => {
     delete this.ctx.confirm
 
     if (!canLeave) {
@@ -155,7 +175,7 @@ export class Request {
       })
   }
 
-  block = () => {
+  block = (): Dispatch => {
     this.ctx.confirm = this.confirm
     const ref = createActionRef(this.action)
     return this.realDispatch({ type: BLOCK, payload: { ref } })
@@ -166,14 +186,12 @@ export class Request {
     return this.action.location && this.action.location.kind
   }
 
-  isUniversal = () => {
-    return this.getLocation().universal
-  }
+  isUniversal = () => this.getLocation().universal
 
-  isDoubleDispatch = () => {
-    return this.action.location.url === this.getLocation().url
-      && !/load|reset|jump/.test(this.getKind()) // on `load`, the `firstRoute` action will trigger the same URL as stored in state; the others must always pass through
-  }
+  isDoubleDispatch = (): boolean =>
+    this.action.location.url === this.getLocation().url
+    && !/load|reset|jump/.test(this.getKind()) // on `load`, the `firstRoute` action will trigger the same URL as stored in state; the others must always pass through
+
 
   handleDoubleDispatch = () => {
     this.ctx.pending = false
@@ -188,7 +206,7 @@ export class Request {
     return this.action
   }
 
-  handleDoubleDispatchRedirect = (res) => {
+  handleDoubleDispatchRedirect = (res: Object) => {
     const attemptedAction = this.ctx.doubleDispatchRedirect
     delete this.ctx.doubleDispatchRedirect
     this.canceled = true
@@ -202,7 +220,7 @@ export class Request {
     return res !== undefined ? res : attemptedAction
   }
 
-  populateAction = (act) => {
+  populateAction = (act: Action) => {
     let type
 
     const action = isAction(act)
@@ -217,7 +235,7 @@ export class Request {
     return action
   }
 
-  isActionType = (str) => {
+  isActionType = (str: string) => {
     if (this.routes[str]) return str
     if (this.routes[`${this.scene}/${str}`]) return str
     if (/^[A-Z0-9_/]+$/.test(str)) return str

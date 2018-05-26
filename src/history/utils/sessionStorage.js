@@ -1,3 +1,4 @@
+// @flow
 import { supportsSession, supportsHistory } from './index'
 import { toEntries } from '../../utils'
 
@@ -20,7 +21,7 @@ import { toEntries } from '../../utils'
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
 
-export const saveHistory = ({ index, entries }, out) => {
+export const saveHistory = ({ index, entries }: { index: number }, out: void | Function) => {
   entries = entries.map(e => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
   set({ index, entries, out })
 }
@@ -39,10 +40,10 @@ export const get = () => supportsSession() ? sessionGet() : historyGet()
 
 // HISTORY FACADE:
 
-export const pushState = (url) =>
+export const pushState = (url: string) =>
   window.history.pushState({ id: sessionId() }, null, url)    // insure every entry has the sessionId (called by `BrowserHistory`)
 
-export const replaceState = (url) =>
+export const replaceState = (url: string) =>
   window.history.replaceState({ id: sessionId() }, null, url) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
 
 const historyClear = () =>
@@ -78,7 +79,8 @@ const sessionGet = () => {
     const json = window.sessionStorage.getItem(key())
     return JSON.parse(json)
   }
-  catch (error) {} // ignore invalid JSON
+  catch (error) {
+  } // ignore invalid JSON
 }
 
 const createSessionId = () => {
@@ -140,6 +142,7 @@ const getHistoryState = () => {
   try {
     return window.history.state || {}
   }
-  catch (e) {}
+  catch (e) {
+  }
   return {}
 }

@@ -1,4 +1,11 @@
-export default (middlewares, curryArg, killOnRedirect = false) => {
+// @flow
+import type { ComposeCurryArgs } from '../flow-types'
+
+export default (
+  middlewares: Function | Array<Function>,
+  curryArg: ComposeCurryArgs,
+  killOnRedirect: boolean = false
+) => {
   if (typeof middlewares === 'function') {
     return middlewares(curryArg, killOnRedirect) // accept custom function to do compose work below
   }
@@ -7,7 +14,7 @@ export default (middlewares, curryArg, killOnRedirect = false) => {
     ? middlewares.map(middleware => middleware(curryArg))
     : middlewares
 
-  return (req) => {
+  return (req: Object): Promise<any> => {
     let index = -1 // last called middleware #
     let result
 

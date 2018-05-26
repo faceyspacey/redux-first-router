@@ -1,6 +1,7 @@
-export default (url) => {
-  if (typeof url === 'object' && url.pathname !== undefined) return url
+// @flow
+import type { HistoryLocation } from '../flow-types'
 
+const createLocationObject = (url: string): HistoryLocation => {
   let pathname = url || '/'
   let search = ''
   let hash = ''
@@ -20,4 +21,9 @@ export default (url) => {
   pathname = pathname || '/' // could be empty on URLs that like: '?foo=bar#hash
 
   return { pathname, search, hash }
+}
+
+export default (url: HistoryLocation | string): HistoryLocation => {
+  if (typeof url === 'object' && url.pathname !== undefined) return url
+  return createLocationObject(url)
 }

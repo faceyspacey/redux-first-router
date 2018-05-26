@@ -2,11 +2,11 @@
 import type { Action, Routes } from '../flow-types'
 
 export default (routes: Routes) => (
-  action: Action | string,
+  action: Action | string | Object,
   key?: string,
   ...args: Array<any>
 ) => {
-  const type = typeof action === 'string' ? action : action.type
+  const type: string = typeof action === 'string' ? action : action.type
   const route = routes[type]
   if (!route) return null
 

@@ -8,4 +8,4 @@ export default (routes: Routes, formatRoute: ?Function) => ({
   payload: { routes, formatRoute }
 })
 
-// NOTE: see `src/utils/formatRoutes.js` for implemenation of corresponding pathlessRoute
+// NOTE: see `src/utils/formatRoutes.js` for implementation of corresponding pathlessRoute

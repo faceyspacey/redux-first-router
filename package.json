@@ -12,7 +12,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && rimraf coverage && rimraf examples/boilerplate/buildClient && rimraf examples/boilerplate/buildServer && rimraf examples/demo/buildClient && rimraf examples/demo/buildServer",
     "test": "jest",
-    "lint": "eslint --fix ./",
+    "lint": " echo 1; eslint --fix ./",
     "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",
     "cm": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",

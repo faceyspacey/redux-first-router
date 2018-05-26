@@ -20,14 +20,13 @@ export default (
   const path: string | void | string | void = typeof route === 'object' ? route.path : route
 
   const p: void | {} = formatParams(params, route, opts)
-  const q = formatQuery(query, route, opts)
+  const q: mixed = formatQuery(query, route, opts)
   const s: ?Object = formatState(state, route, opts)
   const h: string = formatHash(hash, route, opts)
 
   const bn = cleanBasename(basename)
   const isWrongBasename = bn && !opts.basenames.includes(bn)
   // $FlowFixMe
-  // TODO: Find out what needs to happen here.. ?not cool kyle?
   if (basename === '') s._emptyBn = true // not cool kyle
 
   try {
@@ -76,12 +75,12 @@ const formatParams = (params: ?Object, route: Route, opts: Options): void | {} =
 }
 
 const defaultToPath = (
-  val: string,
+  val: string => Array<Array<any>>,
   key: string,
   encodedVal: string,
   route: Route,
   opts: Options
-) => {
+): string | void => {
   if (typeof val === 'string' && val.indexOf('/') > -1) { // support a parameter that for example is a file path with slashes (like on github)
     return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
   }
@@ -122,8 +121,8 @@ const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {
   return query
 }
 
-const formatHash = (hash: string = '', route: Route, opts: Options) => {
-  const def = route.defaultHash || opts.defaultHash
+const formatHash = (hash: string = '', route: Route, opts: Options): string => {
+  const def: string | void | Function | string = route.defaultHash || opts.defaultHash
   hash = def
     ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
     : hash
@@ -131,7 +130,7 @@ const formatHash = (hash: string = '', route: Route, opts: Options) => {
   return to ? to(hash, route, opts) : hash
 }
 
-const formatState = (state: ?Object = {}, route: Route, opts: Options) => {
+const formatState = (state: ?Object = {}, route: Route, opts: Options): ?Object => {
   const def: mixed = route.defaultState || opts.defaultState
   return def
     ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
@@ -142,7 +141,7 @@ const notFoundUrl = (
   action: Action,
   routes: Routes,
   opts: Options,
-  query,
+  query: mixed,
   hash: string,
   prevRoute: string = ''
 ): string => {
@@ -158,7 +157,8 @@ const notFoundUrl = (
       ? `${scene}/NOT_FOUND`
       : 'NOT_FOUND'
 
-  const p = routes[t].path || routes.NOT_FOUND.path || ''
+  const p: string = routes[t].path || routes.NOT_FOUND.path || ''
+  // $FlowFixMe
   const s: string = query ? opts.stringifyQuery(query, { addQueryPrefix: true }) : '' // preserve these (why? because we can)
   const h: string = hash ? `#${hash}` : ''
 

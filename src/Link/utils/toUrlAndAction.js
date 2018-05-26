@@ -12,7 +12,7 @@ export default (
   basename: ?string = '',
   currentPathname: string,
   options: Options
-): string => {
+): Object => {
   const { basenames } = options
   let url = ''
   let action

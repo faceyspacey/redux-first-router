@@ -1,6 +1,6 @@
 // @flow
 import qs from 'qs'
-import type { RoutesMapInput, Options, Store, Dispatch } from '../flow-types'
+import type { Options, Store, Dispatch, RoutesInput, RequestAPI } from '../flow-types'
 import { compose, createHistory, createReducer, createInitialState, createRequest } from './index'
 
 import {
@@ -22,7 +22,7 @@ import {
 } from '../middleware'
 
 export default (
-  routesInput: RoutesMapInput = {},
+  routesInput: RoutesInput = {},
   options: Options = {},
   middlewares: Array<Function> = [
     serverRedirect,       // short-circuiting middleware
@@ -77,11 +77,13 @@ export default (
     const getLocation = (s) => selectLocationState(s || getState() || {})
     const { shouldTransition, createRequest } = options // middlewares may mutably monkey-patch these in above call to `compose`
 
+    //TODO: Fix these annotations
     Object.assign(api, { getTitle, getLocation, dispatch, getState })
+
     getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)
     history.listen(dispatch, getLocation) // dispatch actions in response to pops, use redux location state as single source of truth
 
-    return (dispatch: Dispatch) => (action: Object) => {
+    return (dispatch: Dispatch) => (action: Object): Promise<any> => {
       if (!shouldTransition(action, api)) return dispatch(action) // short-circuit and pass through Redux middleware normally
       if (action.tmp && action.tmp.canceled) return Promise.resolve(action)
 

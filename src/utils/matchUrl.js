@@ -3,6 +3,7 @@ import pathToRegexp from 'path-to-regexp'
 import { urlToLocation } from './index'
 import type { Route, Options } from '../flow-types'
 
+
 export default (
   loc: string | Location,
   matchers: Matchers,
@@ -59,8 +60,13 @@ const matchPath = (pathname, matcher, options = {}) => {
   return { match, keys }
 }
 
-export const matchQuery = (search, matcher, route, opts) => {
-  const query = search ? parseSearch(search, route, opts) : {}
+export const matchQuery = (
+  search: string,
+  matcher: ?Object,
+  route: Route,
+  opts: Options
+): null | {} => {
+  const query: {} = search ? parseSearch(search, route, opts) : {}
 
   if (!matcher) return query
 
@@ -73,12 +79,20 @@ export const matchQuery = (search, matcher, route, opts) => {
   return query
 }
 
-export const matchHash = (hash = '', expected, route, opts) => {
+export const matchHash = (hash: string = '', expected: ?string, route: Route, opts: Options): string | null => {
   if (expected === undefined) return hash
   return matchVal(hash, expected, 'hash', route, opts) ? hash : null
 }
 
-export const matchVal = (val, expected, key, route, opts) => {
+export const matchVal = (
+  val: ?string,
+  // TODO: What flow-type is best for expected
+  // $FlowFixMe
+  expected,
+  key: string,
+  route: Route,
+  opts: Options
+) => {
   const type = typeof expected
 
   if (type === 'boolean') {
@@ -93,7 +107,9 @@ export const matchVal = (val, expected, key, route, opts) => {
   }
   else if (type === 'function') {
     return key === 'hash'
+      // $FlowFixMe
       ? expected(val, route, opts)
+      // $FlowFixMe
       : expected(val, key, route, opts)
   }
   else if (expected instanceof RegExp) {
@@ -104,14 +120,14 @@ export const matchVal = (val, expected, key, route, opts) => {
 }
 
 
-const parseSearch = (search: string, route: Route, opts: Options) => {
+const parseSearch = (search: string, route: Route, opts: Options): Object => {
   if (queries[search]) return queries[search]
   const parse = route.parseSearch || opts.parseSearch
   return queries[search] = parse(search)
 }
 
-const queries = {}
-const patternCache = {}
+const queries: {} = {}
+const patternCache: {} = {}
 
 const cacheLimit = 10000
 let cacheCount = 0
@@ -120,13 +136,20 @@ const compilePath = (
   pattern: string,
   options: CompileOptions = {}
 ): Compiled => {
-  const { partial = false, strict = false } = options
-  const cacheKey = `${partial ? 't' : 'f'}${strict ? 't' : 'f'}`
-  const cache = patternCache[cacheKey] || (patternCache[cacheKey] = {})
+  const {
+    partial = false,
+    strict = false
+  }: {
+    partial?: boolean,
+    strict?: boolean
+  } = options
+
+  const cacheKey: string = `${partial ? 't' : 'f'}${strict ? 't' : 'f'}`
+  const cache: {} = patternCache[cacheKey] || (patternCache[cacheKey] = {})
 
   if (cache[pattern]) return cache[pattern]
 
-  const keys = []
+  const keys: [] = []
   const re = pathToRegexp(pattern, keys, { end: !partial, strict })
   const compiledPattern = { re, keys }
 
@@ -134,7 +157,8 @@ const compilePath = (
     cache[pattern] = compiledPattern
     cacheCount++
   }
-
+  // TODO: Not sure the best way to construct this one
+  // $FlowFixMe
   return compiledPattern
 }
 
@@ -154,6 +178,7 @@ type Compiled = {
   re: RegExp,
   keys: Array<{ name: string }>
 }
+
 
 type Match = {
   path: string,

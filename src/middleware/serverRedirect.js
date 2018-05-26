@@ -1,6 +1,8 @@
+// @flow
 import { isServer, isRedirect, actionToUrl } from '../utils'
+import type { Redirect } from '../flow-types'
 
-export default (api) => (req, next) => {
+export default (api: Redirect) => (req: Object, next: Function) => {
   if (isServer() && isRedirect(req.action)) {
     const { action } = req
     const { url } = actionToUrl(action, api)

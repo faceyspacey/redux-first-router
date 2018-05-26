@@ -1,4 +1,13 @@
-const logError = (type, error) => {
+// @flow
+import type { Dispatch } from '../flow-types'
+
+const logError: (
+  type: string,
+  error: any
+) => void = (
+  type: string,
+  error: any
+): void => {
   if (process.env.NODE_ENV === 'development') {
     console.error('[rudy]', `action.type: ${type}`, error)
   }
@@ -9,11 +18,11 @@ const logError = (type, error) => {
 
 export default logError
 
-const logCleanTestError = (args, error, shorten = true) => {
+const logCleanTestError = (args: Array<any>, error?: Object, shorten = true) => {
   const isLog = !error
   error = error || new Error()
 
-  let stack = error.stack.split('\n')
+  let stack: Array<string> = error.stack.split('\n')
 
   if (stack[1].indexOf('src/utils/logError.js') > -1) {
     stack.shift()
@@ -42,7 +51,7 @@ const logCleanTestError = (args, error, shorten = true) => {
 
   const dir = __dirname.substr(0, index)
   const reg = new RegExp(dir, 'g')
-  const trace = '\n' + stack.join('\n').replace(reg, '')
+  const trace = `\n${stack.join('\n').replace(reg, '')}`
 
   const message = isLog ? '' : 'RUDY ERROR:\n'
 
@@ -60,12 +69,12 @@ const logCleanTestError = (args, error, shorten = true) => {
   }
 }
 
-export const onError = ({ errorType: type, error, dispatch }) => {
+export const onError = ({ errorType: type, error, dispatch }: Object): Dispatch => {
   logError(type, error)
   return dispatch({ type, error })
 }
 
 if (process.env.NODE_ENV === 'test') {
   global.log = (...args) => logCleanTestError(args)
-  global.logFull = (arg) => logCleanTestError([arg], new Error, false)
+  global.logFull = (arg) => logCleanTestError([arg], new Error(), false)
 }

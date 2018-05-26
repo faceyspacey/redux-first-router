@@ -1,3 +1,4 @@
+// @flow
 import History from './History'
 import { locationToUrl } from '../utils'
 import {
@@ -9,6 +10,7 @@ import {
   pushState,
   replaceState
 } from './utils'
+import type { Action, Dispatch } from '../flow-types'
 
 // 1) HISTORY RESTORATION:
 // * FROM SESSION_STORAGE (WITH A FALLBACK TO OUR "HISTORY_STORAGE" SOLUTION)
@@ -58,7 +60,7 @@ export default class BrowserHistory extends History {
     return this.options.restore(this)
   }
 
-  listen(dispatch, getLocation) {
+  listen(dispatch: Dispatch, getLocation: Function) {
     if (!this.dispatch) { // we don't allow/need multiple listeners currently
       super.listen(dispatch, getLocation)
       this._addPopListener()
@@ -72,7 +74,7 @@ export default class BrowserHistory extends History {
     super.unlisten()
   }
 
-  _didPopForward(url) {
+  _didPopForward(url: string) {
     const e = this.entries[this.index + 1]
     return e && e.location.url === url
   }
@@ -119,20 +121,20 @@ export default class BrowserHistory extends History {
     this._removePopListener = () => removePopListener(onPopState, onHashChange)
   }
 
-  _forceGo(n) {
+  _forceGo(n: number): Promise<void> {
     this._popForced = true
     window.history.go(n) // revert
     return Promise.resolve()
   }
 
-  _push(action, awaitUrl) {
+  _push(action: Action, awaitUrl: string): Promise<any> {
     const { url } = action.location
 
     return this._awaitUrl(awaitUrl, '_push')
       .then(() => pushState(url))
   }
 
-  _replace(action, awaitUrl, n) {
+  _replace(action: Action, awaitUrl: string, n?: number): Promise<any> {
     const { url } = action.location
 
     if (n) {
@@ -150,7 +152,7 @@ export default class BrowserHistory extends History {
       .then(() => replaceState(url))
   }
 
-  _jump(action, currUrl, oldUrl, n, isPop) {
+  _jump(action: Action, currUrl: string, oldUrl: string, n: number, isPop: boolean): void | Promise<any> {
     if (!n) { // possibly the user mathematically calculated a jump of `0`
       return this._replace(action, currUrl)
     }
@@ -163,7 +165,7 @@ export default class BrowserHistory extends History {
       .then(() => this._replace(action, oldUrl))
   }
 
-  _set(action, oldUrl, n) {
+  _set(action: Action, oldUrl: string, n: number): Promise<any> {
     if (!n) {
       return this._replace(action, oldUrl)
     }
@@ -179,7 +181,7 @@ export default class BrowserHistory extends History {
       .then(() => this._awaitUrl(action, 'setN return'))
   }
 
-  _reset(action, oldUrl, oldFirstUrl, reverseN) {
+  _reset(action: Action, oldUrl: string, oldFirstUrl: string, reverseN: number): Promise<any> {
     const { index, entries } = action.location
     const lastIndex = entries.length - 1
     const reverseDeltaToIndex = index - lastIndex
@@ -199,14 +201,14 @@ export default class BrowserHistory extends History {
       })
   }
 
-  _awaitUrl(actOrUrl, name) {
+  _awaitUrl(actOrUrl: string | Object, name: string): Promise<any> {
     return new Promise(resolve => {
       const url = typeof actOrUrl === 'string' ? actOrUrl : actOrUrl.location.url
       const ready = () => {
         console.log('ready', url, locationToUrl(window.location))
         return url === locationToUrl(window.location)
       }
-      return tryChange(ready, resolve, name, this)
+      return tryChange(ready, resolve, name, this) // TODO: is the this supposed to be there, its one extra param over
     })
   }
 }

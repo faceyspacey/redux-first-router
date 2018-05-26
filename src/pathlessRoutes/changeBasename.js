@@ -1,4 +1,17 @@
-export default ({ getLocation, has, action, dispatch }) => {
+// @flow
+import type { Dispatch, Action } from '../flow-types'
+
+export default ({
+  getLocation,
+  has,
+  action,
+  dispatch
+}: {
+    getLocation: Function,
+    action: Action,
+    has: Function,
+    dispatch: Dispatch
+  }): Dispatch => {
   const env = process.env.NODE_ENV
 
   if (env === 'development' && !has('pathlessRoute')) {

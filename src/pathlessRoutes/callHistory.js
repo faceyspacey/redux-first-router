@@ -1,6 +1,9 @@
+// @flow
+import type { Dispatch, Action, Options, Routes, HistoryActionDispatcher } from '../flow-types'
+
 const env = process.env.NODE_ENV
 
-export default (req) => {
+export default (req: HistoryActionDispatcher): Dispatch => {
   const { history, has, dispatch, action: { payload } } = req
 
   if (env === 'development' && !has('pathlessRoute')) {
@@ -22,7 +25,7 @@ export default (req) => {
 // even just supporting setState on a previous route (while in the pipeline) is frill, but we'll soon see if people
 // get use out of it.
 
-const handleEdgeCaseForSet = ({ ctx, tmp, commitDispatch, history }, args) => {
+const handleEdgeCaseForSet = ({ ctx, tmp, commitDispatch, history }: Object, args: Array<Object>) => {
   if (ctx.pending && !tmp.committed) {
     if (!isOnlySetState(args[0])) {
       throw new Error('[rudy] you can only set state on a previous url before enter')
