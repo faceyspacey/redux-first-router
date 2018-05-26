@@ -1,4 +1,7 @@
-export default (req) => {
+// @flow
+import type { Action } from '../flow-types'
+
+export default (req: { action: Action }) => {
   const { ctx, action, has } = req
   const env = process.env.NODE_ENV
 

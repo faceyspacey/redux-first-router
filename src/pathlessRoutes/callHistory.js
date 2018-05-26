@@ -1,3 +1,4 @@
+// @flow
 const env = process.env.NODE_ENV
 
 export default (req) => {

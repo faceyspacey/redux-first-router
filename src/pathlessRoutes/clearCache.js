@@ -1,4 +1,7 @@
-export default ({ cache, action, has }) => {
+// @flow
+import type { Action } from '../flow-types'
+
+export default ({ cache, action, has }: {action: Action}): void => {
   const env = process.env.NODE_ENV
 
   if (env === 'development' && !has('pathlessRoute')) {
