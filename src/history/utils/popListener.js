@@ -1,11 +1,12 @@
-export const addPopListener = (onPop, onHash) => {
+// @flow
+export const addPopListener = (onPop: Function, onHash: Function) => {
   const useHash = !supportsPopStateOnHashChange()
 
   addEventListener(window, 'popstate', onPop)
   if (useHash) addEventListener(window, 'hashchange', onHash)
 }
 
-export const removePopListener = (onPop, onHash) => {
+export const removePopListener = (onPop: Function, onHash: Function) => {
   const useHash = !supportsPopStateOnHashChange()
 
   removeEventListener(window, 'popstate', onPop)
@@ -31,5 +32,5 @@ const supportsPopStateOnHashChange = () =>
  * Accounts for the fact that Chrome on iOS fires real popstate events
  * containing undefined state when pressing the back button.
  */
-export const isExtraneousPopEvent = event =>
+export const isExtraneousPopEvent = (event: Object) =>
   event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1

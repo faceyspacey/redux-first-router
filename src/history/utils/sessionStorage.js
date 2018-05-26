@@ -1,5 +1,7 @@
+// @flow
 import { supportsSession, supportsHistory } from './index'
 import { toEntries } from '../../utils'
+import type { Routes } from '../../flow-types'
 
 // API:
 
@@ -20,7 +22,7 @@ import { toEntries } from '../../utils'
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
 
-export const saveHistory = ({ index, entries }, out) => {
+export const saveHistory = ({ index, entries }: { index: number, entries: Routes }, out: void | Function) => {
   entries = entries.map(e => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
   set({ index, entries, out })
 }
@@ -78,7 +80,8 @@ const sessionGet = () => {
     const json = window.sessionStorage.getItem(key())
     return JSON.parse(json)
   }
-  catch (error) {} // ignore invalid JSON
+  catch (error) {
+  } // ignore invalid JSON
 }
 
 const createSessionId = () => {
@@ -140,6 +143,7 @@ const getHistoryState = () => {
   try {
     return window.history.state || {}
   }
-  catch (e) {}
+  catch (e) {
+  }
   return {}
 }
