@@ -122,6 +122,7 @@ export type Options = {
   toPath?: ?any,
   toSearch?: any,
   basename?: string,
+  basenames?: Array<string>,
   scrollTop?: boolean,
   notFoundPath?: string,
   defaultState?: Object,
