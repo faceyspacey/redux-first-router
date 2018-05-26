@@ -7,7 +7,9 @@ export default ({
   action,
   dispatch
 }: {
+    getLocation: Function,
     action: Action,
+    has: Function,
     dispatch: Dispatch
   }): Dispatch => {
   const env = process.env.NODE_ENV

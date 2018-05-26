@@ -293,10 +293,57 @@ export type LocationAction = {
   location: LocationActionMeta
 }
 
+export type Redirect = {
+  cache: {
+    isCached: Function,
+    cacheAction: Function,
+    clear: Function
+  },
+  routes: Routes,
+  getTitle: Function,
+  resolveFirstRouteOnEnter: boolean,
+  dispatch: Dispatch,
+  getLocation: Function,
+  getState: GetState,
+  ctx: Object,
+  has: Function,
+  register: Function,
+  options: Options,
+  history: ()=>({
+    routes: Routes,
+    options: Options,
+    firstAction: Action,
+    dispatch: Dispatch,
+    getLocation: Function
+  })
+}
+
 export type HistoryLocation = {
   pathname: string,
   search?: string,
   hash?: string
+}
+
+export type AddRoutes = {
+  action: Action,
+  options: Options,
+  routes: Routes,
+  has: Function
+}
+
+export type ClearCache = {
+  action: Action,
+  cache: Cache,
+  has: Function
+}
+
+export type CallHistory = { routes: Routes, options: Options, firstAction: Action }
+
+export type HistoryActionDispatcher = {
+  dispatch: Dispatch,
+  action: Action,
+  history: CallHistory,
+  has: Function
 }
 
 export type HistoryAction = string
@@ -309,4 +356,18 @@ export type CreateActionsOptions = {
   logExports: ?boolean,
   scene: ?string,
   basename: ?string
+}
+
+export type Confirm = {
+  action: Action,
+  ctx: Object,
+  has: Function,
+  _dispatched?: boolean
+}
+
+
+export type Cache = {
+  isCached: Function,
+  cacheAction: Function,
+  clear: Function
 }

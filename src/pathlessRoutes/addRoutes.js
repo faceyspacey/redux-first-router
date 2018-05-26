@@ -1,9 +1,9 @@
 // @flow
 import { enhanceRoutes } from '../middleware/call/utils' // unfortunate coupling (to potentially optional middleware)
 import { formatRoutes } from '../utils'
-import type { Action, Options, Routes } from '../flow-types'
+import type { AddRoutes } from '../flow-types'
 
-export default (req: { action: Action, options: Options, routes: Routes }) => {
+export default (req: AddRoutes): void => {
   const { action, options, routes: allRoutes, has } = req
 
   const env = process.env.NODE_ENV

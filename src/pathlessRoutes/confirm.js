@@ -1,7 +1,7 @@
 // @flow
-import type { Action } from '../flow-types'
+import type{ Confirm } from '../flow-types'
 
-export default (req: { action: Action }) => {
+export default (req: Confirm) => {
   const { ctx, action, has } = req
   const env = process.env.NODE_ENV
 
