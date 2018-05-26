@@ -132,7 +132,7 @@ export type Options = {
   onFail?: StandardCallback,
   onEnter?: StandardCallback,
   onLeave?: StandardCallback,
-  onError?:StandardCallback
+  onError?: StandardCallback,
   onComplete?: StandardCallback,
   onBackNext?: StandardCallback,
   beforeEnter?: StandardCallback,

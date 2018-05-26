@@ -23,7 +23,6 @@ const render = App => {
 }
 
 store.dispatch(firstRoute()).then(() => {
-  console.log('RENDER')
   render(App)
 })
 

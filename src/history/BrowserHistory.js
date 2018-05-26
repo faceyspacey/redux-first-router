@@ -10,7 +10,7 @@ import {
   pushState,
   replaceState
 } from './utils'
-import type { Action, Dispatch, RequestAPI } from '../flow-types'
+import type { Action, Dispatch } from '../flow-types'
 
 // 1) HISTORY RESTORATION:
 // * FROM SESSION_STORAGE (WITH A FALLBACK TO OUR "HISTORY_STORAGE" SOLUTION)
@@ -60,7 +60,7 @@ export default class BrowserHistory extends History {
     return this.options.restore(this)
   }
 
-  listen(dispatch: Dispatch, getLocation: RequestAPI.getLocation) {
+  listen(dispatch: Dispatch, getLocation: Function) {
     if (!this.dispatch) { // we don't allow/need multiple listeners currently
       super.listen(dispatch, getLocation)
       this._addPopListener()
@@ -208,7 +208,7 @@ export default class BrowserHistory extends History {
         console.log('ready', url, locationToUrl(window.location))
         return url === locationToUrl(window.location)
       }
-      return tryChange(ready, resolve, name, this) //TODO: is the this supposed to be there, its one extra param over
+      return tryChange(ready, resolve, name, this) // TODO: is the this supposed to be there, its one extra param over
     })
   }
 }

@@ -1,3 +1,4 @@
+// @flow
 import History from './History'
 import { restoreHistory, saveHistory, supportsSession } from './utils'
 import { toEntries } from '../utils'
