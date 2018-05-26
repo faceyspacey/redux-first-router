@@ -6,17 +6,17 @@ import type {
   LocationState,
   Routes,
   Action,
-  History,
-  Options
+  CreateReducerAction,
+  Prev
 } from '../flow-types'
+
 
 export default (initialState: Object, routes: Routes) => (
   st: LocationState = initialState,
-  action: Action
+  action: CreateReducerAction
 ): LocationState => {
   const r = routes[action.type]
   const l = action.location
-
   if (l && l.kind === 'set') {
     const { commit, location: { kind, ...location }, ...act } = action
     return { ...st, ...act, ...location }
@@ -65,7 +65,6 @@ export default (initialState: Object, routes: Routes) => (
   return st
 }
 
-
 export const createInitialState = (action: Action): LocationState => {
   const { location, type, basename, params, query, state, hash } = action
   const { entries, index, length, pathname, search, url, key, scene, n } = location
@@ -107,7 +106,7 @@ export const createInitialState = (action: Action): LocationState => {
   }
 }
 
-export const createPrev = (location) => {
+export const createPrev = (location: { n: number, index: number, entries: Array<{ pathname: string, location: Object }> }) => {
   const { n, index: i, entries } = location // needs to use real lastIndex instead of -1
   const index = i + (n * -1) // the entry action we want is the opposite of the direction the user is going
   const prevAction = entries[index]
@@ -123,7 +122,7 @@ export const createPrev = (location) => {
   }
 }
 
-export const createPrevEmpty = () => ({
+export const createPrevEmpty = (): Prev => ({
   type: '',
   params: {},
   query: {},
