@@ -15,7 +15,6 @@ export default (
 
   // `info` arg contains 'isThunk' or optional `path` for `notFound` action creators
   const defaultCreator = (arg: Object | Function, info: ?string) => {
-    console.log(123)
     // optionally handle action creators that return functions (aka `thunk`)
     if (typeof arg === 'function') {
       const thunk: Function = arg
