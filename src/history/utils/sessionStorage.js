@@ -40,10 +40,10 @@ export const get = () => supportsSession() ? sessionGet() : historyGet()
 
 // HISTORY FACADE:
 
-export const pushState = (url) =>
+export const pushState = (url: string) =>
   window.history.pushState({ id: sessionId() }, null, url)    // insure every entry has the sessionId (called by `BrowserHistory`)
 
-export const replaceState = (url) =>
+export const replaceState = (url: string) =>
   window.history.replaceState({ id: sessionId() }, null, url) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
 
 const historyClear = () =>
