@@ -338,7 +338,7 @@ export default (
           }
         }
 
-        store.dispatch(action)
+        return store.dispatch(action)
       }
 
       const bag = { action, extra }
@@ -542,7 +542,7 @@ export default (
 
       currentPath = nextPath // IMPORTANT: must happen before dispatch (to prevent double handling)
 
-      store.dispatch(action) // dispatch route type + payload corresponding to browser back/forward usage
+      return store.dispatch(action) // dispatch route type + payload corresponding to browser back/forward usage
     }
   }
 
