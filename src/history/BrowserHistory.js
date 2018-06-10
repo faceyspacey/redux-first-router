@@ -202,10 +202,7 @@ export default class BrowserHistory extends History {
   _awaitUrl(actOrUrl, name) {
     return new Promise(resolve => {
       const url = typeof actOrUrl === 'string' ? actOrUrl : actOrUrl.location.url
-      const ready = () => {
-        console.log('ready', url, locationToUrl(window.location))
-        return url === locationToUrl(window.location)
-      }
+      const ready = () => url === locationToUrl(window.location)
       return tryChange(ready, resolve, name, this)
     })
   }

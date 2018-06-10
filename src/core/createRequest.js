@@ -17,7 +17,6 @@ export class Request {
     const route = routes[action.type] || {}
     const isRouteAction = !!route.path
     const prevRoute = kind === 'init' ? routes[prev.type] || {} : routes[type]
-
     // the `tmp` context is passed along by all route-changing actions in the same primary parent
     // pipeline to keep track of things like `committed` status, but we don't want the
     // resulting action that leaves Rudy to have this, so we delete it.
@@ -166,14 +165,12 @@ export class Request {
     return this.action.location && this.action.location.kind
   }
 
-  isUniversal = () => {
-    return this.getLocation().universal
-  }
+  isUniversal = () => this.getLocation().universal
 
-  isDoubleDispatch = () => {
-    return this.action.location.url === this.getLocation().url
+  isDoubleDispatch = () =>
+    this.action.location.url === this.getLocation().url
       && !/load|reset|jump/.test(this.getKind()) // on `load`, the `firstRoute` action will trigger the same URL as stored in state; the others must always pass through
-  }
+
 
   handleDoubleDispatch = () => {
     this.ctx.pending = false

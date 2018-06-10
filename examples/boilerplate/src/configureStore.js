@@ -1,14 +1,22 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
-import { createRouter } from 'redux-first-router'
-import * as actionCreators from 'redux-first-router/actions'
-
+import { createRouter } from 'rudy'
+import * as actionCreators from 'rudy/actions'
+import codeSplit from 'rudy/middleware/codeSplit'
+import enter from 'rudy/middleware/enter'
+import call from 'rudy/middleware/call'
+import transformAction from 'rudy/middleware/transformAction'
 import routes from './routes'
 import * as reducers from './reducers'
 
 export default (preloadedState, initialEntries) => {
-  const options = { initialEntries, basenames: ['/foo', '/bar'] }
-  const { reducer, middleware, firstRoute, history, ctx } = createRouter(routes, options)
+  const options = { initialEntries, basenames: ['/foo', '/bar'], reducers }
+  const { middleware, reducer, firstRoute, flushChunks, ctx } = createRouter(routes, options, [
+    transformAction,
+    codeSplit('load'),
+    enter,
+    call('thunk', { cache: true })
+  ])
 
   const rootReducer = combineReducers({ ...reducers, location: reducer })
   const middlewares = applyMiddleware(middleware)
@@ -31,8 +39,11 @@ export default (preloadedState, initialEntries) => {
     window.ctx = ctx
   }
 
-  return { store, firstRoute }
+  return {
+    store, firstRoute
+  }
 }
+
 
 const composeEnhancers = (...args) =>
   typeof window !== 'undefined'

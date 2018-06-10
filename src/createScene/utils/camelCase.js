@@ -5,10 +5,11 @@ export default (type: string) => {
 
   if (!Array.isArray(matches)) throw new Error(`[rudy] invalid action type: ${type}`)
 
-  return matches.reduce((camelCased, word, index) =>
-    camelCased + (index === 0
-      ? word.toLowerCase()
-      : word.charAt(0).toUpperCase() + word.substring(1).toLowerCase())
+  return matches.reduce(
+    (camelCased, word, index) =>
+      camelCased + (index === 0
+        ? word.toLowerCase()
+        : word.charAt(0).toUpperCase() + word.substring(1).toLowerCase())
     , ''
   )
 }

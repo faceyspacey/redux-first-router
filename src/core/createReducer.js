@@ -14,6 +14,13 @@ export default (initialState: Object, routes: Routes) => (
   st: LocationState = initialState,
   action: Action
 ): LocationState => {
+  if (!st.components) {
+    st.components = {}
+  }
+
+
+  Object.assign(st.components, action.components)
+
   const r = routes[action.type]
   const l = action.location
 
@@ -27,6 +34,7 @@ export default (initialState: Object, routes: Routes) => (
     const { universal } = st
     const s = { type, params, query, state, hash, basename, universal, ...l }
     if (st.ready === false) s.ready = true
+
     return s
   }
 
@@ -69,7 +77,6 @@ export default (initialState: Object, routes: Routes) => (
 export const createInitialState = (action: Action): LocationState => {
   const { location, type, basename, params, query, state, hash } = action
   const { entries, index, length, pathname, search, url, key, scene, n } = location
-
   const direction = n === -1 ? 'backward' : 'forward'
   const prev = createPrev(location)
   const universal = isServer()

@@ -48,7 +48,7 @@ export default (routesMap: RoutesMapInput, opts: CreateActionsOptions = {}) => {
     }
 
     subtypes.forEach(name => {
-      const suffix = '_' + name.toUpperCase()
+      const suffix = `_${name.toUpperCase()}`
       const cleanType = `${tClean}${suffix}`
       const realType = `${prefix}${t}${suffix}`
 

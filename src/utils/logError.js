@@ -42,7 +42,7 @@ const logCleanTestError = (args, error, shorten = true) => {
 
   const dir = __dirname.substr(0, index)
   const reg = new RegExp(dir, 'g')
-  const trace = '\n' + stack.join('\n').replace(reg, '')
+  const trace = `\n${stack.join('\n').replace(reg, '')}`
 
   const message = isLog ? '' : 'RUDY ERROR:\n'
 
@@ -67,5 +67,5 @@ export const onError = ({ errorType: type, error, dispatch }) => {
 
 if (process.env.NODE_ENV === 'test') {
   global.log = (...args) => logCleanTestError(args)
-  global.logFull = (arg) => logCleanTestError([arg], new Error, false)
+  global.logFull = (arg) => logCleanTestError([arg], new Error(), false)
 }

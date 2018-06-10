@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '../css/App'
 
 export default ({ title, text, url }) =>
-  <div>
+  (<div>
     <div className={styles.more}>{title}</div>
 
     <a
@@ -13,4 +13,4 @@ export default ({ title, text, url }) =>
     >
       {text}
     </a>
-  </div>
+   </div>)

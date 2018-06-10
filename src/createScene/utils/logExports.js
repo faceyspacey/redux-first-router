@@ -22,16 +22,16 @@ export default (types, actions, routes, options) => {
 
   // destructure createActions()
   let exports = `const { types, actions } = createScene(routes, ${optsString})`
-  exports += '\n\nconst { ' + t.slice(0, -1) + '\n} = types'
-  exports += '\n\nconst { ' + a.slice(0, -1) + '\n} = actions'
+  exports += `\n\nconst { ${t.slice(0, -1)}\n} = types`
+  exports += `\n\nconst { ${a.slice(0, -1)}\n} = actions`
 
   // types exports
-  exports += '\n\nexport {' + t
-  exports = exports.slice(0, -1) + '\n}'
+  exports += `\n\nexport {${t}`
+  exports = `${exports.slice(0, -1)}\n}`
 
   // actions exports
-  exports += '\n\nexport {' + a
-  exports = exports.slice(0, -1) + '\n}'
+  exports += `\n\nexport {${a}`
+  exports = `${exports.slice(0, -1)}\n}`
 
   if (process.env.NODE_ENV !== 'test') console.log(exports)
   return exports

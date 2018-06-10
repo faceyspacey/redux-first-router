@@ -7,8 +7,8 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 module.exports = {
   name: 'client',
   target: 'web',
-  // devtool: 'source-map',
-  devtool: 'eval',
+  devtool: 'source-map',
+  // devtool: 'eval',
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
@@ -45,7 +45,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      'rudy': path.resolve(__dirname, '../../../src')
+      rudy: path.resolve(__dirname, '../../../src')
     }
   },
   plugins: [
@@ -76,7 +76,7 @@ module.exports = {
           'history/createBrowserHistory',
           'transition-group',
           'redux-first-router',
-          'redux-first-router-link',
+          'rudy/Link',
           'babel-polyfill',
           'redux-devtools-extension/logOnlyInProduction'
         ]

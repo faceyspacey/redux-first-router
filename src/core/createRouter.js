@@ -56,7 +56,7 @@ export default (
   options.onError = typeof onErr !== 'undefined' ? onErr : defaultOnError
   options.parseSearch = options.parseSearch || parseSearch
   options.stringifyQuery = options.stringifyQuery || qs.stringify
-
+  console.log('LOC', location)
   const routes = formatRoutes(routesInput, formatRoute)
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
@@ -64,10 +64,11 @@ export default (
   const { firstAction } = history
   const initialState = createState(firstAction)
   const reducer = createLocationReducer(initialState, routes)
+  // Object.assign(options.reducers, {location: reducer})
   const wares = {}
   const register = (name: string, val?: any = true) => wares[name] = val
   const has = (name: string) => wares[name]
-  const ctx = { busy: false }
+  const ctx = { busy: false, chunks: [] }
   const api = { routes, history, options, register, has, ctx }
   const onError = call('onError')(api)
   const nextPromise = options.compose(middlewares, api, true)
@@ -112,6 +113,7 @@ export default (
     firstRoute: (resolveOnEnter = true) => {
       api.resolveFirstRouteOnEnter = resolveOnEnter
       return firstAction
-    }
+    },
+    flushChunks: () => ctx.chunks
   }
 }

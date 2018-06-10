@@ -4,9 +4,7 @@ export default (...names) => (api) => {
   names[0] = names[0] || 'thunk'
   names[1] = names[1] || 'onComplete'
 
-  const middlewares = names.map(name => {
-    return call(name, { skipOpts: true })
-  })
+  const middlewares = names.map(name => call(name, { skipOpts: true }))
 
   const pipeline = api.options.compose(middlewares, api)
 

@@ -53,7 +53,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      'rudy': path.resolve(__dirname, '../../../src')
+      rudy: path.resolve(__dirname, '../../../src')
     }
   },
   plugins: [
