@@ -7,5 +7,6 @@ export default (state = '', action = {}) => {
     Object.assign(action.location, { components: state })
   }
 
+
   return state
 }

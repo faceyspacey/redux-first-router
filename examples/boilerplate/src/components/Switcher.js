@@ -7,6 +7,7 @@ import styles from '../css/Switcher'
 
 const Switcher = ({ page }) => {
 // shitty way to determine dynamic universal vs RUC
+  console.log(page);
   if (typeof page !== 'string') {
     return (
       <div className={styles.switcher}>

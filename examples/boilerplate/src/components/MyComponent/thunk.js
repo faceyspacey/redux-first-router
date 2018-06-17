@@ -1,2 +1,4 @@
-export default (props) => props
+export default (state = '', action) => {
+  return action
+}
 

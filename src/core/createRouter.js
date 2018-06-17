@@ -57,7 +57,6 @@ export default (
   options.parseSearch = options.parseSearch || parseSearch
   options.stringifyQuery = options.stringifyQuery || qs.stringify
   const routes = formatRoutes(routesInput, formatRoute)
-
   const selectLocationState = createSelector('location', location)
   const selectTitleState = createSelector('title', title)
   const history = createSmartHistory(routes, options)

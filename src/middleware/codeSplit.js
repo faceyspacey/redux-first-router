@@ -1,11 +1,16 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 
+import { tryRequire } from '../AsyncComponent'
 
 export default (name = 'load') => (api) => async (req, next) => {
   const load = req.route && req.route[name]
 
   if (load) { // if `route.load` does not exist short-circuit
-    const parts = await load(req)
+    let parts = await load(req)
+    if (typeof parts === 'number') {
+      parts = tryRequire(parts)
+    }
+
     addPartsToRuntime(req, parts)
   }
 

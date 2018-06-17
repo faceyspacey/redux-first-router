@@ -12,6 +12,7 @@ export default ({ clientStats }) => async (req, res, next) => {
   //
   //   return next
   // }
+
   if (!store) return // no store means redirect was already served
 
   const app = createApp(App, store)
