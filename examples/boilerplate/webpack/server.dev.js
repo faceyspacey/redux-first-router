@@ -20,8 +20,7 @@ const externals = fs
 module.exports = {
   name: 'server',
   target: 'node',
-  // devtool: 'source-map',
-  devtool: 'eval',
+  devtool: 'inline-source-map',
   entry: ['babel-polyfill', res('../server/render.js')],
   externals,
   output: {

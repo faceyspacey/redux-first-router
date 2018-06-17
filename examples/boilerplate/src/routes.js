@@ -1,5 +1,19 @@
+import React from 'react';
 import { redirect } from 'rudy/actions'
+import universal from "react-universal-component"
+export const UniversalComponent = universal(({ page }) => import(`./components/${page}`), {
+  minDelay: 500,
 
+  loading: () => (
+    <div className={styles.spinner}>
+      <div />
+    </div>
+  ),
+
+  error: (e) => {
+    console.log(e); return <div className={styles.notFound}>PAGE NOT FOUND - 404</div>
+  }
+})
 export default {
   HOME: {
     path: '/',
@@ -19,10 +33,10 @@ export default {
     //   return type === 'NOT_FOUND'
     // }
   },
-  CODESPLIT: {
-    path: '/split/:page',
-    load: ({ params }) => (typeof window === 'undefined') ? require.resolveWeak(`./components/${params.page}`) : import(`./components/${params.page}`)
-  },
+  // CODESPLIT: {
+  //   path: '/split/:page',
+  //   // load: ({ params }) => (typeof window === 'undefined') ? require.resolveWeak(`./components/${params.page}`) : import(`./components/${params.page}`)
+  // },
   PATHLESS: () => console.log('PATHLESS'),
   LIST: {
     path: '/list/:category',

@@ -8,6 +8,10 @@ import App from '../src/components/App'
 
 export default ({ clientStats }) => async (req, res, next) => {
   const store = await configureStore(req, res)
+  // if (req.path.indexOf('static') !== -1) {
+  //
+  //   return next
+  // }
   if (!store) return // no store means redirect was already served
 
   const app = createApp(App, store)
@@ -28,10 +32,9 @@ export default ({ clientStats }) => async (req, res, next) => {
           ${styles}
         </head>
         <body>
-          <script>window.REDUX_STATE = {}</script>
+          <script>window.REDUX_STATE = ${stateJson}</script>
           <div id="root">${appString}</div>
           ${cssHash}
-          <script type='text/javascript' src='/static/vendor.js'></script>
           ${js}
         </body>
       </html>`)

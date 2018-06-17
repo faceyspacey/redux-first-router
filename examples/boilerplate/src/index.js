@@ -7,7 +7,7 @@ import AppContainer from 'react-hot-loader/lib/AppContainer'
 import App from './components/App'
 import configureStore from './configureStore'
 
-const { store, firstRoute } = configureStore({})
+const { store, firstRoute } = configureStore(window.REDUX_STATE)
 
 const render = App => {
   const root = document.getElementById('root')

@@ -7,8 +7,7 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 module.exports = {
   name: 'client',
   target: 'web',
-  devtool: 'source-map',
-  // devtool: 'eval',
+  devtool: 'inline-source-map',
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
@@ -62,24 +61,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
-      }
-    }),
-    new AutoDllPlugin({
-      context: path.join(__dirname, '..'),
-      filename: '[name].js',
-      entry: {
-        vendor: [
-          'react',
-          'react-dom',
-          'react-redux',
-          'redux',
-          'history/createBrowserHistory',
-          'transition-group',
-          'redux-first-router',
-          'rudy/Link',
-          'babel-polyfill',
-          'redux-devtools-extension/logOnlyInProduction'
-        ]
       }
     })
   ]
