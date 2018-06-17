@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { redirect } from 'rudy/actions'
-import universal from "react-universal-component"
+import universal from 'react-universal-component'
 import styles from './css/Switcher'
 
 export const UniversalComponent = universal(({ page }) => import(`./components/${page}`), {
@@ -12,7 +12,7 @@ export const UniversalComponent = universal(({ page }) => import(`./components/$
     </div>
   ),
 
-  error: (e) => {
+  error: e => {
     console.log(e); return <div className={styles.notFound}>PAGE NOT FOUND - 404</div>
   }
 })
@@ -22,7 +22,7 @@ export default {
     onEnter: () => {
       console.log(document.querySelector('.Home__content--319uD'))
     },
-    beforeEnter: async (req) => {
+    beforeEnter: async req => {
       if (typeof window !== 'undefined' && window.foo) await new Promise(res => setTimeout(res, 3000))
 
       if (typeof window !== 'undefined' && window.foo) {
@@ -37,10 +37,7 @@ export default {
   },
   CODESPLIT: {
     path: '/split/:page',
-    load: ({ params }) => {
-
-      return (typeof window === 'undefined') ? require.resolveWeak(`./components/${params.page}`) : import(`./components/${params.page}`)
-    }
+    load: ({ params }) => (typeof window === 'undefined') ? require.resolveWeak(`./components/${params.page}`) : import(`./components/${params.page}`)
   },
   PATHLESS: () => console.log('PATHLESS'),
   LIST: {

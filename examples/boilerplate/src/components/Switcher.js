@@ -7,17 +7,17 @@ import styles from '../css/Switcher'
 
 const Switcher = ({ page }) => {
 // shitty way to determine dynamic universal vs RUC
-  console.log(page);
+  console.log(page)
   if (typeof page !== 'string') {
     return (
       <div className={styles.switcher}>
-        <Async/>
+        <Async />
       </div>
     )
   }
   return (
     <div className={styles.switcher}>
-      <UniversalComponent page={page}/>
+      <UniversalComponent page={page} />
     </div>
   )
 }
