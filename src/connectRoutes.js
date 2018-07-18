@@ -164,7 +164,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
-  const initialAction = pathToAction(currentPath, routesMap)
+  const initialAction = pathToAction(currentPath, routesMap, querySerializer)
   const { type, payload, meta }: ReceivedAction = initialAction
 
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(
@@ -238,7 +238,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
     let navigationAction
 
     if (navigators && action.type.indexOf('Navigation/') === 0) {
-      ;({ navigationAction, action } = navigationToAction(
+      ({ navigationAction, action } = navigationToAction(
         navigators,
         store,
         routesMap,
@@ -276,7 +276,8 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
         history,
         notFoundPath
       )
-    } else if (route && !isLocationAction(action)) {
+    }
+    else if (route && !isLocationAction(action)) {
       // THE MAGIC: dispatched action matches a connected type, so we generate a
       // location-aware action and also as a result update location reducer state.
       action = middlewareCreateAction(
@@ -508,7 +509,8 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       if (shouldPerformInitialDispatch !== false) {
         _initialDispatch()
       }
-    } else {
+    }
+    else {
       // set correct prevLocation on client that has SSR so that it will be
       // assigned to `action.meta.location.prev` and the corresponding state
       prevLocation = location
@@ -576,7 +578,8 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
       if (!scrollBehavior.manual) {
         scrollBehavior.updateScroll(prevState, nextState)
       }
-    } else if (__DEV__ && performedByUser) {
+    }
+    else if (__DEV__ && performedByUser) {
       throw new Error(
         `[redux-first-router] you must set the \`restoreScroll\` option before
         you can call \`updateScroll\``
