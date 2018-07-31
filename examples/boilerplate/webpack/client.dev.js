@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin')
-const AutoDllPlugin = require('autodll-webpack-plugin')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 module.exports = {
@@ -30,56 +29,50 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractCssChunks.extract({
-          use: {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]'
-            }
+        // use: ExtractCssChunks.extract({
+        use: {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            localIdentName: '[name]__[local]--[hash:base64:5]'
           }
-        })
+        }
+        // })
       }
     ]
   },
+
+  optimization: {
+    runtimeChunk: {
+      name: 'bootstrap'
+    },
+    splitChunks: {
+      chunks: 'initial',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor'
+        }
+      }
+    }
+  },
+
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      'rudy': path.resolve(__dirname, '../../../src')
+      rudy: path.resolve(__dirname, '../../../src')
     }
   },
   plugins: [
     new WriteFilePlugin(), // used so you can see what chunks are produced in dev
     new ExtractCssChunks(),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
-      filename: '[name].js',
-      minChunks: Infinity
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true // experimental
     }),
-
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
-      }
-    }),
-    new AutoDllPlugin({
-      context: path.join(__dirname, '..'),
-      filename: '[name].js',
-      entry: {
-        vendor: [
-          'react',
-          'react-dom',
-          'react-redux',
-          'redux',
-          'history/createBrowserHistory',
-          'transition-group',
-          'redux-first-router',
-          'redux-first-router-link',
-          'babel-polyfill',
-          'redux-devtools-extension/logOnlyInProduction'
-        ]
       }
     })
   ]

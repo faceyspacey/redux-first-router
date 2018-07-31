@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
-const AutoDllPlugin = require('autodll-webpack-plugin')
 
 module.exports = {
   name: 'client',
@@ -24,30 +23,55 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractCssChunks.extract({
-          use: {
+        use: [
+          // ExtractCssChunks.loader
+          {
             loader: 'css-loader',
             options: {
               modules: true,
               localIdentName: '[name]__[local]--[hash:base64:5]'
             }
           }
-        })
+        ]
       }
     ]
   },
   resolve: {
     extensions: ['.js', '.css']
   },
+  optimization: {
+    // FOR PRODUCTION
+    minimizer: [
+      new UglifyJSPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false,
+            ascii_only: true
+          },
+          compress: {
+            comparisons: false
+          }
+        }
+      })
+    ],
+    // END
+    // NEEDED BOTH IN PROD AND DEV BUILDS
+    runtimeChunk: {
+      name: 'bootstrap'
+    },
+    splitChunks: {
+      chunks: 'initial',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor'
+        }
+      }
+    }
+  },
   plugins: [
     new StatsPlugin('stats.json'),
     new ExtractCssChunks(),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
-      filename: '[name].[chunkhash].js',
-      minChunks: Infinity
-    }),
-
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')

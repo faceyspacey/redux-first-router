@@ -47,7 +47,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-import": "^2.13.0",
@@ -67,7 +67,9 @@
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.2",
     "travis-github-status": "^1.5.4",
-    "webpack": "4.16.3"
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "4.16.3",
+    "webpack-cli": "^3.1.0"
   },
   "peerDependencies": {
     "react": "*",
