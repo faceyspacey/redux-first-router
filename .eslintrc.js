@@ -43,7 +43,16 @@ module.exports = {
   //   }
   // },
   rules: {
-    'import/extensions': ['.js'],
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'never',
+        jsx: 'never',
+        styl: 'never',
+        css: 'never'
+      }
+    ],
     'import/ignore': ['node_modules', 'flow-typed', '\\.(css|styl|svg|json)$'],
     'no-shadow': 0,
     'no-use-before-define': 0,
