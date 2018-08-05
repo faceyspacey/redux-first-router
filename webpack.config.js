@@ -1,8 +1,7 @@
 const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const env = process.env.NODE_ENV
-
-const config = {
+module.exports = (env) => ({
   module: {
     rules: [
       { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
@@ -13,29 +12,30 @@ const config = {
     libraryTarget: 'umd'
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env)
-    })
-  ]
-}
+    new webpack.optimize.OccurrenceOrderPlugin()
+  ],
+  optimization: {
+    minimize: JSON.parse(env.minimize),
+    minimizer: [
+      new UglifyJsPlugin({
+        minify: (file, sourceMap) => {
+          const terserOptions = {
+            compress: {
+              pure_getters: true,
+              unsafe: true,
+              unsafe_comps: true,
+              warnings: false
+            },
+            sourceMap: sourceMap && {
+              content: sourceMap
+            },
+            ie8: true
+          }
 
-if (env === 'production') {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compressor: {
-      pure_getters: true,
-      unsafe: true,
-      unsafe_comps: true,
-      warnings: false,
-      screw_ie8: false
-    },
-    mangle: {
-      screw_ie8: false
-    },
-    output: {
-      screw_ie8: false
-    }
-  }))
-}
-
-module.exports = config
+          // eslint-disable-next-line global-require
+          return require('terser').minify(file, terserOptions)
+        }
+      })
+    ]
+  }
+})
