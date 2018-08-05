@@ -195,5 +195,9 @@ export const findBasename = (path: string, bns: Array<string> = []) =>
 
 // MISC
 
-const createKey = () => Math.random().toString(36).substr(2, 6)
-
+const createKey = () => {
+  if (process.env.NODE_ENV === 'test') {
+    return '123456789'.toString(36).substr(2, 6)
+  }
+  return Math.random().toString(36).substr(2, 6)
+}
