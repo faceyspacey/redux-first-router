@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-module.exports = {
+module.exports = (env) => ({
   module: {
     rules: [
       { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
@@ -15,9 +15,10 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin()
   ],
   optimization: {
+    minimize: JSON.parse(env.minimize),
     minimizer: [
       new UglifyJsPlugin({
-        minify(file, sourceMap) {
+        minify: (file, sourceMap) => {
           const terserOptions = {
             compress: {
               pure_getters: true,
@@ -37,4 +38,4 @@ module.exports = {
       })
     ]
   }
-}
+})

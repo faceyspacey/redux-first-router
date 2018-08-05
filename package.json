@@ -6,8 +6,8 @@
   "scripts": {
     "build": "babel src -d dist",
     "build:example": "cd examples/boilerplate && yarn && yarn start",
-    "build:umd": "BABEL_ENV=commonjs NODE_ENV=production webpack --mode production src/index.js dist/redux-first-router.js",
-    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack --mode production src/index.js dist/redux-first-router.min.js",
+    "build:umd": "BABEL_ENV=commonjs NODE_ENV=production webpack --mode production --env.minimize=false src/index.js -o dist/redux-first-router.js",
+    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack --mode production --env.minimize=true src/index.js -o dist/redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
