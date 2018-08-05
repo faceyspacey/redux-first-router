@@ -81,6 +81,7 @@ const sessionGet = () => {
   }
   catch (error) {
   } // ignore invalid JSON
+  return null
 }
 
 const createSessionId = () => {
