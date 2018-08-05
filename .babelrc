@@ -11,6 +11,10 @@
     "es": {
       "presets": [["env", { "modules": false }], "react"],
       "plugins": ["transform-flow-strip-types", "syntax-object-rest-spread", "transform-class-properties"]
+    },
+    "test": {
+      "presets": ["env", "react"],
+      "plugins": ["transform-flow-strip-types", "syntax-object-rest-spread", "transform-class-properties"]
     }
   }
 }
