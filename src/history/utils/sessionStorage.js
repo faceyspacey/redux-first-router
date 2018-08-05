@@ -81,6 +81,7 @@ const sessionGet = () => {
   }
   catch (error) {
   } // ignore invalid JSON
+  return null
 }
 
 const createSessionId = () => {
@@ -89,7 +90,12 @@ const createSessionId = () => {
   const state = getHistoryState()
 
   if (!state.id) {
-    state.id = Math.random().toString(36).substr(2, 6)
+    if (process.env.NODE_ENV === 'test') {
+      state.id = '123456789'.toString(36).substr(2, 6)
+    }
+    else {
+      state.id = Math.random().toString(36).substr(2, 6)
+    }
     historySet(state)
   }
 
