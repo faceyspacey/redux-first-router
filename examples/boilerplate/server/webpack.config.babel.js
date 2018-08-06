@@ -75,6 +75,17 @@ export default env => {
           }
         },
         {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          enforce: 'pre',
+          use: {
+            loader: 'eslint-loader',
+            options: {
+              emitError: isProd // Production builds must have no warnings
+            }
+          }
+        },
+        {
           test: /\.css$/,
           exclude: /node_modules/,
           use: [
