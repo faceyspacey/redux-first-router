@@ -11,10 +11,9 @@ const res = p => path.resolve(__dirname, p)
 const externals = fs
   .readdirSync(res('../node_modules'))
   .filter(
-    x =>
-      !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks|path-to-regexp/.test(
-        x
-      )
+    x => !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks|path-to-regexp/.test(
+      x
+    )
   )
   .reduce((externals, mod) => {
     externals[mod] = `commonjs ${mod}`
@@ -26,6 +25,7 @@ module.exports = {
   target: 'node',
   // devtool: 'source-map',
   devtool: 'eval',
+  mode: 'development',
   entry: ['babel-polyfill', res('../server/render.js')],
   externals,
   output: {

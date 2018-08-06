@@ -7,6 +7,7 @@ module.exports = {
   name: 'client',
   target: 'web',
   devtool: 'source-map',
+  mode: 'production',
   entry: ['babel-polyfill', path.resolve(__dirname, '../src/index.js')],
   output: {
     filename: '[name].[chunkhash].js',

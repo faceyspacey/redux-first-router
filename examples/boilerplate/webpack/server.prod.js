@@ -27,7 +27,7 @@ module.exports = {
   name: 'server',
   devtool: 'source-map',
   target: 'node',
-  mode: 'development',
+  mode: 'production',
   entry: ['regenerator-runtime/runtime.js', entry],
   externals,
   output: {
