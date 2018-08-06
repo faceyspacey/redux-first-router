@@ -1,7 +1,8 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import styles from '../css/App'
 
-export default ({ title, text, url }) => (
+export default hot(module)(({ title, text, url }) => (
   <div>
     <div className={styles.more}>{title}</div>
 
@@ -14,4 +15,4 @@ export default ({ title, text, url }) => (
       {text}
     </a>
   </div>
-)
+))

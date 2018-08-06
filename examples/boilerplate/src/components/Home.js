@@ -1,4 +1,5 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 
 import ArticlePromotion from './ArticlePromotion'
 
@@ -36,4 +37,4 @@ const Home = () => (
   </div>
 )
 
-export default Home
+export default hot(module)(Home)
