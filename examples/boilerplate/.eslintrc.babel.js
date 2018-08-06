@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
@@ -16,7 +16,14 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.json', '.css', '.styl']
+        extensions: [
+          '.browser.js',
+          '.server.js',
+          '.js',
+          '.json',
+          '.css',
+          '.styl'
+        ]
       }
     }
   },
@@ -41,6 +48,8 @@ module.exports = {
       'error',
       'always',
       {
+        'browser.js': 'never',
+        'server.js': 'never',
         js: 'never',
         jsx: 'never',
         styl: 'never',
@@ -60,6 +69,7 @@ module.exports = {
     camelcase: 1,
     'prefer-template': 1,
     'react/no-array-index-key': 1,
+    indent: 0, // Due to https://github.com/babel/babel-eslint/issues/530
     'global-require': 1,
     'react/jsx-indent': 1,
     'dot-notation': 1,

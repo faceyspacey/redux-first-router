@@ -1,5 +1,5 @@
 import { doesRedirect } from 'rudy/utils'
-import configureStore from '../src/configureStore'
+import configureStore from './configureStore.browser'
 
 export default async (req, res) => {
   const { store, firstRoute } = configureStore(undefined, req.path)
@@ -11,4 +11,3 @@ export default async (req, res) => {
 
   return store
 }
-
