@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { hot } from 'react-hot-loader'
+
 import ArticlePromotion from './ArticlePromotion'
 
 import styles from '../css/List'
@@ -9,7 +11,11 @@ const List = ({ category, packages }) => (
     <div className={styles.title}>Category: {category}</div>
 
     <div className={styles.content}>
-      <ul>{packages.map(pkg => <li key={pkg}>{pkg}</li>)}</ul>
+      <ul>
+        {packages.map(pkg => (
+          <li key={pkg}>{pkg}</li>
+        ))}
+      </ul>
 
       {category === 'redux' ? (
         <ArticlePromotion
@@ -33,4 +39,4 @@ const mapStateToProps = state => ({
   packages: state.packages
 })
 
-export default connect(mapStateToProps)(List)
+export default hot(module)(connect(mapStateToProps)(List))

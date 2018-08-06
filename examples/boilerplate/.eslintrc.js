@@ -16,7 +16,7 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.json', '.css', '.styl']
+        extensions: ['.browser.js', '.server.js', '.js', '.css']
       }
     }
   },
@@ -41,9 +41,9 @@ module.exports = {
       'error',
       'always',
       {
+        'browser.js': 'never',
+        'server.js': 'never',
         js: 'never',
-        jsx: 'never',
-        styl: 'never',
         css: 'never'
       }
     ],
