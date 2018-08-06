@@ -20,7 +20,6 @@
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
   },
   "dependencies": {
-    "autodll-webpack-plugin": "0.4.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-polyfill": "^6.23.0",
     "express": "^4.15.2",
