@@ -60,7 +60,6 @@ module.exports = {
     camelcase: 1,
     'prefer-template': 1,
     'react/no-array-index-key': 1,
-    indent: 0, // Due to https://github.com/babel/babel-eslint/issues/530
     'global-require': 1,
     'react/jsx-indent': 1,
     'dot-notation': 1,

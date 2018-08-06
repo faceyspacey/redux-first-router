@@ -7,8 +7,8 @@ export default {
     },
     beforeEnter: async req => {
       if (typeof window !== 'undefined' && window.foo) {
- await new Promise(res => setTimeout(res, 3000))
-}
+        await new Promise(res => setTimeout(res, 3000))
+      }
 
       if (typeof window !== 'undefined' && window.foo) {
         await req.dispatch({ type: 'LIST', params: { category: 'react' } })

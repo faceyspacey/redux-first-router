@@ -9,8 +9,8 @@ import * as reducers from './reducers'
 export default (preloadedState, initialEntries) => {
   const options = { initialEntries, basenames: ['/foo', '/bar'] }
   const {
- reducer, middleware, firstRoute, history, ctx
-} = createRouter(
+    reducer, middleware, firstRoute, history, ctx
+  } = createRouter(
     routes,
     options
   )
