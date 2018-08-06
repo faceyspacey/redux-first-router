@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { flushChunkNames } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
-import configureStore from './configureStore' // eslint-disable-line import/extensions,import/no-unresolved
+import configureStore from './configureStore'
 import App from './components/App'
 
 export default ({ clientStats }) => async (req, res) => {

@@ -1,16 +1,17 @@
-import { redirect } from 'rudy/actions'
-
 export default {
   HOME: {
     path: '/',
     onEnter: () => {
+      // eslint-disable-next-line no-console
       console.log(document.querySelector('.Home__content--319uD'))
     },
-    beforeEnter: async (req) => {
-      if (typeof window !== 'undefined' && window.foo) await new Promise(res => setTimeout(res, 3000))
+    beforeEnter: async req => {
+      if (typeof window !== 'undefined' && window.foo) {
+ await new Promise(res => setTimeout(res, 3000))
+}
 
       if (typeof window !== 'undefined' && window.foo) {
-        const res = await req.dispatch({ type: 'LIST', params: { category: 'react' } })
+        await req.dispatch({ type: 'LIST', params: { category: 'react' } })
       }
     }
     // beforeLeave: async ({ type }) => {
@@ -19,6 +20,7 @@ export default {
     //   return type === 'NOT_FOUND'
     // }
   },
+  // eslint-disable-next-line no-console
   PATHLESS: () => console.log('PATHLESS'),
   LIST: {
     path: '/list/:category',

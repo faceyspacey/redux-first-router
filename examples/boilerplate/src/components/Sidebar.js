@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'rudy/Link'
-import styles from '../css/Sidebar.css'
+import styles from '../css/Sidebar'
+
+// TODO: Use the link package
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 // TODO: fix NavLink when object is passed via the "to" prop
 const Sidebar = ({ path, dispatch }) => (

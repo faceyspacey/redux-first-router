@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
@@ -16,14 +16,7 @@ export default {
     },
     'import/resolver': {
       node: {
-        extensions: [
-          '.browser.js',
-          '.server.js',
-          '.js',
-          '.json',
-          '.css',
-          '.styl'
-        ]
+        extensions: ['.browser.js', '.server.js', '.js', '.css']
       }
     }
   },
@@ -51,8 +44,6 @@ export default {
         'browser.js': 'never',
         'server.js': 'never',
         js: 'never',
-        jsx: 'never',
-        styl: 'never',
         css: 'never'
       }
     ],
