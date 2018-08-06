@@ -55,7 +55,24 @@ export default env => {
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          use: 'babel-loader'
+          use: {
+            loader: 'babel-loader',
+            options: {
+              // { modules: false } allows tree shaking, HMR, and import errors/warnings to work correctly
+              // Sadly, node doesn't support ES imports/exports yet, so it can't go in .babelrc
+              babelrc: false,
+              cacheDirectory: true,
+              presets: [['env', { modules: false }], 'react'],
+              plugins: [
+                'react-hot-loader/babel',
+                'syntax-dynamic-import',
+                'universal-import',
+                'transform-flow-strip-types',
+                'syntax-object-rest-spread',
+                'transform-class-properties'
+              ]
+            }
+          }
         },
         {
           test: /\.css$/,
