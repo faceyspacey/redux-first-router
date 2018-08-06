@@ -51,6 +51,7 @@ export default env => {
       libraryTarget: isServer && 'commonjs2'
     },
     module: {
+      strictExportPresence: true, // If you import something that isn't exported
       rules: [
         {
           test: /\.js$/,
