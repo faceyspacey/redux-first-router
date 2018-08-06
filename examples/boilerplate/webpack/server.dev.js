@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
+import fs from 'fs'
+import path from 'path'
+import webpack from 'webpack'
 
 const res = p => path.resolve(__dirname, p)
 
@@ -20,7 +20,7 @@ const externals = fs
     return externals
   }, {})
 
-module.exports = {
+export default {
   name: 'server',
   target: 'node',
   // devtool: 'source-map',

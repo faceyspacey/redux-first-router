@@ -1,9 +1,9 @@
-const path = require('path')
-const webpack = require('webpack')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
-const StatsPlugin = require('stats-webpack-plugin')
+import path from 'path'
+import webpack from 'webpack'
+import ExtractCssChunks from 'extract-css-chunks-webpack-plugin'
+import StatsPlugin from 'stats-webpack-plugin'
 
-module.exports = {
+export default {
   name: 'client',
   target: 'web',
   devtool: 'source-map',

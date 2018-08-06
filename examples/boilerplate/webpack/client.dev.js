@@ -1,9 +1,9 @@
-const path = require('path')
-const webpack = require('webpack')
-const WriteFilePlugin = require('write-file-webpack-plugin') // here so you can see what chunks are built
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+import path from 'path'
+import webpack from 'webpack'
+import WriteFilePlugin from 'write-file-webpack-plugin' // here so you can see what chunks are built
+import ExtractCssChunks from 'extract-css-chunks-webpack-plugin'
 
-module.exports = {
+export default {
   name: 'client',
   target: 'web',
   devtool: 'inline-source-map',

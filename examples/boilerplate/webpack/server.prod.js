@@ -1,7 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
-const WriteFilePlugin = require('write-file-webpack-plugin')
+import fs from 'fs'
+import path from 'path'
+import webpack from 'webpack'
+import WriteFilePlugin from 'write-file-webpack-plugin'
 
 const res = p => path.resolve(__dirname, p)
 
@@ -23,7 +23,7 @@ const externals = fs
 
 externals['react-dom/server'] = 'commonjs react-dom/server'
 
-module.exports = {
+export default {
   name: 'server',
   devtool: 'source-map',
   target: 'node',
