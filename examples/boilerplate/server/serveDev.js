@@ -23,14 +23,17 @@ app.use(favicon(path.resolve(__dirname, '../public', 'favicon.ico')))
 const multiCompiler = webpack([clientConfig, serverConfig])
 const clientCompiler = multiCompiler.compilers[0]
 
-app.use(webpackDevMiddleware(multiCompiler, { publicPath, serverSideRender: true }))
+app.use(webpackDevMiddleware(multiCompiler, {
+    publicPath,
+    serverSideRender: true
+  }))
 app.use(webpackHotMiddleware(clientCompiler))
 
 // keeps serverRender updated with arg: { clientStats, outputPath }
 app.use(webpackHotServerMiddleware(multiCompiler, {
-  serverRendererOptions: { outputPath },
-  chunkName: 'h'
-}))
+    serverRendererOptions: { outputPath },
+    chunkName: 'h'
+  }))
 
 app.listen(3000, () => {
   // eslint-disable-next-line no-console
