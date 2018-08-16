@@ -6,7 +6,19 @@ import flushChunks from 'webpack-flush-chunks'
 import configureStore from './configureStore'
 import App from './components/App'
 
-export default ({ clientStats }) => async (req, res) => {
+export default ({ clientStats }) => async (req, res, next) => {
+  console.log('REQUESTED PATH:', req.path) // eslint-disable-line no-console
+  try {
+    const html = await renderToString(clientStats, req, res)
+    return res.send(html)
+  }
+  catch (error) {
+    return next(error)
+  }
+}
+
+const renderToString = async (clientStats, req, res) => {
+  console.log('REQUESTED PATH:', req.path) // eslint-disable-line no-console
   const store = await configureStore(req, res)
   if (!store) return // no store means redirect was already served
 
@@ -17,10 +29,9 @@ export default ({ clientStats }) => async (req, res) => {
   const chunkNames = flushChunkNames()
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
 
-  console.log('REQUESTED PATH:', req.path) // eslint-disable-line no-console
   console.log('CHUNK NAMES RENDERED', chunkNames) // eslint-disable-line no-console
 
-  return res.send(`<!doctype html>
+  return `<!doctype html>
       <html>
         <head>
           <meta charset="utf-8">
@@ -34,7 +45,7 @@ export default ({ clientStats }) => async (req, res) => {
           <script type='text/javascript' src='/static/vendor.js'></script>
           ${js}
         </body>
-      </html>`)
+      </html>`
 }
 
 const createApp = (App, store) => (
