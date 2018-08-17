@@ -1,0 +1,10 @@
+{
+  "name": "respond-framework",
+  "version": "0.0.1",
+  "description": "A set of tools for building beautiful idiomatic React/Redux apps",
+  "main": "index.js",
+  "repository": "git@github.com:ScriptedAlchemy/redux-first-router.git",
+  "author": "James Gilmore <james@faceyspacey.com>",
+  "license": "MIT",
+  "private": false
+}
