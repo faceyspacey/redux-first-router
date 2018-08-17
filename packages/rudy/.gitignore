@@ -1,7 +1,7 @@
 dist
 es
 coverage
-node_modules
+node_modules/
 *.log
 .DS_Store
 buildClient
