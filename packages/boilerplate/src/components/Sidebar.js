@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from '@respond-framework/rudy'
+import { NavLink, Link } from '@respond-framework/rudy'
 import styles from '../css/Sidebar'
 
 // TODO: Use the link package
@@ -15,13 +15,13 @@ const Sidebar = ({ path, dispatch }) => (
       Home
     </NavLink>
 
-    <span
+    <Link
       role='link'
       tabIndex='0'
-      onClick={() => dispatch({ type: 'LIST', params: { category: 'redux' } })}
+      to={{ type: 'LIST', params: { category: 'redux' } }}
     >
       Redux
-    </span>
+    </Link>
     <span
       role='link'
       tabIndex='0'
