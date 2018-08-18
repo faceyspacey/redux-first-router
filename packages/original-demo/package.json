@@ -1,6 +1,6 @@
 {
-  "name": "redux-first-router-demo",
-  "description": "Universal Redux-First Router Demo",
+  "name": "original-demo",
+  "description": "Original Universal Redux-First Router Demo",
   "version": "1.0.0",
   "main": "server/index.js",
   "author": "James Gillmore <james@faceyspacey.com>",
