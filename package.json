@@ -6,5 +6,8 @@
   "repository": "git@github.com:ScriptedAlchemy/redux-first-router.git",
   "author": "James Gilmore <james@faceyspacey.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "lerna": "^3.1.1"
+  }
 }
