@@ -1,3 +1,11 @@
+const path = require('path')
+
+function res() {
+  const segments = Array.from(arguments)
+  segments.unshift(__dirname)
+  return path.join.apply(undefined, segments)
+}
+
 module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
@@ -17,6 +25,9 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.browser.js', '.server.js', '.js', '.css']
+      },
+      lerna: {
+        packages: res('..')
       }
     }
   },
@@ -37,16 +48,7 @@ module.exports = {
     alert: true
   },
   rules: {
-    'import/extensions': [
-      'error',
-      'always',
-      {
-        'browser.js': 'never',
-        'server.js': 'never',
-        js: 'never',
-        css: 'never'
-      }
-    ],
+    'import/extensions': ['error', 'never'],
     'no-shadow': 0,
     'no-use-before-define': 0,
     'no-param-reassign': 0,

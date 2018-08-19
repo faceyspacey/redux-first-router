@@ -2495,6 +2495,10 @@ eslint-config-airbnb@^16.1.0:
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
 
+eslint-import-resolver-lerna@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-lerna/-/eslint-import-resolver-lerna-1.0.0.tgz#fdf8855186e267435e1631195594f1f95cd29ce0"
+
 eslint-import-resolver-node@^0.3.1:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.2.tgz#58f15fb839b8d0576ca980413476aab2472db66a"
