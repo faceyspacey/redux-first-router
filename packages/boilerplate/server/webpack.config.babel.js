@@ -4,7 +4,6 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import ExtractCssChunks from 'extract-css-chunks-webpack-plugin'
 import WriteFilePlugin from 'write-file-webpack-plugin' // here so you can see what chunks are built
 import StatsPlugin from 'stats-webpack-plugin'
-import nodeExternals from 'webpack-node-externals'
 
 const res = p => resolve(__dirname, p)
 
@@ -28,21 +27,6 @@ export default env => {
         res(isServer ? '../src/render.server.js' : '../src/render.browser.js')
       ].filter(Boolean)
     },
-    externals: isServer && [
-      nodeExternals({
-        // if you're specifying externals to leave unbundled, you need to tell Webpack
-        // to still bundle these modules so that they know they are running
-        // within Webpack and can properly make connections to client modules:
-        whitelist: [
-          /react-dom\/server/,
-          /react-universal-component/,
-          /webpack-flush-chunks/,
-          /redux-devtools-extension/,
-          /react-hot-loader/,
-          /babel-plugin-universal-import\/universalImport/
-        ]
-      })
-    ],
     output: {
       filename: '[name].js',
       chunkFilename: '[name].js',
