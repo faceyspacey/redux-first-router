@@ -71,8 +71,7 @@ const Sidebar = ({ path, dispatch }) => (
   </div>
 )
 
-const isActive = (actualPath, expectedPath) =>
-  actualPath === expectedPath ? styles.active : ''
+const isActive = (actualPath, expectedPath) => actualPath === expectedPath ? styles.active : ''
 
 const mapStateToProps = state => ({
   path: state.location.pathname

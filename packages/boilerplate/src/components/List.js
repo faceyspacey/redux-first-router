@@ -8,7 +8,10 @@ import styles from '../css/List'
 
 const List = ({ category, packages }) => (
   <div className={styles.list}>
-    <div className={styles.title}>Category: {category}</div>
+    <div className={styles.title}>
+      Category:
+      {category}
+    </div>
 
     <div className={styles.content}>
       <ul>
