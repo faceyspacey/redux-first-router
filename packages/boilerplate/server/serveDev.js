@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'source-map-support/register'
 import 'babel-polyfill'
 import path from 'path'

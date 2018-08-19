@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import { resolve } from 'path'
 import webpack from 'webpack'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
@@ -20,9 +22,9 @@ export default env => {
     entry: {
       [isServer ? 'h' : 'main']: [
         isServer && 'source-map-support/register',
-        isClient &&
-          isDev &&
-          'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
+        isClient
+          && isDev
+          && 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
         isClient && 'babel-polyfill',
         res(isServer ? '../src/render.server.js' : '../src/render.browser.js')
       ].filter(Boolean)
@@ -130,8 +132,8 @@ export default env => {
     },
     plugins: [
       isClient && new ExtractCssChunks(),
-      isServer &&
-        new webpack.optimize.LimitChunkCountPlugin({
+      isServer
+        && new webpack.optimize.LimitChunkCountPlugin({
           maxChunks: 1
         }),
       isClient && isDev && new webpack.HotModuleReplacementPlugin(),
