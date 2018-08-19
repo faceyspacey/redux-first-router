@@ -65,6 +65,7 @@
     "prettier": "^1.4.4",
     "react-hot-loader": "^4.3.4",
     "rimraf": "^2.6.1",
+    "source-map-loader": "^0.2.4",
     "stats-webpack-plugin": "^0.6.1",
     "terser": "^3.8.1",
     "travis-github-status": "^1.4.0",

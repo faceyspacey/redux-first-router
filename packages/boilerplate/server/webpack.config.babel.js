@@ -87,6 +87,11 @@ export default env => {
           }
         },
         {
+          test: /node_modules\/rudy/,
+          enforce: 'pre',
+          use: 'source-map-loader'
+        },
+        {
           test: /\.css$/,
           exclude: /node_modules/,
           use: [
