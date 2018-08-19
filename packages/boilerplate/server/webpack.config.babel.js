@@ -103,6 +103,7 @@ export default env => {
       ]
     },
     resolve: {
+      symlinks: false,
       extensions: isServer
         ? ['.server.js', '.js', '.css']
         : ['.browser.js', '.js', '.css']
