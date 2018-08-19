@@ -8,6 +8,12 @@
   "license": "MIT",
   "private": true,
   "workspaces": ["packages/*"],
+  "scripts": {
+    "clean": "lerna run clean",
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "lint": "lerna run lint"
+  },
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
