@@ -1,5 +1,5 @@
 {
-  "name": "original-demo",
+  "name": "@respond-framework/original-demo",
   "description": "Original Universal Redux-First Router Demo",
   "version": "1.0.0",
   "main": "server/index.js",

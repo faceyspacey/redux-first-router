@@ -71,7 +71,7 @@ export default env => {
           }
         },
         {
-          test: /node_modules\/rudy/,
+          test: /node_modules\/@respond-framework\//,
           enforce: 'pre',
           use: 'source-map-loader'
         },

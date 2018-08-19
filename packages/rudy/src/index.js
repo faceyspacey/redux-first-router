@@ -25,7 +25,7 @@ export * from './middleware'
 
 /** if you want to extend History, here is how you do it:
 
-import History from 'rudy'
+import History from '@respond-framework/rudy'
 
 class MyHistory extends History {
   push(path) {
@@ -36,8 +36,8 @@ class MyHistory extends History {
 
 // usage:
 
-import { createRouter } from 'rudy'
-import { createHistory as creatHist } from 'rudy'
+import { createRouter } from '@respond-framework/rudy'
+import { createHistory as creatHist } from '@respond-framework/rudy'
 
 const createHistory = (routes, opts) => {
   if (opts.someCondition) return new MyHistory(routes, opts)
