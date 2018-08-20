@@ -15,8 +15,11 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && rimraf es && rimraf coverage",
     "test": "jest",
-    "lint": "eslint ./src || true",
-    "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",
+    "prettier": "prettier",
+    "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
+    "eslint": "eslint",
+    "lint": "eslint .",
     "cm": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "prepublish": "npm run clean && npm run build && npm run build:es && npm run flow-copy && npm run build:umd && npm run build:umd:min"

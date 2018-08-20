@@ -1,9 +1,8 @@
-buildServer/
-buildClient/
 node_modules/
+packages/*/
 
+.editorconfig
 .eslintignore
 .gitignore
 LICENSE
-*.ico
-*.png
+yarn.lock

@@ -7,6 +7,10 @@ function res() {
 }
 
 module.exports = {
+  extends: [res('../../.eslintrc.js')],
+}
+
+const original = {
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {

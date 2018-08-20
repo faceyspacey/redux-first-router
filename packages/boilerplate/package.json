@@ -16,8 +16,11 @@
     "clean": "rimraf buildClient buildServer",
     "precommit": "lint-staged",
     "cm": "git-cz",
-    "lint": "eslint src server webpack",
-    "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
+    "prettier": "prettier",
+    "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
+    "eslint": "eslint",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@respond-framework/rudy": "^0.1.0",
