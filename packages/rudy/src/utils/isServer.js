@@ -1,4 +1,5 @@
 // @flow
+/* global window */
 
 export default (): boolean =>
   !(

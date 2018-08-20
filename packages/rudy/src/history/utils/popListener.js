@@ -1,4 +1,5 @@
 // @flow
+/* eslint-env browser */
 export const addPopListener = (onPop: Function, onHash: Function) => {
   const useHash = !supportsPopStateOnHashChange()
 

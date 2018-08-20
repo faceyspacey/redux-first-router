@@ -5,6 +5,8 @@
 // the user takes at lesat 65ms to pop again. In code, it's too fast at 0ms. So we
 // wait a few more ms for it to actually change and trigger our pop handling code.
 
+/* eslint-env browser */
+
 export default () => {
   const currentUrl = window.location.href
   return haschanged(currentUrl)

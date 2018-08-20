@@ -1,4 +1,5 @@
 // @flow
+/* eslint-env browser */
 import History from './History'
 import { locationToUrl } from '../utils'
 import {

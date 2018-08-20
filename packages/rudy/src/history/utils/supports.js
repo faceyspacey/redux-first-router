@@ -1,4 +1,5 @@
 // @flow
+/* global window */
 let _hasHistory
 
 export const supportsHistory = () => {

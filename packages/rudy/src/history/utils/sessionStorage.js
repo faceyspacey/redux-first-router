@@ -1,4 +1,5 @@
 // @flow
+/* eslint-env browser */
 import { supportsSession, supportsHistory } from './index'
 import { toEntries } from '../../utils'
 

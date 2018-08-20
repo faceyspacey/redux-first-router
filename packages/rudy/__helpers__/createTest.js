@@ -467,6 +467,7 @@ const awaitPop = async (history, tries = 1) => {
 // needed to put multiple browser tests in the same file
 
 export const resetBrowser = async () => {
+  /* eslint-env browser */
   const storage = get()
   const index = storage && storage.index
 
@@ -484,4 +485,5 @@ export const resetBrowser = async () => {
 
   window.history.replaceState({}, null, '/') // insure if the index was 0 but there was a replace on it, that we are back at '/'
   clear()
+  /* eslint-env */
 }
