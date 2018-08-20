@@ -7,7 +7,7 @@ export default (
   redirectFunc: Function | Object,
 ): boolean => {
   if (isRedirect(action)) {
-    const url = action.location.url
+    const { url } = action.location
     const status = action.location.status || 302
 
     if (typeof redirectFunc === 'function') {

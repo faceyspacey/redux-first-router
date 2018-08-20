@@ -94,12 +94,16 @@ const createAction = (
 const formatParams = (params: Object, route: Route, opts: Options) => {
   const from = route.fromPath || defaultFromPath
 
-  for (const key in params) {
+  Object.keys(params).forEach((key) => {
     const val = params[key]
-    const decodedVal = val && decodeURIComponent(val) // don't decode undefined values from optional params
+    // don't decode undefined values from optional params
+    const decodedVal = val && decodeURIComponent(val)
     params[key] = from(decodedVal, key, val, route, opts)
-    if (params[key] === undefined) delete params[key] === undefined // allow optional params to be overriden by defaultParams
-  }
+    if (params[key] === undefined) {
+      // allow optional params to be overriden by defaultParams
+      delete params[key]
+    }
+  })
 
   const def = route.defaultParams || opts.defaultParams
   return def
@@ -121,7 +125,7 @@ const defaultFromPath = (
     (opts.convertNumbers && route.convertNumbers !== false)
 
   if (convertNum && isNumber(decodedVal)) {
-    return parseFloat(decodedVal)
+    return Number.parseFloat(decodedVal)
   }
 
   const capitalize =
@@ -145,10 +149,13 @@ const formatQuery = (query: Object, route: Route, opts: Options) => {
   const from = route.fromSearch || opts.fromSearch
 
   if (from) {
-    for (const key in query) {
+    Object.keys(query).forEach((key) => {
       query[key] = from(query[key], key, route, opts)
-      if (query[key] === undefined) delete query[key] === undefined // allow undefined values to be overridden by defaultQuery
-    }
+      if (query[key] === undefined) {
+        // allow undefined values to be overridden by defaultQuery
+        delete query[key]
+      }
+    })
   }
 
   const def = route.defaultQuery || opts.defaultQuery
@@ -183,7 +190,7 @@ const formatState = (state: Object, route: Route, opts: Options) => {
     : state
 } // state has no string counter part in the address bar, so there is no `fromState`
 
-const isNumber = (str: string) => !isNaN(str) && !isNaN(parseFloat(str))
+const isNumber = (str: string) => !Number.isNaN(Number.parseFloat(str))
 
 const parseSearch = (search, routes, opts) =>
   (routes.NOT_FOUND.parseSearch || opts.parseSearch)(search)

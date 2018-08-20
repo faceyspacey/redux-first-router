@@ -22,9 +22,9 @@ export default (
   if (hash === null) return null
 
   const [path, ...values] = match
-  const params = keys.reduce((params, key, index) => {
-    params[key.name] = values[index]
-    return params
+  const params = keys.reduce((_params, key, index) => {
+    _params[key.name] = values[index]
+    return _params
   }, {})
 
   const { formatParams, formatQuery, formatHash } = options
@@ -69,11 +69,9 @@ export const matchQuery = (
 
   if (!matcher) return query
 
-  for (const key in matcher) {
-    const val = query[key]
-    const expected = matcher[key]
-    if (!matchVal(val, expected, key, route, opts)) return null
-  }
+  const matchFails = (key) =>
+    !matchVal(query[key], matcher[key], key, route, opts)
+  if (Object.keys(matcher).some(matchFails)) return null
 
   return query
 }
@@ -126,7 +124,8 @@ export const matchVal = (
 const parseSearch = (search: string, route: Route, opts: Options): Object => {
   if (queries[search]) return queries[search]
   const parse = route.parseSearch || opts.parseSearch
-  return (queries[search] = parse(search))
+  queries[search] = parse(search)
+  return queries[search]
 }
 
 const queries: {} = {}
@@ -138,6 +137,7 @@ let cacheCount = 0
 const compilePath = (
   pattern: string,
   options: CompileOptions = {},
+  // eslint-disable-next-line no-use-before-define
 ): Compiled => {
   const {
     partial = false,
@@ -158,7 +158,7 @@ const compilePath = (
 
   if (cacheCount < cacheLimit) {
     cache[pattern] = compiledPattern
-    cacheCount++
+    cacheCount += 1
   }
   // TODO: Not sure the best way to construct this one
   // $FlowFixMe
@@ -170,23 +170,23 @@ type CompileOptions = {
   strict?: boolean,
 }
 
-type MatchOptions = {
-  partial?: boolean,
-  strict?: boolean,
-  path?: string,
-}
+// type MatchOptions = {
+//   partial?: boolean,
+//   strict?: boolean,
+//   path?: string,
+// }
 
 type Compiled = {
   re: RegExp,
   keys: Array<{ name: string }>,
 }
 
-type Match = {
-  path: string,
-  url: string,
-  isExact: boolean,
-  params: Object,
-}
+// type Match = {
+//   path: string,
+//   url: string,
+//   isExact: boolean,
+//   params: Object,
+// }
 
 type Matchers = {
   path: string,

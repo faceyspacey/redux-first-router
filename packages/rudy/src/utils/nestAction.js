@@ -108,9 +108,10 @@ const createLocationRef = (loc) => {
   return loc
 }
 
-const resolveKind = (kind, isLoad, from) =>
-  isLoad
-    ? 'load' // insure redirects don't change kind on load
-    : !from
-      ? kind // PRIMARY USE CASE: preverse the standard kind
-      : kind.replace('push', 'replace') // pipeline redirects before enter are in fact pushes, but users shouldn't have to think about that -- using `kind.replace` preserves back/next kinds
+const resolveKind = (kind, isLoad, from) => {
+  if (isLoad) return 'load' // insure redirects don't change kind on load
+  if (!from) return kind // PRIMARY USE CASE: preverse the standard kind
+  // pipeline redirects before enter are in fact pushes, but users shouldn't
+  // have to think about that -- using `kind.replace` preserves back/next kinds
+  return kind.replace('push', 'replace')
+}

@@ -27,7 +27,8 @@ export default (
     throw new Error('[rudy] invalid hash value')
   }
 
-  const toPath = (toPathCache[path] = toPathCache[path] || compile(path))
+  toPathCache[path] = toPathCache[path] || compile(path)
+  const toPath = toPathCache[path]
 
   const p = toPath(params, { encode: (x) => x })
   const s = search ? `?${search}` : ''
@@ -41,6 +42,7 @@ const stringify = (query, route: Route, opts: Options) => {
 
   if (process.env.NODE_ENV === 'development' && search.length > 2000) {
     // https://stackoverflow.com/questions/812925/what-is-the-maximum-possible-length-of-a-query-string
+    // eslint-disable-next-line no-console
     console.error(
       `[rudy] query is too long: ${search.length} chars (max: 2000)`,
     )

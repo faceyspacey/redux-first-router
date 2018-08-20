@@ -37,12 +37,14 @@ export default (action: Action, api: Object, prevRoute?: string): Object => {
     return { url, state: s }
   } catch (e) {
     if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       console.error(
         `[rudy] unable to compile action "${type}" to URL`,
         action,
         e,
       )
     } else if (process.env.NODE_ENV === 'test') {
+      // eslint-disable-next-line no-console
       console.log(`[rudy] unable to compile action "${type}" to URL`, action, e)
     }
 
@@ -69,15 +71,16 @@ const formatParams = (
   if (params) {
     const newParams: {} = {}
     const to = route.toPath || defaultToPath
-    for (const key: string in params) {
+    Object.keys(params).forEach((key: string) => {
       const val = params[key]
       const encodedVal: string = encodeURIComponent(val)
 
       const res = to(val, key, encodedVal, route, opts)
       newParams[key] = res
-    }
+    })
     return newParams
   }
+  return undefined
 }
 
 const defaultToPath = (
@@ -124,9 +127,9 @@ const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {
   if (to && query) {
     const newQuery = {}
 
-    for (const key in query) {
+    Object.keys(query).forEach((key) => {
       newQuery[key] = to(query[key], key, route, opts)
-    }
+    })
 
     return newQuery
   }

@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable no-console */
 import type { Dispatch } from '../flow-types'
 
 const logError: (type: string, error: any) => void = (
