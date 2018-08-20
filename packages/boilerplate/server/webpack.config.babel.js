@@ -7,9 +7,9 @@ import ExtractCssChunks from 'extract-css-chunks-webpack-plugin'
 import WriteFilePlugin from 'write-file-webpack-plugin' // here so you can see what chunks are built
 import StatsPlugin from 'stats-webpack-plugin'
 
-const res = p => resolve(__dirname, p)
+const res = (p) => resolve(__dirname, p)
 
-export default env => {
+export default (env) => {
   const isServer = JSON.parse(env.server) || undefined
   const isClient = !isServer || undefined
   const isDev = process.env.NODE_ENV === 'development' || undefined
@@ -22,19 +22,19 @@ export default env => {
     entry: {
       [isServer ? 'h' : 'main']: [
         isServer && 'source-map-support/register',
-        isClient
-          && isDev
-          && 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
+        isClient &&
+          isDev &&
+          'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
         isClient && 'babel-polyfill',
-        res(isServer ? '../src/render.server.js' : '../src/render.browser.js')
-      ].filter(Boolean)
+        res(isServer ? '../src/render.server.js' : '../src/render.browser.js'),
+      ].filter(Boolean),
     },
     output: {
       filename: '[name].js',
       chunkFilename: '[name].js',
       path: res(isServer ? '../buildServer' : '../buildClient'),
       publicPath: '/static/',
-      libraryTarget: isServer && 'commonjs2'
+      libraryTarget: isServer && 'commonjs2',
     },
     module: {
       strictExportPresence: true, // If you import something that isn't exported
@@ -56,10 +56,10 @@ export default env => {
                 'universal-import',
                 'transform-flow-strip-types',
                 'syntax-object-rest-spread',
-                'transform-class-properties'
-              ]
-            }
-          }
+                'transform-class-properties',
+              ],
+            },
+          },
         },
         {
           test: /\.js$/,
@@ -68,14 +68,14 @@ export default env => {
           use: {
             loader: 'eslint-loader',
             options: {
-              emitError: isProd // Production builds must have no warnings
-            }
-          }
+              emitError: isProd, // Production builds must have no warnings
+            },
+          },
         },
         {
           test: /node_modules\/@respond-framework\//,
           enforce: 'pre',
-          use: 'source-map-loader'
+          use: 'source-map-loader',
         },
         {
           test: /\.css$/,
@@ -86,18 +86,18 @@ export default env => {
               loader: isServer ? 'css-loader/locals' : 'css-loader',
               options: {
                 modules: true,
-                localIdentName: '[name]__[local]--[hash:base64:5]'
-              }
-            }
-          ].filter(Boolean)
-        }
-      ]
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+              },
+            },
+          ].filter(Boolean),
+        },
+      ],
     },
     resolve: {
       symlinks: false,
       extensions: isServer
         ? ['.server.js', '.js', '.css']
-        : ['.browser.js', '.js', '.css']
+        : ['.browser.js', '.js', '.css'],
     },
     optimization: {
       minimizer: [
@@ -106,40 +106,40 @@ export default env => {
             const terserOptions = {
               compress: false,
               sourceMap: sourceMap && {
-                content: sourceMap
+                content: sourceMap,
               },
-              ie8: true
+              ie8: true,
             }
 
             // eslint-disable-next-line global-require
             return require('terser').minify(file, terserOptions)
           },
-          sourceMap: true
-        })
+          sourceMap: true,
+        }),
       ],
       runtimeChunk: isClient && {
-        name: 'bootstrap'
+        name: 'bootstrap',
       },
       splitChunks: isClient && {
         chunks: 'initial',
         cacheGroups: {
           vendors: {
             test: /[\\/]node_modules[\\/]/,
-            name: 'vendor'
-          }
-        }
-      }
+            name: 'vendor',
+          },
+        },
+      },
     },
     plugins: [
       isClient && new ExtractCssChunks(),
-      isServer
-        && new webpack.optimize.LimitChunkCountPlugin({
-          maxChunks: 1
+      isServer &&
+        new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1,
         }),
       isClient && isDev && new webpack.HotModuleReplacementPlugin(),
       isClient && isProd && new StatsPlugin('stats.json'),
       isClient && isProd && new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
-      new WriteFilePlugin()
-    ].filter(Boolean)
+      new WriteFilePlugin(),
+    ].filter(Boolean),
   }
 }

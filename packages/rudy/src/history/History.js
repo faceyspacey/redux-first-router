@@ -1,4 +1,10 @@
-import { toAction, toEntries, createActionRef, cleanBasename, isAction } from '../utils'
+import {
+  toAction,
+  toEntries,
+  createActionRef,
+  cleanBasename,
+  isAction,
+} from '../utils'
 import { createPrevEmpty } from '../core/createReducer'
 
 export default class History {
@@ -6,7 +12,7 @@ export default class History {
     this.routes = routes
     this.options = options
 
-    options.basenames = (options.basenames || []).map(bn => cleanBasename(bn))
+    options.basenames = (options.basenames || []).map((bn) => cleanBasename(bn))
 
     const kind = 'load'
     const { n, index, entries } = this._restore() // delegate to child classes to restore
@@ -31,14 +37,15 @@ export default class History {
 
   _notify(action, info, commit, notify = true, extras) {
     const { index, entries, n } = info
-    const n2 = n || (index > this.index ? 1 : (index === this.index ? this.n : -1))
+    const n2 =
+      n || (index > this.index ? 1 : index === this.index ? this.n : -1)
     const { length } = entries
 
     action = {
       ...action,
       ...extras,
       commit: this._once(commit),
-      location: { ...action.location, ...info, length, n: n2 }
+      location: { ...action.location, ...info, length, n: n2 },
     }
 
     if (notify && this.dispatch) return this.dispatch(action)
@@ -79,7 +86,7 @@ export default class History {
 
     if (n) return this.jump(n, false, undefined, { state }, notify)
 
-    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'push')
+    const kind = n === -1 ? 'back' : n === 1 ? 'next' : 'push'
     const index = n === -1 ? this.index - 1 : this.index + 1
     const entries = this._pushToFront(action, this.entries, index, kind)
     const info = { kind, index, entries }
@@ -95,7 +102,7 @@ export default class History {
 
     if (n) return this.jump(n, false, undefined, { state }, notify)
 
-    const kind = n === -1 ? 'back' : (n === 1 ? 'next' : 'replace')
+    const kind = n === -1 ? 'back' : n === 1 ? 'next' : 'replace'
     const { index } = this
     const entries = this.entries.slice(0)
     const info = { kind, entries, index }
@@ -111,7 +118,7 @@ export default class History {
     delta = this._resolveDelta(delta, byIndex)
     n = n || (delta < 0 ? -1 : 1) // users can choose what direction to make the `jump` look like it came from
 
-    const kind = delta === -1 ? 'back' : (delta === 1 ? 'next' : 'jump') // back/next kinds are just more specifically named jumps
+    const kind = delta === -1 ? 'back' : delta === 1 ? 'next' : 'jump' // back/next kinds are just more specifically named jumps
     const isMovingAdjacently = kind !== 'jump'
     const isPop = !!revertPop // passed by BrowserHistory's `handlePop`
     const index = this.index + delta
@@ -121,7 +128,10 @@ export default class History {
       throw new Error(`[rudy] jump() - no entry at index: ${index}.`)
     }
 
-    const action = entries[index] = this._transformEntry(this.entries[index], act)
+    const action = (entries[index] = this._transformEntry(
+      this.entries[index],
+      act,
+    ))
     const info = { kind, index, entries, n }
 
     const currentEntry = isMovingAdjacently && this.entries[this.index] // for `replace` to adjacent entries we need to override `prev` to be the current entry; `push` doesn't have this issue, but their `prev` value is the same
@@ -154,7 +164,7 @@ export default class History {
       throw new Error(`[rudy] set() - no entry at index: ${i}`)
     }
 
-    const entry = entries[i] = this._transformEntry(this.entries[i], act)
+    const entry = (entries[i] = this._transformEntry(this.entries[i], act))
     const action = delta === 0 ? entry : createActionRef(this.location) // action dispatched must ALWAYS be current one, but insure it receives changes if delta === 0, not just entry in entries
     const info = { kind, index, entries }
 
@@ -190,9 +200,15 @@ export default class History {
 
     i = i !== undefined ? i : ents.length - 1
 
-    n = n || (i !== ents.length - 1
-      ? i > this.index ? 1 : (i === this.index ? this.n : -1) // create direction relative to index of current entries
-      : 1) // at the front of the array, always use "forward" direction
+    n =
+      n ||
+      (i !== ents.length - 1
+        ? i > this.index
+          ? 1
+          : i === this.index
+            ? this.n
+            : -1 // create direction relative to index of current entries
+        : 1) // at the front of the array, always use "forward" direction
 
     const kind = 'reset'
     const { index, entries } = toEntries(this, ents, i, n)
@@ -201,7 +217,8 @@ export default class History {
     const oldUrl = this.url
     const oldFirstUrl = this.entries[0].location.url
     const reverseN = -this.index
-    const commit = (action) => this._reset(action, oldUrl, oldFirstUrl, reverseN)
+    const commit = (action) =>
+      this._reset(action, oldUrl, oldFirstUrl, reverseN)
 
     if (!entries[index]) throw new Error(`[rudy] no entry at index: ${index}.`)
 
@@ -284,7 +301,9 @@ export default class History {
       const action = entry
 
       if (routes[action.type].path !== '/') {
-        const homeType = Object.keys(routes).find(type => routes[type].path === '/')
+        const homeType = Object.keys(routes).find(
+          (type) => routes[type].path === '/',
+        )
         return homeType ? { type: homeType } : { type: 'NOT_FOUND' }
       }
 
@@ -296,7 +315,9 @@ export default class History {
     const notFoundPath = routes.NOT_FOUND.path
 
     if (path !== '/') {
-      const homeRoute = Object.keys(routes).find(type => routes[type].path === '/')
+      const homeRoute = Object.keys(routes).find(
+        (type) => routes[type].path === '/',
+      )
       return homeRoute ? '/' : notFoundPath
     }
 
@@ -310,11 +331,10 @@ export default class History {
       if (committed) return Promise.resolve()
       committed = true
 
-      return Promise.resolve(commit(action))
-        .then(() => {
-          if (!this.options.save) return
-          this.options.save(this.location) // will retreive these from redux state, which ALWAYS updates first
-        })
+      return Promise.resolve(commit(action)).then(() => {
+        if (!this.options.save) return
+        this.options.save(this.location) // will retreive these from redux state, which ALWAYS updates first
+      })
     }
   }
 
@@ -339,8 +359,7 @@ export default class History {
     if (isBehindHead) {
       const entriesToDelete = entries.length - index
       entries.splice(index, entriesToDelete, action)
-    }
-    else {
+    } else {
       entries.push(action)
     }
 
@@ -349,7 +368,7 @@ export default class History {
 
   _resolveDelta(delta, byIndex) {
     if (typeof delta === 'string') {
-      const index = this.entries.findIndex(e => e.location.key === delta)
+      const index = this.entries.findIndex((e) => e.location.key === delta)
       return index - this.index
     }
 

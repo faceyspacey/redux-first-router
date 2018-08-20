@@ -14,7 +14,7 @@ export default (
   isRedirect?: boolean,
   e: SyntheticEvent,
   fullUrl: string,
-  history: Object
+  history: Object,
 ) => {
   const prevented = e.defaultPrevented
   const notModified = !isModified(e)
@@ -27,7 +27,6 @@ export default (
   if (!target && e && e.preventDefault && notModified) {
     e.preventDefault()
   }
-
 
   if (
     action &&
@@ -50,7 +49,6 @@ export default (
     window.location.href = fullUrl
   }
 }
-
 
 const isModified = (e: Object) =>
   !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey)

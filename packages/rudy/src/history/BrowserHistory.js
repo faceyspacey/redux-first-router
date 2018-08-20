@@ -8,7 +8,7 @@ import {
   restoreHistory,
   saveHistory,
   pushState,
-  replaceState
+  replaceState,
 } from './utils'
 import type { Action, Dispatch } from '../flow-types'
 
@@ -61,7 +61,8 @@ export default class BrowserHistory extends History {
   }
 
   listen(dispatch: Dispatch, getLocation: Function) {
-    if (!this.dispatch) { // we don't allow/need multiple listeners currently
+    if (!this.dispatch) {
+      // we don't allow/need multiple listeners currently
       super.listen(dispatch, getLocation)
       this._addPopListener()
     }
@@ -91,12 +92,10 @@ export default class BrowserHistory extends History {
       if (!this.pendingPop) {
         n = this._didPopForward(url) ? 1 : -1
         this.pendingPop = n
-      }
-      else if (url === this.url) {
+      } else if (url === this.url) {
         n = this.pendingPop * -1 // switch directions
         return this._forceGo(n * -1)
-      }
-      else {
+      } else {
         n = this.pendingPop
         return this._forceGo(n * -1)
       }
@@ -114,7 +113,7 @@ export default class BrowserHistory extends History {
       this.currentPop = this.jump(n, false, n, null, true, revertPop) // `currentPop` used only by tests to await browser-initiated pops
     }
 
-    const onPopState = e => !isExtraneousPopEvent(e) && handlePop() // ignore extraneous popstate events in WebKit
+    const onPopState = (e) => !isExtraneousPopEvent(e) && handlePop() // ignore extraneous popstate events in WebKit
     const onHashChange = handlePop
 
     this._addPopListener = () => addPopListener(onPopState, onHashChange)
@@ -130,8 +129,7 @@ export default class BrowserHistory extends History {
   _push(action: Action, awaitUrl: string): Promise<any> {
     const { url } = action.location
 
-    return this._awaitUrl(awaitUrl, '_push')
-      .then(() => pushState(url))
+    return this._awaitUrl(awaitUrl, '_push').then(() => pushState(url))
   }
 
   _replace(action: Action, awaitUrl: string, n?: number): Promise<any> {
@@ -140,20 +138,27 @@ export default class BrowserHistory extends History {
     if (n) {
       this._forceGo(n)
 
-      return this._awaitUrl(awaitUrl, '_replaceBackNext')
-        .then(() => replaceState(url))
+      return this._awaitUrl(awaitUrl, '_replaceBackNext').then(() =>
+        replaceState(url),
+      )
     }
 
     if (this.location.kind === 'load') {
       awaitUrl = locationToUrl(window.location) // special case: redirects on load have no previous URL
     }
 
-    return this._awaitUrl(awaitUrl, '_replace')
-      .then(() => replaceState(url))
+    return this._awaitUrl(awaitUrl, '_replace').then(() => replaceState(url))
   }
 
-  _jump(action: Action, currUrl: string, oldUrl: string, n: number, isPop: boolean): void | Promise<any> {
-    if (!n) { // possibly the user mathematically calculated a jump of `0`
+  _jump(
+    action: Action,
+    currUrl: string,
+    oldUrl: string,
+    n: number,
+    isPop: boolean,
+  ): void | Promise<any> {
+    if (!n) {
+      // possibly the user mathematically calculated a jump of `0`
       return this._replace(action, currUrl)
     }
 
@@ -181,7 +186,12 @@ export default class BrowserHistory extends History {
       .then(() => this._awaitUrl(action, 'setN return'))
   }
 
-  _reset(action: Action, oldUrl: string, oldFirstUrl: string, reverseN: number): Promise<any> {
+  _reset(
+    action: Action,
+    oldUrl: string,
+    oldFirstUrl: string,
+    reverseN: number,
+  ): Promise<any> {
     const { index, entries } = action.location
     const lastIndex = entries.length - 1
     const reverseDeltaToIndex = index - lastIndex
@@ -192,18 +202,20 @@ export default class BrowserHistory extends History {
       .then(() => this._awaitUrl(oldFirstUrl, 'reset oldFirstUrl'))
       .then(() => {
         replaceState(entries[0].location.url) // we always insure resets have at least 2 entries, and the first can only operate via `replaceState`
-        entries.slice(1).forEach(e => pushState(e.location.url)) // we have to push at least one entry to erase the old entries in the real browser history
+        entries.slice(1).forEach((e) => pushState(e.location.url)) // we have to push at least one entry to erase the old entries in the real browser history
 
         if (reverseDeltaToIndex) {
-          return this._forceGo(reverseDeltaToIndex)
-            .then(() => this._awaitUrl(indexUrl, 'resetIndex _forceGo'))
+          return this._forceGo(reverseDeltaToIndex).then(() =>
+            this._awaitUrl(indexUrl, 'resetIndex _forceGo'),
+          )
         }
       })
   }
 
   _awaitUrl(actOrUrl: string | Object, name: string): Promise<any> {
-    return new Promise(resolve => {
-      const url = typeof actOrUrl === 'string' ? actOrUrl : actOrUrl.location.url
+    return new Promise((resolve) => {
+      const url =
+        typeof actOrUrl === 'string' ? actOrUrl : actOrUrl.location.url
       const ready = () => {
         console.log('ready', url, locationToUrl(window.location))
         return url === locationToUrl(window.location)
@@ -232,10 +244,11 @@ const rapidChangeWorkaround = (ready, complete, name) => {
   if (!ready() && tries < maxTries) {
     console.log('tries', tries + 1, name)
     setTimeout(() => rapidChangeWorkaround(ready, complete, name), 9)
-  }
-  else {
+  } else {
     if (process.env.NODE_ENV === 'test' && !ready()) {
-      throw new Error('BrowserHistory.rapidChangeWorkAround failed to be "ready"')
+      throw new Error(
+        'BrowserHistory.rapidChangeWorkAround failed to be "ready"',
+      )
     }
 
     complete()
@@ -248,4 +261,3 @@ const rapidChangeWorkaround = (ready, complete, name) => {
     }
   }
 }
-

@@ -5,4 +5,3 @@ export { default as preventDefault } from './preventDefault'
 
 export type { To } from './toUrlAndAction'
 export type { OnClick } from './handlePress'
-

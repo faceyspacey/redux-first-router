@@ -6,7 +6,7 @@ export default (basename: string, action: ?Action): Object => {
   if (!action) {
     return {
       type: CHANGE_BASENAME,
-      payload: { basename }
+      payload: { basename },
     }
   }
 

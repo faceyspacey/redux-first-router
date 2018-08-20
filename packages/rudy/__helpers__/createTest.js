@@ -5,36 +5,39 @@ import { locationToUrl } from '../src/utils'
 import { createRouter } from '../src'
 
 export default async (...allArgs) => {
-  const args = allArgs.filter(arg => typeof arg !== 'function')
-  const callbacks = allArgs.filter(arg => typeof arg === 'function')
+  const args = allArgs.filter((arg) => typeof arg !== 'function')
+  const callbacks = allArgs.filter((arg) => typeof arg === 'function')
   const hasCallbacks = callbacks.length > 0
 
   const [testName, routesMap] = args
-  let [,, options = {}, actions] = args
+  let [, , options = {}, actions] = args
 
   if (Array.isArray(options)) {
     actions = options
     options = {}
   }
 
-
   options = Object.assign({}, JSON.parse(process.env.RUDY_OPTIONS), options) // do things like force all tests to log -- see ../.testsConfig.json
 
-  options.wallabyErrors = options.wallabyErrors !== undefined
-    ? options.wallabyErrors
-    : process.env.WALLABY === 'true'
+  options.wallabyErrors =
+    options.wallabyErrors !== undefined
+      ? options.wallabyErrors
+      : process.env.WALLABY === 'true'
 
   if (options.skip) return
 
   options.testBrowser = options.testBrowser || false
 
   if (!actions) {
-    actions = Object.keys(routesMap).filter(type => !/FIRST|REDIRECTED/.test(type))
+    actions = Object.keys(routesMap).filter(
+      (type) => !/FIRST|REDIRECTED/.test(type),
+    )
   }
 
-  const initialPath = typeof actions[0] === 'string' && actions[0].charAt(0) === '/'
-    ? actions.shift()
-    : '/first'
+  const initialPath =
+    typeof actions[0] === 'string' && actions[0].charAt(0) === '/'
+      ? actions.shift()
+      : '/first'
 
   const hasMultipleTests = actions.length > 1
   let num = 1
@@ -46,8 +49,7 @@ export default async (...allArgs) => {
           const name = action[0]
           const act = action[1]
           createTest(name, routesMap, initialPath, act, options, num++)
-        }
-        else {
+        } else {
           const name = JSON.stringify(action)
           createTest(name, routesMap, initialPath, action, options, num++)
         }
@@ -55,40 +57,38 @@ export default async (...allArgs) => {
 
       if (hasCallbacks) {
         callbacks.forEach((cb, index) => {
-          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + (++index)
+          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + ++index
           createSnipes(name, routesMap, initialPath, options, cb)
         })
       }
     })
-  }
-  else {
+  } else {
     const isSnipesOnly = initialPath === '/first' && actions.length === 0
 
     if (hasCallbacks && isSnipesOnly) {
       callbacks.forEach((cb, index) => {
-        const name = callbacks.length === 1 ? testName : 'snipes ' + (++index)
+        const name = callbacks.length === 1 ? testName : 'snipes ' + ++index
         createSnipes(name, routesMap, initialPath, options, cb)
       })
-    }
-    else if (hasCallbacks) {
+    } else if (hasCallbacks) {
       describe(testName, () => {
-        const name = actions[0] ? JSON.stringify(actions[0]) : 'firstRoute - ' + initialPath
+        const name = actions[0]
+          ? JSON.stringify(actions[0])
+          : 'firstRoute - ' + initialPath
 
         createTest(name, routesMap, initialPath, actions[0], options, num)
 
         callbacks.forEach((cb, index) => {
-          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + (++index)
+          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + ++index
           createSnipes(name, routesMap, initialPath, options, cb)
         })
       })
-    }
-    else if (Array.isArray(actions[0])) {
+    } else if (Array.isArray(actions[0])) {
       const name = actions[0][0]
       const act = actions[0][1]
 
       createTest(name, routesMap, initialPath, act, options, num)
-    }
-    else {
+    } else {
       createTest(testName, routesMap, initialPath, actions[0], options, num)
     }
   }
@@ -102,7 +102,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
       routes,
       options,
       firstRoute,
-      initialState
+      initialState,
     } = setupStore(routesMap, initialPath, opts)
 
     const firstAction = firstRoute(false)
@@ -118,8 +118,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
       const res = await history.push(url)
 
       snapChange(num, res, store, history, opts)
-    }
-    else if (item) {
+    } else if (item) {
       const action = typeof item === 'string' ? { type: item } : item
       const res = await store.dispatch(action)
 
@@ -132,8 +131,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
     if (opts.log) {
       if (typeof opts.log !== 'function') {
         console.log(store.getState().location)
-      }
-      else {
+      } else {
         opts.log(store.getState().location)
       }
     }
@@ -144,17 +142,16 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
 
 const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
   test(testName, async () => {
-    const {
-      store,
-      history,
-      routes,
-      options,
-      firstRoute
-    } = setupStore(routesMap, initialPath, opts)
+    const { store, history, routes, options, firstRoute } = setupStore(
+      routesMap,
+      initialPath,
+      opts,
+    )
 
-    const firstResponse = opts.dispatchFirstRoute === false
-      ? null
-      : await store.dispatch(firstRoute(false))
+    const firstResponse =
+      opts.dispatchFirstRoute === false
+        ? null
+        : await store.dispatch(firstRoute(false))
 
     const pop = opts.testBrowser && createPop(history)
     let defaultPrefix = 0
@@ -203,14 +200,13 @@ const createSnipes = (testName, routesMap, initialPath, opts, callback) => {
         snapOptions(prefix, options)
 
         return res
-      }
+      },
     })
 
     if (opts.log) {
       if (typeof opts.log !== 'function') {
         console.log(store.getState().location)
-      }
-      else {
+      } else {
         opts.log(store.getState().location)
       }
     }
@@ -238,7 +234,7 @@ export const setupStore = (routesMap, initialPath, opts) => {
   const { middleware, reducer, firstRoute, history } = createRouter(
     routes,
     options,
-    middlewareFunc
+    middlewareFunc,
   )
 
   const rootReducer = combineReducers({ title, location: reducer })
@@ -253,7 +249,7 @@ export const setupStore = (routesMap, initialPath, opts) => {
     initialState,
     routes,
     options,
-    history
+    history,
   }
 }
 
@@ -265,16 +261,17 @@ const callbacks = [
   'onEnter',
   'thunk',
   'onComplete',
-  'onError'
+  'onError',
 ]
 
 const createRoutes = (routesMap) => {
   const routes = {}
 
   for (const type in routesMap) {
-    routes[type] = typeof routesMap[type] === 'object'
-      ? { ...routesMap[type] }
-      : routesMap[type]
+    routes[type] =
+      typeof routesMap[type] === 'object'
+        ? { ...routesMap[type] }
+        : routesMap[type]
 
     const route = routes[type]
 
@@ -291,13 +288,13 @@ const createRoutes = (routesMap) => {
   // override routes for the convenience of tests.
   if (!routes.FIRST) {
     routes.FIRST = {
-      path: '/first'
+      path: '/first',
     }
   }
 
   if (!routes.NEVER_USED_PATHLESS) {
     routes.NEVER_USED_PATHLESS = {
-      thunk: jest.fn()
+      thunk: jest.fn(),
     }
   }
 
@@ -305,9 +302,9 @@ const createRoutes = (routesMap) => {
     routes.REDIRECTED = {
       path: '/redirected',
       beforeEnter: () => {
-        return new Promise(res => setTimeout(res, 1))
+        return new Promise((res) => setTimeout(res, 1))
       },
-      onComplete: jest.fn(() => 'redirect_complete')
+      onComplete: jest.fn(() => 'redirect_complete'),
     }
   }
 
@@ -395,19 +392,24 @@ const expectSessionStorage = (prefix) => {
 }
 
 const expectWindowLocation = (prefix) => {
-  expect(locationToUrl(window.location)).toMatchSnapshot(prefix + ' - windowLocation')
+  expect(locationToUrl(window.location)).toMatchSnapshot(
+    prefix + ' - windowLocation',
+  )
 }
-
 
 const expectBeforeLeave = (prefix, obj) => {
   if (typeof obj.beforeLeave === 'function' && obj.beforeLeave.mock) {
-    expect(obj.beforeLeave.mock.calls.length).toMatchSnapshot(prefix + ' - beforeLeave')
+    expect(obj.beforeLeave.mock.calls.length).toMatchSnapshot(
+      prefix + ' - beforeLeave',
+    )
   }
 }
 
 const expectBeforeEnter = (prefix, obj) => {
   if (typeof obj.beforeEnter === 'function' && obj.beforeEnter.mock) {
-    expect(obj.beforeEnter.mock.calls.length).toMatchSnapshot(prefix + ' - beforeEnter')
+    expect(obj.beforeEnter.mock.calls.length).toMatchSnapshot(
+      prefix + ' - beforeEnter',
+    )
   }
 }
 
@@ -431,7 +433,9 @@ const expectThunk = (prefix, obj) => {
 
 const expectOnComplete = (prefix, obj) => {
   if (typeof obj.onComplete === 'function' && obj.onComplete.mock) {
-    expect(obj.onComplete.mock.calls.length).toMatchSnapshot(prefix + ' - onComplete')
+    expect(obj.onComplete.mock.calls.length).toMatchSnapshot(
+      prefix + ' - onComplete',
+    )
   }
 }
 
@@ -440,7 +444,6 @@ const expectOnError = (prefix, obj) => {
     expect(obj.onError.mock.calls.length).toMatchSnapshot(prefix + ' - onError')
   }
 }
-
 
 // for testing pops in a "real" browser (as simulated by Jest)
 
@@ -457,10 +460,9 @@ const awaitPop = async (history, tries = 1) => {
     throw new Error(`awaitPop reached the maximum amount of tries (${tries})`)
   }
 
-  await new Promise(res => setTimeout(res, 3))
+  await new Promise((res) => setTimeout(res, 3))
   return history.currentPop || awaitPop(history, ++tries)
 }
-
 
 // needed to put multiple browser tests in the same file
 
@@ -474,7 +476,8 @@ export const resetBrowser = async () => {
 
     window.history.go(delta)
 
-    if (oldUrl !== '/') { // will otherwise fail because the last route was also `/` (all browser tests start on `/`)
+    if (oldUrl !== '/') {
+      // will otherwise fail because the last route was also `/` (all browser tests start on `/`)
       await awaitUrlChange() // we need for `go` to complete
     }
   }

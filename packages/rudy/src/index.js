@@ -15,7 +15,7 @@ export { default as BrowserHistory } from './history/BrowserHistory'
 export const utils = {
   supports,
   popListener,
-  sessionStorage
+  sessionStorage,
 }
 
 export * from './types'
@@ -48,7 +48,6 @@ const { middleware, reducer, firstRoute } = createRouter(routes, { createHistory
 
 */
 
-
 export type {
   RouteInput,
   Route,
@@ -73,5 +72,5 @@ export type {
   Navigator,
   Store,
   NavigationAction,
-  Router
+  Router,
 } from './flow-types'

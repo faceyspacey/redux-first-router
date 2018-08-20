@@ -15,25 +15,25 @@ const original = {
   parserOptions: {
     ecmaFeatures: {
       generators: true,
-      experimentalObjectRestSpread: true
+      experimentalObjectRestSpread: true,
     },
     sourceType: 'module',
-    allowImportExportEverywhere: false
+    allowImportExportEverywhere: false,
   },
   plugins: ['flowtype'],
   extends: ['airbnb', 'plugin:flowtype/recommended'],
   settings: {
     flowtype: {
-      onlyFilesWithFlowAnnotation: true
+      onlyFilesWithFlowAnnotation: true,
     },
     'import/resolver': {
       node: {
-        extensions: ['.browser.js', '.server.js', '.js', '.css']
+        extensions: ['.browser.js', '.server.js', '.js', '.css'],
       },
       lerna: {
-        packages: res('..')
-      }
-    }
+        packages: res('..'),
+      },
+    },
   },
   globals: {
     window: true,
@@ -49,7 +49,7 @@ const original = {
     expect: true,
     beforeEach: true,
     fetch: true,
-    alert: true
+    alert: true,
   },
   rules: {
     'import/extensions': ['error', 'never'],
@@ -91,16 +91,16 @@ const original = {
       {
         allowShortCircuit: true,
         allowTernary: true,
-        allowTaggedTemplates: true
-      }
+        allowTaggedTemplates: true,
+      },
     ],
     'import/no-extraneous-dependencies': [
       'error',
       {
         devDependencies: true,
         optionalDependencies: true,
-        peerDependencies: true
-      }
+        peerDependencies: true,
+      },
     ],
     'comma-dangle': [
       2,
@@ -109,8 +109,8 @@ const original = {
         objects: 'never',
         imports: 'never',
         exports: 'never',
-        functions: 'never'
-      }
+        functions: 'never',
+      },
     ],
     'max-len': [
       'error',
@@ -121,8 +121,8 @@ const original = {
         ignoreComments: true,
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
-        ignoreTemplateLiterals: true
-      }
+        ignoreTemplateLiterals: true,
+      },
     ],
     'react/sort-comp': [
       2,
@@ -138,10 +138,10 @@ const original = {
           'static-methods',
           'lifecycle',
           'everything-else',
-          'render'
-        ]
-      }
+          'render',
+        ],
+      },
     ],
-    'linebreak-style': 0
-  }
+    'linebreak-style': 0,
+  },
 }

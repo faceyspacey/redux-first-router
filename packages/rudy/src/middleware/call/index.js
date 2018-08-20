@@ -2,7 +2,12 @@ import { enhanceRoutes, shouldCall, createCache, autoDispatch } from './utils'
 import { noOp } from '../../utils'
 
 export default (name, config = {}) => (api) => {
-  const { cache = false, prev = false, skipOpts = false, start = false } = config
+  const {
+    cache = false,
+    prev = false,
+    skipOpts = false,
+    start = false,
+  } = config
 
   enhanceRoutes(name, api.routes, api.options)
 
@@ -34,7 +39,7 @@ export default (name, config = {}) => (api) => {
 
     return Promise.all([
       autoDispatch(req, r, route, name),
-      autoDispatch(req, o, route, name, true)
+      autoDispatch(req, o, route, name, true),
     ]).then(([r, o]) => {
       req._start = false
 
@@ -51,7 +56,8 @@ export default (name, config = {}) => (api) => {
         return false
       }
 
-      if (req.ctx.doubleDispatchRedirect) { // dispatches to current location during redirects blocked, see `transformAction/index.js`
+      if (req.ctx.doubleDispatchRedirect) {
+        // dispatches to current location during redirects blocked, see `transformAction/index.js`
         const res = r !== undefined ? r : o
         return req.handleDoubleDispatchRedirect(res)
       }
@@ -74,4 +80,3 @@ export default (name, config = {}) => (api) => {
 }
 
 const isFalse = (r, o) => r === false || o === false
-

@@ -9,9 +9,7 @@ import { matchUrl, urlToLocation } from '../utils'
 
 import { toUrlAndAction, handlePress, preventDefault } from './utils'
 import type { To, OnClick } from './utils'
-import type {
-  ReceivedAction
-} from '../flow-types'
+import type { ReceivedAction } from '../flow-types'
 
 type OwnProps = {
   to: To,
@@ -33,7 +31,7 @@ type OwnProps = {
   hash?: boolean,
   isActive?: (?Object, Object) => boolean,
   component?: string | React.ComponentType<any>,
-  rudy: Object
+  rudy: Object,
 }
 
 type Props = {
@@ -41,11 +39,11 @@ type Props = {
   basename: string,
   routesAdded?: number,
   url?: string,
-  currentPathname?: string
+  currentPathname?: string,
 } & OwnProps
 
 type Context = {
-  store: Store<*, *>
+  store: Store<*, *>,
 }
 
 const LinkInner = (props) => {
@@ -93,7 +91,7 @@ const LinkInner = (props) => {
     target,
     redirect,
     fullUrl,
-    history
+    history,
   )
 
   return (
@@ -111,7 +109,11 @@ const LinkInner = (props) => {
   )
 }
 
-const navLinkProps = (props: Props, toFullUrl: string, action: ?ReceivedAction) => {
+const navLinkProps = (
+  props: Props,
+  toFullUrl: string,
+  action: ?ReceivedAction,
+) => {
   if (!props.url) return
 
   const {
@@ -129,7 +131,7 @@ const navLinkProps = (props: Props, toFullUrl: string, action: ?ReceivedAction) 
     activeClassName = '',
     ariaCurrent = 'true',
 
-    rudy
+    rudy,
   } = props
 
   const { getLocation, options, routes } = rudy
@@ -148,7 +150,7 @@ const navLinkProps = (props: Props, toFullUrl: string, action: ?ReceivedAction) 
   return {
     style: active ? { ...style, ...activeStyle } : style,
     className: `${className || ''} ${active ? activeClassName : ''}`.trim(),
-    'aria-current': active && ariaCurrent
+    'aria-current': active && ariaCurrent,
   }
 }
 
@@ -167,15 +169,22 @@ const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
 
   const basename = bn ? `/${bn}` : ''
 
-  return { rudy, basename, routesAdded, url: isNav && url, currentPathname: pathname }
+  return {
+    rudy,
+    basename,
+    routesAdded,
+    url: isNav && url,
+    currentPathname: pathname,
+  }
 }
 
 const connector: Connector<OwnProps, Props> = connect(mapState)
 
 const LinkConnected = connector(LinkInner)
 
-const Link = (props: OwnProps, context: Context) =>
+const Link = (props: OwnProps, context: Context) => (
   <LinkConnected rudy={context.store.getState.rudy} {...props} />
+)
 
 Link.contextTypes = { store: PropTypes.object.isRequired }
 
@@ -183,5 +192,6 @@ export default Link
 
 export { Link }
 
-export const NavLink = ({ activeClassName = 'active', ...props }: Object) =>
+export const NavLink = ({ activeClassName = 'active', ...props }: Object) => (
   <Link activeClassName={activeClassName} {...props} />
+)

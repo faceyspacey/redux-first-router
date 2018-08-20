@@ -5,15 +5,15 @@ export default {
       // eslint-disable-next-line no-console
       console.log(document.querySelector('.Home__content--319uD'))
     },
-    beforeEnter: async req => {
+    beforeEnter: async (req) => {
       if (typeof window !== 'undefined' && window.foo) {
-        await new Promise(res => setTimeout(res, 3000))
+        await new Promise((res) => setTimeout(res, 3000))
       }
 
       if (typeof window !== 'undefined' && window.foo) {
         await req.dispatch({ type: 'LIST', params: { category: 'react' } })
       }
-    }
+    },
     // beforeLeave: async ({ type }) => {
     //   return false
     //   await new Promise(res => setTimeout(res, 10000))
@@ -31,20 +31,20 @@ export default {
       if (packages.length === 0) {
         return {
           type: 'LIST',
-          params: { category: 'redux' }
+          params: { category: 'redux' },
         }
       }
 
       return { category, packages }
-    }
-  }
+    },
+  },
 }
 
 // this is essentially faking/mocking the fetch api
 // pretend this actually requested data over the network
 
-const fetch = async path => {
-  await new Promise(res => setTimeout(res, 500))
+const fetch = async (path) => {
+  await new Promise((res) => setTimeout(res, 500))
   const category = path.replace('/api/category/', '')
 
   switch (category) {
@@ -54,7 +54,7 @@ const fetch = async path => {
       return [
         'react-router',
         'react-transition-group',
-        'react-universal-component'
+        'react-universal-component',
       ]
     default:
       return []

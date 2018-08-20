@@ -9,7 +9,9 @@ export default (req: AddRoutes): void => {
   const env = process.env.NODE_ENV
 
   if (env === 'development' && !has('pathlessRoute')) {
-    throw new Error('[rudy] "pathlessRoute" middleware is required to use "addRoutes" action creator.')
+    throw new Error(
+      '[rudy] "pathlessRoute" middleware is required to use "addRoutes" action creator.',
+    )
   }
 
   const { routes, formatRoute } = action.payload
@@ -17,7 +19,7 @@ export default (req: AddRoutes): void => {
   const newRoutes = formatRoutes(routes, formatter, true)
   const callbacks = options.callbacks || []
 
-  callbacks.forEach(name => enhanceRoutes(name, newRoutes, options))
+  callbacks.forEach((name) => enhanceRoutes(name, newRoutes, options))
 
   Object.assign(allRoutes, newRoutes)
 

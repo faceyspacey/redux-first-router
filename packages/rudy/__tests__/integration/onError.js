@@ -6,8 +6,8 @@ createTest('route onError called if other callbacks throw', {
     thunk: () => {
       throw new Error('thunk-failed')
     },
-    onError: function() {}
-  }
+    onError: function() {},
+  },
 })
 
 createTest('route onError dispatches redirect', {
@@ -16,8 +16,8 @@ createTest('route onError dispatches redirect', {
     thunk: () => {
       throw new Error('thunk-failed')
     },
-    onError: () => ({ type: 'REDIRECTED' })
-  }
+    onError: () => ({ type: 'REDIRECTED' }),
+  },
 })
 
 createTest('currentType_ERROR dispatched if no onError callback provided', {
@@ -25,16 +25,20 @@ createTest('currentType_ERROR dispatched if no onError callback provided', {
     path: '/second',
     thunk: () => {
       throw new Error('thunk-failed')
-    }
-  }
+    },
+  },
 })
 
-createTest('default options.onError skipped if options.onError === null', {
-  SECOND: {
-    path: '/second',
-    thunk: () => {
-      throw new Error('thunk-failed')
+createTest(
+  'default options.onError skipped if options.onError === null',
+  {
+    SECOND: {
+      path: '/second',
+      thunk: () => {
+        throw new Error('thunk-failed')
+      },
+      onError: function() {},
     },
-    onError: function() {}
-  }
-}, { onError: null })
+  },
+  { onError: null },
+)

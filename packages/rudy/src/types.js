@@ -14,4 +14,3 @@ export const BLOCK = prefixType('BLOCK', '@@skiprudy') // these skip middleware 
 export const UNBLOCK = prefixType('UNBLOCK', '@@skiprudy')
 
 export const SET_FROM = prefixType('SET_FROM', '@@skiprudy')
-

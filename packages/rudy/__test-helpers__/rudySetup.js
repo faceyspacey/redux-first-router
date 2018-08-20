@@ -8,19 +8,20 @@ import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
 export default (path = '/first', options = {}, custom = {}) => {
   const routesMap = {
     ...defaultRoutes,
-    ...custom.routesMap
+    ...custom.routesMap,
   }
 
   options.initialEntries = [path]
   options.extra = { arg: 'extra-arg' }
 
-  const { types, actions, routes, exportString } = custom.createScene !== false
-    ? createScene(routesMap, custom)
-    : { routes: custom.routesMap }
+  const { types, actions, routes, exportString } =
+    custom.createScene !== false
+      ? createScene(routesMap, custom)
+      : { routes: custom.routesMap }
 
   const { middleware, reducer, firstRoute, rudy } = createRouter(
     routes,
-    options
+    options,
   )
 
   const title = (state = {}, action = {}) => action.type
@@ -36,7 +37,7 @@ export default (path = '/first', options = {}, custom = {}) => {
     actions,
     exportString,
     routes,
-    location: () => store.getState().location
+    location: () => store.getState().location,
   }
 }
 
@@ -44,7 +45,7 @@ export const defaultRoutes = {
   FIRST: '/first',
   SECOND: {
     path: '/second',
-    error: (error) => ({ ...error, bla: 'boo' })
+    error: (error) => ({ ...error, bla: 'boo' }),
   },
   THIRD: {
     path: '/third',
@@ -55,7 +56,7 @@ export const defaultRoutes = {
     action: ['', 'customCreator'],
     customCreator: (arg) => (req, type) => {
       return { params: { foo: arg }, type }
-    }
+    },
   },
   FOURTH: {
     path: '/fourth',
@@ -68,17 +69,17 @@ export const defaultRoutes = {
     },
     action: (arg) => (req, type) => {
       return { params: { foo: arg }, type }
-    }
+    },
   },
   PLAIN: {
     action: (arg) => {
       return { foo: arg }
-    }
+    },
   },
-  [NOT_FOUND]: '/not-found-foo'
+  [NOT_FOUND]: '/not-found-foo',
 }
 
-export const log = store => {
+export const log = (store) => {
   const state = store.getState().location
   delete state.routesMap
   delete state.hasSSR
@@ -86,6 +87,4 @@ export const log = store => {
 }
 
 const merkaba = 1
-export {
-  merkaba
-}
+export { merkaba }

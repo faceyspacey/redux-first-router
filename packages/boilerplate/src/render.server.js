@@ -11,8 +11,7 @@ export default ({ clientStats }) => async (req, res, next) => {
   try {
     const html = await renderToString(clientStats, req, res)
     return res.send(html)
-  }
-  catch (error) {
+  } catch (error) {
     return next(error)
   }
 }

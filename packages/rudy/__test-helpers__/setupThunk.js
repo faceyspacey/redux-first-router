@@ -1,22 +1,27 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import createRouter from '../src/core/createRouter'
 
-export default async (path = '/', thunkArg, opts, dispatchFirstRoute = true) => {
+export default async (
+  path = '/',
+  thunkArg,
+  opts,
+  dispatchFirstRoute = true,
+) => {
   const routesMap = {
     FIRST: '/first',
     SECOND: { path: '/second/:param', thunk: thunkArg },
-    THIRD: { path: '/third/:param' }
+    THIRD: { path: '/third/:param' },
   }
 
   const options = { extra: { arg: 'extra-arg' }, initialEntries: path, ...opts }
 
   const { middleware, reducer, rudy, firstRoute } = createRouter(
     routesMap,
-    options
+    options,
   )
 
   const rootReducer = combineReducers({
-    location: reducer
+    location: reducer,
   })
 
   const enhancer = applyMiddleware(middleware)

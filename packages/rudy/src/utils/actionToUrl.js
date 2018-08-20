@@ -5,19 +5,16 @@ import type {
   Route,
   Routes,
   ReceivedAction as Action,
-  Options
+  Options,
 } from '../flow-types'
 
-export default (
-  action: Action,
-  api: Object,
-  prevRoute?: string
-): Object => {
+export default (action: Action, api: Object, prevRoute?: string): Object => {
   const { routes, options: opts }: Object = api
   const { type, params, query, state, hash, basename }: Action = action
 
   const route = routes[type] || {}
-  const path: string | void | string | void = typeof route === 'object' ? route.path : route
+  const path: string | void | string | void =
+    typeof route === 'object' ? route.path : route
 
   const p: void | {} = formatParams(params, route, opts)
   const q: mixed = formatQuery(query, route, opts)
@@ -38,26 +35,35 @@ export default (
     const url: string = bn + pathname
 
     return { url, state: s }
-  }
-  catch (e) {
+  } catch (e) {
     if (process.env.NODE_ENV === 'development') {
-      console.error(`[rudy] unable to compile action "${type}" to URL`, action, e)
-    }
-    else if (process.env.NODE_ENV === 'test') {
+      console.error(
+        `[rudy] unable to compile action "${type}" to URL`,
+        action,
+        e,
+      )
+    } else if (process.env.NODE_ENV === 'test') {
       console.log(`[rudy] unable to compile action "${type}" to URL`, action, e)
     }
 
     const base: string = isWrongBasename ? '' : bn
-    const url: string = base + notFoundUrl(action, routes, opts, q, h, prevRoute)
+    const url: string =
+      base + notFoundUrl(action, routes, opts, q, h, prevRoute)
     return { url, state: s }
   }
 }
 
-const formatParams = (params: ?Object, route: Route, opts: Options): void | {} => {
+const formatParams = (
+  params: ?Object,
+  route: Route,
+  opts: Options,
+): void | {} => {
   const def: mixed = route.defaultParams || opts.defaultParams
 
   params = def
-    ? typeof def === 'function' ? def(params, route, opts) : { ...def, ...params }
+    ? typeof def === 'function'
+      ? def(params, route, opts)
+      : { ...def, ...params }
     : params
 
   if (params) {
@@ -75,21 +81,24 @@ const formatParams = (params: ?Object, route: Route, opts: Options): void | {} =
 }
 
 const defaultToPath = (
-  val: string => Array<Array<any>>,
+  val: (string) => Array<Array<any>>,
   key: string,
   encodedVal: string,
   route: Route,
-  opts: Options
+  opts: Options,
 ): string | void => {
-  if (typeof val === 'string' && val.indexOf('/') > -1) { // support a parameter that for example is a file path with slashes (like on github)
+  if (typeof val === 'string' && val.indexOf('/') > -1) {
+    // support a parameter that for example is a file path with slashes (like on github)
     return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
   }
 
-  if (typeof val === 'string' && val.indexOf('/') > -1) { // support a parameter that for example is a file path with slashes (like on github)
+  if (typeof val === 'string' && val.indexOf('/') > -1) {
+    // support a parameter that for example is a file path with slashes (like on github)
     return val.split('/').map(encodeURIComponent) // path-to-regexp supports arrays for this use case
   }
 
-  const capitalize = route.capitalizedWords ||
+  const capitalize =
+    route.capitalizedWords ||
     (opts.capitalizedWords && route.capitalizedWords !== false)
 
   if (capitalize && typeof val === 'string') {
@@ -97,13 +106,17 @@ const defaultToPath = (
   }
   return opts.toPath
     ? opts.toPath(val, key, encodedVal, route, opts)
-    : val === undefined ? undefined : encodedVal
+    : val === undefined
+      ? undefined
+      : encodedVal
 }
 
 const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {
   const def = route.defaultQuery || opts.defaultQuery
   query = def
-    ? typeof def === 'function' ? def(query, route, opts) : { ...def, ...query }
+    ? typeof def === 'function'
+      ? def(query, route, opts)
+      : { ...def, ...query }
     : query
 
   const to = route.toSearch || opts.toSearch
@@ -122,18 +135,27 @@ const formatQuery = (query: ?Object, route: Route, opts: Options): mixed => {
 }
 
 const formatHash = (hash: string = '', route: Route, opts: Options): string => {
-  const def: string | void | Function | string = route.defaultHash || opts.defaultHash
+  const def: string | void | Function | string =
+    route.defaultHash || opts.defaultHash
   hash = def
-    ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
+    ? typeof def === 'function'
+      ? def(hash, route, opts)
+      : hash || def
     : hash
   const to = route.toHash || opts.toHash
   return to ? to(hash, route, opts) : hash
 }
 
-const formatState = (state: ?Object = {}, route: Route, opts: Options): ?Object => {
+const formatState = (
+  state: ?Object = {},
+  route: Route,
+  opts: Options,
+): ?Object => {
   const def: mixed = route.defaultState || opts.defaultState
   return def
-    ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
+    ? typeof def === 'function'
+      ? def(state, route, opts)
+      : { ...def, ...state }
     : state
 } // state has no string counter part in the address bar, so there is no `toState`
 
@@ -143,7 +165,7 @@ const notFoundUrl = (
   opts: Options,
   query: mixed,
   hash: string,
-  prevRoute: string = ''
+  prevRoute: string = '',
 ): string => {
   const type: string = action.type || ''
   const route: {} = routes[type] || {}
@@ -159,7 +181,9 @@ const notFoundUrl = (
 
   const p: string = routes[t].path || routes.NOT_FOUND.path || ''
   // $FlowFixMe
-  const s: string = query ? opts.stringifyQuery(query, { addQueryPrefix: true }) : '' // preserve these (why? because we can)
+  const s: string = query
+    ? opts.stringifyQuery(query, { addQueryPrefix: true })
+    : '' // preserve these (why? because we can)
   const h: string = hash ? `#${hash}` : ''
 
   return p + s + h

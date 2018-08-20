@@ -12,10 +12,9 @@ export default (name, routes, options) => {
 const findCallback = (name, routes, callback, route, options) => {
   if (typeof callback === 'function') {
     return callback
-  }
-  else if (Array.isArray(callback)) {
+  } else if (Array.isArray(callback)) {
     const callbacks = callback
-    const pipeline = callbacks.map(cb => (req, next) => {
+    const pipeline = callbacks.map((cb) => (req, next) => {
       cb = findCallback(name, routes, cb, route)
 
       const prom = Promise.resolve(cb(req))
@@ -23,15 +22,17 @@ const findCallback = (name, routes, callback, route, options) => {
     })
 
     const killOnRedirect = !!route.path
-    return options.compose(pipeline, null, killOnRedirect)
-  }
-  else if (typeof callback === 'string') {
+    return options.compose(
+      pipeline,
+      null,
+      killOnRedirect,
+    )
+  } else if (typeof callback === 'string') {
     const type = callback
     const inheritedRoute = routes[`${route.scene}/${type}`] || routes[type]
     const cb = inheritedRoute[name]
     return findCallback(name, routes, cb, inheritedRoute)
-  }
-  else if (typeof route.inherit === 'string') {
+  } else if (typeof route.inherit === 'string') {
     const type = route.inherit
     const inheritedRoute = routes[`${route.scene}/${type}`] || routes[type]
     const cb = inheritedRoute[name]

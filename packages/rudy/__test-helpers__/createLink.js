@@ -7,43 +7,39 @@ import { createRouter } from '../src'
 
 import Link, { NavLink } from '../src/Link'
 
-
 const createLink = async (props, initialPath, options, isNavLink) => {
   const link = isNavLink ? <NavLink {...props} /> : <Link {...props} />
 
   const routes = {
     FIRST: '/first',
     SECOND: '/second/:param',
-    THIRD: '/third'
+    THIRD: '/third',
   }
 
   const { middleware, reducer, firstRoute } = createRouter(routes, {
     initialEntries: initialPath || '/',
-    ...options
+    ...options,
   })
 
   const enhancer = applyMiddleware(middleware)
   const rootReducer = (state = {}, action = {}) => ({
-    location: reducer(state.location, action)
+    location: reducer(state.location, action),
   })
 
   const store = createStore(rootReducer, enhancer)
   await store.dispatch(firstRoute())
 
-  const component = renderer.create(
-    <Provider store={store}>
-      {link}
-    </Provider>
-  )
+  const component = renderer.create(<Provider store={store}>{link}</Provider>)
 
   return {
     component,
     tree: component.toJSON(),
-    store
+    store,
   }
 }
 
 export default createLink
-export const createNavLink = (path, props, options) => createLink(props, path, options, true)
+export const createNavLink = (path, props, options) =>
+  createLink(props, path, options, true)
 
 export const event = { preventDefault: () => undefined, button: 0 }

@@ -9,6 +9,6 @@ createTest('callbacks called on load if SPA', {
     beforeEnter: function() {},
     thunk: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED' })
-    }
-  }
+    },
+  },
 })

@@ -12,7 +12,7 @@ export default async (type, pathname) => {
   const routesMap = {
     FIRST: { path: '/first' },
     SECOND: { path: '/second/:param' },
-    [NOT_FOUND]: { path: '/not-found' }
+    [NOT_FOUND]: { path: '/not-found' },
   }
 
   return {
@@ -21,11 +21,7 @@ export default async (type, pathname) => {
     current,
     prev,
 
-    initialState: createInitialState(
-      routesMap,
-      history,
-      {}
-    ),
+    initialState: createInitialState(routesMap, history, {}),
 
     routesMap,
     history,
@@ -40,8 +36,8 @@ export default async (type, pathname) => {
         kind: 'load',
         entries: history.entries.slice(0), // history.entries.map(entry => entry.pathname)
         index: history.index,
-        length: history.length
-      }
+        length: history.length,
+      },
     },
 
     expectState(state) {
@@ -52,6 +48,6 @@ export default async (type, pathname) => {
       expect(state.kind).toEqual('load')
 
       expect(state).toMatchSnapshot()
-    }
+    },
   }
 }

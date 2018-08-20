@@ -12,11 +12,8 @@ export default ({ options }) => {
     const thunk = req.action
     const thunkResult = Promise.resolve(thunk(req))
 
-    return thunkResult.then(action => {
-      return action && !action._dispatched
-        ? req.dispatch(action)
-        : action
+    return thunkResult.then((action) => {
+      return action && !action._dispatched ? req.dispatch(action) : action
     })
   }
 }
-

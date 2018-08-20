@@ -19,4 +19,3 @@ export default (api: Redirect) => (req: Object, next: Function) => {
 
   return next()
 }
-

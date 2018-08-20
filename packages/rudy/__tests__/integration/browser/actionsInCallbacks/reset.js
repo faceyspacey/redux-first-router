@@ -24,13 +24,13 @@ const routes = {
           params: { foo: 'bar' },
           hash: 'yolo',
           basename: 'base',
-          state: { something: 123 }
+          state: { something: 123 },
         },
         {
           type: 'SECOND',
           query: { hell: 'yea' },
           hash: 'works',
-          state: { something: 123 }
+          state: { something: 123 },
         },
         { type: 'THIRD' },
         { type: 'FOURTH' },
@@ -40,13 +40,13 @@ const routes = {
         { type: 'EIGHTH' },
         { type: 'NINTH' },
         { type: 'TENTH' },
-        { type: 'ELEVENTH' }
+        { type: 'ELEVENTH' },
       ]
 
       return reset(actions)
-    }
+    },
   },
-  FIRST: '/:foo?'
+  FIRST: '/:foo?',
 }
 
 const sniper = async ({ dispatch, snap, snapPop }) => {
@@ -90,28 +90,46 @@ const sniper = async ({ dispatch, snap, snapPop }) => {
   expect(locationToUrl(window.location)).toEqual('/base/bar#yolo')
 }
 
-createTest('reset(actions) afterEnter', routes, {
-  testBrowser: true,
-  basenames: ['/base']
-}, [], sniper)
+createTest(
+  'reset(actions) afterEnter',
+  routes,
+  {
+    testBrowser: true,
+    basenames: ['/base'],
+  },
+  [],
+  sniper,
+)
 
-createTest('reset(actions) beforeEnter', {
-  ...routes,
-  MAIN: {
-    path: '/main',
-    beforeEnter: routes.MAIN.thunk
-  }
-}, {
-  testBrowser: true,
-  basenames: ['/base']
-}, [], sniper)
+createTest(
+  'reset(actions) beforeEnter',
+  {
+    ...routes,
+    MAIN: {
+      path: '/main',
+      beforeEnter: routes.MAIN.thunk,
+    },
+  },
+  {
+    testBrowser: true,
+    basenames: ['/base'],
+  },
+  [],
+  sniper,
+)
 
-createTest('reset(actions) pathlessRoute', {
-  ...routes,
-  MAIN: {
-    thunk: routes.MAIN.thunk
-  }
-}, {
-  testBrowser: true,
-  basenames: ['/base']
-}, [], sniper)
+createTest(
+  'reset(actions) pathlessRoute',
+  {
+    ...routes,
+    MAIN: {
+      thunk: routes.MAIN.thunk,
+    },
+  },
+  {
+    testBrowser: true,
+    basenames: ['/base'],
+  },
+  [],
+  sniper,
+)

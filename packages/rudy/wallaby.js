@@ -1,6 +1,6 @@
 const config = require('./.testsConfig.json')
 
-module.exports = wallaby => {
+module.exports = (wallaby) => {
   process.env.NODE_ENV = 'test'
   process.env.RUDY_OPTIONS = JSON.stringify(config)
   process.env.WALLABY = true
@@ -11,14 +11,14 @@ module.exports = wallaby => {
       { pattern: 'package.json', load: false },
       { pattern: '__tests__/**/*.snap', load: false },
       { pattern: '__helpers__/**/*.js', load: false },
-      { pattern: '__test-helpers__/**/*.js', load: false }
+      { pattern: '__test-helpers__/**/*.js', load: false },
     ],
 
     filesWithNoCoverageCalculated: [
       '__helpers__/**/*.js',
       '__test-helpers__/**/*.js',
       'src/history/BrowserHistory.js',
-      'src/history/utils/sessionStorage.js'
+      'src/history/utils/sessionStorage.js',
     ],
 
     tests: [
@@ -40,7 +40,6 @@ module.exports = wallaby => {
       // '__tests__/integration/browser/pop/**/*.js',
       // '__tests__/integration/browser/sessionStorage/**/*.js',
 
-
       // '__tests__/integration/actions/addRoutes.js',
       // '__tests__/integration/actions/changeBasename.js',
       // '__tests__/integration/actions/notFound.js',
@@ -51,12 +50,10 @@ module.exports = wallaby => {
       // '__tests__/integration/createScene/options.js',
       // '__tests__/integration/createScene/returnedUtilities.js',
 
-
       // '__tests__/integration/params.js',
       // '__tests__/integration/queries.js',
       // '__tests__/integration/hashes.js',
       // '__tests__/integration/entryState.js',
-
 
       // '__tests__/integration/arrayCallback.js',
       // '__tests__/integration/inheritedCallbacks.js',
@@ -107,12 +104,12 @@ module.exports = wallaby => {
 
     env: {
       type: 'node',
-      runner: 'node'
+      runner: 'node',
     },
 
     testFramework: 'jest',
     compilers: {
-      '**/*.js': wallaby.compilers.babel({ babelrc: true })
+      '**/*.js': wallaby.compilers.babel({ babelrc: true }),
     },
     setup(wallaby) {
       const conf = require('./package.json').jest
@@ -120,6 +117,6 @@ module.exports = wallaby => {
     },
     // runAllTestsInAffectedTestFile: true,
     // runAllTestsInAffectedTestGroup: true,
-    debug: false
+    debug: false,
   }
 }

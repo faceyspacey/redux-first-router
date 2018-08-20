@@ -9,7 +9,7 @@ export default (
   type: string,
   key: ?string,
   basename: ?string,
-  subtypes: Array<string> = []
+  subtypes: Array<string> = [],
 ) => {
   const ac = typeof route[key] === 'function' ? route[key] : null // look for action creators on route
 
@@ -57,4 +57,3 @@ export default (
   // primary use case: generate an action creator (will only trigger last lines of `defaultCreator`)
   return defaultCreator
 }
-

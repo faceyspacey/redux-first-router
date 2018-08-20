@@ -20,9 +20,11 @@ import { toEntries } from '../../utils'
 // Firefox has the lowest limit of 640kb PER ENTRY. IE has 1mb and chrome has at least 10mb:
 // https://stackoverflow.com/questions/6460377/html5-history-api-what-is-the-max-size-the-state-object-can-be
 
-
-export const saveHistory = ({ index, entries }: { index: number }, out: void | Function) => {
-  entries = entries.map(e => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
+export const saveHistory = (
+  { index, entries }: { index: number },
+  out: void | Function,
+) => {
+  entries = entries.map((e) => [e.location.url, e.state, e.location.key]) // one entry has the url, a state object, and a 6 digit key
   set({ index, entries, out })
 }
 
@@ -31,32 +33,28 @@ export const restoreHistory = (api) => {
   return format(history, api)
 }
 
-export const clear = () => supportsSession() ? sessionClear() : historyClear()
+export const clear = () => (supportsSession() ? sessionClear() : historyClear())
 
-export const set = (v) => supportsSession() ? sessionSet(v) : historySet(v)
+export const set = (v) => (supportsSession() ? sessionSet(v) : historySet(v))
 
-export const get = () => supportsSession() ? sessionGet() : historyGet()
-
+export const get = () => (supportsSession() ? sessionGet() : historyGet())
 
 // HISTORY FACADE:
 
 export const pushState = (url: string) =>
-  window.history.pushState({ id: sessionId() }, null, url)    // insure every entry has the sessionId (called by `BrowserHistory`)
+  window.history.pushState({ id: sessionId() }, null, url) // insure every entry has the sessionId (called by `BrowserHistory`)
 
 export const replaceState = (url: string) =>
   window.history.replaceState({ id: sessionId() }, null, url) // QA: won't the fallback overwrite the `id`? Yes, but the fallback doesn't use the `id` :)
 
-const historyClear = () =>
-  window.history.replaceState({}, null)
+const historyClear = () => window.history.replaceState({}, null)
 
-const historySet = (history) =>
-  window.history.replaceState(history, null) // set on current entry
+const historySet = (history) => window.history.replaceState(history, null) // set on current entry
 
 const historyGet = () => {
   const state = getHistoryState()
   return state.entries && state
 }
-
 
 // SESSION STORAGE FACADE:
 
@@ -66,21 +64,20 @@ let _id
 
 const PREFIX = '@@rudy/'
 
-const sessionId = () => _id = _id || createSessionId()
+const sessionId = () => (_id = _id || createSessionId())
 
 const key = () => PREFIX + sessionId()
 
 const sessionClear = () => window.sessionStorage.setItem(key(), '')
 
-const sessionSet = (val) => window.sessionStorage.setItem(key(), JSON.stringify(val))
+const sessionSet = (val) =>
+  window.sessionStorage.setItem(key(), JSON.stringify(val))
 
 const sessionGet = () => {
   try {
     const json = window.sessionStorage.getItem(key())
     return JSON.parse(json)
-  }
-  catch (error) {
-  } // ignore invalid JSON
+  } catch (error) {} // ignore invalid JSON
   return null
 }
 
@@ -92,16 +89,16 @@ const createSessionId = () => {
   if (!state.id) {
     if (process.env.NODE_ENV === 'test') {
       state.id = '123456789'.toString(36).substr(2, 6)
-    }
-    else {
-      state.id = Math.random().toString(36).substr(2, 6)
+    } else {
+      state.id = Math.random()
+        .toString(36)
+        .substr(2, 6)
     }
     historySet(state)
   }
 
   return state.id
 }
-
 
 // HELPERS:
 
@@ -147,8 +144,6 @@ const format = (history, api) => {
 const getHistoryState = () => {
   try {
     return window.history.state || {}
-  }
-  catch (e) {
-  }
+  } catch (e) {}
   return {}
 }

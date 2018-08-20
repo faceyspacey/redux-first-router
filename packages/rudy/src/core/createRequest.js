@@ -2,32 +2,36 @@
 import { BLOCK, UNBLOCK, SET_FROM, CALL_HISTORY } from '../types'
 import { redirect } from '../actions'
 import { isAction, createActionRef } from '../utils'
-import type { ActionMetaLocation, Action, RequestAPI, Route, Routes, Dispatch } from '../flow-types'
+import type {
+  ActionMetaLocation,
+  Action,
+  RequestAPI,
+  Route,
+  Routes,
+  Dispatch,
+} from '../flow-types'
 
-export default (
-  action: Action,
-  api: RequestAPI,
-  next: Function
-): Request => new Request(action, api, next)
+export default (action: Action, api: RequestAPI, next: Function): Request =>
+  new Request(action, api, next)
 
 export class Request {
-  tmp: Object;
-  action: Action;
-  ctx: Object;
-  route: Route;
-  prevRoute: Route;
-  error: null | boolean;
-  scene: string;
-  realDispatch: Dispatch;
-  commitDispatch: Dispatch | Function;
-  commitHistory: void | Function;
-  history: Object;
-  routes: Routes;
-  redirect: ActionMetaLocation;
-  getLocation: () => Object;
-  last: Object;
-  canceled: boolean;
-  type: string;
+  tmp: Object
+  action: Action
+  ctx: Object
+  route: Route
+  prevRoute: Route
+  error: null | boolean
+  scene: string
+  realDispatch: Dispatch
+  commitDispatch: Dispatch | Function
+  commitHistory: void | Function
+  history: Object
+  routes: Routes
+  redirect: ActionMetaLocation
+  getLocation: () => Object
+  last: Object
+  canceled: boolean
+  type: string
 
   constructor(action: Action, api: RequestAPI, next: Function): void {
     const { routes, options, getLocation, ctx } = api
@@ -41,7 +45,7 @@ export class Request {
     // the `tmp` context is passed along by all route-changing actions in the same primary parent
     // pipeline to keep track of things like `committed` status, but we don't want the
     // resulting action that leaves Rudy to have this, so we delete it.
-    const tmp = this.tmp = action.tmp || {}
+    const tmp = (this.tmp = action.tmp || {})
     delete action.tmp // delete it so it's never seen outside of pipeline
 
     tmp.load = tmp.load || (action.location && action.location.kind === 'load')
@@ -98,7 +102,7 @@ export class Request {
     const linkPipelines = route || typeof action === 'function'
 
     if (linkPipelines) {
-      action.tmp = this.tmp                      // keep the same `tmp` object across all redirects (or potential redirects in anonymous thunks)
+      action.tmp = this.tmp // keep the same `tmp` object across all redirects (or potential redirects in anonymous thunks)
 
       if (this.ctx.busy) {
         // keep track of previous action to properly replace instead of push during back/next redirects
@@ -107,7 +111,10 @@ export class Request {
       }
     }
 
-    if (this.ctx.busy && route && route.path && // convert actions to redirects only if "busy" in a route changing pipeline
+    if (
+      this.ctx.busy &&
+      route &&
+      route.path && // convert actions to redirects only if "busy" in a route changing pipeline
       !(action.location && action.location.kind === 'set') // history `set` actions should not be transformed to redirects
     ) {
       const status = action.location && action.location.status
@@ -116,9 +123,8 @@ export class Request {
 
     if (typeof action !== 'function') {
       if (!this._start) {
-        action = this.populateAction(action, this)       // automatically turn payload-only actions into real actions with routeType_COMPLETE|_DONE as type
-      }
-      else if (this._start) {
+        action = this.populateAction(action, this) // automatically turn payload-only actions into real actions with routeType_COMPLETE|_DONE as type
+      } else if (this._start) {
         // a callback immediately before `enter` has the final action/payload dispatched attached
         // to the payload of the main route action, to limit the # of actions dispatched.
         // NOTE: requires this middleware: `[call('beforeThunk', { start: true }), enter]`
@@ -129,17 +135,16 @@ export class Request {
 
     const oldUrl = this.getLocation().url
 
-    return Promise.resolve(dispatch(action))    // dispatch transformed action
-      .then(res => {
+    return Promise.resolve(dispatch(action)) // dispatch transformed action
+      .then((res) => {
         const urlChanged = oldUrl !== this.getLocation().url
 
-        if (this.ctx.serverRedirect || // short-circuit when a server redirected is detected
-          (
-            (urlChanged || action.type === CALL_HISTORY) && // short-circuit if the URL changed || or history action creators used
-            !(res && res.location && res.location.kind === 'set') // but `set` should not short-circuit ever
-          )
+        if (
+          this.ctx.serverRedirect || // short-circuit when a server redirected is detected
+          ((urlChanged || action.type === CALL_HISTORY) && // short-circuit if the URL changed || or history action creators used
+            !(res && res.location && res.location.kind === 'set')) // but `set` should not short-circuit ever
         ) {
-          this.redirect = res                   // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
+          this.redirect = res // assign action to `this.redirect` so `compose` can properly short-circuit route redirected from and resolve to the new action (NOTE: will capture nested pathlessRoutes + anonymousThunks)
         }
 
         if (res) res._dispatched = true // tell `middleware/call/index.js` to NOT automatically dispatch callback returns
@@ -167,12 +172,11 @@ export class Request {
 
     delete route[name]
 
-    return this.realDispatch(this.action)
-      .then(res => {
-        route[name] = callback // put callback back
-        if (res) res._dispatched = true
-        return res
-      })
+    return this.realDispatch(this.action).then((res) => {
+      route[name] = callback // put callback back
+      if (res) res._dispatched = true
+      return res
+    })
   }
 
   block = (): Dispatch => {
@@ -189,9 +193,8 @@ export class Request {
   isUniversal = () => this.getLocation().universal
 
   isDoubleDispatch = (): boolean =>
-    this.action.location.url === this.getLocation().url
-    && !/load|reset|jump/.test(this.getKind()) // on `load`, the `firstRoute` action will trigger the same URL as stored in state; the others must always pass through
-
+    this.action.location.url === this.getLocation().url &&
+    !/load|reset|jump/.test(this.getKind()) // on `load`, the `firstRoute` action will trigger the same URL as stored in state; the others must always pass through
 
   handleDoubleDispatch = () => {
     this.ctx.pending = false
@@ -211,9 +214,10 @@ export class Request {
     delete this.ctx.doubleDispatchRedirect
     this.canceled = true
 
-    const ref = this.action.type === CALL_HISTORY
-      ? createActionRef(attemptedAction.location.from) // when history action creators are used in pipeline, we have to address this from the perspective of the `callHistory` middleware
-      : createActionRef(this.action)
+    const ref =
+      this.action.type === CALL_HISTORY
+        ? createActionRef(attemptedAction.location.from) // when history action creators are used in pipeline, we have to address this from the perspective of the `callHistory` middleware
+        : createActionRef(this.action)
 
     this.realDispatch({ type: SET_FROM, payload: { ref } })
 
@@ -229,7 +233,8 @@ export class Request {
         ? { type }
         : { payload: act }
 
-    action.type = action.type ||
+    action.type =
+      action.type ||
       (this.tmp.committed ? `${this.type}_COMPLETE` : `${this.type}_DONE`)
 
     return action

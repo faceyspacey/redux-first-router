@@ -17,5 +17,5 @@ export {
   setQuery,
   setState,
   setHash,
-  setBasename
+  setBasename,
 } from './history'

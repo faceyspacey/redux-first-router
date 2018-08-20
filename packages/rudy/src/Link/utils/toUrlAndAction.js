@@ -11,7 +11,7 @@ export default (
   routes: Routes,
   basename: ?string = '',
   currentPathname: string,
-  options: Options
+  options: Options,
 ): Object => {
   const { basenames } = options
   let url = ''
@@ -22,22 +22,19 @@ export default (
   }
   if (to && typeof to === 'string') {
     url = to
-  }
-  else if (Array.isArray(to)) {
+  } else if (Array.isArray(to)) {
     if (to[0].charAt(0) === '/') {
       basename = to.shift()
     }
 
     url = `/${to.join('/')}`
-  }
-  else if (typeof to === 'object') {
+  } else if (typeof to === 'object') {
     action = to
 
     try {
-      ({ url } = actionToUrl(action, { routes, options }))
+      ;({ url } = actionToUrl(action, { routes, options }))
       basename = action.basename || basename || ''
-    }
-    catch (e) {
+    } catch (e) {
       if (process.env.NODE_ENV === 'development') {
         console.warn('[rudy/Link] could not create path from action:', action)
       }
@@ -55,8 +52,7 @@ export default (
 
   if (url.charAt(0) === '#') {
     url = `${currentPathname}${url}`
-  }
-  else if (url.charAt(0) !== '/') {
+  } else if (url.charAt(0) !== '/') {
     url = resolvePathname(url, currentPathname)
   }
 

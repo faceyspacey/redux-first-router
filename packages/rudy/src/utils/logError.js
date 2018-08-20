@@ -1,24 +1,24 @@
 // @flow
 import type { Dispatch } from '../flow-types'
 
-const logError: (
+const logError: (type: string, error: any) => void = (
   type: string,
-  error: any
-) => void = (
-  type: string,
-  error: any
+  error: any,
 ): void => {
   if (process.env.NODE_ENV === 'development') {
     console.error('[rudy]', `action.type: ${type}`, error)
-  }
-  else if (process.env.NODE_ENV === 'test') {
+  } else if (process.env.NODE_ENV === 'test') {
     logCleanTestError([type], error)
   }
 }
 
 export default logError
 
-const logCleanTestError = (args: Array<any>, error?: Object, shorten = true) => {
+const logCleanTestError = (
+  args: Array<any>,
+  error?: Object,
+  shorten = true,
+) => {
   const isLog = !error
   error = error || new Error()
 
@@ -31,7 +31,7 @@ const logCleanTestError = (args: Array<any>, error?: Object, shorten = true) => 
   }
 
   if (shorten) {
-    const i = stack.findIndex(line => line.indexOf('compose.js') > -1)
+    const i = stack.findIndex((line) => line.indexOf('compose.js') > -1)
     stack = stack.slice(0, i)
   }
 
@@ -57,19 +57,20 @@ const logCleanTestError = (args: Array<any>, error?: Object, shorten = true) => 
 
   if (args[0] && args[0].action) {
     console.log(message, args[0].action, trace)
-  }
-  else if (args.length === 1) {
+  } else if (args.length === 1) {
     console.log(message, args[0], trace)
-  }
-  else if (args.length === 2) {
+  } else if (args.length === 2) {
     console.log(message, args[0], args[1], trace)
-  }
-  else {
+  } else {
     console.log(message, args, trace)
   }
 }
 
-export const onError = ({ errorType: type, error, dispatch }: Object): Dispatch => {
+export const onError = ({
+  errorType: type,
+  error,
+  dispatch,
+}: Object): Dispatch => {
   logError(type, error)
   return dispatch({ type, error })
 }

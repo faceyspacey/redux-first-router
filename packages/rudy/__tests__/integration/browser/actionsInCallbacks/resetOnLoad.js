@@ -1,4 +1,7 @@
-import createTest, { resetBrowser, setupStore } from '../../../../__helpers__/createTest'
+import createTest, {
+  resetBrowser,
+  setupStore,
+} from '../../../../__helpers__/createTest'
 import { locationToUrl } from '../../../../src/utils'
 import { reset } from '../../../../src/actions'
 
@@ -8,7 +11,7 @@ beforeEach(async () => {
   const routesMap = {
     FIRST: '/',
     SECOND: '/second',
-    MAIN: '/main'
+    MAIN: '/main',
   }
 
   const { store, firstRoute, history } = setupStore(routesMap)
@@ -34,7 +37,7 @@ const routes = {
   TENTH: '/tenth',
   ELEVENTH: {
     path: '/eleventh',
-    thunk: function() {}
+    thunk: function() {},
   },
   MAIN: {
     path: '/main',
@@ -45,13 +48,13 @@ const routes = {
           params: { foo: 'bar' },
           hash: 'yolo',
           basename: 'base',
-          state: { something: 123 }
+          state: { something: 123 },
         },
         {
           type: 'SECOND',
           query: { hell: 'yea' },
           hash: 'works',
-          state: { something: 123 }
+          state: { something: 123 },
         },
         { type: 'THIRD' },
         { type: 'FOURTH' },
@@ -61,13 +64,13 @@ const routes = {
         { type: 'EIGHTH' },
         { type: 'NINTH' },
         { type: 'TENTH' },
-        { type: 'ELEVENTH' }
+        { type: 'ELEVENTH' },
       ]
 
       return reset(actions)
-    }
+    },
   },
-  FIRST: '/:foo?'
+  FIRST: '/:foo?',
 }
 
 const sniper = async ({ snapPop }) => {
@@ -104,18 +107,30 @@ const sniper = async ({ snapPop }) => {
   expect(locationToUrl(window.location)).toEqual('/base/bar#yolo')
 }
 
-createTest('reset(actions) afterEnter on load', routes, {
-  testBrowser: true,
-  basenames: ['/base']
-}, [], sniper)
+createTest(
+  'reset(actions) afterEnter on load',
+  routes,
+  {
+    testBrowser: true,
+    basenames: ['/base'],
+  },
+  [],
+  sniper,
+)
 
-createTest('reset(actions) beforeEnter  on load', {
-  ...routes,
-  MAIN: {
-    path: '/main',
-    beforeEnter: routes.MAIN.thunk
-  }
-}, {
-  testBrowser: true,
-  basenames: ['/base']
-}, [], sniper)
+createTest(
+  'reset(actions) beforeEnter  on load',
+  {
+    ...routes,
+    MAIN: {
+      path: '/main',
+      beforeEnter: routes.MAIN.thunk,
+    },
+  },
+  {
+    testBrowser: true,
+    basenames: ['/base'],
+  },
+  [],
+  sniper,
+)

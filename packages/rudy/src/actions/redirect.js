@@ -7,6 +7,6 @@ export default (action: Action, status: number = 302) => ({
     // $FlowFixMe
     ...action.location,
     status,
-    kind: 'replace'
-  }
+    kind: 'replace',
+  },
 })

@@ -9,15 +9,15 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   padding: 10px;
 }
 
 .more {
   margin-top: 50px;
   color: red;
-  font-size:022px;
+  font-size: 022px;
   -webkit-font-smoothing: antialiased;
   text-align: center;
 }
@@ -26,9 +26,9 @@ body {
   color: rgb(255, 44, 145);
   font-size: 26px;
   margin-top: 10px;
-  text-shadow: 1px 1px 1px rgb(20,30,20);
+  text-shadow: 1px 1px 1px rgb(20, 30, 20);
   text-decoration: none;
-  background: rgba(65,50,50, .9);
+  background: rgba(65, 50, 50, 0.9);
   padding: 16px;
   -webkit-font-smoothing: antialiased;
   display: block;

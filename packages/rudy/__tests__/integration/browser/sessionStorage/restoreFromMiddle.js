@@ -9,7 +9,7 @@ beforeAll(async () => {
   const routesMap = {
     FIRST: '/',
     SECOND: '/second',
-    THIRD: '/third'
+    THIRD: '/third',
   }
 
   const { store, firstRoute, history } = setupStore(routesMap)
@@ -24,24 +24,30 @@ beforeAll(async () => {
   history.unlisten()
 })
 
-createTest('restore history when index > 0', {
-  FIRST: '/',
-  SECOND: '/second',
-  THIRD: '/third'
-}, { testBrowser: true }, [], async ({ snapPop, getLocation }) => {
-  expect(getLocation()).toMatchSnapshot()
-  expect(get()).toMatchSnapshot()
+createTest(
+  'restore history when index > 0',
+  {
+    FIRST: '/',
+    SECOND: '/second',
+    THIRD: '/third',
+  },
+  { testBrowser: true },
+  [],
+  async ({ snapPop, getLocation }) => {
+    expect(getLocation()).toMatchSnapshot()
+    expect(get()).toMatchSnapshot()
 
-  await snapPop('back')
+    await snapPop('back')
 
-  expect(getLocation().type).toEqual('FIRST')
-  expect(window.location.pathname).toEqual('/')
+    expect(getLocation().type).toEqual('FIRST')
+    expect(window.location.pathname).toEqual('/')
 
-  expect(getLocation().index).toEqual(0)
+    expect(getLocation().index).toEqual(0)
 
-  // this is key, since we left in the middle of the entries (at SECOND), THIRD will be erased on return,
-  // just like the real browser when you push a whole new website
-  expect(getLocation().length).toEqual(2)
+    // this is key, since we left in the middle of the entries (at SECOND), THIRD will be erased on return,
+    // just like the real browser when you push a whole new website
+    expect(getLocation().length).toEqual(2)
 
-  expect(get()).toMatchSnapshot()
-})
+    expect(get()).toMatchSnapshot()
+  },
+)

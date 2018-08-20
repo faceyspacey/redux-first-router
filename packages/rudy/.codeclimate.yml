@@ -6,7 +6,7 @@ engines:
     enabled: true
     config:
       languages:
-      - javascript:
+        - ? javascript
   fixme:
     enabled: true
   eslint:
@@ -20,14 +20,14 @@ engines:
         enabled: false
 
 ratings:
-   paths:
-   - "src/**"
+  paths:
+    - 'src/**'
 
 exclude_paths:
-- "docs/"
-- "dist/"
-- "flow-typed/"
-- "node_modules/"
-- ".vscode/"
-- ".eslintrc.js"
-- "**/*.snap"
+  - 'docs/'
+  - 'dist/'
+  - 'flow-typed/'
+  - 'node_modules/'
+  - '.vscode/'
+  - '.eslintrc.js'
+  - '**/*.snap'

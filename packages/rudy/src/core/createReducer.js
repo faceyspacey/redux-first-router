@@ -7,18 +7,21 @@ import type {
   Routes,
   Action,
   CreateReducerAction,
-  Prev
+  Prev,
 } from '../flow-types'
-
 
 export default (initialState: Object, routes: Routes) => (
   st: LocationState = initialState,
-  action: CreateReducerAction
+  action: CreateReducerAction,
 ): LocationState => {
   const r = routes[action.type]
   const l = action.location
   if (l && l.kind === 'set') {
-    const { commit, location: { kind, ...location }, ...act } = action
+    const {
+      commit,
+      location: { kind, ...location },
+      ...act
+    } = action
     return { ...st, ...act, ...location }
   }
 
@@ -67,7 +70,17 @@ export default (initialState: Object, routes: Routes) => (
 
 export const createInitialState = (action: Action): LocationState => {
   const { location, type, basename, params, query, state, hash } = action
-  const { entries, index, length, pathname, search, url, key, scene, n } = location
+  const {
+    entries,
+    index,
+    length,
+    pathname,
+    search,
+    url,
+    key,
+    scene,
+    n,
+  } = location
 
   const direction = n === -1 ? 'backward' : 'forward'
   const prev = createPrev(location)
@@ -102,13 +115,17 @@ export const createInitialState = (action: Action): LocationState => {
 
     universal,
     pop: false,
-    status
+    status,
   }
 }
 
-export const createPrev = (location: { n: number, index: number, entries: Array<{ pathname: string, location: Object }> }) => {
+export const createPrev = (location: {
+  n: number,
+  index: number,
+  entries: Array<{ pathname: string, location: Object }>,
+}) => {
   const { n, index: i, entries } = location // needs to use real lastIndex instead of -1
-  const index = i + (n * -1) // the entry action we want is the opposite of the direction the user is going
+  const index = i + n * -1 // the entry action we want is the opposite of the direction the user is going
   const prevAction = entries[index]
 
   if (!prevAction) return createPrevEmpty()
@@ -117,8 +134,8 @@ export const createPrev = (location: { n: number, index: number, entries: Array<
     ...prevAction,
     location: {
       ...prevAction.location,
-      index
-    }
+      index,
+    },
   }
 }
 
@@ -135,6 +152,6 @@ export const createPrevEmpty = (): Prev => ({
     search: '',
     key: '',
     scene: '',
-    index: -1
-  }
+    index: -1,
+  },
 })

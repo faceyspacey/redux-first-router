@@ -1,14 +1,17 @@
 import createTest from '../../__helpers__/createTest'
 
-createTest('add routeType_COMPLETE as type to action-like object that is missing type', {
-  SECOND: {
-    path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch({ payload: 'foo' })
+createTest(
+  'add routeType_COMPLETE as type to action-like object that is missing type',
+  {
+    SECOND: {
+      path: '/second',
+      thunk: ({ dispatch }) => {
+        return dispatch({ payload: 'foo' })
+      },
+      onComplete: function() {},
     },
-    onComplete: function() {}
-  }
-})
+  },
+)
 
 createTest('when isAction(action) === false set to payload', {
   SECOND: {
@@ -16,8 +19,8 @@ createTest('when isAction(action) === false set to payload', {
     thunk: ({ dispatch }) => {
       return dispatch({ foo: 'bar' })
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
 
 createTest('non object argument can be payload', {
@@ -26,8 +29,8 @@ createTest('non object argument can be payload', {
     thunk: ({ dispatch }) => {
       return dispatch('foo')
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
 
 createTest('null payloads allowed', {
@@ -36,10 +39,9 @@ createTest('null payloads allowed', {
     thunk: ({ dispatch }) => {
       return dispatch(null)
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
-
 
 createTest('arg as type', {
   SECOND: {
@@ -47,8 +49,8 @@ createTest('arg as type', {
     thunk: ({ dispatch }) => {
       return dispatch('FOO_BAR')
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
 
 createTest('arg as @@library type', {
@@ -57,8 +59,8 @@ createTest('arg as @@library type', {
     thunk: ({ dispatch }) => {
       return dispatch('@@library/FOO_BAR')
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
 
 createTest('arg as type from route', {
@@ -67,6 +69,6 @@ createTest('arg as type from route', {
     thunk: ({ dispatch }) => {
       return dispatch('FIRST')
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })

@@ -3,13 +3,12 @@ import pathToRegexp from 'path-to-regexp'
 import { urlToLocation } from './index'
 import type { Route, Options } from '../flow-types'
 
-
 export default (
   loc: string | Location,
   matchers: Matchers,
   options?: Object = {},
   route: Route,
-  opts: Options = {}
+  opts: Options = {},
 ) => {
   const { pathname, search, hash: h } = urlToLocation(loc)
 
@@ -33,10 +32,10 @@ export default (
   return {
     params: formatParams ? formatParams(params, route, opts) : params,
     query: formatQuery ? formatQuery(query, route, opts) : query,
-    hash: formatHash ? formatHash(hash || '', route, opts) : (hash || ''),
+    hash: formatHash ? formatHash(hash || '', route, opts) : hash || '',
     matchedPath: matchers.path === '/' && path === '' ? '/' : path, // the matched portion of the URL/path
     matchers,
-    partial: !!options.partial
+    partial: !!options.partial,
   }
 
   // const url = matchers.path === '/' && path === '' ? '/' : path // the matched portion of the path
@@ -64,7 +63,7 @@ export const matchQuery = (
   search: string,
   matcher: ?Object,
   route: Route,
-  opts: Options
+  opts: Options,
 ): null | {} => {
   const query: {} = search ? parseSearch(search, route, opts) : {}
 
@@ -79,7 +78,12 @@ export const matchQuery = (
   return query
 }
 
-export const matchHash = (hash: string = '', expected: ?string, route: Route, opts: Options): string | null => {
+export const matchHash = (
+  hash: string = '',
+  expected: ?string,
+  route: Route,
+  opts: Options,
+): string | null => {
   if (expected === undefined) return hash
   return matchVal(hash, expected, 'hash', route, opts) ? hash : null
 }
@@ -91,7 +95,7 @@ export const matchVal = (
   expected,
   key: string,
   route: Route,
-  opts: Options
+  opts: Options,
 ) => {
   const type = typeof expected
 
@@ -101,29 +105,25 @@ export const matchVal = (
     }
 
     return val === undefined || val === ''
-  }
-  else if (type === 'string') {
+  } else if (type === 'string') {
     return expected === val
-  }
-  else if (type === 'function') {
+  } else if (type === 'function') {
     return key === 'hash'
-      // $FlowFixMe
-      ? expected(val, route, opts)
-      // $FlowFixMe
-      : expected(val, key, route, opts)
-  }
-  else if (expected instanceof RegExp) {
+      ? // $FlowFixMe
+        expected(val, route, opts)
+      : // $FlowFixMe
+        expected(val, key, route, opts)
+  } else if (expected instanceof RegExp) {
     return expected.test(val)
   }
 
   return true
 }
 
-
 const parseSearch = (search: string, route: Route, opts: Options): Object => {
   if (queries[search]) return queries[search]
   const parse = route.parseSearch || opts.parseSearch
-  return queries[search] = parse(search)
+  return (queries[search] = parse(search))
 }
 
 const queries: {} = {}
@@ -134,14 +134,14 @@ let cacheCount = 0
 
 const compilePath = (
   pattern: string,
-  options: CompileOptions = {}
+  options: CompileOptions = {},
 ): Compiled => {
   const {
     partial = false,
-    strict = false
+    strict = false,
   }: {
     partial?: boolean,
-    strict?: boolean
+    strict?: boolean,
   } = options
 
   const cacheKey: string = `${partial ? 't' : 'f'}${strict ? 't' : 'f'}`
@@ -162,39 +162,37 @@ const compilePath = (
   return compiledPattern
 }
 
-
 type CompileOptions = {
   partial?: boolean,
-  strict?: boolean
+  strict?: boolean,
 }
 
 type MatchOptions = {
   partial?: boolean,
   strict?: boolean,
-  path?: string
+  path?: string,
 }
 
 type Compiled = {
   re: RegExp,
-  keys: Array<{ name: string }>
+  keys: Array<{ name: string }>,
 }
-
 
 type Match = {
   path: string,
   url: string,
   isExact: boolean,
-  params: Object
+  params: Object,
 }
 
 type Matchers = {
   path: string,
   query?: Object,
-  hash?: string
+  hash?: string,
 }
 
 type Location = {
   pathname: string,
   search: string,
-  hash: string
+  hash: string,
 }

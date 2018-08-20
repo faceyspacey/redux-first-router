@@ -1,13 +1,9 @@
-export {
-  supportsDom,
-  supportsHistory,
-  supportsSession
-} from './supports'
+export { supportsDom, supportsHistory, supportsSession } from './supports'
 
 export {
   addPopListener,
   removePopListener,
-  isExtraneousPopEvent
+  isExtraneousPopEvent,
 } from './popListener'
 
 export {
@@ -17,5 +13,5 @@ export {
   set,
   clear,
   pushState,
-  replaceState
+  replaceState,
 } from './sessionStorage'

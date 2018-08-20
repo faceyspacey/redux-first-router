@@ -8,4 +8,3 @@ export default (routes: Routes, opts: Options = {}) =>
   supportsDom() && supportsHistory() && opts.testBrowser !== false
     ? new BrowserHistory(routes, opts)
     : new MemoryHistory(routes, opts)
-

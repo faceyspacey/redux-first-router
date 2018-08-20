@@ -10,14 +10,16 @@ const callbacks = []
 
 export default (api, name, config) => {
   if (config.prev) {
-    throw new Error(`[rudy] call('${name}') middleware 'cache' option cannot be used with 'prev' option`)
+    throw new Error(
+      `[rudy] call('${name}') middleware 'cache' option cannot be used with 'prev' option`,
+    )
   }
 
   callbacks.push(name)
   if (api.cache) return api.cache
 
   const { createCacheKey = defaultCreateCacheKey } = api.options
-  const cache = config.cacheStorage = config.cacheStorage || {}
+  const cache = (config.cacheStorage = config.cacheStorage || {})
 
   const isCached = (name, route, req) => {
     if (isServer()) return false
@@ -47,25 +49,26 @@ export default (api, name, config) => {
   const clear = (invalidator, opts = {}) => {
     if (!invalidator) {
       for (const k in cache) delete cache[k]
-    }
-    else if (typeof invalidator === 'function') {     // allow user to customize cache clearing algo
-      const newCache = invalidator(cache, api, opts)  // invalidators should mutably operate on the cache hash
-      if (newCache) {                                 // but if they don't we'll merge into the same object reference
+    } else if (typeof invalidator === 'function') {
+      // allow user to customize cache clearing algo
+      const newCache = invalidator(cache, api, opts) // invalidators should mutably operate on the cache hash
+      if (newCache) {
+        // but if they don't we'll merge into the same object reference
         for (const k in cache) delete cache[k]
         Object.assign(cache, newCache)
       }
-    }
-    else if (typeof invalidator === 'string') {        // delete all cached items for TYPE or other string
+    } else if (typeof invalidator === 'string') {
+      // delete all cached items for TYPE or other string
       for (const k in cache) {
         if (k.indexOf(invalidator) > -1) delete cache[k]
       }
-    }
-    else {                                        // delete all/some callbacks for precise item (default)
+    } else {
+      // delete all/some callbacks for precise item (default)
       const action = invalidator
       const act = toAction(api, action)
       const names = opts.name === undefined ? callbacks : [].concat(opts.name)
 
-      names.forEach(name => {
+      names.forEach((name) => {
         const key = createCacheKey(act, name)
         delete cache[key]
       })

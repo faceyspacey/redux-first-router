@@ -6,19 +6,19 @@ createTest('multiple redirects are honored', {
     beforeEnter: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED' })
     },
-    thunk: function() {}
+    thunk: function() {},
   },
   REDIRECTED: {
     path: '/redirected',
     beforeEnter: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED_AGAIN' })
     },
-    thunk: function() {}
+    thunk: function() {},
   },
   REDIRECTED_AGAIN: {
     path: '/redirected-again',
-    thunk: function() {}
-  }
+    thunk: function() {},
+  },
 })
 
 createTest('multiple redirects are honored after enter', {
@@ -27,17 +27,17 @@ createTest('multiple redirects are honored after enter', {
     thunk: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED_AFTER' })
     },
-    onComplete: function() {}
+    onComplete: function() {},
   },
   REDIRECTED_AFTER: {
     path: '/redirected-after',
     thunk: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED_AGAIN_AFTER' })
     },
-    onComplete: function() {}
+    onComplete: function() {},
   },
   REDIRECTED_AGAIN_AFTER: {
     path: '/redirected-again-after',
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })

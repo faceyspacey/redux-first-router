@@ -6,13 +6,13 @@ export default ({
   route,
   routes,
   action,
-  dispatch
+  dispatch,
 }: {
-    route: Route,
-    routes: Routes,
-    action: NavigationToAction,
-    dispatch: Dispatch
-  }) => {
+  route: Route,
+  routes: Routes,
+  action: NavigationToAction,
+  dispatch: Dispatch,
+}) => {
   const t = route.redirect
   // $FlowFixMe
   const scenicType = `${route.scene}/${t}`

@@ -9,8 +9,8 @@ export default hot(module)(({ title, text, url }) => (
     <a
       className={styles.link}
       href={url}
-      target='_blank'
-      rel='noopener noreferrer'
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {text}
     </a>

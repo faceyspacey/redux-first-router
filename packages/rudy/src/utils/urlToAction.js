@@ -2,17 +2,23 @@
 import resolvePathname from 'resolve-pathname'
 import { urlToLocation, locationToUrl, cleanBasename, matchUrl } from './index'
 import { notFound } from '../actions'
-import type { Routes, HistoryLocation, NavigationAction, Route, Options } from '../flow-types'
+import type {
+  Routes,
+  HistoryLocation,
+  NavigationAction,
+  Route,
+  Options,
+} from '../flow-types'
 
 export default (
   api: {
     routes: Routes,
     options: Options,
-    getLocation: Function
+    getLocation: Function,
   },
   url: string,
   state: Object = {},
-  key: string = createKey()
+  key: string = createKey(),
 ) => {
   const { getLocation, routes, options: opts } = api
   const curr = getLocation ? getLocation() : {}
@@ -30,19 +36,17 @@ export default (
       scene: routes[action.type].scene || '',
       url: slashBasename + locationToUrl(location),
       pathname: location.pathname,
-      search: location.search
-    }
+      search: location.search,
+    },
   }
 }
 
 const createLocation = (url, opts, bn, curr) => {
   if (!url) {
     url = curr.pathname || '/'
-  }
-  else if (curr.pathname && url.charAt(0) !== '/') {
+  } else if (curr.pathname && url.charAt(0) !== '/') {
     url = resolvePathname(url, curr.pathname) // resolve pathname relative to current location
-  }
-  else {
+  } else {
     url = stripBasename(url, bn) // eg: /base/foo?a=b#bar -> /foo?a=b#bar
   }
 
@@ -54,9 +58,9 @@ const createAction = (
   routes: Routes,
   opts: Options,
   st: Object = {},
-  curr: Object = {}
+  curr: Object = {},
 ): NavigationAction => {
-  const types = Object.keys(routes).filter(type => routes[type].path)
+  const types = Object.keys(routes).filter((type) => routes[type].path)
 
   for (let i = 0; i < types.length; i++) {
     const type = types[i]
@@ -75,16 +79,15 @@ const createAction = (
 
   // TODO: Need some clairfication on scene stuff
   // $FlowFixMe
-  const type = routes[`${scene}/NOT_FOUND`] && `${scene}/NOT_FOUND`// try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
+  const type = routes[`${scene}/NOT_FOUND`] && `${scene}/NOT_FOUND` // try to interpret scene-level NOT_FOUND if available (note: links create plain NOT_FOUND actions)
 
   return {
     ...notFound(st, type),
     params: {}, // we can't know these in this case
     query: loc.search ? parseSearch(loc.search, routes, opts) : {}, // keep this info
-    hash: loc.hash || ''
+    hash: loc.hash || '',
   }
 }
-
 
 // EVERYTHING BELOW IS RELATED TO THE TRANSFORMERS PASSED TO `matchUrl`:
 
@@ -100,7 +103,9 @@ const formatParams = (params: Object, route: Route, opts: Options) => {
 
   const def = route.defaultParams || opts.defaultParams
   return def
-    ? (typeof def === 'function' ? def(params, route, opts) : { ...def, ...params })
+    ? typeof def === 'function'
+      ? def(params, route, opts)
+      : { ...def, ...params }
     : params
 }
 
@@ -109,23 +114,29 @@ const defaultFromPath = (
   key: string,
   val: string,
   route: Route,
-  opts: Options
+  opts: Options,
 ): string | number => {
-  const convertNum = route.convertNumbers ||
+  const convertNum =
+    route.convertNumbers ||
     (opts.convertNumbers && route.convertNumbers !== false)
 
   if (convertNum && isNumber(decodedVal)) {
     return parseFloat(decodedVal)
   }
 
-  const capitalize = route.capitalizedWords ||
+  const capitalize =
+    route.capitalizedWords ||
     (opts.capitalizedWords && route.capitalizedWords !== false)
 
   if (capitalize) {
-    return decodedVal.replace(/-/g, ' ').replace(/\b\w/g, ltr => ltr.toUpperCase()) // 'my-category' -> 'My Category'
+    return decodedVal
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (ltr) => ltr.toUpperCase()) // 'my-category' -> 'My Category'
   }
 
-  return opts.fromPath ? opts.fromPath(decodedVal, key, val, route, opts) : decodedVal
+  return opts.fromPath
+    ? opts.fromPath(decodedVal, key, val, route, opts)
+    : decodedVal
 }
 
 const formatQuery = (query: Object, route: Route, opts: Options) => {
@@ -142,7 +153,9 @@ const formatQuery = (query: Object, route: Route, opts: Options) => {
 
   const def = route.defaultQuery || opts.defaultQuery
   return def
-    ? typeof def === 'function' ? def(query, route, opts) : { ...def, ...query }
+    ? typeof def === 'function'
+      ? def(query, route, opts)
+      : { ...def, ...query }
     : query
 }
 
@@ -155,14 +168,18 @@ const formatHash = (hash: string, route: Route, opts: Options) => {
 
   const def = route.defaultHash || opts.defaultHash
   return def
-    ? typeof def === 'function' ? def(hash, route, opts) : (hash || def)
+    ? typeof def === 'function'
+      ? def(hash, route, opts)
+      : hash || def
     : hash
 }
 
 const formatState = (state: Object, route: Route, opts: Options) => {
   const def = route.defaultState || opts.defaultState
   return def
-    ? typeof def === 'function' ? def(state, route, opts) : { ...def, ...state }
+    ? typeof def === 'function'
+      ? def(state, route, opts)
+      : { ...def, ...state }
     : state
 } // state has no string counter part in the address bar, so there is no `fromState`
 
@@ -171,13 +188,14 @@ const isNumber = (str: string) => !isNaN(str) && !isNaN(parseFloat(str))
 const parseSearch = (search, routes, opts) =>
   (routes.NOT_FOUND.parseSearch || opts.parseSearch)(search)
 
-
 // BASENAME HANDLING:
 
 const resolveBasename = (url, opts, state, curr) => {
   // TODO: Whats going on with this huge option type?
   // $FlowFixMe
-  const bn = state._emptyBn ? '' : findBasename(url, opts.basenames) || curr.basename
+  const bn = state._emptyBn
+    ? ''
+    : findBasename(url, opts.basenames) || curr.basename
 
   const slashBasename = cleanBasename(bn)
   const basename = slashBasename.replace(/^\//, '') // eg: '/base' -> 'base'
@@ -191,7 +209,7 @@ export const stripBasename = (path: string, bn: string) =>
   path.indexOf(bn) === 0 ? path.substr(bn.length) : path
 
 export const findBasename = (path: string, bns: Array<string> = []) =>
-  bns.find(bn => path.indexOf(bn) === 0)
+  bns.find((bn) => path.indexOf(bn) === 0)
 
 // MISC
 
@@ -199,5 +217,7 @@ const createKey = () => {
   if (process.env.NODE_ENV === 'test') {
     return '123456789'.toString(36).substr(2, 6)
   }
-  return Math.random().toString(36).substr(2, 6)
+  return Math.random()
+    .toString(36)
+    .substr(2, 6)
 }

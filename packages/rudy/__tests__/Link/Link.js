@@ -4,7 +4,7 @@ import createLink, { event } from '../../__test-helpers__/createLink'
 test('ON_CLICK: dispatches location-aware action', async () => {
   const { tree, store } = await createLink({
     to: '/first',
-    children: 'CLICK ME'
+    children: 'CLICK ME',
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot() /*? store.getState() */
@@ -18,7 +18,10 @@ test('ON_CLICK: dispatches location-aware action', async () => {
 })
 
 it('ON_CLICK: does NOT dispatch if shouldDispatch === false', async () => {
-  const { tree, store } = await createLink({ to: '/first', shouldDispatch: false })
+  const { tree, store } = await createLink({
+    to: '/first',
+    shouldDispatch: false,
+  })
 
   expect(tree).toMatchSnapshot()
 
@@ -32,7 +35,10 @@ it('ON_CLICK: does NOT dispatch if shouldDispatch === false', async () => {
 })
 
 it('ON_CLICK: does NOT dispatch if onClick returns false', async () => {
-  const { tree, store } = await createLink({ to: '/first', onClick: () => false })
+  const { tree, store } = await createLink({
+    to: '/first',
+    onClick: () => false,
+  })
 
   expect(tree).toMatchSnapshot()
 
@@ -46,7 +52,10 @@ it('ON_CLICK: does NOT dispatch if onClick returns false', async () => {
 })
 
 it('ON_CLICK: DOES dispatch if onClick returns true', async () => {
-  const { tree, store } = await createLink({ to: '/first', onClick: () => true })
+  const { tree, store } = await createLink({
+    to: '/first',
+    onClick: () => true,
+  })
 
   expect(tree).toMatchSnapshot()
 
@@ -61,7 +70,7 @@ it('ON_CLICK: DOES dispatch if onClick returns true', async () => {
 it('ON_CLICK: DOES dispatch if onClick returns undefined', async () => {
   const { tree, store } = await createLink({
     to: '/first',
-    onClick: () => undefined
+    onClick: () => undefined,
   })
 
   expect(tree).toMatchSnapshot()
@@ -77,7 +86,7 @@ it('ON_CLICK: DOES dispatch if onClick returns undefined', async () => {
 it('ON_MOUSE_DOWN: dispatches action onMouseDown if down === true', async () => {
   const { tree, store } = await createLink({
     to: '/first',
-    down: true
+    down: true,
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot()
@@ -99,7 +108,7 @@ it('ON_CLICK: dispatches redirect if redirect === true', async () => {
   const { tree, store } = await createLink({
     to: '/first',
     children: 'CLICK ME',
-    redirect: true
+    redirect: true,
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot() /*? store.getState() */
@@ -115,7 +124,7 @@ it('ON_CLICK: dispatches redirect if redirect === true', async () => {
 it('ON_TOUCH_START: dispatches action onTouchStart if down === true', async () => {
   const { tree, store } = await createLink({
     to: '/first',
-    down: true
+    down: true,
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot()
@@ -129,7 +138,9 @@ it('ON_TOUCH_START: dispatches action onTouchStart if down === true', async () =
 })
 
 it('converts href as array of strings to path', async () => {
-  const { tree, store } = await createLink({ to: ['second', 'bar'] }) /*? $.tree */
+  const { tree, store } = await createLink({
+    to: ['second', 'bar'],
+  }) /*? $.tree */
 
   expect(tree).toMatchSnapshot() /*? store.getState() */
 
@@ -183,7 +194,7 @@ it('converts invalid href to "#" for path', async () => {
 it('supports custom HTML tag name', async () => {
   const { tree, store } = await createLink({
     to: 'somewhere',
-    component: 'div'
+    component: 'div',
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot()
@@ -192,7 +203,7 @@ it('supports custom HTML tag name', async () => {
 it('supports custom HTML tag name which is still a link', async () => {
   const { tree, store } = await createLink({
     to: 'somewhere',
-    component: 'a'
+    component: 'a',
   }) /*? $.tree */
 
   expect(tree).toMatchSnapshot()
@@ -203,10 +214,10 @@ test('with basename options generates url with basename', async () => {
   const { tree, store } = await createLink(
     {
       to: '/first',
-      children: 'CLICK ME'
+      children: 'CLICK ME',
     },
     '/base-foo/third', // basename will be automatically disovered based on initial entry's path and the basenames array
-    options
+    options,
   )
 
   expect(tree.props.href).toEqual('/base-foo/first')

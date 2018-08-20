@@ -18,7 +18,7 @@ export default (n, url, curr, tmp) => {
 
 const isNAdjacentToSameUrl = (url, curr, n) => {
   const { entries, index } = curr
-  const loc = entries[index + (n * 2)]
+  const loc = entries[index + n * 2]
   return loc && loc.location.url === url
 }
 

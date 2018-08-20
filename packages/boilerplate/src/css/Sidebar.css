@@ -11,7 +11,8 @@ h2 {
   text-shadow: 1px 1px 1px #2d2d2d;
   -webkit-font-smoothing: antialiased;
 }
-.sidebar a, .sidebar span {
+.sidebar a,
+.sidebar span {
   display: block;
   color: white;
   background: rgb(35, 40, 42);
@@ -28,15 +29,23 @@ h2 {
 }
 
 .sidebar .active {
-  background-image: linear-gradient(270deg, #fed29d, #A58B66, rgb(255, 44, 145), rgb(200, 43, 48));
+  background-image: linear-gradient(
+    270deg,
+    #fed29d,
+    #a58b66,
+    rgb(255, 44, 145),
+    rgb(200, 43, 48)
+  );
   background-size: 720%;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   transition: 0s ease all;
 }
-.sidebar a:hover, .sidebar span:hover {
+.sidebar a:hover,
+.sidebar span:hover {
   background: rgb(80, 43, 48);
 }
-.sidebar .active a:hover, .sidebar .span span:hover {
+.sidebar .active a:hover,
+.sidebar .span span:hover {
   background: rgb(200, 43, 88);
 }
 

@@ -11,28 +11,28 @@ const Sidebar = ({ path, dispatch }) => (
   <div className={styles.sidebar}>
     <h2>SEO-FRIENDLY LINKS</h2>
 
-    <NavLink to='/' activeClassName={styles.active}>
+    <NavLink to="/" activeClassName={styles.active}>
       Home
     </NavLink>
 
     <Link
-      role='link'
-      tabIndex='0'
+      role="link"
+      tabIndex="0"
       to={{ type: 'LIST', params: { category: 'redux' } }}
     >
       Redux
     </Link>
     <span
-      role='link'
-      tabIndex='0'
+      role="link"
+      tabIndex="0"
       onClick={() => dispatch({ type: 'LIST', params: { category: 'react' } })}
     >
       React
     </span>
 
     <span
-      role='link'
-      tabIndex='0'
+      role="link"
+      tabIndex="0"
       onClick={() => dispatch({ type: 'NOT_FOUND' })}
     >
       NOT_FOUND
@@ -43,8 +43,8 @@ const Sidebar = ({ path, dispatch }) => (
     <h2>EVENT HANDLERS</h2>
 
     <span
-      role='link'
-      tabIndex='0'
+      role="link"
+      tabIndex="0"
       className={isActive(path, '/')}
       onClick={() => dispatch({ type: 'HOME' })}
     >
@@ -52,8 +52,8 @@ const Sidebar = ({ path, dispatch }) => (
     </span>
 
     <span
-      role='link'
-      tabIndex='0'
+      role="link"
+      tabIndex="0"
       className={isActive(path, '/list/redux')}
       onClick={() => dispatch({ type: 'LIST', params: { category: 'redux' } })}
     >
@@ -61,8 +61,8 @@ const Sidebar = ({ path, dispatch }) => (
     </span>
 
     <span
-      role='link'
-      tabIndex='0'
+      role="link"
+      tabIndex="0"
       className={isActive(path, '/list/react')}
       onClick={() => dispatch({ type: 'LIST', params: { category: 'react' } })}
     >
@@ -71,10 +71,11 @@ const Sidebar = ({ path, dispatch }) => (
   </div>
 )
 
-const isActive = (actualPath, expectedPath) => actualPath === expectedPath ? styles.active : ''
+const isActive = (actualPath, expectedPath) =>
+  actualPath === expectedPath ? styles.active : ''
 
-const mapStateToProps = state => ({
-  path: state.location.pathname
+const mapStateToProps = (state) => ({
+  path: state.location.pathname,
 })
 
 export default connect(mapStateToProps)(Sidebar)

@@ -4,16 +4,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = (env) => ({
   module: {
     rules: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
-    ]
+      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ },
+    ],
   },
   output: {
     library: 'ReduxFirstRouter',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin()
-  ],
+  plugins: [new webpack.optimize.OccurrenceOrderPlugin()],
   optimization: {
     minimize: JSON.parse(env.minimize),
     minimizer: [
@@ -24,18 +22,18 @@ module.exports = (env) => ({
               pure_getters: true,
               unsafe: true,
               unsafe_comps: true,
-              warnings: false
+              warnings: false,
             },
             sourceMap: sourceMap && {
-              content: sourceMap
+              content: sourceMap,
             },
-            ie8: true
+            ie8: true,
           }
 
           // eslint-disable-next-line global-require
           return require('terser').minify(file, terserOptions)
-        }
-      })
-    ]
-  }
+        },
+      }),
+    ],
+  },
 })

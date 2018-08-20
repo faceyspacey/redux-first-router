@@ -15,7 +15,7 @@ const haschanged = async (currentUrl, tries = 1) => {
     throw new Error('awaitUrlChange reached the maximum amount of tries (10)')
   }
 
-  await new Promise(res => setTimeout(res, 5))
+  await new Promise((res) => setTimeout(res, 5))
   if (currentUrl !== window.location.href) return
   return haschanged(currentUrl, ++tries)
 }

@@ -1,9 +1,4 @@
-import {
-  createStore,
-  applyMiddleware,
-  compose,
-  combineReducers
-} from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
 import { createRouter } from '@respond-framework/rudy'
 import * as actionCreators from '@respond-framework/rudy/es/actions'
@@ -13,11 +8,9 @@ import * as reducers from './reducers'
 
 export default (preloadedState, initialEntries) => {
   const options = { initialEntries, basenames: ['/foo', '/bar'] }
-  const {
-    reducer, middleware, firstRoute, history, ctx
-  } = createRouter(
+  const { reducer, middleware, firstRoute, history, ctx } = createRouter(
     routes,
-    options
+    options,
   )
 
   const rootReducer = combineReducers({ ...reducers, location: reducer })
@@ -43,6 +36,7 @@ export default (preloadedState, initialEntries) => {
   return { store, firstRoute }
 }
 
-const composeEnhancers = (...args) => typeof window !== 'undefined'
-  ? composeWithDevTools({ actionCreators })(...args)
-  : compose(...args)
+const composeEnhancers = (...args) =>
+  typeof window !== 'undefined'
+    ? composeWithDevTools({ actionCreators })(...args)
+    : compose(...args)

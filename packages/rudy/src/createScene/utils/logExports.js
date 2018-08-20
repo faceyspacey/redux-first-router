@@ -36,4 +36,3 @@ export default (types, actions, routes, options) => {
   if (process.env.NODE_ENV !== 'test') console.log(exports)
   return exports
 }
-

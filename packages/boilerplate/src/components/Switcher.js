@@ -13,7 +13,7 @@ const UniversalComponent = universal(({ page }) => import(`./${page}`), {
     </div>
   ),
 
-  error: () => <div className={styles.notFound}>PAGE NOT FOUND - 404</div>
+  error: () => <div className={styles.notFound}>PAGE NOT FOUND - 404</div>,
 })
 
 const Switcher = ({ page }) => (
@@ -22,8 +22,8 @@ const Switcher = ({ page }) => (
   </div>
 )
 
-const mapStateToProps = state => ({
-  page: state.page
+const mapStateToProps = (state) => ({
+  page: state.page,
 })
 
 export default connect(mapStateToProps)(Switcher)

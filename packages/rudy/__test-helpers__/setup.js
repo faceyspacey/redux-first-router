@@ -5,18 +5,18 @@ import { createRouter } from '../src'
 const setup = (
   path = '/',
   options = { title: 'title', location: 'location' },
-  routesMap
+  routesMap,
 ) => {
   routesMap = routesMap || {
     FIRST: {
       path: '/first',
       // hash: () => false
       query: {
-        dog: /(ff)?/
-      }
+        dog: /(ff)?/,
+      },
     },
     SECOND: '/second/:param',
-    THIRD: '/third'
+    THIRD: '/third',
   }
 
   options.initialEntries = path
@@ -38,8 +38,8 @@ export const setupAll = async (
     preLoadedState,
     routesMap,
     dispatchFirstRoute = true,
-    additionalMiddleware = store => next => action => next(action)
-  } = {}
+    additionalMiddleware = (store) => (next) => (action) => next(action),
+  } = {},
 ) => {
   const tools = setup(path, options, routesMap)
   const { middleware, reducer, firstRoute } = tools
@@ -49,7 +49,7 @@ export const setupAll = async (
     rootReducer ||
     ((state = {}, action = {}) => ({
       location: reducer(state.location, action),
-      title: action.type
+      title: action.type,
     }))
 
   const store = createStore(rootReducer, preLoadedState, enhancer)
@@ -57,6 +57,6 @@ export const setupAll = async (
 
   return {
     ...tools,
-    store
+    store,
   }
 }

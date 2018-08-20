@@ -1,11 +1,10 @@
 import { createNavLink, event } from '../../__test-helpers__/createLink'
 
-
 test('EXACT (true): DONT show active class', async () => {
   const { tree } = await createNavLink('/second/dog', {
     to: '/second',
     // partial: false, // this is the default
-    activeClassName: 'active'
+    activeClassName: 'active',
   })
   console.log(tree)
   expect(tree).toMatchSnapshot()
@@ -15,7 +14,7 @@ test('EXACT (false): SHOW active class', async () => {
   const { tree } = await createNavLink('/second/dog', {
     to: '/second',
     partial: true,
-    activeClassName: 'active'
+    activeClassName: 'active',
   })
   console.log(tree)
   expect(tree).toMatchSnapshot()
@@ -25,7 +24,7 @@ test('STRICT: DONT show active class', async () => {
   const { tree } = await createNavLink('/first', {
     to: '/first/',
     strict: true,
-    activeClassName: 'active'
+    activeClassName: 'active',
   })
 
   expect(tree).toMatchSnapshot()
@@ -34,7 +33,7 @@ test('STRICT: DONT show active class', async () => {
 test('show activeStyle', async () => {
   const { tree } = await createNavLink('/first', {
     to: '/first',
-    activeStyle: { color: 'red' }
+    activeStyle: { color: 'red' },
   })
 
   expect(tree).toMatchSnapshot()
@@ -46,7 +45,7 @@ test('combine with existing styles and class', async () => {
     className: 'foo',
     style: { fontSize: 32 },
     activeClassName: 'active',
-    activeStyle: { color: 'red' }
+    activeStyle: { color: 'red' },
   })
 
   expect(tree).toMatchSnapshot()
@@ -55,7 +54,7 @@ test('combine with existing styles and class', async () => {
 test('reacts to state changes (onClick)', async () => {
   const { tree, store, component } = await createNavLink('/first', {
     to: '/second/bar',
-    activeClassName: 'active'
+    activeClassName: 'active',
   })
 
   expect(tree.props.className).toEqual('')
@@ -78,7 +77,7 @@ test('isActive returns true', async () => {
       expect(match).toMatchSnapshot()
       expect(location).toMatchSnapshot()
       return match
-    }
+    },
   })
 
   expect(tree).toMatchSnapshot()
@@ -92,7 +91,7 @@ test('isActive return false', async () => {
       expect(match).toMatchSnapshot()
       expect(location).toMatchSnapshot()
       return location.type === 'SECOND'
-    }
+    },
   })
 
   console.log('tree', tree)
@@ -106,7 +105,7 @@ it('supports custom HTML tag name', async () => {
   const { tree, store } = await createNavLink('/first', {
     to: '/second',
     activeClassName: 'active',
-    component: 'div'
+    component: 'div',
   })
 
   expect(tree).toMatchSnapshot()
@@ -116,7 +115,7 @@ it('supports custom HTML tag name in active mode', async () => {
   const { tree, store } = await createNavLink('/first', {
     to: '/first',
     activeClassName: 'active-foo',
-    component: 'div'
+    component: 'div',
   })
 
   expect(tree).toMatchSnapshot()
@@ -126,7 +125,7 @@ it('supports custom HTML tag name which is still a link', async () => {
   const { tree, store } = await createNavLink('/first', {
     to: 'somewhere',
     component: 'a',
-    activeClassName: 'active-foo'
+    activeClassName: 'active-foo',
   })
   console.log(tree)
   expect(tree).toMatchSnapshot()
@@ -135,17 +134,16 @@ it('supports custom HTML tag name which is still a link', async () => {
 test('query params are ommitted', async () => {
   const { tree, store } = await createNavLink('/first', {
     to: '/first?foo=123',
-    activeClassName: 'active'
+    activeClassName: 'active',
   })
   console.log('STATE', store.getState().location)
   expect(tree).toMatchSnapshot()
 })
 
-
 test.only('paths with spaces', async () => {
   const { tree } = await createNavLink('/second', {
     to: '/second',
-    activeClassName: 'active'
+    activeClassName: 'active',
   })
 
   // console.log(tree)

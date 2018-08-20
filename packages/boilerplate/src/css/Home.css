@@ -1,6 +1,6 @@
 .home {
   background: #141414;
-  border: 1px solid rgb(30,30,30);
+  border: 1px solid rgb(30, 30, 30);
   box-sizing: border-box;
   padding: 10px;
   display: block !important;
@@ -25,7 +25,7 @@
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   margin-top: 10px;
-  text-shadow: 1px 1px 1px #2A0C0C;
+  text-shadow: 1px 1px 1px #2a0c0c;
 }
 
 .nico {

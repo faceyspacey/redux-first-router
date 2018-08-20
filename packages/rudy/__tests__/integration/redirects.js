@@ -6,8 +6,8 @@ createTest('redirect before enter', {
     beforeEnter: async ({ dispatch }) => {
       await dispatch({ type: 'REDIRECTED' })
     },
-    thunk: function() {}
-  }
+    thunk: function() {},
+  },
 })
 
 createTest('redirect after enter', {
@@ -16,8 +16,8 @@ createTest('redirect after enter', {
     thunk: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED' })
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
 
 createTest('redirect before enter (on firstRoute)', {
@@ -26,8 +26,8 @@ createTest('redirect before enter (on firstRoute)', {
     beforeEnter: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED' })
     },
-    thunk: function() {}
-  }
+    thunk: function() {},
+  },
 })
 
 createTest('redirect after enter (on firstRoute)', {
@@ -36,6 +36,6 @@ createTest('redirect after enter (on firstRoute)', {
     thunk: ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED' })
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })

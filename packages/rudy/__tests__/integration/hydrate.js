@@ -11,7 +11,6 @@ createTest('beforeEnter + thunk callbacks NOT called if isHydrate', {
     onEnter: function() {},
     onLeave: function() {},
     thunk: function() {},
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
-

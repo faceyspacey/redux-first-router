@@ -4,11 +4,14 @@ export default (...names) => (api) => {
   names[0] = names[0] || 'thunk'
   names[1] = names[1] || 'onComplete'
 
-  const middlewares = names.map(name => {
+  const middlewares = names.map((name) => {
     return call(name, { skipOpts: true })
   })
 
-  const pipeline = api.options.compose(middlewares, api)
+  const pipeline = api.options.compose(
+    middlewares,
+    api,
+  )
 
   // Registering is currently only used when core features (like the
   // `addRoutes` action creator) depend on the middleware being available.
@@ -25,7 +28,7 @@ export default (...names) => (api) => {
         req.action = req.commitDispatch(req.action)
       }
 
-      return pipeline(req).then(res => res || req.action)
+      return pipeline(req).then((res) => res || req.action)
     }
 
     return next()
@@ -33,5 +36,4 @@ export default (...names) => (api) => {
 }
 
 const hasCallback = (route, names) =>
-  names.find(name => typeof route[name] === 'function')
-
+  names.find((name) => typeof route[name] === 'function')

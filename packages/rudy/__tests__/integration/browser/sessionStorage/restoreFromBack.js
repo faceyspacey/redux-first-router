@@ -5,7 +5,7 @@ beforeAll(async () => {
   const routesMap = {
     FIRST: '/',
     SECOND: '/second',
-    THIRD: '/third'
+    THIRD: '/third',
   }
 
   const { store, firstRoute, history } = setupStore(routesMap)
@@ -22,22 +22,28 @@ beforeAll(async () => {
   history.unlisten()
 })
 
-createTest('restore history when index === 0', {
-  FIRST: '/',
-  SECOND: '/second',
-  THIRD: '/third'
-}, { testBrowser: true }, [], async ({ snapPop, getLocation }) => {
-  expect(getLocation()).toMatchSnapshot()
-  expect(get()).toMatchSnapshot()
+createTest(
+  'restore history when index === 0',
+  {
+    FIRST: '/',
+    SECOND: '/second',
+    THIRD: '/third',
+  },
+  { testBrowser: true },
+  [],
+  async ({ snapPop, getLocation }) => {
+    expect(getLocation()).toMatchSnapshot()
+    expect(get()).toMatchSnapshot()
 
-  await snapPop('forward')
-  await snapPop('forward')
+    await snapPop('forward')
+    await snapPop('forward')
 
-  expect(getLocation().type).toEqual('THIRD')
-  expect(window.location.pathname).toEqual('/third')
+    expect(getLocation().type).toEqual('THIRD')
+    expect(window.location.pathname).toEqual('/third')
 
-  expect(getLocation().index).toEqual(2)
-  expect(getLocation().length).toEqual(3)
+    expect(getLocation().index).toEqual(2)
+    expect(getLocation().length).toEqual(3)
 
-  expect(get()).toMatchSnapshot()
-})
+    expect(get()).toMatchSnapshot()
+  },
+)

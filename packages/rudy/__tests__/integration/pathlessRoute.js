@@ -5,8 +5,8 @@ createTest('pathless route thunk called', {
     thunk: async ({ dispatch }) => {
       return dispatch({ type: 'REDIRECTED' })
     },
-    onComplete: function() {}
-  }
+    onComplete: function() {},
+  },
 })
 
 createTest('pathless route thunk errors trigger onError', {
@@ -15,6 +15,6 @@ createTest('pathless route thunk errors trigger onError', {
       throw new Error('fail')
     },
     onError: function() {},
-    onComplete: function() { }
-  }
+    onComplete: function() {},
+  },
 })

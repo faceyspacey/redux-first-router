@@ -13,8 +13,8 @@ createTest('callbacks sequentially run as promises', {
     onComplete: async () => {
       await fakeAsyncWork()
       return 'payload'
-    }
-  }
+    },
+  },
 })
 
 createTest('callbacks sequentially run as promises /w redirect', {
@@ -30,6 +30,6 @@ createTest('callbacks sequentially run as promises /w redirect', {
     },
     onComplete: async () => {
       await fakeAsyncWork()
-    }
-  }
+    },
+  },
 })
