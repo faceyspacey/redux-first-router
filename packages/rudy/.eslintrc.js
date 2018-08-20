@@ -8,6 +8,9 @@ function res() {
 
 module.exports = {
   extends: [res('../../.eslintrc.js')],
+  rules: {
+    'no-param-reassign': 0,
+  },
 }
 
 /*
