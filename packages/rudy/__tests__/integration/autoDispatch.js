@@ -6,7 +6,7 @@ createTest('automatically dispatch action object returned from thunk', {
     thunk: () => ({
       type: 'FOO',
     }),
-    onComplete: function() {},
+    onComplete() {},
   },
 })
 
@@ -14,6 +14,6 @@ createTest('automatically infer non action object to be payload', {
   SECOND: {
     path: '/second',
     thunk: () => ({ foo: 'bar' }),
-    onComplete: function() {},
+    onComplete() {},
   },
 })

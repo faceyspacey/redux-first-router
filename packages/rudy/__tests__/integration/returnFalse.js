@@ -4,11 +4,11 @@ import { confirm } from '../../src/actions'
 createTest('beforeLeave return undefined', {
   FIRST: {
     path: '/first',
-    beforeLeave: function() {},
+    beforeLeave() {},
   },
   SECOND: {
     path: '/second',
-    thunk: function() {},
+    thunk() {},
   },
 })
 
@@ -19,7 +19,7 @@ createTest('beforeLeave return false', {
   },
   SECOND: {
     path: '/second',
-    thunk: function() {},
+    thunk() {},
   },
 })
 
@@ -111,7 +111,7 @@ createTest('beforeEnter return false', {
   SECOND: {
     path: '/second',
     beforeEnter: () => false,
-    thunk: function() {},
+    thunk() {},
   },
 })
 
@@ -119,6 +119,6 @@ createTest('thunk return false', {
   SECOND: {
     path: '/second',
     thunk: () => false,
-    onComplete: function() {},
+    onComplete() {},
   },
 })

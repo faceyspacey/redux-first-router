@@ -6,9 +6,7 @@ jest.mock('../../src/utils/isServer', () => () => false)
 createTest('callbacks called on load if SPA', {
   FIRST: {
     path: '/first',
-    beforeEnter: function() {},
-    thunk: ({ dispatch }) => {
-      return dispatch({ type: 'REDIRECTED' })
-    },
+    beforeEnter() {},
+    thunk: ({ dispatch }) => dispatch({ type: 'REDIRECTED' }),
   },
 })

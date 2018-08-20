@@ -57,7 +57,7 @@ export default async (...allArgs) => {
 
       if (hasCallbacks) {
         callbacks.forEach((cb, index) => {
-          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + ++index
+          const name = callbacks.length === 1 ? 'snipes' : `snipes ${++index}`
           createSnipes(name, routesMap, initialPath, options, cb)
         })
       }
@@ -67,19 +67,19 @@ export default async (...allArgs) => {
 
     if (hasCallbacks && isSnipesOnly) {
       callbacks.forEach((cb, index) => {
-        const name = callbacks.length === 1 ? testName : 'snipes ' + ++index
+        const name = callbacks.length === 1 ? testName : `snipes ${++index}`
         createSnipes(name, routesMap, initialPath, options, cb)
       })
     } else if (hasCallbacks) {
       describe(testName, () => {
         const name = actions[0]
           ? JSON.stringify(actions[0])
-          : 'firstRoute - ' + initialPath
+          : `firstRoute - ${initialPath}`
 
         createTest(name, routesMap, initialPath, actions[0], options, num)
 
         callbacks.forEach((cb, index) => {
-          const name = callbacks.length === 1 ? 'snipes' : 'snipes ' + ++index
+          const name = callbacks.length === 1 ? 'snipes' : `snipes ${++index}`
           createSnipes(name, routesMap, initialPath, options, cb)
         })
       })
@@ -109,7 +109,7 @@ const createTest = (testName, routesMap, initialPath, item, opts, num) => {
     const res = await store.dispatch(firstAction)
 
     if (routesMap.FIRST || initialPath !== '/first') {
-      const prefix = 'firstRoute - ' + initialPath + ' - ' + num
+      const prefix = `firstRoute - ${initialPath} - ${num}`
       snapChange(prefix, res, store, history, opts, initialState)
     }
 
@@ -225,11 +225,10 @@ export const setupStore = (routesMap, initialPath, opts) => {
   const middlewareFunc = options.middlewareFunc
   delete options.middlewareFunc
 
-  const title = (state, action = {}) => {
-    return action.payload !== undefined
-      ? action.type + ' - ' + JSON.stringify(action.payload)
+  const title = (state, action = {}) =>
+    action.payload !== undefined
+      ? `${action.type} - ${JSON.stringify(action.payload)}`
       : action.type
-  }
 
   const { middleware, reducer, firstRoute, history } = createRouter(
     routes,
@@ -301,9 +300,7 @@ const createRoutes = (routesMap) => {
   if (!routes.REDIRECTED) {
     routes.REDIRECTED = {
       path: '/redirected',
-      beforeEnter: () => {
-        return new Promise((res) => setTimeout(res, 1))
-      },
+      beforeEnter: () => new Promise((res) => setTimeout(res, 1)),
       onComplete: jest.fn(() => 'redirect_complete'),
     }
   }
@@ -326,12 +323,12 @@ const createOptions = (opts = {}) => {
 const snapRoutes = (prefix, routes) => {
   for (const type in routes) {
     const route = routes[type]
-    snapCallbacks(prefix + ' - routes - ' + type, route)
+    snapCallbacks(`${prefix} - routes - ${type}`, route)
   }
 }
 
 const snapOptions = (prefix, options) => {
-  snapCallbacks(prefix + ' - options', options)
+  snapCallbacks(`${prefix} - options`, options)
 }
 
 const snapCallbacks = (prefix, obj) => {
@@ -350,7 +347,7 @@ const snapCallbacks = (prefix, obj) => {
 const snapOtherFunctions = (prefix, obj) => {
   for (const k in obj) {
     if (!callbacks.includes(k) && typeof obj[k] === 'function' && obj[k].mock) {
-      expect(obj[k].mock.calls.length).toMatchSnapshot(prefix + ' - ' + k)
+      expect(obj[k].mock.calls.length).toMatchSnapshot(`${prefix} - ${k}`)
     }
   }
 }
@@ -372,35 +369,35 @@ const snapChange = (prefix, res, store, history, opts = {}, initialState) => {
 // name of the expectation that failed in the trace displayed in the Wallaby web panel
 
 const expectInitialState = (prefix, initialState) => {
-  expect(initialState).toMatchSnapshot(prefix + ' - initial_state')
+  expect(initialState).toMatchSnapshot(`${prefix} - initial_state`)
 }
 
 const expectState = (prefix, store) => {
-  expect(store.getState()).toMatchSnapshot(prefix + ' - state')
+  expect(store.getState()).toMatchSnapshot(`${prefix} - state`)
 }
 
 const expectResponse = (prefix, res) => {
-  expect(res).toMatchSnapshot(prefix + ' - response')
+  expect(res).toMatchSnapshot(`${prefix} - response`)
 }
 
 const expectTitle = (prefix) => {
-  expect(document.title).toMatchSnapshot(prefix + ' - title')
+  expect(document.title).toMatchSnapshot(`${prefix} - title`)
 }
 
 const expectSessionStorage = (prefix) => {
-  expect(get()).toMatchSnapshot(prefix + ' - sessionStorage')
+  expect(get()).toMatchSnapshot(`${prefix} - sessionStorage`)
 }
 
 const expectWindowLocation = (prefix) => {
   expect(locationToUrl(window.location)).toMatchSnapshot(
-    prefix + ' - windowLocation',
+    `${prefix} - windowLocation`,
   )
 }
 
 const expectBeforeLeave = (prefix, obj) => {
   if (typeof obj.beforeLeave === 'function' && obj.beforeLeave.mock) {
     expect(obj.beforeLeave.mock.calls.length).toMatchSnapshot(
-      prefix + ' - beforeLeave',
+      `${prefix} - beforeLeave`,
     )
   }
 }
@@ -408,51 +405,49 @@ const expectBeforeLeave = (prefix, obj) => {
 const expectBeforeEnter = (prefix, obj) => {
   if (typeof obj.beforeEnter === 'function' && obj.beforeEnter.mock) {
     expect(obj.beforeEnter.mock.calls.length).toMatchSnapshot(
-      prefix + ' - beforeEnter',
+      `${prefix} - beforeEnter`,
     )
   }
 }
 
 const expectOnLeave = (prefix, obj) => {
   if (typeof obj.onLeave === 'function' && obj.onLeave.mock) {
-    expect(obj.onLeave.mock.calls.length).toMatchSnapshot(prefix + ' - onLeave')
+    expect(obj.onLeave.mock.calls.length).toMatchSnapshot(`${prefix} - onLeave`)
   }
 }
 
 const expectOnEnter = (prefix, obj) => {
   if (typeof obj.onEnter === 'function' && obj.onEnter.mock) {
-    expect(obj.onEnter.mock.calls.length).toMatchSnapshot(prefix + ' - onEnter')
+    expect(obj.onEnter.mock.calls.length).toMatchSnapshot(`${prefix} - onEnter`)
   }
 }
 
 const expectThunk = (prefix, obj) => {
   if (typeof obj.thunk === 'function' && obj.thunk.mock) {
-    expect(obj.thunk.mock.calls.length).toMatchSnapshot(prefix + ' - thunk')
+    expect(obj.thunk.mock.calls.length).toMatchSnapshot(`${prefix} - thunk`)
   }
 }
 
 const expectOnComplete = (prefix, obj) => {
   if (typeof obj.onComplete === 'function' && obj.onComplete.mock) {
     expect(obj.onComplete.mock.calls.length).toMatchSnapshot(
-      prefix + ' - onComplete',
+      `${prefix} - onComplete`,
     )
   }
 }
 
 const expectOnError = (prefix, obj) => {
   if (typeof obj.onError === 'function' && obj.onError.mock) {
-    expect(obj.onError.mock.calls.length).toMatchSnapshot(prefix + ' - onError')
+    expect(obj.onError.mock.calls.length).toMatchSnapshot(`${prefix} - onError`)
   }
 }
 
 // for testing pops in a "real" browser (as simulated by Jest)
 
-const createPop = (history) => {
-  return async (direction = 'back') => {
-    history.currentPop = null
-    window.history[direction]()
-    return awaitPop(history)
-  }
+const createPop = (history) => async (direction = 'back') => {
+  history.currentPop = null
+  window.history[direction]()
+  return awaitPop(history)
 }
 
 const awaitPop = async (history, tries = 1) => {

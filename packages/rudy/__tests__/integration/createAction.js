@@ -5,10 +5,8 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: ({ dispatch }) => {
-        return dispatch({ payload: 'foo' })
-      },
-      onComplete: function() {},
+      thunk: ({ dispatch }) => dispatch({ payload: 'foo' }),
+      onComplete() {},
     },
   },
 )
@@ -16,59 +14,47 @@ createTest(
 createTest('when isAction(action) === false set to payload', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch({ foo: 'bar' })
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch({ foo: 'bar' }),
+    onComplete() {},
   },
 })
 
 createTest('non object argument can be payload', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch('foo')
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch('foo'),
+    onComplete() {},
   },
 })
 
 createTest('null payloads allowed', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch(null)
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch(null),
+    onComplete() {},
   },
 })
 
 createTest('arg as type', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch('FOO_BAR')
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch('FOO_BAR'),
+    onComplete() {},
   },
 })
 
 createTest('arg as @@library type', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch('@@library/FOO_BAR')
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch('@@library/FOO_BAR'),
+    onComplete() {},
   },
 })
 
 createTest('arg as type from route', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch('FIRST')
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch('FIRST'),
+    onComplete() {},
   },
 })

@@ -2,7 +2,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux'
 import { createRouter, createScene } from '../src'
 import { NOT_FOUND } from '../src/types'
 
-import fakeAsyncWork from '../__test-helpers__/fakeAsyncWork'
+import fakeAsyncWork from './fakeAsyncWork'
 
 export default async (routesMap, actions, options = {}) => {
   if (actions && !Array.isArray(actions)) {
@@ -42,11 +42,10 @@ export default async (routesMap, actions, options = {}) => {
     options,
   )
 
-  const title = (state, action = {}) => {
-    return action.payload
-      ? action.type + '_' + JSON.stringify(action.payload)
+  const title = (state, action = {}) =>
+    action.payload
+      ? `${action.type}_${JSON.stringify(action.payload)}`
       : action.type
-  }
   const rootReducer = combineReducers({ title, location: reducer })
   const enhancer = applyMiddleware(middleware)
   const store = createStore(rootReducer, enhancer)
@@ -154,104 +153,94 @@ export default async (routesMap, actions, options = {}) => {
   }
 }
 
-const createRoutes = () => {
-  return {
-    FIRST: '/first',
-    ROUTE_REDIRECTED_TO: {
-      path: '/redirected',
-      onComplete: jest.fn(() => 'redirect_complete'),
-    },
-    MULTIPLE_ROUTE_REDIRECTED_TO: {
-      path: '/multiple-route-redirected-to',
-      beforeEnter: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'ROUTE_REDIRECTED_TO' })
-      }),
-    },
-    BEFORE_LEAVE_RETURN_FALSE: {
-      path: '/before-leave-return-false',
-      beforeLeave: jest.fn(() => false),
-    },
-    BEFORE_LEAVE_RETURN_UNDEFINED: {
-      path: '/before-leave-return-undefined',
-      beforeLeave: jest.fn(),
-    },
-    BEFORE_ENTER_REDIRECT: {
-      path: '/before-enter-redirect',
-      beforeEnter: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'ROUTE_REDIRECTED_TO' })
-      }),
-      thunk: jest.fn(),
-    },
-    ON_ENTER_RETURN_FALSE: {
-      path: '/on-enter-return-false',
-      onEnter: jest.fn(() => false),
-      thunk: jest.fn(),
-    },
-    THUNK_DISPATCH: {
-      path: '/thunk-dispatch',
-      thunk: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'COMPLETE' })
-      }),
-      onComplete: jest.fn(),
-    },
-    THUNK_AUTO_DISPATCH: {
-      path: '/thunk-auto-dispatch',
-      thunk: jest.fn(() => 'payload'),
-      onComplete: jest.fn(),
-    },
-    THUNK_REDIRECT: {
-      path: '/thunk-redirect',
-      thunk: jest.fn(({ dispatch }) => {
-        dispatch({ type: 'ROUTE_REDIRECTED_TO' })
-      }),
-    },
-    THUNK_ON_ERROR: {
-      path: '/thunk-redirect',
-      thunk: jest.fn(() => {
-        throw new Error('thunk-failed')
-      }),
-      onError: jest.fn(),
-    },
-    AUTO_REDIRECT: {
-      path: '/auto-redirect',
-      redirect: 'ROUTE_REDIRECTED_TO',
-    },
-    WITH_PARAMS: {
-      path: '/with-params/:a/:b',
-      thunk: jest.fn(({ action }) => {
-        return action.params
-      }),
-    },
-    WITH_QUERY: {
-      path: '/with-query',
-      thunk: jest.fn(({ action }) => {
-        return action.query
-      }),
-    },
-    WITH_HASH: {
-      path: '/with-hash',
-      hash: jest.fn(() => true),
-      thunk: jest.fn(({ action }) => {
-        return action.hash
-      }),
-    },
-    WITH_STATE: {
-      path: '/with-state',
-      thunk: jest.fn(({ action }) => {
-        return action.state
-      }),
-    },
-    HYDRATE: {
-      path: '/first',
-      beforeEnter: jest.fn(),
-      thunk: jest.fn(),
-      onComplete: jest.fn(),
-    },
-    PATHLESS: {
-      thunk: jest.fn(),
-    },
-  }
-}
+const createRoutes = () => ({
+  FIRST: '/first',
+  ROUTE_REDIRECTED_TO: {
+    path: '/redirected',
+    onComplete: jest.fn(() => 'redirect_complete'),
+  },
+  MULTIPLE_ROUTE_REDIRECTED_TO: {
+    path: '/multiple-route-redirected-to',
+    beforeEnter: jest.fn(({ dispatch }) => {
+      dispatch({ type: 'ROUTE_REDIRECTED_TO' })
+    }),
+  },
+  BEFORE_LEAVE_RETURN_FALSE: {
+    path: '/before-leave-return-false',
+    beforeLeave: jest.fn(() => false),
+  },
+  BEFORE_LEAVE_RETURN_UNDEFINED: {
+    path: '/before-leave-return-undefined',
+    beforeLeave: jest.fn(),
+  },
+  BEFORE_ENTER_REDIRECT: {
+    path: '/before-enter-redirect',
+    beforeEnter: jest.fn(({ dispatch }) => {
+      dispatch({ type: 'ROUTE_REDIRECTED_TO' })
+    }),
+    thunk: jest.fn(),
+  },
+  ON_ENTER_RETURN_FALSE: {
+    path: '/on-enter-return-false',
+    onEnter: jest.fn(() => false),
+    thunk: jest.fn(),
+  },
+  THUNK_DISPATCH: {
+    path: '/thunk-dispatch',
+    thunk: jest.fn(({ dispatch }) => {
+      dispatch({ type: 'COMPLETE' })
+    }),
+    onComplete: jest.fn(),
+  },
+  THUNK_AUTO_DISPATCH: {
+    path: '/thunk-auto-dispatch',
+    thunk: jest.fn(() => 'payload'),
+    onComplete: jest.fn(),
+  },
+  THUNK_REDIRECT: {
+    path: '/thunk-redirect',
+    thunk: jest.fn(({ dispatch }) => {
+      dispatch({ type: 'ROUTE_REDIRECTED_TO' })
+    }),
+  },
+  THUNK_ON_ERROR: {
+    path: '/thunk-redirect',
+    thunk: jest.fn(() => {
+      throw new Error('thunk-failed')
+    }),
+    onError: jest.fn(),
+  },
+  AUTO_REDIRECT: {
+    path: '/auto-redirect',
+    redirect: 'ROUTE_REDIRECTED_TO',
+  },
+  WITH_PARAMS: {
+    path: '/with-params/:a/:b',
+    thunk: jest.fn(({ action }) => action.params),
+  },
+  WITH_QUERY: {
+    path: '/with-query',
+    thunk: jest.fn(({ action }) => action.query),
+  },
+  WITH_HASH: {
+    path: '/with-hash',
+    hash: jest.fn(() => true),
+    thunk: jest.fn(({ action }) => action.hash),
+  },
+  WITH_STATE: {
+    path: '/with-state',
+    thunk: jest.fn(({ action }) => action.state),
+  },
+  HYDRATE: {
+    path: '/first',
+    beforeEnter: jest.fn(),
+    thunk: jest.fn(),
+    onComplete: jest.fn(),
+  },
+  PATHLESS: {
+    thunk: jest.fn(),
+  },
+})
 
 export const log = (store) => {
   const state = store.getState().location

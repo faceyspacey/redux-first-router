@@ -34,10 +34,8 @@ createTest(
   {
     FIRST: {
       path: '/',
-      beforeEnter: ({ dispatch }) => {
-        return dispatch({ type: 'REDIRECTED' })
-      },
-      thunk: function() {},
+      beforeEnter: ({ dispatch }) => dispatch({ type: 'REDIRECTED' }),
+      thunk() {},
     },
     SECOND: '/second',
     THIRD: '/third',

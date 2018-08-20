@@ -3,41 +3,33 @@ import createTest from '../../__helpers__/createTest'
 createTest('multiple redirects are honored', {
   SECOND: {
     path: '/second',
-    beforeEnter: ({ dispatch }) => {
-      return dispatch({ type: 'REDIRECTED' })
-    },
-    thunk: function() {},
+    beforeEnter: ({ dispatch }) => dispatch({ type: 'REDIRECTED' }),
+    thunk() {},
   },
   REDIRECTED: {
     path: '/redirected',
-    beforeEnter: ({ dispatch }) => {
-      return dispatch({ type: 'REDIRECTED_AGAIN' })
-    },
-    thunk: function() {},
+    beforeEnter: ({ dispatch }) => dispatch({ type: 'REDIRECTED_AGAIN' }),
+    thunk() {},
   },
   REDIRECTED_AGAIN: {
     path: '/redirected-again',
-    thunk: function() {},
+    thunk() {},
   },
 })
 
 createTest('multiple redirects are honored after enter', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch({ type: 'REDIRECTED_AFTER' })
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch({ type: 'REDIRECTED_AFTER' }),
+    onComplete() {},
   },
   REDIRECTED_AFTER: {
     path: '/redirected-after',
-    thunk: ({ dispatch }) => {
-      return dispatch({ type: 'REDIRECTED_AGAIN_AFTER' })
-    },
-    onComplete: function() {},
+    thunk: ({ dispatch }) => dispatch({ type: 'REDIRECTED_AGAIN_AFTER' }),
+    onComplete() {},
   },
   REDIRECTED_AGAIN_AFTER: {
     path: '/redirected-again-after',
-    onComplete: function() {},
+    onComplete() {},
   },
 })

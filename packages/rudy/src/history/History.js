@@ -386,8 +386,12 @@ export default class History {
 
   // BrowseHistory (or 3rd party implementations) override these to provide sideFX
   _push() {}
+
   _replace() {}
+
   _jump() {}
+
   _set() {}
+
   _reset() {}
 }

@@ -93,7 +93,7 @@ export default (
     const getLocation = (s) => selectLocationState(s || getState() || {})
     const { shouldTransition, createRequest } = options // middlewares may mutably monkey-patch these in above call to `compose`
 
-    //TODO: Fix these annotations
+    // TODO: Fix these annotations
     Object.assign(api, { getTitle, getLocation, dispatch, getState })
 
     getState.rudy = api // make rudy available via `context` with no extra Providers, (see <Link />)

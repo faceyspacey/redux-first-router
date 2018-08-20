@@ -5,7 +5,7 @@ createTest(
   {
     SECOND: {
       path: '/second/:param',
-      beforeEnter: function() {},
+      beforeEnter() {},
     },
   },
   [],
@@ -39,7 +39,7 @@ createTest(
   {
     FIRST: {
       path: '/first',
-      beforeEnter: function() {},
+      beforeEnter() {},
     },
   },
   [{ type: 'FIRST' }],

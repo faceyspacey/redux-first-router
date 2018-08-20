@@ -16,21 +16,37 @@ export default (action: Action, api: RequestAPI, next: Function): Request =>
 
 export class Request {
   tmp: Object
+
   action: Action
+
   ctx: Object
+
   route: Route
+
   prevRoute: Route
+
   error: null | boolean
+
   scene: string
+
   realDispatch: Dispatch
+
   commitDispatch: Dispatch | Function
+
   commitHistory: void | Function
+
   history: Object
+
   routes: Routes
+
   redirect: ActionMetaLocation
+
   getLocation: () => Object
+
   last: Object
+
   canceled: boolean
+
   type: string
 
   constructor(action: Action, api: RequestAPI, next: Function): void {

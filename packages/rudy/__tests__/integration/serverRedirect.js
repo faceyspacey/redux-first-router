@@ -8,7 +8,7 @@ createTest(
   {
     FIRST: {
       path: '/first',
-      beforeEnter: function() {},
+      beforeEnter() {},
       thunk: ({ dispatch }) => {
         dispatch({ type: 'REDIRECTED' })
       },
@@ -21,17 +21,17 @@ createTest(
   {
     FIRST: {
       path: '/first',
-      beforeEnter: function() {},
+      beforeEnter() {},
       thunk: async ({ dispatch }) => {
         await dispatch({ type: 'PATHLESS' }) // redirect to a pathless route
       },
     },
     PATHLESS: {
       thunk: async ({ dispatch }) => {
-        await dispatch(() => {
+        await dispatch(() =>
           // and use anonymous thunk to confirm complex redirects work with the `serverRedirect` middleware
-          return { type: 'REDIRECTED' }
-        })
+          ({ type: 'REDIRECTED' }),
+        )
       },
     },
   },

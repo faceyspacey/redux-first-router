@@ -8,8 +8,6 @@ createTest(
     SECOND: '/second',
   },
   {
-    createHistory: (routes, options) => {
-      return new History(routes, options)
-    },
+    createHistory: (routes, options) => new History(routes, options),
   },
 )

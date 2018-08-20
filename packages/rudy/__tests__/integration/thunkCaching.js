@@ -6,7 +6,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -22,13 +22,11 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   {
-    createCacheKey: (action, name) => {
-      return action.type
-    },
+    createCacheKey: (action, name) => action.type,
   },
   [],
   async ({ snap }) => {
@@ -43,7 +41,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -64,7 +62,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -85,7 +83,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -106,7 +104,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -127,7 +125,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -160,7 +158,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -180,7 +178,7 @@ createTest(
     SECOND: {
       path: '/second',
       cache: false,
-      thunk: function() {},
+      thunk() {},
     },
   },
   [],
@@ -196,7 +194,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   {

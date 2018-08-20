@@ -10,7 +10,7 @@ createTest(
     SECOND: {
       path: '/second',
       beforeEnter: () => ({ type: 'REDIRECTED' }),
-      thunk: function() {},
+      thunk() {},
     },
   },
   { testBrowser: true },
@@ -23,7 +23,7 @@ createTest(
     SECOND: {
       path: '/second',
       thunk: () => ({ type: 'REDIRECTED' }),
-      onComplete: function() {},
+      onComplete() {},
     },
   },
   { testBrowser: true },
@@ -35,7 +35,7 @@ createTest(
     FIRST: {
       path: '/',
       beforeEnter: () => ({ type: 'REDIRECTED' }),
-      thunk: function() {},
+      thunk() {},
     },
   },
   { testBrowser: true },
@@ -47,7 +47,7 @@ createTest(
     FIRST: {
       path: '/',
       thunk: () => ({ type: 'REDIRECTED' }),
-      onComplete: function() {},
+      onComplete() {},
     },
   },
   { testBrowser: true },

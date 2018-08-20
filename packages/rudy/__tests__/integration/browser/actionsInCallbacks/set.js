@@ -10,7 +10,7 @@ createTest(
     SECOND: {
       path: '/second',
       beforeEnter: () => set({ query: { hell: 'yea' } }),
-      thunk: function() {},
+      thunk() {},
     },
   },
   {
@@ -31,7 +31,7 @@ createTest(
     SECOND: {
       path: '/second',
       beforeEnter: () => setState({ hell: 'yea' }),
-      thunk: function() {},
+      thunk() {},
     },
   },
   {
@@ -52,7 +52,7 @@ createTest(
     SECOND: {
       path: '/second',
       thunk: () => set({ query: { hell: 'yea' } }),
-      onComplete: function() {},
+      onComplete() {},
     },
   },
   { testBrowser: true },
@@ -64,7 +64,7 @@ createTest(
     FIRST: {
       path: '/',
       beforeEnter: () => set({ query: { hell: 'yea' } }),
-      thunk: function() {},
+      thunk() {},
     },
   },
   {
@@ -79,7 +79,7 @@ createTest(
     FIRST: {
       path: '/',
       thunk: () => set({ query: { hell: 'yea' } }),
-      onComplete: function() {},
+      onComplete() {},
     },
   },
   { testBrowser: true },

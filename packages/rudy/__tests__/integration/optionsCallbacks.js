@@ -8,15 +8,15 @@ createTest(
     },
   },
   {
-    beforeLeave: function() {},
-    beforeEnter: function() {},
-    onLeave: function() {},
-    onEnter: function() {},
-    thunk: function() {},
+    beforeLeave() {},
+    beforeEnter() {},
+    onLeave() {},
+    onEnter() {},
+    thunk() {},
     onComplete: ({ action }) => {
       if (action.type !== 'SECOND') return
       throw new Error('test-error')
     },
-    onError: function() {},
+    onError() {},
   },
 )

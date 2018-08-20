@@ -105,15 +105,18 @@ export const matchVal = (
     }
 
     return val === undefined || val === ''
-  } else if (type === 'string') {
+  }
+  if (type === 'string') {
     return expected === val
-  } else if (type === 'function') {
+  }
+  if (type === 'function') {
     return key === 'hash'
       ? // $FlowFixMe
         expected(val, route, opts)
       : // $FlowFixMe
         expected(val, key, route, opts)
-  } else if (expected instanceof RegExp) {
+  }
+  if (expected instanceof RegExp) {
     return expected.test(val)
   }
 

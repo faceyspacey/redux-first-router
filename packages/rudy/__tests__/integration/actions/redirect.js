@@ -10,17 +10,14 @@ createTest('dispatch(redirect(action, status))', {}, [
 createTest('redirect within beforeEnter', {
   SECOND: {
     path: '/second',
-    beforeEnter: ({ dispatch }) => {
-      return dispatch(redirect({ type: 'REDIRECTED' }, 301)) // this is unnecessary, redirects are automatic within callbacks, but for good measure should still work
-    },
+    beforeEnter: ({ dispatch }) =>
+      dispatch(redirect({ type: 'REDIRECTED' }, 301)), // this is unnecessary, redirects are automatic within callbacks, but for good measure should still work
   },
 })
 
 createTest('redirect within thunk', {
   SECOND: {
     path: '/second',
-    thunk: ({ dispatch }) => {
-      return dispatch(redirect({ type: 'REDIRECTED' }))
-    },
+    thunk: ({ dispatch }) => dispatch(redirect({ type: 'REDIRECTED' })),
   },
 })

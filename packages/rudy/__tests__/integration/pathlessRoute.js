@@ -2,10 +2,8 @@ import createTest from '../../__helpers__/createTest'
 
 createTest('pathless route thunk called', {
   PATHLESS: {
-    thunk: async ({ dispatch }) => {
-      return dispatch({ type: 'REDIRECTED' })
-    },
-    onComplete: function() {},
+    thunk: async ({ dispatch }) => dispatch({ type: 'REDIRECTED' }),
+    onComplete() {},
   },
 })
 
@@ -14,7 +12,7 @@ createTest('pathless route thunk errors trigger onError', {
     thunk: ({ dispatch }) => {
       throw new Error('fail')
     },
-    onError: function() {},
-    onComplete: function() {},
+    onError() {},
+    onComplete() {},
   },
 })

@@ -9,7 +9,7 @@ createTest(
     },
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   ['/first'],
@@ -24,9 +24,9 @@ createTest(
     },
     SECOND: {
       path: '/second',
-      beforeEnter: function() {},
-      thunk: function() {},
-      onComplete: function() {},
+      beforeEnter() {},
+      thunk() {},
+      onComplete() {},
     },
   },
   ['/first'],
@@ -45,8 +45,8 @@ createTest(
     },
     THIRD: {
       path: '/third',
-      thunk: function({ action }) {
-        return action.type + ' - payload'
+      thunk({ action }) {
+        return `${action.type} - payload`
       },
     },
   },

@@ -5,7 +5,7 @@ createTest(
   {
     FIRST: {
       path: '/first',
-      beforeLeave: function(req) {
+      beforeLeave(req) {
         if (req.type === 'THIRD') return
         return new Promise((res) => setTimeout(res, 10))
       },

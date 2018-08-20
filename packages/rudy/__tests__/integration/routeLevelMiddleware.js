@@ -40,8 +40,8 @@ createTest(
     SECOND: {
       path: '/second',
       onTransition: () => 'SUCCESS!',
-      middleware: (api, killOnRedirect) => {
-        return compose(
+      middleware: (api, killOnRedirect) =>
+        compose(
           [
             transformAction,
             call('onTransition'),
@@ -51,8 +51,7 @@ createTest(
           ],
           api,
           killOnRedirect,
-        )
-      },
+        ),
     },
   },
 )

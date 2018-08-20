@@ -6,9 +6,7 @@ createTest('routes as path string', {
 })
 
 createTest('route as thunk function (pathless route)', {
-  PATHLESS: ({ dispatch }) => {
-    return dispatch({ type: 'REDIRECTED' })
-  },
+  PATHLESS: ({ dispatch }) => dispatch({ type: 'REDIRECTED' }),
 })
 
 createTest(
@@ -30,12 +28,10 @@ createTest(
     },
   },
   {
-    formatRoute: (route, type, routes, isAddRoutes) => {
-      return {
-        ...route,
-        type,
-        path: route.path || route.foo,
-      }
-    },
+    formatRoute: (route, type, routes, isAddRoutes) => ({
+      ...route,
+      type,
+      path: route.path || route.foo,
+    }),
   },
 )

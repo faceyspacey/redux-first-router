@@ -57,9 +57,7 @@ createTest(
     },
     THIRD: {
       path: '/third',
-      defaultState: (q) => {
-        return { ...q, foo: 'bar' }
-      },
+      defaultState: (q) => ({ ...q, foo: 'bar' }),
     },
   },
   [{ type: 'SECOND', state: { key: 'correct' } }, { type: 'SECOND' }],

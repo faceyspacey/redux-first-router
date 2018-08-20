@@ -37,7 +37,7 @@ const routes = {
   TENTH: '/tenth',
   ELEVENTH: {
     path: '/eleventh',
-    thunk: function() {},
+    thunk() {},
   },
   MAIN: {
     path: '/main',

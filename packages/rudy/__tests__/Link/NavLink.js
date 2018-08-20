@@ -58,12 +58,12 @@ test('reacts to state changes (onClick)', async () => {
   })
 
   expect(tree.props.className).toEqual('')
-  expect(tree).toMatchSnapshot() /*? tree */
+  expect(tree).toMatchSnapshot() /* ? tree */
 
   // store.dispatch({ type: 'SECOND', params: { param: 'bar' } })
   await tree.props.onClick(event) // this dispatches above action (obviously)
 
-  const tree2 = component.toJSON() /*? */
+  const tree2 = component.toJSON() /* ? */
 
   expect(tree2.props.className).toEqual('active')
   expect(tree2).toMatchSnapshot()

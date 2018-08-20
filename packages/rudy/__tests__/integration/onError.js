@@ -6,7 +6,7 @@ createTest('route onError called if other callbacks throw', {
     thunk: () => {
       throw new Error('thunk-failed')
     },
-    onError: function() {},
+    onError() {},
   },
 })
 
@@ -37,7 +37,7 @@ createTest(
       thunk: () => {
         throw new Error('thunk-failed')
       },
-      onError: function() {},
+      onError() {},
     },
   },
   { onError: null },

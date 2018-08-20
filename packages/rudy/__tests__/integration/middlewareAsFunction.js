@@ -17,14 +17,14 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      thunk: function() {},
+      thunk() {},
     },
   },
   {
     // `middlewareFunc` will actually be made to override the `middlewares` arg to `createRouter`
     // by `createTest.js`. The signature will become: `createRouter(routes, options, middlewareFunc)`
-    middlewareFunc: (api, handleRedirects) => {
-      return compose(
+    middlewareFunc: (api, handleRedirects) =>
+      compose(
         [
           serverRedirect, // short-circuiting middleware
           pathlessRoute('thunk'),
@@ -41,7 +41,6 @@ createTest(
         ],
         api,
         handleRedirects,
-      )
-    },
+      ),
   },
 )

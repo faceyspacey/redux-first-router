@@ -6,17 +6,15 @@ createTest(
     SECOND: {
       path: '/second',
       beforeEnter: async ({ dispatch }) => {
-        await dispatch(async ({ dispatch }) => {
-          return dispatch({ type: 'REDIRECTED' })
-        })
+        await dispatch(async ({ dispatch }) => dispatch({ type: 'REDIRECTED' }))
       },
     },
   },
   async ({ dispatch, getState }) => {
     // test outside of route callbacks:
-    const res = await dispatch(({ dispatch }) => {
-      return dispatch({ type: 'REDIRECTED' })
-    })
+    const res = await dispatch(({ dispatch }) =>
+      dispatch({ type: 'REDIRECTED' }),
+    )
 
     expect(res).toMatchSnapshot()
     expect(getState()).toMatchSnapshot()
@@ -28,9 +26,7 @@ createTest(
   {
     SECOND: {
       path: '/second',
-      beforeEnter: ({ dispatch }) => {
-        return dispatch(() => ({ type: 'REDIRECTED' }))
-      },
+      beforeEnter: ({ dispatch }) => dispatch(() => ({ type: 'REDIRECTED' })),
     },
   },
   async ({ dispatch, getState }) => {
