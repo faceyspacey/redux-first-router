@@ -34,7 +34,7 @@ export default (
     action = to
 
     try {
-      url = actionToUrl(action, { routes, options })
+      ({ url } = actionToUrl(action, { routes, options }))
       basename = action.basename || basename || ''
     }
     catch (e) {
