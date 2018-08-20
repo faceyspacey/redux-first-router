@@ -15,7 +15,7 @@
     "test": "lerna run test",
     "build": "lerna run build",
     "lint:root": "eslint .",
-    "lint": "yarn run lint:root && yarn run lerna run lint",
+    "lint": "lerna run lint",
     "is-pretty:root": "prettier --ignore-path=.eslintignore '**/*' --list-different",
     "is-pretty": "yarn run is-pretty:root && yarn run lerna run is-pretty",
     "prettify:root": "prettier --ignore-path=.eslintignore '**/*' --write",
