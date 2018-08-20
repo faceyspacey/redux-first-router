@@ -8,6 +8,20 @@ function res() {
 
 module.exports = {
   extends: [res('../../.eslintrc.js')],
+  env: {
+    'shared-node-browser': true,
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.browser.js', '.server.js', '.js', '.css'],
+      },
+    },
+  },
+  rules: {
+    'react/jsx-filename-extension': 0,
+    'react/prop-types': ['error', { skipUndeclared: true }],
+  }
 }
 
 const original = {

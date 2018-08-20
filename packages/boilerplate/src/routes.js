@@ -2,14 +2,16 @@ export default {
   HOME: {
     path: '/',
     onEnter: () => {
-      // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console,no-undef
       console.log(document.querySelector('.Home__content--319uD'))
     },
     beforeEnter: async (req) => {
+      // eslint-disable-next-line no-undef
       if (typeof window !== 'undefined' && window.foo) {
         await new Promise((res) => setTimeout(res, 3000))
       }
 
+      // eslint-disable-next-line no-undef
       if (typeof window !== 'undefined' && window.foo) {
         await req.dispatch({ type: 'LIST', params: { category: 'react' } })
       }

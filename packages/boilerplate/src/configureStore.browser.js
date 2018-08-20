@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
 import { createRouter } from '@respond-framework/rudy'
@@ -20,8 +22,8 @@ export default (preloadedState, initialEntries) => {
 
   if (module.hot) {
     module.hot.accept('./reducers/index', () => {
-      const rootReducer = combineReducers({ ...reducers, location: reducer })
-      store.replaceReducer(rootReducer)
+      const newRootReducer = combineReducers({ ...reducers, location: reducer })
+      store.replaceReducer(newRootReducer)
     })
   }
 
