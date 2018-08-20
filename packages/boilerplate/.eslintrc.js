@@ -21,7 +21,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'react/prop-types': ['error', { skipUndeclared: true }],
-  }
+  },
 }
 
 const original = {
