@@ -1,0 +1,9 @@
+buildServer/
+buildClient/
+node_modules/
+
+.eslintignore
+.gitignore
+LICENSE
+*.ico
+*.png

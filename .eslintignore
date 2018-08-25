@@ -1,4 +1,8 @@
-dist
-flow-typed
-node_modules
-docs
+node_modules/
+packages/*/
+
+.editorconfig
+.eslintignore
+.gitignore
+LICENSE
+yarn.lock
