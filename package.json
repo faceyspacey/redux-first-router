@@ -34,7 +34,7 @@
     "@babel/preset-react": "^7.0.0-rc.3",
     "babel-eslint": "^9.0.0-beta.3",
     "babel-loader": "^8.0.0-beta.6",
-    "babel-watch": "git://github.com/monathur/babel-watch.git#ebc252359970458bf2e0a6c417bce3d3dc6d8da7",
+    "babel-watch": "git://github.com/hedgepigdaniel/babel-watch.git",
     "commitizen": "^2.9.6",
     "cross-env": "^5.0.1",
     "css-loader": "^1.0.0",
