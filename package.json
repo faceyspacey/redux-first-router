@@ -21,7 +21,7 @@
     "prettify:root": "prettier --ignore-path=.eslintignore '**/*' --write",
     "prettify": "yarn run prettify:root && yarn run lerna run prettify",
     "vulnerabilities": "yarn run snyk test && yarn run lerna run vulnerabilities",
-    "check": "yarn run is-pretty && yarn run lint && yarn run test && yarn run build && yarn run snyk"
+    "check": "yarn run is-pretty && yarn run lint && yarn run test -- -- -w 1 && yarn run build && yarn run snyk"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
