@@ -63,7 +63,8 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       ".eslintrc.js"
-    ]
+    ],
+    "transformIgnorePatterns": ["<rootDir>/node_modules/(?!@respond-framework)"]
   },
   "config": {
     "commitizen": {
