@@ -1,5 +1,5 @@
 import 'source-map-support/register'
-import 'babel-polyfill'
+import '@babel/polyfill'
 import { resolve } from 'path'
 import express from 'express'
 import favicon from 'serve-favicon'
