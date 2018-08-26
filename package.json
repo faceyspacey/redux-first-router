@@ -19,7 +19,8 @@
     "is-pretty:root": "prettier --ignore-path=.eslintignore '**/*' --list-different",
     "is-pretty": "yarn run is-pretty:root && yarn run lerna run is-pretty",
     "prettify:root": "prettier --ignore-path=.eslintignore '**/*' --write",
-    "prettify": "yarn run prettify:root && yarn run lerna run prettify"
+    "prettify": "yarn run prettify:root && yarn run lerna run prettify",
+    "check": "yarn run is-pretty && yarn run lint && yarn run test && yarn run build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",

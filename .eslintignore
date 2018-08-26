@@ -6,3 +6,4 @@ packages/*/
 .gitignore
 LICENSE
 yarn.lock
+yarn-error.log
