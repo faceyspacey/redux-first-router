@@ -20,7 +20,8 @@
     "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "vulnerabilities": "snyk test"
   },
   "dependencies": {
     "@respond-framework/rudy": "^0.1.0",
