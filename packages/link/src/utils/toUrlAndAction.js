@@ -1,8 +1,12 @@
 // @flow
 import resolvePathname from 'resolve-pathname'
-import { actionToUrl, toAction } from '../../utils'
-import { findBasename, stripBasename } from '../../utils/urlToAction'
-import type { Routes, Options } from '../../flow-types'
+import {
+  actionToUrl,
+  toAction,
+  findBasename,
+  stripBasename,
+} from '@respond-framework/rudy'
+import type { Routes, Options } from '@respond-framework/rudy'
 
 export type To = string | Array<string> | Object
 

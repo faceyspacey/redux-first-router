@@ -60,6 +60,7 @@
     "lerna": "^3.1.1",
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.2",
+    "prop-types": "^15.6.2",
     "react": "^16.1.1",
     "react-redux": "^5.0.6",
     "react-test-renderer": "^16.1.1",

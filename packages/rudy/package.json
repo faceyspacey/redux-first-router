@@ -40,11 +40,6 @@
     "qs": "^6.5.1",
     "resolve-pathname": "^2.2.0"
   },
-  "peerDependencies": {
-    "react": "*",
-    "react-redux": "*",
-    "redux": "*"
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

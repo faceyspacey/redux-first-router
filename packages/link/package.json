@@ -19,5 +19,15 @@
     "eslint": "eslint",
     "lint": "eslint .",
     "vulnerabilities": "snyk test"
+  },
+  "dependencies": {
+    "resolve-pathname": "^2.2.0"
+  },
+  "peerDependencies": {
+    "@respond-framework/rudy": "^0.1.0",
+    "prop-types": "^15.6.2",
+    "react": "^15 || ^16",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2"
   }
 }

@@ -1,7 +1,6 @@
 // @flow
-import { redirect } from '../../actions'
-import type { Routes, ReceivedAction } from '../../index'
-import type { To } from './toUrl'
+import { redirect } from '@respond-framework/rudy'
+import type { Routes, ReceivedAction } from '@respond-framework/rudy'
 
 export type OnClick = false | ((SyntheticEvent) => ?boolean)
 export default (
