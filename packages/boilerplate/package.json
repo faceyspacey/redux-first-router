@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-rc.3",
+    "@respond-framework/link": "^0.1.0",
     "@respond-framework/rudy": "^0.1.0",
     "express": "^4.15.2",
     "react": "^16.1.1",
