@@ -14,7 +14,6 @@
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && rimraf es && rimraf coverage",
-    "test": "jest",
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
