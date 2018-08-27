@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Boilerplate",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/examples/boilerplate",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["buildServer/serveDev.js"],
+      "port": 9229,
+      "env": {
+        "NODE_OPTIONS": "--inspect",
+        "NODE_ENV": "development"
+      }
+    }
+  ]
+}

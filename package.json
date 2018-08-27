@@ -1,103 +1,80 @@
 {
-  "name": "redux-first-router",
-  "version": "0.0.4-rudy",
-  "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "babel src -d dist",
-    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/redux-first-router.js",
-    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/redux-first-router.min.js",
-    "flow-copy": "flow-copy-source src dist",
-    "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "clean": "rimraf dist && rimraf coverage && rimraf examples/boilerplate/buildClient && rimraf examples/boilerplate/buildServer && rimraf examples/demo/buildClient && rimraf examples/demo/buildServer",
-    "test": "jest",
-    "lint": "eslint --fix ./",
-    "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",
-    "cm": "git-cz",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "prepublish": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/faceyspacey/redux-first-router.git"
-  },
-  "author": "James Gillmore <james@faceyspacey.com>",
+  "name": "respond-framework",
+  "version": "0.0.1",
+  "description": "A set of tools for building beautiful idiomatic React/Redux apps",
+  "main": "index.js",
+  "repository": "git@github.com:ScriptedAlchemy/redux-first-router.git",
+  "author": "James Gilmore <james@faceyspacey.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/faceyspacey/redux-first-router/issues"
-  },
-  "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
-  "dependencies": {
-    "path-to-regexp": "^2.1.0",
-    "prop-types": "^15.6.0",
-    "qs": "^6.5.1",
-    "resolve-pathname": "^2.2.0"
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "lerna run clean",
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "lint:root": "eslint .",
+    "lint": "lerna run lint",
+    "is-pretty:root": "prettier --ignore-path=.eslintignore '**/*' --list-different",
+    "is-pretty": "yarn run is-pretty:root && yarn run lerna run is-pretty",
+    "prettify:root": "prettier --ignore-path=.eslintignore '**/*' --write",
+    "prettify": "yarn run prettify:root && yarn run lerna run prettify",
+    "vulnerabilities": "yarn run snyk test && yarn run lerna run vulnerabilities",
+    "check": "yarn run is-pretty && yarn run lint && yarn run test -- -- -w 1 && yarn run build && yarn run vulnerabilities"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.0.0",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-watch": "^2.0.6",
     "commitizen": "^2.9.6",
+    "cross-env": "^5.0.1",
+    "css-loader": "^1.0.0",
     "cz-conventional-changelog": "^2.0.0",
-    "eslint": "^4.9.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-flowtype": "^2.32.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0",
-    "flow-bin": "^0.55.0",
-    "flow-copy-source": "^1.1.0",
-    "jest": "^22.1.2",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-import-resolver-lerna": "^1.0.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "^0.78.0",
+    "flow-copy-source": "^2.0.2",
+    "husky": "^0.14.3",
+    "jest": "^23.4.2",
+    "jest-cli": "^23.4.2",
     "jest-localstorage-mock": "^2.2.0",
-    "lint-staged": "^3.4.0",
-    "prettier": "^1.7.0",
+    "lerna": "^3.1.1",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.2",
     "react": "^16.1.1",
     "react-redux": "^5.0.6",
     "react-test-renderer": "^16.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.6.1",
     "semantic-release": "^6.3.2",
-    "travis-github-status": "^1.5.4",
-    "webpack": "2.4.1"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-redux": "*",
-    "redux": "*"
-  },
-  "jest": {
-    "verbose": false,
-    "silent": true,
-    "testURL": "http://localhost:3000",
-    "testMatch": [
-      "**/__tests__/integration/**/*.js?(x)"
-    ],
-    "setupTestFrameworkScriptFile": "./__test-helpers__/setupJest.js",
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ],
-    "moduleFileExtensions": [
-      "js"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --single-quote --parser=flow --semi=false --write",
-      "eslint --fix",
-      "git add"
-    ]
+    "source-map-loader": "^0.2.4",
+    "stats-webpack-plugin": "^0.6.1",
+    "terser": "^3.8.1",
+    "travis-github-status": "^1.4.0",
+    "uglifyjs-webpack-plugin": "git://github.com/webpack-contrib/uglifyjs-webpack-plugin.git",
+    "webpack": "4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-hot-middleware": "^2.18.2",
+    "webpack-hot-server-middleware": "^0.5.0",
+    "write-file-webpack-plugin": "^4.1.0"
   }
 }

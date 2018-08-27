@@ -1,4 +1,13 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.0
-ignore: {}
+version: v1.12.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:chownr:20180731':
+    - babel-plugin-universal-import > webpack > uglifyjs-webpack-plugin > cacache > chownr:
+        reason: Minor issue with no patch available
+    - extract-css-chunks-webpack-plugin > webpack > uglifyjs-webpack-plugin > cacache > chownr:
+        reason: 'Minor issue, no patch available'
+  'npm:underscore.string:20170908':
+    - underscore.string:
+        reason: DoS attack in a devDependency
 patch: {}
