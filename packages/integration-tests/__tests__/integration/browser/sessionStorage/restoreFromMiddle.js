@@ -1,5 +1,5 @@
-import createTest, { setupStore } from '../../../../__helpers__/createTest'
 import { get } from '@respond-framework/rudy/src/history/utils/sessionStorage'
+import createTest, { setupStore } from '../../../../__helpers__/createTest'
 
 // note restoreFromMiddle is in fact the same as restoreFromFront
 // since `sessionStorage.js` clips all entries after the current index

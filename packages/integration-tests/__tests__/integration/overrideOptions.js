@@ -1,5 +1,3 @@
-import createTest from '../../__helpers__/createTest'
-
 import {
   compose,
   createHistory,
@@ -8,6 +6,7 @@ import {
 } from '@respond-framework/rudy/src/core'
 import shouldTransition from '@respond-framework/rudy/src/utils/shouldTransition'
 import shouldCall from '@respond-framework/rudy/src/middleware/call/utils/shouldCall'
+import createTest from '../../__helpers__/createTest'
 
 createTest(
   'core capabilities can be overriden as options',

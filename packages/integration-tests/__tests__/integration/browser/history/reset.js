@@ -1,6 +1,6 @@
-import createTest from '../../../../__helpers__/createTest'
 import { locationToUrl } from '@respond-framework/rudy/src/utils'
 import { reset } from '@respond-framework/rudy/src/actions'
+import createTest from '../../../../__helpers__/createTest'
 
 createTest(
   'reset(actions)',

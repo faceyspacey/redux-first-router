@@ -1,5 +1,5 @@
-import createTest from '../../../__helpers__/createTest'
 import createScene from '@respond-framework/rudy/src/createScene'
+import createTest from '../../../__helpers__/createTest'
 
 const routesMap = {
   SECOND: {

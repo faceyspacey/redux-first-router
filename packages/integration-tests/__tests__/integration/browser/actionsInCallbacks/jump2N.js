@@ -1,8 +1,8 @@
+import { jump } from '@respond-framework/rudy/src/actions'
 import createTest, {
   resetBrowser,
   setupStore,
 } from '../../../../__helpers__/createTest'
-import { jump } from '@respond-framework/rudy/src/actions'
 
 beforeEach(async () => {
   await resetBrowser()

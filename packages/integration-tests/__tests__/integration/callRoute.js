@@ -1,5 +1,5 @@
-import createTest from '../../__helpers__/createTest'
 import { callRoute } from '@respond-framework/rudy/src/utils'
+import createTest from '../../__helpers__/createTest'
 
 createTest(
   'callRoute(action | type, routeKey, ...args)',

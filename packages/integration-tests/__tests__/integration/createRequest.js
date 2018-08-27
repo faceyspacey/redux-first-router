@@ -1,5 +1,5 @@
-import createTest from '../../__helpers__/createTest'
 import { Request } from '@respond-framework/rudy/src/core/createRequest'
+import createTest from '../../__helpers__/createTest'
 
 createTest(
   'callback "req" argument has all goodies',

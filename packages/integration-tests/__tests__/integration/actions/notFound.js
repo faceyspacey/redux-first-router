@@ -1,6 +1,6 @@
-import createTest from '../../../__helpers__/createTest'
 import { notFound } from '@respond-framework/rudy/src/actions'
 import createScene from '@respond-framework/rudy/src/createScene'
+import createTest from '../../../__helpers__/createTest'
 
 createTest('dispatch(notFound())', {}, [notFound()])
 

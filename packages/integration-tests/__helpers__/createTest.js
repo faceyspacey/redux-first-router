@@ -3,9 +3,9 @@ import {
   get,
   clear,
 } from '@respond-framework/rudy/src/history/utils/sessionStorage'
-import awaitUrlChange from './awaitUrlChange'
 import { locationToUrl } from '@respond-framework/rudy/src/utils'
 import { createRouter } from '@respond-framework/rudy/src'
+import awaitUrlChange from './awaitUrlChange'
 
 export default async (...allArgs) => {
   const args = allArgs.filter((arg) => typeof arg !== 'function')

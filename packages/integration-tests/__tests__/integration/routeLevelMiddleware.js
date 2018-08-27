@@ -1,5 +1,3 @@
-import createTest from '../../__helpers__/createTest'
-
 import {
   transformAction,
   call,
@@ -8,6 +6,7 @@ import {
 } from '@respond-framework/rudy/src/middleware'
 
 import { compose } from '@respond-framework/rudy/src/core'
+import createTest from '../../__helpers__/createTest'
 
 createTest(
   'routes can specify route.middleware array to override global middleware',

@@ -1,5 +1,5 @@
-import createTest from '../../__helpers__/createTest'
 import { doesRedirect } from '@respond-framework/rudy/src/utils'
+import createTest from '../../__helpers__/createTest'
 
 jest.mock('@respond-framework/rudy/src/utils/isServer', () => () => true)
 

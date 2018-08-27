@@ -1,4 +1,3 @@
-import createTest from '../../../__helpers__/createTest'
 import {
   push,
   replace,
@@ -14,6 +13,7 @@ import {
   setBasename,
   redirect,
 } from '@respond-framework/rudy/src/actions'
+import createTest from '../../../__helpers__/createTest'
 
 const routes = {
   FIRST: {

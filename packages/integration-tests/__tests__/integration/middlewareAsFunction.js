@@ -1,5 +1,3 @@
-import createTest from '../../__helpers__/createTest'
-
 import { compose } from '@respond-framework/rudy/src/core'
 
 import {
@@ -11,6 +9,7 @@ import {
   enter,
   changePageTitle,
 } from '@respond-framework/rudy/src/middleware'
+import createTest from '../../__helpers__/createTest'
 
 createTest(
   'middleware argument can be a function that is responsible for the work of composePromise',

@@ -1,12 +1,14 @@
-import createTest, { setupStore } from '../../../../__helpers__/createTest'
 import { get } from '@respond-framework/rudy/src/history/utils/sessionStorage'
+import createTest, { setupStore } from '../../../../__helpers__/createTest'
 
 // MemoryHistory can be used as a fallback in the browser (ie. 8/9)
 // Those browsers do support SessionStorage, so we have capabilities to remember
 // entries even in those older browsers.
 
 jest.mock('@respond-framework/rudy/src/history/utils/supports', () => ({
-  ...require.requireActual('@respond-framework/rudy/src/history/utils/supports'),
+  ...require.requireActual(
+    '@respond-framework/rudy/src/history/utils/supports',
+  ),
   supportsSession: jest.fn(() => true),
   supportsHistory: jest.fn(() => false),
 }))

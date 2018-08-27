@@ -1,6 +1,6 @@
-import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
 import { locationToUrl } from '@respond-framework/rudy/src/utils'
 import { reset } from '@respond-framework/rudy/src/actions'
+import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
 
 beforeEach(resetBrowser)
 

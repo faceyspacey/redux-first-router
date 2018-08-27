@@ -1,5 +1,5 @@
-import createTest from '../../../__helpers__/createTest'
 import { redirect } from '@respond-framework/rudy/src/actions'
+import createTest from '../../../__helpers__/createTest'
 
 createTest('dispatch(redirect(action))', {}, [redirect({ type: 'REDIRECTED' })])
 
