@@ -1,5 +1,5 @@
 import createTest, { setupStore } from '../../../../__helpers__/createTest'
-import { get } from '../../../../src/history/utils/sessionStorage'
+import { get } from '@respond-framework/rudy/src/history/utils/sessionStorage'
 
 beforeAll(async () => {
   const routesMap = {

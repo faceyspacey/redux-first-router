@@ -5,9 +5,9 @@ import {
   call,
   enter,
   changePageTitle,
-} from '../../src/middleware'
+} from '@respond-framework/rudy/src/middleware'
 
-import { compose } from '../../src/core'
+import { compose } from '@respond-framework/rudy/src/core'
 
 createTest(
   'routes can specify route.middleware array to override global middleware',

@@ -1,4 +1,4 @@
-import { NOT_FOUND } from '../../src/types'
+import { NOT_FOUND } from '@respond-framework/rudy/src/types'
 import createLink, { event } from '../../__test-helpers__/createLink'
 
 test('ON_CLICK: dispatches location-aware action', async () => {

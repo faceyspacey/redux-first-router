@@ -1,7 +1,7 @@
 import createTest from '../../__helpers__/createTest'
-import { doesRedirect } from '../../src/utils'
+import { doesRedirect } from '@respond-framework/rudy/src/utils'
 
-jest.mock('../../src/utils/isServer', () => () => true)
+jest.mock('@respond-framework/rudy/src/utils/isServer', () => () => true)
 
 createTest(
   'redirect on server not dispatched; instead redirect info returned',

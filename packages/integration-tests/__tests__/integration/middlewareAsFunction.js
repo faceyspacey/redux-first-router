@@ -1,6 +1,6 @@
 import createTest from '../../__helpers__/createTest'
 
-import { compose } from '../../src/core'
+import { compose } from '@respond-framework/rudy/src/core'
 
 import {
   serverRedirect,
@@ -10,7 +10,7 @@ import {
   call,
   enter,
   changePageTitle,
-} from '../../src/middleware'
+} from '@respond-framework/rudy/src/middleware'
 
 createTest(
   'middleware argument can be a function that is responsible for the work of composePromise',

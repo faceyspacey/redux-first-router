@@ -1,5 +1,5 @@
 import createTest from '../../../__helpers__/createTest'
-import { addRoutes } from '../../../src/actions'
+import { addRoutes } from '@respond-framework/rudy/src/actions'
 
 createTest(
   'dispatch(addRoutes(routes))',

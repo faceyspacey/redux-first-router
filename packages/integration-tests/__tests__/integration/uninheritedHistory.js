@@ -1,5 +1,5 @@
 import createTest from '../../__helpers__/createTest'
-import History from '../../src/history/History'
+import History from '@respond-framework/rudy/src/history/History'
 
 createTest(
   'History class can be used directly',

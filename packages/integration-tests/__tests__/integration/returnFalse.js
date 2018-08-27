@@ -1,5 +1,5 @@
 import createTest from '../../__helpers__/createTest'
-import { confirm } from '../../src/actions'
+import { confirm } from '@respond-framework/rudy/src/actions'
 
 createTest('beforeLeave return undefined', {
   FIRST: {

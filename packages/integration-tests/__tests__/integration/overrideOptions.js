@@ -5,9 +5,9 @@ import {
   createHistory,
   createRequest,
   createReducer,
-} from '../../src/core'
-import shouldTransition from '../../src/utils/shouldTransition'
-import shouldCall from '../../src/middleware/call/utils/shouldCall'
+} from '@respond-framework/rudy/src/core'
+import shouldTransition from '@respond-framework/rudy/src/utils/shouldTransition'
+import shouldCall from '@respond-framework/rudy/src/middleware/call/utils/shouldCall'
 
 createTest(
   'core capabilities can be overriden as options',

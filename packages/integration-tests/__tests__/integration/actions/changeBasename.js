@@ -1,5 +1,5 @@
 import createTest from '../../../__helpers__/createTest'
-import { changeBasename } from '../../../src/actions'
+import { changeBasename } from '@respond-framework/rudy/src/actions'
 
 createTest(
   'dispatch(changeBasename(name))',

@@ -13,7 +13,7 @@ import {
   setHash,
   setBasename,
   redirect,
-} from '../../../src/actions'
+} from '@respond-framework/rudy/src/actions'
 
 const routes = {
   FIRST: {

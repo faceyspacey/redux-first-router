@@ -1,5 +1,5 @@
 import createTest from '../../__helpers__/createTest'
-import { notFound } from '../../src/actions'
+import { notFound } from '@respond-framework/rudy/src/actions'
 
 createTest('routes as path string', {
   FIRST: '/first',

@@ -1,6 +1,6 @@
 import createTest from '../../../../__helpers__/createTest'
-import { locationToUrl } from '../../../../src/utils'
-import { jump } from '../../../../src/actions'
+import { locationToUrl } from '@respond-framework/rudy/src/utils'
+import { jump } from '@respond-framework/rudy/src/actions'
 
 createTest(
   'set(action, n)',

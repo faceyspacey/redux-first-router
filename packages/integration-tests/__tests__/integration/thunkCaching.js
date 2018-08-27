@@ -1,5 +1,5 @@
 import createTest from '../../__helpers__/createTest'
-import { clearCache } from '../../src/actions'
+import { clearCache } from '@respond-framework/rudy/src/actions'
 
 createTest(
   'cached thunk only called once',

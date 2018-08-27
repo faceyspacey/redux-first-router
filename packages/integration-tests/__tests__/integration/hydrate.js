@@ -1,7 +1,7 @@
 import createTest from '../../__helpers__/createTest'
 
-jest.mock('../../src/utils/isHydrate', () => () => true)
-jest.mock('../../src/utils/isServer', () => () => false)
+jest.mock('@respond-framework/rudy/src/utils/isHydrate', () => () => true)
+jest.mock('@respond-framework/rudy/src/utils/isServer', () => () => false)
 
 createTest('beforeEnter + thunk callbacks NOT called if isHydrate', {
   FIRST: {

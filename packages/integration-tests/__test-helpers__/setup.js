@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux'
 import reduxThunk from 'redux-thunk'
-import { createRouter } from '../src'
+import { createRouter } from '@respond-framework/rudy/src'
 
 const setup = (
   path = '/',

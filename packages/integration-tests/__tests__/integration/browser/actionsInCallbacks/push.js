@@ -1,5 +1,5 @@
 import createTest, { resetBrowser } from '../../../../__helpers__/createTest'
-import { push } from '../../../../src/actions'
+import { push } from '@respond-framework/rudy/src/actions'
 
 beforeEach(resetBrowser)
 

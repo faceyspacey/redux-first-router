@@ -1,6 +1,6 @@
-import createSmartHistory from '../src/history'
-import { createInitialState } from '../src/core/createReducer'
-import { NOT_FOUND } from '../src/types'
+import createSmartHistory from '@respond-framework/rudy/src/history'
+import { createInitialState } from '@respond-framework/rudy/src/core/createReducer'
+import { NOT_FOUND } from '@respond-framework/rudy/src/types'
 
 export default async (type, pathname) => {
   // eslint-disable-line import/prefer-default-export

@@ -2,8 +2,8 @@ import createTest, {
   resetBrowser,
   setupStore,
 } from '../../../../__helpers__/createTest'
-import { locationToUrl } from '../../../../src/utils'
-import { reset } from '../../../../src/actions'
+import { locationToUrl } from '@respond-framework/rudy/src/utils'
+import { reset } from '@respond-framework/rudy/src/actions'
 
 beforeEach(async () => {
   await resetBrowser()
