@@ -18,7 +18,7 @@
     "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
-    "lint": "eslint --ext=js,jsx . || true",
+    "lint": "eslint --ext=js,jsx .",
     "vulnerabilities": "mkdir node_modules; snyk test"
   },
   "dependencies": {
