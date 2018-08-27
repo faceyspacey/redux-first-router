@@ -4,6 +4,9 @@ packages/*/
 .editorconfig
 .eslintignore
 .gitignore
+.snyk
+
 LICENSE
 yarn.lock
 yarn-error.log
+lerna-debug.log
