@@ -19,7 +19,7 @@
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
     "lint": "eslint . || true",
-    "vulnerabilities": "snyk test",
+    "vulnerabilities": "mkdir node_modules; snyk test",
     "cm": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "prepublish": "npm run clean && npm run build && npm run build:es && npm run flow-copy && npm run build:umd && npm run build:umd:min"

@@ -13,7 +13,7 @@
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
     "lint": "eslint . || true",
-    "vulnerabilities": "snyk test"
+    "vulnerabilities": "mkdir node_modules; snyk test"
   },
   "dependencies": {
     "@respond-framework/rudy": "^0.1.0",

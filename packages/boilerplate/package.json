@@ -21,7 +21,7 @@
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
     "lint": "eslint .",
-    "vulnerabilities": "snyk test"
+    "vulnerabilities": "mkdir node_modules; snyk test"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0-rc.3",
