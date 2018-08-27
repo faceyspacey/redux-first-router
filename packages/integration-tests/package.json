@@ -16,7 +16,12 @@
     "vulnerabilities": "snyk test"
   },
   "dependencies": {
-    "@respond-framework/rudy": "^0.1.0"
+    "@respond-framework/rudy": "^0.1.0",
+    "react": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.4.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "jest": {
     "verbose": false,
