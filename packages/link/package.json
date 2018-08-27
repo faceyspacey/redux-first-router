@@ -19,7 +19,7 @@
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
     "lint": "eslint . || true",
-    "vulnerabilities": "snyk test"
+    "vulnerabilities": "mkdir node_modules; snyk test"
   },
   "dependencies": {
     "resolve-pathname": "^2.2.0"
