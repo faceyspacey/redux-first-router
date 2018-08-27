@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   extends: [
     'eslint-config-airbnb',
@@ -7,6 +9,13 @@ module.exports = {
     'prettier/react',
   ],
   parser: 'babel-eslint',
+  settings: {
+    'import/resolver': {
+      lerna: {
+        packages: path.resolve(__dirname, './packages'),
+      },
+    },
+  },
   rules: {
     'prettier/prettier': 'warn',
     'no-use-before-define': [
