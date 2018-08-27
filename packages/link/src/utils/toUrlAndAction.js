@@ -40,6 +40,7 @@ export default (
       basename = action.basename || basename || ''
     } catch (e) {
       if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
         console.warn('[rudy/Link] could not create path from action:', action)
       }
 

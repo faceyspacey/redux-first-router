@@ -47,6 +47,7 @@ export default (
 
     window.location.href = fullUrl
   }
+  return undefined
 }
 
 const isModified = (e: Object) =>

@@ -114,10 +114,9 @@ const navLinkProps = (
   toFullUrl: string,
   action: ?ReceivedAction,
 ) => {
-  if (!props.url) return
+  if (!props.url) return undefined
 
   const {
-    basename,
     url,
     isActive,
     partial,
@@ -182,11 +181,22 @@ const connector: Connector<OwnProps, Props> = connect(mapState)
 
 const LinkConnected = connector(LinkInner)
 
-const Link = (props: OwnProps, context: Context) => (
-  <LinkConnected rudy={context.store.getState.rudy} {...props} />
-)
+const Link = (
+  props: OwnProps = {},
+  {
+    store: {
+      getState: { rudy },
+    },
+  }: Context,
+) => <LinkConnected rudy={rudy} {...props} />
 
-Link.contextTypes = { store: PropTypes.object.isRequired }
+Link.contextTypes = {
+  store: PropTypes.shape({
+    subscribe: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    getState: PropTypes.func.isRequired,
+  }),
+}
 
 export default Link
 
