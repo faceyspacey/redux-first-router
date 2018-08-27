@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 
-import { tryRequire } from '../AsyncComponent'
+import { tryRequire } from '../../AsyncComponent/index'
 
 export default (name = 'load') => (api) => async (req, next) => {
   const load = req.route && req.route[name]
