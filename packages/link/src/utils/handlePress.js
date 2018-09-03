@@ -11,9 +11,9 @@ export default (
   onClick?: ?OnClick,
   target: ?string,
   isRedirect?: boolean,
-  e: SyntheticEvent,
   fullUrl: string,
   history: Object,
+  e: SyntheticEvent,
 ) => {
   const prevented = e.defaultPrevented
   const notModified = !isModified(e)
