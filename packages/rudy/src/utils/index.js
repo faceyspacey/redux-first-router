@@ -5,7 +5,11 @@ export { default as isServer } from './isServer'
 export { default as isRedirect } from './isRedirect'
 
 export { default as actionToUrl } from './actionToUrl'
-export { default as urlToAction } from './urlToAction'
+export {
+  default as urlToAction,
+  findBasename,
+  stripBasename,
+} from './urlToAction'
 export { default as toAction } from './toAction'
 
 export { default as locationToUrl } from './locationToUrl'

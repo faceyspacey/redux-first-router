@@ -5,7 +5,6 @@ import * as sessionStorage from './history/utils/sessionStorage'
 
 export { default as createRouter } from './core/createRouter'
 export { default as createScene } from './createScene'
-export { Link, NavLink } from './Link'
 
 export { default as createHistory } from './core/createHistory'
 export { default as History } from './history/History'

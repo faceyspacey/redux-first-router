@@ -8,19 +8,18 @@
     "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy && yarn run build:umd && yarn run build:umd:min",
     "build:cjs": "babel --source-maps true src -d dist",
     "build:es": "BABEL_ENV=es babel --source-maps true src -d es",
-    "build:umd": "NODE_ENV=production BABEL_ENV=es webpack --mode production --env.minimize=false src/index.js -o dist/redux-first-router.js",
-    "build:umd:min": "NODE_ENV=production BABEL_ENV=es webpack --mode production --env.minimize=true src/index.js -o dist/redux-first-router.min.js",
+    "build:umd": "NODE_ENV=production webpack --mode production --env.minimize=false src/index.js -o dist/redux-first-router.js",
+    "build:umd:min": "NODE_ENV=production webpack --mode production --env.minimize=true src/index.js -o dist/redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist && flow-copy-source src es",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && rimraf es && rimraf coverage",
-    "test": "jest",
     "prettier": "prettier",
     "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
     "lint": "eslint . || true",
-    "vulnerabilities": "snyk test",
+    "vulnerabilities": "mkdir node_modules; snyk test",
     "cm": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "prepublish": "npm run clean && npm run build && npm run build:es && npm run flow-copy && npm run build:umd && npm run build:umd:min"
@@ -40,30 +39,6 @@
     "prop-types": "^15.6.0",
     "qs": "^6.5.1",
     "resolve-pathname": "^2.2.0"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-redux": "*",
-    "redux": "*"
-  },
-  "jest": {
-    "verbose": false,
-    "silent": true,
-    "testURL": "http://localhost:3000",
-    "testMatch": [
-      "**/__tests__/integration/**/*.js?(x)"
-    ],
-    "setupTestFrameworkScriptFile": "./__test-helpers__/setupJest.js",
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ],
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      ".eslintrc.js"
-    ]
   },
   "config": {
     "commitizen": {

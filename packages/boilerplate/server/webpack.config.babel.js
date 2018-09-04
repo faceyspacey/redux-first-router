@@ -25,7 +25,7 @@ export default (env) => {
         isClient &&
           isDev &&
           'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
-        isClient && 'babel-polyfill',
+        isClient && '@babel/polyfill',
         res(isServer ? '../src/render.server.js' : '../src/render.browser.js'),
       ].filter(Boolean),
     },
@@ -45,18 +45,11 @@ export default (env) => {
           use: {
             loader: 'babel-loader',
             options: {
-              // { modules: false } allows tree shaking, HMR, and import errors/warnings to work correctly
-              // Sadly, node doesn't support ES imports/exports yet, so it can't go in .babelrc
-              babelrc: false,
               cacheDirectory: true,
-              presets: [['env', { modules: false }], 'react'],
               plugins: [
                 'react-hot-loader/babel',
-                'syntax-dynamic-import',
+                '@babel/syntax-dynamic-import',
                 'universal-import',
-                'transform-flow-strip-types',
-                'syntax-object-rest-spread',
-                'transform-class-properties',
               ],
             },
           },

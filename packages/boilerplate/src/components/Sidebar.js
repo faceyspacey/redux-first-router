@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink, Link } from '@respond-framework/rudy'
+import { NavLink, Link } from '@respond-framework/link'
 import styles from '../css/Sidebar'
 
 // TODO: Use the link package

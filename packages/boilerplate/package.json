@@ -21,12 +21,12 @@
     "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
     "eslint": "eslint",
     "lint": "eslint .",
-    "vulnerabilities": "snyk test"
+    "vulnerabilities": "mkdir node_modules; snyk test"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-rc.3",
+    "@respond-framework/link": "^0.1.0",
     "@respond-framework/rudy": "^0.1.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-polyfill": "^6.23.0",
     "express": "^4.15.2",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",

@@ -10,4 +10,7 @@ ignore:
   'npm:underscore.string:20170908':
     - underscore.string:
         reason: DoS attack in a devDependency
+  'npm:braces:20180219':
+    - babel-watch > chokidar > anymatch > micromatch > braces:
+        reason: Dos in a dev dependency
 patch: {}
