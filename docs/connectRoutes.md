@@ -21,7 +21,6 @@ Let's now examine our `connectRoutes` function more deeply:
 ## Signature
 ```javascript
 connectRoutes(
-  history: History,
   routesMap?: RoutesMap,
   options?: Options,
 ) : {
@@ -29,55 +28,13 @@ connectRoutes(
   enhancer: Function,
   reducer: Function,
   thunk: Function,
+  initialDispatch: Function,
 }
 ```
 
-The only parameter `connectRoutes` expects is the `history` object. You won't get much for that, but it won't break your redux store.
-The second parameter is your all-important `routesMap`. And the third is a small set of `options` in a map that you can provide.
+The first parameter is your all-important `routesMap`. The second is a small set of `options` in a map that you can provide.
 
 Let's dive into each.
-
-## History
-The `history` object is the return of the *history* package's `createBrowserHistory` or `createMemoryHistory` function:
-
-```
-import createHistory from 'history/createBrowserHistory'
-const history = createHistory() // notice no parameters are needed in the browser
-const { middleware, enhancer, reducer } = connectRoutes(history)
-
-```
-*or:*
-```
-import createHistory from 'history/createMemoryHistory'
-const history = createHistory({ initialEntries: [request.path] })
-const { middleware, enhancer, reducer } = connectRoutes(history)
-```
-
-See the widely used [history package](https://github.com/ReactTraining/history) on github. The idea is simply that you can use
-both interchangeably depending on if you're in the browser or an environment that does not have `window` or `window.history` such as the
-server, React Native or tests (note: Jest does have a fake functioning `window` object, so in Jest tests, you should
-use `createMemoryHistory` to keep tests isolated).
-
-When using `createMemoryHistory` the key is to to provide the initial path as the value (within an array) for `initialEntries`. On the
-server this is easy because you can get it from your `request` object such as when using *express*. In tests, you can set it to whatever
-you want to trick **Redux First Router** into thinking the app is starting on whatever route you want. In React Native, you get it via
-the `Linking` API like this:
-
-```javascript
-import { connectRoutes } from 'redux-first-router'
-import createHistory from 'history/createMemoryHistory'
-import { Linking } from 'react-native'
-import config from '../config'
-
-const env = 'development' // should dynamically come from environment variables
-
-const url = await Linking.getInitialURL()
-const delimiter = config(env).URI_PREFIX || '://'
-const path = url ? `/${url.split(delimiter)[1]}` : '/'
-const history = createHistory({ initialEntries: [path] })
-
-const { middleware, enhancer, reducer } = connectRoutes(history)
-```
 
 
 ## RoutesMap
@@ -155,6 +112,8 @@ type Options = {
   onAfterChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   onBackNext?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   initialDispatch?: boolean, // default: true
+  initialEntries?: string | Array<string>,
+  createHistory?: (options?: Object) => History,
   querySerializer?: {parse: Function, stringify: Function},
   displayConfirmLeave?: DisplayConfirmLeave,
   basename?: string,
@@ -182,6 +141,12 @@ the state won't reflect it. So you need to use the action to extract URL params 
 * **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `bag` object as a third parameter, which contains the dispatched `action` and the configured `extra` value. Actions with kinds `back`, `next`, and `pop` trigger this.
 
 * **initialDispatch** - `initialDispatch` can be set to `false` to bypass the initial dispatch, so you can do it manually, perhaps after running sagas. An `initialDispatch` function will exist in the object returned by `connectRoutes`. Simply call `initialDispatch()` when you are ready.
+
+* **createHistory** - A function returning a history object compatible with the popular `history` package.
+See the below section on "History types" for more details.
+
+* **initialEntries**
+An optional array of entries to initialise history object. Useful for server side rendering and tests.
 
 * **navigators** - `navigators` is a map of of your Redux state keys to *React Navigation* navigators. Here's how you do it:
 
@@ -235,4 +200,51 @@ const rootReducer = combineReducers({ ...reducers, location: reducer })
 const middlewares = applyMiddleware([ middleware, ...otherMiddlewares ])
 // note that the enhancer comes before other middleware
 const store = createStore(rootReducer, compose(enhancer, middlewares))
+```
+
+## History types
+The `history` object is the return of the *history* package's `createBrowserHistory` or `createMemoryHistory` function:
+
+```
+import createHistory from 'history/createBrowserHistory'
+const { middleware, enhancer, reducer } = connectRoutes(routesMap, {
+  createHistory,
+})
+
+```
+*or:*
+```
+import createHistory from 'history/createMemoryHistory'
+const { middleware, enhancer, reducer } = connectRoutes(routesMap, {
+  createHistory,
+  initialEntries: [request.path],
+})
+```
+
+See the widely used [history package](https://github.com/ReactTraining/history) on github. The idea is simply that you can use
+both interchangeably depending on if you're in the browser or an environment that does not have `window` or `window.history` such as the
+server, React Native or tests (note: Jest does have a fake functioning `window` object, so in Jest tests, you should
+use `createMemoryHistory` to keep tests isolated).
+
+When using `createMemoryHistory` the key is to to provide the initial path as the value (within an array) for `initialEntries`. On the
+server this is easy because you can get it from your `request` object such as when using *express*. In tests, you can set it to whatever
+you want to trick **Redux First Router** into thinking the app is starting on whatever route you want. In React Native, you get it via
+the `Linking` API like this:
+
+```javascript
+import { connectRoutes } from 'redux-first-router'
+import createHistory from 'history/createMemoryHistory'
+import { Linking } from 'react-native'
+import config from '../config'
+
+const env = 'development' // should dynamically come from environment variables
+
+const url = await Linking.getInitialURL()
+const delimiter = config(env).URI_PREFIX || '://'
+const path = url ? `/${url.split(delimiter)[1]}` : '/'
+
+const { middleware, enhancer, reducer } = connectRoutes(routesMap, {
+  createHistory,
+  initialEntries: [path]
+})
 ```
