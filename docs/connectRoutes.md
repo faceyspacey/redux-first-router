@@ -97,6 +97,7 @@ type RouteObject = {
   toPath?: (value: string, key?: string) => string,
   fromPath?: (pathSegment: string, key?: string) => string,
   thunk?: (dispatch: Function, getState: Function) => Promise<any>,
+  confirmLeave?: ConfirmLeave,
 }
 ```
 
@@ -119,6 +120,15 @@ server side rendering is detected*, it will not be called because it will be ass
 `initialState` on the client hydrated from that. 2) on the server, on first load, it also WILL NOT be called because it is expected
 to be handled manually in order to allow you to syncronously `await` its result before sending your HTML to the client. See the
 [server side rendering](./docs/server-rendering.md) doc for the idiomatic way to do this.
+* **confirmLeave** is a function that can optionally block navigation away from the route.
+It receives the current redux state and the action as arguments.
+If you return a falsy value, navigation will be allowed. Otherwise, The default behaviour is to
+call `window.confirm` on attempted navigation, and display the string returned from
+`confirmLeave` as the message in the browser yes|no dialog. You can customize what happens
+when navigation is blocked using the `displayConfirmLeave` option to `routesMap` (see below).
+You must do this on react-native, since there is no `window.confirm`.
+In this case, you can return any type of value you want.
+See this [blocking navigation](./blocking-navigation.md) for more details
 
 
 ## Options
@@ -136,7 +146,8 @@ type Options = {
   onAfterChange?: (Dispatch, GetState) => void,
   initialDispatch?: boolean, // default: true
   onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void,
-  querySerializer?: {parse: Function, stringify: Function}
+  querySerializer?: {parse: Function, stringify: Function},
+  displayConfirmLeave?: DisplayConfirmLeave,
 }
 ```
 
@@ -175,6 +186,11 @@ const options = {
 ```
 
 * **querySerializer** - an object with `parse` and `stringify` methods, such as the `query-string` or `qs` libraries (or anything handmade). This will be used to handle querystrings. Without this option, querystrings are ignored silently.
+
+* **displayConfirmLeave** - A function receiving `message` and `callback` when navigation is blocked with
+`confirmLeave`. The message is the return value from `confirmLeave`. The callback can be called with `true`
+to unblock the navigation, or with `false` to cancel the navigation.
+See this [blocking navigation](./blocking-navigation.md) for more details
 
 
 > See the [Redux Navigation](./redux-navigation) docs for info on how to use *React Navigation* with this package. We think you're gonna love it :)
