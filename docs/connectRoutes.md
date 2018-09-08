@@ -151,12 +151,13 @@ type Options = {
   selectTitleState?: (state: Object) => string,
   scrollTop?: boolean,
   restoreScroll?: ((PrevLocationState, LocationState) => boolean | string | array) => ScrollBehavior,
-  onBeforeChange?: (Dispatch, GetState) => void,
-  onAfterChange?: (Dispatch, GetState) => void,
+  onBeforeChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
+  onAfterChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
+  onBackNext?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   initialDispatch?: boolean, // default: true
-  onBackNext?: (Dispatch, GetState, HistoryLocation, Action) => void,
   querySerializer?: {parse: Function, stringify: Function},
   displayConfirmLeave?: DisplayConfirmLeave,
+  extra?: any,
 }
 ```
 
@@ -171,13 +172,13 @@ restoration, and should be fine while developing, especially if you're using Chr
 
 * **restoreScroll** - the `restoreScroll` is a call to `redux-first-router-restore-scroll`'s `restoreScroll` function, with a `shouldUpdateScroll` callback passed a single argument. See the [scroll restoration doc](./scroll-restoration.md) for more info.
 
-* **onAfterChange** - `onAfterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments
+* **onAfterChange** - `onAfterChange` is a simple function that will be called after the routes change. It's passed your standard `dispatch` and `getState` arguments, as well as the `bag` object as a third parameter, which contains the dispatched `action` and the configured `extra` value.
 like a thunk.
 
-* **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `action` as a third parameter. Keep in mind unlike `onAfterChange`, the action has not been dispatched yet. Therefore,
+* **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `bag` object as a third parameter, which contains the dispatched `action` and the configured `extra` value. Keep in mind unlike `onAfterChange`, the action has not been dispatched yet. Therefore,
 the state won't reflect it. So you need to use the action to extract URL params from the `payload`. You can use this function to efficiently short-circuit the middleware by calling `dispatch(redirect(newAction))`, where `newAction` has the matching `type` and `payload` of the route you would like to redirect to. Using `onBeforeChange` and `location.kind === 'redirect'` + `res.redirect(301, pathname)` in your `serverRender` function is the idiom here for handling redirects server-side. See [server-rendering docs](.server-rendering.md) for more info.
 
-* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk. Actions with kinds `back`, `next`, and `pop` trigger this.
+* **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `bag` object as a third parameter, which contains the dispatched `action` and the configured `extra` value. Actions with kinds `back`, `next`, and `pop` trigger this.
 
 * **initialDispatch** - `initialDispatch` can be set to `false` to bypass the initial dispatch, so you can do it manually, perhaps after running sagas. An `initialDispatch` function will exist in the object returned by `connectRoutes`. Simply call `initialDispatch()` when you are ready.
 
@@ -201,6 +202,13 @@ const options = {
 to unblock the navigation, or with `false` to cancel the navigation.
 See this [blocking navigation](./blocking-navigation.md) for more details
 
+* **extra** - An optional value that will be passed as part of the third `bag` argument to all route callbacks,
+including `thunk`, `onBeforeChange`, etc. It works much like the
+[withExtraArgument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument)
+feature of `redux-thunk` or the `context` argument of GraphQL resolvers.
+You can use it to pass any required context to your thunks without having to tightly couple them to it.
+For example, you could pass an instance of an API client initialised with authentication cookies,
+or a function `addReducer` to inject new code split reducers into the store.
 
 > See the [Redux Navigation](./redux-navigation) docs for info on how to use *React Navigation* with this package. We think you're gonna love it :)
 
