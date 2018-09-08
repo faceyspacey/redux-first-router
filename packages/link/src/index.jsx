@@ -173,7 +173,7 @@ const mapState = (state: Object, { rudy, ...props }: OwnProps) => {
     basename,
     routesAdded,
     url: isNav && url,
-    currentPathname: pathname,
+    currentPathname,
   }
 }
 
