@@ -157,6 +157,7 @@ type Options = {
   initialDispatch?: boolean, // default: true
   querySerializer?: {parse: Function, stringify: Function},
   displayConfirmLeave?: DisplayConfirmLeave,
+  basename?: string,
   extra?: any,
 }
 ```
@@ -201,6 +202,10 @@ const options = {
 `confirmLeave`. The message is the return value from `confirmLeave`. The callback can be called with `true`
 to unblock the navigation, or with `false` to cancel the navigation.
 See this [blocking navigation](./blocking-navigation.md) for more details
+
+* **basename** - a URL path prefix that will be prepended to the URL. For example,
+using a `basename` of `'/playground'`, A route with the path `'/home'` would correspond
+to the URL path `'/playground/home'`
 
 * **extra** - An optional value that will be passed as part of the third `bag` argument to all route callbacks,
 including `thunk`, `onBeforeChange`, etc. It works much like the

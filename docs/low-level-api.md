@@ -10,9 +10,16 @@ import { actionToPath, pathToAction } from 'redux-first-router'
 
 const { routesMap } = store.getState().location
 
-const path = actionToPath(action, routesMap)
-const action = pathToAction(path, routesMap)
+const path = actionToPath(action, routesMap, querySerializer)
+const action = pathToAction(path, routesMap, querySerializer, basename)
 ```
+
+The `querySerializer` argument is optional and the same as the one passed to `connectRoutes`.
+It defaults to undefined.
+
+The `basename` argument to `pathToAction` is optional and works the same way as the one passed to routesMap.
+It defaults to the value passed the last time `connectRoutes` was called.
+`actionToPath` does not apply any `basename` transformation.
 
 You will need the `routesMap` you made, which you can import from where you created it or you can
 get any time from your store.
