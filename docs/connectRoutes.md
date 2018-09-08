@@ -72,13 +72,18 @@ and multi segment parameters. See the docs on [URL parsing](./url-parsing.md) fo
 Path is **optional**. If you do not provide it, the action will not be synced with the URL,
 but you can still use the `thunk` option to declaratively specify which thunks will occur
 in response to which actions. See the [example](../examples/pathlessRoutes.js) for more details.
-* **capitalizedWords** when true will break apart hyphenated paths into words, each with the first character capitalizedWords
+* **capitalizedWords** when true will break apart hyphenated paths into words, each with the first character capitalized
 * **toPath** will one-by-one take the keys and values of your payload object and transform them into path segments. So for a payload
 with multiple key/value pairs, it will call `toPath` multiple times, passing in the individual value as the first argument
 and the individual key name as the second argument.
-* **fromPath** will do the inverse, taking each dynamic path *:segment* and its name (in this case "segment") and pass it to
+If you do not provide a function, the default behaviour is to convert payload params with multiple segments into
+arrays containing each segment, and to apply the `capitalizedWords` transformation to other segments if that option is set. If you provide your own function, no other transformations are applied.
+* **fromPath** will do the inverse, taking each dynamic path *:segment* and its name(in this case "segment") and passing it to
 `fromPath` multiple times. The first argument is the segment and the second its name as delinated in your `routesMap` object
 after colons.
+If `fromPath` is not provided, the default behaviour is to parse segments into numbers if possible,
+and otherwise to apply the `capitalizedWords` transformation if that option is set.
+If you pass a function to `fromPath`, no transformations occur other than those that your function performs.
 * **thunk** is a function just like what you dispatch when using the `redux-thunk` middleware, taking `dispatch` and `getState`
 arguments. NOTE: you do NOT need `redux-thunk` for this to work. On the client, the thunk will be called any time the middleware
 detects a matching route. However to properly manage server-side rendering, there are 2 optimizations: 1) on first load on the client *if
