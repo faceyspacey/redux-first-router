@@ -112,6 +112,9 @@ You can have dynamic segments by using a colon (e.g. `'/users/:userId'`). In thi
 corresponding action has a key `payload.userId` with the appropriate value.
 You can also implement more complex cases such as regular expressions, optional parameters,
 and multi segment parameters. See the docs on [URL parsing](./url-parsing.md) for more details.
+Path is **optional**. If you do not provide it, the action will not be synced with the URL,
+but you can still use the `thunk` option to declaratively specify which thunks will occur
+in response to which actions. See the [example](../examples/pathlessRoutes.js) for more details.
 * **capitalizedWords** when true will break apart hyphenated paths into words, each with the first character capitalizedWords
 * **toPath** will one-by-one take the keys and values of your payload object and transform them into path segments. So for a payload
 with multiple key/value pairs, it will call `toPath` multiple times, passing in the individual value as the first argument
