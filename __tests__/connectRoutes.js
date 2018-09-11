@@ -524,6 +524,17 @@ it('title and location options as selector functions', () => {
   expect(action).toMatchSnapshot()
 })
 
+it('QUERY: has initial query in state during initial onBeforeChange event', () => {
+  let query = null
+  const onBeforeChange = jest.fn(
+    (_, getState) => query = getState().location.query
+  )
+  setupAll('/first?param=something', { querySerializer, onBeforeChange })
+
+  expect(onBeforeChange).toHaveBeenCalledTimes(1)
+  expect(query).toEqual({ param: 'something' })
+})
+
 it('QUERY: dispatched as action.query', () => {
   const { store } = setupAll('/third', { querySerializer })
   const query = { foo: 'bar', baz: 69 }
