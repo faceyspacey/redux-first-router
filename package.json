@@ -61,6 +61,7 @@
     "redux-thunk": "^2.2.0",
     "rimraf": "^2.5.4",
     "semantic-release": "^15.9.14",
+    "snyk": "^1.95.3",
     "travis-github-status": "^1.6.3",
     "webpack": "2.4.1"
   },
