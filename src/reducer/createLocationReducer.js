@@ -45,8 +45,8 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
     route &&
       !action.error &&
       (typeof route === 'string' || route.path) &&
-      (action.meta.location.current.pathname === state.pathname ||
-        action.meta.location.current.search === state.search ||
+      (action.meta.location.current.pathname === state.pathname &&
+        action.meta.location.current.search === state.search &&
         action.meta.location.kind !== state.kind
       )
   ) {
