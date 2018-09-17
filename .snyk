@@ -1,4 +1,23 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
 version: v1.12.0
-ignore: {}
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:chownr:20180731':
+    - cacache > chownr:
+        reason: 'Introduced via semantic-release, not relevant in production'
+    - npm-profile > make-fetch-happen > cacache > chownr:
+        reason: 'Introduced via semantic-release, not relevant in production'
+    - libcipm > pacote > cacache > chownr:
+        reason: 'Introduced via semantic-release, not relevant for production'
+    - libcipm > pacote > tar > chownr:
+        reason: 'Introduced via semantic-release, not relevant for production'
+    - npm-registry-fetch > make-fetch-happen > cacache > chownr:
+        reason: 'Introduced via semantic-release, not relevant for production'
+    - libcipm > pacote > make-fetch-happen > cacache > chownr:
+        reason: 'Introduced via semantic-release, not relevant for production'
+    - libnpmhook > npm-registry-fetch > make-fetch-happen > cacache > chownr:
+        reason: 'Introduced via semantic-release, not relevant for production'
+  'npm:mem:20180117':
+    - libnpx > yargs > os-locale > mem:
+        reason: 'Introduced via semantic-release, not relevant for production'
 patch: {}
