@@ -41,6 +41,47 @@ Object {
 }
 `;
 
+exports[`createLocationReducer() - reduces action.meta.location.kind being updated 1`] = `
+Object {
+  "hasSSR": undefined,
+  "history": Object {
+    "entries": Array [
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+      },
+      Object {
+        "hash": "",
+        "key": "345678",
+        "pathname": "/first",
+        "search": "",
+        "state": undefined,
+      },
+    ],
+    "index": 1,
+    "length": 2,
+  },
+  "kind": "load",
+  "pathname": "/first",
+  "payload": Object {
+    "param": "bar",
+  },
+  "prev": Object {
+    "pathname": "/first",
+    "payload": Object {},
+    "type": "FIRST",
+  },
+  "routesMap": Object {
+    "FIRST": "/first",
+    "SECOND": "/second/:param",
+  },
+  "type": "FIRST",
+}
+`;
+
 exports[`getInitialState() returns state.history === undefined when using createBrowserHistory 1`] = `
 Object {
   "hasSSR": undefined,

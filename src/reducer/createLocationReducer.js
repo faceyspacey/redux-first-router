@@ -41,6 +41,20 @@ export default (initialState: LocationState, routesMap: RoutesMap) => (
       routesMap
     }
   }
+  else if (
+    route &&
+      !action.error &&
+      (typeof route === 'string' || route.path) &&
+      (action.meta.location.current.pathname === state.pathname &&
+        action.meta.location.current.search === state.search &&
+        action.meta.location.kind !== state.kind
+      )
+  ) {
+    return {
+      ...state,
+      kind: action.meta.location.kind
+    }
+  }
   else if (action.type === ADD_ROUTES) {
     return {
       ...state,
