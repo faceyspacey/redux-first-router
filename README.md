@@ -14,14 +14,21 @@
   <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/demo.png">
 </a>
 
+### Road to Rudy!:
+
 > **UPDATE (8/15):** you can now add additional routes as part of your code splitting strategy. See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/62#issuecomment-322558836) for more info.
 
 > **UPDATE (9/5):** you can now block user navigation via the `confirmLeave` route option (and customize its appearance via the `displayConfirmLeave` option). See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/27#issuecomment-327431413) for more info. Do `yarn upgrade redux-first-router@next` to get it.
 
 > **UPDATE (9/6):** MUCH ANTICIPATED FEATURE: you can now do all sorts of optional params in your paths, match multiple similar paths to the same type, use regexes, and use params that capture multiple segments. See [this issue comment](https://github.com/faceyspacey/redux-first-router/issues/83#issuecomment-327703226) for more info. Do `yarn upgrade redux-first-router@next` to get it.
 
-> **UPDATE (9/9):** *4 new thiings:* 1) route paths are now cached for better performance (less cycles wasted on parsing). 2) you can now do **pathless routes!**. I.e. you can use routes just for the purpose of the thunk feature, thereby achieving more uniformity across your async actions--just use RFR! Just dispatch the action type for which you have a thunk in your `routesMap` and it will be called like any other. To learn more about it: [check this example](https://gist.github.com/faceyspacey/2771c05a62a338fa6d3d23d76e6e7c5a). 3) now all thunks and callbacks (`onBeforeChange`, `onAfterChange`, etc) receive a 3rd *"bag"* argument which currently has a key for the current `action` and an `extra` key. More keys may be added later. The `extra` key is an option you provide to `connectRoutes` which is the equivalent of Redux-Thunk's *"extra argument"*. It just happens to be in our bag. That said, `onBeforeChange` used to receive just an `action` as a 3rd argument. So unfortunately this is a breaking change. Check the aforementioned example to learn more about this too. 4) lastly, now RFR skips actions with an `error` key; this should resolve a few quirks for developers using middleware that explicitly handle errors already. If it ever makes sense for RFR/Rudy to handle errors, we'll provide a robust solution. Half-assing as we've done doesn't make sense for now.
+> **UPDATE (9/9):** *4 new things:* 1) route paths are now cached for better performance (less cycles wasted on parsing). 2) you can now do **pathless routes!**. I.e. you can use routes just for the purpose of the thunk feature, thereby achieving more uniformity across your async actions--just use RFR! Just dispatch the action type for which you have a thunk in your `routesMap` and it will be called like any other. To learn more about it: [check this example](https://gist.github.com/faceyspacey/2771c05a62a338fa6d3d23d76e6e7c5a). 3) now all thunks and callbacks (`onBeforeChange`, `onAfterChange`, etc) receive a 3rd *"bag"* argument which currently has a key for the current `action` and an `extra` key. More keys may be added later. The `extra` key is an option you provide to `connectRoutes` which is the equivalent of Redux-Thunk's *"extra argument"*. It just happens to be in our bag. That said, `onBeforeChange` used to receive just an `action` as a 3rd argument. So unfortunately this is a breaking change. Check the aforementioned example to learn more about this too. 4) lastly, now RFR skips actions with an `error` key; this should resolve a few quirks for developers using middleware that explicitly handle errors already. If it ever makes sense for RFR/Rudy to handle errors, we'll provide a robust solution. Half-assing as we've done doesn't make sense for now.
 
+> **UPDATE (9/16):** There is now a `basename` option. Also, `history` is no longer passed to `connectRoutes`. The `history` package is handled internally. Yup, a breaking change, but a super quick fix in one place. Check [this comment](https://github.com/faceyspacey/redux-first-router/issues/103#issuecomment-329972201) for more info. Lastly, to upgrade now do this: `yarn upgrade redux-first-router@rudy redux-first-router-link@rudy` :) ...next and master branches are locked in forever basically and will never be touched again :). The `rudy` branch will become **Rudy**.
+
+> **UPDATE (9/18):** There is now a `createHistory` option. Get it from the `rudy` tag on NPM. This was specifically implemented for [people that want to use the hashHistory](https://github.com/faceyspacey/redux-first-router/issues/114#issuecomment-330499555) which I wasn't aware anyone wanted to do, plus it's also useful when testing your own implementation or forks.
+
+> **UPDATE (9/22):** BREAKING CHANGE: now `toPath` and `fromPath` on your routes are passed all path segments, even if they are numbers. No automatic transformations will happen if you provide these transformation functions. Get it **@rudy** on NPM.
 
 # Redux-First Router
 
@@ -32,18 +39,6 @@
 
   <a href="https://travis-ci.org/faceyspacey/redux-first-router">
     <img src="https://travis-ci.org/faceyspacey/redux-first-router.svg?branch=master" alt="Build Status" />
-  </a>
-
-  <a href="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/coverage">
-    <img src="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/badges/coverage.svg" alt="Coverage Status"/>
-  </a>
-
-  <a href="https://greenkeeper.io">
-    <img src="https://badges.greenkeeper.io/faceyspacey/redux-first-router.svg" alt="Green Keeper" />
-  </a>
-
-  <a href="https://lima.codeclimate.com/github/faceyspacey/redux-first-router">
-    <img src="https://lima.codeclimate.com/github/faceyspacey/redux-first-router/badges/gpa.svg" alt="GPA" />
   </a>
 
   <a href="https://www.npmjs.com/package/redux-first-router">
@@ -63,7 +58,7 @@
 ![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
 
-The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everthing is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
+The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everything is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
 
 **Articles You Should Read:**
 - **[Pre Release: Redux-First Router — A Step Beyond Redux-Little-Router](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)** 
