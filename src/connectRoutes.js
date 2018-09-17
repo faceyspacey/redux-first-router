@@ -639,10 +639,11 @@ export const go = (n: number) => _history.go(n)
 
 export const canGo = (n: number) => _history.canGo(n)
 
-export const canGoBack = (): boolean => !!_history.entries[_history.index - 1]
+export const canGoBack = (): boolean =>
+  !!(_history.entries && _history.entries[_history.index - 1])
 
 export const canGoForward = (): boolean =>
-  !!_history.entries[_history.index + 1]
+  !!(_history.entries && _history.entries[_history.index + 1])
 
 export const prevPath = (): ?string => {
   const entry = _history.entries[_history.index - 1]
