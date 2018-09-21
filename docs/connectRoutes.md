@@ -106,6 +106,7 @@ When using* **Redux First Router**, *do not dispatch payloads that are primitive
 Features:
 * **route as a string** is simply a path to match to an action type without any transformations
 * **capitalizedWords** when true will break apart hyphenated paths into words, each with the first character capitalizedWords
+* **coerceNumbers** when false will prevent numberic paths from being parsed into Numbers (default true)
 * **toPath** will one-by-one take the keys and values of your payload object and transform them into path segments. So for a payload
 with multiple key/value pairs, it will call `toPath` multiple times, passing in the individual value as the first argument
 and the individual key name as the second argument.
