@@ -1,2 +1,12 @@
 {
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules/**/*": true,
+    "examples/boilerplate/buildClient/**/*": true,
+    "examples/boilerplate/buildServer/**/*": true
+  }
 }

@@ -1,0 +1,55 @@
+{
+  "name": "@respond-framework/rudy",
+  "version": "0.1.0",
+  "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
+  "main": "dist/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "build": "yarn run build:cjs && yarn run build:es && yarn run flow-copy && yarn run build:umd && yarn run build:umd:min",
+    "build:cjs": "babel --source-maps true src -d dist",
+    "build:es": "BABEL_ENV=es babel --source-maps true src -d es",
+    "build:umd": "NODE_ENV=production webpack --mode production --env.minimize=false src/index.js -o dist/redux-first-router.js",
+    "build:umd:min": "NODE_ENV=production webpack --mode production --env.minimize=true src/index.js -o dist/redux-first-router.min.js",
+    "flow-copy": "flow-copy-source src dist && flow-copy-source src es",
+    "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "clean": "rimraf dist && rimraf es && rimraf coverage",
+    "prettier": "prettier",
+    "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
+    "eslint": "eslint",
+    "lint": "eslint . || true",
+    "vulnerabilities": "mkdir node_modules; snyk test",
+    "cm": "git-cz",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "prepublish": "npm run clean && npm run build && npm run build:es && npm run flow-copy && npm run build:umd && npm run build:umd:min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/faceyspacey/redux-first-router.git"
+  },
+  "author": "James Gillmore <james@faceyspacey.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/faceyspacey/redux-first-router/issues"
+  },
+  "homepage": "https://github.com/faceyspacey/redux-first-router#readme",
+  "dependencies": {
+    "path-to-regexp": "^2.1.0",
+    "prop-types": "^15.6.0",
+    "qs": "^6.5.1",
+    "resolve-pathname": "^2.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --parser=flow --semi=false --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+dist/
+es/
+flow-typed/
+node_modules/
+
+.eslintignore
+.flowconfig
+.gitignore
+.npmignore
+.snyk
+
+*.png
+*.snap

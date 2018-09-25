@@ -1,0 +1,48 @@
+{
+  "name": "integration-tests",
+  "version": "1.0.0",
+  "description": "Integration tests for the respond framework",
+  "main": "index.js",
+  "repository": "https://github.com/ScriptedAlchemy/redux-first-router.git",
+  "author": "James Gilmore, Daniel Playfair Cal",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "prettier": "prettier",
+    "is-pretty": "prettier --ignore-path=.eslintignore '**/*' --list-different",
+    "prettify": "prettier --ignore-path=.eslintignore '**/*' --write",
+    "eslint": "eslint",
+    "lint": "eslint . || true",
+    "vulnerabilities": "mkdir node_modules; snyk test"
+  },
+  "dependencies": {
+    "@respond-framework/rudy": "^0.1.0",
+    "react": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.4.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0"
+  },
+  "jest": {
+    "verbose": false,
+    "silent": true,
+    "testURL": "http://localhost:3000",
+    "testMatch": [
+      "**/__tests__/integration/**/*.js?(x)"
+    ],
+    "setupTestFrameworkScriptFile": "./__test-helpers__/setupJest.js",
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      ".eslintrc.js"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!@respond-framework)"
+    ]
+  }
+}
