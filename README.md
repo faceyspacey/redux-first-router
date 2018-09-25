@@ -234,6 +234,7 @@ Here's the primary (and very minimal *easy to remember*) set of configuration op
 const routesMap = {
   HOME: '/home', // plain path strings or route objects can be used
   CATEGORY: { path: '/category/:cat', capitalizedWords: true },
+  PAGE: { path: '/page/:num', coerceNumbers: true },
   USER: { 
     path: '/user/:cat/:name',
     fromPath: path => capitalizeWords(path.replace(/-/g, ' ')),

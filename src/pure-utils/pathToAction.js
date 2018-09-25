@@ -44,6 +44,10 @@ export default (
     const capitalizedWords =
       typeof routes[i] === 'object' && routes[i].capitalizedWords
 
+
+    const coerceNumbers =
+      typeof routes[i] === 'object' && routes[i].coerceNumbers
+
     const fromPath =
       routes[i] &&
       typeof routes[i].fromPath === 'function' &&
@@ -60,7 +64,7 @@ export default (
         if (fromPath) {
           val = fromPath && fromPath(val, key.name)
         }
-        else if (isNumber(val)) {
+        else if (coerceNumbers && isNumber(val)) {
           val = parseFloat(val)
         }
         else if (capitalizedWords) {
