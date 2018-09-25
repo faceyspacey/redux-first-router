@@ -73,6 +73,7 @@ Path is **optional**. If you do not provide it, the action will not be synced wi
 but you can still use the `thunk` option to declaratively specify which thunks will occur
 in response to which actions. See the [example](../examples/pathlessRoutes.js) for more details.
 * **capitalizedWords** when true will break apart hyphenated paths into words, each with the first character capitalized
+* **coerceNumbers** when true will parse numeric paths into Numbers (default false)
 * **toPath** will one-by-one take the keys and values of your payload object and transform them into path segments. So for a payload
 with multiple key/value pairs, it will call `toPath` multiple times, passing in the individual value as the first argument
 and the individual key name as the second argument.
