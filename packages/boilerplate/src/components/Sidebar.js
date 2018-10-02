@@ -22,6 +22,9 @@ const Sidebar = ({ path, dispatch }) => (
     >
       Redux
     </Link>
+    <NavLink to="/test" activeClassName={styles.active}>
+      TEST
+    </NavLink>
     <span
       role="link"
       tabIndex="0"

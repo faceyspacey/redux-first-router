@@ -16,6 +16,9 @@ module.exports = {
       },
     },
   },
+  globals: {
+    document: true,
+  },
   rules: {
     'prettier/prettier': 'warn',
     'no-use-before-define': [

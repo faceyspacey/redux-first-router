@@ -26,7 +26,6 @@ export default (
   if (!isAddRoutes) {
     routes.NOT_FOUND = input.NOT_FOUND || { path: '/not-found' }
     Object.assign(routes, input) // insure '/not-found' matches over '/:param?' -- yes, browsers respect order assigned for non-numeric keys
-
     routes[ADD_ROUTES] = input[ADD_ROUTES] || {
       thunk: addRoutes,
       dispatch: false,
@@ -59,6 +58,8 @@ export default (
       routes[type] = route
     },
   )
+
+  console.log('routes',routes);
 
   return routes
 }
