@@ -6,8 +6,10 @@ import * as Rudy from '@respond-framework/rudy'
 const routesMap = {}
 
 class Router extends Component {
-  render() {
-    const childs = Array.isArray(this.props.children) ? this.props.children : [this.props.children]
+  constructor(props) {
+    super(props);
+
+    const childs = Array.isArray(props.children) ? props.children : [props.children]
 
     const routeKey = childs[0].props.component().chunkName()
     const routes = {
@@ -15,14 +17,13 @@ class Router extends Component {
         ...childs[0].props,
       },
     }
-
-
     const formatRoute = (route) => ({
       ...route,
     })
+    props.addRoutes(routes, formatRoute)
+  }
+  render() {
 
-
-    this.props.addRoutes(routes, formatRoute)
     // this.props.setRoute({ type: routeKey })
     return <span>route</span>
   }
