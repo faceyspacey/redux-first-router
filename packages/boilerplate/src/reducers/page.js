@@ -5,11 +5,10 @@ const components = {
 }
 
 export default (state = 'HOME', action = {}) => {
-  if (action.type === '@@rudy/ADD_ROUTES' && action.payload.routes) {
-    Object.assign({ ...components, ...action.payload.routes })
-    const [type] = Object.keys(action.payload.routes)
-    return type
+  if (action.payload && action.payload.routes) {
+    Object.assign(components, action.payload.routes)
   }
+
   return components[action.type] || state
 }
 

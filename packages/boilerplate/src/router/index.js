@@ -8,7 +8,8 @@ const routesMap = {}
 class Router extends Component {
   render() {
     const childs = Array.isArray(this.props.children) ? this.props.children : [this.props.children]
-    const routeKey = childs[0].props.component.chunkName()
+
+    const routeKey = childs[0].props.component().chunkName()
     const routes = {
       [routeKey]: {
         ...childs[0].props,

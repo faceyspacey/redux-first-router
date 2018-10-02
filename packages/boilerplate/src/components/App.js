@@ -20,7 +20,7 @@ class App extends React.Component {
         <ConnectedRouter>
           <Route
             path="/test"
-            component={import('./Test')}
+            component={() => import('./Test')}
             onEnter={() => {
               console.log('ENTERING')
             }}
