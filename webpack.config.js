@@ -1,12 +1,12 @@
 const webpack = require('webpack')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const env = process.env.NODE_ENV
 
 const config = {
+  mode: 'development',
   module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
-    ]
+    rules: [{ test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ }]
   },
   output: {
     library: 'ReduxFirstRouter',
@@ -21,23 +21,22 @@ const config = {
 }
 
 if (env === 'production') {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false,
-        screw_ie8: false
-      },
-      mangle: {
-        screw_ie8: false
-      },
-      output: {
-        screw_ie8: false
-      }
-    })
-  )
+  config.mode = 'production'
+  config.optimization = {
+    minimizer: [
+      new UglifyJSPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false,
+            ascii_only: true
+          },
+          compress: {
+            comparisons: false
+          }
+        }
+      })
+    ]
+  }
 }
 
 module.exports = config
