@@ -1,4 +1,4 @@
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'rudy-history'
 import createLocationReducer, {
   getInitialState
 } from '../src/reducer/createLocationReducer'
@@ -15,6 +15,30 @@ it('createLocationReducer() - maintains address bar pathname state and current +
   const state = reducer(undefined, action) /*? */
 
   expectState(state)
+})
+
+it('createLocationReducer() - reduces action.meta.location.kind being updated', () => {
+  const { initialState, action, routesMap, expectState } = reducerParameters(
+    'FIRST',
+    '/first'
+  )
+
+  const reducer = createLocationReducer(initialState, routesMap)
+  const state = reducer(undefined, action) /*? */
+
+  const nextAction = {
+    ...action,
+    meta: {
+      location: {
+        ...action.meta.location,
+        kind: 'push'
+      }
+    }
+  }
+  const nextState = reducer(state, nextAction) /*? */
+
+  expectState(state)
+  expect(nextState.kind).toEqual('push')
 })
 
 it('locationReducer() reduces action.type === NOT_FOUND', () => {

@@ -4,6 +4,12 @@ import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
 export type Dispatch = ReduxDispatch<*>
 export type GetState = () => Object
 export type RouteString = string
+export type ConfirmLeave = (state: Object, action: Object) => ?string
+
+export type Bag = {
+  action: ReceivedAction | Action,
+  extra: any
+}
 
 export type RouteObject = {
   path: string,
@@ -11,8 +17,14 @@ export type RouteObject = {
   coerceNumbers?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
-  thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>,
-  navKey?: string
+  thunk?: (
+    dispatch: Dispatch,
+    getState: GetState,
+    bag: Bag
+  ) => any | Promise<any>,
+  navKey?: string,
+  confirmLeave?: ConfirmLeave,
+  meta?: Object
 }
 
 export type Route = RouteString | RouteObject
@@ -38,8 +50,7 @@ export type Navigators = {
   [key: string]: Navigator
 }
 
-export type Routes = Array<Route>
-export type RouteNames = Array<string>
+export type Routes = Array<Route> // eslint-disable-line no-undef
 
 export type SelectLocationState = (state: Object) => LocationState
 export type SelectTitleState = (state: Object) => string
@@ -49,21 +60,26 @@ export type QuerySerializer = {
   parse: (queryString: string) => Object
 }
 
-export type Options = {
+export type DisplayConfirmLeave = (
+  message: string,
+  callback: (canLeave: boolean) => void
+) => void
+
+export type Options = { // eslint-disable-line no-undef
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
   notFoundPath?: string,
   scrollTop?: boolean,
-  onBeforeChange?: (
-    dispatch: Dispatch,
-    getState: GetState,
-    action: Action
-  ) => void,
-  onAfterChange?: (dispatch: Dispatch, getState: GetState) => void,
-  onBackNext?: (dispatch: Dispatch, getState: GetState) => void,
+  onBeforeChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
+  onAfterChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
+  onBackNext?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   restoreScroll?: History => ScrollBehavior,
   initialDispatch?: boolean,
   querySerializer?: QuerySerializer,
+  displayConfirmLeave?: DisplayConfirmLeave,
+  basename?: string,
+  initialEntries?: string | Array<string>,
+  createHistory?: (options?: Object) => History,
   navigators?: {
     navigators: Navigators,
     patchNavigators: (navigators: Navigators) => void,
@@ -82,12 +98,13 @@ export type Options = {
       action: Object,
       navigationAction: ?NavigationAction
     }
-  }
+  },
+  extra?: any
 }
 
 export type ScrollBehavior = Object
 
-export type Params = Object
+export type Params = Object // eslint-disable-line no-undef
 export type Payload = Object
 
 export type LocationState = {
@@ -148,7 +165,8 @@ export type Action = {
   payload: Payload,
   meta: Meta,
   query?: Object,
-  navKey?: ?string
+  navKey?: ?string,
+  error?: ?mixed
 }
 
 export type ReceivedAction = {
@@ -160,18 +178,6 @@ export type ReceivedAction = {
   navKey?: ?string
 }
 
-export type ReceivedActionMeta = {
-  type: string,
-  payload: Payload,
-  query?: Object,
-  navKey?: ?string,
-  meta: {
-    notFoundPath?: string,
-    query?: Object,
-    search?: string
-  }
-}
-
 export type Listener = (HistoryLocation, HistoryAction) => void
 export type Listen = Listener => void
 export type Push = (pathname: string) => void
@@ -180,6 +186,10 @@ export type GoBack = () => void
 export type GoForward = () => void
 export type Go = number => void
 export type CanGo = number => boolean
+export type BlockFunction = (
+  location: HistoryLocation,
+  action: string
+) => ?string
 
 export type History = {
   listen: Listen,
@@ -192,7 +202,8 @@ export type History = {
   entries: Array<{ pathname: string }>,
   index: number,
   length: number,
-  location: HistoryLocation
+  location: HistoryLocation,
+  block: (func: BlockFunction) => void
 }
 
 export type HistoryLocation = {
@@ -202,6 +213,6 @@ export type HistoryLocation = {
 
 export type HistoryAction = string
 
-export type Document = Object
+export type Document = Object // eslint-disable-line no-undef
 
 export type Store = ReduxStore<*, *>

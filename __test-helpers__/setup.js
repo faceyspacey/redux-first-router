@@ -1,33 +1,35 @@
 import { applyMiddleware, createStore, compose } from 'redux'
-import createHistory from 'history/createMemoryHistory'
+import reduxThunk from 'redux-thunk'
 import connectRoutes from '../src/connectRoutes'
 
 const setup = (
   path = '/',
-  options = { title: 'title', location: 'location' }
+  options = { title: 'title', location: 'location' },
+  routesMap
 ) => {
-  const routesMap = {
+  routesMap = routesMap || {
     FIRST: '/first',
     SECOND: '/second/:param',
     THIRD: '/third'
   }
 
-  const history = createHistory({
-    initialEntries: [path],
-    initialIndex: 0,
-    keyLength: 6
-  })
+  options.initialEntries = path
 
-  const tools = connectRoutes(history, routesMap, options)
+  options.extra = 'extra-arg'
+  const tools = connectRoutes(routesMap, options)
   return { ...tools, routesMap }
 }
 
 export default setup
 
-export const setupAll = (path, options, rootReducer, preLoadedState) => {
-  const tools = setup(path, options)
+export const setupAll = (
+  path,
+  options,
+  { rootReducer, preLoadedState, routesMap } = {}
+) => {
+  const tools = setup(path, options, routesMap)
   const { middleware, reducer, enhancer } = tools
-  const middlewares = applyMiddleware(middleware)
+  const middlewares = applyMiddleware(reduxThunk, middleware)
   const enhancers = compose(enhancer, middlewares)
 
   rootReducer =

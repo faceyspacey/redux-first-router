@@ -1,12 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'rudy-history'
 import querySerializer from 'query-string'
 
 import setup, { setupAll } from '../__test-helpers__/setup'
 import setupThunk from '../__test-helpers__/setupThunk'
 import reducerParameters from '../__test-helpers__/reducerParameters'
 
-import connectRoutes from '../src/connectRoutes'
 import { NOT_FOUND } from '../src/index'
 import redirect from '../src/action-creators/redirect'
 import pathToAction from '../src/pure-utils/pathToAction'
@@ -73,35 +71,33 @@ describe('middleware', () => {
     expect(action).toMatchSnapshot()
   })
 
-  it('does nothing and warns if action has error && dispatched action isLocationAction', () => {
-    console.warn = jest.fn()
-    const { store } = setupAll()
+  it('does nothing if action has error', () => {
+    const { store } = setupAll('/first')
 
     const receivedAction = {
       error: true,
-      type: 'FOO',
+      type: 'SECOND',
       meta: { location: { current: {} } }
     }
-    const action = store.dispatch(receivedAction) /*? */
-    const warnArg = console.warn.mock.calls[0][0] /*? */
-    expect(warnArg).toEqual(
-      'redux-first-router: location update did not dispatch as your action has an error.'
-    )
 
-    expect(action).toEqual(receivedAction)
+    store.dispatch(receivedAction) /*? */
+    expect(store.getState().location.type).toEqual('FIRST')
   })
 
   it('calls onBeforeChange handler on route change', () => {
     const onBeforeChange = jest.fn()
     const { store } = setupAll('/first', { onBeforeChange })
 
-    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+    const action = { type: 'SECOND', payload: { param: 'bar' } }
+    store.dispatch(action)
 
     expect(onBeforeChange).toHaveBeenCalled()
+    expect(onBeforeChange.mock.calls[1][2].action).toMatchObject(action)
+    expect(onBeforeChange.mock.calls[1][2].extra).toEqual('extra-arg')
   })
 
   it('if onBeforeChange dispatches redirect, route changes with kind === "redirect"', () => {
-    const onBeforeChange = jest.fn((dispatch, getState, action) => {
+    const onBeforeChange = jest.fn((dispatch, getState, { action }) => {
       if (action.type !== 'SECOND') return
       const act = redirect({ type: 'THIRD' })
       dispatch(act)
@@ -121,7 +117,7 @@ describe('middleware', () => {
   it('onBeforeChange redirect on server results in 1 history entry', () => {
     window.SSRtest = true
 
-    const onBeforeChange = jest.fn((dispatch, getState, action) => {
+    const onBeforeChange = jest.fn((dispatch, getState, { action }) => {
       if (action.type !== 'SECOND') return
       const act = redirect({ type: 'THIRD' })
       dispatch(act)
@@ -143,8 +139,29 @@ describe('middleware', () => {
     const onAfterChange = jest.fn()
     const { store } = setupAll('/first', { onAfterChange })
 
-    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+    const action = { type: 'SECOND', payload: { param: 'bar' } }
+    store.dispatch(action)
     expect(onAfterChange).toHaveBeenCalled()
+    expect(onAfterChange.mock.calls[0][1]()).toEqual(store.getState())
+    expect(onAfterChange.mock.calls[1][2].action).toMatchObject(action)
+    expect(onAfterChange.mock.calls[1][2].extra).toEqual('extra-arg')
+  })
+
+  it('skips onAfterChange on redirect', () => {
+    const redirectAction = { type: 'THIRD', payload: { param: 'bar' } }
+    const thunk = jest.fn(dispatch => {
+      const action = redirect({ ...redirectAction })
+      dispatch(action)
+    })
+    const onAfterChange = jest.fn()
+
+    const { store } = setupThunk('/first', thunk, { onAfterChange })
+    store.dispatch({ type: 'SECOND', payload: { param: 'bar' } })
+
+    const { location } = store.getState()
+    expect(location).toMatchObject(redirectAction)
+    expect(onAfterChange).toHaveBeenCalled()
+    expect(onAfterChange.mock.calls.length).toEqual(2) // would otherwise be called 3x if onAfterChange from SECOND route was not skipped
   })
 
   it('scrolls to top on route change when options.scrollTop === true', () => {
@@ -246,13 +263,13 @@ describe('enhancer', () => {
       locationFOO: 'bar'
     })
 
-    const createEnhancer = () => setupAll('/first', undefined, rootReducer)
+    const createEnhancer = () => setupAll('/first', undefined, { rootReducer })
     expect(createEnhancer).toThrowError()
   })
 
   it('on the client correctly assigns routesMap to preloadedState so that functions in stringified server state are put back', () => {
     const preLoadedState = { location: { pathname: '/' } }
-    const { store } = setupAll('/first', undefined, undefined, preLoadedState)
+    const { store } = setupAll('/first', undefined, { preLoadedState })
 
     expect(store.getState().location.routesMap).toBeDefined()
   })
@@ -344,6 +361,62 @@ describe('thunk', () => {
     // expect state matched that was dispatched in thunk
     expect(location.type).toEqual('THIRD')
     expect(location.pathname).toEqual('/third/hurray')
+    expect(thunk).toHaveBeenCalled()
+    expect(thunk.mock.calls[0].length).toEqual(3)
+    expect(thunk.mock.calls[0][2].action).toMatchObject(action)
+    expect(thunk.mock.calls[0][2].extra).toEqual('extra-arg')
+  })
+
+  it('pathless route calls attemptCallRouteThunk', () => {
+    const thunk = jest.fn()
+    const routesMap = {
+      FIRST: '/',
+      PATHLESS: {
+        thunk
+      }
+    }
+
+    const { store, history } = setupAll('/', undefined, { routesMap })
+    const action = { type: 'PATHLESS' }
+    store.dispatch(action)
+
+    expect(thunk).toHaveBeenCalled()
+    expect(thunk.mock.calls[0].length).toEqual(3) // 2 args: dispatch, getState
+    expect(thunk.mock.calls[0][2].action).toEqual(action)
+  })
+
+  it('pathless routes do not break other real route dispatches', () => {
+    const thunk = jest.fn()
+    const routesMap = {
+      FIRST: '/',
+      SECOND: '/second',
+      PATHLESS: {
+        thunk
+      }
+    }
+
+    const { store, history } = setupAll('/', undefined, { routesMap })
+    store.dispatch({ type: 'SECOND' })
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+  })
+
+  it('pathless routes do not break history changes from real route dispatches', () => {
+    const thunk = jest.fn()
+    const routesMap = {
+      FIRST: '/',
+      SECOND: '/second',
+      PATHLESS: {
+        thunk
+      }
+    }
+
+    const { store, history } = setupAll('/', undefined, { routesMap })
+    history.push('/second')
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
   })
 
   it('simulate server side manual usage of thunk via `await connectRoutes().thunk` (to be used when: locationState.kind === "load" && locationState.hasSSR)', async () => {
@@ -438,10 +511,6 @@ describe('reducer', () => {
   })
 })
 
-it('connectRoutes(undefined): throw error if no history provided', () => {
-  expect(() => connectRoutes()).toThrowError()
-})
-
 it('title and location options as selector functions', () => {
   const { store } = setupAll('/first', {
     title: state => state.title,
@@ -453,6 +522,17 @@ it('title and location options as selector functions', () => {
   store.getState() /*? $.location */
 
   expect(action).toMatchSnapshot()
+})
+
+it('QUERY: has initial query in state during initial onBeforeChange event', () => {
+  let query = null
+  const onBeforeChange = jest.fn(
+    (_, getState) => query = getState().location.query
+  )
+  setupAll('/first?param=something', { querySerializer, onBeforeChange })
+
+  expect(onBeforeChange).toHaveBeenCalledTimes(1)
+  expect(query).toEqual({ param: 'something' })
 })
 
 it('QUERY: dispatched as action.query', () => {
@@ -527,4 +607,24 @@ it('QUERY: generated from pathToAction within <Link />', () => {
 
   const state = store.getState() /*? $.location */
   expect(state).toMatchSnapshot()
+})
+
+it('basename: memoryHistory can prefix paths with a basename', () => {
+  const { store, history } = setupAll('/base-foo/first', {
+    basename: '/base-foo'
+  })
+  expect(history.location.pathname).toEqual('/first')
+
+  store.dispatch({ type: 'THIRD' })
+  expect(history.location.pathname).toEqual('/third')
+})
+
+it('options.createHistory', () => {
+  const { store, history } = setupAll('/first', {
+    createHistory: createMemoryHistory
+  })
+  expect(history.location.pathname).toEqual('/first')
+
+  store.dispatch({ type: 'THIRD' })
+  expect(history.location.pathname).toEqual('/third')
 })

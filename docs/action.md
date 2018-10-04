@@ -70,6 +70,10 @@ type Location = {
 }
 ```
 
+## The error key
+RFR will ignore actions which contain a truthy `error` key.
+This is in case you want to use a different middleware to handle errors.
+
 ## Conclusion
 You will rarely need to inspect the `meta` key. It's primarily for use by our `location` reducer. However, a common
 use for it is to use the `kind` key to make some determinations in your

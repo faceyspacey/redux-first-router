@@ -1,13 +1,16 @@
 // @flow
-import pathToRegexp from 'path-to-regexp'
-import { NOT_FOUND } from '../index'
+import { compilePath } from 'rudy-match-path'
+import { stripBasename } from 'rudy-history/PathUtils'
+import { NOT_FOUND, getOptions } from '../index'
 import objectValues from './objectValues'
+
 import type { RoutesMap, ReceivedAction, QuerySerializer } from '../flow-types'
 
 export default (
   pathname: string,
   routesMap: RoutesMap,
-  serializer?: QuerySerializer
+  serializer?: QuerySerializer,
+  basename?: string | void = getOptions().basename
 ): ReceivedAction => {
   const parts = pathname.split('?')
   const search = parts[1]
@@ -15,17 +18,23 @@ export default (
   const routes = objectValues(routesMap)
   const routeTypes = Object.keys(routesMap)
 
-  pathname = parts[0]
+  pathname = basename ? stripBasename(parts[0], basename) : parts[0]
 
   let i = 0
   let match
-  const keys = []
+  let keys
 
   while (!match && i < routes.length) {
-    keys.length = 0 // empty the array and start over
-    const routePath = routes[i].path || routes[i] // route may be an object containing a route or a route string itself
-    const reg = pathToRegexp(routePath, keys)
-    match = reg.exec(pathname)
+    const regPath = typeof routes[i] === 'string' ? routes[i] : routes[i].path // route may be an object containing a route or a route string itself
+
+    if (!regPath) {
+      i++
+      continue
+    }
+
+    const { re, keys: k } = compilePath(regPath)
+    match = re.exec(pathname)
+    keys = k
     i++
   }
 
@@ -35,38 +44,43 @@ export default (
     const capitalizedWords =
       typeof routes[i] === 'object' && routes[i].capitalizedWords
 
-    const coerceNumbers = !(typeof routes[i] === 'object' &&
-      routes[i].coerceNumbers === false)
+
+    const coerceNumbers =
+      typeof routes[i] === 'object' && routes[i].coerceNumbers
+
     const fromPath =
       routes[i] &&
       typeof routes[i].fromPath === 'function' &&
       routes[i].fromPath
+
+    const userMeta = typeof routes[i] === 'object' && routes[i].meta
+
     const type = routeTypes[i]
 
-    const payload = keys.reduce((payload, key, index) => {
-      let value = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
+    const payload = (keys || []).reduce((payload, key, index) => {
+      let val = match && match[index + 1] // item at index 0 is the overall match, whereas those after correspond to the key's index
 
-      value = typeof value === 'string' &&
-        coerceNumbers &&
-        !value.match(/^\s*$/) &&
-        !isNaN(value) // check that value is not a blank string, and is numeric
-        ? parseFloat(value) // make sure pure numbers aren't passed to reducers as strings
-        : value
+      if (typeof val === 'string') {
+        if (fromPath) {
+          val = fromPath && fromPath(val, key.name)
+        }
+        else if (coerceNumbers && isNumber(val)) {
+          val = parseFloat(val)
+        }
+        else if (capitalizedWords) {
+          val = val.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
+        }
+      }
 
-      value = capitalizedWords && typeof value === 'string'
-        ? value.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) // 'my-category' -> 'My Category'
-        : value
-
-      value = fromPath && typeof value === 'string'
-        ? fromPath(value, key.name)
-        : value
-
-      payload[key.name] = value
-
+      payload[key.name] = val
       return payload
     }, {})
 
-    return { type, payload, meta: query ? { query } : {} }
+    const meta = {
+      ...(userMeta ? { meta: userMeta } : {}),
+      ...(query ? { query } : {})
+    }
+    return { type, payload, meta }
   }
 
   // This will basically will only end up being called if the developer is manually calling history.push().
@@ -74,3 +88,5 @@ export default (
   const meta = { notFoundPath: pathname, ...(query ? { query } : {}) }
   return { type: NOT_FOUND, payload: {}, meta }
 }
+
+const isNumber = (val: string) => /^\d+$/.test(val)

@@ -1,7 +1,7 @@
 // @flow
-import pathToRegexp from 'path-to-regexp'
+import { compileParamsToPath } from 'rudy-match-path'
 import type {
-  RouteObject,
+  Route,
   Payload,
   Params,
   RoutesMap,
@@ -16,11 +16,8 @@ export default (
 ): string => {
   const route = routesMap[action.type]
   const routePath = typeof route === 'object' ? route.path : route
-  const params = typeof route === 'object'
-    ? _payloadToParams(route, action.payload)
-    : action.payload
-
-  const path = pathToRegexp.compile(routePath)(params || {}) || '/'
+  const params = _payloadToParams(route, action.payload)
+  const path = compileParamsToPath(routePath, params) || '/'
 
   const query =
     action.query ||
@@ -32,22 +29,30 @@ export default (
   return search ? `${path}?${search}` : path
 }
 
-const _payloadToParams = (route: RouteObject, params: Payload = {}): Params =>
-  Object.keys(params).reduce((sluggifedParams, key) => {
-    if (typeof params[key] !== 'undefined') {
-      if (typeof params[key] === 'number') {
-        sluggifedParams[key] = params[key]
-      }
-      else if (route.capitalizedWords === true) {
-        sluggifedParams[key] = params[key].replace(/ /g, '-').toLowerCase()
-      }
-      else if (typeof route.toPath === 'function') {
-        sluggifedParams[key] = route.toPath(params[key], key)
-      }
-      else if (typeof params[key] === 'string') {
-        sluggifedParams[key] = params[key]
-      }
-    }
-
+const _payloadToParams = (route: Route, params: Payload = {}): Params =>
+  Object.entries(params).reduce((sluggifedParams, [key, segment]) => {
+    // $FlowFixMe
+    sluggifedParams[key] = transformSegment(segment, route, key)
     return sluggifedParams
   }, {})
+
+const transformSegment = (segment: string, route: Route, key: string) => {
+  if (typeof route.toPath === 'function') {
+    return route.toPath(segment, key)
+  }
+  else if (typeof segment === 'string') {
+    // Ask James "should it return arrays?"
+    if (segment.includes('/')) {
+      return segment.split('/')
+    }
+
+    if (route.capitalizedWords === true) {
+      return segment.replace(/ /g, '-').toLowerCase()
+    }
+
+    return segment
+  }
+  else if (typeof segment === 'number') {
+    return segment
+  }
+}

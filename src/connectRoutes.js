@@ -1,15 +1,26 @@
 // @flow
 import type { StoreEnhancer } from 'redux'
-
+import createBrowserHistory from 'rudy-history/createBrowserHistory'
+import createMemoryHistory from 'rudy-history/createMemoryHistory'
+import { stripTrailingSlash, addLeadingSlash } from 'rudy-history/PathUtils'
 import pathToAction from './pure-utils/pathToAction'
 import { nestHistory } from './pure-utils/nestAction'
 import isLocationAction from './pure-utils/isLocationAction'
+import isRedirectAction from './pure-utils/isRedirectAction'
 import isServer from './pure-utils/isServer'
 import isReactNative from './pure-utils/isReactNative'
 import changePageTitle, { getDocument } from './pure-utils/changePageTitle'
 import attemptCallRouteThunk from './pure-utils/attemptCallRouteThunk'
 import createThunk from './pure-utils/createThunk'
 import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
+import canUseDom from './pure-utils/canUseDom'
+
+import {
+  createConfirm,
+  confirmUI,
+  setDisplayConfirmLeave,
+  getUserConfirmation
+} from './pure-utils/confirmLeave'
 
 import historyCreateAction from './action-creators/historyCreateAction'
 import middlewareCreateAction from './action-creators/middlewareCreateAction'
@@ -18,7 +29,7 @@ import middlewareCreateNotFoundAction from './action-creators/middlewareCreateNo
 import createLocationReducer, {
   getInitialState
 } from './reducer/createLocationReducer'
-import { NOT_FOUND } from './index'
+import { NOT_FOUND, ADD_ROUTES } from './index'
 
 import type {
   Dispatch as Next,
@@ -80,21 +91,8 @@ const __DEV__ = process.env.NODE_ENV !== 'production'
  *  near-pure utility functions.
 */
 
-export default (
-  history: History,
-  routesMap: RoutesMap = {},
-  options: Options = {}
-) => {
+export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   if (__DEV__) {
-    if (!history) {
-      throw new Error(
-        `[redux-first-router] invalid \`history\` agument. Using the 'history' package on NPM,
-        please provide a \`history\` object as a second parameter. The object will be the
-        return of createBrowserHistory() (or in React Native or Node: createMemoryHistory()).
-        See: https://github.com/mjackson/history`
-      )
-    }
-
     if (options.restoreScroll && typeof options.restoreScroll !== 'function') {
       throw new Error(
         `[redux-first-router] invalid \`restoreScroll\` option. Using
@@ -107,16 +105,6 @@ export default (
 
   /** INTERNAL ENCLOSED STATE (PER INSTANCE FOR SSR!) */
 
-  // very important: used for comparison to determine address bar changes
-  let currentPath: string = pathnamePlusSearch(history.location)
-
-  let prevLocation: Location = {
-    // maintains previous location state in location reducer
-    pathname: '',
-    type: '',
-    payload: {}
-  }
-
   const {
     notFoundPath = '/not-found',
     scrollTop = false,
@@ -127,8 +115,42 @@ export default (
     onBackNext,
     restoreScroll,
     initialDispatch: shouldPerformInitialDispatch = true,
-    querySerializer
+    querySerializer,
+    displayConfirmLeave,
+    extra
   }: Options = options
+
+  // The options must be initialized ASAP to prevent empty options being
+  // received in `getOptions` after the initial events emitted
+  _options = options
+
+  setDisplayConfirmLeave(displayConfirmLeave)
+
+  if (options.basename) {
+    options.basename = stripTrailingSlash(addLeadingSlash(options.basename))
+  }
+
+  const isBrowser = canUseDom && process.env.NODE_ENV !== 'test'
+  const standard = isBrowser ? createBrowserHistory : createMemoryHistory
+  const createHistory = options.createHistory || standard
+  const entries = options.initialEntries || '/' // fyi only memoryHistory needs initialEntries
+  const initialEntries = typeof entries === 'string' ? [entries] : entries
+
+  const history = createHistory({
+    basename: options.basename,
+    initialEntries,
+    getUserConfirmation
+  })
+
+  // very important: used for comparison to determine address bar changes
+  let currentPath: string = pathnamePlusSearch(history.location)
+
+  let prevLocation: Location = {
+    // maintains previous location state in location reducer
+    pathname: '',
+    type: '',
+    payload: {}
+  }
 
   const selectLocationState =
     typeof location === 'function'
@@ -142,10 +164,9 @@ export default (
 
   const scrollBehavior = restoreScroll && restoreScroll(history)
 
-  const { type, payload, meta }: ReceivedAction = pathToAction(
-    currentPath,
-    routesMap
-  )
+  const initialAction = pathToAction(currentPath, routesMap, querySerializer)
+  const { type, payload, meta }: ReceivedAction = initialAction
+
   const INITIAL_LOCATION_STATE: LocationState = getInitialState(
     currentPath,
     meta,
@@ -160,7 +181,8 @@ export default (
   let prevLength = 1 // used by `historyCreateAction` to calculate if moving along history.entries track
 
   const reducer = createLocationReducer(INITIAL_LOCATION_STATE, routesMap)
-  const thunk = createThunk(routesMap, selectLocationState)
+  const initialBag = { action: initialAction, extra }
+  const thunk = createThunk(routesMap, selectLocationState, initialBag)
   const initialDispatch = () => _initialDispatch && _initialDispatch()
 
   const windowDocument: Document = getDocument() // get plain object for window.document if server side
@@ -169,6 +191,10 @@ export default (
   let patchNavigators
   let actionToNavigation
   let navigationToAction
+
+  // this value is used to hold temp state between consecutive runs through
+  // the middleware (i.e. from new dispatches triggered within the middleware)
+  let tempVal
 
   if (options.navigators) {
     // redux-first-router-navigation reformats the `navigators` option
@@ -198,6 +224,17 @@ export default (
   */
 
   const middleware = (store: Store) => (next: Next) => (action: Object) => {
+    // We have chosen to not change routes on errors, while letting other middleware
+    // handle it. Perhaps in the future we will explicitly handle it (as an option)
+    if (action.error) return next(action)
+
+    // code-splitting functionliaty to add routes after store is initially configured
+    if (action.type === ADD_ROUTES) {
+      routesMap = { ...routesMap, ...action.payload.routes }
+      return next(action)
+    }
+
+    // navigation transformation specific to React Navigation
     let navigationAction
 
     if (navigators && action.type.indexOf('Navigation/') === 0) {
@@ -211,14 +248,26 @@ export default (
 
     const route = routesMap[action.type]
 
-    if (action.error && isLocationAction(action)) {
-      if (__DEV__) {
-        console.warn(
-          'redux-first-router: location update did not dispatch as your action has an error.'
-        )
-      }
+    // We now support "routes" without paths for the purpose of dispatching thunks according
+    // to the same idiom as full-fledged routes. The purpose is uniformity of async actions.
+    // The URLs will NOT change.
+    if (typeof route === 'object' && !route.path) {
+      const nextAction = next(action)
+
+      attemptCallRouteThunk(
+        store.dispatch,
+        store.getState,
+        route,
+        selectLocationState,
+        { action: nextAction, extra }
+      )
+
+      return nextAction
     }
-    else if (action.type === NOT_FOUND && !isLocationAction(action)) {
+
+    // START THE TYPICAL FLOW:
+
+    if (action.type === NOT_FOUND && !isLocationAction(action)) {
       // user decided to dispatch `NOT_FOUND`, so we fill in the missing location info
       action = middlewareCreateNotFoundAction(
         action,
@@ -249,14 +298,14 @@ export default (
     let skip
     if ((route || action.type === NOT_FOUND) && action.meta) {
       // satisify flow with `action.meta` check
-      skip = _beforeRouteChange(_store, history, action)
+      skip = _beforeRouteChange(store, history, action)
     }
 
     if (skip) return
-    const nextAction = next(action) // DISPATCH
+    const nextAction = next(action)
 
     if (route || action.type === NOT_FOUND) {
-      _afterRouteChange(_store, route)
+      _afterRouteChange(store, route, nextAction)
     }
 
     return nextAction
@@ -269,37 +318,40 @@ export default (
   ) => {
     const location = action.meta.location
 
+    if (_confirm) {
+      const message = _confirm(location.current)
+
+      if (message) {
+        confirmUI(message, store, action)
+        return true // skip if there's a message to show in the confirm UI
+      }
+
+      _confirm = null
+    }
+
     if (onBeforeChange) {
       let skip
 
-      const dispatch = (action: Object) => {
-        if (
-          action &&
-          action.meta &&
-          action.meta.location &&
-          action.meta.location.kind === 'redirect'
-        ) {
+      const redirectAwareDispatch = (action: Action) => {
+        if (isRedirectAction(action)) {
           skip = true
           prevLocation = location.current
           const nextPath = pathnamePlusSearch(location.current)
           const isHistoryChange = nextPath === currentPath
 
-          // In this unique scenario, the action won't in fact be treated as a
-          // redirect since the initial action is never dispatched. If it is
-          // an action resulting from pressing the browser buttons, it will
-          // do a replace just like a redirect is meant to, since the location
-          // change is unavoidable and happens before the middleware. On the
-          // server, a redirect is always dispatched since its needed to detect
-          // whether to call `res.redirect`. In that case history is irrelevant.
+          // this insures a `history.push` is called instead of `history.replace`
+          // even though it's a redirect, since unlike route changes triggered
+          // from the browser buttons, the URL did not change yet.
           if (!isHistoryChange && !isServer()) {
-            history.push(nextPath) // this will be replaced since it's a redirect
+            tempVal = 'onBeforeChange'
           }
         }
 
-        store.dispatch(action)
+        return store.dispatch(action)
       }
 
-      onBeforeChange(dispatch, store.getState, action)
+      const bag = { action, extra }
+      onBeforeChange(redirectAwareDispatch, store.getState, bag)
       if (skip) return true
     }
 
@@ -317,40 +369,64 @@ export default (
     }
   }
 
-  const _afterRouteChange = (store: Store, route: Route) => {
+  const _afterRouteChange = (store: Store, route: Route, action: Action) => {
     const dispatch = store.dispatch
     const state = store.getState()
     const kind = selectLocationState(state).kind
     const title = selectTitleState(state)
+    const bag = { action, extra }
     nextState = selectLocationState(state)
 
     if (typeof route === 'object') {
+      let skip = false
+
+      const redirectAwareDispatch = (action: Action) => {
+        if (isRedirectAction(action)) skip = true
+        return store.dispatch(action)
+      }
+
       attemptCallRouteThunk(
-        dispatch,
+        redirectAwareDispatch,
         store.getState,
         route,
-        selectLocationState
+        selectLocationState,
+        bag
       )
+
+      if (skip) return
     }
 
     if (onAfterChange) {
-      onAfterChange(dispatch, store.getState)
+      onAfterChange(dispatch, store.getState, bag)
     }
 
-    if (typeof window !== 'undefined' && kind) {
-      if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
-        onBackNext(dispatch, store.getState)
-      }
-
-      setTimeout(() => {
-        changePageTitle(windowDocument, title)
-
-        if (scrollTop) {
-          return window.scrollTo(0, 0)
+    if (!isServer()) {
+      if (kind) {
+        if (typeof onBackNext === 'function' && /back|next|pop/.test(kind)) {
+          onBackNext(dispatch, store.getState, bag)
         }
 
-        _updateScroll(false)
-      })
+        setTimeout(() => {
+          changePageTitle(windowDocument, title)
+
+          if (scrollTop) {
+            return window.scrollTo(0, 0)
+          }
+
+          _updateScroll(false)
+        })
+      }
+
+      if (typeof route === 'object' && route.confirmLeave) {
+        _confirm = createConfirm(
+          route.confirmLeave,
+          store,
+          selectLocationState,
+          history,
+          querySerializer,
+          () => (_confirm = null)
+        )
+      }
     }
   }
 
@@ -373,11 +449,12 @@ export default (
       // a React Navigation feature for changing StackNavigators
       // without triggering other navigators (such as a TabNavigator)
       // to change as well. It allows you to reset hidden StackNavigators.
-      const kind = location.kind
+      const { kind } = location
       const manuallyInvoked = kind && /back|next|pop|stealth/.test(kind)
 
       if (!manuallyInvoked) {
-        const method = kind === 'redirect' ? 'replace' : 'push'
+        const isRedirect = kind === 'redirect' && tempVal !== 'onBeforeChange'
+        const method = isRedirect ? 'replace' : 'push'
         history[method](currentPath) // change address bar corresponding to matched actions from middleware
       }
     }
@@ -396,21 +473,13 @@ export default (
   ): Store => {
     // routesMap stored in location reducer will be stringified as it goes from the server to client
     // and as a result functions in route objects will be removed--here's how we insure we bring them back
-    if (
-      typeof window !== 'undefined' &&
-      preloadedState &&
-      selectLocationState(preloadedState)
-    ) {
+    if (!isServer() && preloadedState && selectLocationState(preloadedState)) {
       selectLocationState(preloadedState).routesMap = routesMap
     }
 
     const store = createStore(reducer, preloadedState, enhancer)
     const state = store.getState()
     const location = state && selectLocationState(state)
-
-    // assign to outer closure so middleware can access full middleware
-    // pipeline when dispatching additional actions in onBefore/AfterChange
-    _store = store
 
     if (!location || !location.pathname) {
       throw new Error(
@@ -445,10 +514,23 @@ export default (
       // set correct prevLocation on client that has SSR so that it will be
       // assigned to `action.meta.location.prev` and the corresponding state
       prevLocation = location
+
+      const route = routesMap[location.type]
+
+      if (typeof route === 'object' && route.confirmLeave) {
+        _confirm = createConfirm(
+          route.confirmLeave,
+          store,
+          selectLocationState,
+          history,
+          querySerializer,
+          () => (_confirm = null)
+        )
+      }
     }
 
     // update the scroll position after initial rendering of page
-    if (typeof window !== 'undefined') setTimeout(() => _updateScroll(false))
+    if (!isServer()) setTimeout(() => _updateScroll(false))
 
     return store
   }
@@ -462,9 +544,9 @@ export default (
     const nextPath = pathnamePlusSearch(location)
 
     if (nextPath !== currentPath) {
-      // THE MAGIC: parse the address bar path into a matched action
       const kind = historyAction === 'REPLACE' ? 'redirect' : historyAction
 
+      // THE MAGIC: parse the address bar path into a matched action
       const action = historyCreateAction(
         nextPath,
         routesMap,
@@ -487,8 +569,9 @@ export default (
   _history = history
   _scrollBehavior = scrollBehavior
   _selectLocationState = selectLocationState
-  _options = options
+
   let _initialDispatch
+  let _confirm
 
   _updateScroll = (performedByUser: boolean = true) => {
     if (scrollBehavior) {
@@ -543,7 +626,6 @@ let _scrollBehavior
 let _updateScroll
 let _selectLocationState
 let _options
-let _store
 
 export const push = (pathname: string) => _history.push(pathname)
 
@@ -557,10 +639,11 @@ export const go = (n: number) => _history.go(n)
 
 export const canGo = (n: number) => _history.canGo(n)
 
-export const canGoBack = (): boolean => !!_history.entries[_history.index - 1]
+export const canGoBack = (): boolean =>
+  !!(_history.entries && _history.entries[_history.index - 1])
 
 export const canGoForward = (): boolean =>
-  !!_history.entries[_history.index + 1]
+  !!(_history.entries && _history.entries[_history.index + 1])
 
 export const prevPath = (): ?string => {
   const entry = _history.entries[_history.index - 1]
@@ -581,4 +664,4 @@ export const updateScroll = () => _updateScroll && _updateScroll()
 export const selectLocationState = (state: Object) =>
   _selectLocationState(state)
 
-export const getOptions = (): Options => _options
+export const getOptions = (): Options => _options || {}

@@ -1,21 +1,18 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import createHistory from 'history/createMemoryHistory'
 import connectRoutes from '../src/connectRoutes'
 
-export default (path = '/', thunkArg) => {
+export default (path = '/', thunkArg, opts) => {
   const routesMap = {
     FIRST: '/first',
     SECOND: { path: '/second/:param', thunk: thunkArg },
     THIRD: { path: '/third/:param' }
   }
 
-  const hist = createHistory({
-    initialEntries: [path]
-  })
+  const options = { extra: 'extra-arg', initialEntries: path, ...opts }
 
   const { middleware, enhancer, thunk, reducer, history } = connectRoutes(
-    hist,
-    routesMap
+    routesMap,
+    options
   )
 
   const rootReducer = combineReducers({

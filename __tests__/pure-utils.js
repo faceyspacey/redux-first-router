@@ -1,4 +1,6 @@
-import { createMemoryHistory, createBrowserHistory } from 'history'
+import { createMemoryHistory, createBrowserHistory } from 'rudy-history'
+
+import { setupAll } from '../__test-helpers__/setup'
 
 import isLocationAction from '../src/pure-utils/isLocationAction'
 import isServer from '../src/pure-utils/isServer'
@@ -130,28 +132,42 @@ describe('pathToAction(path, routesMap)', () => {
   })
 
   it('parse path into action using route object containing fromPath() function', () => {
-    const path = '/info/foo-bar'
+    const path = '/info/foo-bar/1'
     const routesMap = {
       INFO_PARAM: {
-        path: '/info/:param/',
+        path: '/info/:param/:param2',
         fromPath: (segment, key) =>
-          `${segment} ${key}`.replace('-', ' ').toUpperCase()
+          (key === 'param2'
+            ? segment
+            : `${segment} ${key}`.replace('-', ' ').toUpperCase())
       }
     }
 
     const action = pathToAction(path, routesMap) /*? */
     expect(action.payload.param).toEqual('FOO BAR PARAM')
+    expect(action.payload.param2).toEqual('1')
   })
 
   it('parse path containing number param into action with payload value set as integer instead of string', () => {
     const path = '/info/69'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/' }
+      INFO_PARAM: { path: '/info/:param/', coerceNumbers: true }
     }
 
     const action = pathToAction(path, routesMap) /*? */
     expect(typeof action.payload.param).toEqual('number')
     expect(action.payload.param).toEqual(69)
+  })
+
+  it('parse path containing number param into action with payload value set as string instead of integer', () => {
+    const path = '/info/69'
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/', coerceNumbers: false }
+    }
+
+    const action = pathToAction(path, routesMap) /*? */
+    expect(typeof action.payload.param).toEqual('string')
+    expect(action.payload.param).toEqual('69')
   })
 
   it('does not parse a blank string "" as NaN', () => {
@@ -172,6 +188,16 @@ describe('pathToAction(path, routesMap)', () => {
 
     const action = pathToAction(path, routesMap) /*? */
     expect(action.type).toEqual(NOT_FOUND)
+  })
+
+  it('strips basename if first segment in path', () => {
+    const path = '/base/foo/bar'
+    const routesMap = {
+      FOO: { path: '/foo/bar' }
+    }
+
+    const action = pathToAction(path, routesMap, undefined, '/base') /*? */
+    expect(action.type).toEqual('FOO')
   })
 })
 
@@ -281,5 +307,212 @@ describe('changePageTitle()', () => {
 
     expect(document).toEqual({ title: 'foo' })
     expect(ret).toEqual(null) // no return value when title does not change
+  })
+})
+
+describe('confirmLeave()', () => {
+  it('can leave (via confirmLeave returning falsy)', () => {
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => undefined
+      },
+      SECOND: '/second'
+    }
+
+    const displayConfirmLeave = jest.fn()
+    const options = { displayConfirmLeave }
+    const { store, history } = setupAll('/first', options, { routesMap })
+    store.dispatch({ type: 'SECOND' })
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+    expect(displayConfirmLeave).not.toBeCalled()
+    expect(history.location.pathname).toEqual('/second')
+  })
+
+  it('can leave (via user decision)', () => {
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => {
+          const message = 'are u sure u wanna leave?'
+
+          if (action.type === 'SECOND' && state.location.type === 'FIRST') {
+            return message
+          }
+        }
+      },
+      SECOND: '/second'
+    }
+
+    const options = {
+      displayConfirmLeave: (message, callback) => {
+        callback(true)
+      }
+    }
+    const { store, history } = setupAll('/first', options, { routesMap })
+    store.dispatch({ type: 'SECOND' })
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+    expect(history.location.pathname).toEqual('/second')
+  })
+
+  it('cannot leave (via user decision)', () => {
+    const message = 'are u sure u wanna leave?'
+
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => {
+          if (action.type === 'SECOND' && state.location.type === 'FIRST') {
+            return message
+          }
+        }
+      },
+      SECOND: '/second'
+    }
+
+    const options = {
+      displayConfirmLeave: (msg, callback) => {
+        expect(msg).toEqual(message)
+        callback(false)
+      }
+    }
+    const { store, history } = setupAll('/first', options, { routesMap })
+    store.dispatch({ type: 'SECOND' })
+
+    const { type } = store.getState().location
+    expect(type).toEqual('FIRST')
+    expect(history.location.pathname).toEqual('/first')
+  })
+
+  it('can leave (via user decision - default using window.confirm)', () => {
+    window.confirm = msg => {
+      expect(msg).toEqual(message)
+      return true
+    }
+    const message = 'are u sure u wanna leave?'
+
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => {
+          if (action.type === 'SECOND' && state.location.type === 'FIRST') {
+            return message
+          }
+        }
+      },
+      SECOND: '/second'
+    }
+
+    const { store, history } = setupAll('/first', undefined, { routesMap })
+    store.dispatch({ type: 'SECOND' })
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+    expect(history.location.pathname).toEqual('/second')
+  })
+
+  it('HISTORY: can leave (via confirmLeave returning falsy)', () => {
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => undefined
+      },
+      SECOND: '/second'
+    }
+
+    const displayConfirmLeave = jest.fn()
+    const options = { displayConfirmLeave }
+    const { history, store } = setupAll('/first', options, { routesMap })
+    history.push('/second')
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+    expect(displayConfirmLeave).not.toBeCalled()
+  })
+
+  it('HISTORY: can leave (via user decision)', () => {
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => {
+          const message = 'are u sure u wanna leave?'
+
+          if (action.type === 'SECOND' && state.location.type === 'FIRST') {
+            return message
+          }
+        }
+      },
+      SECOND: '/second'
+    }
+
+    const options = {
+      displayConfirmLeave: (message, callback) => {
+        callback(true)
+      }
+    }
+    const { store, history } = setupAll('/first', options, { routesMap })
+    history.push('/second')
+
+    const { type } = store.getState().location
+    expect(type).toEqual('SECOND')
+    expect(history.location.pathname).toEqual('/second')
+  })
+
+  it('HISTORY: cannot leave (via user decision)', () => {
+    const message = 'are u sure u wanna leave?'
+
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => {
+          if (action.type === 'SECOND' && state.location.type === 'FIRST') {
+            return message
+          }
+        }
+      },
+      SECOND: '/second'
+    }
+
+    const options = {
+      displayConfirmLeave: (msg, callback) => {
+        expect(msg).toEqual(message)
+        callback(false)
+      }
+    }
+    const { history, store } = setupAll('/first', options, { routesMap })
+    history.push('/second')
+
+    const { type } = store.getState().location
+    expect(type).toEqual('FIRST')
+    expect(history.location.pathname).toEqual('/first')
+  })
+
+  it('can leave throws (React Native where window.confirm does not exist)', () => {
+    global.confirm = undefined
+
+    const message = 'are u sure u wanna leave?'
+
+    const routesMap = {
+      FIRST: {
+        path: '/first',
+        confirmLeave: (state, action) => {
+          if (action.type === 'SECOND' && state.location.type === 'FIRST') {
+            return message
+          }
+        }
+      },
+      SECOND: '/second'
+    }
+
+    const { store, history } = setupAll('/first', undefined, { routesMap })
+    expect(() => store.dispatch({ type: 'SECOND' })).toThrow()
+
+    const { type } = store.getState().location
+    expect(type).toEqual('FIRST')
+    expect(history.location.pathname).toEqual('/first')
   })
 })

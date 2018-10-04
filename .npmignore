@@ -17,3 +17,4 @@ webpack.config.js
 .eslintignore
 .flowconfig
 *.png
+examples

@@ -57,6 +57,8 @@ module.exports = {
     'flowtype/no-weak-types': 1,
     'consistent-return': 1,
     'no-nested-ternary': 1,
+    'no-return-assign': 1,
+    'no-continue': 1,
     semi: [2, 'never'],
     'no-console': [2, { allow: ['warn', 'error'] }],
     'flowtype/semi': [2, 'never'],
