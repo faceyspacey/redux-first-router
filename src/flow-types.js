@@ -51,7 +51,6 @@ export type Navigators = {
 }
 
 export type Routes = Array<Route>
-export type RouteNames = Array<string>
 
 export type SelectLocationState = (state: Object) => LocationState
 export type SelectTitleState = (state: Object) => string
@@ -177,18 +176,6 @@ export type ReceivedAction = {
   query?: Object,
   search?: string,
   navKey?: ?string
-}
-
-export type ReceivedActionMeta = {
-  type: string,
-  payload: Payload,
-  query?: Object,
-  navKey?: ?string,
-  meta: {
-    notFoundPath?: string,
-    query?: Object,
-    search?: string
-  }
 }
 
 export type Listener = (HistoryLocation, HistoryAction) => void
