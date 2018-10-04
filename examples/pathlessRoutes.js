@@ -1,3 +1,4 @@
+/* eslint-disable*/
 // Note: this is just a proof of concept
 
 // =====================

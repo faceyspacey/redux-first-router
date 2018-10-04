@@ -50,7 +50,7 @@ export type Navigators = {
   [key: string]: Navigator
 }
 
-export type Routes = Array<Route>
+export type Routes = Array<Route> // eslint-disable-line no-undef
 
 export type SelectLocationState = (state: Object) => LocationState
 export type SelectTitleState = (state: Object) => string
@@ -65,7 +65,7 @@ export type DisplayConfirmLeave = (
   callback: (canLeave: boolean) => void
 ) => void
 
-export type Options = {
+export type Options = { // eslint-disable-line no-undef
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
   notFoundPath?: string,
@@ -104,7 +104,7 @@ export type Options = {
 
 export type ScrollBehavior = Object
 
-export type Params = Object
+export type Params = Object // eslint-disable-line no-undef
 export type Payload = Object
 
 export type LocationState = {
@@ -213,6 +213,6 @@ export type HistoryLocation = {
 
 export type HistoryAction = string
 
-export type Document = Object
+export type Document = Object // eslint-disable-line no-undef
 
 export type Store = ReduxStore<*, *>
