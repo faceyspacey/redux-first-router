@@ -41,7 +41,7 @@ const transformSegment = (segment: string, route: Route, key: string) => {
     return route.toPath(segment, key)
   }
   else if (typeof segment === 'string') {
-    if (segment.indexOf('/') > -1) {
+    if (segment.includes('/')) {
       return segment.split('/')
     }
 
