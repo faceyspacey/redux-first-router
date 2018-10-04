@@ -40,6 +40,7 @@ const transformSegment = (segment: string, route: Route, key: string) => {
     return route.toPath(segment, key)
   }
   else if (typeof segment === 'string') {
+    // Ask James "should it return arrays?"
     if (segment.includes('/')) {
       return segment.split('/')
     }
