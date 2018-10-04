@@ -8,6 +8,7 @@ export type RouteString = string
 export type RouteObject = {
   path: string,
   capitalizedWords?: boolean,
+  coerceNumbers?: boolean,
   toPath?: (param: string, key?: string) => string,
   fromPath?: (path: string, key?: string) => string,
   thunk?: (dispatch: Dispatch, getState: GetState) => any | Promise<any>,

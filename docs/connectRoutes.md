@@ -106,6 +106,7 @@ When using* **Redux First Router**, *do not dispatch payloads that are primitive
 Features:
 * **route as a string** is simply a path to match to an action type without any transformations
 * **capitalizedWords** when true will break apart hyphenated paths into words, each with the first character capitalizedWords
+* **coerceNumbers** when false will prevent numberic paths from being parsed into Numbers (default true)
 * **toPath** will one-by-one take the keys and values of your payload object and transform them into path segments. So for a payload
 with multiple key/value pairs, it will call `toPath` multiple times, passing in the individual value as the first argument
 and the individual key name as the second argument.
@@ -155,7 +156,7 @@ restoration, and should be fine while developing, especially if you're using Chr
 like a thunk.
 
 * **onBeforeChange** - `onBeforeChange` is a simple function that will be called before the routes change. It's passed your standard `dispatch` and `getState` arguments like a thunk, as well as the `action` as a third parameter. Keep in mind unlike `onAfterChange`, the action has not been dispatched yet. Therefore,
-the state won't reflect it. So you need to use the action to extract URL params from the `payload`. You can use this function to efficiently short-circuit the middleware by calling `dispatch(redirect(newAction))`, where `newAction` has the matching `type` and `payload` of the route you would like to redirect to. Using `onBeforeChange` and `location.kind === 'redirect'` + `res.redirect(301, pathname)` in your `serverRender` function is the idiom here for handling redirects server-side. See [server-rendering docs](.server-rendering.md) for more info.
+the state won't reflect it. So you need to use the action to extract URL params from the `payload`. You can use this function to efficiently short-circuit the middleware by calling `dispatch(redirect(newAction))`, where `newAction` has the matching `type` and `payload` of the route you would like to redirect to. Using `onBeforeChange` and `location.kind === 'redirect'` + `res.redirect(301, pathname)` in your `serverRender` function is the idiom here for handling redirects server-side. See [server-rendering docs](./server-rendering.md) for more info.
 
 * **onBackNext** - `onBackNext` is a simple function that will be called whenever the user uses the browser *back/next* buttons. It's passed your standard `dispatch` and `getState` arguments like a thunk. Actions with kinds `back`, `next`, and `pop` trigger this.
 
