@@ -1,11 +1,13 @@
 const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const env = process.env.NODE_ENV
 
 const config = {
+  mode: 'development',
   module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+    rules: [
+      { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ }
     ]
   },
   output: {
@@ -21,8 +23,9 @@ const config = {
 }
 
 if (env === 'production') {
+  config.mode = 'production'
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsPlugin({
       compressor: {
         pure_getters: true,
         unsafe: true,
