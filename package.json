@@ -9,7 +9,7 @@
     "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js -o dist/redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "flow": "npm run flow-copy && flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && mkdir dist && rimraf coverage",
     "test": "jest",
     "lint": "eslint --fix ./",

@@ -166,7 +166,8 @@ export type Action = {
   payload: Payload,
   meta: Meta,
   query?: Object,
-  navKey?: ?string
+  navKey?: ?string,
+  error?: ?mixed
 }
 
 export type ReceivedAction = {

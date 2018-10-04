@@ -34,8 +34,6 @@ export type {
   RouteObject,
   Route,
   RoutesMap,
-  Routes,
-  RouteNames,
   Options,
   Params,
   Payload,

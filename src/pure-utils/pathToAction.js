@@ -10,7 +10,7 @@ export default (
   pathname: string,
   routesMap: RoutesMap,
   serializer?: QuerySerializer,
-  basename?: string = getOptions().basename
+  basename?: string | void = getOptions().basename
 ): ReceivedAction => {
   const parts = pathname.split('?')
   const search = parts[1]
