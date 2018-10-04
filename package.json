@@ -1,6 +1,6 @@
 {
   "name": "redux-first-router",
-  "version": "0.0.0-development",
+  "version": "2.0.0-beta.0",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "scripts": {
@@ -42,7 +42,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "commitizen": "^2.9.6",
+    "commitizen": "^3.0.2",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
@@ -54,15 +54,15 @@
     "flow-copy-source": "^1.1.0",
     "history": "^4.5.1",
     "husky": "^0.13.2",
-    "jest": "^19.0.2",
+    "jest": "^23.6.0",
     "lint-staged": "^3.4.0",
     "prettier": "^1.2.2",
-    "query-string": "^4.3.4",
-    "redux": "^3.6.0",
+    "query-string": "^6.2.0",
+    "redux": "^4.0.0",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.2",
     "travis-github-status": "^1.5.4",
-    "webpack": "2.4.1"
+    "webpack": "4.20.2"
   },
   "peerDependencies": {
     "history": "*",
