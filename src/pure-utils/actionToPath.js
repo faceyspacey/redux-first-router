@@ -30,8 +30,7 @@ export default (
 }
 
 const _payloadToParams = (route: Route, params: Payload = {}): Params =>
-  Object.keys(params).reduce((sluggifedParams, key) => {
-    const segment = params[key]
+  Object.entries(params).reduce((sluggifedParams, [key, segment]) => {
     sluggifedParams[key] = transformSegment(segment, route, key)
     return sluggifedParams
   }, {})
