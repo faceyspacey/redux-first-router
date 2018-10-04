@@ -44,12 +44,22 @@ RFR will be entering a LTS state as Rudy takes focus.
 </p>
 
 
-![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
 ## Version 2.0 Released!
 Durning the Development of Rudy, we had released a few various versions under random names and npm tags. All of that, plus a bunch of outstanding PRs have been merged to create a stable, updated and still mostly compatible API.
 
+Readmes and documentation does need to be re-organized. 
 
+If anyone has some idead on how to improve / wants to help us with documentation - tweet `@ScriptedAlchemy`
+
+
+## Documentation**
+More in-depth documentation and exmaples can be found here:
+<a href="https://github.com/faceyspacey/redux-first-router/tree/rudy/docs">
+  here
+</a>
+
+![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
 The goal of **Redux-First Router** is to think of your app in *states*, not *routes*, not *components*, while keeping the address bar in sync. Everything is state, not components. Connect your components and *just dispatch* ***flux standard actions.***
 
