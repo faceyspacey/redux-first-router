@@ -3,7 +3,7 @@ node_js:
   - stable
 cache: yarn
 script:
-  - node_modules/.bin/travis-github-status lint flow jest snyk codeclimate
+  - node_modules/.bin/travis-github-status lint flow jest node_modules/.bin/snyk codeclimate
 notifications:
   email: false
   webhooks:
