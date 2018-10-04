@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js dist/redux-first-router.js",
-    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/redux-first-router.min.js",
+    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js -o dist/redux-first-router.js",
+    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js -o dist/redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -50,8 +50,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "flow-bin": "^0.54.1",
-    "flow-copy-source": "^1.1.0",
+    "flow-bin": "^0.82.0",
+    "flow-copy-source": "^2.0.2",
     "husky": "^0.13.2",
     "jest": "^21.1.0",
     "lint-staged": "^3.4.0",
@@ -60,10 +60,12 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "rimraf": "^2.5.4",
-    "semantic-release": "^15.9.14",
-    "snyk": "^1.95.3",
-    "travis-github-status": "^1.6.3",
-    "webpack": "2.4.1"
+    "semantic-release": "^6.3.2",
+    "snyk": "^1.100.1",
+    "travis-github-status": "^1.5.4",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "4.20.2",
+    "webpack-cli": "^3.1.2"
   },
   "peerDependencies": {
     "redux": "*"
