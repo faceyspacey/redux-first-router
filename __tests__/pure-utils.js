@@ -151,12 +151,23 @@ describe('pathToAction(path, routesMap)', () => {
   it('parse path containing number param into action with payload value set as integer instead of string', () => {
     const path = '/info/69'
     const routesMap = {
-      INFO_PARAM: { path: '/info/:param/' }
+      INFO_PARAM: { path: '/info/:param/', coerceNumbers: true }
     }
 
     const action = pathToAction(path, routesMap) /*? */
     expect(typeof action.payload.param).toEqual('number')
     expect(action.payload.param).toEqual(69)
+  })
+
+  it('parse path containing number param into action with payload value set as string instead of integer', () => {
+    const path = '/info/69'
+    const routesMap = {
+      INFO_PARAM: { path: '/info/:param/', coerceNumbers: false }
+    }
+
+    const action = pathToAction(path, routesMap) /*? */
+    expect(typeof action.payload.param).toEqual('string')
+    expect(action.payload.param).toEqual('69')
   })
 
   it('does not parse a blank string "" as NaN', () => {
