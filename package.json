@@ -12,6 +12,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "clean": "rimraf dist && mkdir dist && rimraf coverage",
     "test": "jest",
+    "snyk": "snyk test",
     "lint": "eslint --fix ./",
     "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",
     "precommit": "lint-staged --verbose && npm test",

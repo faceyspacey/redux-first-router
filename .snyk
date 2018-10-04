@@ -2,11 +2,11 @@
 version: v1.12.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
-  'underscore.string:20170908':
+  'npm:underscore.string:20170908':
     - '*':
         reason: no dep
         expires: 2019-04-01T00:00:00.000Z
-  'chownr:20180731':
+  'npm:chownr:20180731':
     - '*':
         reason: no dep
         expires: 2019-04-01T00:00:00.000Z
