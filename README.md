@@ -6,18 +6,16 @@
   <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 
-<a href="https://github.com/faceyspacey/redux-first-router-boilerplate" target="_blank">
+<a href="https://github.com/ScriptedAlchemy/redux-first-router-demo" target="_blank">
   <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/boilerplate.png?a=1">
 </a>
 
-<a href="https://github.com/faceyspacey/redux-first-router-demo" target="_blank">
+<a href="https://github.com/ScriptedAlchemy/redux-first-router-demo" target="_blank">
   <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/demo.png">
 </a>
 
-### Road to Rudy!:
-We will be moving Rudy to a new repo within our `respond` organization. 
+> **Rudy:** We are moving rudy to a new repo housed inside of our respond-framework organization. RFR will enter LTS as Feature development efforts are redirected to Rudy. link will be added here once i make the repo and move Rudy to it. 
 
-RFR will be entering a LTS state as Rudy takes focus.
 
 # Redux-First Router
 
@@ -46,11 +44,12 @@ RFR will be entering a LTS state as Rudy takes focus.
 
 
 ## Version 2.0 Released!
-Durning the Development of Rudy, we had released a few various versions under random names and npm tags. All of that, plus a bunch of outstanding PRs have been merged to create a stable, updated and still mostly compatible API.
+During the Development of Rudy, we had released a few various versions under random names and npm tags. All of that, plus a bunch of outstanding PRs have been merged to create a stable, updated and still mostly compatible API.
 
 Readmes and documentation does need to be re-organized. 
 
 If anyone has some idead on how to improve / wants to help us with documentation - tweet `@ScriptedAlchemy`
+
 
 
 ## Documentation**
