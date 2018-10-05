@@ -79,10 +79,10 @@ part is that once you set it up there's virtually nothing left to do. It's truly
 
 ## Installation
 
-Install `redux-first-router` and its peer dependency `history` plus our small `<Link />` package:
+Install `redux-first-router` plus our small `<Link />` package:
 
 ```bash
-yarn add history redux-first-router redux-first-router-link
+yarn add redux-first-router redux-first-router-link
 ```
 
 **Full-Featured Universal Demo App (includes SSR + Splitting!):**
@@ -122,10 +122,7 @@ It's *set-and-forget-it*, so here's the most work you'll ever do! :+1:
 ```javascript
 import { connectRoutes } from 'redux-first-router'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
-import createHistory from 'history/createBrowserHistory'
 import userIdReducer from './reducers/userIdReducer'
-
-const history = createHistory()
 
 // THE WORK:
 const routesMap = { 
@@ -133,7 +130,7 @@ const routesMap = {
   USER: '/user/:id',  // :id is a dynamic segment
 }
 
-const { reducer, middleware, enhancer } = connectRoutes(history, routesMap) // yes, 3 redux aspects
+const { reducer, middleware, enhancer } = connectRoutes(routesMap) // yes, 3 redux aspects
 
 // and you already know how the story ends:
 const rootReducer = combineReducers({ location: reducer, userId: userIdReducer })
