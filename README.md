@@ -14,7 +14,7 @@
   <img alt="Edit Redux-First Router Demo" src="https://cdn.reactlandia.com/demo.png">
 </a>
 
-> **Rudy:** We are moving rudy to a new repo housed inside of our respond-framework organization. RFR will enter LTS as Feature development efforts are redirected to Rudy. link will be added here once i make the repo and move Rudy to it. 
+> **Rudy:** We are moving rudy to a new repo housed inside of our respond-framework organization. RFR will enter LTS as Feature development efforts are redirected to Rudy. A link will be added here once I make the repo and move Rudy to it. 
 
 
 # Redux-First Router
@@ -44,19 +44,16 @@
 
 
 ## Version 2.0 Released!
-During the Development of Rudy, we had released a few various versions under random names and npm tags. All of that, plus a bunch of outstanding PRs have been merged to create a stable, updated and still mostly compatible API.
+During the Development of Rudy, we had released a few versions under various names and npm tags. All of that, plus a bunch of outstanding PRs have been merged to create a stable, updated and still mostly compatible API.
 
 Readmes and documentation does need to be re-organized. 
 
-If anyone has some idead on how to improve / wants to help us with documentation - tweet `@ScriptedAlchemy`
+If anyone has some ideas on how to improve / wants to help us with documentation - tweet `@ScriptedAlchemy`
 
 
 
 ## Documentation**
-More in-depth documentation and exmaples can be found here:
-<a href="https://github.com/faceyspacey/redux-first-router/tree/rudy/docs">
-  here
-</a>
+More in-depth documentation and examples can be found [here](https://github.com/faceyspacey/redux-first-router/tree/rudy/docs)
 
 ![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
