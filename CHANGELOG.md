@@ -2,53 +2,80 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-<a name="2.0.0"></a>
-# [2.0.0](https://github.com/faceyspacey/redux-first-router/compare/v1.9.19...v2.0.0) (2018-10-05)
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/faceyspacey/redux-first-router/compare/rudy...v2.0.1) (2018-10-05)
 
+### Bug fixes
 
-### Bug Fixes
-
-* **$compile:** fixes linting errors in `isRedirectAction` ([e74d36e](https://github.com/faceyspacey/redux-first-router/commit/e74d36e))
-* **$confirmLeave:** insure confirmLeaves on first page with SSR ([6d8ed89](https://github.com/faceyspacey/redux-first-router/commit/6d8ed89))
-* **$deps:** upgrade flow to v0.54.1 ([7b91afe](https://github.com/faceyspacey/redux-first-router/commit/7b91afe))
-* **$from/toPath:** do no custom transformation if to/fromPath route options provided ([1a1b1ec](https://github.com/faceyspacey/redux-first-router/commit/1a1b1ec))
-* **$middleware:** Fix location access bug of NotFoundAction ([28d0ebc](https://github.com/faceyspacey/redux-first-router/commit/28d0ebc))
-* **$NOT_FOUND:** finally fix issue [#175](https://github.com/faceyspacey/redux-first-router/issues/175) --custom place for the location reducer in NOT_FOUND actions ([a870a0a](https://github.com/faceyspacey/redux-first-router/commit/a870a0a))
-* **$pathlessRoutes:** bug fixing + more tests ([ef90157](https://github.com/faceyspacey/redux-first-router/commit/ef90157))
-* **$readme:** add notes about confirmLeave in [@next](https://github.com/next) on NPM ([4c33c88](https://github.com/faceyspacey/redux-first-router/commit/4c33c88))
-* **$readme:** add release update 9/16 ([10c2063](https://github.com/faceyspacey/redux-first-router/commit/10c2063))
-* **$readme:** and docs ([527957c](https://github.com/faceyspacey/redux-first-router/commit/527957c))
-* **$readme:** optional params [@next](https://github.com/next) release ([a466374](https://github.com/faceyspacey/redux-first-router/commit/a466374))
-* **$readme:** release createHistory ([75b0f95](https://github.com/faceyspacey/redux-first-router/commit/75b0f95))
-* **$readme:** release notes for updates to [@next](https://github.com/next) branch ([012dbfa](https://github.com/faceyspacey/redux-first-router/commit/012dbfa))
-* **$readme:** release update about to/fromPath now transforming even numbers ([4e7de03](https://github.com/faceyspacey/redux-first-router/commit/4e7de03))
-* **$thunks:** Skip `onAfterChange` when route thunks dispatch a redirect ([ce82436](https://github.com/faceyspacey/redux-first-router/commit/ce82436)), closes [#96](https://github.com/faceyspacey/redux-first-router/issues/96)
-* **fix:** ignore auto-generated OSX .DS_Store files ([bf502ba](https://github.com/faceyspacey/redux-first-router/commit/bf502ba))
-* **flow types export:** fixes export of types by adding flow annotation to index file ([89eca12](https://github.com/faceyspacey/redux-first-router/commit/89eca12)), closes [#115](https://github.com/faceyspacey/redux-first-router/issues/115)
-* **location reducer:** Call thunk when action kind is push to allow refreshes on same route ([4bc6485](https://github.com/faceyspacey/redux-first-router/commit/4bc6485)), closes [#276](https://github.com/faceyspacey/redux-first-router/issues/276)
-
+- **$middleware:** Fix location access bug of NotFoundAction ([28d0ebc](https://github.com/faceyspacey/redux-first-router/commit/28d0ebc))
+- **$readme:** add release update 9/16 ([10c2063](https://github.com/faceyspacey/redux-first-router/commit/10c2063))
+- **$readme:** release createHistory ([75b0f95](https://github.com/faceyspacey/redux-first-router/commit/75b0f95))
+- **$readme:** release update about to/fromPath now transforming even numbers ([4e7de03](https://github.com/faceyspacey/redux-first-router/commit/4e7de03))
+- **flow types export:** fixes export of types by adding flow annotation to index file ([89eca12](https://github.com/faceyspacey/redux-first-router/commit/89eca12)), closes [#115](https://github.com/faceyspacey/redux-first-router/issues/115)
+- **location reducer:** Call thunk when action kind is push to allow refreshes on same route ([4bc6485](https://github.com/faceyspacey/redux-first-router/commit/4bc6485)), closes [#276](https://github.com/faceyspacey/redux-first-router/issues/276)
+- Ensure that the `querySerializer` option is used for the initial action ([508af4f](https://github.com/faceyspacey/redux-first-router/commit/508af4ff149090d0613d5a3a88809ece66a0e1fe)) (Closes [#265](https://github.com/faceyspacey/redux-first-router/issues/265))
+- Ensure `thunk` is called when refreshing the initial route ([#288](https://github.com/faceyspacey/redux-first-router/pull/288)) (fixes [#276](https://github.com/faceyspacey/redux-first-router/issues/276))
+- Fix crash in `canGoBack` and `canGoForward` ([#291](https://github.com/faceyspacey/redux-first-router/pull/291)) (fixes [#285](https://github.com/faceyspacey/redux-first-router/issues/285))
 
 ### Features
 
-* **$addRoutes:** merge back in addRoutes ([a8d5d6a](https://github.com/faceyspacey/redux-first-router/commit/a8d5d6a))
-* **$advancedPathFeatures:** add advanced path features like optional params + fix double dispatch o ([d4f4482](https://github.com/faceyspacey/redux-first-router/commit/d4f4482))
-* **$bag:** add 3rd "bag" argument to all callbacks, which includes action + extra keys. ([c11306a](https://github.com/faceyspacey/redux-first-router/commit/c11306a))
-* **$basename:** + first rudy pre-release ([1252884](https://github.com/faceyspacey/redux-first-router/commit/1252884))
-* **$confirmLeave:** add confirmLeave route option and displayConfirmLeave option ([69c7c80](https://github.com/faceyspacey/redux-first-router/commit/69c7c80))
-* **$deps:** upgrade jest ([b14cd8c](https://github.com/faceyspacey/redux-first-router/commit/b14cd8c))
-* **$onAfterChange:** Skip `onAfterChange` when route thunks dispatch a redirect ([558ca81](https://github.com/faceyspacey/redux-first-router/commit/558ca81))
-* **$routeMap:** Accept meta information in routesMap ([869c78c](https://github.com/faceyspacey/redux-first-router/commit/869c78c))
-* **$splitting:** addRoutes ([d3679df](https://github.com/faceyspacey/redux-first-router/commit/d3679df))
-* Pre-release fixes ([d72a899](https://github.com/faceyspacey/redux-first-router/commit/d72a899))
-* **options.createHistory:** add createHistory option so you can use memoryHistory + your forks/impl ([1ccc5a8](https://github.com/faceyspacey/redux-first-router/commit/1ccc5a8))
-* **pathlessRoutes:** you can now have routes with paths for the of a formalized thunk contract + ca ([06f3f84](https://github.com/faceyspacey/redux-first-router/commit/06f3f84))
-
+- Add `coerceNumbers` flag to allow disabling integer coersion before `fromPath` ([#
+294](https://github.com/faceyspacey/redux-first-router/pull/294)) (fixes [#292](https://github.com/faceyspacey/redux-first-router/issues/292))
+- Pre-release fixes ([d72a899](https://github.com/faceyspacey/redux-first-router/commit/d72a899))
 
 ### Performance Improvements
 
 * object entires over object keys ([067b3fb](https://github.com/faceyspacey/redux-first-router/commit/067b3fb))
 
+<a name="0.0.9-rudy"></a>
+## [0.0.9-rudy](https://github.com/faceyspacey/redux-first-router/compare/next...9c3822a) (2018-03-19)
+
+### Bug fixes
+
+- **fix:** ignore auto-generated OSX .DS_Store files ([bf502ba](https://github.com/faceyspacey/redux-first-router/commit/bf502ba))
+- **$readme:** add notes about confirmLeave in [@next](https://github.com/next) on NPM ([4c33c88](https://github.com/faceyspacey/redux-first-router/commit/4c33c88))
+- **$readme:** optional params [@next](https://github.com/next) release ([a466374](https://github.com/faceyspacey/redux-first-router/commit/a466374))
+- **$deps:** upgrade flow to v0.54.1 ([7b91afe](https://github.com/faceyspacey/redux-first-router/commit/7b91afe))
+- **$thunks:** Skip `onAfterChange` when route thunks dispatch a redirect ([2dff758](https://github.com/faceyspacey/redux-first-router/commit/2dff758)), closes [#96](https://github.com/faceyspacey/redux-first-router/issues/96)
+- **$compile:** fixes linting errors in `isRedirectAction` ([e74d36e](https://github.com/faceyspacey/redux-first-router/commit/e74d36e))
+- **$readme:** release notes for updates to [@next](https://github.com/next) branch ([012dbfa](https://github.com/faceyspacey/redux-first-router/commit/012dbfa))
+- **$basename:** + first rudy pre-release ([1252884](https://github.com/faceyspacey/redux-first-router/commit/1252884))
+- **$from/toPath:** do no custom transformation if to/fromPath route options provided ([1a1b1ec](https://github.com/faceyspacey/redux-first-router/commit/1a1b1ec))
+- **$NOT_FOUND:** finally fix issue [#175](https://github.com/faceyspacey/redux-first-router/issues/175) --custom place for the location reducer in NOT_FOUND actions ([a870a0a](https://github.com/faceyspacey/redux-first-router/commit/a870a0a))
+- check typeof window in `getDocument()` ([869f2fc](https://github.com/faceyspacey/redux-first-router/commit/869f2fcccc76bbf45edf341ce75ba2329a2dd22d))
+- make sure hex params are not treated as numbers ([d27ff9e](https://github.com/faceyspacey/redux-first-router/commit/d27ff9ef42f323ea3854d95485c5a64bd4b08a58))
+- honor returns from dispatch in redirectAwareDispatch ([9c3822a](https://github.com/faceyspacey/redux-first-router/commit/9c3822a2c224752b1aae3e66c6525f6d56aec25f))
+
+### Features
+
+- **options.createHistory:** add createHistory option so you can use memoryHistory + your forks/impl ([1ccc5a8](https://github.com/faceyspacey/redux-first-router/commit/1ccc5a8))
+- **$deps:** upgrade jest ([b14cd8c](https://github.com/faceyspacey/redux-first-router/commit/b14cd8c))
+- **$routeMap:** Accept meta information in routesMap ([869c78c](https://github.com/faceyspacey/redux-first-router/commit/869c78c))
 
 ### BREAKING CHANGES
 
-* **$from/toPath:** path segments that are numbers will now be passed to to/fromPath
+- `connectRoutes` no longer accepts the `history` object as an argument, instead it is created internally ([0c2ec39](https://github.com/faceyspacey/redux-first-router/commit/0c2ec39))
+
+<a name="0.0.20-next"></a>
+## [0.0.20-next](https://github.com/faceyspacey/redux-first-router/compare/v1.9.19...next) (2017-09-11)
+
+### Bug fixes
+
+- **$confirmLeave:** insure confirmLeaves on first page with SSR ([6d8ed89](https://github.com/faceyspacey/redux-first-router/commit/6d8ed89))
+
+### Features
+
+- **$splitting:** addRoutes ([d3679df](https://github.com/faceyspacey/redux-first-router/commit/d3679df))\
+- **$confirmLeave:** add confirmLeave route option and displayConfirmLeave option ([69c7c80](https://github.com/faceyspacey/redux-first-router/commit/69c7c80))
+- **$advancedPathFeatures:** add advanced path features like optional params + fix double dispatch o ([d4f4482](https://github.com/faceyspacey/redux-first-router/commit/d4f4482))
+- **pathlessRoutes:** you can now have routes with paths for the of a formalized thunk contract + ca ([06f3f84](https://github.com/faceyspacey/redux-first-router/commit/06f3f84))
+- **$addRoutes:** merge back in addRoutes ([a8d5d6a](https://github.com/faceyspacey/redux-first-router/commit/a8d5d6a))
+
+### BREAKING CHANGES
+
+- **$bag:** add 3rd "bag" argument to all callbacks, which includes action + extra keys, replacing the previous `action` argument to `onBeforeChange` and `onAfterChange` ([c11306a](https://github.com/faceyspacey/redux-first-router/commit/c11306a))
+
+<a name="1.9.19"></a>
+## 1.9.19 (2017-08-24)
+
+Changes prior to this version were not recorded. See the commit log.
