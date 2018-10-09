@@ -40,7 +40,8 @@ export default {
 
 const parseCookies = (cookies) => {
   const parsedCookies = {}
-  Object.entries(cookies).forEach(([key, value]) => {
+  Object.keys(cookies).forEach((key) => {
+    const value = cookies[key]
     const decodedKey = decodeURIComponent(key)
     const keyWithoutReduxPersistPrefix = decodedKey.replace(/reduxPersist:/, '')
     if (key !== 'reduxPersistIndex') { // TODO: This could be expanded into a real black- or whitelist
