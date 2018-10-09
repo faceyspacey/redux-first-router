@@ -10,6 +10,7 @@ import type {
 import actionToPath from '../pure-utils/actionToPath'
 import nestAction from '../pure-utils/nestAction'
 import { NOT_FOUND } from '../index'
+const __DEV__ = process.env.NODE_ENV !== 'production'
 
 export default (
   action: Object,
@@ -25,6 +26,10 @@ export default (
     return nestAction(pathname, action, prevLocation, history, kind)
   }
   catch (e) {
+    if (__DEV__) {
+      console.error(e)
+    }
+
     const payload = { ...action.payload }
 
     return nestAction(
