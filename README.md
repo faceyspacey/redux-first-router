@@ -56,39 +56,7 @@ If anyone has some ideas on how to improve / wants to help us with documentation
 
 #### Migration from v1 to v2
 
-Migration is pretty easy. Remember you can always refer to the [updated demo](https://github.com/faceyspacey/redux-first-router-demo)
-
-In v1, `history` was a peerDependency. We have built our own history management tool, its actually part of [Rudy](https://github.com/respond-framework/rudy), but we have implemented it into RFR2. 
-
-While RFR2 is a breaking change, its very easy to get your old project up and running. 
-
-Inside of your `configureStore.js` [file](https://github.com/scriptedalchemy/redux-first-router-demo/blob/6c8238eee713ce0079aeae1ce328d305bddd0ee3/src/configureStore.js#L11),
-
-This package requires ***Node 8 and up***
-
-Change this:
-```js
-  const { reducer, middleware, enhancer, thunk } = connectRoutes(
-    history,
-    routesMap,
-    options
-  )
-```
-To this:
-
-```js
-  const { reducer, middleware, enhancer, thunk } = connectRoutes(
-    routesMap, {
-    ...options,
-    initialEntries
-  })
-```
-
-Make sure to check out the demo if you are stuck!
-
-
-
-
+[Read this for upgrading RFR1 -> RFR2](https://github.com/faceyspacey/redux-first-router/tree/master/docsmigration.md)
 
 
 ## Documentation**
