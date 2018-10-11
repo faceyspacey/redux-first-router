@@ -11,6 +11,8 @@ import actionToPath from '../pure-utils/actionToPath'
 import nestAction from '../pure-utils/nestAction'
 import { NOT_FOUND } from '../index'
 
+const __DEV__ = process.env.NODE_ENV !== 'production'
+
 export default (
   action: Object,
   routesMap: RoutesMap,
@@ -25,6 +27,10 @@ export default (
     return nestAction(pathname, action, prevLocation, history, kind)
   }
   catch (e) {
+    if (__DEV__) {
+      console.error('[redux-first-router] Internal exception when parsing action, fallback to NOT_FOUND. Original exception: ', e)
+    }
+
     const payload = { ...action.payload }
 
     return nestAction(
