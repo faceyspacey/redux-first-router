@@ -3,6 +3,9 @@
   "version": "2.0.1",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
     "build": "babel src -d dist",
     "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js -o dist/redux-first-router.js",
