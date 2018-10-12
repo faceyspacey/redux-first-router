@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/faceyspacey/redux-first-router/compare/v2.0.0...v2.0.2) (2018-10-12)
+
+
+### Bug Fixes
+
+* **middlewareCreateAction:** Error logging ([#303](https://github.com/faceyspacey/redux-first-router/issues/303)) ([6e214fc](https://github.com/faceyspacey/redux-first-router/commit/6e214fc))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/faceyspacey/redux-first-router/compare/rudy...v2.0.1) (2018-10-05)
 

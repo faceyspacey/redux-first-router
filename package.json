@@ -1,6 +1,6 @@
 {
   "name": "redux-first-router",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
   "engines": {
@@ -41,10 +41,10 @@
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
