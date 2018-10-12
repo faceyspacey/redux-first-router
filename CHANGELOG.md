@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file. See [standa
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/faceyspacey/redux-first-router/compare/v2.0.4...v2.0.5) (2018-10-12)
 
+* docs(badges): Fixed min node version badge
 
+* fix(babelrc): Fixing babel configs
+
+Configuring env middleware correctly. Making sure build passes and tests pass.
 
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/faceyspacey/redux-first-router/compare/v2.0.2...v2.0.4) (2018-10-12)
