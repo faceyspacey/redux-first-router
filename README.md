@@ -25,7 +25,7 @@
   </a>
   
   <a href="https://www.npmjs.com/package/redux-first-router">
-    <img src=http://img.shields.io/node/v/redux-first-router.svg" alt="Min Node Version: 8" />
+    <img src=https://img.shields.io/node/v/redux-first-router.svg" alt="Min Node Version: 8" />
   </a>
 
   <a href="https://travis-ci.org/faceyspacey/redux-first-router">
