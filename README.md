@@ -23,6 +23,10 @@
   <a href="https://www.npmjs.com/package/redux-first-router">
     <img src="https://img.shields.io/npm/v/redux-first-router.svg" alt="Version" />
   </a>
+  
+  <a href="https://www.npmjs.com/package/redux-first-router">
+    <img src=http://img.shields.io/node/v/redux-first-router.svg" alt="Min Node Version: 8" />
+  </a>
 
   <a href="https://travis-ci.org/faceyspacey/redux-first-router">
     <img src="https://travis-ci.org/faceyspacey/redux-first-router.svg?branch=master" alt="Build Status" />
@@ -44,16 +48,19 @@
 
 
 ## Version 2.0 Released!
-During the Development of Rudy, we had released a few versions under various names and npm tags. All of that, plus a bunch of outstanding PRs have been merged to create a stable, updated and still mostly compatible API.
+During the Development of [Rudy](https://github.com/respond-framework/rudy), we had released a few versions under various names and npm tags. All of that, plus a bunch of outstanding PRs have been merged to create a stable, updated and still mostly compatible API.
 
 Readmes and documentation does need to be re-organized. 
 
 If anyone has some ideas on how to improve / wants to help us with documentation - tweet `@ScriptedAlchemy`
 
+#### Migration from v1 to v2
+
+[Read this for upgrading RFR1 -> RFR2](https://github.com/faceyspacey/redux-first-router/tree/master/docs/migration.md)
 
 
 ## Documentation**
-More in-depth documentation and examples can be found [here](https://github.com/faceyspacey/redux-first-router/tree/rudy/docs)
+More in-depth documentation and examples can be found [here](https://github.com/faceyspacey/redux-first-router/tree/master/docs)
 
 ![redux-first-router flow chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png)
 
