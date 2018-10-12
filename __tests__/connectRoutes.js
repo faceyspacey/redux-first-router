@@ -9,6 +9,10 @@ import { NOT_FOUND } from '../src/index'
 import redirect from '../src/action-creators/redirect'
 import pathToAction from '../src/pure-utils/pathToAction'
 
+beforeEach(() => {
+  window.SSRtest = false
+})
+
 describe('middleware', () => {
   it('dispatches location-aware action, changes address bar + document.title', () => {
     const { store, history } = setupAll()
