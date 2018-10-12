@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/faceyspacey/redux-first-router/compare/v2.0.2...v2.0.3) (2018-10-12)
+
+
+* **docs(readme):** Migration documentation
+
+Small content block describing how to move from v1 to v2
+
+* **docs:** Adding node badge to readme
+
+badge and engine set to indeicate min version of Node 8 required
+
+* **docs(migration)**: Moved migration notes to docs/migration.md
+
+To prevent the Readme getting longer, ive moved migration docs to their own markdown file. Added
+additional notes about the `bag` option which is another breaking change
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/faceyspacey/redux-first-router/compare/v2.0.0...v2.0.2) (2018-10-12)
 
