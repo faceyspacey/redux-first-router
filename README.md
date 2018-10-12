@@ -56,7 +56,7 @@ If anyone has some ideas on how to improve / wants to help us with documentation
 
 #### Migration from v1 to v2
 
-[Read this for upgrading RFR1 -> RFR2](https://github.com/faceyspacey/redux-first-router/tree/master/docsmigration.md)
+[Read this for upgrading RFR1 -> RFR2](https://github.com/faceyspacey/redux-first-router/tree/master/docs/migration.md)
 
 
 ## Documentation**
