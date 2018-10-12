@@ -19,6 +19,8 @@
     "format": "prettier --single-quote --parser=flow --semi=false --write '{src,__tests__,__test-helpers__}/**/*.js' && npm run lint",
     "cm": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "standard-version": "npx run standard-version",
+    "local-semantic-release": "git checkout master; git pull origin master && npm run standard-version && git push --follow-tags origin master && npm publish",
     "prepublish": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min"
   },
   "repository": {
