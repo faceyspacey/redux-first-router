@@ -1,8 +1,8 @@
-Migration is pretty easy. Remember you can always refer to the [updated demo](https://github.com/faceyspacey/redux-first-router-demo)
+Migration is pretty easy. Remember you can always refer to the [updated demo](https://github.com/faceyspacey/redux-first-router-demo) and `connectRoutes` [documentation](https://github.com/faceyspacey/redux-first-router/blob/master/docs/connectRoutes.md).
 
-In v1, `history` was a peerDependency. We have built our own history management tool, its actually part of [Rudy](https://github.com/respond-framework/rudy), but we have implemented it into RFR2. 
+In v1, `history` was a peerDependency. We have built our own history management tool, its actually part of [Rudy](https://github.com/respond-framework/rudy), but we have implemented it into RFR2.
 
-While RFR2 is a breaking change, its trivial to get up and running again. 
+While RFR2 is a breaking change, its trivial to get up and running again.
 
 Inside of your `configureStore.js` [file](https://github.com/scriptedalchemy/redux-first-router-demo/blob/6c8238eee713ce0079aeae1ce328d305bddd0ee3/src/configureStore.js#L11),
 
@@ -26,6 +26,8 @@ To this:
   })
 ```
 
+Change commit in `redux-first-router-demo`: [here](https://github.com/ScriptedAlchemy/redux-first-router-demo/commit/6c8238eee713ce0079aeae1ce328d305bddd0ee3#diff-04298622441e55a9d9b5691873f8490b).
+
 And inside of your `configureStore.js` [file](https://github.com/ScriptedAlchemy/redux-first-router-demo/blob/6c8238eee713ce0079aeae1ce328d305bddd0ee3/server/configureStore.js) if you are server side rendering, change this:
 
  ```js
@@ -34,12 +36,14 @@ And inside of your `configureStore.js` [file](https://github.com/ScriptedAlchemy
 ```
 
  To this:
- 
+
  ```js
   const { store, thunk } = configureStore(preLoadedState, [req.path])
 ```
 
-There is also a new extra prop, know known as `bag` make sure to study it. 
+Change commit in `redux-first-router-demo`: [here](https://github.com/ScriptedAlchemy/redux-first-router-demo/commit/6c8238eee713ce0079aeae1ce328d305bddd0ee3#diff-538a809ba00b97f8cf4ef2f28accee51).
+
+There is also a new extra prop, know known as `bag` make sure to study it.
 
 **extra** - An optional value that will be passed as part of the third `bag` argument to all route callbacks,
 including `thunk`, `onBeforeChange`, etc. It works much like the
