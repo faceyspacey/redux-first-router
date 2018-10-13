@@ -26,6 +26,18 @@ To this:
   })
 ```
 
+And inside of your `configureStore.js` [file](https://github.com/ScriptedAlchemy/redux-first-router-demo/blob/6c8238eee713ce0079aeae1ce328d305bddd0ee3/server/configureStore.js) if you are server side rendering, change this:
+
+ ```js
+  const history = createHistory({ initialEntries: [req.path] })
+  const { store, thunk } = configureStore(history, preLoadedState)
+```
+
+ To this:
+ 
+ ```js
+  const { store, thunk } = configureStore(preLoadedState, [req.path])
+```
 
 There is also a new extra prop, know known as `bag` make sure to study it. 
 
