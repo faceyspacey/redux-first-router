@@ -6,8 +6,6 @@ While RFR2 is a breaking change, its trivial to get up and running again.
 
 Inside of your `configureStore.js` [file](https://github.com/scriptedalchemy/redux-first-router-demo/blob/6c8238eee713ce0079aeae1ce328d305bddd0ee3/src/configureStore.js#L11),
 
-This package requires ***Node 8 and up***
-
 Change this:
 ```js
   const { reducer, middleware, enhancer, thunk } = connectRoutes(
