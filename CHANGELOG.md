@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.6](https://github.com/faceyspacey/redux-first-router/compare/v2.0.5...v2.0.6) (2018-10-14)
+
+
+### Bug Fixes
+
+* node 6 support, remove usage of Object.entries ([#304](https://github.com/faceyspacey/redux-first-router/issues/304)) ([162fc67](https://github.com/faceyspacey/redux-first-router/commit/162fc67))
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/faceyspacey/redux-first-router/compare/v2.0.4...v2.0.5) (2018-10-12)
 

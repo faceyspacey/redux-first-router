@@ -7,7 +7,7 @@ Think of your app in terms of _states_, not _routes_ or _components_. Connect yo
   </a>
   
   <a href="https://www.npmjs.com/package/redux-first-router">
-    <img src=https://img.shields.io/node/v/redux-first-router.svg" alt="Min Node Version: 8" />
+    <img src="https://img.shields.io/node/v/redux-first-router.svg" alt="Min Node Version: 6" />
   </a>
 
   <a href="https://travis-ci.org/faceyspacey/redux-first-router">

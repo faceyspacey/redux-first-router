@@ -30,7 +30,8 @@ export default (
 }
 
 const _payloadToParams = (route: Route, params: Payload = {}): Params =>
-  Object.entries(params).reduce((sluggifedParams, [key, segment]) => {
+  Object.keys(params).reduce((sluggifedParams, key) => {
+    const segment = params[key]
     // $FlowFixMe
     sluggifedParams[key] = transformSegment(segment, route, key)
     return sluggifedParams

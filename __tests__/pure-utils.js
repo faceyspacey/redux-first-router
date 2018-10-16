@@ -12,6 +12,10 @@ import changePageTitle from '../src/pure-utils/changePageTitle'
 
 import { NOT_FOUND } from '../src/index'
 
+beforeEach(() => {
+  window.SSRtest = false
+})
+
 it('isLocationAction(action) if has meta.location object', () => {
   let ret = isLocationAction({})
   expect(ret).toBeFalsy()
