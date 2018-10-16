@@ -28,6 +28,9 @@
     "url": "https://github.com/faceyspacey/redux-first-router.git"
   },
   "author": "James Gillmore <james@faceyspacey.com>",
+  "maintainers": [
+    "Zack Jackson <zack@ScriptedAlchemy.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/faceyspacey/redux-first-router/issues"
