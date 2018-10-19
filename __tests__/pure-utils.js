@@ -203,6 +203,21 @@ describe('pathToAction(path, routesMap)', () => {
     const action = pathToAction(path, routesMap, undefined, '/base') /*? */
     expect(action.type).toEqual('FOO')
   })
+
+  it('returns NOT_FOUND with a strict match with/without trailing delimiter', () => {
+    const path = '/foo/'
+    const routesMap = {
+      FOO: { path: '/foo' }
+    }
+
+    let strict = true
+    let action = pathToAction(path, routesMap, undefined, undefined, strict) /*? */
+    expect(action.type).toEqual(NOT_FOUND)
+
+    strict = false
+    action = pathToAction(path, routesMap, undefined, undefined, strict) /*? */
+    expect(action.type).toEqual('FOO')
+  })
 })
 
 describe('actionToPath(action, routesMap)', () => {

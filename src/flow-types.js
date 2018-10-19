@@ -99,6 +99,7 @@ export type Options = { // eslint-disable-line no-undef
       navigationAction: ?NavigationAction
     }
   },
+  strict?: boolean,
   extra?: any
 }
 
