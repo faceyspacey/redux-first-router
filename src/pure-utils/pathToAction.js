@@ -10,7 +10,8 @@ export default (
   pathname: string,
   routesMap: RoutesMap,
   serializer?: QuerySerializer,
-  basename?: string | void = getOptions().basename
+  basename?: string | void = getOptions().basename,
+  strict?: boolean | void = getOptions().strict
 ): ReceivedAction => {
   const parts = pathname.split('?')
   const search = parts[1]
@@ -32,7 +33,7 @@ export default (
       continue
     }
 
-    const { re, keys: k } = compilePath(regPath)
+    const { re, keys: k } = compilePath(regPath, { strict })
     match = re.exec(pathname)
     keys = k
     i++

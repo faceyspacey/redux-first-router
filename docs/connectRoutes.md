@@ -123,6 +123,7 @@ type Options = {
   querySerializer?: {parse: Function, stringify: Function},
   displayConfirmLeave?: DisplayConfirmLeave,
   basename?: string,
+  strict?: boolean, // default: false
   extra?: any,
 }
 ```
@@ -177,6 +178,8 @@ See this [blocking navigation](./blocking-navigation.md) for more details
 * **basename** - a URL path prefix that will be prepended to the URL. For example,
 using a `basename` of `'/playground'`, A route with the path `'/home'` would correspond
 to the URL path `'/playground/home'`
+
+* **strict** - an url `/foo` will not match a route `FOO: '/foo/'` or an url `/foo/` will not match a route `FOO: '/foo'` when the `strict` option is set to `true`. This is a similar option as the `strict` prop of `<NavLink>` component from `redux-first-router-link` but this option prevents search engines to detect duplicate content (which is bad for SEO) on urls `/foo` and `/foo/`, while the `strict` prop of `<NavLink>` is only meant to determine if the link is active regarding to the current location. Note: search engines may detect duplicate content if somehow a link exists on your site or elsewhere.  
 
 * **extra** - An optional value that will be passed as part of the third `bag` argument to all route callbacks,
 including `thunk`, `onBeforeChange`, etc. It works much like the
