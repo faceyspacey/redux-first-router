@@ -2,17 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [2.0.7](https://github.com/faceyspacey/redux-first-router/compare/v2.0.6...v2.0.7) (2018-10-16)
+# [2.1.0](https://github.com/faceyspacey/redux-first-router/compare/v2.0.6...v2.1.0) (2018-10-21)
 
-* fix node 6 support, remove usage of Object.entries
 
-* fix unit tests for node 6, clean up window.SSRtest before each test
+### Features
 
-* change package.json node support
+* **connectRoutes:** add strict option for trailing delimiter ([#314](https://github.com/faceyspacey/redux-first-router/issues/314)) ([ead2e5c](https://github.com/faceyspacey/redux-first-router/commit/ead2e5c)), closes [faceyspacey#312](https://github.com/faceyspacey/issues/312)
 
-* add node 6 support in travis config
-
-* documentation, change node version support related stuff
 
 
 <a name="2.0.5"></a>
