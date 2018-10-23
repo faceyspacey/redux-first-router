@@ -47,17 +47,20 @@ A minimal `<Link>` component exists in the separate package [`redux-first-router
 
 ```js
 // configureStore.js
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import { connectRoutes } from 'redux-first-router'
 
-import routesMap from './routesMap'
-import page from './router/pageReducer'
-import * as reducers from './reducers'
+import page from './pageReducer'
+
+const routesMap = {
+  HOME: '/',
+  USER: '/user/:id'
+}
 
 export default function configureStore(preloadedState) {
   const { reducer, middleware, enhancer, thunk } = connectRoutes(routesMap)
 
-  const rootReducer = combineReducers({ ...reducers, page, location: reducer })
+  const rootReducer = combineReducers({ page, location: reducer })
   const middlewares = applyMiddleware(middleware)
   const enhancers = compose(enhancer, middlewares)
 
@@ -68,15 +71,7 @@ export default function configureStore(preloadedState) {
 ```
 
 ```js
-// router/routesMap.js
-export default {
-  HOME: '/',
-  USER: '/user/:id'
-}
-```
-
-```js
-// router/pageReducer.js
+// pageReducer.js
 import { NOT_FOUND } from 'redux-first-router'
 
 const components = {
@@ -89,25 +84,41 @@ export default (state = 'HOME', action = {}) => components[action.type] || state
 ```
 
 ```js
-// router/Switcher.js
+// App.js
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Home from '../components/Home'
-import User from '../components/User'
-import NotFound from '../components/NotFound'
+// Contains 'Home', 'User' and 'NotFound'
+import * as components from './components';
 
-const components = { Home, User, NotFound }
-
-const Switcher = ({ page }) => {
+const App = ({ page }) => {
   const Component = components[page]
   return <Component />
 }
 
 const mapStateToProps = ({ page }) => ({ page })
 
-export default connect(mapStateToProps)(Switcher)
+export default connect(mapStateToProps)(App)
 ```
+
+```js
+// components.js
+import React from 'react'
+import { connect } from 'react-redux'
+
+const Home = () => <h3>Home</h3>
+
+const User = ({ userId }) => <h3>{`User ${userId}`}</h3>
+const mapStateToProps = ({ location }) => ({
+  userId: location.payload.id
+})
+const ConnectedUser = connect(mapStateToProps)(User)
+
+const NotFound = () => <h3>404</h3>
+
+export { Home, ConnectedUser as User, NotFound }
+```
+
 
 ### How do I...
 
@@ -124,26 +135,33 @@ export default connect(mapStateToProps)(Switcher)
 - [Use Redux Devtools to debug route changes](#use-redux-devtools-to-debug-route-changes)
 
 #### Automatically change Page `<title>`
-
 ```js
 // reducers/title.js
-const DEFAULT_TITLE = 'RFR demo';
+const DEFAULT = 'RFR demo'
 
-export const title = (state = DEFAULT, action = {}) => {
+export default (state = DEFAULT, action = {}) => {
   switch (action.type) {
     case 'HOME':
       return DEFAULT
     case 'USER':
       return `${DEFAULT} - user ${action.payload.id}`
     default:
-      return state;
+      return state
   }
 }
 ```
 
 ```js
+// reducers/index.js
+export { default as title } from './title'
+```
+
+```diff
 // configureStore.js
-const rootReducer = combineReducers({ page, title, location: reducer })
++ import * as reducers from './reducers';
+
+- const rootReducer = combineReducers({ page, title, location: reducer })
++ const rootReducer = combineReducers({ ...reducers, page, title, location: reducer })
 ```
 
 #### Embed SEO-friendly links
@@ -190,7 +208,18 @@ See the [migration instructions](https://github.com/faceyspacey/redux-first-rout
 **TODO**
 
 #### Use Redux Devtools to debug route changes
-**TODO**
+```diff
+// configureStore.js
+-  const enhancers = compose(enhancer, middlewares)
++  const composeEnhancers =
++    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
++      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
++      : compose
++  const enhancers = composeEnhancers(enhancer, middlewares)
+```
+
+Dispatch `{ type: 'USER', payload: { id: 13 } }` and see the route change.
+Then use the _Inspector_ to time travel back to `HOME`.
 
 ## Server-side rendering
 
