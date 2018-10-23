@@ -9,6 +9,11 @@ Think of your app in terms of _states_, not _routes_ or _components_. Connect yo
   <a href="https://www.npmjs.com/package/redux-first-router">
     <img src="https://img.shields.io/node/v/redux-first-router.svg" alt="Min Node Version: 6" />
   </a>
+  
+  
+  <a href="https://www.npmjs.com/package/redux-first-router">
+    <img src="https://img.shields.io/npm/dt/redux-first-router.svg" alt="Downloads" />
+  </a>
 
   <a href="https://travis-ci.org/faceyspacey/redux-first-router">
     <img src="https://travis-ci.org/faceyspacey/redux-first-router.svg?branch=master" alt="Build Status" />
