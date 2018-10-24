@@ -22,7 +22,7 @@ It defaults to undefined.
 The `basename` and `strict` arguments default to the value passed the last time `connectRoutes` was called.
 The `basename` argument works the same way as the one passed to `routesMap`.
 `actionToPath` does not apply any `basename` transformation.
-The `strict` option allows an optional trailing delimiter to match.
+When `strict` is `true`, the presence or absence of a trailing slash is required to match the route path.
 
 You will need the `routesMap` you made, which you can import from where you created it or you can
 get any time from your store.
