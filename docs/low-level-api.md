@@ -14,7 +14,7 @@ const path = actionToPath(action, routesMap, querySerializer)
 const action = pathToAction(path, routesMap, querySerializer, basename, strict)
 ```
 
-The `querySerializer`, `basename`, and `strict` arguments are optionals.
+The `querySerializer`, `basename`, and `strict` arguments are optional.
 
 The `querySerializer` argument is the same as the one passed to `connectRoutes`.
 It defaults to undefined.
