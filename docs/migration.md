@@ -36,12 +36,3 @@ And inside of your `configureStore.js` [file](https://github.com/ScriptedAlchemy
 ```
 
 Change commit in `redux-first-router-demo`: [here](https://github.com/ScriptedAlchemy/redux-first-router-demo/commit/6c8238eee713ce0079aeae1ce328d305bddd0ee3#diff-538a809ba00b97f8cf4ef2f28accee51).
-
-
-
-
-**TODO**: Move below documentation to where it belongs.
-
-
-There is also a new a third `bag` parameter in all route callbacks (`thunk`, `onBeforeChange` etc). It has the value `{ action, extra }` where `extra` is a new optional value to set in *options* that works much like the [`withExtraArgument`](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument)
-feature of `redux-thunk` or the [`context`](https://graphql.org/learn/execution/#root-fields-resolvers) argument of GraphQL resolvers: any required context can be passed to your route callbacks without having to tightly couple them to it. For example a configured API client, or an `addReducer` function to dynamically inject reducers used by lazy-loaded components.
