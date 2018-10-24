@@ -11,30 +11,24 @@ import { actionToPath, pathToAction } from 'redux-first-router'
 const { routesMap } = store.getState().location
 
 const path = actionToPath(action, routesMap, querySerializer)
-const action = pathToAction(path, routesMap, querySerializer, basename)
+const action = pathToAction(path, routesMap, querySerializer, basename, strict)
 ```
 
-The `querySerializer` argument is optional and the same as the one passed to `connectRoutes`.
+The `querySerializer`, `basename`, and `strict` arguments are optionals.
+
+The `querySerializer` argument is the same as the one passed to `connectRoutes`.
 It defaults to undefined.
 
-The `basename` argument to `pathToAction` is optional and works the same way as the one passed to routesMap.
-It defaults to the value passed the last time `connectRoutes` was called.
+The `basename` and `strict` arguments default to the value passed the last time `connectRoutes` was called.
+The `basename` argument works the same way as the one passed to `routesMap`.
 `actionToPath` does not apply any `basename` transformation.
+The `strict` option allows an optional trailing delimiter to match.
 
 You will need the `routesMap` you made, which you can import from where you created it or you can
 get any time from your store.
 
-Our `<Link />` component, [Redux First Router Link](https://github.com/faceyspacey/redux-first-router-link),
-generates your links using these methods. It does so using the `store` Redux makes available via `context` in 
-order for all your links not to need to subscribe to the `store` and become unnecessarilly reactive. 
-
-Unlike *React Router* we do not offer a [NavLink](https://reacttraining.com/react-router/#navlink) component
-as that leads to unnecessary renders. That's why we using your store `context` instead. The `routesMap` does not change, so we can get it once without responding to reactive updates from your `location` reducer state. 
-
-We will however likely create a `<NavLink />` component in the future. Until then, it's extremely easy
-to make yourself. You can do so in an ad hoc way *without* using `actionToPath` or `pathToAction` (just by using your app-specific state), 
-but if you'd like to abstract it, analyze the **Redux First Router Link** code. Feel free to make a PR; we'd welcome
-a second export in that package.
+Our `<Link />` and `<NavLink />` components from [`redux-first-router-link`](https://github.com/faceyspacey/redux-first-router-link),
+generates your links using these methods.
 
 
 ## `isLocationAction`
