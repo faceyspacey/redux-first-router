@@ -575,7 +575,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
   _updateScroll = (performedByUser: boolean = true) => {
     if (scrollBehavior) {
-      if (!scrollBehavior.manual) {
+      if (performedByUser || !scrollBehavior.manual) {
         scrollBehavior.updateScroll(prevState, nextState)
       }
     }
