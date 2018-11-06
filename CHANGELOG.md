@@ -2,13 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# [2.1.0](https://github.com/faceyspacey/redux-first-router/compare/v2.0.6...v2.1.0) (2018-10-21)
+## [2.1.1](https://github.com/faceyspacey/redux-first-router/compare/v2.1.0...v2.1.1) (2018-11-06)
 
+* Fix(scrolling): fixes exported updateScroll function if set to manual
 
-### Features
+* docs(connectRoutes): Improve doc
 
-* **connectRoutes:** add strict option for trailing delimiter ([#314](https://github.com/faceyspacey/redux-first-router/issues/314)) ([ead2e5c](https://github.com/faceyspacey/redux-first-router/commit/ead2e5c)), closes [faceyspacey#312](https://github.com/faceyspacey/issues/312)
+Move doc about the bag option from docs/migration to docs/connectRoutes.
+Improve options order based on priority and runtime order.
 
+* docs(low-level-api): Improve doc
+
+Add missing doc about strict option.
+Fix wrong doc about NavLink component.
+
+* docs(react-native): Fix removed history argument
+
+Remove history arg as argument as it's handled internally since RFR v2.
+
+* docs(low-level-api): Fix grammar
+
+* docs(low-level-api): Improve strict option description
+
+* docs(connectRoutes): Fix description of location and title options
+ 
 
 
 <a name="2.0.5"></a>
