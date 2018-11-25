@@ -1,6 +1,6 @@
 ### Embedding SEO-friendly links
 
-Use our small `<Link>` package to ensure that an actual link is embedded for SEO benefits:
+Use our small [`<Link>` package](https://github.com/faceyspacey/redux-first-router-link) to ensure that an actual anchor is embedded for SEO benefits:
 
 `yarn install redux-first-router-link`
 
@@ -34,7 +34,7 @@ The **recommended approach** is to use the `<Link to={action}>` method because i
 
 ### Styling active links
 
-`redux-first-router-link` also provides `{ NavLink }`:
+[`redux-first-router-link`](https://github.com/faceyspacey/redux-first-router-link) also provides the stylable `{ NavLink }`:
 
 ```js
   <NavLink to={{homeAction}} activeStyle={{ color: 'red' }}>Home</NavLink>
@@ -65,3 +65,5 @@ const activeLinkStyle = css`
 
 <NavLink to={{homeAction}} activeClassName={activeLinkStyle}>Home</NavLink>
 ```
+
+Documentation and more examples can be found in the [GitHub repo](https://github.com/faceyspacey/redux-first-router-link).

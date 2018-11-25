@@ -1,4 +1,4 @@
-## Examples used in documentation
+## Examples
 
 To run:
 
@@ -8,5 +8,5 @@ To run:
 * `cd project`
 * `yarn add redux react-redux redux-first-router`
 * `// git init`
-* `// apply patches from other examples`
+* `// apply patches from other examples, re-run 'yarn install' if needed`
 * `yarn start`
