@@ -88,7 +88,7 @@ type Options = {
   querySerializer?: {parse: Function, stringify: Function},
   notFoundPath?: string | null, // default: 'not-found'
   scrollTop?: boolean,          // default: false
-  restoreScroll?: ((PrevLocationState, LocationState) => boolean | string | array) => ScrollBehavior,
+  restoreScroll?: (history: History) => ScrollBehavior,
   onBeforeChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   onAfterChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   onBackNext?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
