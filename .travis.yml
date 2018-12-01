@@ -1,11 +1,21 @@
 language: node_js
 node_js:
   - stable
-  - 6
 cache: yarn
 install: yarn --ignore-engines # ignore engines to test node 6, otherwise it fails on engine check
-script:
-  - travis-github-status lint flow jest snyk codeclimate
+jobs:
+  include:
+    - stage: Build
+      name: Travis Status
+      script: npx travis-github-status
+      name: Linting
+      script: npm run lint
+      name: Flow
+      script: npm run flow
+      name: Snyk
+      script: snyk
+      #name: Codeclimate
+      #script: codeclimate
 notifications:
   email: false
   webhooks:
