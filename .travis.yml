@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - stable
-  - 6
 cache: yarn
 install: yarn --ignore-engines # ignore engines to test node 6, otherwise it fails on engine check
 jobs:
