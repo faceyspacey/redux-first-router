@@ -4,8 +4,6 @@ node_js:
   - 6
 cache: yarn
 install: yarn --ignore-engines # ignore engines to test node 6, otherwise it fails on engine check
-script:
-  - travis-github-status lint flow jest snyk codeclimate
 jobs:
   include:
     - stage: Travis Status
