@@ -14,8 +14,6 @@ jobs:
       script: npm run flow
       name: Snyk
       script: snyk
-      #name: Codeclimate
-      #script: codeclimate
 notifications:
   email: false
   webhooks:
