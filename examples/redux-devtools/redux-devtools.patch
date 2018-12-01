@@ -1,0 +1,17 @@
+diff --git a/src/configureStore.js b/src/configureStore.js
+index ae0d695..7bd5c7d 100644
+--- a/src/configureStore.js
++++ b/src/configureStore.js
+@@ -13,7 +13,11 @@ export default function configureStore(preloadedState) {
+ 
+   const rootReducer = combineReducers({ page, location: reducer })
+   const middlewares = applyMiddleware(middleware)
+-  const enhancers = compose(enhancer, middlewares)
++  const composeEnhancers =
++    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
++      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
++      : compose
++  const enhancers = composeEnhancers(enhancer, middlewares)
+ 
+   const store = createStore(rootReducer, preloadedState, enhancers)
+ 

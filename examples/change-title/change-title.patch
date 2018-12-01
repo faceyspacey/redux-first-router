@@ -1,0 +1,46 @@
+diff --git a/src/configureStore.js b/src/configureStore.js
+index ae0d695..31d9319 100644
+--- a/src/configureStore.js
++++ b/src/configureStore.js
+@@ -1,6 +1,7 @@
+ import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
+ import { connectRoutes } from 'redux-first-router'
+ 
++import * as reducers from './reducers'
+ import page from './pageReducer'
+ 
+ const routesMap = {
+@@ -11,7 +12,7 @@ const routesMap = {
+ export default function configureStore(preloadedState) {
+   const { reducer, middleware, enhancer, thunk } = connectRoutes(routesMap)
+ 
+-  const rootReducer = combineReducers({ page, location: reducer })
++  const rootReducer = combineReducers({ ...reducers, page, location: reducer })
+   const middlewares = applyMiddleware(middleware)
+   const enhancers = compose(enhancer, middlewares)
+ 
+diff --git a/src/reducers/index.js b/src/reducers/index.js
+new file mode 100644
+index 0000000..d01643b
+--- /dev/null
++++ b/src/reducers/index.js
+@@ -0,0 +1 @@
++export { default as title } from './title'
+diff --git a/src/reducers/title.js b/src/reducers/title.js
+new file mode 100644
+index 0000000..578fe78
+--- /dev/null
++++ b/src/reducers/title.js
+@@ -0,0 +1,12 @@
++const DEFAULT = 'RFR demo'
++
++export default (state = DEFAULT, action = {}) => {
++  switch (action.type) {
++    case 'HOME':
++      return DEFAULT
++    case 'USER':
++      return `${DEFAULT} - user ${action.payload.id}`
++    default:
++      return state
++  }
++}

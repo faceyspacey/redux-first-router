@@ -21,7 +21,7 @@ Think of your app in terms of _states_, not _routes_ or _components_. Connect yo
 
 
 ## Version 2 released!
-During the development of [Rudy](https://github.com/respond-framework/rudy), a few versions were released under different names and npm tags. All of these plus several PRs have been combined to a stable, up-to-date and mostly compatible version which will be supported long-term. (*See the [migration instructions](https://github.com/faceyspacey/redux-first-router/tree/master/docs/migration.md) for version 2*.)
+During the development of [Rudy](https://github.com/respond-framework/rudy), a few versions were released under different names and npm tags. All of these plus several PRs have been combined to a stable, up-to-date and mostly compatible version which will be supported long-term. (*See the [migration instructions](./docs/migration.md) for version 2*.)
 
 Feature development efforts and the next version *Rudy* will be moved to a different repo in our [Respond framework](https://github.com/respond-framework) organization.
 
@@ -124,112 +124,24 @@ const NotFound = () => <h3>404</h3>
 export { Home, ConnectedUser as User, NotFound }
 ```
 
+### Recipes for...
 
-### How do I...
+- [Automatically changing page `<title>`](./examples/change-title)
+- [SEO-friendly styled links](./examples/links)
+- [Use Redux Devtools to debug route changes](./examples/redux-devtools)
 
-- [Automatically change Page `<title>`](#automatically-change-page-title)
-- [Embed SEO-friendly links](#embed-seo-friendly-links)
-- [Style active links](#style-active-links)
-- [Dispatch thunks on route changes](#dispatch-thunks-on-route-changes)
-- [Perform redirects](#perform-redirects)
-- [Use hash-based routes/history](#use-hash-based-routes-history)
-- [Restore scroll position](#restore-scroll-position)
-- [Handle query strings](#handle-query-strings)
-- [Pre- & post-process route changes](#pre-post-process-route-changes)
-- [Enable code-splitting](#enable-code-splitting)
-- [Use Redux Devtools to debug route changes](#use-redux-devtools-to-debug-route-changes)
+*Missing examples for your use-case? PRs are very welcome!*
+*Topics waiting to be added include:*
 
-#### Automatically change Page `<title>`
-```js
-// reducers/title.js
-const DEFAULT = 'RFR demo'
-
-export default (state = DEFAULT, action = {}) => {
-  switch (action.type) {
-    case 'HOME':
-      return DEFAULT
-    case 'USER':
-      return `${DEFAULT} - user ${action.payload.id}`
-    default:
-      return state
-  }
-}
-```
-
-```js
-// reducers/index.js
-export { default as title } from './title'
-```
-
-```diff
-// configureStore.js
-+ import * as reducers from './reducers';
-
-- const rootReducer = combineReducers({ page, title, location: reducer })
-+ const rootReducer = combineReducers({ ...reducers, page, title, location: reducer })
-```
-
-#### Embed SEO-friendly links
-`yarn install redux-first-router-link`
-
-```js
-import Link from 'redux-first-router-link'
-
-<Link to="/user/123">User 123</Link>
-// Recommended approach - URLs can be changed by only modifying routesMap.js
-<Link to={{ type: 'USER', payload: { id: 456 } }}>User 456</Link>
-
-// Same as above but without SEO benefits
-const mapDispatchToProps = dispatch => ({
-  onClick: id => dispatch({ type: 'USER', payload: { id } })
-})
-```
-#### Style active links
-The link components are in a separate package, see above. `<NavLink />` contains props such as `activeStyle` and `activeClassName`.
-**TODO**
-
-#### Dispatch thunk on route change
-**TODO**
-
-#### Perform redirects
-Redirect to another route based on `payload` and `state`.
-
-**TODO**
-
-#### Use hash-based routes/history
-**TODO**: Introduce options.js and `createHashHistory` from `history`/`rudy-history`.
-See the [migration instructions](https://github.com/faceyspacey/redux-first-router/tree/master/docs/migration.md).
-
-#### Restore scroll position
-**TODO**
-
-#### Handle query strings
-**TODO**
-
-#### Pre- & post-process route changes
-**TODO**
-
-#### Enable code-splitting
-**TODO**
-
-#### Use Redux Devtools to debug route changes
-```diff
-// configureStore.js
--  const enhancers = compose(enhancer, middlewares)
-+  const composeEnhancers =
-+    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-+      : compose
-+  const enhancers = composeEnhancers(enhancer, middlewares)
-```
-
-Dispatch `{ type: 'USER', payload: { id: 13 } }` and see the route change.
-Then use the _Inspector_ to time travel back to `HOME`.
-
-## Server-side rendering
-
-**TODO**: Usage together with
-`react-universal-component`, `babel-plugin-universal-import`, `webpack-flush-chunks`.
+- *Dispatching thunks on route changes*
+- *Performing redirects bases on `state` and `payload`.*
+- *Use hash-based routes/history (*see the [migration instructions](./docs/migration.md)*)*
+- *Restoring scroll position*
+- *Handling optional URL fragments and query strings*
+- *Route change pre- & post-processing*
+- *Code-splitting*
+- *Server-side rendering*
+- *Usage together with `react-universal-component`, `babel-plugin-universal-import`, `webpack-flush-chunks`.*
 
 ## Contributing
 We use [commitizen](https://github.com/commitizen/cz-cli), run `npm run cm` to make commits. A command-line form will appear, requiring you answer a few questions to automatically produce a nicely formatted commit. Releases, semantic version numbers, tags, changelogs and publishing will automatically be handled based on these commits thanks to [semantic-release](https:/
