@@ -21,7 +21,7 @@
     "semantic-release": "npx semantic-release",
     "standard-version": "node_modules/.bin/standard-version",
     "local-semantic-release": "git checkout master; git pull origin master && npm run standard-version && git push --follow-tags origin master && npm publish",
-    "prepublish": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min"
+    "prepare": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min"
   },
   "repository": {
     "type": "git",
