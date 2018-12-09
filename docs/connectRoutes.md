@@ -33,11 +33,20 @@ connectRoutes(
 }
 ```
 
+### Parameters
+
 The first parameter is your all-important `routesMap`. The second is a small set of `options` in a map that you can provide.
 
 Before diving into each, know that some of the callbacks described in `routesMap` and `options` will receive a `bag` parameter. Feel free to skim through its description below and come back to it later if you need.
 
 `bag` has the value `{ action, extra }` where extra is a new optional value to set in `options` that works much like the `withExtraArgument` feature of `redux-thunk` or the context argument of GraphQL resolvers: any required context can be passed to your route callbacks without having to tightly couple them to it. For example a configured API client, or an addReducer function to dynamically inject reducers used by lazy-loaded components.
+
+### Return value
+
+`connectRoutes` returns an object with a Redux store middleware, enhancer, and reducer, to be used when [creating your Redux store](https://redux.js.org/api/createstore#arguments), and two functions to be used for [server side rendering](server-rendering.md):
+
+- `thunk`: it should be called (and `await`ed) with a copy of your store state, then the corresponding thunk matching the current request path from your `routesMap` will be called.
+- `initialDispatch`: it should be called only if you set `initialDispatch: false` in [options](#options), to initialize RFR (eg. after running sagas or some other kind of work to do before running RFR).
 
 ## RoutesMap
 
