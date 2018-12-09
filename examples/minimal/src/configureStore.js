@@ -9,7 +9,7 @@ const routesMap = {
 }
 
 export default function configureStore(preloadedState) {
-  const { reducer, middleware, enhancer, thunk } = connectRoutes(routesMap)
+  const { reducer, middleware, enhancer } = connectRoutes(routesMap)
 
   const rootReducer = combineReducers({ page, location: reducer })
   const middlewares = applyMiddleware(middleware)
@@ -17,5 +17,5 @@ export default function configureStore(preloadedState) {
 
   const store = createStore(rootReducer, preloadedState, enhancers)
 
-  return { store, thunk }
+  return { store }
 }
