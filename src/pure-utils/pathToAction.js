@@ -16,8 +16,8 @@ export default (
   const parts = pathname.split('?')
   const search = parts[1]
   const query = search && serializer && serializer.parse(search)
-  const routes = objectValues(routesMap)
   const routeTypes = Object.keys(routesMap)
+  const routes = objectValues(routesMap).filter(route => typeof route === 'string' || typeof route === 'object')
 
   pathname = basename ? stripBasename(parts[0], basename) : parts[0]
 
