@@ -46,7 +46,7 @@ In addition, here are some obstacles **Redux-First Router** seeks to *avoid*:
 ### Install
 `yarn add redux-first-router`
 
-A minimal `<Link>` component exists in the separate package [`redux-first-router-link`](https://github.com/faceyspacey/redux-first-router-link).
+(A minimal `<Link>` component exists in the separate package [`redux-first-router-link`](https://github.com/faceyspacey/redux-first-router-link).)
 
 ### Minimal example
 
@@ -63,7 +63,7 @@ const routesMap = {
 }
 
 export default function configureStore(preloadedState) {
-  const { reducer, middleware, enhancer, thunk } = connectRoutes(routesMap)
+  const { reducer, middleware, enhancer } = connectRoutes(routesMap)
 
   const rootReducer = combineReducers({ page, location: reducer })
   const middlewares = applyMiddleware(middleware)
@@ -71,7 +71,7 @@ export default function configureStore(preloadedState) {
 
   const store = createStore(rootReducer, preloadedState, enhancers)
 
-  return { store, thunk }
+  return { store }
 }
 ```
 
@@ -126,10 +126,12 @@ export { Home, ConnectedUser as User, NotFound }
 
 ### Recipes for...
 
-- [Automatically changing page `<title>`](./examples/change-title)
+- [Dispatching thunks & pathless routes](./examples/thunks)
 - [SEO-friendly styled links](./examples/links)
+- [Automatically changing page `<title>`](./examples/change-title)
 - [Use Redux Devtools to debug route changes](./examples/redux-devtools)
-- [Thunks & pathless routes](./examples/thunks)
+
+More documentation available in [docs](./docs)
 
 *Missing examples for your use-case? PRs are very welcome!*
 *Topics waiting to be added include:*
