@@ -129,11 +129,11 @@ export { Home, ConnectedUser as User, NotFound }
 - [Automatically changing page `<title>`](./examples/change-title)
 - [SEO-friendly styled links](./examples/links)
 - [Use Redux Devtools to debug route changes](./examples/redux-devtools)
+- [Thunks & pathless routes](./examples/thunks)
 
 *Missing examples for your use-case? PRs are very welcome!*
 *Topics waiting to be added include:*
 
-- *Dispatching thunks on route changes*
 - *Performing redirects bases on `state` and `payload`.*
 - *Use hash-based routes/history (*see the [migration instructions](./docs/migration.md)*)*
 - *Restoring scroll position*
