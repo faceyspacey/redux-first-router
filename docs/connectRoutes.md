@@ -182,7 +182,8 @@ const store = createStore(rootReducer, compose(enhancer, middlewares))
 The `history` object is the return of the *history* package's `createBrowserHistory` or `createMemoryHistory` function:
 
 ```js
-import createHistory from 'history/createBrowserHistory'
+import createHistory from "rudy-history/createBrowserHistory";
+
 const { middleware, enhancer, reducer } = connectRoutes(routesMap, {
   createHistory,
 })
@@ -192,7 +193,7 @@ const { middleware, enhancer, reducer } = connectRoutes(routesMap, {
 *or:*
 
 ```js
-import createHistory from 'history/createMemoryHistory'
+import createHistory from "rudy-history/createMemoryHistory";
 const { middleware, enhancer, reducer } = connectRoutes(routesMap, {
   createHistory,
   initialEntries: [request.path],
