@@ -60,7 +60,7 @@ type RoutesMap = {
 }
 
 type RouteObject = {
-  path: string,
+  path?: string,
   capitalizedWords?: boolean,
   toPath?: (value: string, key?: string) => string,
   fromPath?: (pathSegment: string, key?: string) => string,
