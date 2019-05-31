@@ -18,3 +18,7 @@ webpack.config.js
 .flowconfig
 *.png
 examples
+.github
+.idea
+troubleshooting.md
+yarn.lock
