@@ -12,7 +12,7 @@ export type Bag = {
 }
 
 export type RouteObject = {
-  path: string,
+  path?: string,
   capitalizedWords?: boolean,
   coerceNumbers?: boolean,
   toPath?: (param: string, key?: string) => string,
