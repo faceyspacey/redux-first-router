@@ -16,6 +16,7 @@ import pathnamePlusSearch from './pure-utils/pathnamePlusSearch'
 import canUseDom from './pure-utils/canUseDom'
 
 import {
+  clearBlocking,
   createConfirm,
   confirmUI,
   setDisplayConfirmLeave,
@@ -230,8 +231,32 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
 
     // code-splitting functionliaty to add routes after store is initially configured
     if (action.type === ADD_ROUTES) {
+      const { type } = selectLocationState(store.getState())
+      const route = routesMap[type]
+
       routesMap = { ...routesMap, ...action.payload.routes }
-      return next(action)
+
+      const result = next(action)
+      const nextRoute = routesMap[type]
+
+      if (route !== nextRoute) {
+        if (_confirm !== null) {
+          clearBlocking()
+        }
+
+        if (typeof nextRoute === 'object' && nextRoute.confirmLeave) {
+          _confirm = createConfirm(
+            nextRoute.confirmLeave,
+            store,
+            selectLocationState,
+            history,
+            querySerializer,
+            () => (_confirm = null)
+          )
+        }
+      }
+
+      return result
     }
 
     // navigation transformation specific to React Navigation
@@ -571,7 +596,7 @@ export default (routesMap: RoutesMap = {}, options: Options = {}) => {
   _selectLocationState = selectLocationState
 
   let _initialDispatch
-  let _confirm
+  let _confirm = null
 
   _updateScroll = (performedByUser: boolean = true) => {
     if (scrollBehavior) {

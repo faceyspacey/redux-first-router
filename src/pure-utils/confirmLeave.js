@@ -18,7 +18,7 @@ let _unblock
 let _removeConfirmBlocking
 let _displayConfirmLeave
 
-const clearBlocking = () => {
+export const clearBlocking = () => {
   _unblock && _unblock()
   _removeConfirmBlocking && _removeConfirmBlocking()
 }
