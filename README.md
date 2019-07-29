@@ -19,13 +19,6 @@ Think of your app in terms of _states_, not _routes_ or _components_. Connect yo
     <img src="https://travis-ci.org/faceyspacey/redux-first-router.svg?branch=master" alt="Build Status" />
   </a>
 
-
-## Version 2 released!
-During the development of [Rudy](https://github.com/respond-framework/rudy), a few versions were released under different names and npm tags. All of these plus several PRs have been combined to a stable, up-to-date and mostly compatible version which will be supported long-term. (*See the [migration instructions](./docs/migration.md) for version 2*.)
-
-Feature development efforts and the next version *Rudy* will be moved to a different repo in our [Respond framework](https://github.com/respond-framework) organization.
-
-
 ## Motivation
 To be able to use Redux *as is* while keeping the address bar in sync. To define paths as actions, and handle path params and query strings as action payloads.
 
@@ -48,7 +41,7 @@ In addition, here are some obstacles **Redux-First Router** seeks to *avoid*:
 
 (A minimal `<Link>` component exists in the separate package [`redux-first-router-link`](https://github.com/faceyspacey/redux-first-router-link).)
 
-### Minimal example
+### Quickstart
 
 ```js
 // configureStore.js
@@ -124,17 +117,88 @@ const NotFound = () => <h3>404</h3>
 export { Home, ConnectedUser as User, NotFound }
 ```
 
-### Recipes for...
+## Documentation
+
+### Basics
+
+#### Flow Chart
+![Redux First Router Flow Chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png?sanitize=true)
+
+#### [connectRoutes](https://github.com/faceyspacey/redux-first-router/blob/master/docs/connectRoutes.md)
+connectRoutes is the primary "work" you will do to get Redux First
+Router going. It's all about creating and maintaining a pairing of
+action types and dynamic express style route paths. If you use our ```<Link />``` component and pass an action as its href prop, you can change the URLs you use here any time without having to change your application code.
+
+#### [URL parsing](https://github.com/faceyspacey/redux-first-router/blob/master/docs/url-parsing.md)
+Besides the simple option of matching a literal path, all matching capabilities of the path-to-regexp package we use are now supported, except unnamed parameters.
+
+#### [Flux Standard Actions](https://github.com/faceyspacey/redux-first-router/blob/master/docs/action.md)
+One of the goals of Redux First Router is to NOT alter your actions
+and be 100% flux standard action-compliant. That allows for automatic
+support for packages such as redux-actions.
+
+#### [Location Reducer](https://github.com/faceyspacey/redux-first-router/blob/master/docs/reducer.md)
+The location reducer primarily maintains the state of the current pathname and action dispatched (type + payload). That's its core mission.
+
+#### [Link Component](https://github.com/faceyspacey/redux-first-router-link)
+A minimal link component exists in the separate package redux-first-router-link.
+
+#### [Query Strings](https://github.com/faceyspacey/redux-first-router/blob/master/docs/query-strings.md)
+Queries can be dispatched by assigning a query object containing key/vals to an action, its payload object or its meta object.
+
+#### [React Native](https://github.com/faceyspacey/redux-first-router/blob/master/docs/react-native.md)
+Redux First Router has been thought up from the ground up with React Native (and server environments) in mind. They both make use of the history package's createMemoryHistory. In coordination, we are able to present you with a first-rate developer experience when it comes to URL-handling on native. We hope you come away feeling: "this is what I've been waiting for."
+
+### Advanced
+
+#### [addRoutes](https://github.com/faceyspacey/redux-first-router/blob/master/docs/addRoutes.md)
+Sometimes you may want to dynamically add routes to routesMap, for
+example so that you can codesplit routesMap. You can do this using the
+addRoutes function.
+
+#### [Blocking navigation](https://github.com/faceyspacey/redux-first-router/blob/master/docs/blocking-navigation.md)
+Sometimes you may want to block navigation away from the current
+route, for example to prompt the user to save their changes.
+
+#### [Scroll Restoration](https://github.com/faceyspacey/redux-first-router/blob/master/docs/scroll-restoration.md)
+Complete Scroll restoration and hash #links handling is addressed primarily by one of our companion packages: redux-first-router-restore-scroll (we like to save you the bytes sent to clients if you don't need it).
+
+#### [Server Side Rendering](https://github.com/faceyspacey/redux-first-router/blob/master/docs/server-rendering.md)
+Ok, this is the biggest example here, but given what it does, we think it's extremely concise and sensible.
+
+#### [Client-Only API](https://github.com/faceyspacey/redux-first-router/blob/master/docs/client-only-api.md)
+The following are features you should avoid unless you have a reason
+that makes sense to use them. These features revolve around the
+history package's API. They make the most sense in React Native--for
+things like back button handling.
+
+#### [Low-level API](https://github.com/faceyspacey/redux-first-router/blob/master/docs/low-level-api.md)
+Below are some additional methods we export. The target user is
+package authors. Application developers will rarely need this.
+
+#### [Version 2 Migration Steps](https://github.com/faceyspacey/redux-first-router/blob/master/docs/migration.md)
+In earlier versions history was a peerDependency, this is no longer
+the case since version 2 has its own history management tool. This
+means that the arguments passed to connectRoutes(documentation) need
+to be changed.
+
+#### [Usage with redux-persist](https://github.com/faceyspacey/redux-first-router/blob/master/docs/redux-persist.md)
+You might run into a situation where you want to trigger a redirect as soon as possible in case some particular piece of state is or is not set. A possible use case could be persisting checkout state, e.g. checkoutSteps.step1Completed.
+
+#### [Prior Art](https://github.com/faceyspacey/redux-first-router/blob/master/docs/prior-art.md)
+These packages attempt in similar ways to reconcile the browser
+history with redux actions and state.
+
+### Recipes
 
 - [Dispatching thunks & pathless routes](./examples/thunks)
 - [SEO-friendly styled links](./examples/links)
 - [Automatically changing page `<title>`](./examples/change-title)
 - [Use Redux Devtools to debug route changes](./examples/redux-devtools)
 
-More documentation available in [docs](./docs)
+### Help add more recipes for these use cases.  PR's welcome!
 
-*Missing examples for your use-case? PRs are very welcome!*
-*Topics waiting to be added include:*
+*Topics for things you can do with redux-first-router but need examples written:*
 
 - *Performing redirects bases on `state` and `payload`.*
 - *Use hash-based routes/history (*see the [migration instructions](./docs/migration.md)*)*
@@ -145,15 +209,16 @@ More documentation available in [docs](./docs)
 - *Server-side rendering*
 - *Usage together with `react-universal-component`, `babel-plugin-universal-import`, `webpack-flush-chunks`.*
 
+## Where is new feature development occuring?
+Feature development efforts are occuring in the [Respond framework Rudy repository](https://github.com/respond-framework/rudy).
+
 ## Contributing
 We use [commitizen](https://github.com/commitizen/cz-cli), run `npm run cm` to make commits. A command-line form will appear, requiring you answer a few questions to automatically produce a nicely formatted commit. Releases, semantic version numbers, tags, changelogs and publishing will automatically be handled based on these commits thanks to [semantic-release](https:/
 /github.com/semantic-release/semantic-release).
 
-## More from FaceySpacey in Reactlandia
+## Community And Related Projects
 
-<a href="https://gitter.im/Reactlandia/Lobby" target="_blank">
-  <img alt="Reactlandia chat lobby" src="http://cdn.reactlandia.com/reactlandia-chat.png">
-</a>
+- [Reactlandia chat lobby](https://gitter.im/Reactlandia/Lobby)
 
 - [react-universal-component](https://github.com/faceyspacey/react-universal-component). Made to work perfectly with Redux-First Router.
 
