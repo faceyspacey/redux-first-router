@@ -3,11 +3,13 @@
   "version": "2.1.1",
   "description": "think of your app in states not routes (and, yes, while keeping the address bar in sync)",
   "main": "dist/index.js",
+  "module": "dist/es",
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
     "build": "babel src -d dist",
+    "build:es": "BABEL_ENV=es babel src -d dist/es",
     "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js -o dist/redux-first-router.js",
     "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js -o dist/redux-first-router.min.js",
     "flow-copy": "flow-copy-source src dist",
@@ -21,7 +23,7 @@
     "semantic-release": "npx semantic-release",
     "standard-version": "node_modules/.bin/standard-version",
     "local-semantic-release": "git checkout master; git pull origin master && npm run standard-version && git push --follow-tags origin master && npm publish",
-    "prepublishOnly": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min"
+    "prepublishOnly": "npm run clean && npm run build && npm run flow-copy && npm run build:umd && npm run build:umd:min && npm run build:es"
   },
   "repository": {
     "type": "git",
