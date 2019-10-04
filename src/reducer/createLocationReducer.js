@@ -73,6 +73,7 @@ export const getInitialState = (
   routesMap: RoutesMap,
   history: History
 ): LocationState => ({
+  search: currentPathname.split('?')[1],
   pathname: currentPathname.split('?')[0],
   type,
   payload,
