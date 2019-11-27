@@ -97,6 +97,7 @@ Object {
   "routesMap": Object {
     "FIRST": "/first",
   },
+  "search": undefined,
   "type": "FIRST",
 }
 `;
