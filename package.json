@@ -62,7 +62,7 @@
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.3",
     "flow-bin": "0.82.0",
-    "flow-copy-source": "2.0.2",
+    "flow-copy-source": "2.0.9",
     "husky": "0.13.4",
     "jest": "21.2.1",
     "lint-staged": "3.6.1",
