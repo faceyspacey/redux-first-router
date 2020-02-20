@@ -75,7 +75,7 @@
     "snyk": "1.100.1",
     "standard-version": "4.4.0",
     "travis-github-status": "1.6.3",
-    "uglifyjs-webpack-plugin": "2.0.1",
+    "uglifyjs-webpack-plugin": "2.2.0",
     "webpack": "4.20.2",
     "webpack-cli": "3.3.11"
   },
