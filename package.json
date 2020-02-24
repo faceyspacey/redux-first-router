@@ -67,7 +67,7 @@
     "jest": "21.2.1",
     "lint-staged": "3.6.1",
     "prettier": "1.19.1",
-    "query-string": "4.3.4",
+    "query-string": "6.11.0",
     "redux": "3.7.2",
     "redux-thunk": "2.3.0",
     "rimraf": "2.7.1",
