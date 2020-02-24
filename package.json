@@ -65,7 +65,7 @@
     "flow-copy-source": "2.0.9",
     "husky": "0.14.3",
     "jest": "21.2.1",
-    "lint-staged": "3.6.1",
+    "lint-staged": "10.0.7",
     "prettier": "1.19.1",
     "query-string": "6.11.0",
     "redux": "3.7.2",
