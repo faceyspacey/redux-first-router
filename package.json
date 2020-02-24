@@ -71,7 +71,7 @@
     "redux": "3.7.2",
     "redux-thunk": "2.3.0",
     "rimraf": "2.7.1",
-    "semantic-release": "15.9.17",
+    "semantic-release": "17.0.4",
     "snyk": "1.296.0",
     "standard-version": "7.1.0",
     "travis-github-status": "1.6.3",
