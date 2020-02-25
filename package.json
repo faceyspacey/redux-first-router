@@ -68,7 +68,7 @@
     "lint-staged": "10.0.7",
     "prettier": "1.19.1",
     "query-string": "6.11.0",
-    "redux": "3.7.2",
+    "redux": "4.0.5",
     "redux-thunk": "2.3.0",
     "rimraf": "3.0.2",
     "semantic-release": "15.9.17",
