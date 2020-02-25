@@ -70,7 +70,7 @@
     "query-string": "6.11.0",
     "redux": "3.7.2",
     "redux-thunk": "2.3.0",
-    "rimraf": "2.7.1",
+    "rimraf": "3.0.2",
     "semantic-release": "15.9.17",
     "snyk": "1.296.0",
     "standard-version": "7.1.0",
