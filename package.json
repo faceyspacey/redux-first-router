@@ -63,7 +63,7 @@
     "eslint-plugin-react": "6.10.3",
     "flow-bin": "0.119.0",
     "flow-copy-source": "2.0.9",
-    "husky": "0.14.3",
+    "husky": "4.2.3",
     "jest": "21.2.1",
     "lint-staged": "10.0.7",
     "prettier": "1.19.1",
