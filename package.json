@@ -72,7 +72,7 @@
     "redux-thunk": "2.3.0",
     "rimraf": "3.0.2",
     "semantic-release": "15.9.17",
-    "snyk": "1.296.1",
+    "snyk": "1.297.1",
     "standard-version": "7.1.0",
     "travis-github-status": "1.6.3",
     "uglifyjs-webpack-plugin": "2.2.0",
