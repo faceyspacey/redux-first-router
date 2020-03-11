@@ -122,7 +122,7 @@ export { Home, ConnectedUser as User, NotFound }
 ### Basics
 
 #### Flow Chart
-![Redux First Router Flow Chart](https://raw.githubusercontent.com/faceyspacey/redux-first-router/master/docs/redux-first-router-flow-chart.png?sanitize=true)
+![Redux First Router Flow Chart](https://github.com/faceyspacey/redux-first-router/raw/master/docs/redux-first-router-flow-chart.png)
 
 #### [connectRoutes](https://github.com/faceyspacey/redux-first-router/blob/master/docs/connectRoutes.md)
 connectRoutes is the primary "work" you will do to get Redux First
