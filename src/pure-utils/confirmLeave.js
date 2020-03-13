@@ -56,7 +56,7 @@ export const createConfirm = (
   const confirm = (location: HistoryLocation | Location) => {
     const state = store.getState()
     const routesMap = selectLocationState(state).routesMap
-    const pathname = location.pathname
+    const pathname = [location.pathname, location.search].filter(Boolean).join('?')
     const action = pathToAction(pathname, routesMap, querySerializer)
     const response = confirmLeave(state, action)
 
