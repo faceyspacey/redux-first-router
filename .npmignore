@@ -4,6 +4,10 @@ __tests__
 docs
 flow-typed
 src
+examples
+.github
+.idea
+
 *.log
 
 .babelrc
@@ -17,8 +21,5 @@ webpack.config.js
 .eslintignore
 .flowconfig
 *.png
-examples
-.github
-.idea
 troubleshooting.md
 yarn.lock
