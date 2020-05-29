@@ -73,7 +73,7 @@
     "rimraf": "3.0.2",
     "semantic-release": "15.14.0",
     "snyk": "1.303.1",
-    "standard-version": "7.1.0",
+    "standard-version": "8.0.0",
     "travis-github-status": "1.6.3",
     "uglifyjs-webpack-plugin": "2.2.0",
     "webpack": "4.42.0",
