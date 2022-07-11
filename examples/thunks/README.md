@@ -27,5 +27,5 @@ While this might be a surprising concept when first learning about `routesMap`, 
 
 ### Demo
 
-The patch contains a minimalistic implementation of [The Star Wars API](https://swapi.co/) which showcases the above concepts.
+The patch contains a minimalistic implementation of [The Star Wars API](https://swapi.dev/) which showcases the above concepts.
 After applying it, see the relevant parts in action by navigating to **/swapi/people/1** and **/swapi/invalid/route**.
