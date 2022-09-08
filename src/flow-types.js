@@ -1,15 +1,15 @@
 // @flow
-import type { Dispatch as ReduxDispatch, Store as ReduxStore } from 'redux'
+import type { Dispatch as ReduxDispatch, Store as ReduxStore } from "redux";
 
-export type Dispatch = ReduxDispatch<*>
-export type GetState = () => Object
-export type RouteString = string
-export type ConfirmLeave = (state: Object, action: Object) => ?string
+export type Dispatch = ReduxDispatch<*>;
+export type GetState = () => Object;
+export type RouteString = string;
+export type ConfirmLeave = (state: Object, action: Object) => ?string;
 
 export type Bag = {
   action: ReceivedAction | Action,
-  extra: any
-}
+  extra: any,
+};
 
 export type RouteObject = {
   path?: string,
@@ -24,14 +24,14 @@ export type RouteObject = {
   ) => any | Promise<any>,
   navKey?: string,
   confirmLeave?: ConfirmLeave,
-  meta?: Object
-}
+  meta?: Object,
+};
 
-export type Route = RouteString | RouteObject
+export type Route = RouteString | RouteObject;
 
 export type RoutesMap = {
-  [key: string]: Route
-}
+  [key: string]: Route,
+};
 
 export type Router = {
   getStateForActionOriginal: (action: Object, state: ?Object) => ?Object,
@@ -39,33 +39,34 @@ export type Router = {
   getPathAndParamsForState: (
     state: Object
   ) => { path: ?string, params: ?Object },
-  getActionForPathAndParams: (path: string) => ?Object
-}
+  getActionForPathAndParams: (path: string) => ?Object,
+};
 
 export type Navigator = {
-  router: Router
-}
+  router: Router,
+};
 
 export type Navigators = {
-  [key: string]: Navigator
-}
+  [key: string]: Navigator,
+};
 
-export type Routes = Array<Route> // eslint-disable-line no-undef
+export type Routes = Array<Route>; // eslint-disable-line no-undef
 
-export type SelectLocationState = (state: Object) => LocationState
-export type SelectTitleState = (state: Object) => string
+export type SelectLocationState = (state: Object) => LocationState;
+export type SelectTitleState = (state: Object) => string;
 
 export type QuerySerializer = {
   stringify: (params: Object) => string,
-  parse: (queryString: string) => Object
-}
+  parse: (queryString: string) => Object,
+};
 
 export type DisplayConfirmLeave = (
   message: string,
   callback: (canLeave: boolean) => void
-) => void
+) => void;
 
-export type Options = { // eslint-disable-line no-undef
+export type Options = {
+  // eslint-disable-line no-undef
   title?: string | SelectTitleState,
   location?: string | SelectLocationState,
   notFoundPath?: string,
@@ -73,7 +74,7 @@ export type Options = { // eslint-disable-line no-undef
   onBeforeChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   onAfterChange?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
   onBackNext?: (dispatch: Dispatch, getState: GetState, bag: Bag) => void,
-  restoreScroll?: History => ScrollBehavior,
+  restoreScroll?: (History) => ScrollBehavior,
   initialDispatch?: boolean,
   querySerializer?: QuerySerializer,
   displayConfirmLeave?: DisplayConfirmLeave,
@@ -96,17 +97,17 @@ export type Options = { // eslint-disable-line no-undef
       action: Object
     ) => {
       action: Object,
-      navigationAction: ?NavigationAction
-    }
+      navigationAction: ?NavigationAction,
+    },
   },
   strict?: boolean,
-  extra?: any
-}
+  extra?: any,
+};
 
-export type ScrollBehavior = Object
+export type ScrollBehavior = Object;
 
-export type Params = Object // eslint-disable-line no-undef
-export type Payload = Object
+export type Params = Object; // eslint-disable-line no-undef
+export type Payload = Object;
 
 export type LocationState = {
   pathname: string,
@@ -118,23 +119,23 @@ export type LocationState = {
   kind: ?string,
   history: ?HistoryData,
   routesMap: RoutesMap,
-  hasSSR?: true
-}
+  hasSSR?: true,
+};
 
 export type Location = {
   pathname: string,
   type: string,
   payload: Payload,
   query?: Object,
-  search?: string
-}
+  search?: string,
+};
 
 export type ActionMetaLocation = {
   current: Location,
   prev: Location,
   kind: ?string,
-  history: ?HistoryData
-}
+  history: ?HistoryData,
+};
 
 export type NavigationAction = {
   type: string,
@@ -144,22 +145,22 @@ export type NavigationAction = {
   actions?: Array<NavigationAction>,
   action?: NavigationAction,
   params?: Object,
-  meta?: Object
-}
+  meta?: Object,
+};
 
 export type Meta = {
   location: ActionMetaLocation,
   notFoundPath?: string,
   navigation?: NavigationAction,
   query?: Object,
-  search?: string
-}
+  search?: string,
+};
 
 export type HistoryData = {
   entries: Array<{ pathname: string }>,
   index: number,
-  length: number
-}
+  length: number,
+};
 
 export type Action = {
   type: string,
@@ -167,8 +168,8 @@ export type Action = {
   meta: Meta,
   query?: Object,
   navKey?: ?string,
-  error?: ?mixed
-}
+  error?: ?mixed,
+};
 
 export type ReceivedAction = {
   type: string,
@@ -176,21 +177,21 @@ export type ReceivedAction = {
   meta?: Object,
   query?: Object,
   search?: string,
-  navKey?: ?string
-}
+  navKey?: ?string,
+};
 
-export type Listener = (HistoryLocation, HistoryAction) => void
-export type Listen = Listener => void
-export type Push = (pathname: string) => void
-export type Replace = (pathname: string) => void
-export type GoBack = () => void
-export type GoForward = () => void
-export type Go = number => void
-export type CanGo = number => boolean
+export type Listener = (HistoryUpdate) => void;
+export type Listen = (Listener) => void;
+export type Push = (pathname: string) => void;
+export type Replace = (pathname: string) => void;
+export type GoBack = () => void;
+export type GoForward = () => void;
+export type Go = (number) => void;
+export type CanGo = (number) => boolean;
 export type BlockFunction = (
   location: HistoryLocation,
   action: string
-) => ?string
+) => ?string;
 
 export type History = {
   listen: Listen,
@@ -204,16 +205,21 @@ export type History = {
   index: number,
   length: number,
   location: HistoryLocation,
-  block: (func: BlockFunction) => void
-}
+  block: (func: BlockFunction) => void,
+};
 
 export type HistoryLocation = {
   pathname: string,
-  search?: string
-}
+  search?: string,
+};
 
-export type HistoryAction = string
+export type HistoryAction = string;
 
-export type Document = Object // eslint-disable-line no-undef
+export type Document = Object; // eslint-disable-line no-undef
 
-export type Store = ReduxStore<*, *>
+export type Store = ReduxStore<*, *>;
+
+export type HistoryUpdate = {
+  location: HistoryLocation,
+  action: HistoryAction,
+};
